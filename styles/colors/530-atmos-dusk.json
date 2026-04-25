@@ -1,0 +1,89 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Atmos Dusk (The Blue Hour: Modern, moody evening tones)",
+	"settings": {
+		"custom": {
+			"color": {
+				"contrast": {
+					"yellow": "var(--wp--preset--color--foreground-alt)",
+					"bright-green": "var(--wp--preset--color--almost-black)",
+					"light-green": "var(--wp--preset--color--almost-black)",
+					"light-orange": "var(--wp--preset--color--almost-black)"
+				},				
+				"shadow": {
+					"natural": "0 2px 10px rgba(15, 23, 42, 0.4), 0 1px 2px rgba(15, 23, 42, 0.2)",
+					"crisp": "0 1px 3px rgba(15, 23, 42, 0.5), 0 1px 2px rgba(15, 23, 42, 0.3)",
+					"deep": "0 20px 40px rgba(15, 23, 42, 0.6), 0 5px 15px rgba(15, 23, 42, 0.4)",
+					"sharp": "0 0 0 1px rgba(255, 255, 255, 0.05), 0 4px 12px rgba(15, 23, 42, 0.5)",
+					"outline": "0 0 0 2px var(--wp--preset--color--base), 0 0 0 4px var(--wp--preset--color--primary)"
+				}
+			}
+		},
+		"color": {
+			"palette": [
+				{ "slug": "primary", "color": "#2A323D", "name": "Primary (Dark Midnight Blue)" },
+				{ "slug": "primary-alt", "color": "#1E242C", "name": "Primary Alt (Deep Atmos)" },
+				{ "slug": "secondary", "color": "#3D4E5B", "name": "Secondary (Midnight Blue)" },
+				{ "slug": "secondary-alt", "color": "#2A323D", "name": "Secondary Alt (Dark Midnight Blue)" },
+				{ "slug": "tertiary", "color": "#A36555", "name": "Tertiary (Orange)" },
+				{ "slug": "tertiary-alt", "color": "#7D483B", "name": "Tertiary Alt (Dark Orange)" },
+				{ "slug": "neutral", "color": "#F2F1ED", "name": "Neutral (Very Light Gray)" },
+				{ "slug": "neutral-alt", "color": "#E5E4DF", "name": "Neutral Alt (Light Gray)" },
+				{ "slug": "base", "color": "#FAF9F6", "name": "Base (Off White)" },
+				{ "slug": "contrast", "color": "#1B1B1B", "name": "Contrast (Rich Carbon)" },
+				{ "slug": "highlight", "color": "#8DBA9D", "name": "Highlight (Spring Sage)" },
+				{ "slug": "highlight-alt", "color": "#A5CCB3", "name": "Highlight Hover (Luminous Sage)" },
+				{ "slug": "dark", "color": "#1E242C", "name": "Dark (Deep Atmos Blue)" },
+				{ "slug": "dark-alt", "color": "#14181D", "name": "Dark Alt (Nightfall)" },
+				{ "slug": "foreground-alt", "color": "#FAF9F6", "name": "Foreground Alt (Off White)" },
+				{ "slug": "white", "color": "#FFFFFF", "name": "White (Pure White)" },
+				{ "slug": "off-white", "color": "#FAF9F6", "name": "Off White (Gallery Bone)" },
+				{ "slug": "very-light-gray", "color": "#F2F1ED", "name": "Very Light Gray (Ash Mist)" },
+				{ "slug": "light-gray", "color": "#E5E4DF", "name": "Light Gray (Silt)" },
+				{ "slug": "gray", "color": "#B0AFA9", "name": "Gray (Pebble)" },
+				{ "slug": "dark-gray", "color": "#706F6A", "name": "Dark Gray (Stone)" },
+				{ "slug": "very-dark-gray", "color": "#3D3D3A", "name": "Very Dark Gray (Muted Obsidian)" },
+				{ "slug": "light-green", "color": "#C8D6CF", "name": "Light Green (Dusty Sage)" },
+				{ "slug": "green", "color": "#78A391", "name": "Green (Luminous Sage)" },
+				{ "slug": "bright-green", "color": "#8DBA9D", "name": "Bright Green (Spring Sage)" },
+				{ "slug": "dark-bright-green", "color": "#4A6E5D", "name": "Dark Bright Green (Deep Sage)" },
+				{ "slug": "light-yellow", "color": "#EDE6D8", "name": "Light Yellow (Cream)" },
+				{ "slug": "yellow", "color": "#B38B59", "name": "Yellow (Muted Gold)" },
+				{ "slug": "light-orange", "color": "#E6C6BA", "name": "Light Orange (Apricot)" },
+				{ "slug": "orange", "color": "#A36555", "name": "Orange (Terra Cotta)" },
+				{ "slug": "dark-orange", "color": "#7D483B", "name": "Dark Orange (Burnt Sienna)" },
+				{ "slug": "light-blue", "color": "#C0CCD3", "name": "Light Blue (Sky Slate)" },
+				{ "slug": "blue", "color": "#536A78", "name": "Blue (Steel)" },
+				{ "slug": "dark-blue", "color": "#384952", "name": "Dark Blue (Deep Steel)" },
+				{ "slug": "midnight-blue", "color": "#3D4E5B", "name": "Midnight Blue (Atmos Midnight)" },
+				{ "slug": "dark-midnight-blue", "color": "#2A323D", "name": "Dark Midnight Blue (Deep Atmos)" },
+				{ "slug": "light-purple", "color": "#D2C9CE", "name": "Light Purple (Lavender Mist)" },
+				{ "slug": "purple", "color": "#7D7178", "name": "Purple (Muted Heather)" },
+				{ "slug": "dark-purple", "color": "#574E53", "name": "Dark Purple (Deep Heather)" },
+				{ "slug": "light-red", "color": "#D9C4C4", "name": "Light Red (Rose Mist)" },
+				{ "slug": "red", "color": "#946B6B", "name": "Red (Muted Clay)" },
+				{ "slug": "dark-red", "color": "#6E4C4C", "name": "Dark Red (Deep Clay)" },
+				{ "slug": "almost-black", "color": "#2D2D2D", "name": "Almost Black (Carbon)" },
+				{ "slug": "not-quite-black", "color": "#1A1A1A", "name": "Not Quite Black (Rich Carbon)" },
+				{ "slug": "black", "color": "#000000", "name": "Black (True Black)" }
+			],
+			"duotone": [
+				{ "colors": ["#2A323D", "#FAF9F6"], "slug": "primary", "name": "Primary" },
+				{ "colors": ["#1E242C", "#FAF9F6"], "slug": "primary-alt", "name": "Primary Alt" },
+				{ "colors": ["#3D4E5B", "#FAF9F6"], "slug": "secondary", "name": "Secondary" },
+				{ "colors": ["#2A323D", "#FAF9F6"], "slug": "secondary-alt", "name": "Secondary Alt" },
+				{ "colors": ["#A36555", "#FAF9F6"], "slug": "tertiary", "name": "Tertiary" },
+				{ "colors": ["#7D483B", "#FAF9F6"], "slug": "tertiary-alt", "name": "Tertiary Alt" },
+				{ "colors": ["#7D7178", "#B38B59"], "slug": "purple-yellow", "name": "Purple and Yellow" },
+				{ "colors": ["#384952", "#946B6B"], "slug": "blue-red", "name": "Blue and Red" },
+				{ "colors": ["#2D2D2D", "#384952"], "slug": "midnight", "name": "Midnight" },
+				{ "colors": ["#946B6B", "#B38B59"], "slug": "magenta-yellow", "name": "Red and Yellow" },
+				{ "colors": ["#7D7178", "#78A391"], "slug": "purple-green", "name": "Purple and Green" },
+				{ "colors": ["#384952", "#A36555"], "slug": "blue-orange", "name": "Blue and Orange" },
+				{ "colors": ["#000000", "#FFFFFF"], "slug": "grayscale", "name": "Grayscale" },
+				{ "colors": ["#000000", "#706F6A"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
+			]			
+		}	
+	}
+}

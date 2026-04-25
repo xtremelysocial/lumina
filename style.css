@@ -1,0 +1,53 @@
+/*
+Theme Name: Atmos Blocks
+Theme URI: https://xtremelysocial.com/wordpress/atmos/
+Author: XtremelySocial
+Author URI: https://xtremelysocial.com/
+Description: A high-end evolution of the flat design aesthetic. Featuring atmospheric depth, tactile hardware inspiration, and kinetic motion.
+Template: flat-blocks
+Version: 1.0
+Requires at least: 6.8
+Tested up to: 6.9
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+Text Domain: atmos-blocks
+Tags: block-theme, dark-mode, earth-tones, modern, tactile, professional
+*/
+
+/**
+ * ATMOS BLOCKS: CORE STYLES
+ * --------------------------------------------------------------------------
+ * Built on a "Flat 3.0" philosophy: Physics-based interaction, 
+ * atmospheric shadows, and hardware-inspired layouts.
+ */
+
+/* 1. HARDWARE STYLES (The Physical Components)
+   ========================================================================== */
+
+/* Screen Styles: Define the hardware frame behavior */
+.is-style-image-computer-screen img,
+.is-style-image-tablet-phone-screen img {
+    box-sizing: border-box;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Rounded Border Style: Used for tactile containers */
+.is-style-rounded-border {
+    border: 1px solid var(--wp--preset--color--border, #e2e8f0);
+    border-radius: var(--wp--custom--border-radius--medium, 12px);
+    overflow: hidden;
+}
+
+/* 2. ALIGNMENT & LAYOUT LOGIC
+   ========================================================================== */
+
+.alignfull {
+    border-radius: 0 !important;
+}
+
+.editor-styles-wrapper .wp-block-cover.alignfull,
+.editor-styles-wrapper .wp-block-group.alignfull {
+    border-radius: 0 !important;
+}
