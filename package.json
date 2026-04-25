@@ -1,0 +1,19 @@
+{
+  "name": "atmos-child-theme",
+  "version": "1.0.0",
+  "description": "Atmos Gravity Engine - Flat Blocks Child",
+  "main": "index.js",
+  "scripts": {
+    "build": "wp-scripts build --webpack-src-dir=src/scss --output-path=assets/css",
+    "start": "wp-scripts start --webpack-src-dir=src/scss --output-path=assets/css"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^27.0.0",
+    "autoprefixer": "^10.4.19",
+    "mini-css-extract-plugin": "^2.9.0",
+    "postcss-loader": "^8.1.1",
+    "remove-files-webpack-plugin": "^1.5.0",
+    "webpack-remove-empty-scripts": "^1.0.4",
+    "webpack-watched-glob-entries-plugin": "^2.2.6"
+  }
+}

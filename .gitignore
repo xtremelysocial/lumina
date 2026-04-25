@@ -1,0 +1,16 @@
+# npm node modules and debugging files
+node_modules/
+**/*.css.map
+
+# Shell scripts and zip files
+*.sh
+*.zip
+
+# Mac files
+.DS_Store
+**/.DS_Store
+
+# Save and test files
+**/*-SAVE*
+**/*-test*
+zz_unused

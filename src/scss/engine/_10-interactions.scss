@@ -1,0 +1,87 @@
+/* ==========================================================================
+   1.10 INTERACTIVE PHYSICS: Strict Trigger-Action Pairs - v0.9.8 fixed
+   ========================================================================== */
+@use "00-config" as config;
+
+/* --- 1.10.1 Container-Level Action Lifters --- */
+:is(
+    .wp-block-group,
+    .wp-block-column,
+    .wp-block-media-text
+) {
+    &:is(
+        [class*="has-background"], [class*="has-border"], [class*="has-shadow"],
+        [style*="background"], [style*="border"], [style*="outline"], [style*="box-shadow"]
+    ) {
+        &:not(#{config.$atmos-auto-decline}):hover {
+            will-change: transform;
+            // FIX: Hardcoded to vertical lift only, stripping the scale parameters
+            transform: translateY(-4px) !important;
+            box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)) !important;
+
+            outline: 3px solid #ff00ff !important;
+            outline-offset: 4px;
+        }
+    }
+}
+
+// Auto-Promote Custom Style Interactions
+:is(
+    .is-style-object-passive,
+    .is-style-rounded-corners,
+    .is-style-rounded-border,
+    .is-style-thick-rounded-border,
+    .wp-block-code
+):not(#{config.$atmos-auto-decline}):hover {
+    will-change: transform;
+    // FIX: Hardcoded to vertical lift only, stripping the scale parameters
+    transform: translateY(-4px) !important;
+    box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)) !important;
+
+    outline: 3px solid #ff00ff !important;
+    outline-offset: 4px;
+}
+
+/* --- 1.10.2 Direct Image Interaction: 100% Shifting Up Only --- */
+figure.wp-block-image {
+    &:not(.alignfull):not([class*="alignfull"]) {
+        // True Lightbox Target Shifting
+        &.wp-lightbox-container:hover img,
+        // Design Classes Triggers Shifting
+        &:is(
+            [class*="has-background"], [class*="has-border"], [class*="has-shadow"],
+            [style*="background"], [style*="border"], [style*="outline"], [style*="box-shadow"]
+        ):hover img {
+            will-change: transform;
+            transform: translateY(-4px) scale(1) !important;
+            box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)) !important;
+
+            outline: 3px solid #ff00ff !important;
+            outline-offset: 4px;
+        }
+    }
+}
+
+// Gallery & Featured Post Thumbnail Isolation
+:is(.wp-block-gallery, .wp-block-latest-posts__featured-image) {
+    &:not(.alignfull):not([class*="alignfull"]) {
+        img:hover {
+            will-change: transform;
+            transform: translateY(-4px) scale(1) !important;
+            box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)) !important;
+
+            outline: 3px solid #ff00ff !important;
+            outline-offset: 4px;
+        }
+    }
+}
+
+// Avatars Interaction
+:is(.avatar:hover, img.avatar:hover, .avatar img:hover):not(#{config.$atmos-auto-decline}) {
+    will-change: transform;
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)) !important;
+
+    outline: 3px solid #ff00ff !important;
+    outline-offset: 4px;
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 3,
+    "name": "object-plain",
+    "title": "Default (Plain)",
+    "isDefault": false,    
+    "blockTypes": [
+        "core/group",
+        "core/columns",
+        "core/column",
+        "core/paragraph",
+        "core/code",
+        "core/image",
+        "core/media-text",
+        "core/list",
+        "core/query-pagination",
+        "core/post-featured-image"
+    ],
+    "styles": {
+        "color": {
+            "background": "transparent"
+        },    
+        "border": {
+            "width": "0px",
+            "radius": "0px",
+            "style": "none"
+        },
+        "shadow": "none"
+    }
+}
