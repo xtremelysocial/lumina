@@ -1,0 +1,46 @@
+/* ==========================================================================
+   1.4 ADVANCED TOOLS: Explicit Element Targets - v0.9.8
+   ========================================================================== */
+@use "00-config" as config;
+
+/* --- 1.4.1 Standalone Action Targets (The Grow Rule) --- */
+:is(
+    .wp-block-button__link, 
+    .wp-element-button:not(:where(.wp-element-lightbox)), 
+    .wp-block-post-terms a, 
+    .tag-cloud-link
+):not(#{config.$atmos-auto-decline}) {
+    transform: translateY(0) scale(1);
+
+    outline: 3px dashed #00ff00;
+    outline-offset: 4px;
+}
+
+:is(
+    .wp-block-button__link, 
+    .wp-element-button:not(:where(.wp-element-lightbox)), 
+    .wp-block-post-terms a, 
+    .tag-cloud-link
+):not(#{config.$atmos-auto-decline}):hover {
+    transform: var(--wp--custom--animation--default--hover-transform, scale(1.05)) !important;
+    box-shadow: var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22), 0 5px 15px rgba(0, 0, 0, 0.12)) !important;
+
+    outline: 3px solid #ff00ff !important;
+}
+
+/* --- 1.4.2 Avatars Baseline --- */
+:is(.avatar, img.avatar, .avatar img):not(#{config.$atmos-auto-decline}) {
+    vertical-align: top;
+    transform: translateY(0px) scale(1);
+
+    outline: 3px dashed #00ff00;
+    outline-offset: 4px;
+}
+
+:is(.avatar, img.avatar, .avatar img):not(#{config.$atmos-auto-decline}):hover {
+    will-change: transform;
+    transform: var(--wp--custom--animation--default--object-transform, translateY(-2px)) scale(1.05) !important;
+    box-shadow: var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22), 0 5px 15px rgba(0, 0, 0, 0.12)) !important;
+
+    outline: 3px solid #ff00ff !important;
+}

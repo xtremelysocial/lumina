@@ -1,0 +1,56 @@
+/* ==========================================================================
+   1.2 SENSORS & HARDWARE: Unified Passive Object Rule - v0.9.8
+   ========================================================================== */
+@use "00-config" as config;
+
+/* --- 1.2.1 Core Containers (Group, Column, Media-Text) --- */
+:is(
+    .wp-block-group,
+    .wp-block-column,
+    .wp-block-media-text
+) {
+    &:is(
+        [class*="has-background"], [class*="has-border"], [class*="has-shadow"],
+        [style*="background"], [style*="border"], [style*="outline"], [style*="box-shadow"]
+    ) {
+        &:not(#{config.$atmos-auto-decline}) {
+            box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+            transform: translateY(0) scale(1);
+
+            outline: 3px dashed #00ff00;
+            outline-offset: 4px;
+        }
+    }
+}
+
+/* --- 1.2.2 Visual Media (Direct Passive & Lightbox Image Targets) --- */
+figure.wp-block-image {
+    // Restrict passive image styles to non-alignfull only
+    &:not(.alignfull):not([class*="alignfull"]) {
+        &:is(
+            [class*="has-background"], [class*="has-border"], [class*="has-shadow"],
+            [style*="background"], [style*="border"], [style*="outline"], [style*="box-shadow"],
+            .wp-lightbox-container
+        ) {
+            img {
+                box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+                transform: translateY(0) scale(1);
+
+                outline: 3px dashed #00ff00;
+                outline-offset: 4px;
+            }
+        }
+    }
+}
+
+// Standalone Visual Media Triggers (Galleries and Post Thumbnails)
+:is(
+    .wp-block-gallery:not(.alignfull):not([class*="alignfull"]) img,
+    .wp-block-latest-posts__featured-image img
+):not(#{config.$atmos-auto-decline}) {
+    box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+    transform: translateY(0) scale(1);
+
+    outline: 3px dashed #00ff00;
+    outline-offset: 4px;
+}

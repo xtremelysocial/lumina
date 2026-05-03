@@ -1,0 +1,52 @@
+/* ==========================================================================
+   0.0 ATMOS CONFIGURATION - v0.9.8
+   ========================================================================== */
+
+$atmos-custom-styles: (
+    '.is-style-rounded-border',
+    '.is-style-rounded-corners',
+    '.is-style-thick-rounded-border',
+    '.is-style-image-border',
+    '.is-style-image-round-border',
+    '.is-style-image-computer-screen',
+    '.is-style-image-tablet-phone-screen',
+    '.is-style-object-passive'
+);
+
+$atmos-auto-decline: (
+    '.is-style-image-no-border',
+    '.is-style-object-plain',
+    '.alignfull',
+    '[class*="alignfull"]',
+    '.wp-block-gallery'
+);
+
+$atmos-theme-json-blocks: (
+    '.wp-block-code',
+    'pre.wp-block-code',
+    '.wp-block-file',
+    '.wp-block-query-pagination'
+);
+
+$atmos-container-blocks: (
+    '.wp-block-group',
+    '.wp-block-column',
+    '.wp-block-media-text',
+    '.wp-block-cover'
+);
+
+$atmos-opt-in-elements: (
+    '.wp-block-button__link',
+    '.wp-element-button',
+    '.wp-block-post-terms a',
+    '.tag-cloud-link'
+);
+
+$atmos-opt-in-triggers: (
+    '[class*="has-background"]',
+    '[class*="has-border"]',
+    '[class*="has-shadow"]',
+    '[style*="background"]',
+    '[style*="border"]',
+    '[style*="box-shadow"]'
+);

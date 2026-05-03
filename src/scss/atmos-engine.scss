@@ -1,0 +1,9 @@
+/* ATMOS ENGINE: STATIC FOUNDATION - v0.9.8 */
+/* Handles registry, sensors, relays, and resting state physics */
+
+@use 'engine/01-registry' as *;
+@use 'engine/02-sensors' as *;
+@use 'engine/03-relays' as *;
+@use 'engine/04-tools' as *;
+@use 'engine/05-physics' as *;
+@use 'engine/06-supreme-court' as *;

@@ -48,8 +48,8 @@ You can check out our other themes here: https://xtremelysocial.com/wordpress/
 
 == Changelog ==
 
-= 1.0.0 = 
-April 22, 2026
+= v0.9.8 = 
+May 2, 2026
 
 Initial theme version
 
