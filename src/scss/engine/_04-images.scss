@@ -1,0 +1,17 @@
+/* ==========================================================================
+   1.4 IMAGES: Explicit Element Targets - v0.9.8 fixed
+   ========================================================================== */
+@use "00-config" as config;
+
+/* --- 1.4.1 Avatars Baseline --- */
+:is(.avatar, img.avatar, .avatar img):not(#{config.$atmos-auto-decline}) {
+    vertical-align: middle;
+    box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+    transform: translateY(0) scale(1);
+    
+    transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), 
+                box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+
+    outline: 3px dashed #00ff00;
+    outline-offset: 4px;
+}
