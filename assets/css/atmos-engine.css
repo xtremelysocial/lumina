@@ -34,8 +34,7 @@ figure.wp-block-image img,
 }
 
 /* ==========================================================================
-   1.2 SENSORS & HARDWARE: Unified Passive Object Rule
-   	   v0.9.8 fixed build 02
+   1.2 SENSORS & HARDWARE: Unified Passive Object Rule - v0.9.8 fixed build 02
    ========================================================================== */
 /* --- 1.2.1 Core Containers (Group, Column, Media-Text) --- */
 :is(.wp-block-group,
@@ -60,6 +59,7 @@ figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-bac
 
 :is(.wp-block-gallery:not(.alignfull):not([class*=alignfull]) img,
 .wp-block-latest-posts__featured-image img):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
   transform: translateY(0) scale(1);
   outline: 3px dashed #00ff00;
@@ -128,6 +128,7 @@ figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-bac
 .wp-block-post-terms a,
 .tag-cloud-link):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery) {
   transform: translateY(0) scale(1);
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   outline: 3px dashed #00ff00;
   outline-offset: 4px;
 }

@@ -13,6 +13,10 @@
 ):not(#{config.$atmos-auto-decline}) {
     transform: translateY(0) scale(1);
 
+    // FIX: Added transition to resting state to ensure smooth scale-down
+    transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), 
+                box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+
     outline: 3px dashed #00ff00;
     outline-offset: 4px;
 }
