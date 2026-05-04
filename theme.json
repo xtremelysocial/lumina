@@ -48,7 +48,7 @@
 					"hoverSmallTransform": "scale(1.02)",
 					"hoverTransform": "scale(1.05)",
 					"hoverLargeTransform": "scale(1.15)",
-					"objectTransform": "translateY(-2px)"
+					"objectTransform": "translateY(-4px)"
 				}
 			},
 			"shadow": {

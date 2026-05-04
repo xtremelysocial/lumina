@@ -4,10 +4,12 @@
 /* ATMOS ENGINE: STATIC FOUNDATION - v0.9.8 fixed */
 /* Handles registry, sensors, relays, and resting state physics */
 /* ==========================================================================
-   1.1 MASTER REGISTRY: Pure Reset Ceiling - v0.9.8 fixed
+   1.1 MASTER REGISTRY: Set Default Shadow and Transforms to None
+   	   v0.9.8 fixed build 02
    ========================================================================== */
 /* ==========================================================================
-   0.0 ATMOS CONFIGURATION - v0.9.8 fixed
+   0.0 ATMOS CONFIGURATION
+   	   v0.9.8 fixed build 02
    ========================================================================== */
 :where(.wp-block-group, .wp-block-column, .wp-block-media-text, .wp-block-cover,
 .wp-block-code, pre.wp-block-code, .wp-block-file, .wp-block-query-pagination,
@@ -32,14 +34,14 @@ figure.wp-block-image img,
 }
 
 /* ==========================================================================
-   1.2 SENSORS & HARDWARE: Unified Passive Object Rule - v0.9.8 fixed
+   1.2 SENSORS & HARDWARE: Unified Passive Object Rule - v0.9.8 fixed build 02
    ========================================================================== */
 /* --- 1.2.1 Core Containers (Group, Column, Media-Text) --- */
 :is(.wp-block-group,
 .wp-block-column,
 .wp-block-media-text):is([class*=has-background], [class*=has-border], [class*=has-shadow],
 [style*=background], [style*=border], [style*=outline], [style*=box-shadow]):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery) {
-  box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
   transform: translateY(0) scale(1);
   outline: 3px dashed #00ff00;
   outline-offset: 4px;
@@ -49,7 +51,7 @@ figure.wp-block-image img,
 figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-background], [class*=has-border], [class*=has-shadow],
 [style*=background], [style*=border], [style*=outline], [style*=box-shadow],
 .wp-lightbox-container) img {
-  box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
   transform: translateY(0) scale(1);
   outline: 3px dashed #00ff00;
   outline-offset: 4px;
@@ -57,23 +59,26 @@ figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-bac
 
 :is(.wp-block-gallery:not(.alignfull):not([class*=alignfull]) img,
 .wp-block-latest-posts__featured-image img):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery) {
-  box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
   transform: translateY(0) scale(1);
   outline: 3px dashed #00ff00;
   outline-offset: 4px;
 }
 
 /* ==========================================================================
-   1.3 CHILD INTERLOCK RELAYS - v0.9.8 fixed
+   1.3 CHILD INTERLOCK RELAYS
+   	   v0.9.8 fixed build 02
    ========================================================================== */
 /* Left empty to isolate and test core images cleanly */
 /* ==========================================================================
-   1.4 IMAGES: Explicit Element Targets - v0.9.8 fixed
+   1.4 IMAGES: Explicit Element Targets
+   	   v0.9.8 fixed build 02
    ========================================================================== */
 /* --- 1.4.1 Avatars Baseline --- */
 :is(.avatar, img.avatar, .avatar img):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery) {
   vertical-align: middle;
-  box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
   transform: translateY(0) scale(1);
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   outline: 3px dashed #00ff00;
@@ -81,7 +86,8 @@ figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-bac
 }
 
 /* ==========================================================================
-   1.5 KINETIC PHYSICS: Auto-Promote Fallbacks - v0.9.8
+   1.5 KINETIC PHYSICS: Auto-Promote Fallbacks
+   	   v0.9.8 fixed build 02
    ========================================================================== */
 /* --- 1.5.1 Container Level Auto-Promotes --- */
 :where(.is-style-object-passive,
@@ -89,7 +95,7 @@ figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-bac
 .is-style-rounded-border,
 .is-style-thick-rounded-border,
 .wp-block-code):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery) {
-  box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
   transform: translateY(0) scale(1);
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   outline: 3px dashed #00ff00;
@@ -105,7 +111,7 @@ figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-bac
 .is-style-image-round-border img,
 .is-style-image-computer-screen img,
 .is-style-image-tablet-phone-screen img):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery) {
-  box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
   transform: translateY(0) scale(1);
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   outline: 3px dashed #00ff00;
@@ -113,7 +119,8 @@ figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-bac
 }
 
 /* ==========================================================================
-   1.6 BUTTONS AND BUTTON-LIKE OBJECTS - v0.9.8 fixed
+   1.6 BUTTONS AND BUTTON-LIKE OBJECTS
+   	   v0.9.8 fixed build 02
    ========================================================================== */
 /* --- 1.6.1 Standalone Action Targets (The Grow Rule) --- */
 :is(.wp-block-button__link,
@@ -121,6 +128,7 @@ figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-bac
 .wp-block-post-terms a,
 .tag-cloud-link):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery) {
   transform: translateY(0) scale(1);
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   outline: 3px dashed #00ff00;
   outline-offset: 4px;
 }
@@ -130,6 +138,6 @@ figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-bac
 .wp-block-post-terms a,
 .tag-cloud-link):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery):hover {
   transform: var(--wp--custom--animation--default--hover-transform, scale(1.05)) !important;
-  box-shadow: var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22), 0 5px 15px rgba(0, 0, 0, 0.12)) !important;
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
   outline: 3px solid #ff00ff !important;
 }

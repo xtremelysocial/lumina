@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1.10 INTERACTIVE PHYSICS: Strict Trigger-Action Pairs - v0.9.8 fixed
+   1.10 INTERACTIVE PHYSICS: Strict Trigger-Action Pairs - v0.9.8 fixed build 02
    ========================================================================== */
 @use "00-config" as config;
 
@@ -15,9 +15,8 @@
     ) {
         &:not(#{config.$atmos-auto-decline}):hover {
             will-change: transform;
-            // FIX: Hardcoded to vertical lift only, stripping the scale parameters
-            transform: translateY(-4px) !important;
-            box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)) !important;
+            transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) !important;
+            box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10))) !important;
 
             outline: 3px solid #ff00ff !important;
             outline-offset: 4px;
@@ -31,30 +30,31 @@
     .is-style-rounded-corners,
     .is-style-rounded-border,
     .is-style-thick-rounded-border,
+    .is-style-image-border,
+    .is-style-image-round-border,
+    .is-style-image-computer-screen,
+    .is-style-image-tablet-phone-screen,
     .wp-block-code
 ):not(#{config.$atmos-auto-decline}):hover {
     will-change: transform;
-    // FIX: Hardcoded to vertical lift only, stripping the scale parameters
-    transform: translateY(-4px) !important;
-    box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)) !important;
+    transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) !important;
+    box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10))) !important;
 
     outline: 3px solid #ff00ff !important;
     outline-offset: 4px;
 }
 
-/* --- 1.10.2 Direct Image Interaction: 100% Shifting Up Only --- */
+/* --- 1.10.2 Visual Media (Direct Shifting Action) --- */
 figure.wp-block-image {
     &:not(.alignfull):not([class*="alignfull"]) {
-        // True Lightbox Target Shifting
-        &.wp-lightbox-container:hover img,
-        // Design Classes Triggers Shifting
         &:is(
             [class*="has-background"], [class*="has-border"], [class*="has-shadow"],
-            [style*="background"], [style*="border"], [style*="outline"], [style*="box-shadow"]
+            [style*="background"], [style*="border"], [style*="outline"], [style*="box-shadow"],
+            .wp-lightbox-container
         ):hover img {
             will-change: transform;
-            transform: translateY(-4px) scale(1) !important;
-            box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)) !important;
+            transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) !important;
+            box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10))) !important;
 
             outline: 3px solid #ff00ff !important;
             outline-offset: 4px;
@@ -67,8 +67,8 @@ figure.wp-block-image {
     &:not(.alignfull):not([class*="alignfull"]) {
         img:hover {
             will-change: transform;
-            transform: translateY(-4px) scale(1) !important;
-            box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)) !important;
+            transform: var(--wp--custom--animation--default--hover-small-transform, scale(1.02)) !important;
+            box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10))) !important;
 
             outline: 3px solid #ff00ff !important;
             outline-offset: 4px;
@@ -77,10 +77,10 @@ figure.wp-block-image {
 }
 
 // Avatars Interaction
-:is(.avatar:hover, img.avatar:hover, .avatar img:hover):not(#{config.$atmos-auto-decline}) {
+:is(.avatar, img.avatar, .avatar img):not(#{config.$atmos-auto-decline}):hover {
     will-change: transform;
-    transform: translateY(-4px) scale(1.05) !important;
-    box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)) !important;
+    transform: var(--wp--custom--animation--default--hover-transform, scale(1.05)) !important;
+    box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10))) !important;
 
     outline: 3px solid #ff00ff !important;
     outline-offset: 4px;
