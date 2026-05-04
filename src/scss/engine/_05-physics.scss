@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1.5 KINETIC PHYSICS: Auto-Promote Fallbacks - v0.9.8
+   1.5 KINETIC PHYSICS: Auto-Promote Fallbacks - v0.9.8 fixed
    ========================================================================== */
 @use "00-config" as config;
 
@@ -11,7 +11,7 @@
     .is-style-thick-rounded-border,
     .wp-block-code
 ):not(#{config.$atmos-auto-decline}) {
-    box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+    box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
     transform: translateY(0) scale(1);
     
     transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), 
@@ -32,7 +32,7 @@
     .is-style-image-computer-screen img,
     .is-style-image-tablet-phone-screen img
 ):not(#{config.$atmos-auto-decline}) {
-    box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+    box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
     transform: translateY(0) scale(1);
     
     transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), 

@@ -23,7 +23,7 @@
     .tag-cloud-link
 ):not(#{config.$atmos-auto-decline}):hover {
     transform: var(--wp--custom--animation--default--hover-transform, scale(1.05)) !important;
-    box-shadow: var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22), 0 5px 15px rgba(0, 0, 0, 0.12)) !important;
+    box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10))) !important;
 
     outline: 3px solid #ff00ff !important;
 }

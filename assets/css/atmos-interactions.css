@@ -15,8 +15,8 @@
 .wp-block-media-text):is([class*=has-background], [class*=has-border], [class*=has-shadow],
 [style*=background], [style*=border], [style*=outline], [style*=box-shadow]):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery):hover {
   will-change: transform;
-  transform: translateY(-4px) !important;
-  box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1)) !important;
+  transform: var(--wp--custom--animation--default--object-transform, translateY(-2px)) !important;
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
   outline: 3px solid #ff00ff !important;
   outline-offset: 4px;
 }
@@ -25,36 +25,41 @@
 .is-style-rounded-corners,
 .is-style-rounded-border,
 .is-style-thick-rounded-border,
+.is-style-image-border,
+.is-style-image-round-border,
+.is-style-image-computer-screen,
+.is-style-image-tablet-phone-screen,
 .wp-block-code):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery):hover {
   will-change: transform;
-  transform: translateY(-4px) !important;
-  box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1)) !important;
+  transform: var(--wp--custom--animation--default--object-transform, translateY(-2px)) !important;
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
   outline: 3px solid #ff00ff !important;
   outline-offset: 4px;
 }
 
-/* --- 1.10.2 Direct Image Interaction: 100% Shifting Up Only --- */
-figure.wp-block-image:not(.alignfull):not([class*=alignfull]).wp-lightbox-container:hover img, figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-background], [class*=has-border], [class*=has-shadow],
-[style*=background], [style*=border], [style*=outline], [style*=box-shadow]):hover img {
+/* --- 1.10.2 Visual Media (Direct Shifting Action) --- */
+figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-background], [class*=has-border], [class*=has-shadow],
+[style*=background], [style*=border], [style*=outline], [style*=box-shadow],
+.wp-lightbox-container):hover img {
   will-change: transform;
-  transform: translateY(-4px) scale(1) !important;
-  box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1)) !important;
+  transform: var(--wp--custom--animation--default--object-transform, translateY(-2px)) scale(1) !important;
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
   outline: 3px solid #ff00ff !important;
   outline-offset: 4px;
 }
 
 :is(.wp-block-gallery, .wp-block-latest-posts__featured-image):not(.alignfull):not([class*=alignfull]) img:hover {
   will-change: transform;
-  transform: translateY(-4px) scale(1) !important;
-  box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1)) !important;
+  transform: var(--wp--custom--animation--default--object-transform, translateY(-2px)) scale(1) !important;
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
   outline: 3px solid #ff00ff !important;
   outline-offset: 4px;
 }
 
-:is(.avatar:hover, img.avatar:hover, .avatar img:hover):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery) {
+:is(.avatar, img.avatar, .avatar img):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery):hover {
   will-change: transform;
-  transform: translateY(-4px) scale(1.05) !important;
-  box-shadow: var(--wp--custom--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1)) !important;
+  transform: var(--wp--custom--animation--default--object-transform, translateY(-2px)) scale(1.05) !important;
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
   outline: 3px solid #ff00ff !important;
   outline-offset: 4px;
 }

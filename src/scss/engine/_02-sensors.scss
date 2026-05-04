@@ -14,7 +14,7 @@
         [style*="background"], [style*="border"], [style*="outline"], [style*="box-shadow"]
     ) {
         &:not(#{config.$atmos-auto-decline}) {
-            box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+            box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
             transform: translateY(0) scale(1);
 
             outline: 3px dashed #00ff00;
@@ -33,7 +33,7 @@ figure.wp-block-image {
             .wp-lightbox-container
         ) {
             img {
-                box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+                box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
                 transform: translateY(0) scale(1);
 
                 outline: 3px dashed #00ff00;
@@ -48,7 +48,7 @@ figure.wp-block-image {
     .wp-block-gallery:not(.alignfull):not([class*="alignfull"]) img,
     .wp-block-latest-posts__featured-image img
 ):not(#{config.$atmos-auto-decline}) {
-    box-shadow: var(--wp--custom--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08));
+    box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
     transform: translateY(0) scale(1);
 
     outline: 3px dashed #00ff00;
