@@ -45,9 +45,10 @@
 				"timingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
 				"fillMode": "both",
 				"default": {
-					"hoverSmallTransform": "scale(1.02)",
+					"hoverSmallTransform": "scale(1.03)",
 					"hoverTransform": "scale(1.05)",
 					"hoverLargeTransform": "scale(1.15)",
+					"objectSmallTransform": "translateY(-2px)",
 					"objectTransform": "translateY(-4px)"
 				}
 			},

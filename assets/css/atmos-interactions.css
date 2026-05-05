@@ -4,63 +4,190 @@
 /* ATMOS INTERACTIONS: KINETIC LAYER - v0.9.8 fixed */
 /* Handles all :hover and active state physics */
 /* ==========================================================================
-   1.10 INTERACTIVE PHYSICS: Strict Trigger-Action Pairs - v0.9.8 fixed build 02
+   10.0 INTERACTIONS (Pivot 5: The Logic Engine)
    ========================================================================== */
 /* ==========================================================================
-   0.0 ATMOS CONFIGURATION
-   	   v0.9.8 fixed build 02
+   0.0 ATMOS CONFIGURATION (Pivot 5: Intelligence + Exceptions)
    ========================================================================== */
-/* --- 1.10.1 Container-Level Action Lifters --- */
-:is(.wp-block-group,
-.wp-block-column,
-.wp-block-media-text):is([class*=has-background], [class*=has-border], [class*=has-shadow],
-[style*=background], [style*=border], [style*=outline], [style*=box-shadow]):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery):hover {
-  will-change: transform;
-  transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) !important;
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
-  outline: 3px solid #ff00ff !important;
-  outline-offset: 4px;
+/* ==========================================================================
+   10.0 INTERACTIONS (Pivot 5: The Logic Engine)
+   ========================================================================== */
+/* ==========================================================================
+   0.5 PHYSICS (Pivot 5: The Hardened Rulebook)
+   ========================================================================== 
+   GOAL: Define the behavioral identity of every object.
+   TRACEABILITY: All transforms pull from theme.json --custom variables.
+   INDICATORS: Integrated workbench debugging for "Honest Logic."
+*/
+/**
+ * THE STATIC "READY" INDICATOR (At-Rest)
+ * Applied to any block officially recognized by the Map or Sensors.
+ * Visual: Green dashed outline to show the engine has "Sensed" the block.
+ */
+/**
+ * SOVEREIGN: High-intent Active Links/Buttons
+ * Logic: Growth Only. Vertical stability for click targets.
+ * Indicator: Neon Magenta Solid (Active State).
+ */
+/**
+ * SHIP: Massive Containers (Groups, Columns, Covers)
+ * Logic: Subtle Lift (-2px) + Shadow Bloom.
+ * Indicator: Neon Cyan Solid (Massive Object).
+ */
+/**
+ * PASSENGER: Passive Media (Images/Video without links)
+ * Logic: Standard Lift (-4px). No scaling.
+ * Indicator: Neon Green Solid (Passive State).
+ */
+/**
+ * LINKED PASSENGER: Functional Media (Images that are portals)
+ * Logic: Subtle Scale (1.03) + Shadow Bloom.
+ * Indicator: Neon Magenta Solid (Signals it is an "Active" link).
+ */
+/**
+ * THE SILENCE PROTOCOL
+ * Logic: Child elements yield their physics to the parent Container (Ship).
+ * Visual: 1px Cyan outline to show the relationship and prevent "Double-Lift."
+ */
+/**
+ * 1. THE EXPLICIT MAP LOOP
+ */
+.wp-block-button:hover .wp-block-button__link,
+.wp-block-button:focus-within .wp-block-button__link {
+  transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 2px solid #ff00ff !important;
 }
 
-:is(.is-style-object-passive,
-.is-style-rounded-corners,
-.is-style-rounded-border,
-.is-style-thick-rounded-border,
-.is-style-image-border,
-.is-style-image-round-border,
-.is-style-image-computer-screen,
-.is-style-image-tablet-phone-screen,
-.wp-block-code):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery):hover {
-  will-change: transform;
-  transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) !important;
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
-  outline: 3px solid #ff00ff !important;
-  outline-offset: 4px;
+.wp-element-button:hover,
+.wp-element-button:focus-within {
+  transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 2px solid #ff00ff !important;
 }
 
-/* --- 1.10.2 Visual Media (Direct Shifting Action) --- */
-figure.wp-block-image:not(.alignfull):not([class*=alignfull]):is([class*=has-background], [class*=has-border], [class*=has-shadow],
-[style*=background], [style*=border], [style*=outline], [style*=box-shadow],
-.wp-lightbox-container):hover img {
-  will-change: transform;
-  transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) !important;
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
-  outline: 3px solid #ff00ff !important;
-  outline-offset: 4px;
+.wp-block-social-links:hover a,
+.wp-block-social-links:focus-within a {
+  transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 2px solid #ff00ff !important;
 }
 
-:is(.wp-block-gallery, .wp-block-latest-posts__featured-image):not(.alignfull):not([class*=alignfull]) img:hover {
-  will-change: transform;
-  transform: var(--wp--custom--animation--default--hover-small-transform, scale(1.02)) !important;
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
-  outline: 3px solid #ff00ff !important;
-  outline-offset: 4px;
+.wp-block-tag-cloud:hover .tag-cloud-link,
+.wp-block-tag-cloud:focus-within .tag-cloud-link {
+  transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 2px solid #ff00ff !important;
 }
 
-:is(.avatar, img.avatar, .avatar img):not(.is-style-image-no-border, .is-style-object-plain, .alignfull, [class*=alignfull], .wp-block-gallery):hover {
-  will-change: transform;
-  transform: var(--wp--custom--animation--default--hover-transform, scale(1.05)) !important;
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1))) !important;
-  outline: 3px solid #ff00ff !important;
-  outline-offset: 4px;
+.wp-block-post-terms:hover a,
+.wp-block-post-terms:focus-within a {
+  transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 2px solid #ff00ff !important;
+}
+
+a:has(> .avatar):hover .avatar,
+a:has(> .avatar):focus-within .avatar {
+  transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 2px solid #ff00ff !important;
+}
+
+.wp-block-image:hover img,
+.wp-block-image:focus-within img {
+  transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
+  outline: 2px solid #39ff14 !important;
+}
+
+.wp-block-gallery:hover img,
+.wp-block-gallery:focus-within img {
+  transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
+  outline: 2px solid #39ff14 !important;
+}
+
+.wp-block-cover__image-background:hover,
+.wp-block-cover__image-background:focus-within {
+  transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
+  outline: 2px solid #39ff14 !important;
+}
+
+.wp-block-group:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]),
+.wp-block-group:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff !important;
+}
+.wp-block-group:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) img, .wp-block-group:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) video, .wp-block-group:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) .wp-block-cover__image-background,
+.wp-block-group:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) img,
+.wp-block-group:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) video,
+.wp-block-group:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) .wp-block-cover__image-background {
+  transform: translateY(0);
+  outline: 1px solid #00ffff !important;
+}
+
+.wp-block-column:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]),
+.wp-block-column:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff !important;
+}
+.wp-block-column:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) img, .wp-block-column:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) video, .wp-block-column:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) .wp-block-cover__image-background,
+.wp-block-column:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) img,
+.wp-block-column:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) video,
+.wp-block-column:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) .wp-block-cover__image-background {
+  transform: translateY(0);
+  outline: 1px solid #00ffff !important;
+}
+
+.wp-block-cover:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]),
+.wp-block-cover:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff !important;
+}
+.wp-block-cover:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) img, .wp-block-cover:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) video, .wp-block-cover:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) .wp-block-cover__image-background,
+.wp-block-cover:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) img,
+.wp-block-cover:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) video,
+.wp-block-cover:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) .wp-block-cover__image-background {
+  transform: translateY(0);
+  outline: 1px solid #00ffff !important;
+}
+
+.wp-block-media-text:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]),
+.wp-block-media-text:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff !important;
+}
+.wp-block-media-text:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) img, .wp-block-media-text:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) video, .wp-block-media-text:hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) .wp-block-cover__image-background,
+.wp-block-media-text:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) img,
+.wp-block-media-text:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) video,
+.wp-block-media-text:focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) .wp-block-cover__image-background {
+  transform: translateY(0);
+  outline: 1px solid #00ffff !important;
+}
+
+/**
+ * 2. THE WILDCARD SENSOR
+ */
+:where([class*=wp-block-], [class*=wc-block-]):hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]),
+:where([class*=wp-block-], [class*=wc-block-]):focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff !important;
+}
+:where([class*=wp-block-], [class*=wc-block-]):hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) img, :where([class*=wp-block-], [class*=wc-block-]):hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) video, :where([class*=wp-block-], [class*=wc-block-]):hover:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) .wp-block-cover__image-background,
+:where([class*=wp-block-], [class*=wc-block-]):focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) img,
+:where([class*=wp-block-], [class*=wc-block-]):focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) video,
+:where([class*=wp-block-], [class*=wc-block-]):focus-within:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) .wp-block-cover__image-background {
+  transform: translateY(0);
+  outline: 1px solid #00ffff !important;
+}
+:where([class*=wp-block-], [class*=wc-block-]):hover:not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])):has(img, video):has(a) img, :where([class*=wp-block-], [class*=wc-block-]):hover:not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])):has(img, video):has(a) video,
+:where([class*=wp-block-], [class*=wc-block-]):focus-within:not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])):has(img, video):has(a) img,
+:where([class*=wp-block-], [class*=wc-block-]):focus-within:not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])):has(img, video):has(a) video {
+  transform: var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #ff00ff !important;
+}
+:where([class*=wp-block-], [class*=wc-block-]):hover:not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])):has(img, video):not(:has(a)) img, :where([class*=wp-block-], [class*=wc-block-]):hover:not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])):has(img, video):not(:has(a)) video,
+:where([class*=wp-block-], [class*=wc-block-]):focus-within:not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])):has(img, video):not(:has(a)) img,
+:where([class*=wp-block-], [class*=wc-block-]):focus-within:not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])):has(img, video):not(:has(a)) video {
+  transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
+  outline: 2px solid #39ff14 !important;
 }

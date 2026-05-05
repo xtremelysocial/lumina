@@ -1,53 +1,61 @@
 /* ==========================================================================
-   0.0 ATMOS CONFIGURATION
-   	   v0.9.8 fixed build 02
+   0.0 ATMOS CONFIGURATION (Pivot 5: Intelligence + Exceptions)
    ========================================================================== */
 
-$atmos-custom-styles: (
-    '.is-style-rounded-border',
-    '.is-style-rounded-corners',
-    '.is-style-thick-rounded-border',
-    '.is-style-image-border',
-    '.is-style-image-round-border',
-    '.is-style-image-computer-screen',
-    '.is-style-image-tablet-phone-screen',
-    '.is-style-object-passive'
+// --- 1. THE PHYSICS MAP (Trigger : ( Target, Role )) ---
+// Roles: sovereign (grow), passenger (shift-fast), ship (shift-slow), floor (pinned), void (ignore).
+$atmos-physics-map: (
+    // 1. SOVEREIGNS (Always Grow, Never Yield)
+    ".wp-block-button"         : ( ".wp-block-button__link", "sovereign" ),
+    ".wp-element-button"       : ( "self",                   "sovereign" ),
+    ".wp-block-social-links"   : ( "a",                      "sovereign" ),
+    ".wp-block-tag-cloud"      : ( ".tag-cloud-link",        "sovereign" ),
+    ".wp-block-post-terms"     : ( "a",                      "sovereign" ),
+    "a:has(> .avatar)"         : ( ".avatar",                "sovereign" ),
+
+    // 2. PASSENGERS (Shift-Fast, Yield to Ships)
+    ".wp-block-image"          : ( "img",                    "passenger" ),
+    ".wp-block-gallery"        : ( "img",                    "passenger" ),
+    ".wp-block-cover__image-background" : ( "self",          "passenger" ),
+
+    // 3. SHIPS (Shift-Slow, Require Card-Triggers)
+    ".wp-block-group"          : ( "self",                   "ship" ),
+    ".wp-block-column"         : ( "self",                   "ship" ),
+    ".wp-block-cover"          : ( "self",                   "ship" ),
+    ".wp-block-media-text"     : ( "self",                   "ship" ),
+
+    // 4. FLOORS (Pinned Stage, No Movement)
+    ".alignfull"               : ( "self",                   "floor" ),
+    "header"                   : ( "self",                   "floor" ),
+    "footer"                   : ( "self",                   "floor" ),
+
+    // 5. VOIDS (Total Lockout)
+    ".wp-block-spacer"         : ( "self",                   "void" ),
+    ".wp-block-separator"      : ( "self",                   "void" )
 );
 
-$atmos-auto-decline: (
-    '.is-style-image-no-border',
-    '.is-style-object-plain',
-    '.alignfull',
-    '[class*="alignfull"]',
-    '.wp-block-gallery'
+// --- 2. SENSING TRIGGER (Implicit Intent) ---
+// If a "ship" (or wildcard) has one of these, it earns its movement.
+$atmos-card-triggers: (
+    ".has-background",
+    ".has-border",
+    ".has-custom-border",
+    ".has-shadow",
+    ".is-style-object-passive",
+    "[style*='background']",
+    "[style*='border']",
+    "[style*='shadow']"
 );
 
-$atmos-theme-json-blocks: (
-    '.wp-block-code',
-    'pre.wp-block-code',
-    '.wp-block-file',
-    '.wp-block-query-pagination'
+// --- 3. WILDCARD TARGETS ---
+// Blocks not in the map that the engine should "sense" for roles.
+$atmos-wildcards: (
+    "[class*='wp-block-']",
+    "[class*='wc-block-']"
 );
 
-$atmos-container-blocks: (
-    '.wp-block-group',
-    '.wp-block-column',
-    '.wp-block-media-text',
-    '.wp-block-cover'
-);
-
-$atmos-opt-in-elements: (
-    '.wp-block-button__link',
-    '.wp-element-button',
-    '.wp-block-post-terms a',
-    '.tag-cloud-link'
-);
-
-$atmos-opt-in-triggers: (
-    '[class*="has-background"]',
-    '[class*="has-border"]',
-    '[class*="has-shadow"]',
-    '[style*="background"]',
-    '[style*="border"]',
-    '[style*="box-shadow"]'
-);
+// --- 4. PHYSICS CONSTANTS ---
+$atmos-timing: var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+$grow-standard: scale(1.05);
+$shift-slow: translateY(-2px);
+$shift-fast: translateY(-4px);
