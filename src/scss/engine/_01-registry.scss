@@ -1,31 +1,24 @@
 /* ==========================================================================
-   1.1 MASTER REGISTRY: Set Default Shadow and Transforms to None
-   	   v0.9.8 fixed build 02
+   0.1 REGISTRY (Pivot 5: Kinetic Seeding)
    ========================================================================== */
 @use "00-config" as config;
+@use "05-physics" as phys; // Needed for debug-ready mixin
 
-:where(
-    #{config.$atmos-container-blocks},
-    #{config.$atmos-theme-json-blocks},
-    figure.wp-block-image img,
-    .wp-block-latest-posts__featured-image img,
-    .wp-lightbox-container img,
-    .wp-block-gallery img,
-    .avatar
-) {
-    box-shadow: none;
-    transform: translateY(0) scale(1);
-    outline: none;
-    
-    transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), 
-                box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
-}
+@each $trigger, $meta in config.$atmos-physics-map {
+    $target: nth($meta, 1);
+    $role:   nth($meta, 2);
 
-/* Absolute Reset for Alignfull: Neutralized completely at the root */
-:is(.alignfull, [class*="alignfull"]),
-:is(.alignfull, [class*="alignfull"]) img,
-:is(.alignfull, [class*="alignfull"]) .wp-lightbox-container img {
-    box-shadow: none !important;
-    transform: none !important;
-    outline: none !important;
+    @if $role != "void" {
+        $selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
+
+        :where(#{$selector}) {
+            transition: transform #{config.$atmos-timing}, 
+                        box-shadow #{config.$atmos-timing}, 
+                        outline #{config.$atmos-timing};
+            
+            transform: translateY(0) scale(1);
+            // Apply the "Green Dash" to show this block is officially mapped
+            @include phys.debug-ready;
+        }
+    }
 }

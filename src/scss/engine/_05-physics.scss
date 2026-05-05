@@ -1,44 +1,70 @@
 /* ==========================================================================
-   1.5 KINETIC PHYSICS: Auto-Promote Fallbacks
-   	   v0.9.8 fixed build 02
+   0.5 PHYSICS (Pivot 5: Behavioral Rulebook)
    ========================================================================== */
 @use "00-config" as config;
 
-/* --- 1.5.1 Container Level Auto-Promotes --- */
-:where(
-    .is-style-object-passive,
-    .is-style-rounded-corners,
-    .is-style-rounded-border,
-    .is-style-thick-rounded-border,
-    .wp-block-code
-):not(#{config.$atmos-auto-decline}) {
-    box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
-    transform: translateY(0) scale(1);
-    
-    transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), 
-                box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+// 1. THE DEBUG TOGGLE
+$atmos-debug: true; 
 
-    outline: 3px dashed #00ff00;
-    outline-offset: 4px;
+// 2. DEBUG COLORS
+$debug-sovereign: #ff00ff; 
+$debug-ship:      #00ffff; 
+$debug-passenger: #39ff14; 
+
+// 3. HARDENED TRANSFORMS (Mapping config variables to local physics aliases)
+$grow-large:     var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+$grow-standard:  var(--wp--custom--animation--default--hover-transform, scale(1.05));
+$grow-small:     var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+$shift-default:  var(--wp--custom--animation--default--object-transform, translateY(-4px));
+$shift-subtle:   var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+
+/**
+ * SOVEREIGN: High-intent Active Links/Buttons
+ * Traceability: scale(1.15) from theme.json
+ */
+@mixin apply-sovereign {
+    transform: #{$grow-large};
+    @if $atmos-debug { outline: 3px solid $debug-sovereign !important; }
 }
 
-/* --- 1.5.2 Direct Visual Media Auto-Promotes --- */
-:where(
-    .is-style-object-passive img,
-    .is-style-rounded-corners img,
-    .is-style-rounded-border img,
-    .is-style-thick-rounded-border img,
-    .is-style-image-border img,
-    .is-style-image-round-border img,
-    .is-style-image-computer-screen img,
-    .is-style-image-tablet-phone-screen img
-):not(#{config.$atmos-auto-decline}) {
-    box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)));
-    transform: translateY(0) scale(1);
-    
-    transition: transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), 
-                box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+/**
+ * SHIP: Massive Containers
+ * Traceability: translateY(-2px) from theme.json
+ */
+@mixin apply-ship {
+    transform: #{$shift-subtle};
+    box-shadow: var(--wp--custom--shadow--hover, 
+                var(--wp--preset--shadow--deep, 
+                0 15px 35px rgba(0, 0, 0, 0.22)));
+    @if $atmos-debug { outline: 3px solid $debug-ship !important; }
+}
 
-    outline: 3px dashed #00ff00;
-    outline-offset: 4px;
+/**
+ * PASSENGER: Passive Media
+ * Traceability: translateY(-4px) from theme.json
+ */
+@mixin apply-passenger {
+    transform: #{$shift-default};
+    @if $atmos-debug { outline: 3px solid $debug-passenger !important; }
+}
+
+/**
+ * LINKED PASSENGER: Functional Media
+ * Traceability: scale(1.03) from theme.json
+ */
+@mixin apply-linked-passenger {
+    transform: #{$grow-small};
+    box-shadow: var(--wp--custom--shadow--hover, 
+                var(--wp--preset--shadow--deep, 
+                0 15px 35px rgba(0, 0, 0, 0.22)));
+}
+
+/**
+ * THE SILENCE PROTOCOL
+ * Logic: Overrides child transforms when parent is active.
+ */
+@mixin silence-passengers {
+    img, video, .wp-block-cover__image-background {
+        transform: translateY(0);
+    }
 }
