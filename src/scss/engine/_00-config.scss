@@ -38,15 +38,16 @@ $atmos-physics-map: (
     // 4. FLOORS (Pinned Stage, No Movement)
     ".alignfull"               : ( "self",                   "floor" ),
     ".wp-block-post-content"   : ( "self",                   "floor" ),
+    "#page-content"            : ( "self",                  "floor" ), // Atmos Main content
 
     // 5. VOIDS (Total Lockout)
     "#wpadminbar"              : ( "self",                   "void" ), // WordPress Admin Bar
-    "#page-content"              : ( "self",                   "void" ), // WordPress Admin Bar
 //     "header"                   : ( "self",                   "void" ), // Any html header
 //     "footer"                   : ( "self",                   "void" ), // Any html footer
-    "#site-header"             : ( "self",                   "void" ), // Atmos header
-    "#site-footer"             : ( "self",                   "void" ), // Atmos footer
-    "#footer-info"             : ( "self",                   "void" ), // Atmos footer
+    ".site-header"             : ( "self",                   "void" ), // Atmos header
+    ".entry-header"             : ( "self",                   "void" ), // Atmos header
+    ".site-footer"             : ( "self",                   "void" ), // Atmos footer
+    ".footer-info"             : ( "self",                   "void" ), // Atmos footer
 //     ".wp-block-spacer"         : ( "self",                   "void" ), // Never animate
 //     ".wp-block-separator"      : ( "self",                   "void" ), // Never animate
     
@@ -80,24 +81,27 @@ $grow-small:    var(--wp--custom--animation--default--hover-small-transform, sca
 $shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px));
 $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
 
-// --- 6. DYNAMIC VETO GENERATION (Build 04 - Split Logic) ---
-$atmos-dead-zones: "";    // Blocks + all descendants (*)
-$atmos-static-floors: ""; // Blocks only
+// --- 6. DYNAMIC VETO GENERATION (Build 04.2 - Strict Separation) ---
+$dead-list: ();
+$floor-list: ();
 
 @each $key, $meta in $atmos-physics-map {
     $role: nth($meta, 2);
 
-    // 1. Dead Zones (Everything inside is dead - Headers/Footers)
     @if $role == "void" {
-        $cluster: "#{$key}, #{$key} *"; 
-        $atmos-dead-zones: if($atmos-dead-zones == "", $cluster, "#{$atmos-dead-zones}, #{$cluster}");
+        // VOIDS: The container AND all children are dead.
+        $dead-list: append($dead-list, unquote("#{$key}"), comma);
+        $dead-list: append($dead-list, unquote("#{$key} *"), comma);
     }
-
-    // 2. Static Floors (Only the container is dead - Page Content/Alignfull)
     @else if $role == "floor" {
-        $atmos-static-floors: if($atmos-static-floors == "", $key, "#{$atmos-static-floors}, #{$key}");
+        // FLOORS: Only the container is dead. Children are KINETIC.
+        $floor-list: append($floor-list, unquote("#{$key}"), comma);
     }
 }
+
+// Convert lists to strings for the CSS output
+$atmos-dead-zones: $dead-list;
+$atmos-static-floors: $floor-list;
 
 // --- 7. DEBUGGING ---
 // Set to false to turn off debugging

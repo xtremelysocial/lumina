@@ -1,5 +1,5 @@
 /* ==========================================================================
-   0.1 REGISTRY (Build 04 - Kinetic Foundation)
+   0.1 REGISTRY (Build 04.2 - Kinetic Foundation)
    ========================================================================== */
 @use "00-config" as config;
 
@@ -7,14 +7,12 @@
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
+    // GATE: Only seed kinetic roles. Skip Voids and Floors.
     @if $role != "void" and $role != "floor" {
         $selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
 
-        /**
-         * THE SURGICAL VETO
-         * GATE 1: Kills the Header/Footer and all their children.
-         * GATE 2: Kills the Floor container itself, but NOT its children.
-         */
+        // GATE 1: Exclude everything in Dead Zones (Recursive)
+        // GATE 2: Exclude the Floor containers themselves (Flat)
         :where(#{$selector}):not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
             transition: transform config.$atmos-timing, 
                         box-shadow config.$atmos-timing, 
