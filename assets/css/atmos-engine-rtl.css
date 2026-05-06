@@ -133,18 +133,6 @@
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(header) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  outline: 1px dashed #39ff14 !important;
-}
-
-:where(footer) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  outline: 1px dashed #39ff14 !important;
-}
-
 /* ==========================================================================
    0.2 SENSORS (Pivot 5: The Intelligence Layer)
    ========================================================================== 
@@ -156,11 +144,11 @@
  * This targets blocks that are not explicitly mapped but exhibit 
  * "Card-like" properties (backgrounds, borders, etc.).
  */
-:where([class*=wp-block-], [class*=wc-block-]):is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) {
+:where([class*=wp-block-], [class*=wc-block-] [class*=wc-block-]):is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) {
   outline: 1px dashed #39ff14 !important;
   transition: transform var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--short, 250ms);
 }
-:where([class*=wp-block-], [class*=wc-block-]):has(img, video, canvas):not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])) {
+:where([class*=wp-block-], [class*=wc-block-] [class*=wc-block-]):has(img, video, canvas):not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])) {
   outline: 1px dashed #39ff14 !important;
 }
 

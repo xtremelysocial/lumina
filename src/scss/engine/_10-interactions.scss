@@ -1,64 +1,63 @@
 /* ==========================================================================
-   10.0 INTERACTIONS (Pivot 5: The Logic Engine)
+   10.0 INTERACTIONS (Build 03 - Rock Solid)
    ========================================================================== */
 @use "00-config" as config;
 @use "05-physics" as phys;
 
 /**
- * 1. THE EXPLICIT MAP LOOP
+ * THE MASTER INTERACTION GATE
+ * Rule: One Loop. Total Map Sovereignty.
  */
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
-    @if $role != "void" {
-        #{$trigger}:hover, 
-        #{$trigger}:focus-within {
-            
-            @if $role == "sovereign" {
-                $selector: if($target == "self", "&", $target);
-                #{$selector} { @include phys.apply-sovereign; }
-            }
+    // VETO GATE: Physically disable hover for Voids at the source
+    #{$trigger}:not(#{config.$atmos-voids}):hover, 
+    #{$trigger}:not(#{config.$atmos-voids}):focus-within {
+        
+        // 1. SOVEREIGN (Buttons/Links)
+        @if $role == "sovereign" {
+            $selector: if($target == "self", "&", $target);
+            #{$selector} { @include phys.apply-sovereign; }
+        }
 
-            @if $role == "ship" {
-                &:is(#{config.$atmos-card-triggers}) {
-                    @include phys.apply-ship;
-                    @include phys.silence-passengers;
-                }
-            }
+        // 2. SHIP (Massive Containers)
+        @else if $role == "ship" {
+            @include phys.apply-ship;
+            @include phys.silence-passengers;
+        }
 
-            @if $role == "passenger" {
-                $selector: if($target == "self", "&", $target);
-                #{$selector} {
-                    // Smart detection for linked vs passive passengers
-                    @if ($trigger == "a" or $target == "a") {
-                        @include phys.apply-linked-passenger;
-                    } @else {
-                        @include phys.apply-passenger;
-                    }
-                }
+        // 3. PASSENGER (Standalone Media)
+        @else if $role == "passenger" {
+            $selector: if($target == "self", "&", $target);
+            #{$selector} {
+                // Determine if it's a link or just an image
+                @if ($trigger == "a" or $target == "a") { @include phys.apply-linked-passenger; } 
+                @else { @include phys.apply-passenger; }
             }
         }
-    }
-}
 
-/**
- * 2. THE WILDCARD SENSOR
- */
-:where(#{config.$atmos-wildcards}):hover,
-:where(#{config.$atmos-wildcards}):focus-within {
-    
-    &:is(#{config.$atmos-card-triggers}) {
-        @include phys.apply-ship;
-        @include phys.silence-passengers;
-    }
-
-    &:not(:is(#{config.$atmos-card-triggers})):has(img, video) {
-        &:has(a) {
-            img, video { @include phys.apply-linked-passenger; }
+        // 4. FLOOR (The Pinned Stage)
+        @else if $role == "floor" {
+            transform: translateY(0) !important; 
         }
-        &:not(:has(a)) {
-            img, video { @include phys.apply-passenger; }
+
+        // 5. WILDCARD (The Safety Net)
+        @else if $role == "wildcard" {
+            // A. If it has Mass -> It's a Ship
+            @if :is(#{config.$atmos-card-triggers}) {
+                @include phys.apply-ship;
+                @include phys.silence-passengers;
+            }
+            // B. If it has Life (Media) -> The container stays still, content moves
+            @else if :has(#{config.$atmos-media}) {
+                #{config.$atmos-media} {
+                    // Logic: Scale if linked, Lift if passive
+                    :where(a) & { @include phys.apply-linked-passenger; }
+                    :where(:not(a)) > & { @include phys.apply-passenger; }
+                }
+            }
         }
     }
 }

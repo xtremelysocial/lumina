@@ -1,23 +1,25 @@
 /* ==========================================================================
-   0.1 REGISTRY (Pivot 5: Kinetic Seeding)
+   0.1 REGISTRY (Build 03 - Audited & Corrected)
    ========================================================================== */
 @use "00-config" as config;
-@use "05-physics" as phys; // Needed for debug-ready mixin
+@use "05-physics" as phys;
 
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
+    // Rule: We only seed if it's NOT a void.
     @if $role != "void" {
+        // Construct the selector: e.g., ".wp-block-button .wp-block-button__link"
         $selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
 
-        :where(#{$selector}) {
-            transition: transform #{config.$atmos-timing}, 
-                        box-shadow #{config.$atmos-timing}, 
-                        outline #{config.$atmos-timing};
+        // VETO: Apply :not() to the trigger to kill seeding on Voids
+        :where(#{$selector}):not(#{config.$atmos-voids}) {
+            transition: transform config.$atmos-timing, 
+                        box-shadow config.$atmos-timing, 
+                        outline config.$atmos-timing;
             
             transform: translateY(0) scale(1);
-            // Apply the "Green Dash" to show this block is officially mapped
             @include phys.debug-ready;
         }
     }
