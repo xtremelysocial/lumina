@@ -39,12 +39,12 @@ $atmos-physics-map: (
     ".alignfull"               : ( "self",                   "floor" ),
 
     // 5. VOIDS (Total Lockout)
-    "#wpadminbar"             : ( "self",                   "void" ), // WordPress Admin Bar
+    "#wpadminbar"              : ( "self",                   "void" ), // WordPress Admin Bar
     "header"                   : ( "self",                   "void" ), // Any html header
     "footer"                   : ( "self",                   "void" ), // Any html footer
-    ".site-header"              : ( "self",                   "void" ), // Atmos header
-    ".site-footer"              : ( "self",                   "void" ), // Atmos footer
-    ".footer-info"              : ( "self",                   "void" ), // Atmos footer
+    ".site-header"             : ( "self",                   "void" ), // Atmos header
+    ".site-footer"             : ( "self",                   "void" ), // Atmos footer
+    ".footer-info"             : ( "self",                   "void" ), // Atmos footer
     ".wp-block-spacer"         : ( "self",                   "void" ), // Never animate
     ".wp-block-separator"      : ( "self",                   "void" ), // Never animate
     
@@ -78,12 +78,12 @@ $grow-small:     var(--wp--custom--animation--default--hover-small-transform, sc
 $shift-default:  var(--wp--custom--animation--default--object-transform, translateY(-4px));
 $shift-subtle:   var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
 
-// --- 6. DYNAMIC VETO GENERATION (New Global String) ---
-// This builds the :not() exclusion string once so other files can use it.
+// --- 6. DYNAMIC VETO GENERATION (Build 04 - Strict Class Check) ---
 $atmos-voids: "";
 @each $key, $meta in $atmos-physics-map {
     @if nth($meta, 2) == "void" {
-        // We add the key AND the key with a universal descendant selector
+        // We use the key exactly as it appears in the map (which has the dot)
+        // AND we add the descendant wildcard for each.
         $void-cluster: "#{$key}, #{$key} *"; 
         $atmos-voids: if($atmos-voids == "", $void-cluster, "#{$atmos-voids}, #{$void-cluster}");
     }

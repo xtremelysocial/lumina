@@ -1,36 +1,34 @@
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 03 - Ancestral Lockout)
+   10.0 INTERACTIONS (Build 04 - The Ancestral Wall)
    ========================================================================== */
 @use "00-config" as config;
 @use "05-physics" as phys;
 
-/**
- * THE MASTER INTERACTION GATE
- * Rule: One Loop. Total Map Sovereignty.
- * VETO: Ancestral lockout prevents any hover state from firing inside Voids.
- */
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
-    // THE ANCESTRAL GATE
-    // This stops the hover event at the source if the element is inside a Void.
-    :where(#{$trigger}):not(#{config.$atmos-voids}):hover, 
-    :where(#{$trigger}):not(#{config.$atmos-voids}):focus-within {
-        
-        // 1. SOVEREIGN (Buttons/Links)
+    /**
+     * THE ANCESTRAL WALL
+     * We use a single, clean exclusion gate. 
+     * Logic: If it is a trigger AND it is NOT in the Veto list...
+     */
+    :where(#{$trigger}):hover:not(#{config.$atmos-voids}), 
+    :where(#{$trigger}):focus-within:not(#{config.$atmos-voids}) {
+
+        // 1. SOVEREIGN
         @if $role == "sovereign" {
             $selector: if($target == "self", "&", $target);
             #{$selector} { @include phys.apply-sovereign; }
         }
-
-        // 2. SHIP (Massive Containers)
+        
+        // 2. SHIP
         @else if $role == "ship" {
             @include phys.apply-ship;
             @include phys.silence-passengers;
         }
 
-        // 3. PASSENGER (Standalone Media)
+        // 3. PASSENGER
         @else if $role == "passenger" {
             $selector: if($target == "self", "&", $target);
             #{$selector} {
@@ -39,22 +37,19 @@
             }
         }
 
-        // 4. FLOOR (The Pinned Stage)
+        // 4. FLOOR
         @else if $role == "floor" {
             transform: translateY(0) !important; 
         }
 
-        // 5. WILDCARD (The Safety Net)
+        // 5. WILDCARD
         @else if $role == "wildcard" {
-            // A. If it has Mass -> It's a Ship
             &:is(#{config.$atmos-card-triggers}) {
                 @include phys.apply-ship;
                 @include phys.silence-passengers;
             }
-            // B. If it has Life (Media) -> Container is still, content moves
             @else if :has(#{config.$atmos-media}) {
                 #{config.$atmos-media} {
-                    // Logic: Scale if wrapped in a link, lift if not.
                     :where(a) & { @include phys.apply-linked-passenger; }
                     :where(:not(a)) > & { @include phys.apply-passenger; }
                 }
