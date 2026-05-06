@@ -1,26 +1,29 @@
 /* ==========================================================================
-   0.1 REGISTRY (Build 03 - Audited & Corrected)
+   0.1 REGISTRY (Build 04.2 - Kinetic Foundation)
    ========================================================================== */
 @use "00-config" as config;
-@use "05-physics" as phys;
 
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
-    // Rule: We only seed if it's NOT a void.
-    @if $role != "void" {
-        // Construct the selector: e.g., ".wp-block-button .wp-block-button__link"
+    // GATE: Only seed kinetic roles. Skip Voids and Floors.
+    @if $role != "void" and $role != "floor" {
         $selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
 
-        // VETO: Apply :not() to the trigger to kill seeding on Voids
-        :where(#{$selector}):not(#{config.$atmos-voids}) {
+        // GATE 1: Exclude everything in Dead Zones (Recursive)
+        // GATE 2: Exclude the Floor containers themselves (Flat)
+        :where(#{$selector}):not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
             transition: transform config.$atmos-timing, 
                         box-shadow config.$atmos-timing, 
                         outline config.$atmos-timing;
             
             transform: translateY(0) scale(1);
-            @include phys.debug-ready;
+
+            @if config.$atmos-debug {
+                outline: config.$debug-registry;
+                outline-offset: -1px;
+            }
         }
     }
 }
