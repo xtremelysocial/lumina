@@ -1,37 +1,30 @@
 /* ==========================================================================
-   0.2 SENSORS (Pivot 5: The Intelligence Layer)
-   ========================================================================== 
-   GOAL: Implicitly detect "Solid" blocks not defined in the Explicit Map.
-   TRACEABILITY: Uses :is() to check for mass-bearing attributes.
-*/
-
+   0.2 SENSORS (Build 03 - Rock Solid)
+   ========================================================================== */
 @use "00-config" as config;
 @use "05-physics" as phys;
 
 /**
  * THE WILDCARD SENSOR
- * This targets blocks that are not explicitly mapped but exhibit 
- * "Card-like" properties (backgrounds, borders, etc.).
+ * Logic: Targets blocks not in the Map that exhibit "Card-like" properties.
+ * VETO: Physically excludes Voids/Floors to ensure total lockout.
  */
-:where(#{config.$atmos-wildcards}) {
+:where(#{config.$atmos-wildcards}):not(#{config.$atmos-voids}, .alignfull) {
     
-    // SENSING LOGIC: If it has mass, it is a Ship.
+    // 1. SENSING MASS (The Ship Role)
+    // If it matches a card-trigger, it earns its transition and debug dashes.
     &:is(#{config.$atmos-card-triggers}) {
-        // We apply the Green Dashes here to show the Sensor has 
-        // successfully "claimed" this wildcard.
         @include phys.debug-ready;
         
-        // We ensure a stable transition is seeded for the inferred role
-        transition: transform var(--wp--custom--animation--duration--short, 250ms) 
-                    var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)),
-                    box-shadow var(--wp--custom--animation--duration--short, 250ms);
+        transition: transform config.$atmos-timing, 
+                    box-shadow config.$atmos-timing;
     }
 
-    // PASSIVE SENSING: If it's a container for media but has no mass.
-    &:has(img, video, canvas):not(:is(#{config.$atmos-card-triggers})) {
+    // 2. SENSING LIFE (The Passenger Stage)
+    // If it has no mass but contains media, we mark it as a "Stage."
+    // It gets debug dashes so you know it's being watched, but no transition 
+    // because the container itself shouldn't move.
+    &:has(#{config.$atmos-media}):not(:is(#{config.$atmos-card-triggers})) {
         @include phys.debug-ready;
-        
-        // No transition on the container itself; 
-        // the children (Passengers) handle their own movement.
     }
 }

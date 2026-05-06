@@ -1,92 +1,78 @@
 /* ==========================================================================
-   0.5 PHYSICS (Pivot 5: The Hardened Rulebook)
-   ========================================================================== 
-   GOAL: Define the behavioral identity of every object.
-   TRACEABILITY: All transforms pull from theme.json --custom variables.
-   INDICATORS: Integrated workbench debugging for "Honest Logic."
-*/
-
+   0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
+   ========================================================================== */
 @use "00-config" as config;
-
-// 1. THE DEBUG TOGGLE
-$atmos-debug: true; 
-
-// 2. DEBUG COLORS (Workbench Palette)
-$debug-sovereign: #ff00ff; // Neon Magenta (Active Action)
-$debug-ship:      #00ffff; // Neon Cyan (Container Mass)
-$debug-passenger: #39ff14; // Neon Green (Passive Potential)
-
-// 3. HARDENED TRANSFORMS (The 3-Tier Growth & Shift System)
-// These represent the kinetic potential of every object in the ecosystem.
-$grow-large:     var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
-$grow-standard:  var(--wp--custom--animation--default--hover-transform, scale(1.05));
-$grow-small:     var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-$shift-default:  var(--wp--custom--animation--default--object-transform, translateY(-4px));
-$shift-subtle:   var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
 
 /**
  * THE STATIC "READY" INDICATOR (At-Rest)
  * Applied to any block officially recognized by the Map or Sensors.
- * Visual: Green dashed outline to show the engine has "Sensed" the block.
  */
 @mixin debug-ready {
-    @if $atmos-debug { outline: 1px dashed $debug-passenger !important; }
+    @if config.$atmos-debug { 
+        outline: 1px dashed config.$debug-passenger !important; 
+    }
 }
 
 /**
  * SOVEREIGN: High-intent Active Links/Buttons
  * Logic: Growth Only. Vertical stability for click targets.
- * Indicator: Neon Magenta Solid (Active State).
  */
 @mixin apply-sovereign {
-    transform: #{$grow-large};
-    @if $atmos-debug { outline: 2px solid $debug-sovereign !important; }
+    transform: #{config.$grow-standard}; // Pulls 1.05 or JSON override
+    @if config.$atmos-debug { 
+        outline: 2px solid config.$debug-sovereign !important; 
+    }
 }
 
 /**
  * SHIP: Massive Containers (Groups, Columns, Covers)
  * Logic: Subtle Lift (-2px) + Shadow Bloom.
- * Indicator: Neon Cyan Solid (Massive Object).
  */
 @mixin apply-ship {
-    transform: #{$shift-subtle};
+    transform: #{config.$shift-subtle}; // Pulls -2px or JSON override
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
                 0 15px 35px rgba(0, 0, 0, 0.22)));
-    @if $atmos-debug { outline: 2px solid $debug-ship !important; }
+    @if config.$atmos-debug { 
+        outline: 2px solid config.$debug-ship !important; 
+    }
 }
 
 /**
  * PASSENGER: Passive Media (Images/Video without links)
  * Logic: Standard Lift (-4px). No scaling.
- * Indicator: Neon Green Solid (Passive State).
  */
 @mixin apply-passenger {
-    transform: #{$shift-default};
-    @if $atmos-debug { outline: 2px solid $debug-passenger !important; }
+    transform: #{config.$shift-default}; // Pulls -4px or JSON override
+    @if config.$atmos-debug { 
+        outline: 2px solid config.$debug-passenger !important; 
+    }
 }
 
 /**
  * LINKED PASSENGER: Functional Media (Images that are portals)
  * Logic: Subtle Scale (1.03) + Shadow Bloom.
- * Indicator: Neon Magenta Solid (Signals it is an "Active" link).
  */
 @mixin apply-linked-passenger {
-    transform: #{$grow-small};
+    transform: #{config.$grow-small}; // Pulls 1.03 or JSON override
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
                 0 15px 35px rgba(0, 0, 0, 0.22)));
-    @if $atmos-debug { outline: 2px solid $debug-sovereign !important; }
+    @if config.$atmos-debug { 
+        outline: 2px solid config.$debug-sovereign !important; 
+    }
 }
 
 /**
  * THE SILENCE PROTOCOL
  * Logic: Child elements yield their physics to the parent Container (Ship).
- * Visual: 1px Cyan outline to show the relationship and prevent "Double-Lift."
+ * Fixed: Now uses the config token instead of hardcoded tags.
  */
 @mixin silence-passengers {
-    img, video, .wp-block-cover__image-background {
-        transform: translateY(0);
-        @if $atmos-debug { outline: 1px solid $debug-ship !important; }
+    #{config.$atmos-media} {
+        transform: translateY(0) scale(1) !important;
+        @if config.$atmos-debug { 
+            outline: 1px solid config.$debug-ship !important; 
+        }
     }
 }
