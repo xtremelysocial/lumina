@@ -21,22 +21,34 @@
         @if $role == "sovereign" {
             $selector: if($target == "self", "&", $target);
             #{$selector} { @include phys.apply-sovereign; }
+            
+            @if config.$atmos-debug { outline: config.$debug-sovereign; }
         }
         
         // 2. SHIP
-//         @else if $role == "ship" {
-//             @include phys.apply-ship;
-//             @include phys.silence-passengers;
-//         }
+        @else if $role == "ship" {
+            @include phys.apply-ship;
+            @include phys.silence-passengers;
+
+			@if config.$atmos-debug { outline: config.$debug-ship; }            
+        }
 
         // 3. PASSENGER
-//         @else if $role == "passenger" {
-//             $selector: if($target == "self", "&", $target);
-//             #{$selector} {
-//                 @if ($trigger == "a" or $target == "a") { @include phys.apply-linked-passenger; } 
-//                 @else { @include phys.apply-passenger; }
-//             }
-//         }
+        @else if $role == "passenger" {
+            $selector: if($target == "self", "&", $target);
+            #{$selector} {
+                @if ($trigger == "a" or $target == "a") { 
+                	@include phys.apply-linked-passenger; 
+
+		            @if config.$atmos-debug { outline: config.$debug-sovereign; }        	
+                } 
+                @else { 
+                	@include phys.apply-passenger; 
+
+		            @if config.$atmos-debug { outline: config.$debug-passenger; }        	
+                }
+            }
+        }
 
         // 4. FLOOR
 //         @else if $role == "floor" {

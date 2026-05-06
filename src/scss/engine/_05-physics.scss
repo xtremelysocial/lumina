@@ -29,51 +29,53 @@
  * SHIP: Massive Containers (Groups, Columns, Covers)
  * Logic: Subtle Lift (-2px) + Shadow Bloom.
  */
-// @mixin apply-ship {
-//     transform: #{config.$shift-subtle}; // Pulls -2px or JSON override
-//     box-shadow: var(--wp--custom--shadow--hover, 
-//                 var(--wp--preset--shadow--deep, 
-//                 0 15px 35px rgba(0, 0, 0, 0.22)));
+@mixin apply-ship {
+    transform: #{config.$shift-subtle}; // Pulls -2px or JSON override
+    box-shadow: var(--wp--custom--shadow--hover, 
+                var(--wp--preset--shadow--deep, 
+                0 15px 35px rgba(0, 0, 0, 0.22)));
 //     @if config.$atmos-debug { 
 //         outline: 2px solid config.$debug-ship !important; 
 //     }
-// }
+}
 
 /**
  * PASSENGER: Passive Media (Images/Video without links)
  * Logic: Standard Lift (-4px). No scaling.
  */
-// @mixin apply-passenger {
-//     transform: #{config.$shift-default}; // Pulls -4px or JSON override
+@mixin apply-passenger {
+    transform: #{config.$shift-default}; // Pulls -4px or JSON override
 //     @if config.$atmos-debug { 
 //         outline: config.$debug-passenger; 
 //     }
-// }
+}
 
 /**
  * LINKED PASSENGER: Functional Media (Images that are portals)
  * Logic: Subtle Scale (1.03) + Shadow Bloom.
  */
-// @mixin apply-linked-passenger {
-//     transform: #{config.$grow-small}; // Pulls 1.03 or JSON override
-//     box-shadow: var(--wp--custom--shadow--hover, 
-//                 var(--wp--preset--shadow--deep, 
-//                 0 15px 35px rgba(0, 0, 0, 0.22)));
+@mixin apply-linked-passenger {
+    transform: #{config.$grow-small}; // Pulls 1.03 or JSON override
+    box-shadow: var(--wp--custom--shadow--hover, 
+                var(--wp--preset--shadow--deep, 
+                0 15px 35px rgba(0, 0, 0, 0.22)));
 //     @if config.$atmos-debug { 
 //         outline: config.$debug-sovereign; 
 //     }
-// }
+}
 
 /**
  * THE SILENCE PROTOCOL
  * Logic: Child elements yield their physics to the parent Container (Ship).
  * Fixed: Now uses the config token instead of hardcoded tags.
  */
-// @mixin silence-passengers {
-//     #{config.$atmos-media} {
-//         transform: translateY(0) scale(1) !important;
-//         @if config.$atmos-debug { 
-//             outline: 1px solid config.$debug-ship !important; 
-//         }
-//     }
-// }
+@mixin silence-passengers {
+	@if config.$atmos-media != "" {
+		#{config.$atmos-media} {
+			transform: translateY(0) scale(1) !important;
+	//         @if config.$atmos-debug { 
+	//             outline: 1px solid config.$debug-ship !important; 
+	//         }
+		}
+    }
+}
