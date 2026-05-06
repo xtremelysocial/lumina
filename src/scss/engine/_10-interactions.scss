@@ -1,34 +1,35 @@
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 04 - The Ancestral Wall)
+   10.0 INTERACTIONS (Build 04.2 - Ancestral Wall)
    ========================================================================== */
 @use "00-config" as config;
 @use "05-physics" as phys;
 
-// @each $trigger, $meta in config.$atmos-physics-map {
-//     $target: nth($meta, 1);
-//     $role:   nth($meta, 2);
-// 
-//     /**
-//      * THE ANCESTRAL WALL
-//      * We use a single, clean exclusion gate. 
-//      * Logic: If it is a trigger AND it is NOT in the Veto list...
-//      */
-//     :where(#{$trigger}):hover:not(#{config.$atmos-voids}), 
-//     :where(#{$trigger}):focus-within:not(#{config.$atmos-voids}) {
-// 
-//         // 1. SOVEREIGN
-//         @if $role == "sovereign" {
-//             $selector: if($target == "self", "&", $target);
-//             #{$selector} { @include phys.apply-sovereign; }
-//         }
-//         
-//         // 2. SHIP
+@each $trigger, $meta in config.$atmos-physics-map {
+    $target: nth($meta, 1);
+    $role:   nth($meta, 2);
+
+	/**
+	 * THE ANCESTRAL WALL (Build 04.2)
+	 * We use the double-gate exclusion: 
+	 * 1. Kill Header/Footer and all descendants (*).
+	 * 2. Kill Floor containers only.
+	 */						
+	 :where(#{$trigger}):hover:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}), 		
+	 :where(#{$trigger}):focus-within:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
+
+        // 1. SOVEREIGN
+        @if $role == "sovereign" {
+            $selector: if($target == "self", "&", $target);
+            #{$selector} { @include phys.apply-sovereign; }
+        }
+        
+        // 2. SHIP
 //         @else if $role == "ship" {
 //             @include phys.apply-ship;
 //             @include phys.silence-passengers;
 //         }
-// 
-//         // 3. PASSENGER
+
+        // 3. PASSENGER
 //         @else if $role == "passenger" {
 //             $selector: if($target == "self", "&", $target);
 //             #{$selector} {
@@ -36,13 +37,13 @@
 //                 @else { @include phys.apply-passenger; }
 //             }
 //         }
-// 
-//         // 4. FLOOR
+
+        // 4. FLOOR
 //         @else if $role == "floor" {
 //             transform: translateY(0) !important; 
 //         }
-// 
-//         // 5. WILDCARD
+
+        // 5. WILDCARD
 //         @else if $role == "wildcard" {
 //             &:is(#{config.$atmos-card-triggers}) {
 //                 @include phys.apply-ship;
@@ -55,5 +56,5 @@
 //                 }
 //             }
 //         }
-//     }
-// }
+    }
+}

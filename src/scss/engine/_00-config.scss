@@ -17,11 +17,11 @@ $atmos-wildcards: (
 // (pinned), void (ignore).
 $atmos-physics-map: (
     // 1. SOVEREIGNS (Always Grow, Never Yield)
-    ".wp-block-button"         : ( ".wp-block-button__link", "sovereign" ),
-//     ".wp-element-button"       : ( "self",                   "sovereign" ),
-//     ".wp-block-social-links"   : ( "a",                      "sovereign" ),
-//     ".wp-block-tag-cloud"      : ( ".tag-cloud-link",        "sovereign" ),
-//     ".wp-block-post-terms"     : ( "a",                      "sovereign" ),
+    ".wp-block-button"         	: ( ".wp-block-button__link", 	"sovereign" ),
+    ".wp-element-button"       	: ( "self",                   	"sovereign" ),
+    ".wp-block-social-link"   	: ( "a",                      	"sovereign" ),
+    ".tag-cloud-link"      		: ( "self",        				"sovereign" ),
+//     ".wp-block-post-terms"     : ( "a",                      "sovereign" ), // NO: These are just links
 //     "a:has(> .avatar)"         : ( ".avatar",                "sovereign" ),
 
     // 2. PASSENGERS (Shift-Fast, Yield to Ships)
@@ -109,6 +109,6 @@ $atmos-debug: true;
 
 // Adjust debugging colors and styles if desired
 $debug-registry:  1px dashed #ff8c00; // Orange
-$debug-sovereign: #ff00ff; // Neon Magenta (Active Action)
+$debug-sovereign: 1px solid #ff00ff; // Neon Magenta (Active Action)
 $debug-ship:      #00ffff; // Neon Cyan (Container Mass)
-$debug-passenger: #39ff14; // Neon Green (Passive Potential)
+$debug-passenger: 1px solid #39ff14; // Neon Green (Passive Potential)

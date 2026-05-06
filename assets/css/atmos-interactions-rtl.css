@@ -3,3 +3,152 @@
   \*****************************************************************************************************************************************************************************************************************************/
 /* ATMOS INTERACTIONS: KINETIC LAYER - v0.9.8 fixed */
 /* Handles all :hover and active state physics */
+/* ==========================================================================
+   10.0 INTERACTIONS (Build 04.2 - Ancestral Wall)
+   ========================================================================== */
+/* ==========================================================================
+   0.0 ATMOS CONFIGURATION (Pivot 5: Intelligence + Exceptions)
+   ========================================================================== */
+/* ==========================================================================
+   10.0 INTERACTIONS (Build 04.2 - Ancestral Wall)
+   ========================================================================== */
+/* ==========================================================================
+   0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
+   ========================================================================== */
+/**
+ * THE STATIC "READY" INDICATOR (At-Rest)
+ * Applied to any block officially recognized by the Map or Sensors.
+ */
+/**
+ * SOVEREIGN: High-intent Active Links/Buttons
+ * Logic: Growth Only. Vertical stability for click targets.
+ */
+/**
+ * SHIP: Massive Containers (Groups, Columns, Covers)
+ * Logic: Subtle Lift (-2px) + Shadow Bloom.
+ */
+/**
+ * PASSENGER: Passive Media (Images/Video without links)
+ * Logic: Standard Lift (-4px). No scaling.
+ */
+/**
+ * LINKED PASSENGER: Functional Media (Images that are portals)
+ * Logic: Subtle Scale (1.03) + Shadow Bloom.
+ */
+/**
+ * THE SILENCE PROTOCOL
+ * Logic: Child elements yield their physics to the parent Container (Ship).
+ * Fixed: Now uses the config token instead of hardcoded tags.
+ */
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+:where(.wp-block-button):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, .wp-block-post-content, #page-content) .wp-block-button__link,
+:where(.wp-block-button):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, .wp-block-post-content, #page-content) .wp-block-button__link {
+  transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 1px solid #ff00ff;
+  outline-offset: 2px;
+}
+
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+:where(.wp-element-button):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, .wp-block-post-content, #page-content),
+:where(.wp-element-button):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, .wp-block-post-content, #page-content) {
+  transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 1px solid #ff00ff;
+  outline-offset: 2px;
+}
+
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+:where(.wp-block-social-link):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, .wp-block-post-content, #page-content) a,
+:where(.wp-block-social-link):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, .wp-block-post-content, #page-content) a {
+  transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 1px solid #ff00ff;
+  outline-offset: 2px;
+}
+
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+:where(.tag-cloud-link):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, .wp-block-post-content, #page-content),
+:where(.tag-cloud-link):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, .wp-block-post-content, #page-content) {
+  transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 1px solid #ff00ff;
+  outline-offset: 2px;
+}
+
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
