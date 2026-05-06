@@ -1,5 +1,5 @@
 /* ==========================================================================
-   0.1 REGISTRY (Build 03 - Audited & Corrected)
+   0.1 REGISTRY (Build 03 - Ancestral Seeding)
    ========================================================================== */
 @use "00-config" as config;
 @use "05-physics" as phys;
@@ -8,12 +8,14 @@
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
-    // Rule: We only seed if it's NOT a void.
     @if $role != "void" {
-        // Construct the selector: e.g., ".wp-block-button .wp-block-button__link"
+        // Construct the full path: e.g. ".wp-block-button .wp-block-button__link"
         $selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
 
-        // VETO: Apply :not() to the trigger to kill seeding on Voids
+        /** * THE ANCESTRAL VETO
+         * We use :where() to keep specificity low. 
+         * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+         */
         :where(#{$selector}):not(#{config.$atmos-voids}) {
             transition: transform config.$atmos-timing, 
                         box-shadow config.$atmos-timing, 

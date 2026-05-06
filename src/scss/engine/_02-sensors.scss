@@ -1,18 +1,18 @@
 /* ==========================================================================
-   0.2 SENSORS (Build 03 - Rock Solid)
+   0.2 SENSORS (Build 03 - Pure Logic)
    ========================================================================== */
 @use "00-config" as config;
 @use "05-physics" as phys;
 
 /**
  * THE WILDCARD SENSOR
- * Logic: Targets blocks not in the Map that exhibit "Card-like" properties.
- * VETO: Physically excludes Voids/Floors to ensure total lockout.
+ * Logic: Targets blocks not explicitly in the Map.
+ * VETO: Excludes anything in the Veto List (Voids and their children).
  */
-:where(#{config.$atmos-wildcards}):not(#{config.$atmos-voids}, .alignfull) {
+:where(#{config.$atmos-wildcards}):not(#{config.$atmos-voids}) {
     
-    // 1. SENSING MASS (The Ship Role)
-    // If it matches a card-trigger, it earns its transition and debug dashes.
+    // 1. SENSING MASS (The Inferred Ship)
+    // If it has a background/border/shadow, it earns its movement.
     &:is(#{config.$atmos-card-triggers}) {
         @include phys.debug-ready;
         
@@ -20,10 +20,8 @@
                     box-shadow config.$atmos-timing;
     }
 
-    // 2. SENSING LIFE (The Passenger Stage)
-    // If it has no mass but contains media, we mark it as a "Stage."
-    // It gets debug dashes so you know it's being watched, but no transition 
-    // because the container itself shouldn't move.
+    // 2. SENSING LIFE (The Inferred Passenger Stage)
+    // If it has no mass but contains media, we mark it as a stage.
     &:has(#{config.$atmos-media}):not(:is(#{config.$atmos-card-triggers})) {
         @include phys.debug-ready;
     }

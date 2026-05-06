@@ -49,7 +49,7 @@ $atmos-physics-map: (
     ".wp-block-separator"      : ( "self",                   "void" ), // Never animate
     
     // 6. WILCARDS (Standard logic for blocks not in the above list)
-	":where(#{config.$atmos-wildcards})" : ( "self", "wildcard" ) // The "Safety Net"    
+	":where(#{$atmos-wildcards})" : ( "self", "wildcard" ) // The "Safety Net"    
 );
 
 // --- 3. SENSING TRIGGER ATTRIBUTES (Looks like a "card") ---
@@ -83,7 +83,9 @@ $shift-subtle:   var(--wp--custom--animation--default--object-small-transform, t
 $atmos-voids: "";
 @each $key, $meta in $atmos-physics-map {
     @if nth($meta, 2) == "void" {
-        $atmos-voids: if($atmos-voids == "", $key, "#{$atmos-voids}, #{$key}");
+        // We add the key AND the key with a universal descendant selector
+        $void-cluster: "#{$key}, #{$key} *"; 
+        $atmos-voids: if($atmos-voids == "", $void-cluster, "#{$atmos-voids}, #{$void-cluster}");
     }
 }
 

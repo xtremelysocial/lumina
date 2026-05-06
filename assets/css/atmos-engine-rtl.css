@@ -4,151 +4,195 @@
 /* ATMOS ENGINE: STATIC FOUNDATION - v0.9.8 fixed */
 /* Handles registry, sensors, relays, and resting state physics */
 /* ==========================================================================
-   0.1 REGISTRY (Pivot 5: Kinetic Seeding)
+   0.1 REGISTRY (Build 03 - Ancestral Seeding)
    ========================================================================== */
 /* ==========================================================================
    0.0 ATMOS CONFIGURATION (Pivot 5: Intelligence + Exceptions)
    ========================================================================== */
 /* ==========================================================================
-   0.1 REGISTRY (Pivot 5: Kinetic Seeding)
+   0.1 REGISTRY (Build 03 - Ancestral Seeding)
    ========================================================================== */
 /* ==========================================================================
-   0.5 PHYSICS (Pivot 5: The Hardened Rulebook)
-   ========================================================================== 
-   GOAL: Define the behavioral identity of every object.
-   TRACEABILITY: All transforms pull from theme.json --custom variables.
-   INDICATORS: Integrated workbench debugging for "Honest Logic."
-*/
+   0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
+   ========================================================================== */
 /**
  * THE STATIC "READY" INDICATOR (At-Rest)
  * Applied to any block officially recognized by the Map or Sensors.
- * Visual: Green dashed outline to show the engine has "Sensed" the block.
  */
 /**
  * SOVEREIGN: High-intent Active Links/Buttons
  * Logic: Growth Only. Vertical stability for click targets.
- * Indicator: Neon Magenta Solid (Active State).
  */
 /**
  * SHIP: Massive Containers (Groups, Columns, Covers)
  * Logic: Subtle Lift (-2px) + Shadow Bloom.
- * Indicator: Neon Cyan Solid (Massive Object).
  */
 /**
  * PASSENGER: Passive Media (Images/Video without links)
  * Logic: Standard Lift (-4px). No scaling.
- * Indicator: Neon Green Solid (Passive State).
  */
 /**
  * LINKED PASSENGER: Functional Media (Images that are portals)
  * Logic: Subtle Scale (1.03) + Shadow Bloom.
- * Indicator: Neon Magenta Solid (Signals it is an "Active" link).
  */
 /**
  * THE SILENCE PROTOCOL
  * Logic: Child elements yield their physics to the parent Container (Ship).
- * Visual: 1px Cyan outline to show the relationship and prevent "Double-Lift."
+ * Fixed: Now uses the config token instead of hardcoded tags.
  */
-:where(.wp-block-button .wp-block-button__link) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-block-button .wp-block-button__link):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-element-button) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-element-button):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-block-social-links a) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-block-social-links a):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-block-tag-cloud .tag-cloud-link) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-block-tag-cloud .tag-cloud-link):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-block-post-terms a) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-block-post-terms a):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(a:has(> .avatar) .avatar) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(a:has(> .avatar) .avatar):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-block-image img) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-block-image img):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-block-gallery img) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-block-gallery img):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-block-cover__image-background) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-block-group):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-block-group) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-block-column):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-block-column) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-block-cover):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-block-cover) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.wp-block-media-text):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.wp-block-media-text) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(.alignfull):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
-:where(.alignfull) {
+/** * THE ANCESTRAL VETO
+ * We use :where() to keep specificity low. 
+ * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+ */
+:where(:where([class*=wp-block-], [class*=wc-block-], [class*=jetpack-block-])):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #39ff14 !important;
 }
 
 /* ==========================================================================
-   0.2 SENSORS (Pivot 5: The Intelligence Layer)
-   ========================================================================== 
-   GOAL: Implicitly detect "Solid" blocks not defined in the Explicit Map.
-   TRACEABILITY: Uses :is() to check for mass-bearing attributes.
-*/
+   0.2 SENSORS (Build 03 - Pure Logic)
+   ========================================================================== */
 /**
  * THE WILDCARD SENSOR
- * This targets blocks that are not explicitly mapped but exhibit 
- * "Card-like" properties (backgrounds, borders, etc.).
+ * Logic: Targets blocks not explicitly in the Map.
+ * VETO: Excludes anything in the Veto List (Voids and their children).
  */
-:where([class*=wp-block-], [class*=wc-block-] [class*=wc-block-]):is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) {
+:where([class*=wp-block-], [class*=wc-block-], [class*=jetpack-block-]):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *):is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow]) {
   outline: 1px dashed #39ff14 !important;
-  transition: transform var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--short, 250ms);
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
 }
-:where([class*=wp-block-], [class*=wc-block-] [class*=wc-block-]):has(img, video, canvas):not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])) {
+:where([class*=wp-block-], [class*=wc-block-], [class*=jetpack-block-]):not(#wpadminbar, #wpadminbar *, header, header *, footer, footer *, .site-header, .site-header *, .site-footer, .site-footer *, .footer-info, .footer-info *, .wp-block-spacer, .wp-block-spacer *, .wp-block-separator, .wp-block-separator *):has(img, video, .wp-block-cover__image-background):not(:is(.has-background, .has-border, .has-custom-border, .has-shadow, .is-style-object-passive, [style*=background], [style*=border], [style*=shadow])) {
   outline: 1px dashed #39ff14 !important;
 }
 

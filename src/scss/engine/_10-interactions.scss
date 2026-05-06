@@ -1,5 +1,5 @@
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 03 - Rock Solid)
+   10.0 INTERACTIONS (Build 03 - Ancestral Lockout)
    ========================================================================== */
 @use "00-config" as config;
 @use "05-physics" as phys;
@@ -7,14 +7,16 @@
 /**
  * THE MASTER INTERACTION GATE
  * Rule: One Loop. Total Map Sovereignty.
+ * VETO: Ancestral lockout prevents any hover state from firing inside Voids.
  */
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
-    // VETO GATE: Physically disable hover for Voids at the source
-    #{$trigger}:not(#{config.$atmos-voids}):hover, 
-    #{$trigger}:not(#{config.$atmos-voids}):focus-within {
+    // THE ANCESTRAL GATE
+    // This stops the hover event at the source if the element is inside a Void.
+    :where(#{$trigger}):not(#{config.$atmos-voids}):hover, 
+    :where(#{$trigger}):not(#{config.$atmos-voids}):focus-within {
         
         // 1. SOVEREIGN (Buttons/Links)
         @if $role == "sovereign" {
@@ -32,7 +34,6 @@
         @else if $role == "passenger" {
             $selector: if($target == "self", "&", $target);
             #{$selector} {
-                // Determine if it's a link or just an image
                 @if ($trigger == "a" or $target == "a") { @include phys.apply-linked-passenger; } 
                 @else { @include phys.apply-passenger; }
             }
@@ -46,14 +47,14 @@
         // 5. WILDCARD (The Safety Net)
         @else if $role == "wildcard" {
             // A. If it has Mass -> It's a Ship
-            @if :is(#{config.$atmos-card-triggers}) {
+            &:is(#{config.$atmos-card-triggers}) {
                 @include phys.apply-ship;
                 @include phys.silence-passengers;
             }
-            // B. If it has Life (Media) -> The container stays still, content moves
+            // B. If it has Life (Media) -> Container is still, content moves
             @else if :has(#{config.$atmos-media}) {
                 #{config.$atmos-media} {
-                    // Logic: Scale if linked, Lift if passive
+                    // Logic: Scale if wrapped in a link, lift if not.
                     :where(a) & { @include phys.apply-linked-passenger; }
                     :where(:not(a)) > & { @include phys.apply-passenger; }
                 }
