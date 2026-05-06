@@ -7,9 +7,9 @@
 // Any block in the map below will override these defaults so we can fine-tune
 // the mechanics.
 $atmos-wildcards: (
-    "[class*='wp-block-']", // Any core Wordpress block
-    "[class*='wc-block-']",  // Any WooCommerce block
-    "[class*='jetpack-block-']"  // Any Jetpack block
+//     "[class*='wp-block-']", // Any core Wordpress block
+//     "[class*='wc-block-']",  // Any WooCommerce block
+//     "[class*='jetpack-block-']"  // Any Jetpack block
 );
 
 // --- 2. THE PHYSICS MAP (Trigger : ( Target, Role )) ---
@@ -18,74 +18,84 @@ $atmos-wildcards: (
 $atmos-physics-map: (
     // 1. SOVEREIGNS (Always Grow, Never Yield)
     ".wp-block-button"         : ( ".wp-block-button__link", "sovereign" ),
-    ".wp-element-button"       : ( "self",                   "sovereign" ),
-    ".wp-block-social-links"   : ( "a",                      "sovereign" ),
-    ".wp-block-tag-cloud"      : ( ".tag-cloud-link",        "sovereign" ),
-    ".wp-block-post-terms"     : ( "a",                      "sovereign" ),
-    "a:has(> .avatar)"         : ( ".avatar",                "sovereign" ),
+//     ".wp-element-button"       : ( "self",                   "sovereign" ),
+//     ".wp-block-social-links"   : ( "a",                      "sovereign" ),
+//     ".wp-block-tag-cloud"      : ( ".tag-cloud-link",        "sovereign" ),
+//     ".wp-block-post-terms"     : ( "a",                      "sovereign" ),
+//     "a:has(> .avatar)"         : ( ".avatar",                "sovereign" ),
 
     // 2. PASSENGERS (Shift-Fast, Yield to Ships)
     ".wp-block-image"          : ( "img",                    "passenger" ),
-    ".wp-block-gallery"        : ( "img",                    "passenger" ),
+//     ".wp-block-gallery"        : ( "img",                    "passenger" ),
 //     ".wp-block-cover__image-background" : ( "self",          "passenger" ),
 
     // 3. SHIPS (Shift-Slow, Require Card-Triggers)
     ".wp-block-group"          : ( "self",                   "ship" ),
-    ".wp-block-column"         : ( "self",                   "ship" ),
-    ".wp-block-cover"          : ( "self",                   "ship" ),
-    ".wp-block-media-text"     : ( "self",                   "ship" ),
+//     ".wp-block-column"         : ( "self",                   "ship" ),
+//     ".wp-block-cover"          : ( "self",                   "ship" ),
+//     ".wp-block-media-text"     : ( "self",                   "ship" ),
 
     // 4. FLOORS (Pinned Stage, No Movement)
     ".alignfull"               : ( "self",                   "floor" ),
+    ".wp-block-post-content"   : ( "self",                   "floor" ),
 
     // 5. VOIDS (Total Lockout)
     "#wpadminbar"              : ( "self",                   "void" ), // WordPress Admin Bar
-    "header"                   : ( "self",                   "void" ), // Any html header
-    "footer"                   : ( "self",                   "void" ), // Any html footer
-    ".site-header"             : ( "self",                   "void" ), // Atmos header
-    ".site-footer"             : ( "self",                   "void" ), // Atmos footer
-    ".footer-info"             : ( "self",                   "void" ), // Atmos footer
-    ".wp-block-spacer"         : ( "self",                   "void" ), // Never animate
-    ".wp-block-separator"      : ( "self",                   "void" ), // Never animate
+    "#page-content"              : ( "self",                   "void" ), // WordPress Admin Bar
+//     "header"                   : ( "self",                   "void" ), // Any html header
+//     "footer"                   : ( "self",                   "void" ), // Any html footer
+    "#site-header"             : ( "self",                   "void" ), // Atmos header
+    "#site-footer"             : ( "self",                   "void" ), // Atmos footer
+    "#footer-info"             : ( "self",                   "void" ), // Atmos footer
+//     ".wp-block-spacer"         : ( "self",                   "void" ), // Never animate
+//     ".wp-block-separator"      : ( "self",                   "void" ), // Never animate
     
     // 6. WILCARDS (Standard logic for blocks not in the above list)
-	":where(#{$atmos-wildcards})" : ( "self", "wildcard" ) // The "Safety Net"    
+// 	":where(#{$atmos-wildcards})" : ( "self", "wildcard" ) // The "Safety Net"    
 );
 
 // --- 3. SENSING TRIGGER ATTRIBUTES (Looks like a "card") ---
 // If a "ship" (or wildcard) has one of these, the "ship" moves
 $atmos-card-triggers: (
     ".has-background",
-    ".has-border",
-    ".has-custom-border",
-    ".has-shadow",
+//     ".has-border",
+//     ".has-custom-border",
+//     ".has-shadow",
     ".is-style-object-passive", // Atmos custom block style
-    "[style*='background']",
-    "[style*='border']",
-    "[style*='shadow']"
+//     "[style*='background']",
+//     "[style*='border']",
+//     "[style*='shadow']"
 );
 
 // --- 4. SENSING MEDIA TARGETS (Affects whether parent is static or not)---
 // If a "ship" (or wildcard) has one of these, the media moves
-$atmos-media: "img, video, .wp-block-cover__image-background";
+$atmos-media: ""; //"img, video, .wp-block-cover__image-background";
 
 // --- 5. PHYSICS CONSTANTS (From theme.json with fallbacks ) ---
 // These represent the kinetic potential of every object in the ecosystem.
-$atmos-timing: var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-$grow-large:     var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
-$grow-standard:  var(--wp--custom--animation--default--hover-transform, scale(1.05));
-$grow-small:     var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-$shift-default:  var(--wp--custom--animation--default--object-transform, translateY(-4px));
-$shift-subtle:   var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+$atmos-timing: 	var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+$grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+$grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
+$grow-small:    var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+$shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px));
+$shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
 
-// --- 6. DYNAMIC VETO GENERATION (Build 04 - Strict Class Check) ---
-$atmos-voids: "";
+// --- 6. DYNAMIC VETO GENERATION (Build 04 - Split Logic) ---
+$atmos-dead-zones: "";    // Blocks + all descendants (*)
+$atmos-static-floors: ""; // Blocks only
+
 @each $key, $meta in $atmos-physics-map {
-    @if nth($meta, 2) == "void" {
-        // We use the key exactly as it appears in the map (which has the dot)
-        // AND we add the descendant wildcard for each.
-        $void-cluster: "#{$key}, #{$key} *"; 
-        $atmos-voids: if($atmos-voids == "", $void-cluster, "#{$atmos-voids}, #{$void-cluster}");
+    $role: nth($meta, 2);
+
+    // 1. Dead Zones (Everything inside is dead - Headers/Footers)
+    @if $role == "void" {
+        $cluster: "#{$key}, #{$key} *"; 
+        $atmos-dead-zones: if($atmos-dead-zones == "", $cluster, "#{$atmos-dead-zones}, #{$cluster}");
+    }
+
+    // 2. Static Floors (Only the container is dead - Page Content/Alignfull)
+    @else if $role == "floor" {
+        $atmos-static-floors: if($atmos-static-floors == "", $key, "#{$atmos-static-floors}, #{$key}");
     }
 }
 
@@ -93,7 +103,8 @@ $atmos-voids: "";
 // Set to false to turn off debugging
 $atmos-debug: true; 
 
-// Adjust debugging colors if desired
+// Adjust debugging colors and styles if desired
+$debug-registry:  1px dashed #ff8c00; // Orange
 $debug-sovereign: #ff00ff; // Neon Magenta (Active Action)
 $debug-ship:      #00ffff; // Neon Cyan (Container Mass)
 $debug-passenger: #39ff14; // Neon Green (Passive Potential)

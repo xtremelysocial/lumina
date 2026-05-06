@@ -1,28 +1,31 @@
 /* ==========================================================================
-   0.1 REGISTRY (Build 03 - Ancestral Seeding)
+   0.1 REGISTRY (Build 04 - Kinetic Foundation)
    ========================================================================== */
 @use "00-config" as config;
-@use "05-physics" as phys;
 
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
-    @if $role != "void" {
-        // Construct the full path: e.g. ".wp-block-button .wp-block-button__link"
+    @if $role != "void" and $role != "floor" {
         $selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
 
-        /** * THE ANCESTRAL VETO
-         * We use :where() to keep specificity low. 
-         * We use :not(config.$atmos-voids) to kill anything in the header/footer.
+        /**
+         * THE SURGICAL VETO
+         * GATE 1: Kills the Header/Footer and all their children.
+         * GATE 2: Kills the Floor container itself, but NOT its children.
          */
-        :where(#{$selector}):not(#{config.$atmos-voids}) {
+        :where(#{$selector}):not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
             transition: transform config.$atmos-timing, 
                         box-shadow config.$atmos-timing, 
                         outline config.$atmos-timing;
             
             transform: translateY(0) scale(1);
-            @include phys.debug-ready;
+
+            @if config.$atmos-debug {
+                outline: config.$debug-registry;
+                outline-offset: -1px;
+            }
         }
     }
 }

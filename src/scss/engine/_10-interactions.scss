@@ -4,56 +4,56 @@
 @use "00-config" as config;
 @use "05-physics" as phys;
 
-@each $trigger, $meta in config.$atmos-physics-map {
-    $target: nth($meta, 1);
-    $role:   nth($meta, 2);
-
-    /**
-     * THE ANCESTRAL WALL
-     * We use a single, clean exclusion gate. 
-     * Logic: If it is a trigger AND it is NOT in the Veto list...
-     */
-    :where(#{$trigger}):hover:not(#{config.$atmos-voids}), 
-    :where(#{$trigger}):focus-within:not(#{config.$atmos-voids}) {
-
-        // 1. SOVEREIGN
-        @if $role == "sovereign" {
-            $selector: if($target == "self", "&", $target);
-            #{$selector} { @include phys.apply-sovereign; }
-        }
-        
-        // 2. SHIP
-        @else if $role == "ship" {
-            @include phys.apply-ship;
-            @include phys.silence-passengers;
-        }
-
-        // 3. PASSENGER
-        @else if $role == "passenger" {
-            $selector: if($target == "self", "&", $target);
-            #{$selector} {
-                @if ($trigger == "a" or $target == "a") { @include phys.apply-linked-passenger; } 
-                @else { @include phys.apply-passenger; }
-            }
-        }
-
-        // 4. FLOOR
-        @else if $role == "floor" {
-            transform: translateY(0) !important; 
-        }
-
-        // 5. WILDCARD
-        @else if $role == "wildcard" {
-            &:is(#{config.$atmos-card-triggers}) {
-                @include phys.apply-ship;
-                @include phys.silence-passengers;
-            }
-            @else if :has(#{config.$atmos-media}) {
-                #{config.$atmos-media} {
-                    :where(a) & { @include phys.apply-linked-passenger; }
-                    :where(:not(a)) > & { @include phys.apply-passenger; }
-                }
-            }
-        }
-    }
-}
+// @each $trigger, $meta in config.$atmos-physics-map {
+//     $target: nth($meta, 1);
+//     $role:   nth($meta, 2);
+// 
+//     /**
+//      * THE ANCESTRAL WALL
+//      * We use a single, clean exclusion gate. 
+//      * Logic: If it is a trigger AND it is NOT in the Veto list...
+//      */
+//     :where(#{$trigger}):hover:not(#{config.$atmos-voids}), 
+//     :where(#{$trigger}):focus-within:not(#{config.$atmos-voids}) {
+// 
+//         // 1. SOVEREIGN
+//         @if $role == "sovereign" {
+//             $selector: if($target == "self", "&", $target);
+//             #{$selector} { @include phys.apply-sovereign; }
+//         }
+//         
+//         // 2. SHIP
+//         @else if $role == "ship" {
+//             @include phys.apply-ship;
+//             @include phys.silence-passengers;
+//         }
+// 
+//         // 3. PASSENGER
+//         @else if $role == "passenger" {
+//             $selector: if($target == "self", "&", $target);
+//             #{$selector} {
+//                 @if ($trigger == "a" or $target == "a") { @include phys.apply-linked-passenger; } 
+//                 @else { @include phys.apply-passenger; }
+//             }
+//         }
+// 
+//         // 4. FLOOR
+//         @else if $role == "floor" {
+//             transform: translateY(0) !important; 
+//         }
+// 
+//         // 5. WILDCARD
+//         @else if $role == "wildcard" {
+//             &:is(#{config.$atmos-card-triggers}) {
+//                 @include phys.apply-ship;
+//                 @include phys.silence-passengers;
+//             }
+//             @else if :has(#{config.$atmos-media}) {
+//                 #{config.$atmos-media} {
+//                     :where(a) & { @include phys.apply-linked-passenger; }
+//                     :where(:not(a)) > & { @include phys.apply-passenger; }
+//                 }
+//             }
+//         }
+//     }
+// }

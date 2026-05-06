@@ -9,20 +9,20 @@
  * Logic: Targets blocks not explicitly in the Map.
  * VETO: Excludes anything in the Veto List (Voids and their children).
  */
-:where(#{config.$atmos-wildcards}):not(#{config.$atmos-voids}) {
-    
-    // 1. SENSING MASS (The Inferred Ship)
-    // If it has a background/border/shadow, it earns its movement.
-    &:is(#{config.$atmos-card-triggers}) {
-        @include phys.debug-ready;
-        
-        transition: transform config.$atmos-timing, 
-                    box-shadow config.$atmos-timing;
-    }
-
-    // 2. SENSING LIFE (The Inferred Passenger Stage)
-    // If it has no mass but contains media, we mark it as a stage.
-    &:has(#{config.$atmos-media}):not(:is(#{config.$atmos-card-triggers})) {
-        @include phys.debug-ready;
-    }
-}
+// :where(#{config.$atmos-wildcards}):not(#{config.$atmos-voids}) {
+//     
+//     // 1. SENSING MASS (The Inferred Ship)
+//     // If it has a background/border/shadow, it earns its movement.
+//     &:is(#{config.$atmos-card-triggers}) {
+//         @include phys.debug-ready;
+//         
+//         transition: transform config.$atmos-timing, 
+//                     box-shadow config.$atmos-timing;
+//     }
+// 
+//     // 2. SENSING LIFE (The Inferred Passenger Stage)
+//     // If it has no mass but contains media, we mark it as a stage.
+//     &:has(#{config.$atmos-media}):not(:is(#{config.$atmos-card-triggers})) {
+//         @include phys.debug-ready;
+//     }
+// }
