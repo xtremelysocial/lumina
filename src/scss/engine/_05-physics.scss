@@ -17,12 +17,13 @@
  * SOVEREIGN: High-intent Active Links/Buttons
  * Logic: Growth Only. Vertical stability for click targets.
  */
-// @mixin apply-sovereign {
-//     transform: #{config.$grow-standard}; // Pulls 1.05 or JSON override
-//     @if config.$atmos-debug { 
-//         outline: 2px solid config.$debug-sovereign !important; 
-//     }
-// }
+@mixin apply-sovereign {
+    transform: #{config.$grow-large}; // Pulls 1.15 or JSON override
+    @if config.$atmos-debug { 
+        outline: config.$debug-sovereign; 
+        outline-offset: 2px;
+    }
+}
 
 /**
  * SHIP: Massive Containers (Groups, Columns, Covers)
@@ -45,7 +46,7 @@
 // @mixin apply-passenger {
 //     transform: #{config.$shift-default}; // Pulls -4px or JSON override
 //     @if config.$atmos-debug { 
-//         outline: 2px solid config.$debug-passenger !important; 
+//         outline: config.$debug-passenger; 
 //     }
 // }
 
@@ -59,7 +60,7 @@
 //                 var(--wp--preset--shadow--deep, 
 //                 0 15px 35px rgba(0, 0, 0, 0.22)));
 //     @if config.$atmos-debug { 
-//         outline: 2px solid config.$debug-sovereign !important; 
+//         outline: config.$debug-sovereign; 
 //     }
 // }
 
