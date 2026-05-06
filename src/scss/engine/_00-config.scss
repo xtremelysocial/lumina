@@ -22,11 +22,11 @@ $atmos-physics-map: (
     ".wp-block-social-link"   	: ( "a",                      	"sovereign" ),
     ".tag-cloud-link"      		: ( "self",        				"sovereign" ),
 //     ".wp-block-post-terms"     : ( "a",                      "sovereign" ), // NO: These are just links
-//     "a:has(> .avatar)"         : ( ".avatar",                "sovereign" ),
+    "a:has(> .avatar)"         : ( ".avatar",                	"sovereign" ),
 
     // 2. PASSENGERS (Shift-Fast, Yield to Ships)
     ".wp-block-image"          : ( "img",                    "passenger" ),
-//     ".wp-block-gallery"        : ( "img",                    "passenger" ),
+//     ".wp-block-gallery"        : ( "img",                    "passenger" ), // NO: See below
 //     ".wp-block-cover__image-background" : ( "self",          "passenger" ),
 
     // 3. SHIPS (Shift-Slow, Require Card-Triggers)
@@ -34,11 +34,13 @@ $atmos-physics-map: (
 //     ".wp-block-column"         : ( "self",                   "ship" ),
 //     ".wp-block-cover"          : ( "self",                   "ship" ),
 //     ".wp-block-media-text"     : ( "self",                   "ship" ),
+	".wp-block-gallery.is-style-object-passive" : ( "self", 	"ship" ),
 
     // 4. FLOORS (Pinned Stage, No Movement)
-    ".alignfull"               : ( "self",                   "floor" ),
-    ".wp-block-post-content"   : ( "self",                   "floor" ),
-    "#page-content"            : ( "self",                  "floor" ), // Atmos Main content
+    ".alignfull"               : ( "self",                   	"floor" ),
+    "#page-content"            : ( "self",                  	"floor" ), // Atmos Main content
+    ".wp-block-post-content"   : ( "self",                   	"floor" ), // Just to be safe
+//     ".post-comments"   			: ( "self",                   	"floor" ), // TO-DO: Fix Flat Box?
 
     // 5. VOIDS (Total Lockout)
     "#wpadminbar"              : ( "self",                   "void" ), // WordPress Admin Bar
@@ -108,7 +110,9 @@ $atmos-static-floors: $floor-list;
 $atmos-debug: true; 
 
 // Adjust debugging colors and styles if desired
-$debug-registry:  1px dashed #ff8c00; // Orange
-$debug-sovereign: 1px solid #ff00ff; // Neon Magenta (Active Action)
-$debug-ship:      #00ffff; // Neon Cyan (Container Mass)
-$debug-passenger: 1px solid #39ff14; // Neon Green (Passive Potential)
+$debug-registry:  1px dashed #ff8c00; // Orange (Static/Recognized)
+$debug-sovereign: 1px solid #ff00ff;  // Neon Magenta (Action/Linked)
+
+// We use the same Cyan family for "Passive" things, but change the stroke logic:
+$debug-ship:      2px solid #00ffff;  // Neon Cyan (Solid & Thick = Heavy Mass)
+$debug-passenger: 1px dashed #00ffff; // Neon Cyan (Dashed & Thin = Light Media)
