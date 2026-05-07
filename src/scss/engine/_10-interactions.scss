@@ -16,31 +16,50 @@
         // This matches the Engine handle and requires no parent containers.
         #{$trigger}:hover {
             @include phys.apply-sovereign;
-        }
-    }
-
-    // --- 2. SHIP (The Chained Gate) ---
-    @else if $role == "ship" {
-        // We chain the trigger and gate at the TOP level to prevent comma-splicing.
-        #{$trigger}#{config.$ship-gate}:not(.alignfull):hover:not(#{config.$atmos-dead-zones}) {
-            @include phys.apply-ship;
-            @include phys.silence-passengers;
-        }
-    }
-
-// --- 3. PASSENGER (The Nested Wall) ---
-    @else if $role == "passenger" {
-        #{$trigger}:hover:not(#{config.$atmos-dead-zones}) {
-            $selector: if($target == "self", "&", $target);
             
-            @each $ship in config.$atmos-active-ships {
-                &:not(#{$ship} #{$selector}) {
-                    // TARGET THE CHILD: We apply physics to the link/img, not the wrapper
-                    #{$selector} {
-                        @include phys.apply-passenger;
-                    }
-                }
-            }
+			// Move SOVEREIGN debug here
+			@if config.$atmos-debug { 
+				outline: config.$debug-sovereign; 
+				outline-offset: 2px;
+			}            
         }
     }
+
+	// --- 2. SHIP (The Container Lift) ---
+	@else if $role == "ship" {
+		// We use interpolation to glue the gate, then nest the vetoes
+		#{"#{$trigger}#{config.$ship-gate}"} {
+			&:hover:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
+				@include phys.apply-ship;
+				@include phys.silence-passengers;
+				
+				@if config.$atmos-debug { 
+					outline: config.$debug-ship; 
+					outline-offset: -2px;
+					
+					// Silence Wall Debug
+					#{config.$atmos-media} { outline: config.$debug-silence !important; }
+				}
+			}
+		}
+	}
+	
+	// --- 3. PASSENGER (The Media Glide) ---
+	@else if $role == "passenger" {
+		#{$trigger} {
+			// Step 1: Establish the hover gate
+			&:hover:not(#{config.$atmos-dead-zones}) {
+				
+				// Step 2: The Silence Wall Check
+				// If the image is NOT inside an active ship, it moves.
+				&:not(#{config.$atmos-active-ships} &) {
+					@include phys.apply-passenger;
+	
+					@if config.$atmos-debug {
+						outline: config.$debug-passenger;
+					}
+				}
+			}
+		}
+	}
 }

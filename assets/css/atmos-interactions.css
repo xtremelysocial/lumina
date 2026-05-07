@@ -59,48 +59,22 @@
   outline-offset: 2px;
 }
 
-.wp-block-image:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(:is(.wp-block-group):is(.has-background, .is-style-object-passive) img) img {
-  transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
-  outline: 1px solid #00ffff;
-}
-.wp-block-image:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(:is(.wp-block-gallery.is-style-object-passive):is(.has-background, .is-style-object-passive) img) img {
-  transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
-  outline: 1px solid #00ffff;
-}
-.wp-block-image:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(:is(.is-style-rounded-border):is(.has-background, .is-style-object-passive) img) img {
+.wp-block-image:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.wp-block-group:is(.has-background) .wp-block-image:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *)) {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
   outline: 1px solid #00ffff;
 }
 
-.wp-block-group.has-background, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) {
+.wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
 }
-.wp-block-group.has-background img, .wp-block-group.has-background video, .wp-block-group.has-background figure, .wp-block-group.has-background .wp-block-cover__image-background, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) img, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) video, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) figure, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) .wp-block-cover__image-background {
+.wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) img, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) video, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) figure, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) .wp-block-cover__image-background {
   transform: translateY(0) scale(1);
-  outline: 2px solid #ff3b30 !important;
+}
+.wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
+  outline: 2px solid #00ffff;
   outline-offset: -2px;
 }
-
-.wp-block-gallery.is-style-object-passive.has-background, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
-}
-.wp-block-gallery.is-style-object-passive.has-background img, .wp-block-gallery.is-style-object-passive.has-background video, .wp-block-gallery.is-style-object-passive.has-background figure, .wp-block-gallery.is-style-object-passive.has-background .wp-block-cover__image-background, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) img, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) video, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) figure, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) .wp-block-cover__image-background {
-  transform: translateY(0) scale(1);
+.wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) img, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) video, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) figure, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) .wp-block-cover__image-background {
   outline: 2px solid #ff3b30 !important;
-  outline-offset: -2px;
-}
-
-.is-style-rounded-border.has-background, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
-}
-.is-style-rounded-border.has-background img, .is-style-rounded-border.has-background video, .is-style-rounded-border.has-background figure, .is-style-rounded-border.has-background .wp-block-cover__image-background, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) img, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) video, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) figure, .is-style-object-passive:not(.alignfull):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) .wp-block-cover__image-background {
-  transform: translateY(0) scale(1);
-  outline: 2px solid #ff3b30 !important;
-  outline-offset: -2px;
 }
