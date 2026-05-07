@@ -51,9 +51,6 @@
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
   outline-offset: 2px;
-}
-:where(.wp-block-button):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content),
-:where(.wp-block-button):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
   outline: 1px solid #ff00ff;
 }
 
@@ -68,9 +65,6 @@
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
   outline-offset: 2px;
-}
-:where(.wp-element-button):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content),
-:where(.wp-element-button):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
   outline: 1px solid #ff00ff;
 }
 
@@ -85,9 +79,6 @@
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
   outline-offset: 2px;
-}
-:where(.wp-block-social-link):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content),
-:where(.wp-block-social-link):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
   outline: 1px solid #ff00ff;
 }
 
@@ -102,9 +93,6 @@
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
   outline-offset: 2px;
-}
-:where(.tag-cloud-link):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content),
-:where(.tag-cloud-link):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
   outline: 1px solid #ff00ff;
 }
 
@@ -119,9 +107,6 @@
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
   outline-offset: 2px;
-}
-:where(a:has(> .avatar)):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content),
-:where(a:has(> .avatar)):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
   outline: 1px solid #ff00ff;
 }
 
@@ -147,6 +132,16 @@
 :where(.wp-block-group):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+}
+:where(.wp-block-group):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) img, :where(.wp-block-group):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) video, :where(.wp-block-group):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) figure, :where(.wp-block-group):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) .wp-block-cover__image-background,
+:where(.wp-block-group):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) img,
+:where(.wp-block-group):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) video,
+:where(.wp-block-group):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) figure,
+:where(.wp-block-group):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) .wp-block-cover__image-background {
+  transform: translateY(0) scale(1) !important;
+}
+:where(.wp-block-group):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content),
+:where(.wp-block-group):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
   outline: 2px solid #00ffff;
 }
 
@@ -160,6 +155,39 @@
 :where(.wp-block-gallery.is-style-object-passive):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+}
+:where(.wp-block-gallery.is-style-object-passive):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) img, :where(.wp-block-gallery.is-style-object-passive):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) video, :where(.wp-block-gallery.is-style-object-passive):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) figure, :where(.wp-block-gallery.is-style-object-passive):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) .wp-block-cover__image-background,
+:where(.wp-block-gallery.is-style-object-passive):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) img,
+:where(.wp-block-gallery.is-style-object-passive):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) video,
+:where(.wp-block-gallery.is-style-object-passive):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) figure,
+:where(.wp-block-gallery.is-style-object-passive):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) .wp-block-cover__image-background {
+  transform: translateY(0) scale(1) !important;
+}
+:where(.wp-block-gallery.is-style-object-passive):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content),
+:where(.wp-block-gallery.is-style-object-passive):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
+  outline: 2px solid #00ffff;
+}
+
+/**
+ * THE ANCESTRAL WALL (Build 04.2)
+ * We use the double-gate exclusion: 
+ * 1. Kill Header/Footer and all descendants (*).
+ * 2. Kill Floor containers only.
+ */
+:where(.is-style-rounded-border):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content),
+:where(.is-style-rounded-border):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+}
+:where(.is-style-rounded-border):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) img, :where(.is-style-rounded-border):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) video, :where(.is-style-rounded-border):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) figure, :where(.is-style-rounded-border):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) .wp-block-cover__image-background,
+:where(.is-style-rounded-border):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) img,
+:where(.is-style-rounded-border):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) video,
+:where(.is-style-rounded-border):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) figure,
+:where(.is-style-rounded-border):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) .wp-block-cover__image-background {
+  transform: translateY(0) scale(1) !important;
+}
+:where(.is-style-rounded-border):hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content),
+:where(.is-style-rounded-border):focus-within:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
   outline: 2px solid #00ffff;
 }
 

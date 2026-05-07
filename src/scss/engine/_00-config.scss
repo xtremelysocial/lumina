@@ -35,6 +35,7 @@ $atmos-physics-map: (
 //     ".wp-block-cover"          : ( "self",                   "ship" ),
 //     ".wp-block-media-text"     : ( "self",                   "ship" ),
 	".wp-block-gallery.is-style-object-passive" : ( "self", 	"ship" ),
+    ".is-style-rounded-border"    : ( "self",                   "ship" ),
 
     // 4. FLOORS (Pinned Stage, No Movement)
     ".alignfull"               : ( "self",                   	"floor" ),
@@ -70,9 +71,15 @@ $atmos-card-triggers: (
 //     "[style*='shadow']"
 );
 
+// We join these into a single "Attribute Gate"
+$ship-gate: "";
+@each $attr in $atmos-card-triggers {
+    $ship-gate: if($ship-gate == "", $attr, "#{$ship-gate}, #{$attr}");
+}
+
 // --- 4. SENSING MEDIA TARGETS (Affects whether parent is static or not)---
 // If a "ship" (or wildcard) has one of these, the media moves
-$atmos-media: ""; //"img, video, .wp-block-cover__image-background";
+$atmos-media: "img, video, figure, .wp-block-cover__image-background";
 
 // --- 5. PHYSICS CONSTANTS (From theme.json with fallbacks ) ---
 // These represent the kinetic potential of every object in the ecosystem.
@@ -83,27 +90,31 @@ $grow-small:    var(--wp--custom--animation--default--hover-small-transform, sca
 $shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px));
 $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
 
-// --- 6. DYNAMIC VETO GENERATION (Build 04.2 - Strict Separation) ---
+// --- 6. DYNAMIC VETO GENERATION ---
 $dead-list: ();
 $floor-list: ();
+$active-ships: (); // <--- New list
 
 @each $key, $meta in $atmos-physics-map {
     $role: nth($meta, 2);
 
     @if $role == "void" {
-        // VOIDS: The container AND all children are dead.
         $dead-list: append($dead-list, unquote("#{$key}"), comma);
         $dead-list: append($dead-list, unquote("#{$key} *"), comma);
     }
     @else if $role == "floor" {
-        // FLOORS: Only the container is dead. Children are KINETIC.
         $floor-list: append($floor-list, unquote("#{$key}"), comma);
+    }
+    // New Logic: If it's a ship, it's only "Active" if it passes the ship-gate
+    @else if $role == "ship" {
+        $active-ships: append($active-ships, unquote(":is(#{$key}):is(#{$ship-gate})"), comma);
     }
 }
 
 // Convert lists to strings for the CSS output
 $atmos-dead-zones: $dead-list;
 $atmos-static-floors: $floor-list;
+$atmos-active-ships: $active-ships; // <--- Export to engine
 
 // --- 7. DEBUGGING ---
 // Set to false to turn off debugging

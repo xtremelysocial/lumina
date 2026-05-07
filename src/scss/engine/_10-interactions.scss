@@ -8,6 +8,21 @@
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
+	// Create the string once for efficiency
+// 	$ship-gate: ":is(#{config.$ship-gate})";
+
+	// 1. Determine if this block needs a Visual Gate
+    // Ships and Wildcards are only "active" if they look like cards
+//     $is-gated: ($role == "ship" or $role == "wildcard");
+    
+    // 2. Construct the refined selector
+//     $final-selector: if($is-gated, ":is(#{$trigger})#{$ship-gate}", $trigger);
+
+//     :where(#{$final-selector}):hover:not(#{config.$atmos-dead-zones}),
+//     :where(#{$final-selector}):focus-within:not(#{config.$atmos-dead-zones}) {
+// 	:where(#{$final-selector}):hover:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-active-ships}),
+// 	:where(#{$final-selector}):focus-within:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-active-ships}) {
+    
 	/**
 	 * THE ANCESTRAL WALL (Build 04.2)
 	 * We use the double-gate exclusion: 
@@ -20,9 +35,10 @@
         // 1. SOVEREIGN
         @if $role == "sovereign" {
             $selector: if($target == "self", "&", $target);
-            #{$selector} { @include phys.apply-sovereign; }
-            
-            @if config.$atmos-debug { outline: config.$debug-sovereign; }
+            #{$selector} { 
+            	@include phys.apply-sovereign; 
+	            @if config.$atmos-debug { outline: config.$debug-sovereign; }
+            }        
         }
         
         // 2. SHIP
