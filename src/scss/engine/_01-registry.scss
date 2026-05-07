@@ -25,20 +25,24 @@
 				}
 			}
 		}        
-        // OTHERS: Remain gated (Ships & Passengers)
-        @else {
-            :where(#{$selector}):not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
-                transition: transform config.$atmos-timing, 
-                            box-shadow config.$atmos-timing,                             
-                            outline config.$atmos-timing;
-                
-                transform: translateY(0) scale(1);
-
-                @if config.$atmos-debug { 
-                    outline: config.$debug-registry; 
-                    outline-offset: -1px;
-                }
-            }
-        }
-    }
+		// OTHERS: Ships & Passengers
+		@else {
+			#{$trigger} {
+				// If this is an image/video block, we only want the transition on the tag
+				// so that the caption (figcaption) stays static.
+				img, video, figure, & {
+					transition: transform config.$atmos-timing, 
+								box-shadow config.$atmos-timing, 
+								outline config.$atmos-timing;
+					
+					transform: translateY(0) scale(1);
+		
+					@if config.$atmos-debug { 
+						outline: config.$debug-registry; 
+						outline-offset: -1px;
+					}
+				}
+			}
+		}
+	}
 }

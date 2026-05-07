@@ -17,22 +17,10 @@ $atmos-wildcards: (
 // (pinned), void (ignore).
 $atmos-physics-map: (
     // 1. SOVEREIGNS (Always Grow, Never Yield)
-//     ".wp-block-button"         	: ( ".wp-block-button__link", 	"sovereign" ),
-//     ".wp-element-button"       	: ( "self",                   	"sovereign" ),
-// We combine them so they never fight each other.
-// 1. SOVEREIGNS (Unified & Unrestricted)
-//     ".wp-block-button__link, .wp-element-button" : ( "self", "sovereign" ),
-// Target the link directly as a sovereign
-//     ".wp-block-button__link" : ("self", "sovereign"),
-//     ".wp-block-button"         	: ( "self", 	"sovereign" ),
-//     ".wp-element-button"     : ("self", "sovereign"),
-// 	".wp-block-button__link" : ("self", "sovereign"),
-//     ".wp-element-button"     : ("self", "sovereign"),
 	".wp-block-button__link" : ("self", "sovereign"),
     ".wp-element-button"     : ("self", "sovereign"),
     ".wp-block-social-link"                      : ( "a",    "sovereign" ),
     ".tag-cloud-link"                            : ( "self", "sovereign" ),
-    //     ".wp-block-post-terms"     : ( "a",                      "sovereign" ), // NO: These are just links
 //     "a:has(> .avatar)"         : ( ".avatar",                	"sovereign" ),
 // 	".avatar" 					: ( "self", 					"passenger" ),
 
@@ -46,8 +34,8 @@ $atmos-physics-map: (
 //     ".wp-block-column"         : ( "self",                   "ship" ),
 //     ".wp-block-cover"          : ( "self",                   "ship" ),
 //     ".wp-block-media-text"     : ( "self",                   "ship" ),
-	".wp-block-gallery.is-style-object-passive" : ( "self", 	"ship" ),
-    ".is-style-rounded-border"    : ( "self",                   "ship" ),
+// 	".wp-block-gallery.is-style-object-passive" : ( "self", 	"ship" ),
+//     ".is-style-rounded-border"    : ( "self",                   "ship" ),
 
     // 4. FLOORS (Pinned Stage, No Movement)
     ".alignfull"               : ( "self",                   	"floor" ),
@@ -77,7 +65,7 @@ $atmos-card-triggers: (
 //     ".has-border",
 //     ".has-custom-border",
 //     ".has-shadow",
-    ".is-style-object-passive", // Atmos custom block style
+//     ".is-style-object-passive", // Atmos custom block style
 //     "[style*='background']",
 //     "[style*='border']",
 //     "[style*='shadow']"
@@ -107,6 +95,7 @@ $dead-list: ();
 $floor-list: ();
 $active-ships: (); 
 
+// FIRST PASS: Build the Dead and Floor lists
 @each $key, $meta in $atmos-physics-map {
     $role: nth($meta, 2);
 
@@ -117,17 +106,23 @@ $active-ships: ();
     @else if $role == "floor" {
         $floor-list: append($floor-list, unquote("#{$key}"), comma);
     }
-    // Logic: Only block children if the parent is a Ship AND has a background/style
-    @else if $role == "ship" {
-        // We MUST use the $ship-gate variable here to define what an "Active" ship is
-        $active-ships: append($active-ships, unquote(":is(#{$key}):is(#{$ship-gate})"), comma);
-    }
 }
 
+// SECOND PASS: Build the Active Ships list
+@each $key, $meta in $atmos-physics-map {
+    $role: nth($meta, 2);
+
+    @if $role == "ship" {
+        // PURE IDENTITY: Removed backslashes. 
+        // This creates a list of kinetic selectors for the Interaction layer.
+        $active-ships: append($active-ships, unquote("#{$key}:is(#{$ship-gate})"), comma);
+    }
+}
+    
 // Convert lists to strings for the CSS output
 $atmos-dead-zones: $dead-list;
 $atmos-static-floors: $floor-list;
-$atmos-active-ships: $active-ships; // <--- Export to engine
+$atmos-active-ships: $active-ships;
 
 // --- 7. DEBUGGING ---
 // Set to false to turn off debugging
