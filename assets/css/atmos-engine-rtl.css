@@ -65,6 +65,13 @@
   outline-offset: -1px;
 }
 
+:where(.is-style-rounded-border):not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull, #page-content, .wp-block-post-content) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+
 /* ==========================================================================
    0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
    ========================================================================== */
