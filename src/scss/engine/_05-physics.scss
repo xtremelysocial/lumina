@@ -4,16 +4,6 @@
 @use "00-config" as config;
 
 /**
- * THE STATIC "READY" INDICATOR (At-Rest)
- * Applied to any block officially recognized by the Map or Sensors.
- */
-// @mixin debug-ready {
-//     @if config.$atmos-debug { 
-//         outline: 1px dashed config.$debug-passenger !important; 
-//     }
-// }
-
-/**
  * SOVEREIGN: High-intent Active Links/Buttons
  * Logic: Growth Only. Vertical stability for click targets.
  */
@@ -34,9 +24,9 @@
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
                 0 15px 35px rgba(0, 0, 0, 0.22)));
-//     @if config.$atmos-debug { 
-//         outline: 2px solid config.$debug-ship !important; 
-//     }
+    @if config.$atmos-debug { 
+        outline: config.$debug-ship;
+    }
 }
 
 /**
@@ -45,9 +35,9 @@
  */
 @mixin apply-passenger {
     transform: #{config.$shift-default}; // Pulls -4px or JSON override
-//     @if config.$atmos-debug { 
-//         outline: config.$debug-passenger; 
-//     }
+    @if config.$atmos-debug { 
+        outline: config.$debug-passenger; 
+    }
 }
 
 /**
@@ -59,23 +49,27 @@
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
                 0 15px 35px rgba(0, 0, 0, 0.22)));
-//     @if config.$atmos-debug { 
-//         outline: config.$debug-sovereign; 
-//     }
+    @if config.$atmos-debug { 
+        outline: config.$debug-sovereign; 
+    }
 }
 
 /**
  * THE SILENCE PROTOCOL
  * Logic: Child elements yield their physics to the parent Container (Ship).
- * Fixed: Now uses the config token instead of hardcoded tags.
  */
 @mixin silence-passengers {
-	@if config.$atmos-media != "" {
-		#{config.$atmos-media} {
-			transform: translateY(0) scale(1) !important;
-	//         @if config.$atmos-debug { 
-	//             outline: 1px solid config.$debug-ship !important; 
-	//         }
-		}
+    @if config.$atmos-media != "" {
+        #{config.$atmos-media} {
+            // Sealing the physics without !important
+            transform: translateY(0) scale(1);
+
+            @if config.$atmos-debug {
+                // We use !important ONLY on the debug outline 
+                // to ensure it wins over the registry dash.
+                outline: config.$debug-silence !important;
+                outline-offset: -2px;
+            }
+        }
     }
 }

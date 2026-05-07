@@ -7,22 +7,37 @@
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
-    // GATE: Only seed kinetic roles. Skip Voids and Floors.
     @if $role != "void" and $role != "floor" {
         $selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
 
-        // GATE 1: Exclude everything in Dead Zones (Recursive)
-        // GATE 2: Exclude the Floor containers themselves (Flat)
-        :where(#{$selector}):not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
-            transition: transform config.$atmos-timing, 
-                        box-shadow config.$atmos-timing, 
-                        outline config.$atmos-timing;
-            
-            transform: translateY(0) scale(1);
+        // SOVEREIGNS: Must be unrestricted to have a return path everywhere
+		@if $role == "sovereign" {
+			// NO :where() here. We want 1 point of specificity to beat WordPress core.
+			#{$trigger} {
+				transition: transform config.$atmos-timing, 
+							box-shadow config.$atmos-timing, 
+							outline config.$atmos-timing;
+				transform: translateY(0) scale(1);
+				
+				@if config.$atmos-debug { 
+					outline: config.$debug-registry; 
+					outline-offset: -1px;
+				}
+			}
+		}        
+        // OTHERS: Remain gated (Ships & Passengers)
+        @else {
+            :where(#{$selector}):not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
+                transition: transform config.$atmos-timing, 
+                            box-shadow config.$atmos-timing, 
+                            outline config.$atmos-timing;
+                
+                transform: translateY(0) scale(1);
 
-            @if config.$atmos-debug {
-                outline: config.$debug-registry;
-                outline-offset: -1px;
+                @if config.$atmos-debug { 
+                    outline: config.$debug-registry; 
+                    outline-offset: -1px;
+                }
             }
         }
     }

@@ -1,88 +1,43 @@
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 04.2 - Ancestral Wall)
+   10.0 INTERACTIONS (Build 04.3 - Stage 2 Nesting - Final)
    ========================================================================== */
+
+@use "sass:list";
 @use "00-config" as config;
 @use "05-physics" as phys;
 
 @each $trigger, $meta in config.$atmos-physics-map {
-    $target: nth($meta, 1);
-    $role:   nth($meta, 2);
+    $target: list.nth($meta, 1);
+    $role:   list.nth($meta, 2);
 
-	// Create the string once for efficiency
-// 	$ship-gate: ":is(#{config.$ship-gate})";
-
-	// 1. Determine if this block needs a Visual Gate
-    // Ships and Wildcards are only "active" if they look like cards
-//     $is-gated: ($role == "ship" or $role == "wildcard");
-    
-    // 2. Construct the refined selector
-//     $final-selector: if($is-gated, ":is(#{$trigger})#{$ship-gate}", $trigger);
-
-//     :where(#{$final-selector}):hover:not(#{config.$atmos-dead-zones}),
-//     :where(#{$final-selector}):focus-within:not(#{config.$atmos-dead-zones}) {
-// 	:where(#{$final-selector}):hover:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-active-ships}),
-// 	:where(#{$final-selector}):focus-within:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-active-ships}) {
-    
-	/**
-	 * THE ANCESTRAL WALL (Build 04.2)
-	 * We use the double-gate exclusion: 
-	 * 1. Kill Header/Footer and all descendants (*).
-	 * 2. Kill Floor containers only.
-	 */						
-	 :where(#{$trigger}):hover:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}), 		
-	 :where(#{$trigger}):focus-within:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
-
-        // 1. SOVEREIGN
-        @if $role == "sovereign" {
-            $selector: if($target == "self", "&", $target);
-            #{$selector} { 
-            	@include phys.apply-sovereign; 
-	            @if config.$atmos-debug { outline: config.$debug-sovereign; }
-            }        
+    // --- 1. SOVEREIGN (Absolute Freedom) ---
+    @if $role == "sovereign" {
+        // Targets the element itself (e.g., .wp-element-button:hover)
+        // This matches the Engine handle and requires no parent containers.
+        #{$trigger}:hover {
+            @include phys.apply-sovereign;
         }
-        
-        // 2. SHIP
-        @else if $role == "ship" {
+    }
+
+    // --- 2. SHIP (The Chained Gate) ---
+    @else if $role == "ship" {
+        // We chain the trigger and gate at the TOP level to prevent comma-splicing.
+        #{$trigger}#{config.$ship-gate}:not(.alignfull):hover:not(#{config.$atmos-dead-zones}) {
             @include phys.apply-ship;
             @include phys.silence-passengers;
-
-			@if config.$atmos-debug { outline: config.$debug-ship; }            
         }
+    }
 
-        // 3. PASSENGER
-        @else if $role == "passenger" {
+    // --- 3. PASSENGER (The Nested Wall) ---
+    @else if $role == "passenger" {
+        #{$trigger}:hover:not(#{config.$atmos-dead-zones}) {
             $selector: if($target == "self", "&", $target);
-            #{$selector} {
-                @if ($trigger == "a" or $target == "a") { 
-                	@include phys.apply-linked-passenger; 
-
-		            @if config.$atmos-debug { outline: config.$debug-sovereign; }        	
-                } 
-                @else { 
-                	@include phys.apply-passenger; 
-
-		            @if config.$atmos-debug { outline: config.$debug-passenger; }        	
+            
+            @each $ship in config.$atmos-active-ships {
+                &:not(#{$ship} #{$selector}) {
+                    @include phys.apply-passenger;
                 }
             }
         }
-
-        // 4. FLOOR
-//         @else if $role == "floor" {
-//             transform: translateY(0) !important; 
-//         }
-
-        // 5. WILDCARD
-//         @else if $role == "wildcard" {
-//             &:is(#{config.$atmos-card-triggers}) {
-//                 @include phys.apply-ship;
-//                 @include phys.silence-passengers;
-//             }
-//             @else if :has(#{config.$atmos-media}) {
-//                 #{config.$atmos-media} {
-//                     :where(a) & { @include phys.apply-linked-passenger; }
-//                     :where(:not(a)) > & { @include phys.apply-passenger; }
-//                 }
-//             }
-//         }
     }
 }

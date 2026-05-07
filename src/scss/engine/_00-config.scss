@@ -17,12 +17,24 @@ $atmos-wildcards: (
 // (pinned), void (ignore).
 $atmos-physics-map: (
     // 1. SOVEREIGNS (Always Grow, Never Yield)
-    ".wp-block-button"         	: ( ".wp-block-button__link", 	"sovereign" ),
-    ".wp-element-button"       	: ( "self",                   	"sovereign" ),
-    ".wp-block-social-link"   	: ( "a",                      	"sovereign" ),
-    ".tag-cloud-link"      		: ( "self",        				"sovereign" ),
-//     ".wp-block-post-terms"     : ( "a",                      "sovereign" ), // NO: These are just links
-    "a:has(> .avatar)"         : ( ".avatar",                	"sovereign" ),
+//     ".wp-block-button"         	: ( ".wp-block-button__link", 	"sovereign" ),
+//     ".wp-element-button"       	: ( "self",                   	"sovereign" ),
+// We combine them so they never fight each other.
+// 1. SOVEREIGNS (Unified & Unrestricted)
+//     ".wp-block-button__link, .wp-element-button" : ( "self", "sovereign" ),
+// Target the link directly as a sovereign
+//     ".wp-block-button__link" : ("self", "sovereign"),
+//     ".wp-block-button"         	: ( "self", 	"sovereign" ),
+//     ".wp-element-button"     : ("self", "sovereign"),
+// 	".wp-block-button__link" : ("self", "sovereign"),
+//     ".wp-element-button"     : ("self", "sovereign"),
+	".wp-block-button__link" : ("self", "sovereign"),
+    ".wp-element-button"     : ("self", "sovereign"),
+    ".wp-block-social-link"                      : ( "a",    "sovereign" ),
+    ".tag-cloud-link"                            : ( "self", "sovereign" ),
+    //     ".wp-block-post-terms"     : ( "a",                      "sovereign" ), // NO: These are just links
+//     "a:has(> .avatar)"         : ( ".avatar",                	"sovereign" ),
+// 	".avatar" 					: ( "self", 					"passenger" ),
 
     // 2. PASSENGERS (Shift-Fast, Yield to Ships)
     ".wp-block-image"          : ( "img",                    "passenger" ),
@@ -39,8 +51,8 @@ $atmos-physics-map: (
 
     // 4. FLOORS (Pinned Stage, No Movement)
     ".alignfull"               : ( "self",                   	"floor" ),
-    "#page-content"            : ( "self",                  	"floor" ), // Atmos Main content
-    ".wp-block-post-content"   : ( "self",                   	"floor" ), // Just to be safe
+//     "#page-content"            : ( "self",                  	"floor" ), // Atmos Main content
+//     ".wp-block-post-content"   : ( "self",                   	"floor" ), // Just to be safe
 //     ".post-comments"   			: ( "self",                   	"floor" ), // TO-DO: Fix Flat Box?
 
     // 5. VOIDS (Total Lockout)
@@ -93,7 +105,7 @@ $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, tr
 // --- 6. DYNAMIC VETO GENERATION ---
 $dead-list: ();
 $floor-list: ();
-$active-ships: (); // <--- New list
+$active-ships: (); 
 
 @each $key, $meta in $atmos-physics-map {
     $role: nth($meta, 2);
@@ -105,8 +117,9 @@ $active-ships: (); // <--- New list
     @else if $role == "floor" {
         $floor-list: append($floor-list, unquote("#{$key}"), comma);
     }
-    // New Logic: If it's a ship, it's only "Active" if it passes the ship-gate
+    // Logic: Only block children if the parent is a Ship AND has a background/style
     @else if $role == "ship" {
+        // We MUST use the $ship-gate variable here to define what an "Active" ship is
         $active-ships: append($active-ships, unquote(":is(#{$key}):is(#{$ship-gate})"), comma);
     }
 }
@@ -120,10 +133,8 @@ $atmos-active-ships: $active-ships; // <--- Export to engine
 // Set to false to turn off debugging
 $atmos-debug: true; 
 
-// Adjust debugging colors and styles if desired
-$debug-registry:  1px dashed #ff8c00; // Orange (Static/Recognized)
-$debug-sovereign: 1px solid #ff00ff;  // Neon Magenta (Action/Linked)
-
-// We use the same Cyan family for "Passive" things, but change the stroke logic:
-$debug-ship:      2px solid #00ffff;  // Neon Cyan (Solid & Thick = Heavy Mass)
-$debug-passenger: 1px dashed #00ffff; // Neon Cyan (Dashed & Thin = Light Media)
+$debug-registry:   1px dashed #ff8c00; // Orange (Static/Recognized)
+$debug-sovereign:  1px solid #ff00ff;  // Neon Magenta (Growth Active)
+$debug-ship:       2px solid #00ffff;  // Cyan (Container Lift)
+$debug-passenger:  1px solid #00ffff;  // Cyan (Media Lift)
+$debug-silence:    2px solid #ff3b30;  // Vivid Red (Suppressed/Grounded)
