@@ -29,7 +29,7 @@
         @else {
             :where(#{$selector}):not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
                 transition: transform config.$atmos-timing, 
-                            box-shadow config.$atmos-timing, 
+                            box-shadow config.$atmos-timing,                             
                             outline config.$atmos-timing;
                 
                 transform: translateY(0) scale(1);

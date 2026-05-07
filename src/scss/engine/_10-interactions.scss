@@ -28,14 +28,17 @@
         }
     }
 
-    // --- 3. PASSENGER (The Nested Wall) ---
+// --- 3. PASSENGER (The Nested Wall) ---
     @else if $role == "passenger" {
         #{$trigger}:hover:not(#{config.$atmos-dead-zones}) {
             $selector: if($target == "self", "&", $target);
             
             @each $ship in config.$atmos-active-ships {
                 &:not(#{$ship} #{$selector}) {
-                    @include phys.apply-passenger;
+                    // TARGET THE CHILD: We apply physics to the link/img, not the wrapper
+                    #{$selector} {
+                        @include phys.apply-passenger;
+                    }
                 }
             }
         }
