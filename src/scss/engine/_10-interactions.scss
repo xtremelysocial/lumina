@@ -1,64 +1,40 @@
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 04.3 - Stage 2 Nesting - Final)
+   10.0 INTERACTIONS (Build 12.2 - Nested Kinetic Layer)
    ========================================================================== */
-
-@use "sass:list";
 @use "00-config" as config;
 @use "05-physics" as phys;
 
 @each $trigger, $meta in config.$atmos-physics-map {
-    $target: list.nth($meta, 1);
-    $role:   list.nth($meta, 2);
+    $target: nth($meta, 1);
+    $role:   nth($meta, 2);
 
-    // --- 1. SOVEREIGN (Absolute Freedom) ---
-    @if $role == "sovereign" {
-        // Targets the element itself (e.g., .wp-element-button:hover)
-        // This matches the Engine handle and requires no parent containers.
-        #{$trigger}:hover {
-            @include phys.apply-sovereign;
+    @if $role != "void" and $role != "floor" {
+        $gate: if($role == "ship", config.$ship-gate, "");
+
+        // THE TRIGGER
+        #{$trigger}#{$gate} {
             
-			// Move SOVEREIGN debug here
-			@if config.$atmos-debug { 
-				outline: config.$debug-sovereign; 
-				outline-offset: 2px;
-			}            
-        }
-    }
+            // THE NESTED INTERACTION GATE
+            &:hover {
+                // Veto Check (Nested to keep specificity clean)
+                &:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
+                    
+                    @if $role == "sovereign" {
+                        @include phys.apply-sovereign;
+                    }
 
-	// --- 2. SHIP (The Container Lift) ---
-	@else if $role == "ship" {
-		// We use interpolation to glue the gate, then nest the vetoes
-		#{$trigger} {
-			&#{config.$ship-gate}:hover:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
-				@include phys.apply-ship;
-				@include phys.silence-passengers;
-				
-				@if config.$atmos-debug { 
-					outline: config.$debug-ship; 
-					outline-offset: -2px;
-					
-					// Silence Wall Debug
-					#{config.$atmos-media} { outline: config.$debug-silence !important; }
-				}
-			}
-		}
-	}
-		
-	// --- 3. PASSENGER (The Media Glide) ---
-    @else if $role == "passenger" {
-        #{$trigger} {
-            // Hover is detected on the Trigger (e.g., .wp-block-image)
-            &:hover:not(#{config.$atmos-dead-zones}) {
-                
-                // Physics is applied to the Target (e.g., img)
-                #{$target} {
-                    // The Silence Wall: Only lift if NOT inside an active ship
-                    // We use the combined ship list directly here for better performance
-                    &:not(#{config.$atmos-active-ships} &) {
-                        @include phys.apply-passenger;
+                    @else if $role == "ship" {
+                        @include phys.apply-ship;
+                        @if config.$atmos-debug { outline: config.$debug-ship; outline-offset: -2px; }
+                    }
 
-                        @if config.$atmos-debug {
-                            outline: config.$debug-passenger;
+                    @else if $role == "passenger" or $role == "linked-passenger" {
+                        #{$target} {
+                            // SILENCE PROTOCOL (Red-Shift)
+                            &:not(#{config.$atmos-active-ships}:hover *) {
+                                @include phys.apply-passenger;
+                                @if config.$atmos-debug { outline: config.$debug-passenger; outline-offset: -2px; }
+                            }
                         }
                     }
                 }

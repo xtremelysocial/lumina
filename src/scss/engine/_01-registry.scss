@@ -1,5 +1,5 @@
 /* ==========================================================================
-   0.1 REGISTRY (Build 11.7 - Restored Sovereigns + Selective Floors)
+   0.1 REGISTRY (Build 12.2 - Zero-Weight Nested Rail)
    ========================================================================== */
 @use "00-config" as config;
 
@@ -7,47 +7,34 @@
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
-    // 1. SOVEREIGNS: Restored "No Rules" logic for buttons/links
+    // 1. SOVEREIGNS: High-weight for WP Core dominance
     @if $role == "sovereign" {
         #{$trigger} {
-            transition: transform config.$atmos-timing, 
-                        box-shadow config.$atmos-timing, 
-                        outline config.$atmos-timing;
-            
-            transform: translateY(0) scale(1);
-
-            @if config.$atmos-debug { 
-                outline: config.$debug-registry; 
-                outline-offset: -1px;
+            $mover: if($target == "self", "&", $target);
+            #{$mover} {
+                transition: transform config.$atmos-timing, box-shadow config.$atmos-timing, outline config.$atmos-timing;
+                transform: translateY(0) scale(1);
+                @if config.$atmos-debug { outline: config.$debug-registry; outline-offset: -1px; }
             }
         }
     }
 
-    // 2. OTHERS: Ships & Passengers
+    // 2. SHIPS & PASSENGERS: Zero-Weight Strategy
     @else if $role != "void" and $role != "floor" {
-        #{$trigger} {
-            $registry-gate: if($role == "ship", config.$ship-gate, "");
+        $mover: if($target == "self", "&", $target);
+        $registry-gate: if($role == "ship", config.$ship-gate, "");
 
-            &#{$registry-gate} {
-                // THE SELECTIVE VETO: 
-                // Voids get the '*' veto. 
-                // Floors only veto themselves (Grounded), NOT their children.
-                &:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-dead-zones} *):not(#{config.$atmos-static-floors}) {
+        // :where() strips the weight of the massive :not chains
+        :where(#{$trigger}#{$registry-gate}) {
+            
+            // Nested Veto Layer
+            &:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-dead-zones} *) {
+                &:not(#{config.$atmos-static-floors}) {
                     
-                    // Identify the mover (Self for groups, $target for images)
-                    $mover: if($target == "self", "&", $target);
-
                     #{$mover} {
-                        transition: transform config.$atmos-timing, 
-                                    box-shadow config.$atmos-timing, 
-                                    outline config.$atmos-timing;
-                        
+                        transition: transform config.$atmos-timing, box-shadow config.$atmos-timing, outline config.$atmos-timing;
                         transform: translateY(0) scale(1);
-
-                        @if config.$atmos-debug { 
-                            outline: config.$debug-registry; 
-                            outline-offset: -1px;
-                        }
+                        @if config.$atmos-debug { outline: config.$debug-registry; outline-offset: -1px; }
                     }
                 }
             }

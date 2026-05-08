@@ -4,13 +4,13 @@
 /* ATMOS INTERACTIONS: KINETIC LAYER - v0.9.8 fixed */
 /* Handles all :hover and active state physics */
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 04.3 - Stage 2 Nesting - Final)
+   10.0 INTERACTIONS (Build 12.2 - Nested Kinetic Layer)
    ========================================================================== */
 /* ==========================================================================
    0.0 ATMOS CONFIGURATION (Pivot 5: Intelligence + Exceptions)
    ========================================================================== */
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 04.3 - Stage 2 Nesting - Final)
+   10.0 INTERACTIONS (Build 12.2 - Nested Kinetic Layer)
    ========================================================================== */
 /* ==========================================================================
    0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
@@ -35,46 +35,31 @@
  * THE SILENCE PROTOCOL
  * Logic: Child elements yield their physics to the parent Container (Ship).
  */
-.wp-block-button__link:hover {
+.wp-block-button__link:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
-  outline: 1px solid #ff00ff;
-  outline-offset: 2px;
 }
 
-.wp-element-button:hover {
+.wp-element-button:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
-  outline: 1px solid #ff00ff;
-  outline-offset: 2px;
 }
 
-.wp-block-social-link:hover {
+.wp-block-social-link:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
-  outline: 1px solid #ff00ff;
-  outline-offset: 2px;
 }
 
-.tag-cloud-link:hover {
+.tag-cloud-link:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
-  outline: 1px solid #ff00ff;
-  outline-offset: 2px;
 }
 
-.wp-block-image:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) img:not(.wp-block-group:is(.has-background) .wp-block-image:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *) img) {
+.wp-block-image:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) img:not(.wp-block-group:is(.has-background):hover *) {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
   outline: 1px solid #00ffff;
+  outline-offset: -2px;
 }
 
 .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-}
-.wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) img, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) video, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) figure, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) .wp-block-cover__image-background {
-  transform: translateY(0) scale(1);
-}
-.wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
   outline: 2px solid #00ffff;
   outline-offset: -2px;
-}
-.wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) img, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) video, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) figure, .wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) .wp-block-cover__image-background {
-  outline: 2px solid #ff3b30 !important;
 }
