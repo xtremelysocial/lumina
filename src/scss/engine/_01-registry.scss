@@ -1,5 +1,5 @@
 /* ==========================================================================
-   0.1 REGISTRY (Build 04.2 - Kinetic Foundation)
+   0.1 REGISTRY (Build 11.7 - Restored Sovereigns + Selective Floors)
    ========================================================================== */
 @use "00-config" as config;
 
@@ -7,32 +7,34 @@
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
-    @if $role != "void" and $role != "floor" {
-        $selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
-
-        // SOVEREIGNS: Must be unrestricted to have a return path everywhere
-		@if $role == "sovereign" {
-			// NO :where() here. We want 1 point of specificity to beat WordPress core.
-			#{$trigger} {
-				transition: transform config.$atmos-timing, 
-							box-shadow config.$atmos-timing, 
-							outline config.$atmos-timing;
-				transform: translateY(0) scale(1);
-				
-				@if config.$atmos-debug { 
-					outline: config.$debug-registry; 
-					outline-offset: -1px;
-				}
-			}
-		}        
-		// OTHERS: Ships & Passengers
-        @else {
-            $registry-gate: if($role == "ship", config.$ship-gate, "");
+    // 1. SOVEREIGNS: Restored "No Rules" logic for buttons/links
+    @if $role == "sovereign" {
+        #{$trigger} {
+            transition: transform config.$atmos-timing, 
+                        box-shadow config.$atmos-timing, 
+                        outline config.$atmos-timing;
             
-            #{$trigger} {
-                &#{$registry-gate}:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}):not(#{config.$atmos-static-floors} *) {
+            transform: translateY(0) scale(1);
+
+            @if config.$atmos-debug { 
+                outline: config.$debug-registry; 
+                outline-offset: -1px;
+            }
+        }
+    }
+
+    // 2. OTHERS: Ships & Passengers
+    @else if $role != "void" and $role != "floor" {
+        #{$trigger} {
+            $registry-gate: if($role == "ship", config.$ship-gate, "");
+
+            &#{$registry-gate} {
+                // THE SELECTIVE VETO: 
+                // Voids get the '*' veto. 
+                // Floors only veto themselves (Grounded), NOT their children.
+                &:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-dead-zones} *):not(#{config.$atmos-static-floors}) {
                     
-                    // Use the map's target (e.g., "img" or "self")
+                    // Identify the mover (Self for groups, $target for images)
                     $mover: if($target == "self", "&", $target);
 
                     #{$mover} {
@@ -50,5 +52,5 @@
                 }
             }
         }
-	}
+    }
 }
