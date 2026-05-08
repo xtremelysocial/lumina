@@ -35,7 +35,7 @@ $atmos-physics-map: (
 //     ".wp-block-cover"          : ( "self",                   "ship" ),
 //     ".wp-block-media-text"     : ( "self",                   "ship" ),
 // 	".wp-block-gallery.is-style-object-passive" : ( "self", 	"ship" ),
-//     ".is-style-rounded-border"    : ( "self",                   "ship" ),
+    ".is-style-rounded-border"    : ( "self",                   "ship" ),
 
     // 4. FLOORS (Pinned Stage, No Movement)
     ".alignfull"               : ( "self",                   	"floor" ),
@@ -44,13 +44,13 @@ $atmos-physics-map: (
 //     ".post-comments"   			: ( "self",                   	"floor" ), // TO-DO: Fix Flat Box?
 
     // 5. VOIDS (Total Lockout)
-    "#wpadminbar"              : ( "self",                   "void" ), // WordPress Admin Bar
+//     "#wpadminbar"              : ( "self",                   "void" ), // WordPress Admin Bar
 //     "header"                   : ( "self",                   "void" ), // Any html header
 //     "footer"                   : ( "self",                   "void" ), // Any html footer
-    ".site-header"             : ( "self",                   "void" ), // Atmos header
-    ".entry-header"             : ( "self",                   "void" ), // Atmos header
-    ".site-footer"             : ( "self",                   "void" ), // Atmos footer
-    ".footer-info"             : ( "self",                   "void" ), // Atmos footer
+//     ".site-header"             : ( "self",                   "void" ), // Atmos header
+//     ".entry-header"             : ( "self",                   "void" ), // Atmos header
+//     ".site-footer"             : ( "self",                   "void" ), // Atmos footer
+//     ".footer-info"             : ( "self",                   "void" ), // Atmos footer
 //     ".wp-block-spacer"         : ( "self",                   "void" ), // Never animate
 //     ".wp-block-separator"      : ( "self",                   "void" ), // Never animate
     
@@ -66,6 +66,7 @@ $atmos-card-triggers: (
 //     ".has-custom-border",
 //     ".has-shadow",
 //     ".is-style-object-passive", // Atmos custom block style
+	".is-style-rounded-border", // Atmos custom block style
 //     "[style*='background']",
 //     "[style*='border']",
 //     "[style*='shadow']"
