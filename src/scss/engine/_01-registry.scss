@@ -7,6 +7,21 @@
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
+        
+	// THE SURGICAL VETO: Ground passengers ONLY if the parent is a kinetic ship
+	@if $role == "passenger" {
+		// We add :not(#{config.$atmos-static-floors}) to ensure "Brakes" don't ground their children
+		:is(#{config.$atmos-card-triggers}):not(#{config.$atmos-static-floors}):hover #{$trigger} {
+			#{$target} {
+				transform: translateY(0) !important;
+				
+				@if config.$atmos-debug { 
+					outline: config.$debug-silence; 
+					outline-offset: -4px; 
+				}
+			}
+		}
+	}
 
     // 1. SOVEREIGNS: Weighted & Isolated
     @if $role == "sovereign" {

@@ -33,6 +33,12 @@
   outline-offset: -1px;
 }
 
+:is(.has-background):not(.alignfull):hover .wp-block-image img {
+  transform: translateY(0) !important;
+  outline: 2px solid #ff3b30;
+  outline-offset: -4px;
+}
+
 :where(.wp-block-image:not(.alignfull)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
@@ -58,6 +64,14 @@
 }
 
 :where(.is-style-rounded-border:not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 5px rgba(0, 0, 0, 0.05)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+
+:where(.is-style-rounded-corners:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 5px rgba(0, 0, 0, 0.05)));

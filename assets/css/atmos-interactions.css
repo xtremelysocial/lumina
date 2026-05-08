@@ -51,3 +51,10 @@
   outline: 2px solid #00ffff;
   outline-offset: -2px;
 }
+
+.is-style-rounded-corners:not(.alignfull):hover {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff;
+  outline-offset: -2px;
+}
