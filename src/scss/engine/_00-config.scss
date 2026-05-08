@@ -39,7 +39,7 @@ $atmos-physics-map: (
 
     // 4. FLOORS (Pinned Stage, No Movement)
     ".alignfull"               : ( "self",                   	"floor" ),
-//     "#page-content"            : ( "self",                  	"floor" ), // Atmos Main content
+    "#page-content"            : ( "self",                  	"floor" ), // Atmos Main content
 //     ".wp-block-post-content"   : ( "self",                   	"floor" ), // Just to be safe
 //     ".post-comments"   			: ( "self",                   	"floor" ), // TO-DO: Fix Flat Box?
 
@@ -71,6 +71,11 @@ $atmos-card-triggers: (
 //     "[style*='border']",
 //     "[style*='shadow']"
 );
+
+// Layout states that forbid movement, even for ships. Keep this to only alignfull
+// or possibly one more because these use :not() and we don't want to overpower
+// the browser's ability to process the selectors quickly.
+$atmos-static-floors: ".alignfull";
 
 // We join these into a single "Attribute Gate"
 $ship-gate: "";

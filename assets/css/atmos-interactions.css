@@ -4,13 +4,13 @@
 /* ATMOS INTERACTIONS: KINETIC LAYER - v0.9.8 fixed */
 /* Handles all :hover and active state physics */
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 13.10 - Kinetic Overhaul)
+   10.0 INTERACTIONS (Build 13.10 - The Full Kinetic Switch)
    ========================================================================== */
 /* ==========================================================================
    0.0 ATMOS CONFIGURATION (Pivot 5: Intelligence + Exceptions)
    ========================================================================== */
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 13.10 - Kinetic Overhaul)
+   10.0 INTERACTIONS (Build 13.10 - The Full Kinetic Switch)
    ========================================================================== */
 /* ==========================================================================
    0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
@@ -35,28 +35,42 @@
  * THE SILENCE PROTOCOL
  * Logic: Child elements yield their physics to the parent Container (Ship).
  */
-.wp-block-button__link:not(.alignfull):hover {
+.wp-block-button__link:not(.alignfull, #page-content):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
 }
 
-.wp-element-button:not(.alignfull):hover {
+.wp-element-button:not(.alignfull, #page-content):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
 }
 
-.wp-block-social-link:not(.alignfull):hover a {
+.wp-block-social-link:not(.alignfull, #page-content):hover a {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
 }
 
-.tag-cloud-link:not(.alignfull):hover {
+.tag-cloud-link:not(.alignfull, #page-content):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
 }
 
-.wp-block-image:not(.alignfull):hover img {
+.wp-block-image:not(.alignfull, #page-content):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
   outline: 1px solid #00ffff;
+  outline-offset: -2px;
+}
+
+.wp-block-group:not(.alignfull, #page-content):hover {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff;
+  outline-offset: -2px;
+}
+
+.is-style-rounded-border:not(.alignfull, #page-content):hover {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff;
   outline-offset: -2px;
 }
