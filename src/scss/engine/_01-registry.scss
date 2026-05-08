@@ -1,6 +1,6 @@
-/* ==========================================================================
-   0.1 REGISTRY (Build 13.9 - Sensing Triggers)
-   ========================================================================== */
+//* ==========================================================================
+//   0.1 REGISTRY (Build 13.9 - Sensing Triggers)
+//   ========================================================================== */
 @use "00-config" as config;
 
 // LOOP THROUGH OUR PHYSICS MAP
@@ -20,28 +20,27 @@
         }
     }
 
-    // 2. SHIPS & PASSENGERS: The Sensing Rail
-    @else if $role != "void" and $role != "floor" {
-        $mover: if($target == "self", "&", $target);
-        
-        // Build the Sniff Gate: 
-        // Ships require one of the triggers (background, rounded-style, etc.)
-        // Passengers do not require a gate.
-        $sniff-gate: if($role == "ship", ":is(#{config.$atmos-card-triggers})", "");
-
-        // STRATEGY: Wrap EVERYTHING in :where() to force specificity to 0.
-        // This includes the block, the sensing gate, and the layout veto.
-        :where(#{$trigger}#{$sniff-gate}:not(#{config.$atmos-static-floors})) {
-            
-            #{$mover} {
-                transition: transform config.$atmos-timing, box-shadow config.$atmos-timing, outline config.$atmos-timing;
-                transform: translateY(0) scale(1);
-
-                @if config.$atmos-debug { 
-                    outline: config.$debug-registry; 
-                    outline-offset: -1px; 
-                }
-            }
-        }
-    }
+	// 2. SHIPS & PASSENGERS: The Sensing Rail
+	@else if $role != "void" and $role != "floor" {
+		$mover: if($target == "self", "&", $target);
+		
+		// THE GATEKEEPER: Only Core blocks (wp-block-*) are forced to have attributes.
+		$is-core: str-index($trigger, "wp-block-");
+		$sniff-gate: if($role == "ship" and $is-core, ":is(#{config.$atmos-card-triggers})", "");
+	
+		// STRATEGY: Wrap in :where() to keep specificity at 0.
+		:where(#{$trigger}#{$sniff-gate}:not(#{config.$atmos-static-floors})) {
+			
+			#{$mover} {
+				transition: transform config.$atmos-timing, box-shadow config.$atmos-timing, outline config.$atmos-timing;
+				transform: translateY(0) scale(1);
+				box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 5px rgba(0,0,0,0.05)));				
+	
+				@if config.$atmos-debug { 
+					outline: config.$debug-registry; 
+					outline-offset: -1px; 
+				}
+			}
+		}
+	}
 }

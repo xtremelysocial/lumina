@@ -1,12 +1,12 @@
-/* ==========================================================================
-   0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
-   ========================================================================== */
+//* ==========================================================================
+//   0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
+//   ========================================================================== */
 @use "00-config" as config;
 
-/**
- * SOVEREIGN: High-intent Active Links/Buttons
- * Logic: Growth Only. Vertical stability for click targets.
- */
+//**
+// * SOVEREIGN: High-intent Active Links/Buttons
+// * Logic: Growth Only. Vertical stability for click targets.
+// */
 @mixin apply-sovereign {
     transform: #{config.$grow-large}; // Pulls 1.15 or JSON override
 //     @if config.$atmos-debug { 
@@ -15,10 +15,10 @@
 //     }
 }
 
-/**
- * SHIP: Massive Containers (Groups, Columns, Covers)
- * Logic: Subtle Lift (-2px) + Shadow Bloom.
- */
+//**
+// * SHIP: Massive Containers (Groups, Columns, Covers)
+// * Logic: Subtle Lift (-2px) + Shadow Bloom.
+// */
 @mixin apply-ship {
     transform: #{config.$shift-subtle}; // Pulls -2px or JSON override
     box-shadow: var(--wp--custom--shadow--hover, 
@@ -29,10 +29,10 @@
 //     }
 }
 
-/**
- * PASSENGER: Passive Media (Images/Video without links)
- * Logic: Standard Lift (-4px). No scaling.
- */
+//**
+// * PASSENGER: Passive Media (Images/Video without links)
+// * Logic: Standard Lift (-4px). No scaling.
+// */
 @mixin apply-passenger {
     transform: #{config.$shift-default}; // Pulls -4px or JSON override
 //     @if config.$atmos-debug { 
@@ -40,10 +40,10 @@
 //     }
 }
 
-/**
- * LINKED PASSENGER: Functional Media (Images that are portals)
- * Logic: Subtle Scale (1.03) + Shadow Bloom.
- */
+//**
+// * LINKED PASSENGER: Functional Media (Images that are portals)
+// * Logic: Subtle Scale (1.03) + Shadow Bloom.
+// */
 @mixin apply-linked-passenger {
     transform: #{config.$grow-small}; // Pulls 1.03 or JSON override
     box-shadow: var(--wp--custom--shadow--hover, 
@@ -54,10 +54,10 @@
 //     }
 }
 
-/**
- * THE SILENCE PROTOCOL
- * Logic: Child elements yield their physics to the parent Container (Ship).
- */
+//**
+// * THE SILENCE PROTOCOL
+// * Logic: Child elements yield their physics to the parent Container (Ship).
+// */
 @mixin silence-passengers {
     @if config.$atmos-media != "" {
         #{config.$atmos-media} {

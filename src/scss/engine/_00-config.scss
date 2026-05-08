@@ -1,141 +1,49 @@
-/* ==========================================================================
-   0.0 ATMOS CONFIGURATION (Pivot 5: Intelligence + Exceptions)
-   ========================================================================== */
+//* ==========================================================================
+//   0.0 ATMOS CONFIGURATION (Build 13.11 - Locked Mode)
+//   ========================================================================== */
 
-// --- 1. THE PHYSICS WILDCARD TARGETS ---
-// General rule for blocks to receive standard treatment by the physics engine.
-// Any block in the map below will override these defaults so we can fine-tune
-// the mechanics.
-$atmos-wildcards: (
-//     "[class*='wp-block-']", // Any core Wordpress block
-//     "[class*='wc-block-']",  // Any WooCommerce block
-//     "[class*='jetpack-block-']"  // Any Jetpack block
-);
-
-// --- 2. THE PHYSICS MAP (Trigger : ( Target, Role )) ---
-// Roles: sovereign (grow), passenger (shift-fast), ship (shift-slow), floor 
-// (pinned), void (ignore).
+// --- 1. THE PHYSICS MAP (Trigger : ( Target, Role )) ---
 $atmos-physics-map: (
-    // 1. SOVEREIGNS (Always Grow, Never Yield)
-	".wp-block-button__link" : ("self", "sovereign"),
-    ".wp-element-button"     : ("self", "sovereign"),
-    ".wp-block-social-link"                      : ( "a",    "sovereign" ),
-    ".tag-cloud-link"                            : ( "self", "sovereign" ),
-//     "a:has(> .avatar)"         : ( ".avatar",                	"sovereign" ),
-// 	".avatar" 					: ( "self", 					"passenger" ),
 
-    // 2. PASSENGERS (Shift-Fast, Yield to Ships)
-    ".wp-block-image"          : ( "img",                    "passenger" ),
-//     ".wp-block-gallery"        : ( "img",                    "passenger" ), // NO: See below
-//     ".wp-block-cover__image-background" : ( "self",          "passenger" ),
+    // SOVEREIGNS: Fast-pass growth (Buttons, Icons)
+    ".wp-block-button__link"    : ("self", "sovereign"),
+    ".wp-element-button"        : ("self", "sovereign"),
+    ".wp-block-social-link"     : ("a",    "sovereign"),
+    ".tag-cloud-link"           : ("self", "sovereign"),
+// 	".avatar" 					: ( "self", 					"passenger" ),    
 
-    // 3. SHIPS (Shift-Slow, Require Card-Triggers)
-    ".wp-block-group"          : ( "self",                   "ship" ),
-//     ".wp-block-column"         : ( "self",                   "ship" ),
-//     ".wp-block-cover"          : ( "self",                   "ship" ),
+    // PASSENGERS: Fast-lift child elements (Images)
+    ".wp-block-image"           : ("img",  "passenger"),
+
+    // SHIPS: Container-lift (Requires background check if core block)
+    ".wp-block-group"           : ("self", "ship"),
+    ".wp-block-column"          : ("self", "ship"),
+    ".is-style-rounded-border"  : ("self", "ship"), // Automatic Lift (No wp-block- prefix)
+//     ".wp-block-code"            : ("self", "ship"), // Conditional Lift (Has wp-block- prefix)
 //     ".wp-block-media-text"     : ( "self",                   "ship" ),
-// 	".wp-block-gallery.is-style-object-passive" : ( "self", 	"ship" ),
-    ".is-style-rounded-border"    : ( "self",                   "ship" ),
 
-    // 4. FLOORS (Pinned Stage, No Movement)
-    ".alignfull"               : ( "self",                   	"floor" ),
-    "#page-content"            : ( "self",                  	"floor" ), // Atmos Main content
-//     ".wp-block-post-content"   : ( "self",                   	"floor" ), // Just to be safe
-//     ".post-comments"   			: ( "self",                   	"floor" ), // TO-DO: Fix Flat Box?
-
-    // 5. VOIDS (Total Lockout)
-//     "#wpadminbar"              : ( "self",                   "void" ), // WordPress Admin Bar
-//     "header"                   : ( "self",                   "void" ), // Any html header
-//     "footer"                   : ( "self",                   "void" ), // Any html footer
-//     ".site-header"             : ( "self",                   "void" ), // Atmos header
-//     ".entry-header"             : ( "self",                   "void" ), // Atmos header
-//     ".site-footer"             : ( "self",                   "void" ), // Atmos footer
-//     ".footer-info"             : ( "self",                   "void" ), // Atmos footer
-//     ".wp-block-spacer"         : ( "self",                   "void" ), // Never animate
-//     ".wp-block-separator"      : ( "self",                   "void" ), // Never animate
-    
-    // 6. WILCARDS (Standard logic for blocks not in the above list)
-// 	":where(#{$atmos-wildcards})" : ( "self", "wildcard" ) // The "Safety Net"    
+    // FLOORS: Pinned architecture (Skipped by logic)
+    "#page-content"             : ("self", "floor"),
+    ".site-header"              : ("self", "floor")
 );
 
-// --- 3. SENSING TRIGGER ATTRIBUTES (Looks like a "card") ---
-// If a "ship" (or wildcard) has one of these, the "ship" moves
-$atmos-card-triggers: (
-    ".has-background",
-//     ".has-border",
-//     ".has-custom-border",
-//     ".has-shadow",
-//     ".is-style-object-passive", // Atmos custom block style
-	".is-style-rounded-border", // Atmos custom block style
-//     "[style*='background']",
-//     "[style*='border']",
-//     "[style*='shadow']"
-);
+// --- 2. SENSING TRIGGERS (The Attribute Gate) ---
+// Only for CORE blocks (wp-block-*) to prove they are cards.
+$atmos-card-triggers: ".has-background";
 
-// Layout states that forbid movement, even for ships. Keep this to only alignfull
-// or possibly one more because these use :not() and we don't want to overpower
-// the browser's ability to process the selectors quickly.
+// The Brake: Only real-time layout states.
 $atmos-static-floors: ".alignfull";
 
-// We join these into a single "Attribute Gate"
-$ship-gate: "";
-@each $attr in $atmos-card-triggers {
-    $ship-gate: if($ship-gate == "", $attr, "#{$ship-gate}, #{$attr}");
-}
-
-// --- 4. SENSING MEDIA TARGETS (Affects whether parent is static or not)---
-// If a "ship" (or wildcard) has one of these, the media moves
-$atmos-media: "img, video, figure, .wp-block-cover__image-background";
-
-// --- 5. PHYSICS CONSTANTS (From theme.json with fallbacks ) ---
-// These represent the kinetic potential of every object in the ecosystem.
+// --- 3. PHYSICS CONSTANTS ---
 $atmos-timing: 	var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-$grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
 $grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
-$grow-small:    var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-$shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px));
-$shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+$grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+$shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
+$shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px)); 
 
-// --- 6. DYNAMIC VETO GENERATION ---
-$dead-list: ();
-$floor-list: ();
-$active-ships: (); 
-
-// FIRST PASS: Build the Dead and Floor lists
-@each $key, $meta in $atmos-physics-map {
-    $role: nth($meta, 2);
-
-    @if $role == "void" {
-        $dead-list: append($dead-list, unquote("#{$key}"), comma);
-        $dead-list: append($dead-list, unquote("#{$key} *"), comma);
-    }
-    @else if $role == "floor" {
-        $floor-list: append($floor-list, unquote("#{$key}"), comma);
-    }
-}
-
-// SECOND PASS: Build the Active Ships list
-@each $key, $meta in $atmos-physics-map {
-    $role: nth($meta, 2);
-
-    @if $role == "ship" {
-        // PURE IDENTITY: Removed backslashes. 
-        // This creates a list of kinetic selectors for the Interaction layer.
-        $active-ships: append($active-ships, unquote("#{$key}:is(#{$ship-gate})"), comma);
-    }
-}
-    
-// Convert lists to strings for the CSS output
-$atmos-dead-zones: $dead-list;
-$atmos-static-floors: $floor-list;
-$atmos-active-ships: $active-ships;
-
-// --- 7. DEBUGGING ---
-// Set to false to turn off debugging
+// --- 4. DEBUGGING ---
 $atmos-debug: true; 
-
-$debug-registry:   1px dashed #ff8c00; // Orange (Static/Recognized)
-$debug-sovereign:  1px solid #ff00ff;  // Neon Magenta (Growth Active)
-$debug-ship:       2px solid #00ffff;  // Cyan (Container Lift)
-$debug-passenger:  1px solid #00ffff;  // Cyan (Media Lift)
-$debug-silence:    2px solid #ff3b30;  // Vivid Red (Suppressed/Grounded)
+$debug-registry:   1px dashed #ff8c00; 
+$debug-sovereign:  1px solid #ff00ff;  
+$debug-ship:       2px solid #00ffff;  
+$debug-passenger:  1px solid #00ffff;
