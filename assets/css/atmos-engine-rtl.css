@@ -4,7 +4,7 @@
 /* ATMOS ENGINE: STATIC FOUNDATION - v0.9.8 fixed */
 /* Handles registry, sensors, relays, and resting state physics */
 /* ==========================================================================
-   0.1 REGISTRY (Build 12.2 - Zero-Weight Nested Rail)
+   0.1 REGISTRY (Build 13.9 - Sensing Triggers)
    ========================================================================== */
 /* ==========================================================================
    0.0 ATMOS CONFIGURATION (Pivot 5: Intelligence + Exceptions)
@@ -37,40 +37,23 @@
   outline-offset: -1px;
 }
 
-:where(.wp-block-image):not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info * *):not(.alignfull) img {
+:where(.wp-block-image:not(.alignfull)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
-:where(.wp-block-group.has-background):not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info * *):not(.alignfull) {
+:where(.wp-block-group:is(.has-background, .is-style-rounded-border):not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
-/* ==========================================================================
-   0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
-   ========================================================================== */
-/**
- * SOVEREIGN: High-intent Active Links/Buttons
- * Logic: Growth Only. Vertical stability for click targets.
- */
-/**
- * SHIP: Massive Containers (Groups, Columns, Covers)
- * Logic: Subtle Lift (-2px) + Shadow Bloom.
- */
-/**
- * PASSENGER: Passive Media (Images/Video without links)
- * Logic: Standard Lift (-4px). No scaling.
- */
-/**
- * LINKED PASSENGER: Functional Media (Images that are portals)
- * Logic: Subtle Scale (1.03) + Shadow Bloom.
- */
-/**
- * THE SILENCE PROTOCOL
- * Logic: Child elements yield their physics to the parent Container (Ship).
- */
+:where(.is-style-rounded-border:is(.has-background, .is-style-rounded-border):not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}

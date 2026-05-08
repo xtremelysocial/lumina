@@ -4,13 +4,13 @@
 /* ATMOS INTERACTIONS: KINETIC LAYER - v0.9.8 fixed */
 /* Handles all :hover and active state physics */
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 12.2 - Nested Kinetic Layer)
+   10.0 INTERACTIONS (Build 13.10 - Kinetic Overhaul)
    ========================================================================== */
 /* ==========================================================================
    0.0 ATMOS CONFIGURATION (Pivot 5: Intelligence + Exceptions)
    ========================================================================== */
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 12.2 - Nested Kinetic Layer)
+   10.0 INTERACTIONS (Build 13.10 - Kinetic Overhaul)
    ========================================================================== */
 /* ==========================================================================
    0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
@@ -35,31 +35,28 @@
  * THE SILENCE PROTOCOL
  * Logic: Child elements yield their physics to the parent Container (Ship).
  */
-.wp-block-button__link:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
+.wp-block-button__link:not(.alignfull):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 1px solid #ff00ff;
 }
 
-.wp-element-button:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
+.wp-element-button:not(.alignfull):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 1px solid #ff00ff;
 }
 
-.wp-block-social-link:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
+.wp-block-social-link:not(.alignfull):hover a {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 1px solid #ff00ff;
 }
 
-.tag-cloud-link:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
+.tag-cloud-link:not(.alignfull):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+  outline: 1px solid #ff00ff;
 }
 
-.wp-block-image:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) img:not(.wp-block-group:is(.has-background):hover *) {
+.wp-block-image:not(.alignfull):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
   outline: 1px solid #00ffff;
-  outline-offset: -2px;
-}
-
-.wp-block-group.has-background:hover:not(#wpadminbar, #wpadminbar *, .site-header, .site-header *, .entry-header, .entry-header *, .site-footer, .site-footer *, .footer-info, .footer-info *):not(.alignfull) {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
   outline-offset: -2px;
 }

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 12.2 - Nested Kinetic Layer)
+   10.0 INTERACTIONS (Build 13.10 - Kinetic Overhaul)
    ========================================================================== */
 @use "00-config" as config;
 @use "05-physics" as phys;
@@ -7,36 +7,28 @@
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
-
+	
     @if $role != "void" and $role != "floor" {
-        $gate: if($role == "ship", config.$ship-gate, "");
 
-        // THE TRIGGER
-        #{$trigger}#{$gate} {
+        // THE VETO: We apply the "Floor" check to the trigger itself
+        #{$trigger}:not(#{config.$atmos-static-floors}):hover {
             
-            // THE NESTED INTERACTION GATE
-            &:hover {
-                // Veto Check (Nested to keep specificity clean)
-                &:not(#{config.$atmos-dead-zones}):not(#{config.$atmos-static-floors}) {
-                    
+            @if $role == "sovereign" or $role == "ship" {
+                $mover: if($target == "self", "&", $target);
+                #{$mover} {
                     @if $role == "sovereign" {
                         @include phys.apply-sovereign;
+                        @if config.$atmos-debug { outline: config.$debug-sovereign; }
                     }
+                    // Ship logic is ready when you are
+                    // @else if $role == "ship" { @include phys.apply-ship; }
+                }
+            }
 
-                    @else if $role == "ship" {
-                        @include phys.apply-ship;
-                        @if config.$atmos-debug { outline: config.$debug-ship; outline-offset: -2px; }
-                    }
-
-                    @else if $role == "passenger" or $role == "linked-passenger" {
-                        #{$target} {
-                            // SILENCE PROTOCOL (Red-Shift)
-                            &:not(#{config.$atmos-active-ships}:hover *) {
-                                @include phys.apply-passenger;
-                                @if config.$atmos-debug { outline: config.$debug-passenger; outline-offset: -2px; }
-                            }
-                        }
-                    }
+            @else if $role == "passenger" or $role == "linked-passenger" {
+                #{$target} {
+                    @include phys.apply-passenger;
+                    @if config.$atmos-debug { outline: config.$debug-passenger; outline-offset: -2px; }
                 }
             }
         }
