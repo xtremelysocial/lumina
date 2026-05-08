@@ -1,5 +1,5 @@
 /* ==========================================================================
-   10.0 INTERACTIONS (Build 13.10 - Kinetic Overhaul)
+   10.0 INTERACTIONS (Build 13.10 - The Full Kinetic Switch)
    ========================================================================== */
 @use "00-config" as config;
 @use "05-physics" as phys;
@@ -10,24 +10,29 @@
 	
     @if $role != "void" and $role != "floor" {
 
-        // THE VETO: We apply the "Floor" check to the trigger itself
+        // THE KINETIC TRIGGER: Match Registry (01) logic + Hover
         #{$trigger}:not(#{config.$atmos-static-floors}):hover {
             
+            // 1. SELF-MOVING ROLES (Sovereigns & Ships)
             @if $role == "sovereign" or $role == "ship" {
                 $mover: if($target == "self", "&", $target);
+                
                 #{$mover} {
                     @if $role == "sovereign" {
-                        @include phys.apply-sovereign;
+                        @include phys.apply-sovereign; // Scale Growth
                         @if config.$atmos-debug { outline: config.$debug-sovereign; }
                     }
-                    // Ship logic is ready when you are
-                    // @else if $role == "ship" { @include phys.apply-ship; }
+                    @else if $role == "ship" {
+                        @include phys.apply-ship; // Lift -2px
+                        @if config.$atmos-debug { outline: config.$debug-ship; outline-offset: -2px; }
+                    }
                 }
             }
 
+            // 2. CHILD-MOVING ROLES (Passengers)
             @else if $role == "passenger" or $role == "linked-passenger" {
                 #{$target} {
-                    @include phys.apply-passenger;
+                    @include phys.apply-passenger; // Lift -4px
                     @if config.$atmos-debug { outline: config.$debug-passenger; outline-offset: -2px; }
                 }
             }
