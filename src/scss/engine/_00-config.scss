@@ -19,6 +19,7 @@ $atmos-physics-map: (
     ".wp-block-group"           : ("self", "ship"),
     ".wp-block-column"          : ("self", "ship"),
     ".is-style-rounded-border"  : ("self", "ship"), // Automatic Lift (No wp-block- prefix)
+    ".is-style-rounded-corners" : ("self", "ship"), // Automatic Lift (No wp-block- prefix)
 //     ".wp-block-code"            : ("self", "ship"), // Conditional Lift (Has wp-block- prefix)
 //     ".wp-block-media-text"     : ( "self",                   "ship" ),
 
@@ -47,3 +48,4 @@ $debug-registry:   1px dashed #ff8c00;
 $debug-sovereign:  1px solid #ff00ff;  
 $debug-ship:       2px solid #00ffff;  
 $debug-passenger:  1px solid #00ffff;
+$debug-silence:    2px solid #ff3b30;  // Vivid Red (Suppressed/Grounded)        
