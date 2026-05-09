@@ -7,87 +7,68 @@
    ========================================================================== */
 .wp-block-button__link:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
-  outline: 1px solid #ff00ff;
 }
 
 .wp-element-button:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
-  outline: 1px solid #ff00ff;
 }
 
 .wp-block-social-link:not(.alignfull, .is-style-object-plain):hover a {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
-  outline: 1px solid #ff00ff;
 }
 
 .tag-cloud-link:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
-  outline: 1px solid #ff00ff;
 }
 
 .wp-block-image:not(.alignfull, .is-style-object-plain):hover img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-  outline: 1px solid #00ffff;
-  outline-offset: -2px;
 }
 
 .wp-block-post-featured-image:not(.alignfull, .is-style-object-plain):hover img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-  outline: 1px solid #00ffff;
-  outline-offset: -2px;
 }
 
 .wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain):hover img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-  outline: 1px solid #00ffff;
-  outline-offset: -2px;
 }
 
 .wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
-  outline-offset: -2px;
 }
 
 .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
-  outline-offset: -2px;
 }
 
 .wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
-  outline-offset: -2px;
 }
 
 .is-style-object-passive:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
-  outline-offset: -2px;
 }
 
 .is-style-rounded-border:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
-  outline-offset: -2px;
 }
 
 .is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
-  outline-offset: -2px;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain):hover {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
 }
 
 pre.wp-block-code:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
-  outline: 2px solid #00ffff;
-  outline-offset: -2px;
 }

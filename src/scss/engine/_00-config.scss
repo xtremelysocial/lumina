@@ -26,6 +26,7 @@ $atmos-physics-map: (
     ".is-style-object-passive"  		: ("self", 			"ship"),
     ".is-style-rounded-border"  		: ("self", 			"ship"),
     ".is-style-thick-rounded-border"	: ("self", 			"ship"),
+    ".is-style-rounded-corners"			: ("self", 			"ship"),
 //     ".is-style-image-border"  			: ("self", 			"ship"),
 //     ".is-style-image-round-border"  	: ("self", 			"ship"),
 //     ".is-style-image-computer-screen"	: ("self", 			"ship"),
@@ -58,7 +59,7 @@ $shift-default: var(--wp--custom--animation--default--object-transform, translat
 $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px)); 
 
 // --- 4. DEBUGGING ---
-$atmos-debug: true; 
+$atmos-debug: false; 
 $debug-registry:   1px dashed #ff8c00; 
 $debug-sovereign:  1px solid #ff00ff;  
 $debug-ship:       2px solid #00ffff;  
