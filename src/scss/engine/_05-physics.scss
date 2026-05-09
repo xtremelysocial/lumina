@@ -43,24 +43,27 @@
 }
 
 //**
-// * 4. PASSENGER (NON-IMAGE): Passive Media (Lift with Ship)
+// * PASSENGER: Decorative Media / Lightbox
+// * Logic: Subtle breathing lift using config variables.
 // */
 @mixin apply-passenger {
-    transform: #{config.$shift-default}; 
+    // Uses translateY(-2px) from your config
+    transform: #{config.$shift-subtle} scale(1); 
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
-				0 6px 12px rgba(0, 0, 0, 0.13)));
+                0 4px 12px rgba(0, 0, 0, 0.12)));
 }
 
 //**
-// * 5. PASSENGER GROW (IMAGE/PORTAL): Functional but grounded media
+// * PASSENGER GROW: Functional Portals (Links)
+// * Logic: Kinetic scale using config variables.
 // */
 @mixin apply-passenger-grow {
+    // Uses scale(1.03) from your config
     transform: translateY(0) #{config.$grow-small}; 
-    // Functional portals pull high intent
     box-shadow: var(--wp--custom--shadow--hover-high, 
-    			var(--wp--preset--shadow--sharp,
-    			0 8px 16px rgba(0, 0, 0, 0.15)));
+                var(--wp--preset--shadow--sharp, 
+                0 12px 25px rgba(0, 0, 0, 0.15)));
 }
 
 //**
