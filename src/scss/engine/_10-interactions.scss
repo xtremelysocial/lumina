@@ -9,42 +9,41 @@
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
 
-	// SKIP VOIDS AND FLOORS ALTOGETHER	
-	@if $role != "void" and $role != "floor" {
-	
-			// THE KINETIC TRIGGER: Match Registry (01) logic + Hover
-			#{$trigger}:not(#{config.$atmos-static-floors}):hover {
-				
-				// 1. SOVEREIGNS: Direct Growth (Icons, Buttons)
-				@if $role == "sovereign" {
-					$mover: if($target == "self", "&", $target);
-					#{$mover} {
-						@include phys.apply-sovereign; 
-						@if config.$atmos-debug { outline: config.$debug-sovereign; }
-					}
-				}
-	
-				// 2. SHIPS: Conditional Lift (The Core vs. Custom Gate)
-				@else if $role == "ship" {
-					$mover: if($target == "self", "&", $target);
-					
-					// Identify Core Blocks vs Custom Design Styles
-					$is-core: str-index($trigger, "wp-block-");
-					$gate: if($is-core, ":is(#{config.$atmos-card-triggers})", "");
-	
-					#{$mover}#{$gate} {
-						@include phys.apply-ship; // Lift -2px
-						@if config.$atmos-debug { outline: config.$debug-ship; outline-offset: -2px; }
-					}
-				}
-	
-				// 3. PASSENGERS: Direct Child Lift (Images)
-				@else if $role == "passenger" {
-					#{$target} {
-						@include phys.apply-passenger; // Lift -4px
-						@if config.$atmos-debug { outline: config.$debug-passenger; outline-offset: -2px; }
-				}
-			}
-		}
-	}
+    @if $role != "void" and $role != "floor" {
+        
+		// 1. THE STRICT SENSOR
+        // We only gate if the trigger STARTS with the core class.
+        // Index 1 = Core Block. Index > 1 = Custom Fast-Pass.
+        $is-core-block: str-index($trigger, ".wp-block-") == 1;
+        $gate: if($role == "ship" and $is-core-block, ":is(#{config.$atmos-card-triggers})", "");
+        
+        // 2. APPLY THE GATE BEFORE THE HOVER
+        // Result for 'pre': pre:not(.alignfull, .is-style-object-plain):hover .wp-block-code
+        #{$trigger}#{$gate}:not(#{config.$atmos-static-floors}):hover {
+                    
+            @if $role == "sovereign" {
+                $mover: if($target == "self", "&", $target);
+                #{$mover} {
+                    @include phys.apply-sovereign; 
+                    @if config.$atmos-debug { outline: config.$debug-sovereign; }
+                }
+            }
+
+            @else if $role == "ship" {
+                $mover: if($target == "self", "&", $target);
+                // The gate is now handled at the parent level, so just apply physics
+                #{$mover} {
+                    @include phys.apply-ship;
+                    @if config.$atmos-debug { outline: config.$debug-ship; outline-offset: -2px; }
+                }
+            }
+
+            @else if $role == "passenger" {
+                #{$target} {
+                    @include phys.apply-passenger;
+                    @if config.$atmos-debug { outline: config.$debug-passenger; outline-offset: -2px; }
+                }
+            }
+        }
+    }
 }

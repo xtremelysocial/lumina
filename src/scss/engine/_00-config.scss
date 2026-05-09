@@ -6,34 +6,46 @@
 $atmos-physics-map: (
 
     // SOVEREIGNS: Fast-pass growth (Buttons, Icons)
-    ".wp-block-button__link"    : ("self", "sovereign"),
-    ".wp-element-button"        : ("self", "sovereign"),
-    ".wp-block-social-link"     : ("a",    "sovereign"),
-    ".tag-cloud-link"           : ("self", "sovereign"),
-// 	".avatar" 					: ( "self", 					"passenger" ),    
+    ".wp-block-button__link"    		: ("self", 		"sovereign"),
+    ".wp-element-button"        		: ("self", 		"sovereign"),
+    ".wp-block-social-link"     		: ("a",    		"sovereign"),
+    ".tag-cloud-link"           		: ("self", 		"sovereign"),
+// 	".avatar" 							: ( "self",		"passenger" ),    
 
     // PASSENGERS: Fast-lift child elements (Images)
-    ".wp-block-image"           : ("img",  "passenger"),
+    ".wp-block-image"           		: ("img",  		"passenger"),
 
-    // SHIPS: Container-lift (Requires background check if core block)
-    ".wp-block-group"           : ("self", "ship"),
-    ".wp-block-column"          : ("self", "ship"),
-    ".is-style-rounded-border"  : ("self", "ship"), // Automatic Lift (No wp-block- prefix)
-    ".is-style-rounded-corners" : ("self", "ship"), // Automatic Lift (No wp-block- prefix)
-//     ".wp-block-code"            : ("self", "ship"), // Conditional Lift (Has wp-block- prefix)
-//     ".wp-block-media-text"     : ( "self",                   "ship" ),
+    // SHIPS: Container-lift (Requires background color if core block)
+    ".wp-block-group"           		: ("self", 			"ship"),
+    ".wp-block-column"          		: ("self", 			"ship"),
+    ".wp-block-media-text"     			: ( "self",			"ship" ),
+    
+    // SHIPS: Container-lift (Automatic as these are Atmos custom styles)
+    ".is-style-object-passive"  		: ("self", 			"ship"),
+    ".is-style-rounded-border"  		: ("self", 			"ship"),
+    ".is-style-thick-rounded-border"	: ("self", 			"ship"),
+//     ".is-style-image-border"  			: ("self", 			"ship"),
+//     ".is-style-image-round-border"  	: ("self", 			"ship"),
+//     ".is-style-image-computer-screen"	: ("self", 			"ship"),
+//     ".image-tablet-phone-screen"		: ("self", 			"ship"),
 
+	// SHIPS: Container-lift (Automatic as these are in theme.json)
+	// Trigger must not start with ".wp-block-" though or the engine will
+	// require a colored background.
+	"pre.wp-block-code"                 : ("self", 			"ship"),	
+	
     // FLOORS: Pinned architecture (Skipped by logic)
-    "#page-content"             : ("self", "floor"),
-    ".site-header"              : ("self", "floor")
+    "#page-content"             		: ("self", 			"floor"),
+    ".site-header"              		: ("self", 			"floor")
 );
 
 // --- 2. SENSING TRIGGERS (The Attribute Gate) ---
 // Only for CORE blocks (wp-block-*) to prove they are cards.
 $atmos-card-triggers: ".has-background";
 
-// The Brake: Only real-time layout states.
-$atmos-static-floors: ".alignfull";
+// The Brake: Only real-time layout states. Keep this list very short
+// for browser performance reasons.
+$atmos-static-floors: ".alignfull, .is-style-object-plain";
 
 // --- 3. PHYSICS CONSTANTS ---
 $atmos-timing: 	var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);

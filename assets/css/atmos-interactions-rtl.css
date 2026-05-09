@@ -5,54 +5,75 @@
    10.0 ATMOS INTERACTIONS: KINETIC LAYER (Build 13.11 - Locked Mode)
    Handles all :hover and active state physics
    ========================================================================== */
-.wp-block-button__link:not(.alignfull):hover {
+.wp-block-button__link:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
 }
 
-.wp-element-button:not(.alignfull):hover {
+.wp-element-button:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
 }
 
-.wp-block-social-link:not(.alignfull):hover a {
+.wp-block-social-link:not(.alignfull, .is-style-object-plain):hover a {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
 }
 
-.tag-cloud-link:not(.alignfull):hover {
+.tag-cloud-link:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
   outline: 1px solid #ff00ff;
 }
 
-.wp-block-image:not(.alignfull):hover img {
+.wp-block-image:not(.alignfull, .is-style-object-plain):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
   outline: 1px solid #00ffff;
   outline-offset: -2px;
 }
 
-.wp-block-group:not(.alignfull):hover:is(.has-background) {
+.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
   outline: 2px solid #00ffff;
   outline-offset: -2px;
 }
 
-.wp-block-column:not(.alignfull):hover:is(.has-background) {
+.wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
   outline: 2px solid #00ffff;
   outline-offset: -2px;
 }
 
-.is-style-rounded-border:not(.alignfull):hover {
+.wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
   outline: 2px solid #00ffff;
   outline-offset: -2px;
 }
 
-.is-style-rounded-corners:not(.alignfull):hover {
+.is-style-object-passive:not(.alignfull, .is-style-object-plain):hover {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff;
+  outline-offset: -2px;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain):hover {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff;
+  outline-offset: -2px;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain):hover {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
+  outline: 2px solid #00ffff;
+  outline-offset: -2px;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 15px 35px rgba(0, 0, 0, 0.22)));
   outline: 2px solid #00ffff;
