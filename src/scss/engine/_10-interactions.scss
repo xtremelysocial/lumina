@@ -38,10 +38,25 @@
                 }
             }
 
-            @else if $role == "passenger" {
+			@else if $role == "passenger" {
                 #{$target} {
-                    @include phys.apply-passenger;
-                    @if config.$atmos-debug { outline: config.$debug-passenger; outline-offset: -2px; }
+                    // Check if the trigger is a link or contains one
+                    $is-linked: str-index($trigger, "a") != null or str-index($target, "a") != null;
+
+                    @if $is-linked {
+                        // CASE A: LINKED IMAGE (The Heave)
+                        // Forces grounding so it doesn't lift, then applies growth.
+                        @include phys.apply-passenger-grow;
+                    } @else {
+                        // CASE B: DECORATIVE IMAGE (The Passenger)
+                        // No transform here! It inherits the lift from the parent Ship naturally.
+                        @include phys.apply-passenger;
+                    }
+
+                    @if config.$atmos-debug { 
+                        outline: config.$debug-passenger; 
+                        outline-offset: -2px; 
+                    }
                 }
             }
         }

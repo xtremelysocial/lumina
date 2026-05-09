@@ -10,10 +10,12 @@ $atmos-physics-map: (
     ".wp-element-button"        		: ("self", 		"sovereign"),
     ".wp-block-social-link"     		: ("a",    		"sovereign"),
     ".tag-cloud-link"           		: ("self", 		"sovereign"),
-// 	".avatar" 							: ( "self",		"passenger" ),    
 
     // PASSENGERS: Fast-lift child elements (Images)
     ".wp-block-image"           		: ("img",  		"passenger"),
+	".wp-block-post-featured-image"     : ("img", "passenger"),
+	".wp-block-latest-posts__featured-image" : ("img", 	"passenger"),    
+// 	".avatar" 							: ( "self",		"passenger" ),    
 
     // SHIPS: Container-lift (Requires background color if core block)
     ".wp-block-group"           		: ("self", 			"ship"),
@@ -49,8 +51,9 @@ $atmos-static-floors: ".alignfull, .is-style-object-plain";
 
 // --- 3. PHYSICS CONSTANTS ---
 $atmos-timing: 	var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+$grow-small: 	var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
 $grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
-$grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.15));
+$grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
 $shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
 $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px)); 
 

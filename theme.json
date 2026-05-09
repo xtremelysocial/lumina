@@ -47,7 +47,7 @@
 				"default": {
 					"hoverSmallTransform": "scale(1.03)",
 					"hoverTransform": "scale(1.05)",
-					"hoverLargeTransform": "scale(1.15)",
+					"hoverLargeTransform": "scale(1.10)",
 					"objectSmallTransform": "translateY(-2px)",
 					"objectTransform": "translateY(-4px)"
 				}
@@ -265,7 +265,7 @@
 			},
 			"core/post-title": {
 				"typography": {
-					"fontSize": "var:preset|font-size|huge",
+					"fontSize": "var:preset|font-size|x-large",
 					"fontWeight": "var(--wp--custom--typography--font-weight--light)",
 					"letterSpacing": "-0.01em"
 				}
