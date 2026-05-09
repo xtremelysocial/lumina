@@ -1,83 +1,113 @@
 //* ==========================================================================
-//   0.5 PHYSICS (Pivot 5: Build 03 - The Hardened Rulebook)
+//   0.5 PHYSICS (Pivot 5: Build 18.5 - Shadow Leveling & Stability)
 //   ========================================================================== */
 @use "00-config" as config;
 
 //**
-// * SOVEREIGN: High-intent Active Links/Buttons
-// * Logic: Growth Only. Vertical stability for click targets.
+// * 1. RESTING STATE: The physical baseline for all objects.
+// */
+@mixin apply-resting-state {
+    transition: 
+        transform config.$atmos-timing, 
+        box-shadow config.$atmos-timing, 
+        outline config.$atmos-timing;
+
+    transform: translateY(0) scale(1);
+    
+    // Simple single fallback for stability
+    box-shadow: var(--wp--custom--shadow--default, 
+                var(--wp--preset--shadow--natural, 
+                0 3px 10px rgba(0, 0, 0, 0.14)));
+}
+
+//**
+// * 2. SOVEREIGN: High-intent Active Links/Buttons
 // */
 @mixin apply-sovereign {
-    transform: #{config.$grow-large}; // Pulls 1.15 or JSON override
-//     @if config.$atmos-debug { 
-//         outline: config.$debug-sovereign; 
-//         outline-offset: 2px;
-//     }
+    transform: translateY(0) #{config.$grow-large}; 
+    // Pulling hoverHigh (Sharp)
+    box-shadow: var(--wp--custom--shadow--hover-high, 
+    			var(--wp--preset--shadow--sharp,
+    			0 8px 16px rgba(0, 0, 0, 0.15)));
 }
 
 //**
-// * SHIP: Massive Containers (Groups, Columns, Covers)
-// * Logic: Subtle Lift (-2px) + Shadow Bloom.
+// * 3. SHIP: Massive Containers (Groups, Columns, Covers).
 // */
 @mixin apply-ship {
-    transform: #{config.$shift-subtle}; // Pulls -2px or JSON override
+    transform: #{config.$shift-subtle}; 
+    // Pulling hover (Deep)
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
-                0 15px 35px rgba(0, 0, 0, 0.22)));
-//     @if config.$atmos-debug { 
-//         outline: config.$debug-ship;
-//     }
+				0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
 //**
-// * PASSENGER (NON-IMAGE): Passive Media (Images/Video without links)
-// * Logic: Standard Lift (-4px). No scaling.
+// * 4. PASSENGER (NON-IMAGE): Passive Media (Lift with Ship)
 // */
 @mixin apply-passenger {
-    transform: #{config.$shift-default}; // Pulls -4px or JSON override
-//     @if config.$atmos-debug { 
-//         outline: config.$debug-passenger; 
-//     }
-}
-
-//**
-// * PASSENGER (IMAGE): Functional Media (Images that are portals)
-// * Logic: Subtle Scale (1.03). No lift.
-// */
-@mixin apply-passenger-grow {
-    transform: translateY(0) #{config.$grow-small}; // Grows 1.03 or JSON override
-}
-
-//**
-// * LINKED PASSENGER: Functional Media (Images that are portals)
-// * Logic: Subtle Scale (1.03) + Shadow Bloom.
-// */
-@mixin apply-linked-passenger {
-    transform: #{config.$grow-small}; // Pulls 1.03 or JSON override
+    transform: #{config.$shift-default}; 
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
-                0 15px 35px rgba(0, 0, 0, 0.22)));
-//     @if config.$atmos-debug { 
-//         outline: config.$debug-sovereign; 
-//     }
+				0 6px 12px rgba(0, 0, 0, 0.13)));
+}
+
+//**
+// * 5. PASSENGER GROW (IMAGE/PORTAL): Functional but grounded media
+// */
+@mixin apply-passenger-grow {
+    transform: translateY(0) #{config.$grow-small}; 
+    // Functional portals pull high intent
+    box-shadow: var(--wp--custom--shadow--hover-high, 
+    			var(--wp--preset--shadow--sharp,
+    			0 8px 16px rgba(0, 0, 0, 0.15)));
+}
+
+//**
+// * LINKED PASSENGER: Specific map overrides
+// */
+@mixin apply-linked-passenger {
+    transform: translateY(0) #{config.$grow-small}; 
+    box-shadow: var(--wp--custom--shadow--hover-high, 
+    			var(--wp--preset--shadow--sharp,
+    			0 8px 16px rgba(0, 0, 0, 0.15)));
 }
 
 //**
 // * THE SILENCE PROTOCOL
-// * Logic: Child elements yield their physics to the parent Container (Ship).
+// * (KEEP AS IS)
 // */
 @mixin silence-passengers {
     @if config.$atmos-media != "" {
         #{config.$atmos-media} {
-            // Sealing the physics without !important
             transform: translateY(0) scale(1);
-
-//             @if config.$atmos-debug {
-//                 // We use !important ONLY on the debug outline 
-//                 // to ensure it wins over the registry dash.
-//                 outline: config.$debug-silence !important;
-//                 outline-offset: -2px;
-//             }
+            box-shadow: none;
         }
+    }
+}
+
+@mixin atmos-debug($role) {
+    @if config.$atmos-debug {
+        // Just pull the string exactly as the designer wrote it
+        $debug-string: map-get((
+            "registry":  config.$debug-registry,
+            "ship":      config.$debug-ship,
+            "sovereign": config.$debug-sovereign,
+            "passenger": config.$debug-passenger,
+            "silence":   config.$debug-silence
+        ), $role);
+
+        $debug-offset: map-get((
+            "registry":  -1px,
+            "ship":       2px,
+            "sovereign":  4px,
+            "passenger": -4px,
+            "silence":   -6px
+        ), $role);
+
+        // THE FIX: Output ONLY the variable and the offset. 
+        // No extra '2px' or 'solid' in the mixin itself.
+        outline: #{$debug-string}; 
+        outline-offset: #{$debug-offset};
     }
 }

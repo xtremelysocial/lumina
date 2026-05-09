@@ -1,61 +1,34 @@
 //* ==========================================================================
-//   0.1 REGISTRY (Build 13.9 - Sensing Triggers)
+//   0.1 REGISTRY (Build 18.5 - The Clean Registry)
 //   ========================================================================== */
 @use "00-config" as config;
+@use "05-physics" as phys; // Ensure we can call the mixins
 
-// LOOP THROUGH OUR PHYSICS MAP
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
-        
-	// THE SURGICAL VETO: Ground passengers ONLY if the parent is a kinetic ship
-	@if $role == "passenger" {
-		// We add :not(#{config.$atmos-static-floors}) to ensure "Brakes" don't ground their children
-		:is(#{config.$atmos-card-triggers}):not(#{config.$atmos-static-floors}):hover #{$trigger} {
-			#{$target} {
-				transform: translateY(0) !important;
-				
-				@if config.$atmos-debug { 
-					outline: config.$debug-silence; 
-					outline-offset: -4px; 
-				}
-			}
-		}
-	}
+    $mover: if($target == "self", "&", $target);
 
-    // 1. SOVEREIGNS: Weighted & Isolated
+    // 1. SOVEREIGNS: Weighted & Isolated (Weightless at rest per 13.9)
     @if $role == "sovereign" {
         #{$trigger} {
-            $mover: if($target == "self", "&", $target);
             #{$mover} {
-                transition: transform config.$atmos-timing, box-shadow config.$atmos-timing, outline config.$atmos-timing;
-                transform: translateY(0) scale(1);
-                @if config.$atmos-debug { outline: config.$debug-registry; outline-offset: -1px; }
+                @include phys.apply-resting-state;
+                @include phys.atmos-debug("registry");
             }
         }
     }
 
-	// 2. SHIPS & PASSENGERS: The Sensing Rail
-	@else if $role != "void" and $role != "floor" {
-		$mover: if($target == "self", "&", $target);
-		
-		// 1. THE STRICT SENSOR
-        // We only gate if the trigger STARTS with the core class.
-        // Index 1 = Core Block. Index > 1 = Custom Fast-Pass.
+    // 2. SHIPS & PASSENGERS: The Sensing Rail
+    @else if $role != "void" and $role != "floor" {
         $is-core-block: str-index($trigger, ".wp-block-") == 1;
         $gate: if($role == "ship" and $is-core-block, ":is(#{config.$atmos-card-triggers})", "");
-	
-		:where(#{$trigger}#{$gate}:not(#{config.$atmos-static-floors})) {
-			#{$mover} {
-				transition: transform config.$atmos-timing, box-shadow config.$atmos-timing, outline config.$atmos-timing;
-				transform: translateY(0) scale(1);
-				box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 5px rgba(0,0,0,0.05)));
-	
-				@if config.$atmos-debug { 
-					outline: config.$debug-registry; 
-					outline-offset: -1px; 
-				}
-			}
-		}
-	}
+    
+        :where(#{$trigger}#{$gate}:not(#{config.$atmos-static-floors})) {
+            #{$mover} {
+                @include phys.apply-resting-state;
+                @include phys.atmos-debug("registry");
+            }
+        }
+    }
 }
