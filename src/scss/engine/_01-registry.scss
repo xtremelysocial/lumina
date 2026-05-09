@@ -39,17 +39,17 @@
 	@else if $role != "void" and $role != "floor" {
 		$mover: if($target == "self", "&", $target);
 		
-		// THE GATEKEEPER: Only Core blocks (wp-block-*) are forced to have attributes.
-		$is-core: str-index($trigger, "wp-block-");
-		$sniff-gate: if($role == "ship" and $is-core, ":is(#{config.$atmos-card-triggers})", "");
+		// 1. THE STRICT SENSOR
+        // We only gate if the trigger STARTS with the core class.
+        // Index 1 = Core Block. Index > 1 = Custom Fast-Pass.
+        $is-core-block: str-index($trigger, ".wp-block-") == 1;
+        $gate: if($role == "ship" and $is-core-block, ":is(#{config.$atmos-card-triggers})", "");
 	
-		// STRATEGY: Wrap in :where() to keep specificity at 0.
-		:where(#{$trigger}#{$sniff-gate}:not(#{config.$atmos-static-floors})) {
-			
+		:where(#{$trigger}#{$gate}:not(#{config.$atmos-static-floors})) {
 			#{$mover} {
 				transition: transform config.$atmos-timing, box-shadow config.$atmos-timing, outline config.$atmos-timing;
 				transform: translateY(0) scale(1);
-				box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 5px rgba(0,0,0,0.05)));				
+				box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 2px 5px rgba(0,0,0,0.05)));
 	
 				@if config.$atmos-debug { 
 					outline: config.$debug-registry; 
