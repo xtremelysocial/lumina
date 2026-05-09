@@ -54,11 +54,12 @@
 			},
 			"shadow": {
 				"natural": "0 3px 10px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.09)",
-				"deep":    "0 6px 12px rgba(0, 0, 0, 0.13), 0 2px 5px rgba(0, 0, 0, 0.09)",
-				"sharp":   "0 8px 16px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10)",
-				"outline": "0 0 0 3px var(--wp--preset--color--base), 0 0 15px rgba(0, 0, 0, 0.1)",
-				"default": "var(--wp--custom--shadow--natural)",
-				"hover":   "var(--wp--preset--shadow--deep)"
+				"deep":    "0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08)",
+				"sharp":   "0 12px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.10)",
+				"crisp":   "0 20px 40px rgba(0, 0, 0, 0.20), 0 8px 15px rgba(0, 0, 0, 0.12)",
+				"outline": "0 0 0 3px var(--wp--preset--color--base), 0 0 15px rgba(0, 0, 0, 0.1)",				"default": "var(--wp--preset--shadow--natural)",
+				"hover":   "var(--wp--preset--shadow--deep)",
+				"hoverHigh": "var(--wp--preset--shadow--sharp)"
 			},
 			"typography": {
 				"fontWeight": {
@@ -167,16 +168,8 @@
 		"shadow": {
 			"defaultPresets": false,
 			"presets": [
-				{
-                    "name": "Natural",
-                    "slug": "natural",
-                    "shadow": "0 2px 10px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)"
-                },
-                {
-                    "name": "Deep",
-                    "slug": "deep",
-                    "shadow": "0 15px 35px rgba(0, 0, 0, 0.22), 0 5px 15px rgba(0, 0, 0, 0.12)"
-                },
+				{ "name": "Natural", "slug": "natural", "shadow": "var(--wp--custom--shadow--natural)" },
+				{ "name": "Deep", "slug": "deep", "shadow": "var(--wp--custom--shadow--deep)" },
 				{ "name": "Crisp", "slug": "crisp", "shadow": "var(--wp--custom--shadow--crisp)" },
 				{ "name": "Sharp", "slug": "sharp", "shadow": "var(--wp--custom--shadow--sharp)" },
 				{ "name": "Outline", "slug": "outline", "shadow": "var(--wp--custom--shadow--outline)" }

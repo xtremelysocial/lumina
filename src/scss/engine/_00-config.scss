@@ -59,9 +59,9 @@ $shift-default: var(--wp--custom--animation--default--object-transform, translat
 $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px)); 
 
 // --- 4. DEBUGGING ---
-$atmos-debug: false; 
-$debug-registry:   1px dashed #ff8c00; 
-$debug-sovereign:  1px solid #ff00ff;  
-$debug-ship:       2px solid #00ffff;  
-$debug-passenger:  1px solid #00ffff;
-$debug-silence:    2px solid #ff3b30;  // Vivid Red (Suppressed/Grounded)        
+$atmos-debug: true; 
+$debug-registry:   1px dashed #ff8c00; // Orange dashes
+$debug-sovereign:  1px solid #ff00ff;  // Purple
+$debug-ship:       2px solid #00ffff;  // Blue
+$debug-passenger:  1px solid #00ffff;  // Cyan
+$debug-silence:    2px solid #ff3b30;  // Red
