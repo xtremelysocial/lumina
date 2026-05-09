@@ -6,21 +6,23 @@
 $atmos-physics-map: (
 
     // SOVEREIGNS: Fast-pass growth (Buttons, Icons)
-    ".wp-block-button__link"    		: ("self", 		"sovereign"),
-    ".wp-element-button"        		: ("self", 		"sovereign"),
-    ".wp-block-social-link"     		: ("a",    		"sovereign"),
-    ".tag-cloud-link"           		: ("self", 		"sovereign"),
+    ".wp-block-button__link"    		: ("self", 			"sovereign"),
+    ".wp-element-button"        		: ("self", 			"sovereign"),
+    ".wp-block-social-link"     		: ("a",    			"sovereign"),
+    ".tag-cloud-link"           		: ("self", 			"sovereign"),
 
     // PASSENGERS: Fast-lift child elements (Images)
-    ".wp-block-image"           		: ("img",  		"passenger"),
-	".wp-block-post-featured-image"     : ("img", "passenger"),
-	".wp-block-latest-posts__featured-image" : ("img", 	"passenger"),    
-// 	".avatar" 							: ( "self",		"passenger" ),    
+    ".wp-block-image"           		: ("img",  			"passenger"),
+	".wp-block-post-featured-image"     : ("img", 			"passenger"),
+    ".wp-block-latest-posts__featured-image"   : ("img", 	"passenger"), // Lift
+	".wp-block-latest-posts__featured-image a" : ("img", 	"passenger"), // Grow   
+	".avatar"             				: ("self", 			"passenger"), // Lift
+	".avatar-container a" 				: ("img", 			"passenger"), // Grow
 
     // SHIPS: Container-lift (Requires background color if core block)
     ".wp-block-group"           		: ("self", 			"ship"),
     ".wp-block-column"          		: ("self", 			"ship"),
-    ".wp-block-media-text"     			: ( "self",			"ship" ),
+    ".wp-block-media-text"     			: ( "self",			"ship"),
     
     // SHIPS: Container-lift (Automatic as these are Atmos custom styles)
     ".is-style-object-passive"  		: ("self", 			"ship"),
@@ -39,7 +41,7 @@ $atmos-physics-map: (
 	
     // FLOORS: Pinned architecture (Skipped by logic)
     "#page-content"             		: ("self", 			"floor"),
-    ".site-header"              		: ("self", 			"floor")
+//     ".site-header"              		: ("self", 			"floor")
 );
 
 // --- 2. SENSING TRIGGERS (The Attribute Gate) ---
