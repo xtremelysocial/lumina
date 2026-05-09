@@ -30,7 +30,7 @@
 }
 
 //**
-// * PASSENGER: Passive Media (Images/Video without links)
+// * PASSENGER (NON-IMAGE): Passive Media (Images/Video without links)
 // * Logic: Standard Lift (-4px). No scaling.
 // */
 @mixin apply-passenger {
@@ -38,6 +38,14 @@
 //     @if config.$atmos-debug { 
 //         outline: config.$debug-passenger; 
 //     }
+}
+
+//**
+// * PASSENGER (IMAGE): Functional Media (Images that are portals)
+// * Logic: Subtle Scale (1.03). No lift.
+// */
+@mixin apply-passenger-grow {
+    transform: translateY(0) #{config.$grow-small}; // Grows 1.03 or JSON override
 }
 
 //**
