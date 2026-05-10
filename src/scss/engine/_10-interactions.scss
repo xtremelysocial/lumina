@@ -1,5 +1,5 @@
 //* ==========================================================================
-//   1.0 INTERACTIONS (Build 18.5 - The Logic Hub)
+//   1.0 INTERACTIONS (Build 18.30 - Pivot 5 Restoration)
 //   ========================================================================== */
 @use "00-config" as config;
 @use "05-physics" as phys;
@@ -15,51 +15,38 @@
         
         #{$trigger}#{$gate}:not(#{config.$atmos-static-floors}):hover {
             #{$mover} {
-                @if $role == "sovereign" { 
-                    @include phys.apply-sovereign; 
-                    @include phys.atmos-debug("sovereign"); 
-                }
-                @else if $role == "ship" { 
-                    @include phys.apply-ship; 
-                    @include phys.atmos-debug("ship"); 
-                }
+                @if $role == "sovereign" { @include phys.apply-sovereign; }
+                @else if $role == "ship" { @include phys.apply-ship; }
                 @else if $role == "passenger" {
-                    // FIXED: Strict link detection. 
-                    // Only grows if the trigger ends in "a" or the target is an anchor.
-                    $is-portal: (str-index($trigger, " a") != null) or ($target == "a");
+                    // Sovereignty Shield: Links grow, static lifts.
+                    $is-portal: (str-index($trigger, " a") != null) or ($target == "a") or (str-index($trigger, "-link") != null);
 
-                    @if $is-portal {
-                        @include phys.apply-passenger-grow; 
-                    } @else {
-                        @include phys.apply-passenger; // Grounded
-                    }
-					@include phys.atmos-debug("passenger"); 
+                    @if $is-portal { @include phys.apply-passenger-grow; } 
+                    @else { @include phys.apply-passenger; }
                 }
             }
         }
     }
 
-	// 2. THE DYNAMIC SURGICAL VETO (Build 18.8 - Final MVP)
-	@if $role == "passenger" {
-		
-		// FIX: Properly handle "self" targets for Veto selectors
-		$passenger-selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
-	
-		@each $ship-trigger, $ship-meta in config.$atmos-physics-map {
-			@if nth($ship-meta, 2) == "ship" {
-				
-				// Visual Signature Gate: Ships must be custom styles or have backgrounds
-				$is-generic: (str-index($ship-trigger, ".wp-block-group") != null) or 
-							 (str-index($ship-trigger, ".wp-block-column") != null);
-				
-				$veto-gate: if($is-generic, "#{$ship-trigger}#{config.$atmos-card-triggers}", $ship-trigger);
-	
-				// Output clean CSS: e.g., .is-style-rounded-border:hover .avatar
-				#{$veto-gate}:hover #{$passenger-selector} {
-					transform: translateY(0) !important;
-					@include phys.atmos-debug("silence"); 
-				}
-			}
-		}
-	}
+    // SECTION 2: THE SURGICAL VETO
+    @if $role == "passenger" {
+        $passenger-selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
+
+        @each $ship-trigger, $ship-meta in config.$atmos-physics-map {
+            @if nth($ship-meta, 2) == "ship" {
+                $is-generic: (str-index($ship-trigger, ".wp-block-group") != null) or (str-index($ship-trigger, ".wp-block-column") != null);
+                $veto-gate: if($is-generic, "#{$ship-trigger}#{config.$atmos-card-triggers}", $ship-trigger);
+
+                #{$veto-gate}:not(#{config.$atmos-static-floors}):hover #{$passenger-selector} {
+                    $is-portal: (str-index($trigger, " a") != null) or ($target == "a") or (str-index($trigger, "-link") != null);
+                    
+                    @if not $is-portal {
+                        transform: translateY(0);
+                        box-shadow: none; // Kills ghost shadow
+                        @include phys.atmos-debug("silence"); 
+                    }
+                }
+            }
+        }
+    }
 }
