@@ -1,8 +1,8 @@
 //* ==========================================================================
-//   1.0 INTERACTIONS (Build 18.30 - Pivot 5 Restoration)
+//   20 INTERACTIONS (Build 23 - Restructure)
 //   ========================================================================== */
 @use "00-config" as config;
-@use "05-physics" as phys;
+@use "01-physics" as phys;
 
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);

@@ -1,0 +1,15 @@
+//* ==========================================================================
+//   21 VETOS (Build 23 - Restructure)
+//   ========================================================================== */
+@use "00-config" as config;
+@use "01-physics" as phys;
+
+@each $trigger, $meta in config.$atmos-physics-map {
+    $target: nth($meta, 1);
+    $role:   nth($meta, 2);
+    $mover: if($target == "self", "&", $target);
+
+	// WHAT THE HECK GOES HERE? 
+	// A CODE BLOCK FROM 30-INTERACTIONS?
+
+}
