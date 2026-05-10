@@ -1,27 +1,16 @@
 //* ==========================================================================
-//   0.1 REGISTRY (Build 18.30 - Pivot 5 Restoration)
+//   10 SHIPS (Build 23 - Restructure)
 //   ========================================================================== */
 @use "00-config" as config;
-@use "05-physics" as phys;
+@use "01-physics" as phys;
 
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
     $mover: if($target == "self", "&", $target);
 
-    // 1. SOVEREIGNS: (Buttons, Icons) 
-    // Must be initialized or they "snap" without fluidity.
-    @if $role == "sovereign" {
-        #{$trigger} {
-            #{$mover} {
-                @include phys.apply-resting-state;
-                @include phys.atmos-debug("registry");
-            }
-        }
-    }
-
-    // 2. SHIPS & PASSENGERS: The Sensing Rail
-    @else if $role != "void" and $role != "floor" {
+    // THE SENSING RAIL FOR SHIPS
+    @if $role == "ship" {
         $is-core-block: str-index($trigger, ".wp-block-") == 1;
         $gate: if($role == "ship" and $is-core-block, ":is(#{config.$atmos-card-triggers})", "");
     
@@ -33,4 +22,5 @@
             }
         }
     }
+
 }
