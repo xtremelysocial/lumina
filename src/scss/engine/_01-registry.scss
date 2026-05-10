@@ -1,15 +1,16 @@
 //* ==========================================================================
-//   0.1 REGISTRY (Build 18.5 - The Clean Registry)
+//   0.1 REGISTRY (Build 18.30 - Pivot 5 Restoration)
 //   ========================================================================== */
 @use "00-config" as config;
-@use "05-physics" as phys; // Ensure we can call the mixins
+@use "05-physics" as phys;
 
 @each $trigger, $meta in config.$atmos-physics-map {
     $target: nth($meta, 1);
     $role:   nth($meta, 2);
     $mover: if($target == "self", "&", $target);
 
-    // 1. SOVEREIGNS: Weighted & Isolated (Weightless at rest per 13.9)
+    // 1. SOVEREIGNS: (Buttons, Icons) 
+    // Must be initialized or they "snap" without fluidity.
     @if $role == "sovereign" {
         #{$trigger} {
             #{$mover} {
@@ -24,6 +25,7 @@
         $is-core-block: str-index($trigger, ".wp-block-") == 1;
         $gate: if($role == "ship" and $is-core-block, ":is(#{config.$atmos-card-triggers})", "");
     
+        // This block creates the "Natural Shadow" at rest.
         :where(#{$trigger}#{$gate}:not(#{config.$atmos-static-floors})) {
             #{$mover} {
                 @include phys.apply-resting-state;
