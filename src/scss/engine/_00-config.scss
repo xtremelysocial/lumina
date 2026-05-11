@@ -1,5 +1,6 @@
 //* ==========================================================================
-//   00 ATMOS CONFIGURATION (Build 23 - Restructure)
+//   00 ATMOS CONFIGURATION: Physics Maps (Roles), Constants, Debug Variables
+//	 	Build 24 Restructure
 //   ========================================================================== */
 
 // --- 1. THE PHYSICS MAP (Trigger : ( Target, Role )) ---
@@ -60,7 +61,7 @@ $atmos-physics-map: (
 // --- 2. SENSING TRIGGERS (The Attribute Gate) ---
 // Only for CORE blocks (wp-block-*) to prove they are cards.
 $atmos-card-triggers: ".has-background";
-
+ 
 // The Brake: Only real-time layout states. Keep this list very short
 // for browser performance reasons.
 $atmos-static-floors: ".alignfull, .is-style-object-plain";

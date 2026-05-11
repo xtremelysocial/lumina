@@ -1,10 +1,10 @@
 /* ==========================================================================
-   1.0 ATMOS ENGINE (Build 13.11 - Locked Mode)
-   Handles registry, sensors, relays, and resting state physics
+   1.0 ATMOS ENGINE: Registers objects and sets their resting states
+   	   Build 24 Restructure   
    ========================================================================== */
 
 @use 'engine/10-ships' as *;
-@use 'engine/11-passengers' as *;
-@use 'engine/12-sovereigns' as *;
-@use 'engine/20-voids' as *;
-@use 'engine/21-vetos' as *;
+@use 'engine/20-passengers' as *;
+@use 'engine/30-sovereigns' as *;
+@use 'engine/50-voids' as *;
+@use 'engine/60-vetos' as *;

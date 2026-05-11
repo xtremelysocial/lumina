@@ -1,5 +1,6 @@
 //* ==========================================================================
-//   12 SOVEREIGNS (Build 23 - Restructure)
+//   90 INTERACTIONS: Handles all hover actions for all roles
+//	    Build 24 Restructure
 //   ========================================================================== */
 @use "00-config" as config;
 @use "01-physics" as phys;
@@ -9,14 +10,15 @@
     $role:   nth($meta, 2);
     $mover: if($target == "self", "&", $target);
 
-    // THE SENSING RAIL FOR SOVEREIGNS
     @if $role == "sovereign" {
-        #{$trigger} {
-            #{$mover} {
-                @include phys.apply-resting-state;
-                @include phys.atmos-debug("registry");
-            }
-        }
-    }
-    
+
+		$is-core-block: str-index($trigger, ".wp-block-") == 1;
+		$gate: if($role == "ship" and $is-core-block, ":is(#{config.$atmos-card-triggers})", "");
+		
+		#{$trigger}#{$gate}:not(#{config.$atmos-static-floors}):hover {
+			#{$mover} {
+				@include phys.apply-sovereign;
+			}
+		}
+	}
 }

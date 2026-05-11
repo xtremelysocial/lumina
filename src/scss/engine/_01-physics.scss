@@ -1,5 +1,6 @@
 //* ==========================================================================
-//   01 PHYSICS MIXINS (Build 23 - Restructure)
+//   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
+//	 	Build 24 Restructure
 //   ========================================================================== */
 @use "00-config" as config;
 
@@ -7,14 +8,17 @@
 // * 1. RESTING STATE: The physical baseline for all objects.
 // */
 @mixin apply-resting-state {
+
+	// Setup transition timing
     transition: 
         transform config.$atmos-timing, 
         box-shadow config.$atmos-timing, 
         outline config.$atmos-timing;
 
+	// Start in place
     transform: translateY(0) scale(1);
     
-    // Simple single fallback for stability
+    // Resting shadow (e.g. Natural)
     box-shadow: var(--wp--custom--shadow--default, 
                 var(--wp--preset--shadow--natural, 
                 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -24,8 +28,11 @@
 // * 2. SOVEREIGN: High-intent Active Links/Buttons
 // */
 @mixin apply-sovereign {
+
+	// Grow Large (e.g. x1.1)
     transform: translateY(0) #{config.$grow-large}; 
-    // Pulling hoverHigh (Sharp)
+
+    // Hover high shadow on hover (e.g. Sharp)
     box-shadow: var(--wp--custom--shadow--hover-high, 
     			var(--wp--preset--shadow--sharp,
     			0 8px 16px rgba(0, 0, 0, 0.15)));
@@ -35,8 +42,11 @@
 // * 3. SHIP: Massive Containers (Groups, Columns, Covers).
 // */
 @mixin apply-ship {
+
+	// Subtle shift (e.g. -2px)
     transform: #{config.$shift-subtle}; 
-    // Pulling hover (Deep)
+
+    // Hover default shadow (e.g. Deep)
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
 				0 6px 12px rgba(0, 0, 0, 0.13)));
@@ -47,8 +57,11 @@
 // * Logic: Subtle breathing lift using config variables.
 // */
 @mixin apply-passenger {
-    // Uses translateY(-2px) from your config
-    transform: #{config.$shift-subtle} scale(1); 
+
+    // Default shift (e.g. -4px)
+    transform: #{config.$shift-default} scale(1); 
+    
+    // Hover default shadow (e.g. Deep)    
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
                 0 4px 12px rgba(0, 0, 0, 0.12)));
@@ -59,8 +72,11 @@
 // * Logic: Kinetic scale using config variables.
 // */
 @mixin apply-passenger-grow {
-    // Uses scale(1.03) from your config
+
+    // Small growth (e.g 1.03)
     transform: translateY(0) #{config.$grow-small}; 
+    
+    // Hover high shadow on hover (e.g. Sharp)    
     box-shadow: var(--wp--custom--shadow--hover-high, 
                 var(--wp--preset--shadow--sharp, 
                 0 12px 25px rgba(0, 0, 0, 0.15)));
@@ -70,15 +86,18 @@
 // * LINKED PASSENGER: Specific map overrides
 // */
 @mixin apply-linked-passenger {
+
+    // Small growth (e.g 1.03)
     transform: translateY(0) #{config.$grow-small}; 
+
+    // Hover high shadow on hover (e.g. Sharp)    
     box-shadow: var(--wp--custom--shadow--hover-high, 
     			var(--wp--preset--shadow--sharp,
     			0 8px 16px rgba(0, 0, 0, 0.15)));
 }
 
 //**
-// * THE SILENCE PROTOCOL
-// * (KEEP AS IS)
+// * THE SILENCE PROTOCOL: Silence passengers of ships
 // */
 @mixin silence-passengers {
     @if config.$atmos-media != "" {
@@ -89,6 +108,9 @@
     }
 }
 
+//**
+// * VISUAL DEBUG: Set outline colors and styles based on engine logic
+// */
 @mixin atmos-debug($role) {
     @if config.$atmos-debug {
         // Just pull the string exactly as the designer wrote it
@@ -108,8 +130,7 @@
             "silence":   -6px
         ), $role);
 
-        // THE FIX: Output ONLY the variable and the offset. 
-        // No extra '2px' or 'solid' in the mixin itself.
+        // Set the outline color and offset
         outline: #{$debug-string}; 
         outline-offset: #{$debug-offset};
     }

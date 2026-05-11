@@ -1,5 +1,6 @@
 //* ==========================================================================
-//   20 VOIDS (Build 23 - Restructure)
+//   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+//	    Build 24 Restructure
 //   ========================================================================== */
 @use "00-config" as config;
 @use "01-physics" as phys;
@@ -9,7 +10,13 @@
     $role:   nth($meta, 2);
     $mover: if($target == "self", "&", $target);
 
-	// WHAT THE HECK GOES HERE? 
-	// A CODE BLOCK FROM 30-INTERACTIONS?
-
+    // THE SENSING RAIL FOR SOVEREIGNS
+    @if $role == "sovereign" {
+        #{$trigger} {
+            #{$mover} {
+                @include phys.apply-resting-state;
+                @include phys.atmos-debug("registry");
+            }
+        }
+    }  
 }
