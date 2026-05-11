@@ -1,40 +1,38 @@
 //* ==========================================================================
 //   90 INTERACTIONS: Handles all hover actions for all roles
-//	    Pivot 5 Build 25 Restructure
-//   ========================================================================== */
+//	    Pivot 5 Build 26 Vetos + Portal Detection Refactor
+//   ========================================================================= */
 
-@use "sass:string"; // Required for string.index
-@use "sass:list";   // Required for list.nth
+@use "sass:string"; 
+@use "sass:list";   
 
 @use "00-config" as config;
 @use "01-physics" as phys;
 
 // LOOP THROUGH OUR PHYSICS MAP FOR PASSENGERS
 @each $trigger, $meta in config.$atmos-physics-map {
-	  $target: list.nth($meta, 1);
-      $role:   list.nth($meta, 2);
+    $target: list.nth($meta, 1);
+    $role:   list.nth($meta, 2);
 
     @if $role == "passenger" {
-        $mover: if($target == "self", "&", #{$target});
-        $gate:  phys.get-passenger-gate($trigger);
+        $mover:  if($target == "self", "&", #{$target});
+        $gate:   phys.get-passenger-gate($trigger);
         
-        // SYNC: Uses the exact same gate and floor-filter as _20-passengers
-		#{$trigger}#{$gate}#{phys.$passenger-filter}:hover {
+        // --- BRANCH 1: THE PORTAL (GROW) ---
+        // If the figure HAS an <a>, we only GROW the image.
+        #{$trigger}#{$gate}#{phys.$passenger-context-filter}:is(:has(a), a):hover {
             #{$mover} {
+                @include phys.apply-passenger-grow;
+                @include phys.atmos-debug("passenger");                                
+            }
+        }
 
-                // Sovereignty Shield: Links grow, static lifts.
-                $is-portal: (
-                	string.index($trigger, " a") != null) 
-                	or ($target == "a") 
-                	or (string.index($trigger, "-link") != null
-                );
-                @if $is-portal { 
-                    @include phys.apply-passenger-grow; 
-                } 
-                @else { 
-                    @include phys.apply-passenger; 
-                }
-				@include phys.atmos-debug("passenger");                                
+        // --- BRANCH 2: THE STANDARD (LIFT) ---
+        // If the figure has NO <a>, we LIFT the image.
+        #{$trigger}#{$gate}#{phys.$passenger-context-filter}:not(:has(a), a):hover {
+            #{$mover} {
+                @include phys.apply-passenger;
+                @include phys.atmos-debug("passenger");                                
             }
         }
     }
