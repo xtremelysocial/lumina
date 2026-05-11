@@ -2,8 +2,8 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/atmos-engine.scss ***!
   \***********************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
-   1.0 ATMOS ENGINE (Build 13.11 - Locked Mode)
-   Handles registry, sensors, relays, and resting state physics
+   1.0 ATMOS ENGINE: Registers objects and sets their resting states
+   	   Build 24 Restructure   
    ========================================================================== */
 :where(.wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
@@ -195,4 +195,340 @@
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
+}
+
+.wp-block-column.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-group.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-media-text:not(.alignfull, .is-style-object-plain):hover .wp-block-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain):hover .wp-block-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain):hover .wp-block-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain):hover .wp-block-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-column.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-post-featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-group.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-post-featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-media-text:not(.alignfull, .is-style-object-plain):hover .wp-block-post-featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain):hover .wp-block-post-featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-post-featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-post-featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain):hover .wp-block-post-featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain):hover .wp-block-post-featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-column.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-posts__featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-group.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-posts__featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-media-text:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-posts__featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-posts__featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-posts__featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-posts__featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-posts__featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-posts__featured-image img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-column.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-group.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-media-text:not(.alignfull, .is-style-object-plain):hover .wp-block-avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain):hover .wp-block-avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain):hover .wp-block-avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain):hover .wp-block-avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-column.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-comments__comment .avatar {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-group.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-comments__comment .avatar {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-media-text:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-comments__comment .avatar {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-comments__comment .avatar {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-comments__comment .avatar {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-comments__comment .avatar {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-comments__comment .avatar {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain):hover .wp-block-latest-comments__comment .avatar {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-column.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-post-author__avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-group.has-background:not(.alignfull, .is-style-object-plain):hover .wp-block-post-author__avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.wp-block-media-text:not(.alignfull, .is-style-object-plain):hover .wp-block-post-author__avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain):hover .wp-block-post-author__avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-post-author__avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain):hover .wp-block-post-author__avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain):hover .wp-block-post-author__avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain):hover .wp-block-post-author__avatar img {
+  transform: translateY(0);
+  box-shadow: none;
+  outline: 2px solid #ff3b30;
+  outline-offset: -6px;
 }

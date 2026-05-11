@@ -1,5 +1,10 @@
 /* ==========================================================================
-   10.0 ATMOS INTERACTIONS: KINETIC LAYER (Build 13.11 - Locked Mode)
-   Handles all :hover and active state physics
+   90 ATMOS INTERACTIONS: Handles all :hover and active state physics
+	    Build 24 Restructure
    ========================================================================== */
-@use 'engine/30-interactions' as *;
+
+// @use 'engine/90-interactions' as *;
+
+@use 'engine/11-ship-actions' as *;
+@use 'engine/21-passenger-actions' as *;
+@use 'engine/31-sovereign-actions' as *;

@@ -1,5 +1,6 @@
 //* ==========================================================================
-//   11 PASSENGERS (Build 23 - Restructure)
+//   50 VOIDS: Invisible to the Physics Engine (e.g. #wpadminbar) 
+//	    Build 24 Restructure
 //   ========================================================================== */
 @use "00-config" as config;
 @use "01-physics" as phys;
@@ -9,14 +10,7 @@
     $role:   nth($meta, 2);
     $mover: if($target == "self", "&", $target);
 
-    // THE SENSING RAIL FOR PASSENGERS
-    @if $role == "passenger" {
-        :where(#{$trigger}:not(#{config.$atmos-static-floors})) {
-            #{$mover} {
-                @include phys.apply-resting-state;
-                @include phys.atmos-debug("registry");
-            }
-        }
-    }
+	// WHAT THE HECK GOES HERE? 
+	// A CODE BLOCK FROM 30-INTERACTIONS?
 
 }
