@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   90 INTERACTIONS: Handles all hover actions for all roles
-//	    Pivot 5 Build 25 Restructure
+//	    Pivot 5 Build 26 Vetos
 //   ========================================================================== */
 
 @use "sass:string"; // Required for string.index
@@ -11,28 +11,28 @@
 
 // LOOP THROUGH OUR PHYSICS MAP FOR PASSENGERS
 @each $trigger, $meta in config.$atmos-physics-map {
-	  $target: list.nth($meta, 1);
-      $role:   list.nth($meta, 2);
+    $target: list.nth($meta, 1);
+    $role:   list.nth($meta, 2);
 
     @if $role == "passenger" {
-        $mover: if($target == "self", "&", #{$target});
-        $gate:  phys.get-passenger-gate($trigger);
+        $mover:  if($target == "self", "&", #{$target});
+        $gate:   phys.get-passenger-gate($trigger);
         
-        // SYNC: Uses the exact same gate and floor-filter as _20-passengers
-		#{$trigger}#{$gate}#{phys.$passenger-filter}:hover {
+        // THE FILTERED HOVER
+        // We combine the trigger, the gate, and the silence-filter.
+        // This ensures the hover only fires if the gate is met AND it's not in a ship.
+        #{$trigger}#{$gate}#{phys.$passenger-context-filter}:hover {
             #{$mover} {
+                
+                // Portal Logic (Grow) vs standard Passenger (Lift)
+                $is-portal: (string.index($trigger, " a") != null) 
+                            or ($target == "a") 
+                            or (string.index($trigger, "-link") != null);
 
-                // Sovereignty Shield: Links grow, static lifts.
-                $is-portal: (
-                	string.index($trigger, " a") != null) 
-                	or ($target == "a") 
-                	or (string.index($trigger, "-link") != null
-                );
-                @if $is-portal { 
-                    @include phys.apply-passenger-grow; 
-                } 
-                @else { 
-                    @include phys.apply-passenger; 
+                @if $is-portal {
+                    @include phys.apply-passenger-grow;
+                } @else {
+                    @include phys.apply-passenger;
                 }
 				@include phys.atmos-debug("passenger");                                
             }

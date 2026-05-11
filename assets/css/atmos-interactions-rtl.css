@@ -3,7 +3,7 @@
   \*****************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    90 ATMOS INTERACTIONS: Handles all :hover and active state physics
-	    Pivot 5 Build 25 Restructure
+	    Pivot 5 Build 26 Vetos
    ========================================================================== */
 .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
@@ -61,84 +61,84 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain):hover {
   outline-offset: 2px;
 }
 
-.wp-block-image:not(.alignfull, .is-style-object-plain):hover img {
+.wp-block-image:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-post-featured-image:not(.alignfull, .is-style-object-plain):hover img {
+.wp-block-post-featured-image:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain):hover img {
+.wp-block-latest-posts__featured-image:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-latest-posts__featured-image a:not(.alignfull, .is-style-object-plain):hover img {
+.wp-block-latest-posts__featured-image a:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-avatar:not(.alignfull, .is-style-object-plain):hover img {
+.wp-block-avatar:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-avatar a:not(.alignfull, .is-style-object-plain):hover img {
+.wp-block-avatar a:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-latest-comments__comment .avatar:not(.alignfull, .is-style-object-plain):hover {
+.wp-block-latest-comments__comment .avatar:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-latest-comments__comment a:not(.alignfull, .is-style-object-plain):hover .avatar {
+.wp-block-latest-comments__comment a:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover .avatar {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-post-author__avatar:not(.alignfull, .is-style-object-plain):hover img {
+.wp-block-post-author__avatar:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-post-author__avatar a:not(.alignfull, .is-style-object-plain):hover img {
+.wp-block-post-author__avatar a:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.xs-latest-user-link:not(.alignfull, .is-style-object-plain):hover .avatar {
+.xs-latest-user-link:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover .avatar {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.xs-user-profile a:not(.alignfull, .is-style-object-plain):hover .avatar {
+.xs-user-profile a:not(:is(.wp-block-column:is(.has-background), .wp-block-group:is(.has-background), .wp-block-media-text:is(.has-background), .is-style-object-passive, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, pre.wp-block-code):not(.alignfull, .is-style-object-plain) :not(&)):hover .avatar {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #00ffff;

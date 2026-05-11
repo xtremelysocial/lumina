@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//	    Pivot 5 Build 25 Restructure
+//	    Pivot 5 Build 26 Vetos
 //   ========================================================================== */
 
 @use "sass:list";
@@ -32,5 +32,37 @@
 				@include phys.atmos-debug("registry");					
 			}
 		}
+    }
+}
+
+// --- ATMOS SHIP STYLING: Design Language ---
+// Automatically applies theme-standard rounded corners to Ships.
+// @each $trigger, $meta in config.$atmos-physics-map {
+//     $role: list.nth($meta, 2);
+// 
+//     @if $role == "ship" {
+//         $gate: phys.get-ship-gate($trigger);
+//         
+//         // Low-specificity target for active ships that aren't full-width
+//         :where(#{$trigger}#{$gate}:not(#{config.$atmos-static-floors})) {
+//             border-radius: var(--wp--custom--border--radius, 10px);
+//             overflow: clip; // Ensures background colors don't bleed
+//         }
+//     }
+// }
+
+// Targets top-level blocks to establish modular design language
+:where(.wp-site-blocks, .wp-block-post-content) {
+    @each $trigger, $meta in config.$atmos-physics-map {
+        $role: list.nth($meta, 2);
+
+        @if $role == "ship" {
+            $gate: phys.get-ship-gate($trigger);
+
+            > #{$trigger}#{$gate}:not(#{config.$atmos-static-floors}) {
+                border-radius: var(--wp--custom--border--radius, 10px);
+                overflow: clip;
+            }
+        }
     }
 }

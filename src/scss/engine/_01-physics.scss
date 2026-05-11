@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	Pivot 5 Build 25 Restructure
+//	 	Pivot 5 Build 26 Vetos
 //   ========================================================================== */
 
 @use "sass:string"; // Required for string.index
@@ -33,6 +33,28 @@ $passenger-filter: ":not(#{config.$atmos-static-floors})";
 }
 $sovereign-filter: "";
 // $sovereign-filter: ":not(#{config.$atmos-static-floors})"; //TEST
+
+// --- DYNAMIC SHIP COLLECTION ---
+$collected-ships: ();
+
+@each $trigger, $meta in config.$atmos-physics-map {
+    $role: list.nth($meta, 2);
+    @if $role == "ship" {
+        $gate: get-ship-gate($trigger);
+        $ship-entry: "#{$trigger}#{$gate}";
+        $collected-ships: list.append($collected-ships, $ship-entry, $separator: comma);
+    }
+}
+
+// THE SHIPS LIST
+$ship-context-selector: ":is(#{$collected-ships})";
+
+// THE STATIC FLOORS (e.g., .alignfull, .has-background)
+$static-filter: ":not(#{config.$atmos-static-floors})";
+
+// THE ULTIMATE FILTER
+// "Silence me if I'm in a Ship AND that ship isn't a Static Floor"
+$passenger-context-filter: ":not(#{$ship-context-selector}#{$static-filter} :not(&))";
 
 //**
 // * 01.1 RESTING STATE: The physical baseline for all objects.
@@ -153,3 +175,21 @@ $sovereign-filter: "";
         outline-offset: #{$debug-offset};
     }
 }
+
+// --- TEMPORARY AUDIT RULE (No namespace needed inside 01) ---
+// @if config.$atmos-debug {
+//     
+//     // 1. WILD PASSENGERS (Orange = Ready to Lift)
+//     // Targets images that match our "Outside a Ship" filter
+//     .wp-block-image#{$passenger-context-filter} {
+//         outline: 3px solid orange !important;
+//         outline-offset: 5px;
+//     }
+// 
+//     // 2. SEATED PASSENGERS (Blue = Silenced/Staying Put)
+//     // Targets images inside anything identified as a Ship
+//     :is(#{$ship-context-selector}) .wp-block-image {
+//         outline: 3px solid skyblue !important;
+//         outline-offset: 2px;
+//     }
+// }
