@@ -1,11 +1,41 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	Build 24 Restructure
+//	 	Pivot 5 Build 25 Restructure
 //   ========================================================================== */
+
+@use "sass:string"; // Required for string.index
+@use "sass:list";   // Required for list.nth
+@use "sass:map";	// Required for map.get
+
 @use "00-config" as config;
 
 //**
-// * 1. RESTING STATE: The physical baseline for all objects.
+// * 01.0 MASTER SELECTORS: Centralized logic for role identification
+// */
+
+// SHIPS: Determine if a trigger needs the .has-background gate
+// and floor filter
+@function get-ship-gate($trigger) {
+	$is-core: string.index($trigger, ".wp-block-") == 1;
+	@return if($is-core, ":is(#{config.$atmos-card-triggers})", "");	
+}
+$ship-filter: ":not(#{config.$atmos-static-floors})";
+
+// PASSENGERS: Placeholder Gate and floor filter
+@function get-passenger-gate($trigger) {
+	@return "";
+}
+$passenger-filter: ":not(#{config.$atmos-static-floors})";
+
+// SOVEREIGNS: Placeholder Gate and floor filters
+@function get-sovereign-gate($trigger) {
+	@return "";
+}
+$sovereign-filter: "";
+// $sovereign-filter: ":not(#{config.$atmos-static-floors})"; //TEST
+
+//**
+// * 01.1 RESTING STATE: The physical baseline for all objects.
 // */
 @mixin apply-resting-state {
 
@@ -25,7 +55,7 @@
 }
 
 //**
-// * 2. SOVEREIGN: High-intent Active Links/Buttons
+// * 01.2 SOVEREIGN: High-intent Active Links/Buttons
 // */
 @mixin apply-sovereign {
 
@@ -39,7 +69,7 @@
 }
 
 //**
-// * 3. SHIP: Massive Containers (Groups, Columns, Covers).
+// * 01.3 SHIP: Massive Containers (Groups, Columns, Covers).
 // */
 @mixin apply-ship {
 
@@ -53,7 +83,7 @@
 }
 
 //**
-// * PASSENGER: Decorative Media / Lightbox
+// * 01.4 PASSENGER: Decorative Media / Lightbox
 // * Logic: Subtle breathing lift using config variables.
 // */
 @mixin apply-passenger {
@@ -68,7 +98,7 @@
 }
 
 //**
-// * PASSENGER GROW: Functional Portals (Links)
+// * 01.5 PASSENGER GROW: Functional Portals (Links)
 // * Logic: Kinetic scale using config variables.
 // */
 @mixin apply-passenger-grow {
@@ -83,7 +113,7 @@
 }
 
 //**
-// * LINKED PASSENGER: Specific map overrides
+// * 01.6 LINKED PASSENGER: Specific map overrides
 // */
 @mixin apply-linked-passenger {
 
@@ -97,24 +127,12 @@
 }
 
 //**
-// * THE SILENCE PROTOCOL: Silence passengers of ships
-// */
-@mixin silence-passengers {
-    @if config.$atmos-media != "" {
-        #{config.$atmos-media} {
-            transform: translateY(0) scale(1);
-            box-shadow: none;
-        }
-    }
-}
-
-//**
-// * VISUAL DEBUG: Set outline colors and styles based on engine logic
+// * 01.7 VISUAL DEBUG: Set outline colors and styles based on engine logic
 // */
 @mixin atmos-debug($role) {
     @if config.$atmos-debug {
         // Just pull the string exactly as the designer wrote it
-        $debug-string: map-get((
+        $debug-string: map.get((
             "registry":  config.$debug-registry,
             "ship":      config.$debug-ship,
             "sovereign": config.$debug-sovereign,
@@ -122,7 +140,7 @@
             "silence":   config.$debug-silence
         ), $role);
 
-        $debug-offset: map-get((
+        $debug-offset: map.get((
             "registry":  -1px,
             "ship":       2px,
             "sovereign":  4px,

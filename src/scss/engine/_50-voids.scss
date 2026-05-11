@@ -1,16 +1,29 @@
 //* ==========================================================================
 //   50 VOIDS: Invisible to the Physics Engine (e.g. #wpadminbar) 
-//	    Build 24 Restructure
+//	    Pivot 5 Build 25 Restructure
 //   ========================================================================== */
+
+@use "sass:list";
+
 @use "00-config" as config;
 @use "01-physics" as phys;
 
+// LOOP THROUGH OUR PHYSICS MAP FOR VOIDS
 @each $trigger, $meta in config.$atmos-physics-map {
-    $target: nth($meta, 1);
-    $role:   nth($meta, 2);
-    $mover: if($target == "self", "&", $target);
+	  $target: list.nth($meta, 1);
+      $role:   list.nth($meta, 2);
 
-	// WHAT THE HECK GOES HERE? 
-	// A CODE BLOCK FROM 30-INTERACTIONS?
-
+    // THE SILENCE PROTOCOL
+    // If a role is explicitly set to "void", we strip its physics 
+    // to ensure no ghost-hovering or transition bloat.
+    @if $role == "void" {
+	    $mover: if($target == "self", "&", #{$target});
+        #{$trigger} {
+            #{$mover} {
+                transition: none !important;
+                transform: none !important;
+                box-shadow: none !important;
+            }
+        }
+    }
 }

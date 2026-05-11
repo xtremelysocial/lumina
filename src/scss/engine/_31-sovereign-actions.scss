@@ -1,24 +1,28 @@
 //* ==========================================================================
 //   90 INTERACTIONS: Handles all hover actions for all roles
-//	    Build 24 Restructure
+//	    Pivot 5 Build 25 Restructure
 //   ========================================================================== */
+
+@use "sass:list";
+
 @use "00-config" as config;
 @use "01-physics" as phys;
 
+// LOOP THROUGH OUR PHYSICS MAP FOR SOVEREIGNS
 @each $trigger, $meta in config.$atmos-physics-map {
-    $target: nth($meta, 1);
-    $role:   nth($meta, 2);
-    $mover: if($target == "self", "&", $target);
-
+    $target: list.nth($meta, 1);
+    $role:   list.nth($meta, 2);
+    
     @if $role == "sovereign" {
+        $mover: if($target == "self", "&", $target);
+        $gate:  phys.get-sovereign-gate($trigger);
 
-		$is-core-block: str-index($trigger, ".wp-block-") == 1;
-		$gate: if($role == "ship" and $is-core-block, ":is(#{config.$atmos-card-triggers})", "");
-		
-		#{$trigger}#{$gate}:not(#{config.$atmos-static-floors}):hover {
-			#{$mover} {
-				@include phys.apply-sovereign;
-			}
-		}
-	}
+        // SYNC: Matches _30-sovereigns selector logic exactly
+		#{$trigger}#{$gate}#{phys.$sovereign-filter}:hover {
+            #{$mover} {
+                @include phys.apply-sovereign;
+				@include phys.atmos-debug("sovereign");                
+            }
+        }
+    }
 }

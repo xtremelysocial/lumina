@@ -1,28 +1,40 @@
 //* ==========================================================================
 //   90 INTERACTIONS: Handles all hover actions for all roles
-//	    Build 24 Restructure
+//	    Pivot 5 Build 25 Restructure
 //   ========================================================================== */
+
+@use "sass:string"; // Required for string.index
+@use "sass:list";   // Required for list.nth
+
 @use "00-config" as config;
 @use "01-physics" as phys;
 
+// LOOP THROUGH OUR PHYSICS MAP FOR PASSENGERS
 @each $trigger, $meta in config.$atmos-physics-map {
-    $target: nth($meta, 1);
-    $role:   nth($meta, 2);
-    $mover: if($target == "self", "&", $target);
+	  $target: list.nth($meta, 1);
+      $role:   list.nth($meta, 2);
 
     @if $role == "passenger" {
-        $is-core-block: str-index($trigger, ".wp-block-") == 1;
-        $gate: if($role == "ship" and $is-core-block, ":is(#{config.$atmos-card-triggers})", "");
+        $mover: if($target == "self", "&", #{$target});
+        $gate:  phys.get-passenger-gate($trigger);
         
-        #{$trigger}#{$gate}:not(#{config.$atmos-static-floors}):hover {
+        // SYNC: Uses the exact same gate and floor-filter as _20-passengers
+		#{$trigger}#{$gate}#{phys.$passenger-filter}:hover {
             #{$mover} {
-                @if($role == "passenger") {
-                    // Sovereignty Shield: Links grow, static lifts.
-                    $is-portal: (str-index($trigger, " a") != null) or ($target == "a") or (str-index($trigger, "-link") != null);
 
-                    @if $is-portal { @include phys.apply-passenger-grow; } 
-                    @else { @include phys.apply-passenger; }
+                // Sovereignty Shield: Links grow, static lifts.
+                $is-portal: (
+                	string.index($trigger, " a") != null) 
+                	or ($target == "a") 
+                	or (string.index($trigger, "-link") != null
+                );
+                @if $is-portal { 
+                    @include phys.apply-passenger-grow; 
+                } 
+                @else { 
+                    @include phys.apply-passenger; 
                 }
+				@include phys.atmos-debug("passenger");                                
             }
         }
     }

@@ -3,124 +3,172 @@
   \*****************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    90 ATMOS INTERACTIONS: Handles all :hover and active state physics
-	    Build 24 Restructure
+	    Pivot 5 Build 25 Restructure
    ========================================================================== */
 .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 2px solid #00ffff;
+  outline-offset: 2px;
 }
 
 .wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 2px solid #00ffff;
+  outline-offset: 2px;
 }
 
 .wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 2px solid #00ffff;
+  outline-offset: 2px;
 }
 
 .is-style-object-passive:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 2px solid #00ffff;
+  outline-offset: 2px;
 }
 
 .is-style-rounded-border:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 2px solid #00ffff;
+  outline-offset: 2px;
 }
 
 .is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 2px solid #00ffff;
+  outline-offset: 2px;
 }
 
 .is-style-rounded-corners:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 2px solid #00ffff;
+  outline-offset: 2px;
 }
 
 pre.wp-block-code:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 2px solid #00ffff;
+  outline-offset: 2px;
 }
 
 .wp-block-image:not(.alignfull, .is-style-object-plain):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .wp-block-post-featured-image:not(.alignfull, .is-style-object-plain):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .wp-block-latest-posts__featured-image a:not(.alignfull, .is-style-object-plain):hover img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .wp-block-avatar:not(.alignfull, .is-style-object-plain):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .wp-block-avatar a:not(.alignfull, .is-style-object-plain):hover img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .wp-block-latest-comments__comment .avatar:not(.alignfull, .is-style-object-plain):hover {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .wp-block-latest-comments__comment a:not(.alignfull, .is-style-object-plain):hover .avatar {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .wp-block-post-author__avatar:not(.alignfull, .is-style-object-plain):hover img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .wp-block-post-author__avatar a:not(.alignfull, .is-style-object-plain):hover img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .xs-latest-user-link:not(.alignfull, .is-style-object-plain):hover .avatar {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
 .xs-user-profile a:not(.alignfull, .is-style-object-plain):hover .avatar {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
 }
 
-.wp-block-button__link:not(.alignfull, .is-style-object-plain):hover {
+.wp-block-button__link:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #ff00ff;
+  outline-offset: 4px;
 }
 
-.wp-element-button:not(.alignfull, .is-style-object-plain):hover {
+.wp-element-button:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #ff00ff;
+  outline-offset: 4px;
 }
 
-.wp-block-social-link:not(.alignfull, .is-style-object-plain):hover a {
+.wp-block-social-link:hover a {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #ff00ff;
+  outline-offset: 4px;
 }
 
-.tag-cloud-link:not(.alignfull, .is-style-object-plain):hover {
+.tag-cloud-link:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #ff00ff;
+  outline-offset: 4px;
 }
