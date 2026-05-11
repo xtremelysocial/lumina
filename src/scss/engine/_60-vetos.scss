@@ -1,31 +1,44 @@
+
 //* ==========================================================================
 //   60 VETOS: Ships (Containers) Overrides of Children (Passengers)
-//	    Build 24 Restructure
+//	    Pivot 5 Build 25 Restructure
 //   ========================================================================== */
+
+@use "sass:string";
+@use "sass:list";
+
 @use "00-config" as config;
 @use "01-physics" as phys;
 
+// LOOP THROUGH OUR PHYSICS MAP FOR PASSENGERS
 @each $trigger, $meta in config.$atmos-physics-map {
-    $target: nth($meta, 1);
-    $role:   nth($meta, 2);
-    $mover: if($target == "self", "&", $target);
+    $target: list.nth($meta, 1);
+    $role:   list.nth($meta, 2);
 
     // THE SURGICAL VETO
     @if $role == "passenger" {
         $passenger-selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
 
+		// LOOP THROUGH OUR SHIPS
         @each $ship-trigger, $ship-meta in config.$atmos-physics-map {
-            @if nth($ship-meta, 2) == "ship" {
-                $is-generic: (str-index($ship-trigger, ".wp-block-group") != null) or (str-index($ship-trigger, ".wp-block-column") != null);
-                $veto-gate: if($is-generic, "#{$ship-trigger}#{config.$atmos-card-triggers}", $ship-trigger);
-
-                #{$veto-gate}:not(#{config.$atmos-static-floors}):hover #{$passenger-selector} {
-                    $is-portal: (str-index($trigger, " a") != null) or ($target == "a") or (str-index($trigger, "-link") != null);
+            @if list.nth($ship-meta, 2) == "ship" {
+                
+                // GUARD: Prevents the ship from silencing itself (Stops Red Containers)
+                @if $ship-trigger != $trigger {
                     
-                    @if not $is-portal {
-                        transform: translateY(0);
-                        box-shadow: none; // Kills ghost shadow
-                        @include phys.atmos-debug("silence"); 
+                    $is-generic: (string.index($ship-trigger, ".wp-block-group") != null) or (string.index($ship-trigger, ".wp-block-column") != null);
+                    $veto-gate: if($is-generic, "#{$ship-trigger}#{config.$atmos-card-triggers}", $ship-trigger);
+
+					// VETO: Stops the Passengers within a Ship unless they are Links
+                    #{$veto-gate}#{phys.$ship-filter}:hover #{$passenger-selector} {
+                        $is-portal: (string.index($trigger, " a") != null) or ($target == "a") or (string.index($trigger, "-link") != null);
+
+						// Only stand down non-link passengers
+                        @if not $is-portal {
+                            transform: translateY(0);
+                            box-shadow: none; 
+                            @include phys.atmos-debug("silence"); 
+                        }
                     }
                 }
             }

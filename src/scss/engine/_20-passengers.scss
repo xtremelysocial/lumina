@@ -1,21 +1,37 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    Build 24 Restructure
+//	    Pivot 5 Build 25 Restructure
 //   ========================================================================== */
+
+@use "sass:list";
+
 @use "00-config" as config;
 @use "01-physics" as phys;
 
+// LOOP THROUGH OUR PHYSICS MAP FOR PASSENGERS
 @each $trigger, $meta in config.$atmos-physics-map {
-    $target: nth($meta, 1);
-    $role:   nth($meta, 2);
-    $mover: if($target == "self", "&", $target);
+	  $target: list.nth($meta, 1);
+      $role:   list.nth($meta, 2);
 
-    // THE SENSING RAIL FOR PASSENGERS
     @if $role == "passenger" {
-        :where(#{$trigger}:not(#{config.$atmos-static-floors})) {
-            #{$mover} {
-                @include phys.apply-resting-state;
-                @include phys.atmos-debug("registry");
+        $mover: 	if($target == "self", "&", #{$target});
+        $gate:  	phys.get-passenger-gate($trigger);
+		$filter:	phys.$passenger-filter;        
+
+        // SYNC: Uses the exact same gate and floor-filter as _21-passenger-actions        
+		@if $filter != "" {
+            :where(#{$trigger}#{$gate}#{$filter}) {
+                #{$mover} { 
+                    @include phys.apply-resting-state; 
+					@include phys.atmos-debug("registry");					
+                }
+            }
+        } @else {
+            #{$trigger}#{$gate} {
+                #{$mover} { 
+                    @include phys.apply-resting-state; 
+					@include phys.atmos-debug("registry");					
+                }
             }
         }
     }

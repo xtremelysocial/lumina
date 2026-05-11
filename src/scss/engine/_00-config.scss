@@ -1,9 +1,11 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles), Constants, Debug Variables
-//	 	Build 24 Restructure
+//	 	Pivot 5 Build 25 Restructure
 //   ========================================================================== */
 
-// --- 1. THE PHYSICS MAP (Trigger : ( Target, Role )) ---
+//**
+// * 00.1 THE PHYSICS MAP (Trigger : ( Target, Role ))
+// */
 $atmos-physics-map: (
 
     // SOVEREIGNS: Fast-pass growth (Buttons, Icons)
@@ -58,26 +60,33 @@ $atmos-physics-map: (
     "#wpadminbar"             			: ("self", 			"void"),
 );
 
-// --- 2. SENSING TRIGGERS (The Attribute Gate) ---
+//**
+// * 00.2 SENSING TRIGGERS: The Attribute Gate
+// */
+
 // Only for CORE blocks (wp-block-*) to prove they are cards.
 $atmos-card-triggers: ".has-background";
  
-// The Brake: Only real-time layout states. Keep this list very short
-// for browser performance reasons.
+// The Brake: Only real-time layout states. Keep this list very short for browser
+// performance reasons.
 $atmos-static-floors: ".alignfull, .is-style-object-plain";
 
-// --- 3. PHYSICS CONSTANTS ---
+//**
+// * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up
+// */
 $atmos-timing: 	var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
 $grow-small: 	var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-$grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
+// $grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
 $grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
 $shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
 $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px)); 
 
-// --- 4. DEBUGGING ---
+//**
+// * 00.4 DEBUGGING: Outline colors for visual debugging
+// */
 $atmos-debug: true; 
 $debug-registry:   1px dashed #ff8c00; // Orange dashes
-$debug-sovereign:  1px solid #ff00ff;  // Purple
-$debug-ship:       2px solid #00ffff;  // Blue
-$debug-passenger:  1px solid #00ffff;  // Cyan
-$debug-silence:    2px solid #ff3b30;  // Red
+$debug-sovereign:  1px solid #ff00ff;  // Purple solid
+$debug-ship:       2px solid #00ffff;  // Blue solid
+$debug-passenger:  1px solid #00ffff;  // Cyan solid
+$debug-silence:    2px solid #ff3b30;  // Red solid
