@@ -56,6 +56,17 @@ $static-filter: ":not(#{config.$atmos-static-floors})";
 // "Silence me if I'm in a Ship AND that ship isn't a Static Floor"
 $passenger-context-filter: ":not(#{$ship-context-selector}#{$static-filter} :not(&))";
 
+// PORTAL DETECTION
+// Moves the "Contract" logic out of the loops.
+// Checks if a passenger block represents a link (Portal).
+@function is-portal($trigger, $target) {
+    $is-link: (string.index($trigger, " a") != null) 
+              or ($target == "a") 
+              or (string.index($trigger, "-link") != null);
+    
+    @return $is-link;
+}
+
 //**
 // * 01.1 RESTING STATE: The physical baseline for all objects.
 // */

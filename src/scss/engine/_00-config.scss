@@ -76,7 +76,7 @@ $atmos-static-floors: ".alignfull, .is-style-object-plain";
 // */
 $atmos-timing: 	var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
 $grow-small: 	var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-// $grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
+$grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
 $grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
 $shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
 $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px)); 

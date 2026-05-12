@@ -1,10 +1,10 @@
 //* ==========================================================================
 //   90 INTERACTIONS: Handles all hover actions for all roles
-//	    Pivot 5 Build 26 Vetos
-//   ========================================================================== */
+//	    Pivot 5 Build 26 Vetos + Portal Detection Refactor
+//   ========================================================================= */
 
-@use "sass:string"; // Required for string.index
-@use "sass:list";   // Required for list.nth
+@use "sass:string"; 
+@use "sass:list";   
 
 @use "00-config" as config;
 @use "01-physics" as phys;
@@ -18,23 +18,21 @@
         $mover:  if($target == "self", "&", #{$target});
         $gate:   phys.get-passenger-gate($trigger);
         
-        // THE FILTERED HOVER
-        // We combine the trigger, the gate, and the silence-filter.
-        // This ensures the hover only fires if the gate is met AND it's not in a ship.
-        #{$trigger}#{$gate}#{phys.$passenger-context-filter}:hover {
+        // --- BRANCH 1: THE PORTAL (GROW) ---
+        // If the figure HAS an <a>, we only GROW the image.
+        #{$trigger}#{$gate}#{phys.$passenger-context-filter}:is(:has(a), a):hover {
             #{$mover} {
-                
-                // Portal Logic (Grow) vs standard Passenger (Lift)
-                $is-portal: (string.index($trigger, " a") != null) 
-                            or ($target == "a") 
-                            or (string.index($trigger, "-link") != null);
+                @include phys.apply-passenger-grow;
+                @include phys.atmos-debug("passenger");                                
+            }
+        }
 
-                @if $is-portal {
-                    @include phys.apply-passenger-grow;
-                } @else {
-                    @include phys.apply-passenger;
-                }
-				@include phys.atmos-debug("passenger");                                
+        // --- BRANCH 2: THE STANDARD (LIFT) ---
+        // If the figure has NO <a>, we LIFT the image.
+        #{$trigger}#{$gate}#{phys.$passenger-context-filter}:not(:has(a), a):hover {
+            #{$mover} {
+                @include phys.apply-passenger;
+                @include phys.atmos-debug("passenger");                                
             }
         }
     }
