@@ -23,7 +23,9 @@ $ship-filter: ":not(#{config.$atmos-static-floors})";
 
 // PASSENGERS: Placeholder Gate and floor filter
 @function get-passenger-gate($trigger) {
-	@return "";
+// 	@return "";
+	$is-core: string.index($trigger, ".wp-block-") == 1;
+	@return if($is-core, ":is(#{config.$atmos-passenger-triggers})", "");
 }
 $passenger-filter: ":not(#{config.$atmos-static-floors})";
 
@@ -100,6 +102,7 @@ $passenger-context-filter: "";
 // * 01.3 RESTING STATE: The physical baseline for all objects.
 // */
 @mixin apply-resting-state {
+// %physics-resting-state {
 
 	// Setup transition timing
     transition: 
@@ -118,11 +121,16 @@ $passenger-context-filter: "";
 	// Add debug outline
 	@include atmos-debug("registry");
 }
-
+ 
+// @mixin apply-resting-state {
+// 	@extend %physics-resting-state;
+// }
+ 
 //**
 // * 01.4 SOVEREIGN: High-intent Active Links/Buttons
 // */
 @mixin apply-sovereign {
+// %physics-sovereign-standard {
 
 	// Grow Large (e.g. x1.1)
     transform: translateY(0) #{config.$grow-large}; 
@@ -136,10 +144,15 @@ $passenger-context-filter: "";
 	@include atmos-debug("sovereign");
 }
 
+// @mixin apply-sovereign {
+//     @extend %physics-sovereign-standard;
+// }
+
 //**
 // * 01.5 SHIP: Massive Containers (Groups, Columns, Covers).
 // */
 @mixin apply-ship {
+// %physics-ship-standard {
 
 	// Subtle shift (e.g. -2px)
     transform: #{config.$shift-subtle}; 
@@ -153,11 +166,16 @@ $passenger-context-filter: "";
 	@include atmos-debug("ship");
 }
 
+// @mixin apply-ship {
+//     @extend %physics-ship-standard;
+// }
+
 //**
 // * 01.6 PASSENGER: Decorative Media / Lightbox
 // * Logic: Subtle breathing lift using config variables.
 // */
 @mixin apply-passenger {
+// %physics-passenger-standard {
 
     // Default shift (e.g. -4px)
     transform: #{config.$shift-default} scale(1); 
@@ -171,11 +189,16 @@ $passenger-context-filter: "";
 	@include atmos-debug("passenger");
 }
 
+// @mixin apply-passenger {
+//     @extend %physics-passenger-standard;
+// }
+
 //**
 // * 01.7 PASSENGER GROW: Functional Portals (Links)
 // * Logic: Kinetic scale using config variables.
 // */
 @mixin apply-passenger-grow {
+// %physics-passenger-grow {
 
     // Small growth (e.g 1.03)
     transform: translateY(0) #{config.$grow-small}; 
@@ -188,6 +211,10 @@ $passenger-context-filter: "";
 	// Add debug outline
 	@include atmos-debug("passenger");
 }
+
+// @mixin apply-passenger-grow {
+//     @extend %physics-passenger-grow;
+// }
 
 //**
 // * 01.8 LINKED PASSENGER: Specific map overrides
@@ -204,6 +231,10 @@ $passenger-context-filter: "";
 // 
 // 	// Add debug outline
 // 	@include atmos-debug("passenger");
+// }
+
+// @mixin apply-linked-passenger {
+//     @extend %physics-passenger-grow; 
 // }
 
 //**

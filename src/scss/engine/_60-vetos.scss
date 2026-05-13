@@ -1,8 +1,12 @@
+/* ==========================================================================
+   60 VETOS: Ships (Containers) Overrides of Children (Passengers)
+	    Pivot 5 Build 27 Cleanup
+   ========================================================================== */
 
-//* ==========================================================================
-//   60 VETOS: Ships (Containers) Overrides of Children (Passengers)
-//	    Pivot 5 Build 27 Cleanup
-//   ========================================================================== */
+//*
+//	TO-DO: Don't tamp down sovereigns or passengers (e.g. images) with links.
+//	Those are equivalent to sovereigns, meaning they are *always* active.
+//
 
 @use "sass:string";
 @use "sass:list";

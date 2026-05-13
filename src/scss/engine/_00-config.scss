@@ -18,10 +18,6 @@ $atmos-physics-map: (
     ".is-style-rounded-border"  		: ("self", 			"ship"),
     ".is-style-thick-rounded-border"	: ("self", 			"ship"),
     ".is-style-rounded-corners"			: ("self", 			"ship"),
-//     ".is-style-image-border"  			: ("self", 			"ship"),
-//     ".is-style-image-round-border"  	: ("self", 			"ship"),
-//     ".is-style-image-computer-screen"	: ("self", 			"ship"),
-//     ".image-tablet-phone-screen"		: ("self", 			"ship"),
 
 	// SHIPS: Container-lift (Automatic as these are in theme.json)
 	// Trigger must not start with ".wp-block-" though or the engine will
@@ -29,56 +25,37 @@ $atmos-physics-map: (
 	"pre.wp-block-code"                 : ("self", 			"ship"),	
 	
     // PASSENGERS: Fast-lift child elements (Images)
-//     ".wp-block-group"           		: ("self", 			"passenger"),    
-//     ".wp-block-column"          		: ("self", 			"passenger"),
-    ".wp-block-column"          		: ("self", 			"ship"),
-    ".wp-block-image"           		: ("img",  			"passenger"), // Lift
-//     ".wp-block-image"           		: ("self",  			"passenger"), // Lift
-//     ".wp-block-image > a"           	: ("img",  			"passenger"), // Grow
-//     ".wp-block-image"           		: ("> a > img",  	"passenger"), // Grow
-//     ".size-large.wp-block-image"        : ("img",  			"passenger"), // Lift
-//     ".size-large.wp-block-image a"        : ("img",  		"passenger"), // Lift
-//     ".wp-lightbox-container.wp-block-image": ("img",		"passenger"), // Lift
-//     ".size-full.wp-block-image"        : ("img",  			"passenger"), // Lift
+    ".wp-block-column"          		: ("self", 			"passenger"),
+    ".wp-block-image"           		: ("img",  			"passenger"),
 	".wp-block-post-featured-image"     : ("img", 			"passenger"),
-    ".wp-block-latest-posts__featured-image"   : ("img", 	"passenger"), // Lift
-// 	".wp-block-latest-posts__featured-image a" : ("img", 	"passenger"), // Grow   
-	":not(a) > .avatar"             				: ("self", 			"passenger"), // Lift
-// 	".avatar-container a" 				: ("img", 			"passenger"), // Grow
-//     ".wp-block-avatar"   				: ("img", 			"passenger"), // Lift
-//     ".wp-block-avatar a" 				: ("img", 			"passenger"), // Grow
-// 	".wp-block-latest-comments__comment .avatar" : ("self", "passenger"), // 1. Static
-// 	".wp-block-latest-comments__comment a": (".avatar", 	"passenger"), // 2. Linked
-//     ".wp-block-post-author__avatar"   	: ("img", 			"passenger"), // Lift	
-//     ".wp-block-post-author__avatar a" 	: ("img", 			"passenger"), // Grow
-// 	".xs-latest-user-link"  			: (".avatar", "passenger"), // Grid of latest users
-// 	".xs-user-profile a"    			: (".avatar", "passenger"), // Logged-in profile pic
+    ".wp-block-latest-posts__featured-image"   : ("img", 	"passenger"),
+	":not(a) > .avatar"             	: ("self", 			"passenger"),
 
     // SOVEREIGNS: Fast-pass growth (Buttons, Icons)
     ".wp-block-button__link"    		: ("self", 			"sovereign"),
     ".wp-element-button"        		: ("self", 			"sovereign"),
     ".wp-block-social-link"     		: ("a",    			"sovereign"),
     ".tag-cloud-link"           		: ("self", 			"sovereign"),
-    "a > .avatar"   					: ("self", 			"sovereign"), // Grow
+    "a > .avatar"   					: ("self", 			"sovereign"),
 
     // FLOORS: Pinned architecture (Skipped by logic)
     "#page-content"             		: ("self", 			"floor"),
-//     ".site-header"              		: ("self", 			"floor")
-
-    // VOIDS: Dead Zones (Skipped by logic)
-//     "#wpadminbar"             			: ("self", 			"void"),
 );
 
 //**
 // * 00.2 SENSING TRIGGERS: The Attribute Gate
 // */
 
-// Only for CORE CONTAINER blocks (wp-block-*) to prove they are cards.
+// Only for CONTAINER blocks (wp-block-*) to prove they are cards.
 $atmos-card-triggers: ".has-background";
 
-// Only for IMAGE blocks (wp-block-image) to prove they are cards.
+// Only for IMAGE blocks (img) to prove they are cards.
 // $atmos-image-triggers: ".size-full, .size-large";
- 
+
+// Non-image PASSENGERS (passengers) to prove they are cards.
+// $atmos-passenger-triggers: ".has-background";
+$atmos-passenger-triggers: ".has-background, .size-full, .size-large, .size-thumbnail";
+
 // The Brake: Only real-time layout states. Keep this list very short for browser
 // performance reasons.
 $atmos-static-floors: ".alignfull, .is-style-object-plain";
