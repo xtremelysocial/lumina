@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	Pivot 5 Build 26 Vetos
+//	 	Pivot 5 Build 27 Cleanup
 //   ========================================================================== */
 
 @use "sass:string"; // Required for string.index
@@ -54,7 +54,8 @@ $static-filter: ":not(#{config.$atmos-static-floors})";
 
 // THE ULTIMATE FILTER
 // "Silence me if I'm in a Ship AND that ship isn't a Static Floor"
-$passenger-context-filter: ":not(#{$ship-context-selector}#{$static-filter} :not(&))";
+// $passenger-context-filter: ":not(#{$ship-context-selector}#{$static-filter} :not(&))";
+$passenger-context-filter: "";
 
 // PORTAL DETECTION
 // Moves the "Contract" logic out of the loops.
@@ -68,99 +69,7 @@ $passenger-context-filter: ":not(#{$ship-context-selector}#{$static-filter} :not
 }
 
 //**
-// * 01.1 RESTING STATE: The physical baseline for all objects.
-// */
-@mixin apply-resting-state {
-
-	// Setup transition timing
-    transition: 
-        transform config.$atmos-timing, 
-        box-shadow config.$atmos-timing, 
-        outline config.$atmos-timing;
-
-	// Start in place
-    transform: translateY(0) scale(1);
-    
-    // Resting shadow (e.g. Natural)
-    box-shadow: var(--wp--custom--shadow--default, 
-                var(--wp--preset--shadow--natural, 
-                0 3px 10px rgba(0, 0, 0, 0.14)));
-}
-
-//**
-// * 01.2 SOVEREIGN: High-intent Active Links/Buttons
-// */
-@mixin apply-sovereign {
-
-	// Grow Large (e.g. x1.1)
-    transform: translateY(0) #{config.$grow-large}; 
-
-    // Hover high shadow on hover (e.g. Sharp)
-    box-shadow: var(--wp--custom--shadow--hover-high, 
-    			var(--wp--preset--shadow--sharp,
-    			0 8px 16px rgba(0, 0, 0, 0.15)));
-}
-
-//**
-// * 01.3 SHIP: Massive Containers (Groups, Columns, Covers).
-// */
-@mixin apply-ship {
-
-	// Subtle shift (e.g. -2px)
-    transform: #{config.$shift-subtle}; 
-
-    // Hover default shadow (e.g. Deep)
-    box-shadow: var(--wp--custom--shadow--hover, 
-                var(--wp--preset--shadow--deep, 
-				0 6px 12px rgba(0, 0, 0, 0.13)));
-}
-
-//**
-// * 01.4 PASSENGER: Decorative Media / Lightbox
-// * Logic: Subtle breathing lift using config variables.
-// */
-@mixin apply-passenger {
-
-    // Default shift (e.g. -4px)
-    transform: #{config.$shift-default} scale(1); 
-    
-    // Hover default shadow (e.g. Deep)    
-    box-shadow: var(--wp--custom--shadow--hover, 
-                var(--wp--preset--shadow--deep, 
-                0 4px 12px rgba(0, 0, 0, 0.12)));
-}
-
-//**
-// * 01.5 PASSENGER GROW: Functional Portals (Links)
-// * Logic: Kinetic scale using config variables.
-// */
-@mixin apply-passenger-grow {
-
-    // Small growth (e.g 1.03)
-    transform: translateY(0) #{config.$grow-small}; 
-    
-    // Hover high shadow on hover (e.g. Sharp)    
-    box-shadow: var(--wp--custom--shadow--hover-high, 
-                var(--wp--preset--shadow--sharp, 
-                0 12px 25px rgba(0, 0, 0, 0.15)));
-}
-
-//**
-// * 01.6 LINKED PASSENGER: Specific map overrides
-// */
-@mixin apply-linked-passenger {
-
-    // Small growth (e.g 1.03)
-    transform: translateY(0) #{config.$grow-small}; 
-
-    // Hover high shadow on hover (e.g. Sharp)    
-    box-shadow: var(--wp--custom--shadow--hover-high, 
-    			var(--wp--preset--shadow--sharp,
-    			0 8px 16px rgba(0, 0, 0, 0.15)));
-}
-
-//**
-// * 01.7 VISUAL DEBUG: Set outline colors and styles based on engine logic
+// * 01.2 VISUAL DEBUG: Set outline colors and styles based on engine logic
 // */
 @mixin atmos-debug($role) {
     @if config.$atmos-debug {
@@ -187,7 +96,119 @@ $passenger-context-filter: ":not(#{$ship-context-selector}#{$static-filter} :not
     }
 }
 
-// --- TEMPORARY AUDIT RULE (No namespace needed inside 01) ---
+//**
+// * 01.3 RESTING STATE: The physical baseline for all objects.
+// */
+@mixin apply-resting-state {
+
+	// Setup transition timing
+    transition: 
+        transform config.$atmos-timing, 
+        box-shadow config.$atmos-timing, 
+        outline config.$atmos-timing;
+
+	// Start in place
+    transform: translateY(0) scale(1);
+    
+    // Resting shadow (e.g. Natural)
+    box-shadow: var(--wp--custom--shadow--default, 
+                var(--wp--preset--shadow--natural, 
+                0 3px 10px rgba(0, 0, 0, 0.14)));
+
+	// Add debug outline
+	@include atmos-debug("registry");
+}
+
+//**
+// * 01.4 SOVEREIGN: High-intent Active Links/Buttons
+// */
+@mixin apply-sovereign {
+
+	// Grow Large (e.g. x1.1)
+    transform: translateY(0) #{config.$grow-large}; 
+
+    // Hover high shadow on hover (e.g. Sharp)
+    box-shadow: var(--wp--custom--shadow--hover-high, 
+    			var(--wp--preset--shadow--sharp,
+    			0 8px 16px rgba(0, 0, 0, 0.15)));
+
+	// Add debug outline
+	@include atmos-debug("sovereign");
+}
+
+//**
+// * 01.5 SHIP: Massive Containers (Groups, Columns, Covers).
+// */
+@mixin apply-ship {
+
+	// Subtle shift (e.g. -2px)
+    transform: #{config.$shift-subtle}; 
+
+    // Hover default shadow (e.g. Deep)
+    box-shadow: var(--wp--custom--shadow--hover, 
+                var(--wp--preset--shadow--deep, 
+				0 6px 12px rgba(0, 0, 0, 0.13)));
+
+	// Add debug outline
+	@include atmos-debug("ship");
+}
+
+//**
+// * 01.6 PASSENGER: Decorative Media / Lightbox
+// * Logic: Subtle breathing lift using config variables.
+// */
+@mixin apply-passenger {
+
+    // Default shift (e.g. -4px)
+    transform: #{config.$shift-default} scale(1); 
+    
+    // Hover default shadow (e.g. Deep)    
+    box-shadow: var(--wp--custom--shadow--hover, 
+                var(--wp--preset--shadow--deep, 
+                0 4px 12px rgba(0, 0, 0, 0.12)));
+
+	// Add debug outline
+	@include atmos-debug("passenger");
+}
+
+//**
+// * 01.7 PASSENGER GROW: Functional Portals (Links)
+// * Logic: Kinetic scale using config variables.
+// */
+@mixin apply-passenger-grow {
+
+    // Small growth (e.g 1.03)
+    transform: translateY(0) #{config.$grow-small}; 
+    
+    // Hover high shadow on hover (e.g. Sharp)    
+    box-shadow: var(--wp--custom--shadow--hover-high, 
+                var(--wp--preset--shadow--sharp, 
+                0 12px 25px rgba(0, 0, 0, 0.15)));
+
+	// Add debug outline
+	@include atmos-debug("passenger");
+}
+
+//**
+// * 01.8 LINKED PASSENGER: Specific map overrides
+// */
+// @mixin apply-linked-passenger {
+// 
+//     // Small growth (e.g 1.03)
+//     transform: translateY(0) #{config.$grow-small}; 
+// 
+//     // Hover high shadow on hover (e.g. Sharp)    
+//     box-shadow: var(--wp--custom--shadow--hover-high, 
+//     			var(--wp--preset--shadow--sharp,
+//     			0 8px 16px rgba(0, 0, 0, 0.15)));
+// 
+// 	// Add debug outline
+// 	@include atmos-debug("passenger");
+// }
+
+//**
+// * 01.9 TEMPORARY AUDIT RULE: Specific map overrides
+// */
 // @if config.$atmos-debug {
 //     
 //     // 1. WILD PASSENGERS (Orange = Ready to Lift)

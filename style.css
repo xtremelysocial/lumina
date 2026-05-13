@@ -13,11 +13,3 @@ License: GNU General Public License v2 or later
 Text Domain: atmos-blocks
 Tags: block-theme, dark-mode, earth-tones, modern, tactile, professional
 */
-
-/* 
-.wp-block-group.has-background:not(.alignfull) {
-	padding-left: var(--wp--preset--spacing--40);
-	padding-right: var(--wp--preset--spacing--40);
-	border-radius: var(--wp--custom--border--radius);
-}
- */

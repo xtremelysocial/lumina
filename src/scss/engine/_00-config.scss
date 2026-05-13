@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles), Constants, Debug Variables
-//	 	Pivot 5 Build 26 Vetos
+//	 	Pivot 5 Build 27 Cleanup
 //   ========================================================================== */
 
 //**
@@ -8,33 +8,9 @@
 // */
 $atmos-physics-map: (
 
-    // SOVEREIGNS: Fast-pass growth (Buttons, Icons)
-    ".wp-block-button__link"    		: ("self", 			"sovereign"),
-    ".wp-element-button"        		: ("self", 			"sovereign"),
-    ".wp-block-social-link"     		: ("a",    			"sovereign"),
-    ".tag-cloud-link"           		: ("self", 			"sovereign"),
-
-    // PASSENGERS: Fast-lift child elements (Images)
-//     ".wp-block-column"          		: ("self", 			"passenger"),
-    ".wp-block-column"          		: ("self", 			"ship"),
-    ".wp-block-image"           		: ("img",  			"passenger"),
-	".wp-block-post-featured-image"     : ("img", 			"passenger"),
-    ".wp-block-latest-posts__featured-image"   : ("img", 	"passenger"), // Lift
-	".wp-block-latest-posts__featured-image a" : ("img", 	"passenger"), // Grow   
-// 	".avatar"             				: ("self", 			"passenger"), // Lift
-// 	".avatar-container a" 				: ("img", 			"passenger"), // Grow
-    ".wp-block-avatar"   				: ("img", 			"passenger"), // Lift
-    ".wp-block-avatar a" 				: ("img", 			"passenger"), // Grow
-	".wp-block-latest-comments__comment .avatar" : ("self", "passenger"), // 1. Static
-	".wp-block-latest-comments__comment a": (".avatar", 	"passenger"), // 2. Linked
-    ".wp-block-post-author__avatar"   	: ("img", 			"passenger"), // Lift	
-    ".wp-block-post-author__avatar a" 	: ("img", 			"passenger"), // Grow
-	".xs-latest-user-link"  : (".avatar", "passenger"), // Grid of latest users
-	".xs-user-profile a"    : (".avatar", "passenger"), // Logged-in profile pic
-
     // SHIPS: Container-lift (Requires background color if core block)
     ".wp-block-group"           		: ("self", 			"ship"),
-// 	".wp-block-columns" 				: ("self", 			"ship"),
+	".wp-block-columns" 				: ("self", 			"ship"),
     ".wp-block-media-text"     			: ( "self",			"ship"),
     
     // SHIPS: Container-lift (Automatic as these are Atmos custom styles)
@@ -52,20 +28,56 @@ $atmos-physics-map: (
 	// require a colored background.
 	"pre.wp-block-code"                 : ("self", 			"ship"),	
 	
+    // PASSENGERS: Fast-lift child elements (Images)
+//     ".wp-block-group"           		: ("self", 			"passenger"),    
+//     ".wp-block-column"          		: ("self", 			"passenger"),
+    ".wp-block-column"          		: ("self", 			"ship"),
+    ".wp-block-image"           		: ("img",  			"passenger"), // Lift
+//     ".wp-block-image"           		: ("self",  			"passenger"), // Lift
+//     ".wp-block-image > a"           	: ("img",  			"passenger"), // Grow
+//     ".wp-block-image"           		: ("> a > img",  	"passenger"), // Grow
+//     ".size-large.wp-block-image"        : ("img",  			"passenger"), // Lift
+//     ".size-large.wp-block-image a"        : ("img",  		"passenger"), // Lift
+//     ".wp-lightbox-container.wp-block-image": ("img",		"passenger"), // Lift
+//     ".size-full.wp-block-image"        : ("img",  			"passenger"), // Lift
+	".wp-block-post-featured-image"     : ("img", 			"passenger"),
+    ".wp-block-latest-posts__featured-image"   : ("img", 	"passenger"), // Lift
+// 	".wp-block-latest-posts__featured-image a" : ("img", 	"passenger"), // Grow   
+	":not(a) > .avatar"             				: ("self", 			"passenger"), // Lift
+// 	".avatar-container a" 				: ("img", 			"passenger"), // Grow
+//     ".wp-block-avatar"   				: ("img", 			"passenger"), // Lift
+//     ".wp-block-avatar a" 				: ("img", 			"passenger"), // Grow
+// 	".wp-block-latest-comments__comment .avatar" : ("self", "passenger"), // 1. Static
+// 	".wp-block-latest-comments__comment a": (".avatar", 	"passenger"), // 2. Linked
+//     ".wp-block-post-author__avatar"   	: ("img", 			"passenger"), // Lift	
+//     ".wp-block-post-author__avatar a" 	: ("img", 			"passenger"), // Grow
+// 	".xs-latest-user-link"  			: (".avatar", "passenger"), // Grid of latest users
+// 	".xs-user-profile a"    			: (".avatar", "passenger"), // Logged-in profile pic
+
+    // SOVEREIGNS: Fast-pass growth (Buttons, Icons)
+    ".wp-block-button__link"    		: ("self", 			"sovereign"),
+    ".wp-element-button"        		: ("self", 			"sovereign"),
+    ".wp-block-social-link"     		: ("a",    			"sovereign"),
+    ".tag-cloud-link"           		: ("self", 			"sovereign"),
+    "a > .avatar"   					: ("self", 			"sovereign"), // Grow
+
     // FLOORS: Pinned architecture (Skipped by logic)
     "#page-content"             		: ("self", 			"floor"),
 //     ".site-header"              		: ("self", 			"floor")
 
     // VOIDS: Dead Zones (Skipped by logic)
-    "#wpadminbar"             			: ("self", 			"void"),
+//     "#wpadminbar"             			: ("self", 			"void"),
 );
 
 //**
 // * 00.2 SENSING TRIGGERS: The Attribute Gate
 // */
 
-// Only for CORE blocks (wp-block-*) to prove they are cards.
+// Only for CORE CONTAINER blocks (wp-block-*) to prove they are cards.
 $atmos-card-triggers: ".has-background";
+
+// Only for IMAGE blocks (wp-block-image) to prove they are cards.
+// $atmos-image-triggers: ".size-full, .size-large";
  
 // The Brake: Only real-time layout states. Keep this list very short for browser
 // performance reasons.
@@ -84,9 +96,9 @@ $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, tr
 //**
 // * 00.4 DEBUGGING: Outline colors for visual debugging
 // */
-$atmos-debug: true; 
-$debug-registry:   1px dashed #ff8c00; // Orange dashes
-$debug-sovereign:  1px solid #ff00ff;  // Purple solid
-$debug-ship:       2px solid #00ffff;  // Blue solid
-$debug-passenger:  1px solid #00ffff;  // Cyan solid
-$debug-silence:    2px solid #ff3b30;  // Red solid
+$atmos-debug: 		true; 
+$debug-registry:   	1px dashed #ff8c00; // Orange dashes
+$debug-sovereign:  	1px solid #ff00ff;  // Purple solid
+$debug-ship:       	2px solid #00ffff;  // Blue solid
+$debug-passenger:  	1px solid #00ffff;  // Cyan solid
+$debug-silence:    	2px solid #ff3b30;  // Red solid

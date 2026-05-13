@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   90 INTERACTIONS: Handles all hover actions for all roles
-//	    Pivot 5 Build 26 Vetos
+//	    Pivot 5 Build 27 Cleanup
 //   ========================================================================== */
 
 @use "sass:list";
@@ -21,7 +21,7 @@
 		#{$trigger}#{$gate}#{phys.$sovereign-filter}:hover {
             #{$mover} {
                 @include phys.apply-sovereign;
-				@include phys.atmos-debug("sovereign");                
+// 				@include phys.atmos-debug("sovereign");                
             }
         }
     }

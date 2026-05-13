@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//	    Pivot 5 Build 26 Vetos
+//	    Pivot 5 Build 27 Cleanup
 //   ========================================================================== */
 
 @use "sass:list";
@@ -19,19 +19,20 @@
 		$filter:	phys.$ship-filter;
 
         // SYNC: Uses the exact same gate and floor-filter as _11-ship-actions
-		@if $filter != "" {
+// 		@if $filter != "" {
 			// Filter exists: Keep it zero-weight		
-			:where(#{$trigger}#{$gate}#{$filter}) {
+// 			:where(#{$trigger}#{$gate}#{$filter}) {
+			#{$trigger}#{$gate}#{$filter} {
 				@include phys.apply-resting-state;
-				@include phys.atmos-debug("registry");					
+// 				@include phys.atmos-debug("registry");					
 			}
-		} @else {
-			// No filter: Use standard weight for a perfect handshake
-			#{$trigger}#{$gate} {
-				@include phys.apply-resting-state;
-				@include phys.atmos-debug("registry");					
-			}
-		}
+// 		} @else {
+// 			// No filter: Use standard weight for a perfect handshake
+// 			#{$trigger}#{$gate} {
+// 				@include phys.apply-resting-state;
+// 				@include phys.atmos-debug("registry");					
+// 			}
+// 		}
     }
 }
 
@@ -52,17 +53,17 @@
 // }
 
 // Targets top-level blocks to establish modular design language
-:where(.wp-site-blocks, .wp-block-post-content) {
-    @each $trigger, $meta in config.$atmos-physics-map {
-        $role: list.nth($meta, 2);
-
-        @if $role == "ship" {
-            $gate: phys.get-ship-gate($trigger);
-
-            > #{$trigger}#{$gate}:not(#{config.$atmos-static-floors}) {
-                border-radius: var(--wp--custom--border--radius, 10px);
-                overflow: clip;
-            }
-        }
-    }
-}
+// :where(.wp-site-blocks, .wp-block-post-content) {
+//     @each $trigger, $meta in config.$atmos-physics-map {
+//         $role: list.nth($meta, 2);
+// 
+//         @if $role == "ship" {
+//             $gate: phys.get-ship-gate($trigger);
+// 
+//             > #{$trigger}#{$gate}:not(#{config.$atmos-static-floors}) {
+//                 border-radius: var(--wp--custom--border--radius, 10px);
+//                 overflow: clip;
+//             }
+//         }
+//     }
+// }
