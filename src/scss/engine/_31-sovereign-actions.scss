@@ -22,7 +22,6 @@
 		#{$trigger}#{$gate}#{phys.$sovereign-filter}:hover {
             #{$mover} {
                 @include phys.apply-sovereign;
-// 				@include phys.atmos-debug("sovereign");                
             }
         }
     }

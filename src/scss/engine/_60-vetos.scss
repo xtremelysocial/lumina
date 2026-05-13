@@ -30,13 +30,11 @@
                 // GUARD: Prevents the ship from silencing itself (Stops Red Containers)
                 @if $ship-trigger != $trigger {
                     
-//                     $is-generic: (string.index($ship-trigger, ".wp-block-group") != null) or (string.index($ship-trigger, ".wp-block-column") != null);
                     $is-generic: (string.index($ship-trigger, ".wp-block-") != null);
                     $veto-gate: if($is-generic, "#{$ship-trigger}#{config.$atmos-card-triggers}", $ship-trigger);
 
 					// VETO: Stops the Passengers within a Ship unless they are Links
                     #{$veto-gate}#{phys.$ship-filter}:hover #{$passenger-selector} {
-//                         $is-portal: (string.index($trigger, " a") != null) or ($target == "a") or (string.index($trigger, "-link") != null);
 							$is-portal: phys.is-portal($trigger, $target);
 
 						// Only stand down non-link passengers

@@ -22,7 +22,6 @@
         #{$trigger}#{$gate}#{$filter}:hover {
 			#{$mover} {
 				@include phys.apply-ship; 
-// 				@include phys.atmos-debug("ship");				
 			}
 		}	
 	}

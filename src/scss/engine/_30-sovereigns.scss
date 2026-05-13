@@ -19,23 +19,10 @@
         $filter: phys.$sovereign-filter; 
 
         // SYNC: Uses the exact same gate and sovereign-filter as _31-sovereign-actions
-// 		@if $filter != "" {
-			// Filter exists: Keep it zero-weight
-// 			:where(#{$trigger}#{$gate}#{$filter}) {
-			#{$trigger}#{$gate}#{$filter} {
-				#{$mover} { 
-					@include phys.apply-resting-state; 
-// 					@include phys.atmos-debug("registry");					
-				}
+		#{$trigger}#{$gate}#{$filter} {
+			#{$mover} { 
+				@include phys.apply-resting-state; 
 			}
-// 		} @else {
-// 			// No filter: Use standard weight for a perfect handshake
-// 			#{$trigger}#{$gate} {
-// 				#{$mover} { 
-// 					@include phys.apply-resting-state; 
-// 					@include phys.atmos-debug("registry");					
-// 				}
-// 			}
-// 		}
+		}
     }  
 }
