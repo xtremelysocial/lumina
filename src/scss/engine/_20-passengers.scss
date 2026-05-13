@@ -1,7 +1,7 @@
-//* ==========================================================================
-//   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    Pivot 5 Build 26 Vetos
-//   ========================================================================== */
+/* ==========================================================================
+   20 PASSENGERS: Container Contents (e.g. Images, Columns)
+	  Pivot 5 Build 27 Cleanup
+   ========================================================================== */
 
 @use "sass:list";
 @use "00-config" as config;
@@ -17,35 +17,10 @@
         $gate:   phys.get-passenger-gate($trigger);
         $filter: phys.$passenger-filter;        
 
-        // 1. THE UNIVERSAL HANDSHAKE
-        // We set the baseline transform and transition for EVERY registered passenger.
-        #{$trigger}#{$gate} {
-            #{$mover} {
-                // We manually set the transition/transform here for everyone
-                // to ensure fluidity even when the resting-state mixin is bypassed.
-                transition: transform config.$atmos-timing, 
-                            box-shadow config.$atmos-timing, 
-                            outline config.$atmos-timing;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        // 2. THE CONTEXTUAL RESTING STATE
-        // Now we use the mixin to add the shadow only to "Wild" passengers.
-        @if $filter != "" {
-            :where(#{$trigger}#{$gate}#{$filter}#{phys.$passenger-context-filter}) {
-                #{$mover} { 
-                    @include phys.apply-resting-state; 
-                    @include phys.atmos-debug("registry");                 
-                }
-            }
-        } @else {
-            #{$trigger}#{$gate}#{phys.$passenger-context-filter} {
-                #{$mover} { 
-                    @include phys.apply-resting-state; 
-                    @include phys.atmos-debug("registry");                 
-                }
-            }
-        }
+		#{$trigger}#{$gate}#{$filter}#{phys.$passenger-context-filter} {
+			#{$mover} { 
+				@include phys.apply-resting-state; 
+			}
+		}
     }
 }

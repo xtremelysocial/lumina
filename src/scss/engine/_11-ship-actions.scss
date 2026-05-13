@@ -1,7 +1,7 @@
-//* ==========================================================================
-//   90 INTERACTIONS: Handles all hover actions for all roles
-//	    Pivot 5 Build 26 Vetos
-//   ========================================================================== */
+/* ==========================================================================
+   11 SHIPS: Containers (e.g. Groups, Columns)
+      Pivot 5 Build 27 Cleanup   
+   ========================================================================== */
 
 @use "sass:list";
 
@@ -16,12 +16,12 @@
 	@if $role == "ship" {
 	    $mover: if($target == "self", "&", #{$target});
 		$gate: phys.get-ship-gate($trigger);
+		$filter:	phys.$ship-filter;
 		
         // SYNC: Uses the exact same gate and floor-filter as _10-ships
-        #{$trigger}#{$gate}#{phys.$ship-filter}:hover {
+        #{$trigger}#{$gate}#{$filter}:hover {
 			#{$mover} {
 				@include phys.apply-ship; 
-				@include phys.atmos-debug("ship");				
 			}
 		}	
 	}
