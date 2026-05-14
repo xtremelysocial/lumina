@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles), Constants, Debug Variables
-//	 	Pivot 5 Build 27 Cleanup
+//	 	Pivot 5 Build 28
 //   ========================================================================== */
 
 //**
@@ -8,11 +8,15 @@
 // */
 $atmos-physics-map: (
 
+	// WILDCARDS: Keep these first so the others override them
+//     "[class*=wp-block-]:not(.wp-block-heading, p, hr, li)": ("self", "passenger"),
+//     "[class*=wp-block-]": 				("self", "passenger"),
+
     // SHIPS: Container-lift (Requires background color if core block)
     ".wp-block-group"           		: ("self", 			"ship"),
 	".wp-block-columns" 				: ("self", 			"ship"),
-    ".wp-block-media-text"     			: ( "self",			"ship"),
-    
+    ".wp-block-media-text"     			: ("self",			"ship"),
+
     // SHIPS: Container-lift (Automatic as these are Atmos custom styles)
     ".is-style-object-passive"  		: ("self", 			"ship"),
     ".is-style-rounded-border"  		: ("self", 			"ship"),
@@ -26,20 +30,30 @@ $atmos-physics-map: (
 	
     // PASSENGERS: Fast-lift child elements (Images)
     ".wp-block-column"          		: ("self", 			"passenger"),
-    ".wp-block-image"           		: ("img",  			"passenger"),
-	".wp-block-post-featured-image"     : ("img", 			"passenger"),
-    ".wp-block-latest-posts__featured-image"   : ("img", 	"passenger"),
-	":not(a) > .avatar"             	: ("self", 			"passenger"),
+    ".wp-block-image:not(.wp-block-gallery .wp-block-image)": ("img", "passenger"),
+    ".wp-block-gallery .wp-block-image" : ("self",  		"passenger"),
+	".wp-block-post-featured-image a"     : ("img", 			"passenger"),
+    ".wp-block-latest-posts__featured-image" : ("img", 	"passenger"),
+    ".wp-block-latest-posts__featured-image a" : ("img", 	"passenger"),
+// 	":not(a) > .avatar"             	: ("self", 			"passenger"),
+	".wp-block-page-list" 				: ("self", 			"passenger"), 
+	".wp-block-categories"				: ("self", 			"passenger"),
 
     // SOVEREIGNS: Fast-pass growth (Buttons, Icons)
     ".wp-block-button__link"    		: ("self", 			"sovereign"),
     ".wp-element-button"        		: ("self", 			"sovereign"),
-    ".wp-block-social-link"     		: ("a",    			"sovereign"),
+    ".wp-block-social-link"     		: ("self",    		"sovereign"),
     ".tag-cloud-link"           		: ("self", 			"sovereign"),
-    "a > .avatar"   					: ("self", 			"sovereign"),
+    
+    // SOVEREIGNS Except in #wpadminbar: Broad selectors like this
+    // need a block wildcard to protect avatars in the admin bar.
+    "[class*=wp-block-] a > .avatar"   	: ("self", 			"sovereign"),
 
     // FLOORS: Pinned architecture (Skipped by logic)
-    "#page-content"             		: ("self", 			"floor"),
+//     "#page-content"             		: ("self", 			"floor"),
+
+	// VOIDS: 
+//     "#wpadminbar"             		: ("self", 			"floor"),
 );
 
 //**
@@ -51,10 +65,11 @@ $atmos-card-triggers: ".has-background";
 
 // Only for IMAGE blocks (img) to prove they are cards.
 // $atmos-image-triggers: ".size-full, .size-large";
+$atmos-image-triggers: "";
 
 // Non-image PASSENGERS (passengers) to prove they are cards.
-// $atmos-passenger-triggers: ".has-background";
-$atmos-passenger-triggers: ".has-background, .size-full, .size-large, .size-thumbnail";
+$atmos-passenger-triggers: ".has-background";
+// $atmos-passenger-triggers: ".has-background, .size-full, .size-large, .size-medium, .size-thumbnail, .size-cropped-thumbnail";
 
 // The Brake: Only real-time layout states. Keep this list very short for browser
 // performance reasons.
@@ -66,7 +81,7 @@ $atmos-static-floors: ".alignfull, .is-style-object-plain";
 $atmos-timing: 	var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
 $grow-small: 	var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
 $grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
-$grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
+$grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
 $shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
 $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px)); 
 
@@ -75,7 +90,7 @@ $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, tr
 // */
 $atmos-debug: 		true; 
 $debug-registry:   	1px dashed #ff8c00; // Orange dashes
-$debug-sovereign:  	1px solid #ff00ff;  // Purple solid
-$debug-ship:       	2px solid #00ffff;  // Blue solid
-$debug-passenger:  	1px solid #00ffff;  // Cyan solid
-$debug-silence:    	2px solid #ff3b30;  // Red solid
+$debug-sovereign:  	1px solid  #ff00ff;  // Purple solid
+$debug-ship:       	1px solid  #00ffff;  // Blue solid
+$debug-passenger:  	1px solid  #00ffff;  // Cyan solid
+$debug-silence:    	1px solid  #ff8c00; //#ff3b30;  // Red solid
