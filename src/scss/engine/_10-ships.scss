@@ -1,6 +1,6 @@
 /* ==========================================================================
    10 SHIPS: Containers (e.g. Groups, Columns)
-    	  Pivot 5 Build 27 Cleanup   
+    	  Pivot 5 Build 28   
    ========================================================================== */
 
 @use "sass:list";
@@ -21,6 +21,7 @@
         // SYNC: Uses the exact same gate and floor-filter as _11-ship-actions
 		#{$trigger}#{$gate}#{$filter} {
 			@include phys.apply-resting-state;
+// 			overflow: hidden; // Contain children that grow
 		}
     }
 }

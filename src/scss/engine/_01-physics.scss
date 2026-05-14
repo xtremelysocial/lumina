@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	Pivot 5 Build 27 Cleanup
+//	 	Pivot 5 Build 28
 //   ========================================================================== */
 
 @use "sass:string"; // Required for string.index
@@ -13,19 +13,59 @@
 // * 01.0 MASTER SELECTORS: Centralized logic for role identification
 // */
 
-// SHIPS: Determine if a trigger needs the .has-background gate
-// and floor filter
-@function get-ship-gate($trigger) {
-	$is-core: string.index($trigger, ".wp-block-") == 1;
-	@return if($is-core, ":is(#{config.$atmos-card-triggers})", "");	
+// BLOCK DETECTION: Looks for core WordPress block or wildcard
+@function is-block($trigger) {
+    @return (string.index($trigger, ".wp-block-") == 1 or string.index($trigger, "[class*=wp-block-") == 1);
 }
+
+// SHIPS: Generates the :is() gate for blocks
+@function get-ship-gate($trigger) {
+    $is-block: is-block($trigger);
+    
+    @if $is-block {
+        // Guard against empty config to prevent :is() errors
+        @if config.$atmos-card-triggers != "" {
+            @return ":is(#{config.$atmos-card-triggers})";
+        }
+    }
+    
+    @return "";	
+}
+
+// SHIPS: Generates the :not() gate for blocks
 $ship-filter: ":not(#{config.$atmos-static-floors})";
 
 // PASSENGERS: Placeholder Gate and floor filter
-@function get-passenger-gate($trigger) {
-// 	@return "";
-	$is-core: string.index($trigger, ".wp-block-") == 1;
-	@return if($is-core, ":is(#{config.$atmos-passenger-triggers})", "");
+// @function get-passenger-gate($trigger, $target: "") {
+// // 	@return "";
+// 	$is-core: string.index($trigger, ".wp-block-") == 1;
+// 	@return if($is-core, ":is(#{config.$atmos-passenger-triggers})", "");
+// }
+@function get-passenger-gate($trigger, $target: "") {
+//     $is-image: $target == "img";
+	$is-image: $target == "img" or string.index($trigger, "__featured-image") != null or string.index($trigger, "wp-block-image") != null;
+//     $is-core: string.index($trigger, ".wp-block-") == 1;
+	$is-block: is-block($trigger);
+
+    // 1. If the target is an image, return the specific image triggers
+    @if $is-image {
+//         @return ":is(#{config.$atmos-image-triggers})";
+		@if config.$atmos-image-triggers != "" {
+            @return ":is(#{config.$atmos-image-triggers})";
+        } @else {
+            @return ""; // Return nothing so the selector stays valid
+        }
+    } 
+    
+    // 2. Otherwise, check if it's a core block and return passenger triggers
+    @else if $is-block {
+        @return ":is(#{config.$atmos-passenger-triggers})";
+    }
+
+    // 3. Fallback
+    @else {
+        @return "";
+    }
 }
 $passenger-filter: ":not(#{config.$atmos-static-floors})";
 
@@ -89,7 +129,7 @@ $passenger-context-filter: "";
             "ship":       2px,
             "sovereign":  4px,
             "passenger": -4px,
-            "silence":   -6px
+            "silence":   -1px //-6px
         ), $role);
 
         // Set the outline color and offset
@@ -125,7 +165,26 @@ $passenger-context-filter: "";
 // @mixin apply-resting-state {
 // 	@extend %physics-resting-state;
 // }
+
+//**
+// * 01.4 RESTING SHADOW: Add shadow to objects that will move
+// */
+// @mixin apply-resting-shadow {
+// // %physics-resting-shadow {
+// 
+//     // Resting shadow (e.g. Natural)
+//     box-shadow: var(--wp--custom--shadow--default, 
+//                 var(--wp--preset--shadow--natural, 
+//                 0 3px 10px rgba(0, 0, 0, 0.14)));
+// 
+// 	// Add debug outline
+// 	@include atmos-debug("shadow");
+// }
  
+// @mixin apply-resting-shadow {
+// 	@extend %physics-resting-shadow;
+// }
+  
 //**
 // * 01.4 SOVEREIGN: High-intent Active Links/Buttons
 // */
@@ -177,8 +236,9 @@ $passenger-context-filter: "";
 @mixin apply-passenger {
 // %physics-passenger-standard {
 
-    // Default shift (e.g. -4px)
-    transform: #{config.$shift-default} scale(1); 
+    // Subtle shift (e.g. -2px)
+    transform: #{config.$shift-subtle} scale(1); 
+//    transform: translateY(0) #{config.$grow-small}; 
     
     // Hover default shadow (e.g. Deep)    
     box-shadow: var(--wp--custom--shadow--hover, 
@@ -202,6 +262,7 @@ $passenger-context-filter: "";
 
     // Small growth (e.g 1.03)
     transform: translateY(0) #{config.$grow-small}; 
+//     transform: translateY(0) #{config.$grow-standard}; 
     
     // Hover high shadow on hover (e.g. Sharp)    
     box-shadow: var(--wp--custom--shadow--hover-high, 

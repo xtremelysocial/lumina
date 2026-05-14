@@ -1,6 +1,6 @@
 /* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
-	  Pivot 5 Build 27 Cleanup
+	  Pivot 5 Build 28
    ========================================================================== */
 
 @use "sass:list";
@@ -14,10 +14,10 @@
 
     @if $role == "passenger" {
         $mover:  if($target == "self", "&", #{$target});
-        $gate:   phys.get-passenger-gate($trigger);
+        $gate:   phys.get-passenger-gate($trigger, $target);
         $filter: phys.$passenger-filter;        
 
-		#{$trigger}#{$gate}#{$filter}#{phys.$passenger-context-filter} {
+		#{$trigger}#{$gate}#{$filter}#{phys.$passenger-context-filter} {		
 			#{$mover} { 
 				@include phys.apply-resting-state; 
 			}

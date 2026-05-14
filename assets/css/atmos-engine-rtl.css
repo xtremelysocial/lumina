@@ -3,11 +3,11 @@
   \***********************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    ATMOS ENGINE: Registers objects and sets their resting states
-   Pivot 5 Build 27 Cleanup   
+   Pivot 5 Build 28   
    ========================================================================== */
 /* ==========================================================================
    10 SHIPS: Containers (e.g. Groups, Columns)
-    	  Pivot 5 Build 27 Cleanup   
+    	  Pivot 5 Build 28   
    ========================================================================== */
 .wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
@@ -75,9 +75,9 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
 
 /* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
-	  Pivot 5 Build 27 Cleanup
+	  Pivot 5 Build 28
    ========================================================================== */
-.wp-block-column:is(.has-background, .size-full, .size-large, .size-thumbnail):not(.alignfull, .is-style-object-plain) {
+.wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -85,7 +85,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
   outline-offset: -1px;
 }
 
-.wp-block-image:is(.has-background, .size-full, .size-large, .size-thumbnail):not(.alignfull, .is-style-object-plain) img {
+.wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -93,7 +93,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
   outline-offset: -1px;
 }
 
-.wp-block-post-featured-image:is(.has-background, .size-full, .size-large, .size-thumbnail):not(.alignfull, .is-style-object-plain) img {
+.wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -101,7 +101,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
   outline-offset: -1px;
 }
 
-.wp-block-latest-posts__featured-image:is(.has-background, .size-full, .size-large, .size-thumbnail):not(.alignfull, .is-style-object-plain) img {
+.wp-block-post-featured-image a:not(.alignfull, .is-style-object-plain) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -109,7 +109,31 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
   outline-offset: -1px;
 }
 
-:not(a) > .avatar:not(.alignfull, .is-style-object-plain) {
+.wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain) img {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-latest-posts__featured-image a:not(.alignfull, .is-style-object-plain) img {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -119,7 +143,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
 
 /* ==========================================================================
    30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
- 	  Pivot 5 Build 27 Cleanup
+ 	  Pivot 5 Build 28
    ========================================================================== */
 .wp-block-button__link {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
@@ -137,7 +161,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
   outline-offset: -1px;
 }
 
-.wp-block-social-link a {
+.wp-block-social-link {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -153,7 +177,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
   outline-offset: -1px;
 }
 
-a > .avatar {
+[class*=wp-block-] a > .avatar {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -163,5 +187,5 @@ a > .avatar {
 
 /* ==========================================================================
    50 VOIDS: Invisible to the Physics Engine (e.g. #wpadminbar) 
-	  Pivot 5 Build 27 Cleanup
+	  Pivot 5 Build 28
    ========================================================================== */

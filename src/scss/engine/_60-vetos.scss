@@ -1,6 +1,6 @@
 /* ==========================================================================
    60 VETOS: Ships (Containers) Overrides of Children (Passengers)
-	    Pivot 5 Build 27 Cleanup
+	    Pivot 5 Build 28
    ========================================================================== */
 
 //*
@@ -21,26 +21,41 @@
 
     // THE SURGICAL VETO
     @if $role == "passenger" {
+        // Construct the passenger selector to match the Registry's output exactly
         $passenger-selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
 
-		// LOOP THROUGH OUR SHIPS
+        // LOOP THROUGH OUR SHIPS
         @each $ship-trigger, $ship-meta in config.$atmos-physics-map {
             @if list.nth($ship-meta, 2) == "ship" {
                 
-                // GUARD: Prevents the ship from silencing itself (Stops Red Containers)
+                // GUARD: Prevents the ship from silencing itself
                 @if $ship-trigger != $trigger {
                     
-                    $is-generic: (string.index($ship-trigger, ".wp-block-") != null);
-                    $veto-gate: if($is-generic, "#{$ship-trigger}#{config.$atmos-card-triggers}", $ship-trigger);
+                    // 1. Get the Gate (e.g., :is(.has-background))
+                    $ship-gate: phys.get-ship-gate($ship-trigger); 
+                    
+                    // 2. Build the Veto Trigger (matches Registry specificity)
+                    $veto-trigger: "#{$ship-trigger}#{$ship-gate}#{phys.$ship-filter}";
 
-					// VETO: Stops the Passengers within a Ship unless they are Links
-                    #{$veto-gate}#{phys.$ship-filter}:hover #{$passenger-selector} {
-							$is-portal: phys.is-portal($trigger, $target);
-
-						// Only stand down non-link passengers
+					// 3. Apply the Veto
+					// PERMANENT VETO: Kills resting shadow/depth regardless of hover
+					#{$veto-trigger} #{$passenger-selector} {
+						$is-portal: phys.is-portal($trigger, $target);
+						@if not $is-portal {
+							box-shadow: none; 
+						}
+					}
+					
+					// 4. INTERACTIVE VETO: Kills the lift physics on hover
+                    #{$veto-trigger}:hover #{$passenger-selector} {
+                        $is-portal: phys.is-portal($trigger, $target);
+                
                         @if not $is-portal {
-                            transform: translateY(0);
+                            // Reset physics
+                            transform: translateY(0) scale(1);
                             box-shadow: none; 
+                            
+                            // Debug signal
                             @include phys.atmos-debug("silence"); 
                         }
                     }

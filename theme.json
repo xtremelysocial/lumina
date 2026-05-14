@@ -47,17 +47,18 @@
 				"default": {
 					"hoverSmallTransform": "scale(1.03)",
 					"hoverTransform": "scale(1.05)",
-					"hoverLargeTransform": "scale(1.10)",
+					"hoverLargeTransform": "scale(1.125)",
 					"objectSmallTransform": "translateY(-2px)",
 					"objectTransform": "translateY(-4px)"
 				}
 			},
 			"shadow": {
-				"natural": "0 3px 10px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.09)",
-				"deep":    "0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08)",
-				"sharp":   "0 12px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.10)",
-				"crisp":   "0 20px 40px rgba(0, 0, 0, 0.20), 0 8px 15px rgba(0, 0, 0, 0.12)",
-				"outline": "0 0 0 3px var(--wp--preset--color--base), 0 0 15px rgba(0, 0, 0, 0.1)",				"default": "var(--wp--preset--shadow--natural)",
+				"natural": "0 2px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08)",
+				"deep":    "0 6px 16px rgba(0, 0, 0, 0.14), 0 3px 6px rgba(0, 0, 0, 0.10)",
+				"sharp":   "0 14px 30px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.12)",
+				"crisp":   "0 24px 50px rgba(0, 0, 0, 0.20), 0 10px 20px rgba(0, 0, 0, 0.15)",
+				"outline": "0 0 0 3px var(--wp--preset--color--base), 0 0 15px rgba(0, 0, 0, 0.1)",				
+				"default": "var(--wp--preset--shadow--natural)",
 				"hover":   "var(--wp--preset--shadow--deep)",
 				"hoverHigh": "var(--wp--preset--shadow--sharp)"
 			},

@@ -1,6 +1,6 @@
 /* ==========================================================================
    21 PASSENGERS: Container Contents (e.g. Images, Columns)
-	  Pivot 5 Build 27 Cleanup
+	  Pivot 5 Build 28
    ========================================================================== */
 
 @use "sass:string"; 
@@ -16,7 +16,7 @@
 
     @if $role == "passenger" {
         $mover:  if($target == "self", "&", #{$target});
-        $gate:   phys.get-passenger-gate($trigger);
+        $gate:   phys.get-passenger-gate($trigger, $target);
         $filter: phys.$passenger-filter;        
 
 		$is-portal: phys.is-portal($trigger, $target);
@@ -27,17 +27,14 @@
 			#{$trigger}#{$gate}#{$filter}:hover {
 				#{$mover} {
 					@include phys.apply-passenger-grow;
-					@include phys.atmos-debug("passenger");                                
 				}
 			}
-
 
         // --- OTHERWISE DEFAULT TO LIFT ---
         } @else {
 			#{$trigger}#{$gate}#{$filter}:hover {
 				#{$mover} {
 					@include phys.apply-passenger;
-					@include phys.atmos-debug("passenger");					                           
 				}
 			}
 		}
