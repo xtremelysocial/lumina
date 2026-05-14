@@ -1,5 +1,5 @@
 /* ==========================================================================
-   50 VOIDS: Invisible to the Physics Engine (e.g. #wpadminbar) 
+   50 VOIDS: Allow protecting #wpadminbar from the engine
 	  Pivot 5 Build 29
    ========================================================================== */
 
@@ -26,10 +26,4 @@
             }
         }
     }
-}
-
-// 2. GLOBAL EXCEPTIONS (Synced across states)
-.alignfull,
-.wp-block-media-text__content .wp-block-group {
-	border-radius: 0; 
 }
