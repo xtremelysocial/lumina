@@ -80,26 +80,16 @@ $ship-filter: ":not(#{config.$atmos-static-floors})";
 //**
 // * 01.3 PASSENGER SELECTORS: Sets selectors for passengers
 // */
-
-// PASSENGERS: Placeholder Gate and floor filter
-// @function get-passenger-gate($trigger, $target: "") {
-// // 	@return "";
-// 	$is-core: string.index($trigger, ".wp-block-") == 1;
-// 	@return if($is-core, ":is(#{config.$atmos-passenger-triggers})", "");
-// }
 @function get-passenger-gate($trigger, $target: "") {
-//     $is-image: $target == "img";
 	$is-image: $target == "img" or string.index($trigger, "__featured-image") != null or string.index($trigger, "wp-block-image") != null;
-//     $is-core: string.index($trigger, ".wp-block-") == 1;
 	$is-block: is-block($trigger);
 
     // 1. If the target is an image, return the specific image triggers
     @if $is-image {
-//         @return ":is(#{config.$atmos-image-triggers})";
 		@if config.$atmos-image-triggers != "" {
             @return ":is(#{config.$atmos-image-triggers})";
         } @else {
-            @return ""; // Return nothing so the selector stays valid
+            @return "";
         }
     } 
     
@@ -118,35 +108,10 @@ $passenger-filter: ":not(#{config.$atmos-static-floors})";
 //**
 // * 01.4 SOVEREIGN SELECTORS: Sets selectors for sovereigns
 // */
-// SOVEREIGNS: Placeholder Gate and floor filters
 @function get-sovereign-gate($trigger) {
 	@return "";
 }
 $sovereign-filter: "";
-// $sovereign-filter: ":not(#{config.$atmos-static-floors})"; //TEST
-
-// --- DYNAMIC SHIP COLLECTION ---
-// $collected-ships: ();
-// 
-// @each $trigger, $meta in config.$atmos-physics-map {
-//     $role: list.nth($meta, 2);
-//     @if $role == "ship" {
-//         $gate: get-ship-gate($trigger);
-//         $ship-entry: "#{$trigger}#{$gate}";
-//         $collected-ships: list.append($collected-ships, $ship-entry, $separator: comma);
-//     }
-// }
-// 
-// THE SHIPS LIST
-// $ship-context-selector: ":is(#{$collected-ships})";
-
-// THE STATIC FLOORS (e.g., .alignfull, .has-background)
-// $static-filter: ":not(#{config.$atmos-static-floors})";
-
-// THE ULTIMATE FILTER
-// "Silence me if I'm in a Ship AND that ship isn't a Static Floor"
-// $passenger-context-filter: ":not(#{$ship-context-selector}#{$static-filter} :not(&))";
-// $passenger-context-filter: "";
 
 //**
 // * 01.5 RESTING STATE: The physical baseline for all objects.
@@ -205,26 +170,6 @@ $sovereign-filter: "";
 // @mixin apply-resting-sovereign-state {
 // 	@extend %physics-resting-sovereign-state;
 // }
-
-//**
-// * 01.6 RESTING SHADOW: Add shadow to objects that will move
-// */
-// @mixin apply-resting-shadow {
-// // %physics-resting-shadow {
-// 
-//     // Resting shadow (e.g. Natural)
-//     box-shadow: var(--wp--custom--shadow--default, 
-//                 var(--wp--preset--shadow--natural, 
-//                 0 3px 10px rgba(0, 0, 0, 0.14)));
-// 
-// 	// Add debug outline
-// 	@include atmos-debug("shadow");
-// }
- 
-// @mixin apply-resting-shadow {
-// 	@extend %physics-resting-shadow;
-// }
-  
 
 //**
 // * 01.5 SOVEREIGN: High-intent Active Links/Buttons

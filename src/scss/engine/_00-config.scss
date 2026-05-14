@@ -15,7 +15,6 @@ $atmos-physics-map: (
     // SHIPS: Container-lift (Requires background color if core block)
     ".wp-block-group"           		: ("self", 			"ship"),
 	".wp-block-columns" 				: ("self", 			"ship"),
-// 	".wp-block-columns:not(.wp-block-group .wp-block-columns)" : ("self", 			"ship"),
     ".wp-block-media-text"     			: ("self",			"ship"),
 
     // SHIPS: Container-lift (Automatic as these are Atmos custom styles)

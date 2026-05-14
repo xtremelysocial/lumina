@@ -8,7 +8,7 @@
 @use "00-config" as config;
 @use "01-physics" as phys;
 
-// LOOP THROUGH OUR PHYSICS MAP FOR VOIDS
+// 1. LOOP THROUGH OUR PHYSICS MAP FOR VOIDS
 @each $trigger, $meta in config.$atmos-physics-map {
 	  $target: list.nth($meta, 1);
       $role:   list.nth($meta, 2);
@@ -28,8 +28,8 @@
     }
 }
 
-// GLOBAL VOIDS
-// :where(.wp-block-heading, p, li) {
-//     transform: none !important; // Wait, if you use :where, you don't need !important!
-//     box-shadow: none;
-// }
+// 2. GLOBAL EXCEPTIONS (Synced across states)
+.alignfull,
+.wp-block-media-text__content .wp-block-group {
+	border-radius: 0; 
+}

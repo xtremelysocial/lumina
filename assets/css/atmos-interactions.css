@@ -81,11 +81,6 @@
   border-radius: var(--wp--custom--border--radius);
 }
 
-.alignfull,
-.wp-block-media-text__content .wp-block-group {
-  border-radius: 0;
-}
-
 :where(.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
@@ -140,11 +135,6 @@
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px solid #00ffff;
   outline-offset: 2px;
-}
-
-.alignfull,
-.wp-block-media-text__content .wp-block-group {
-  border-radius: 0;
 }
 
 /* ==========================================================================

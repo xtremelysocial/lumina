@@ -81,11 +81,6 @@
   border-radius: var(--wp--custom--border--radius);
 }
 
-.alignfull,
-.wp-block-media-text__content .wp-block-group {
-  border-radius: 0;
-}
-
 /* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
 	  Pivot 5 Build 29
@@ -202,6 +197,11 @@
    50 VOIDS: Invisible to the Physics Engine (e.g. #wpadminbar) 
 	  Pivot 5 Build 29
    ========================================================================== */
+.alignfull,
+.wp-block-media-text__content .wp-block-group {
+  border-radius: 0;
+}
+
 /* ==========================================================================
    60/61 VETOS: Ships (Containers) Overrides of Children (Passengers)
 	     Pivot 5 Build 29
