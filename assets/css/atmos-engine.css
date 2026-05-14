@@ -3,81 +3,111 @@
   \***********************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    ATMOS ENGINE: Registers objects and sets their resting states
-   Pivot 5 Build 28   
+   Pivot 5 Build 29   
    ========================================================================== */
 /* ==========================================================================
-   10 SHIPS: Containers (e.g. Groups, Columns)
-    	  Pivot 5 Build 28   
+   02 GLOBAL OVERIDES: Apply styles globally (outside the normal 
+   	  role-specific css)
+	  Pivot 5 Build 29
    ========================================================================== */
-.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain) {
+.alignfull,
+.wp-block-media-text__content .wp-block-group {
+  border-radius: 0;
+}
+
+.wp-block-media-text__media {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   10/11 SHIPS: Containers (e.g. Groups, Columns)
+         Pivot 5 Build 29   
+   ========================================================================== */
+/* ==========================================================================
+   10/11 SHIPS: Containers (e.g. Groups, Columns)
+         Pivot 5 Build 29   
+   ========================================================================== */
+:where(.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius);
 }
 
-.wp-block-columns:is(.has-background):not(.alignfull, .is-style-object-plain) {
+:where(.wp-block-columns:is(.has-background):not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius);
 }
 
-.wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain) {
+:where(.wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius);
 }
 
-.is-style-object-passive:not(.alignfull, .is-style-object-plain) {
+:where(.is-style-object-passive:not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius);
 }
 
-.is-style-rounded-border:not(.alignfull, .is-style-object-plain) {
+:where(.is-style-rounded-border:not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius);
 }
 
-.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain) {
+:where(.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius);
 }
 
-.is-style-rounded-corners:not(.alignfull, .is-style-object-plain) {
+:where(.is-style-rounded-corners:not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius);
 }
 
-pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
+:where(pre.wp-block-code:not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius);
 }
 
+/* ==========================================================================
+   10/11 SHIPS: Containers (e.g. Groups, Columns)
+         Pivot 5 Build 29   
+   ========================================================================== */
 /* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
-	  Pivot 5 Build 28
+	  Pivot 5 Build 29
    ========================================================================== */
-.wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
+:where(.wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -85,7 +115,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
   outline-offset: -1px;
 }
 
-.wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain) img {
+:where(.wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -93,7 +123,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
   outline-offset: -1px;
 }
 
-.wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain) {
+:where(.wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -104,12 +134,12 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
 .wp-block-post-featured-image a:not(.alignfull, .is-style-object-plain) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
-.wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain) img {
+:where(.wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -120,12 +150,20 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
 .wp-block-latest-posts__featured-image a:not(.alignfull, .is-style-object-plain) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
-.wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain) {
+.wp-block-media-text__media a:not(.alignfull, .is-style-object-plain) img {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+
+:where(.wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -133,7 +171,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
   outline-offset: -1px;
 }
 
-.wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain) {
+:where(.wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -142,13 +180,17 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
 }
 
 /* ==========================================================================
+   10/11 SHIPS: Containers (e.g. Groups, Columns)
+         Pivot 5 Build 29   
+   ========================================================================== */
+/* ==========================================================================
    30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
- 	  Pivot 5 Build 28
+ 	  Pivot 5 Build 29
    ========================================================================== */
 .wp-block-button__link {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
@@ -156,7 +198,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
 .wp-element-button {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
@@ -164,7 +206,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
 .wp-block-social-link {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
@@ -172,7 +214,7 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
 .tag-cloud-link {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
@@ -180,12 +222,263 @@ pre.wp-block-code:not(.alignfull, .is-style-object-plain) {
 [class*=wp-block-] a > .avatar {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
 /* ==========================================================================
-   50 VOIDS: Invisible to the Physics Engine (e.g. #wpadminbar) 
-	  Pivot 5 Build 28
+   10/11 SHIPS: Containers (e.g. Groups, Columns)
+         Pivot 5 Build 29   
    ========================================================================== */
+/* ==========================================================================
+   50 VOIDS: Allow protecting #wpadminbar from the engine
+	  Pivot 5 Build 29
+   ========================================================================== */
+/* ==========================================================================
+   10/11 SHIPS: Containers (e.g. Groups, Columns)
+         Pivot 5 Build 29   
+   ========================================================================== */
+/* ==========================================================================
+   60/61 VETOS: Ships (Containers) Overrides of Children (Passengers)
+	     Pivot 5 Build 29
+   ========================================================================== */
+.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain) .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain) .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain) .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain) .wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain) .wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain) .wp-block-gallery .wp-block-image:not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain) .wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain) .wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain) .wp-block-latest-posts__featured-image:not(.alignfull, .is-style-object-plain) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain) .wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain) .wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain) .wp-block-page-list:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-object-passive:not(.alignfull, .is-style-object-plain) .wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-thick-rounded-border:not(.alignfull, .is-style-object-plain) .wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+.is-style-rounded-corners:not(.alignfull, .is-style-object-plain) .wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}
+
+pre.wp-block-code:not(.alignfull, .is-style-object-plain) .wp-block-categories:is(.has-background):not(.alignfull, .is-style-object-plain) {
+  transform: none;
+  box-shadow: none;
+}

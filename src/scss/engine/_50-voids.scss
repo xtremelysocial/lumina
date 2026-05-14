@@ -1,6 +1,6 @@
 /* ==========================================================================
-   50 VOIDS: Invisible to the Physics Engine (e.g. #wpadminbar) 
-	  Pivot 5 Build 28
+   50 VOIDS: Allow protecting #wpadminbar from the engine
+	  Pivot 5 Build 29
    ========================================================================== */
 
 @use "sass:list";
@@ -8,7 +8,7 @@
 @use "00-config" as config;
 @use "01-physics" as phys;
 
-// LOOP THROUGH OUR PHYSICS MAP FOR VOIDS
+// 1. LOOP THROUGH OUR PHYSICS MAP FOR VOIDS
 @each $trigger, $meta in config.$atmos-physics-map {
 	  $target: list.nth($meta, 1);
       $role:   list.nth($meta, 2);

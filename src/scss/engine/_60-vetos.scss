@@ -1,12 +1,7 @@
 /* ==========================================================================
-   60 VETOS: Ships (Containers) Overrides of Children (Passengers)
-	    Pivot 5 Build 28
+   60/61 VETOS: Ships (Containers) Overrides of Children (Passengers)
+	     Pivot 5 Build 29
    ========================================================================== */
-
-//*
-//	TO-DO: Don't tamp down sovereigns or passengers (e.g. images) with links.
-//	Those are equivalent to sovereigns, meaning they are *always* active.
-//
 
 @use "sass:string";
 @use "sass:list";
@@ -14,49 +9,45 @@
 @use "00-config" as config;
 @use "01-physics" as phys;
 
-// LOOP THROUGH OUR PHYSICS MAP FOR PASSENGERS
-@each $trigger, $meta in config.$atmos-physics-map {
-    $target: list.nth($meta, 1);
-    $role:   list.nth($meta, 2);
+//**
+// * 01.9 MASTER VETO: Centralized override logic for 60 and 61
+// * $interactive: true adds :hover to the Ship (Section 61)
+// * $interactive: false targets the resting Ship (Section 60)
+// */
+@mixin apply-veto-logic($interactive: false) {
+    @each $trigger, $meta in config.$atmos-physics-map {
+        $target: list.nth($meta, 1);
+        $role:   list.nth($meta, 2);
 
-    // THE SURGICAL VETO
-    @if $role == "passenger" {
-        // Construct the passenger selector to match the Registry's output exactly
-        $passenger-selector: if($target == "self", $trigger, "#{$trigger} #{$target}");
+        @if $role == "passenger" {
+            $mover:  if($target == "self", "&", #{$target});
+            $gate:   phys.get-passenger-gate($trigger, $target);
+            $filter: phys.$passenger-filter;
+            $is-portal: phys.is-portal($trigger, $target);
 
-        // LOOP THROUGH OUR SHIPS
-        @each $ship-trigger, $ship-meta in config.$atmos-physics-map {
-            @if list.nth($ship-meta, 2) == "ship" {
-                
-                // GUARD: Prevents the ship from silencing itself
-                @if $ship-trigger != $trigger {
+            @each $ship-trigger, $ship-meta in config.$atmos-physics-map {
+                @if list.nth($ship-meta, 2) == "ship" {
+                    @if $ship-trigger != $trigger {
+                        
+                        $ship-gate:   phys.get-ship-gate($ship-trigger); 
+                        $ship-filter: phys.$ship-filter;
+                        
+                        // Toggle :hover based on the mixin argument
+                        $hover-state: if($interactive, ":hover", "");
+                        $veto-trigger: "#{$ship-trigger}#{$ship-gate}#{$ship-filter}#{$hover-state}";
                     
-                    // 1. Get the Gate (e.g., :is(.has-background))
-                    $ship-gate: phys.get-ship-gate($ship-trigger); 
-                    
-                    // 2. Build the Veto Trigger (matches Registry specificity)
-                    $veto-trigger: "#{$ship-trigger}#{$ship-gate}#{phys.$ship-filter}";
-
-					// 3. Apply the Veto
-					// PERMANENT VETO: Kills resting shadow/depth regardless of hover
-					#{$veto-trigger} #{$passenger-selector} {
-						$is-portal: phys.is-portal($trigger, $target);
-						@if not $is-portal {
-							box-shadow: none; 
-						}
-					}
-					
-					// 4. INTERACTIVE VETO: Kills the lift physics on hover
-                    #{$veto-trigger}:hover #{$passenger-selector} {
-                        $is-portal: phys.is-portal($trigger, $target);
-                
-                        @if not $is-portal {
-                            // Reset physics
-                            transform: translateY(0) scale(1);
-                            box-shadow: none; 
-                            
-                            // Debug signal
-                            @include phys.atmos-debug("silence"); 
+                        #{$veto-trigger} #{$trigger}#{$gate}#{$filter} {
+                            @if not $is-portal {
+                                #{$mover} {                        
+                                    transform: none;
+                                    box-shadow: none; 
+                                    
+                                    // Debug only fires for the interactive/hover state
+                                    @if $interactive {
+                                        @include phys.atmos-debug("silence"); 
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -64,3 +55,6 @@
         }
     }
 }
+
+// Apply Permanent Veto
+@include apply-veto-logic($interactive: false);

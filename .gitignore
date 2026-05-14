@@ -9,6 +9,7 @@ node_modules/
 # Mac files
 .DS_Store
 **/.DS_Store
+styles/.DS_Store
 
 # Save and test files
 **/*-SAVE*

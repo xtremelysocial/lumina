@@ -1,28 +1,10 @@
-/* ==========================================================================
-   11 SHIPS: Containers (e.g. Groups, Columns)
-      Pivot 5 Build 28   
-   ========================================================================== */
+//* ==========================================================================
+//   11 SHIP ACTIONS: Containers (e.g. Groups, Columns)
+//      Pivot 5 Build 29   
+//   ========================================================================== */
 
-@use "sass:list";
+@use "10-ships" as ships;
 
-@use "00-config" as config;
-@use "01-physics" as phys;
-
-// LOOP THROUGH OUR PHYSICS MAP FOR SHIPS
-@each $trigger, $meta in config.$atmos-physics-map {
-	  $target: list.nth($meta, 1);
-      $role:   list.nth($meta, 2);
-
-	@if $role == "ship" {
-	    $mover: if($target == "self", "&", #{$target});
-		$gate: phys.get-ship-gate($trigger);
-		$filter:	phys.$ship-filter;
-		
-        // SYNC: Uses the exact same gate and floor-filter as _10-ships
-        #{$trigger}#{$gate}#{$filter}:hover {
-			#{$mover} {
-				@include phys.apply-ship; 
-			}
-		}	
-	}
-}
+// 1. APPLY INTERACTIVE LOGIC
+// This calls the master loop from 10 but injects the :hover state.
+@include ships.apply-ship-logic($interactive: true);

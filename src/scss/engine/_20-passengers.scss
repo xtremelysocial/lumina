@@ -1,26 +1,50 @@
 /* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
-	  Pivot 5 Build 28
+	  Pivot 5 Build 29
    ========================================================================== */
 
 @use "sass:list";
 @use "00-config" as config;
+
 @use "01-physics" as phys;
 
-// LOOP THROUGH OUR PHYSICS MAP FOR PASSENGERS
-@each $trigger, $meta in config.$atmos-physics-map {
-    $target: list.nth($meta, 1);
-    $role:   list.nth($meta, 2);
+@mixin apply-passenger-logic($interactive: false) {
 
-    @if $role == "passenger" {
-        $mover:  if($target == "self", "&", #{$target});
-        $gate:   phys.get-passenger-gate($trigger, $target);
-        $filter: phys.$passenger-filter;        
+	// 1. Setup State Toggle
+	$hover: if($interactive, ":hover", "");
 
-		#{$trigger}#{$gate}#{$filter}#{phys.$passenger-context-filter} {		
-			#{$mover} { 
-				@include phys.apply-resting-state; 
+	// 2. LOOP THROUGH OUR PHYSICS MAP
+	@each $trigger, $meta in config.$atmos-physics-map {
+		$target: list.nth($meta, 1);
+		$role:   list.nth($meta, 2);
+	
+		@if $role == "passenger" {
+			$mover:  if($target == "self", "&", #{$target});
+			$gate:   phys.get-passenger-gate($trigger, $target);
+			$filter: phys.$passenger-filter;
+			$is-portal: phys.is-portal($trigger, $target);
+
+			// 3. APPLY LOGIC
+			@if $is-portal {
+				// PORTALS (Sovereigns): Standard Weight (Matches 21)
+				#{$trigger}#{$gate}#{$filter}#{$hover} {
+					#{$mover} { 
+						@if $interactive { @include phys.apply-passenger-grow; }
+						@else { @include phys.apply-resting-sovereign-state; }
+					}
+				}
+			} @else {
+				// STANDARD PASSENGERS: Wrapped in :where for zero-specificity
+				:where(#{$trigger}#{$gate}#{$filter})#{$hover} {
+					#{$mover} { 
+						@if $interactive { @include phys.apply-passenger; }
+						@else { @include phys.apply-resting-state; }
+					}
+				}
 			}
 		}
-    }
+	}
 }
+
+// 4. APPLY THE RESTING STATE (Section 20)
+@include apply-passenger-logic($interactive: false);
