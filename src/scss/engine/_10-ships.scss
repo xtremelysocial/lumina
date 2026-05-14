@@ -1,27 +1,49 @@
 /* ==========================================================================
-   10 SHIPS: Containers (e.g. Groups, Columns)
-    	  Pivot 5 Build 28   
+   10/11 SHIPS: Containers (e.g. Groups, Columns)
+         Pivot 5 Build 29   
    ========================================================================== */
 
 @use "sass:list";
-
 @use "00-config" as config;
+
 @use "01-physics" as phys;
 
-// LOOP THROUGH OUR PHYSICS MAP FOR SHIPS
-@each $trigger, $meta in config.$atmos-physics-map {
-	  $target: list.nth($meta, 1);
-      $role:   list.nth($meta, 2);
-    
-    @if $role == "ship" {
-        $mover: if($target == "self", "&", #{$target});
-        $gate:  	phys.get-ship-gate($trigger);
-		$filter:	phys.$ship-filter;
+@mixin apply-ship-logic($interactive: false) {
 
-        // SYNC: Uses the exact same gate and floor-filter as _11-ship-actions
-		#{$trigger}#{$gate}#{$filter} {
-			@include phys.apply-resting-state;
-// 			overflow: hidden; // Contain children that grow
+	// 1. Setup State Toggle
+	$hover: if($interactive, ":hover", "");
+
+	// 2. LOOP THROUGH OUR PHYSICS MAP
+	@each $trigger, $meta in config.$atmos-physics-map {
+		$target: list.nth($meta, 1);
+		$role:   list.nth($meta, 2);
+	
+		@if $role == "ship" {
+			$mover:  if($target == "self", "&", #{$target});
+			$gate:   phys.get-ship-gate($trigger);
+			$filter: phys.$ship-filter;
+
+			// 3. APPLY LOGIC
+			// Ships always use :where to stay at zero specificity 
+			:where(#{$trigger}#{$gate}#{$filter})#{$hover} {
+				#{$mover} { 
+					@if $interactive { 
+						@include phys.apply-ship; 
+					} @else { 
+						@include phys.apply-resting-state;
+						border-radius: var(--wp--custom--border--radius);
+					}
+				}
+			}
 		}
-    }
+	}
+
+	// 4. GLOBAL EXCEPTIONS (Synced across states)
+	.alignfull,
+	.wp-block-media-text__content .wp-block-group {
+		border-radius: 0; 
+	}
 }
+
+// 5. APPLY THE RESTING STATE (Section 10)
+@include apply-ship-logic($interactive: false);

@@ -1,6 +1,6 @@
 /* ==========================================================================
    50 VOIDS: Invisible to the Physics Engine (e.g. #wpadminbar) 
-	  Pivot 5 Build 28
+	  Pivot 5 Build 29
    ========================================================================== */
 
 @use "sass:list";
@@ -27,3 +27,9 @@
         }
     }
 }
+
+// GLOBAL VOIDS
+// :where(.wp-block-heading, p, li) {
+//     transform: none !important; // Wait, if you use :where, you don't need !important!
+//     box-shadow: none;
+// }

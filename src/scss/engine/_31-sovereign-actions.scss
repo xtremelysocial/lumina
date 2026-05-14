@@ -1,6 +1,6 @@
 /* ==========================================================================
    31 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
- 	  Pivot 5 Build 28
+ 	  Pivot 5 Build 29
    ========================================================================== */
 
 
@@ -20,6 +20,7 @@
 
         // SYNC: Matches _30-sovereigns selector logic exactly
 		#{$trigger}#{$gate}#{phys.$sovereign-filter}:hover {
+// 		:where(#{$trigger}#{$gate}#{phys.$sovereign-filter}):hover {
             #{$mover} {
                 @include phys.apply-sovereign;
             }

@@ -1,6 +1,6 @@
 /* ==========================================================================
    30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
- 	  Pivot 5 Build 28
+ 	  Pivot 5 Build 29
    ========================================================================== */
 
 @use "sass:list";
@@ -20,8 +20,11 @@
 
         // SYNC: Uses the exact same gate and sovereign-filter as _31-sovereign-actions
 		#{$trigger}#{$gate}#{$filter} {
+// 		:where(#{$trigger}#{$gate}#{$filter}) {
+
 			#{$mover} { 
-				@include phys.apply-resting-state; 
+// 				@include phys.apply-resting-state; 
+				@include phys.apply-resting-sovereign-state; 
 			}
 		}
     }  
