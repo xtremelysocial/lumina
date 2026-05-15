@@ -30,6 +30,7 @@
 			#{$trigger}#{$hover} {
 				#{$mover} { 
 					@include phys.apply-floor;
+// 					@include phys.atmos-debug("silence");					
 				}
 			}
 		}

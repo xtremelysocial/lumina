@@ -287,13 +287,12 @@ $sovereign-filter: "";
 
         // Ensure hover states from Section 11 are also neutralized
         // TO-DO: Remove as not needed
-//         &:hover {
+        &:hover {
 //             transform: none; // !important;
 //             box-shadow: none; // !important;
-//         }
+	   		 @include atmos-debug("silence");
+        }
     }
-
-    @include atmos-debug("silence");
 }
 
 // @mixin apply-floor {

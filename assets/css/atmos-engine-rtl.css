@@ -25,7 +25,9 @@
   transform: none;
   box-shadow: none;
 }
-.wp-block-media-text .wp-block-media-text__content {
+.wp-block-media-text .wp-block-media-text__content .wp-block-group:hover,
+.wp-block-media-text .wp-block-media-text__content .wp-block-columns:hover,
+.wp-block-media-text .wp-block-media-text__content .wp-block-column:hover {
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
