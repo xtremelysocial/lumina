@@ -1,11 +1,11 @@
-/* ==========================================================================
-   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-	  Pivot 5 Build 29
-   ========================================================================== */
+//* ==========================================================================
+//   20 PASSENGERS: Container Contents (e.g. Images, Columns)
+//	    Pivot 5 Build 30
+//   ========================================================================== */
 
 @use "sass:list";
-@use "00-config" as config;
 
+@use "00-config" as config;
 @use "01-physics" as phys;
 
 @mixin apply-passenger-logic($interactive: false) {
@@ -45,6 +45,3 @@
 		}
 	}
 }
-
-// 4. APPLY THE RESTING STATE (Section 20)
-@include apply-passenger-logic($interactive: false);

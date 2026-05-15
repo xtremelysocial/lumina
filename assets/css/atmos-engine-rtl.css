@@ -3,30 +3,36 @@
   \***********************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    ATMOS ENGINE: Registers objects and sets their resting states
-   Pivot 5 Build 29   
+   Pivot 5 Build 30   
    ========================================================================== */
 /* ==========================================================================
-   02 GLOBAL OVERIDES: Apply styles globally (outside the normal 
-   	  role-specific css)
-	  Pivot 5 Build 29
+   02 GLOBAL OVERIDES: Apply styles outside the normal role-specific css
    ========================================================================== */
 .alignfull,
 .wp-block-media-text__content .wp-block-group {
   border-radius: 0;
 }
 
-.wp-block-media-text__media {
+/* ==========================================================================
+   05 FLOORS: Don't allow the physics engine to act on floors 
+   ========================================================================== */
+.wp-block-media-text .wp-block-media-text__content .wp-block-media-text__media {
   overflow: hidden;
+}
+.wp-block-media-text .wp-block-media-text__content .wp-block-group,
+.wp-block-media-text .wp-block-media-text__content .wp-block-columns,
+.wp-block-media-text .wp-block-media-text__content .wp-block-column {
+  transform: none;
+  box-shadow: none;
+}
+.wp-block-media-text .wp-block-media-text__content {
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
 }
 
 /* ==========================================================================
-   10/11 SHIPS: Containers (e.g. Groups, Columns)
-         Pivot 5 Build 29   
-   ========================================================================== */
-/* ==========================================================================
-   10/11 SHIPS: Containers (e.g. Groups, Columns)
-         Pivot 5 Build 29   
-   ========================================================================== */
+   10 SHIPS: Containers (e.g. Groups, Columns)
+========================================================================== */
 :where(.wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
@@ -100,12 +106,7 @@
 }
 
 /* ==========================================================================
-   10/11 SHIPS: Containers (e.g. Groups, Columns)
-         Pivot 5 Build 29   
-   ========================================================================== */
-/* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
-	  Pivot 5 Build 29
    ========================================================================== */
 :where(.wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
@@ -180,12 +181,7 @@
 }
 
 /* ==========================================================================
-   10/11 SHIPS: Containers (e.g. Groups, Columns)
-         Pivot 5 Build 29   
-   ========================================================================== */
-/* ==========================================================================
    30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
- 	  Pivot 5 Build 29
    ========================================================================== */
 .wp-block-button__link {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
@@ -228,20 +224,10 @@
 }
 
 /* ==========================================================================
-   10/11 SHIPS: Containers (e.g. Groups, Columns)
-         Pivot 5 Build 29   
+   50 VOIDS: Allow protecting #wpadminbar from the engine (UNUSED for now)
    ========================================================================== */
 /* ==========================================================================
-   50 VOIDS: Allow protecting #wpadminbar from the engine
-	  Pivot 5 Build 29
-   ========================================================================== */
-/* ==========================================================================
-   10/11 SHIPS: Containers (e.g. Groups, Columns)
-         Pivot 5 Build 29   
-   ========================================================================== */
-/* ==========================================================================
-   60/61 VETOS: Ships (Containers) Overrides of Children (Passengers)
-	     Pivot 5 Build 29
+   60 VETOS: Ships Overrides of Passengers
    ========================================================================== */
 .wp-block-group:is(.has-background):not(.alignfull, .is-style-object-plain) .wp-block-column:is(.has-background):not(.alignfull, .is-style-object-plain) {
   transform: none;

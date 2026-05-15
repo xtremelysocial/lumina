@@ -1,11 +1,11 @@
-/* ==========================================================================
-   10/11 SHIPS: Containers (e.g. Groups, Columns)
-         Pivot 5 Build 29   
-   ========================================================================== */
+//* ==========================================================================
+//   10 SHIPS: Containers (e.g. Groups, Columns)
+//      Pivot 5 Build 30   
+//   ========================================================================== */
 
 @use "sass:list";
-@use "00-config" as config;
 
+@use "00-config" as config;
 @use "01-physics" as phys;
 
 @mixin apply-ship-logic($interactive: false) {
@@ -38,6 +38,3 @@
 		}
 	}
 }
-
-// 5. APPLY THE RESTING STATE (Section 10)
-@include apply-ship-logic($interactive: false);

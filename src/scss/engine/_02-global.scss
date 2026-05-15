@@ -1,18 +1,33 @@
-/* ==========================================================================
-   02 GLOBAL OVERIDES: Apply styles globally (outside the normal 
-   	  role-specific css)
-	  Pivot 5 Build 29
-   ========================================================================== */
+//* ==========================================================================
+//   02 GLOBAL OVERIDES: Apply styles globally (outside the normal 
+//   	role-specific css)
+//	    Pivot 5 Build 30
+//   ========================================================================== */
 
-// 40.1 Remove default border radius on full-width and blocks within Media
-//		Text Block
-.alignfull,
-.wp-block-media-text__content .wp-block-group {
-	border-radius: 0; 
-}
+// @use "00-config" as config;
+// @use "01-physics" as phys;
 
-// 40.2 Set overflow hidden on media in Media Text block, so images with links
-// 		zoom in place
-.wp-block-media-text__media {
-	overflow: hidden;
+@mixin apply-global-logic($interactive: false) {
+
+	// 1. Setup State Toggle
+	$hover: if($interactive, ":hover", "");
+
+	// 2. Remove default border radius on full-width and blocks within Media
+	//	  Text Block
+	.alignfull,
+	.wp-block-media-text__content .wp-block-group {
+		border-radius: 0; 
+	}
+	
+	// 3. Set overflow hidden on media in Media Text block, so images with links
+	// 	  zoom in place
+	// .wp-block-media-text__media {
+	// 	overflow: hidden;
+	// }
+	// $trigger: 	".wp-block-media-text ..wp-block-media-text__media";
+	// $gate:   	phys.get-ship-gate($trigger);
+	// $filter: 	phys.$ship-filter;
+	// #{$trigger}#{$gate}#{$filter}) {
+	// 	overflow: hidden;
+	// }
 }

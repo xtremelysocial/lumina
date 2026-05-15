@@ -1,11 +1,48 @@
 /* ==========================================================================
    ATMOS ENGINE: Registers objects and sets their resting states
-   Pivot 5 Build 29   
+   Pivot 5 Build 30   
    ========================================================================== */
 
-@use 'engine/02-global' as *;
-@use 'engine/10-ships' as *;
-@use 'engine/20-passengers' as *;
-@use 'engine/30-sovereigns' as *;
-@use 'engine/50-voids' as *;
-@use 'engine/60-vetos' as *;
+// Loud all needed mixins
+@use 'engine/02-global' as global;
+@use 'engine/05-floors' as floors;
+@use 'engine/10-ships' as ships;
+@use 'engine/20-passengers' as passengers;
+@use 'engine/30-sovereigns' as sovereigns;
+@use 'engine/50-voids' as voids;
+@use 'engine/60-vetos' as vetos;
+
+/* ==========================================================================
+   02 GLOBAL OVERIDES: Apply styles outside the normal role-specific css
+   ========================================================================== */
+@include global.apply-global-logic($interactive: false);
+
+/* ==========================================================================
+   05 FLOORS: Don't allow the physics engine to act on floors 
+   ========================================================================== */
+@include floors.apply-floor-logic($interactive: false);
+
+/* ==========================================================================
+   10 SHIPS: Containers (e.g. Groups, Columns)
+========================================================================== */
+@include ships.apply-ship-logic($interactive: false);
+
+/* ==========================================================================
+   20 PASSENGERS: Container Contents (e.g. Images, Columns)
+   ========================================================================== */
+@include passengers.apply-passenger-logic($interactive: false);
+
+/* ==========================================================================
+   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+   ========================================================================== */
+@include sovereigns.apply-sovereign-logic($interactive: false);
+
+/* ==========================================================================
+   50 VOIDS: Allow protecting #wpadminbar from the engine (UNUSED for now)
+   ========================================================================== */
+@include voids.apply-void-logic($interactive: false);
+
+/* ==========================================================================
+   60 VETOS: Ships Overrides of Passengers
+   ========================================================================== */
+@include vetos.apply-veto-logic($interactive: false);

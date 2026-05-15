@@ -1,29 +1,35 @@
-/* ==========================================================================
-   50 VOIDS: Allow protecting #wpadminbar from the engine
-	  Pivot 5 Build 29
-   ========================================================================== */
+//* ==========================================================================
+//   50 VOIDS: Allow protecting #wpadminbar from the engine
+//	    Pivot 5 Build 30
+//   ========================================================================== */
 
 @use "sass:list";
 
 @use "00-config" as config;
 @use "01-physics" as phys;
 
-// 1. LOOP THROUGH OUR PHYSICS MAP FOR VOIDS
-@each $trigger, $meta in config.$atmos-physics-map {
-	  $target: list.nth($meta, 1);
-      $role:   list.nth($meta, 2);
+@mixin apply-void-logic($interactive: false) {
 
-    // THE SILENCE PROTOCOL
-    // If a role is explicitly set to "void", we strip its physics 
-    // to ensure no ghost-hovering or transition bloat.
-    @if $role == "void" {
-	    $mover: if($target == "self", "&", #{$target});
-        #{$trigger} {
-            #{$mover} {
-                transition: none !important;
-                transform: none !important;
-                box-shadow: none !important;
-            }
-        }
-    }
+	// 1. Setup State Toggle
+	$hover: if($interactive, ":hover", "");
+
+	// 2. LOOP THROUGH VOIDS IN OUR PHYSICS
+	@each $trigger, $meta in config.$atmos-physics-map {
+		  $target: list.nth($meta, 1);
+		  $role:   list.nth($meta, 2);
+	
+		// THE SILENCE PROTOCOL
+		// If a role is explicitly set to "void", we strip its physics 
+		// to ensure no ghost-hovering or transition bloat.
+		@if $role == "void" {
+			$mover: if($target == "self", "&", #{$target});
+			#{$trigger}#{$hover} {
+				#{$mover} {
+					transition: none; // !important;
+					transform: none; // !important;
+					box-shadow: none; // !important;
+				}
+			}
+		}
+	}
 }
