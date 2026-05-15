@@ -1,7 +1,7 @@
-/* ==========================================================================
-   60/61 VETOS: Ships (Containers) Overrides of Children (Passengers)
-	     Pivot 5 Build 29
-   ========================================================================== */
+//* ==========================================================================
+//   60 VETOS: Ships Overrides of Passengers
+//	    Pivot 5 Build 30
+//   ========================================================================== */
 
 @use "sass:string";
 @use "sass:list";
@@ -9,12 +9,12 @@
 @use "00-config" as config;
 @use "01-physics" as phys;
 
-//**
-// * 01.9 MASTER VETO: Centralized override logic for 60 and 61
-// * $interactive: true adds :hover to the Ship (Section 61)
-// * $interactive: false targets the resting Ship (Section 60)
-// */
 @mixin apply-veto-logic($interactive: false) {
+
+	// 1. Setup State Toggle
+	$hover: if($interactive, ":hover", "");
+
+	// 2. LOOP THROUGH OUR PHYSICS MAP
     @each $trigger, $meta in config.$atmos-physics-map {
         $target: list.nth($meta, 1);
         $role:   list.nth($meta, 2);
@@ -33,10 +33,12 @@
                         $ship-filter: phys.$ship-filter;
                         
                         // Toggle :hover based on the mixin argument
-                        $hover-state: if($interactive, ":hover", "");
-                        $veto-trigger: "#{$ship-trigger}#{$ship-gate}#{$ship-filter}#{$hover-state}";
+//                         $hover-state: if($interactive, ":hover", "");
+//                         $veto-trigger: "#{$ship-trigger}#{$ship-gate}#{$ship-filter}#{$hover-state}";
+//                         $veto-trigger: "#{$ship-trigger}#{$ship-gate}#{$ship-filter}#{$hover}";
+                        $veto-trigger: "#{$ship-trigger}#{$ship-gate}#{$ship-filter}";
                     
-                        #{$veto-trigger} #{$trigger}#{$gate}#{$filter} {
+                        #{$veto-trigger}#{$hover} #{$trigger}#{$gate}#{$filter} {
                             @if not $is-portal {
                                 #{$mover} {                        
                                     transform: none;
@@ -55,6 +57,3 @@
         }
     }
 }
-
-// Apply Permanent Veto
-@include apply-veto-logic($interactive: false);

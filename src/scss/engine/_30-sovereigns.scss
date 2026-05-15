@@ -1,31 +1,39 @@
-/* ==========================================================================
-   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
- 	  Pivot 5 Build 29
-   ========================================================================== */
+//* ==========================================================================
+//   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+// 	    Pivot 5 Build 30
+//   ========================================================================== */
 
 @use "sass:list";
 
 @use "00-config" as config;
 @use "01-physics" as phys;
 
-// LOOP THROUGH OUR PHYSICS MAP FOR SOVEREIGNS
-@each $trigger, $meta in config.$atmos-physics-map {
-	  $target: list.nth($meta, 1);
-      $role:   list.nth($meta, 2);
+@mixin apply-sovereign-logic($interactive: false) {
 
-    @if $role == "sovereign" {
-        $mover:  if($target == "self", "&", $target);
-        $gate:   phys.get-sovereign-gate($trigger);
-        $filter: phys.$sovereign-filter; 
+	// 1. Setup State Toggle
+	$hover: if($interactive, ":hover", "");
 
-        // SYNC: Uses the exact same gate and sovereign-filter as _31-sovereign-actions
-		#{$trigger}#{$gate}#{$filter} {
-// 		:where(#{$trigger}#{$gate}#{$filter}) {
+	// 2. LOOP THROUGH SOVEREIGNS IN OUR PHYSICS MAP
+	@each $trigger, $meta in config.$atmos-physics-map {
+		$target: list.nth($meta, 1);
+		$role:   list.nth($meta, 2);
+	
+		@if $role == "sovereign" {
+			$mover:  if($target == "self", "&", #{$target});
+			$gate:   phys.get-sovereign-gate($trigger);
+			$filter: phys.$sovereign-filter;
 
-			#{$mover} { 
-// 				@include phys.apply-resting-state; 
-				@include phys.apply-resting-sovereign-state; 
+			// 3. APPLY LOGIC
+			// Sovereigns don't use :where to be able to override core WordPress
+			#{$trigger}#{$gate}#{$filter}#{$hover} {
+				#{$mover} { 
+					@if $interactive { 
+		                @include phys.apply-sovereign;
+					} @else { 
+						@include phys.apply-resting-sovereign-state; 
+					}
+				}
 			}
 		}
-    }  
+	}
 }

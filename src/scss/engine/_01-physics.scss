@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	Pivot 5 Build 29
+//	 	Pivot 5 Build 30
 //   ========================================================================== */
 
 @use "sass:string"; // Required for string.index
@@ -258,7 +258,3 @@ $sovereign-filter: "";
 	// Add debug outline
 	@include atmos-debug("passenger");
 }
-
-// @mixin apply-passenger-grow {
-//     @extend %physics-passenger-grow;
-// }

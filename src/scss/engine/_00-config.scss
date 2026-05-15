@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles), Constants, Debug Variables
-//	 	Pivot 5 Build 29
+//	 	Pivot 5 Build 30
 //   ========================================================================== */
 
 //**
@@ -50,7 +50,8 @@ $atmos-physics-map: (
     // need a block wildcard to protect avatars in the admin bar.
     "[class*=wp-block-] a > .avatar"   	: ("self", 			"sovereign"),
 
-    // FLOORS: Pinned architecture (Skipped by logic)
+    // FLOORS: Don't allow ships in floors
+    ".wp-block-media-text .wp-block-media-text__content": ("self",	"floor"),
 //     "#page-content"             		: ("self", 			"floor"),
 
 	// VOIDS: 
