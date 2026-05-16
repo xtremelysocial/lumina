@@ -13,7 +13,7 @@
 	// 1. Setup State Toggle
 	$hover: if($interactive, ":hover", "");
 
-	// 2. LOOP THROUGH VOIDS IN OUR PHYSICS
+	// 2. LOOP THROUGH VOIDS IN OUR PHYSICS MAP
 	@each $trigger, $meta in config.$atmos-physics-map {
 		  $target: list.nth($meta, 1);
 		  $role:   list.nth($meta, 2);
