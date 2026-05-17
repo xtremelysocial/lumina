@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    Pivot 5 Build 30
+// 	    Pivot 5 Build 31 Restructure Map
 //   ========================================================================== */
 
 @use "sass:list";
@@ -14,23 +14,27 @@
 	$hover: if($interactive, ":hover", "");
 
 	// 2. LOOP THROUGH SOVEREIGNS IN OUR PHYSICS MAP
-	@each $trigger, $meta in config.$atmos-physics-map {
-		$target: list.nth($meta, 1);
-		$role:   list.nth($meta, 2);
-	
+	@each $trigger-target, $role in config.$atmos-physics-map { 
+		$trigger: list.nth($trigger-target, 1);
+		$target:  list.nth($trigger-target, 2);
+
 		@if $role == "sovereign" {
 			$mover:  if($target == "self", "&", #{$target});
 			$gate:   phys.get-sovereign-gate($trigger);
 			$filter: phys.$sovereign-filter;
 
 			// 3. APPLY LOGIC
-			// Sovereigns don't use :where to be able to override core WordPress
-			#{$trigger}#{$gate}#{$filter}#{$hover} {
+			// Pulls the protected structural scope from physics utility to lock in 
+			// the 30-point baseline score.
+// 			#{$trigger}#{$gate}#{$filter}#{$hover} {
+// 			$sovereign-axis: "#{phys.$atmos-sovereign-scope} #{$trigger}#{$gate}:where(#{$filter})#{$hover}";
+			$sovereign-axis: "#{phys.$atmos-sovereign-scope} #{$trigger}#{$hover}";
+			#{$sovereign-axis} {
 				#{$mover} { 
 					@if $interactive { 
-		                @include phys.apply-sovereign;
+						@include phys.apply-sovereign; 
 					} @else { 
-						@include phys.apply-resting-sovereign-state; 
+						@include phys.apply-resting-state; 
 					}
 				}
 			}

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//      Pivot 5 Build 30   
+//       Pivot 5 Build 31 Restructure Map   
 //   ========================================================================== */
 
 @use "sass:list";
@@ -14,9 +14,9 @@
 	$hover: if($interactive, ":hover", "");
 
 	// 2. LOOP THROUGH SHIPS IN OUR PHYSICS MAP
-	@each $trigger, $meta in config.$atmos-physics-map {
-		$target: list.nth($meta, 1);
-		$role:   list.nth($meta, 2);
+	@each $trigger-target, $role in config.$atmos-physics-map { 
+		$trigger: list.nth($trigger-target, 1);
+		$target:  list.nth($trigger-target, 2);
 	
 		@if $role == "ship" {
 			$mover:  if($target == "self", "&", #{$target});
@@ -24,14 +24,14 @@
 			$filter: phys.$ship-filter;
 
 			// 3. APPLY LOGIC
-			// Ships always use :where to stay at zero specificity 
-			:where(#{$trigger}#{$gate}#{$filter})#{$hover} {
+			// STRENGTHEN SHIP DETECTION: Stacking the gate outside :where() locks in a 20-point class score
+			#{$trigger}#{$gate}:where(#{$filter})#{$hover} {
 				#{$mover} { 
 					@if $interactive { 
 						@include phys.apply-ship; 
 					} @else { 
 						@include phys.apply-resting-state;
-						border-radius: var(--wp--custom--border--radius);
+// 						border-radius: var(--wp--custom--border--radius);
 					}
 				}
 			}

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   60 VETOS: Ships Overrides of Passengers
-//	    Pivot 5 Build 30
+//	    Pivot 5 Build 31 Restructure Map
 //   ========================================================================== */
 
 @use "sass:string";
@@ -8,6 +8,17 @@
 
 @use "00-config" as config;
 @use "01-physics" as phys;
+
+// PORTAL DETECTION
+// Moves the "Contract" logic out of the loops.
+// Checks if a passenger block represents a link (Portal).
+@function is-portal($trigger, $target) {
+    $is-link: (string.index($trigger, " a") != null) 
+              or ($target == "a") 
+              or (string.index($trigger, "-link") != null);
+    
+    @return $is-link;
+}
 
 @mixin apply-veto-logic($interactive: false) {
 

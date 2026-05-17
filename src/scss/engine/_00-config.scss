@@ -1,61 +1,56 @@
 //* ==========================================================================
-//   00 ATMOS CONFIGURATION: Physics Maps (Roles), Constants, Debug Variables
-//	 	Pivot 5 Build 30
+//   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
+//	 	Pivot 5 Build 31 Restructure Map
 //   ========================================================================== */
 
 //**
-// * 00.1 THE PHYSICS MAP (Trigger : ( Target, Role ))
+// * 00.1 THE PHYSICS MAP (Trigger : Target): Role
 // */
 $atmos-physics-map: (
 
-	// WILDCARDS: Keep these first so the others override them
-//     "[class*=wp-block-]:not(.wp-block-heading, p, hr, li)": ("self", "passenger"),
-//     "[class*=wp-block-]": 				("self", "passenger"),
+	// SHIPS: Container-lift (Requires background color if core block)
+	(".wp-block-group",                         "self"):            "ship",
+	(".wp-block-columns",                       "self"):            "ship",
+	(".wp-block-media-text",                    "self"):            "ship",
 
-    // SHIPS: Container-lift (Requires background color if core block)
-    ".wp-block-group"           		: ("self", 			"ship"),
-	".wp-block-columns" 				: ("self", 			"ship"),
-    ".wp-block-media-text"     			: ("self",			"ship"),
-
-    // SHIPS: Container-lift (Automatic as these are Atmos custom styles)
-    ".is-style-object-passive"  		: ("self", 			"ship"),
-    ".is-style-rounded-border"  		: ("self", 			"ship"),
-    ".is-style-thick-rounded-border"	: ("self", 			"ship"),
-    ".is-style-rounded-corners"			: ("self", 			"ship"),
+	// SHIPS: Container-lift (Automatic as these are Atmos custom styles)
+	(".is-style-object-passive",                "self"):            "ship",
+	(".is-style-rounded-border",                "self"):            "ship",
+	(".is-style-thick-rounded-border",          "self"):            "ship",
+	(".is-style-rounded-corners",               "self"):            "ship",
 
 	// SHIPS: Container-lift (Automatic as these are in theme.json)
 	// Trigger must not start with ".wp-block-" though or the engine will
 	// require a colored background.
-	"pre.wp-block-code"                 : ("self", 			"ship"),	
+	("pre.wp-block-code",                       "self"):            "ship",    
 	
-    // PASSENGERS: Fast-lift child elements (Images)
-    ".wp-block-column"          		: ("self", 			"passenger"),
-    ".wp-block-image:not(.wp-block-gallery .wp-block-image)": ("img", "passenger"),
-    ".wp-block-gallery .wp-block-image" : ("self",  		"passenger"),
-	".wp-block-post-featured-image a"   : ("img", 			"passenger"),
-    ".wp-block-latest-posts__featured-image": ("img", 		"passenger"),
-    ".wp-block-latest-posts__featured-image a": ("img", 	"passenger"),
-    ".wp-block-media-text__media a"		: ("img",			"passenger"),
-// 	":not(a) > .avatar"             	: ("self", 			"passenger"),
-	".wp-block-page-list" 				: ("self", 			"passenger"), 
-	".wp-block-categories"				: ("self", 			"passenger"),
+	// PASSENGERS: Block-Lift (e.g. individual columns blocks)
+	(".wp-block-column",                        "self"):            "passenger",
 
-    // SOVEREIGNS: Fast-pass growth (Buttons, Icons)
-    ".wp-block-button__link"    		: ("self", 			"sovereign"),
-    ".wp-element-button"        		: ("self", 			"sovereign"),
-    ".wp-block-social-link"     		: ("self",    		"sovereign"),
-    ".tag-cloud-link"           		: ("self", 			"sovereign"),
-    
-    // SOVEREIGNS Except in #wpadminbar: Broad selectors like this
-    // need a block wildcard to protect avatars in the admin bar.
-    "[class*=wp-block-] a > .avatar"   	: ("self", 			"sovereign"),
+	// IMAGES: Image-Lift, Image-Grow, or Image-Zoom
+	(".wp-block-image",                         "img"):             "passenger",
+	(".wp-block-image",                         "a > img"):         "passenger-grow",
+	(".wp-block-gallery .wp-block-image",       "img"):             "passenger",
+	(".wp-block-gallery .wp-block-image",       "a > img"):         "passenger-zoom",
+	(".wp-block-post-featured-image",           "img"):             "passenger",
+	(".wp-block-post-featured-image",           "a > img"):         "passenger-grow",
+	(".wp-block-latest-posts__featured-image",  "img"):             "passenger",
+	(".wp-block-latest-posts__featured-image",  "a > img"):         "passenger-zoom",
+// 	(".wp-block-media-text__media",             "img"):             "passenger",
+	(".wp-block-media-text__media",             "a > img"):         "passenger-zoom",
 
-    // FLOORS: Don't allow ships in floors
-    ".wp-block-media-text .wp-block-media-text__content": ("self",	"floor"),
-//     "#page-content"             		: ("self", 			"floor"),
+	// SOVEREIGNS: Fast-pass growth (Buttons, Icons)
+	(".wp-block-button__link",                  "self"):            "sovereign",
+	(".wp-element-button",                      "self"):            "sovereign",
+	(".wp-block-social-link",                   "a"):               "sovereign", // Fixed typo (swapped comma for colon)
+	(".tag-cloud-link",                         "self"):            "sovereign",
+	
+	// SOVEREIGNS Except in #wpadminbar: Broad selectors like this
+	// need a block wildcard to protect avatars in the admin bar.
+	("[class*=wp-block-] a > .avatar",          "self"):            "sovereign",
 
-	// VOIDS: 
-//     "#wpadminbar"             		: ("self", 			"floor"),
+	// FLOORS: Ground only its own frame box
+	(".is-style-object-plain",                  "self"):            "floor",
 );
 
 //**
@@ -75,7 +70,14 @@ $atmos-passenger-triggers: ".has-background";
 
 // The Brake: Only real-time layout states. Keep this list very short for browser
 // performance reasons.
-$atmos-static-floors: ".alignfull, .is-style-object-plain";
+$atmos-static-floors: ".alignfull";
+
+// UNIVERSAL DAMPENING TARGETS: Any core block components or raw graphics 
+// nested inside an active Ship that must instantly stand down.
+$atmos-dampen-targets: (
+	"[class*=wp-block-]",
+	"[class*=wp-block-] img"
+);
 
 //**
 // * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up
