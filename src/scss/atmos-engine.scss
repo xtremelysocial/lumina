@@ -1,6 +1,6 @@
 /* ==========================================================================
    ATMOS ENGINE: Registers objects and sets their resting states
-   Pivot 5 Build 31 Restructure Map   
+   Pivot 5 Build 32 Restore Vetos   
    ========================================================================== */
 
 // Load all needed mixins
@@ -45,4 +45,4 @@
 /* ==========================================================================
    60 VETOS: Ships Overrides of Passengers
    ========================================================================== */
-// @include vetos.apply-veto-logic($interactive: false);
+@include vetos.apply-veto-logic($interactive: false);

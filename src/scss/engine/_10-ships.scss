@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//       Pivot 5 Build 31 Restructure Map   
+//       Pivot 5 Build 32 Restore Vetos   
 //   ========================================================================== */
 
 @use "sass:list";
@@ -23,8 +23,13 @@
 			$gate:   phys.get-ship-gate($trigger);
 			$filter: phys.$ship-filter;
 
-			// 3. APPLY LOGIC
-			// STRENGTHEN SHIP DETECTION: Stacking the gate outside :where() locks in a 20-point class score
+			// THE ENFORCEMENT LAYER: Leverage your native block-check function
+			// If it's an explicit block style class or naked trait, enforce Tier 20 ($0,2,0)
+			@if not phys.is-block($trigger) {
+				$trigger: "[class*=wp-block-]#{$trigger}";
+			}
+	
+			// 3. APPLY LOGIC WITH PERFECT TIER 20 SPECIFICITY
 			#{$trigger}#{$gate}:where(#{$filter})#{$hover} {
 				#{$mover} { 
 					@if $interactive { 

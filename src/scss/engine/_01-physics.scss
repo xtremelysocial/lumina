@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	Pivot 5 Build 31 Restructure Map
+//	 	Pivot 5 Build 32 Restore Vetos
 //   ========================================================================== */
 
 @use "sass:string"; // Required for string.index
@@ -26,6 +26,16 @@ $atmos-sovereign-scope: ".wp-site-blocks [class*=wp-block-]:not([class*=wp-block
 // BLOCK DETECTION: Looks for core WordPress block or wildcard
 @function is-block($trigger) {
     @return (string.index($trigger, ".wp-block-") == 1 or string.index($trigger, "[class*=wp-block-") == 1);
+}
+
+// IMAGE DETECTION: Looks for an img tag in the target
+@function is-image($target) {
+	@return string.index($target, "img") != null;
+}
+
+// LINK DETECTION: Looks for an a tag in the target
+@function is-link($target) {
+	@return string.index($target, "a") != null;
 }
 
 //**
@@ -85,7 +95,8 @@ $ship-filter: ":not(#{config.$atmos-static-floors})";
 // */
 @function get-passenger-gate($trigger, $target: "") {
 
-	$is-image: string.index($target, "img") != null;
+// 	$is-image: string.index($target, "img") != null;
+	$is-image: is-image($target);
 	$is-block: is-block($trigger);
 
     // 1. If the target is an image, return the specific image triggers

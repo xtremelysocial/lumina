@@ -3,7 +3,7 @@
   \***********************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    ATMOS ENGINE: Registers objects and sets their resting states
-   Pivot 5 Build 31 Restructure Map   
+   Pivot 5 Build 32 Restore Vetos   
    ========================================================================== */
 /* ==========================================================================
    02 GLOBAL OVERIDES: Apply styles outside the normal role-specific css
@@ -39,7 +39,7 @@
   outline-offset: -1px;
 }
 
-.is-style-object-passive:where(:not(.alignfull)) {
+[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -47,7 +47,7 @@
   outline-offset: -1px;
 }
 
-.is-style-rounded-border:where(:not(.alignfull)) {
+[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -55,7 +55,7 @@
   outline-offset: -1px;
 }
 
-.is-style-thick-rounded-border:where(:not(.alignfull)) {
+[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -63,7 +63,7 @@
   outline-offset: -1px;
 }
 
-.is-style-rounded-corners:where(:not(.alignfull)) {
+[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -71,7 +71,7 @@
   outline-offset: -1px;
 }
 
-pre.wp-block-code:where(:not(.alignfull)) {
+[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -214,3 +214,202 @@ pre.wp-block-code:where(:not(.alignfull)) {
 /* ==========================================================================
    60 VETOS: Ships Overrides of Passengers
    ========================================================================== */
+.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+  transform: none;
+  box-shadow: none;
+}
