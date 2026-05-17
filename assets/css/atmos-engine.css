@@ -208,208 +208,128 @@
 /* ==========================================================================
    40 FLOORS: Don't allow the physics engine to act on floors 
    ========================================================================== */
+.wp-block-group:is(.has-background):where(:not(.alignfull)) [class*=wp-block-]:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-group:is(.has-background):where(:not(.alignfull)) [class*=wp-block-] img:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-columns:is(.has-background):where(:not(.alignfull)) [class*=wp-block-]:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-columns:is(.has-background):where(:not(.alignfull)) [class*=wp-block-] img:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-media-text:is(.has-background):where(:not(.alignfull)) [class*=wp-block-]:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-media-text:is(.has-background):where(:not(.alignfull)) [class*=wp-block-] img:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.is-style-object-passive:where(:not(.alignfull)) [class*=wp-block-]:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.is-style-object-passive:where(:not(.alignfull)) [class*=wp-block-] img:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.is-style-rounded-border:where(:not(.alignfull)) [class*=wp-block-]:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.is-style-rounded-border:where(:not(.alignfull)) [class*=wp-block-] img:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.is-style-thick-rounded-border:where(:not(.alignfull)) [class*=wp-block-]:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.is-style-thick-rounded-border:where(:not(.alignfull)) [class*=wp-block-] img:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.is-style-rounded-corners:where(:not(.alignfull)) [class*=wp-block-]:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.is-style-rounded-corners:where(:not(.alignfull)) [class*=wp-block-] img:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+pre.wp-block-code:where(:not(.alignfull)) [class*=wp-block-]:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+pre.wp-block-code:where(:not(.alignfull)) [class*=wp-block-] img:not(.alignfull) {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.is-style-object-plain {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
 /* ==========================================================================
    50 VOIDS: Allow protecting #wpadminbar from the engine (UNUSED for now)
    ========================================================================== */
 /* ==========================================================================
    60 VETOS: Ships Overrides of Passengers
    ========================================================================== */
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
