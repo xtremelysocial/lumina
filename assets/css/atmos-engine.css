@@ -8,90 +8,81 @@
 /* ==========================================================================
    02 GLOBAL OVERIDES: Apply styles outside the normal role-specific css
    ========================================================================== */
-.alignfull,
-.wp-block-media-text__content .wp-block-group {
-  border-radius: 0;
+.wp-block-media-text__media:has(a > img) {
+  overflow: hidden;
 }
 
 /* ==========================================================================
    10 SHIPS: Containers (e.g. Groups, Columns)
 ========================================================================== */
-:where(.wp-block-group:is(.has-background):not(.alignfull)) {
+.wp-block-group:is(.has-background):where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
-  border-radius: var(--wp--custom--border--radius);
 }
 
-:where(.wp-block-columns:is(.has-background):not(.alignfull)) {
+.wp-block-columns:is(.has-background):where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
-  border-radius: var(--wp--custom--border--radius);
 }
 
-:where(.wp-block-media-text:is(.has-background):not(.alignfull)) {
+.wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
-  border-radius: var(--wp--custom--border--radius);
 }
 
-:where(.is-style-object-passive:not(.alignfull)) {
+.is-style-object-passive:where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
-  border-radius: var(--wp--custom--border--radius);
 }
 
-:where(.is-style-rounded-border:not(.alignfull)) {
+.is-style-rounded-border:where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
-  border-radius: var(--wp--custom--border--radius);
 }
 
-:where(.is-style-thick-rounded-border:not(.alignfull)) {
+.is-style-thick-rounded-border:where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
-  border-radius: var(--wp--custom--border--radius);
 }
 
-:where(.is-style-rounded-corners:not(.alignfull)) {
+.is-style-rounded-corners:where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
-  border-radius: var(--wp--custom--border--radius);
 }
 
-:where(pre.wp-block-code:not(.alignfull)) {
+pre.wp-block-code:where(:not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
-  border-radius: var(--wp--custom--border--radius);
 }
 
 /* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
    ========================================================================== */
-:where(.wp-block-column:is(.has-background):not(.alignfull)) {
+.wp-block-column:where(:is(.has-background):not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -99,7 +90,7 @@
   outline-offset: -1px;
 }
 
-:where(.wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull)) img {
+.wp-block-image:where(:not(.alignfull)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -107,7 +98,7 @@
   outline-offset: -1px;
 }
 
-:where(.wp-block-gallery .wp-block-image:not(.alignfull)) {
+.wp-block-image:where(:not(.alignfull)) a > img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -115,15 +106,7 @@
   outline-offset: -1px;
 }
 
-.wp-block-post-featured-image a:not(.alignfull) img {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-  outline: 1px dashed #ff8c00;
-  outline-offset: -1px;
-}
-
-:where(.wp-block-latest-posts__featured-image:not(.alignfull)) img {
+.wp-block-gallery .wp-block-image:where(:not(.alignfull)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
@@ -131,18 +114,50 @@
   outline-offset: -1px;
 }
 
-.wp-block-latest-posts__featured-image a:not(.alignfull) img {
+.wp-block-gallery .wp-block-image:where(:not(.alignfull)) a > img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
-.wp-block-media-text__media a:not(.alignfull) img {
+.wp-block-post-featured-image:where(:not(.alignfull)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-post-featured-image:where(:not(.alignfull)) a > img {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-latest-posts__featured-image:where(:not(.alignfull)) img {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-latest-posts__featured-image:where(:not(.alignfull)) a > img {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-media-text__media:where(:not(.alignfull)) a > img {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
@@ -150,225 +165,52 @@
 /* ==========================================================================
    30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
    ========================================================================== */
-.wp-block-button__link {
+.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .wp-block-button__link {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
-.wp-element-button {
+.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .wp-element-button {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
-.wp-block-social-link {
+.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .wp-block-social-link a {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
-.tag-cloud-link {
+.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .tag-cloud-link {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
-[class*=wp-block-] a > .avatar {
+.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) [class*=wp-block-] a > .avatar {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
   outline: 1px dashed #ff8c00;
   outline-offset: -1px;
 }
 
 /* ==========================================================================
-   05 FLOORS: Don't allow the physics engine to act on floors 
+   40 FLOORS: Don't allow the physics engine to act on floors 
    ========================================================================== */
-.is-style-object-plain:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-media-text .wp-block-group:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
 /* ==========================================================================
    50 VOIDS: Allow protecting #wpadminbar from the engine (UNUSED for now)
    ========================================================================== */
 /* ==========================================================================
    60 VETOS: Ships Overrides of Passengers
    ========================================================================== */
-.wp-block-group:is(.has-background):not(.alignfull) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-columns:is(.has-background):not(.alignfull) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-media-text:is(.has-background):not(.alignfull) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-object-passive:not(.alignfull) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-rounded-border:not(.alignfull) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-thick-rounded-border:not(.alignfull) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-rounded-corners:not(.alignfull) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-pre.wp-block-code:not(.alignfull) .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-group:is(.has-background):not(.alignfull) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-columns:is(.has-background):not(.alignfull) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-media-text:is(.has-background):not(.alignfull) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-object-passive:not(.alignfull) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-rounded-border:not(.alignfull) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-thick-rounded-border:not(.alignfull) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-rounded-corners:not(.alignfull) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-pre.wp-block-code:not(.alignfull) .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-group:is(.has-background):not(.alignfull) .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-columns:is(.has-background):not(.alignfull) .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-media-text:is(.has-background):not(.alignfull) .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-object-passive:not(.alignfull) .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-rounded-border:not(.alignfull) .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-thick-rounded-border:not(.alignfull) .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-rounded-corners:not(.alignfull) .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-pre.wp-block-code:not(.alignfull) .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-group:is(.has-background):not(.alignfull) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-columns:is(.has-background):not(.alignfull) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.wp-block-media-text:is(.has-background):not(.alignfull) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-object-passive:not(.alignfull) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-rounded-border:not(.alignfull) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-thick-rounded-border:not(.alignfull) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-.is-style-rounded-corners:not(.alignfull) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}
-
-pre.wp-block-code:not(.alignfull) .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-}

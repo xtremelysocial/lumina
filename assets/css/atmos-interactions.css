@@ -8,56 +8,56 @@
 /* ==========================================================================
    10 SHIPS: Containers (e.g. Groups, Columns)
 ========================================================================== */
-:where(.wp-block-group:is(.has-background):not(.alignfull)):hover {
+.wp-block-group:is(.has-background):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px solid #00ffff;
   outline-offset: 2px;
 }
 
-:where(.wp-block-columns:is(.has-background):not(.alignfull)):hover {
+.wp-block-columns:is(.has-background):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px solid #00ffff;
   outline-offset: 2px;
 }
 
-:where(.wp-block-media-text:is(.has-background):not(.alignfull)):hover {
+.wp-block-media-text:is(.has-background):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px solid #00ffff;
   outline-offset: 2px;
 }
 
-:where(.is-style-object-passive:not(.alignfull)):hover {
+.is-style-object-passive:where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px solid #00ffff;
   outline-offset: 2px;
 }
 
-:where(.is-style-rounded-border:not(.alignfull)):hover {
+.is-style-rounded-border:where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px solid #00ffff;
   outline-offset: 2px;
 }
 
-:where(.is-style-thick-rounded-border:not(.alignfull)):hover {
+.is-style-thick-rounded-border:where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px solid #00ffff;
   outline-offset: 2px;
 }
 
-:where(.is-style-rounded-corners:not(.alignfull)):hover {
+.is-style-rounded-corners:where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px solid #00ffff;
   outline-offset: 2px;
 }
 
-:where(pre.wp-block-code:not(.alignfull)):hover {
+pre.wp-block-code:where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
   outline: 1px solid #00ffff;
@@ -67,49 +67,70 @@
 /* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
    ========================================================================== */
-:where(.wp-block-column:is(.has-background):not(.alignfull)):hover {
+.wp-block-column:where(:is(.has-background):not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-:where(.wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull)):hover img {
+.wp-block-image:where(:not(.alignfull)):hover img {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-:where(.wp-block-gallery .wp-block-image:not(.alignfull)):hover {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-post-featured-image a:not(.alignfull):hover img {
+.wp-block-image:where(:not(.alignfull)):hover a > img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-:where(.wp-block-latest-posts__featured-image:not(.alignfull)):hover img {
+.wp-block-gallery .wp-block-image:where(:not(.alignfull)):hover img {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-latest-posts__featured-image a:not(.alignfull):hover img {
+.wp-block-gallery .wp-block-image:where(:not(.alignfull)):hover a > img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
 
-.wp-block-media-text__media a:not(.alignfull):hover img {
+.wp-block-post-featured-image:where(:not(.alignfull)):hover img {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
+}
+
+.wp-block-post-featured-image:where(:not(.alignfull)):hover a > img {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
+}
+
+.wp-block-latest-posts__featured-image:where(:not(.alignfull)):hover img {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
+}
+
+.wp-block-latest-posts__featured-image:where(:not(.alignfull)):hover a > img {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
+}
+
+.wp-block-media-text__media:where(:not(.alignfull)):hover a > img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #00ffff;
@@ -119,35 +140,35 @@
 /* ==========================================================================
    30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
    ========================================================================== */
-.wp-block-button__link:hover {
+.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .wp-block-button__link:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #ff00ff;
   outline-offset: 4px;
 }
 
-.wp-element-button:hover {
+.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .wp-element-button:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #ff00ff;
   outline-offset: 4px;
 }
 
-.wp-block-social-link:hover {
+.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .wp-block-social-link:hover a {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #ff00ff;
   outline-offset: 4px;
 }
 
-.tag-cloud-link:hover {
+.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .tag-cloud-link:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #ff00ff;
   outline-offset: 4px;
 }
 
-[class*=wp-block-] a > .avatar:hover {
+.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) [class*=wp-block-] a > .avatar:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #ff00ff;
@@ -155,228 +176,8 @@
 }
 
 /* ==========================================================================
+   40 FLOORS: Don't allow the physics engine to act on floors 
+   ========================================================================== */
+/* ==========================================================================
    60 VETOS: Ship Overrides of Passengers
    ========================================================================== */
-.wp-block-group:is(.has-background):not(.alignfull):hover .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-columns:is(.has-background):not(.alignfull):hover .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-media-text:is(.has-background):not(.alignfull):hover .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-object-passive:not(.alignfull):hover .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-rounded-border:not(.alignfull):hover .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-thick-rounded-border:not(.alignfull):hover .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-rounded-corners:not(.alignfull):hover .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-pre.wp-block-code:not(.alignfull):hover .wp-block-column:is(.has-background):not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-group:is(.has-background):not(.alignfull):hover .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-columns:is(.has-background):not(.alignfull):hover .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-media-text:is(.has-background):not(.alignfull):hover .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-object-passive:not(.alignfull):hover .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-rounded-border:not(.alignfull):hover .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-thick-rounded-border:not(.alignfull):hover .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-rounded-corners:not(.alignfull):hover .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-pre.wp-block-code:not(.alignfull):hover .wp-block-image:not(.wp-block-gallery .wp-block-image):not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-group:is(.has-background):not(.alignfull):hover .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-columns:is(.has-background):not(.alignfull):hover .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-media-text:is(.has-background):not(.alignfull):hover .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-object-passive:not(.alignfull):hover .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-rounded-border:not(.alignfull):hover .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-thick-rounded-border:not(.alignfull):hover .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-rounded-corners:not(.alignfull):hover .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-pre.wp-block-code:not(.alignfull):hover .wp-block-gallery .wp-block-image:not(.alignfull) {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-group:is(.has-background):not(.alignfull):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-columns:is(.has-background):not(.alignfull):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-media-text:is(.has-background):not(.alignfull):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-object-passive:not(.alignfull):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-rounded-border:not(.alignfull):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-thick-rounded-border:not(.alignfull):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.is-style-rounded-corners:not(.alignfull):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-pre.wp-block-code:not(.alignfull):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
-  transform: none;
-  box-shadow: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}

@@ -5,29 +5,40 @@
 //   ========================================================================== */
 
 // @use "00-config" as config;
-// @use "01-physics" as phys;
+@use "01-physics" as phys;
 
 @mixin apply-global-logic($interactive: false) {
 
 	// 1. Setup State Toggle
-	$hover: if($interactive, ":hover", "");
+// 	$hover: if($interactive, ":hover", "");
 
-	// 2. Remove default border radius on full-width and blocks within Media
-	//	  Text Block
-	.alignfull,
-	.wp-block-media-text__content .wp-block-group {
-		border-radius: 0; 
+	// 2. Remove default border radius on full-width and blocks within Media Text Block
+// 	.alignfull,
+// 	.wp-block-media-text__content .wp-block-group {
+// 		border-radius: 0; 
+// 	}
+	
+	// 3. Set overflow hidden on media container *only* when hosting an active image portal link
+	// This ensures the container behaves as a rigid frame box while the inner graphic zooms
+	.wp-block-media-text__media:has(a > img) {
+		overflow: hidden;
 	}
 	
-	// 3. Set overflow hidden on media in Media Text block, so images with links
-	// 	  zoom in place
-	// .wp-block-media-text__media {
-	// 	overflow: hidden;
-	// }
-	// $trigger: 	".wp-block-media-text ..wp-block-media-text__media";
-	// $gate:   	phys.get-ship-gate($trigger);
-	// $filter: 	phys.$ship-filter;
-	// #{$trigger}#{$gate}#{$filter}) {
-	// 	overflow: hidden;
-	// }
+	// 4. Universal Social Link Geometry Normalization
+	// Forces the anchor frame into a perfect circle so standard box-shadows contour flawlessly
+// 	.wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor {
+// 		border-radius: 9999px;
+// 		display: flex;
+// 		align-items: center;
+// 		justify-content: center;
+// 
+// 		@if $interactive {
+// 			&:hover {
+// 				// Re-uses your standard, pristine button physics seamlessly!
+// 				@include phys.apply-sovereign;
+// 			}
+// 		} @else {
+// 			@include phys.apply-resting-sovereign-state;
+// 		}
+// 	}
 }

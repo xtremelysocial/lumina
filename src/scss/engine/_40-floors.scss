@@ -1,0 +1,64 @@
+//* ==========================================================================
+//   40 FLOORS: Don't allow the physics engine to act on floors 
+//      Pivot 5 Build 30
+//   ========================================================================== */
+
+@use "sass:list";
+
+@use "00-config" as config;
+@use "01-physics" as phys;
+
+@mixin apply-floor-logic($interactive: false) {
+
+	// 1. Setup State Toggle
+	$hover: if($interactive, ":hover", "");
+
+	// 2. LOOP THROUGH THE PHYSICS MAP TO REVERSE-ENGINEER ISOLATION
+	@each $trigger-target, $role in config.$atmos-physics-map { 
+		$trigger: list.nth($trigger-target, 1);
+		$target:  list.nth($trigger-target, 2);
+	
+		// TRACK A: Handle explicit layout floors defined in the map
+		@if $role == "floor" {
+			$mover: if($target == "self", "&", #{$target});
+
+			#{$trigger}#{$hover} {
+				#{$mover} { 
+// 					@if $interactive { 
+						@include phys.apply-floor;
+// 					} @else { 
+// 						@include phys.apply-resting-state; //TO-DO: RESTING STATE? IS THIS RIGHT??
+// 					}
+				}
+			}
+		}
+
+		// TRACK B: Programmatic Wildcard — Dampen any nested Ship inside an active Ship
+// 		@else if $role == "ship" and $interactive {
+		@else if $role == "ship" {
+
+			$gate:   phys.get-ship-gate($trigger);
+			$filter: phys.$ship-filter;
+
+			// Find any core block container nested deep within this active parent Ship frame
+// 			$nested-wildcard: "[class*=wp-block-]"; 
+// 
+// // 			#{$trigger}#{$hover} #{$nested-wildcard} {
+// 			#{$trigger}:where(#{$gate}#{$filter})#{$hover} #{$nested-wildcard} {
+// 				@include phys.apply-floor;
+// 			}
+
+			// Loop through centralized targets to ensure parent wrappers map cleanly to both
+			@each $sub-target in config.$atmos-dampen-targets {
+// 				#{$trigger}:where(#{$gate}#{$filter})#{$hover} #{$sub-target} {
+
+				// Beautifully clean: Appending the existing physics filter directly to the sub-target.
+				// This instantly bumps the specificity score to 30 points without any loop bloat!
+// 				#{$trigger}#{$gate}:where(#{$filter})#{$hover} #{$sub-target} {
+				#{$trigger}#{$gate}:where(#{$filter})#{$hover} #{$sub-target}#{$filter} {
+					@include phys.apply-floor;
+				}
+			}
+		}
+	}
+}

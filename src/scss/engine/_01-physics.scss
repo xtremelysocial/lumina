@@ -10,23 +10,22 @@
 @use "00-config" as config;
 
 //**
-// * 01.0 UTILITIES: Determines generic wp-block- and detects links for images
+// * 01.0 UTILITIES: Functions and lists used elsewhere in the physics logic
+// * Eg. Determines generic wp-block-, detects links for images
 // */
+
+// CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
+// to generically scale Sovereigns to an un-flattened Tier 30 ($0,3,0$) 
+// specificity baseline score. 
+// DO NOT MODIFY OR REFACTOR THIS STRING. It is required to confidently shatter 
+// the 20-point ceiling of the universal wildcard floor dampeners inside 
+// _40-floors.scss.
+// $atmos-sovereign-scope: ".wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation])";
+$atmos-sovereign-scope: ".wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation])";
 
 // BLOCK DETECTION: Looks for core WordPress block or wildcard
 @function is-block($trigger) {
     @return (string.index($trigger, ".wp-block-") == 1 or string.index($trigger, "[class*=wp-block-") == 1);
-}
-
-// PORTAL DETECTION
-// Moves the "Contract" logic out of the loops.
-// Checks if a passenger block represents a link (Portal).
-@function is-portal($trigger, $target) {
-    $is-link: (string.index($trigger, " a") != null) 
-              or ($target == "a") 
-              or (string.index($trigger, "-link") != null);
-    
-    @return $is-link;
 }
 
 //**
@@ -36,19 +35,23 @@
     @if config.$atmos-debug {
 
         $debug-string: map.get((
-            "registry":  config.$debug-registry,
-            "ship":      config.$debug-ship,
-            "sovereign": config.$debug-sovereign,
-            "passenger": config.$debug-passenger,
-            "silence":   config.$debug-silence
+            "registry":  		config.$debug-registry,
+            "ship":      		config.$debug-ship,
+            "sovereign": 		config.$debug-sovereign,
+            "passenger": 		config.$debug-passenger,
+			"passenger-grow":  	config.$debug-passenger,
+            "passenger-zoom":  	config.$debug-passenger,            
+            "silence":   		config.$debug-silence
         ), $role);
 
         $debug-offset: map.get((
-            "registry":  -1px,
-            "ship":       2px,
-            "sovereign":  4px,
-            "passenger": -4px,
-            "silence":   -1px //-6px
+            "registry":  		-1px,
+            "ship":       		2px,
+            "sovereign":  		4px,
+            "passenger": 		-4px,
+            "passenger-grow": 	-4px,
+            "passenger-zoom": 	-4px,
+            "silence":  		-1px //-6px
         ), $role);
 
         // Set the outline color and offset
@@ -81,7 +84,8 @@ $ship-filter: ":not(#{config.$atmos-static-floors})";
 // * 01.3 PASSENGER SELECTORS: Sets selectors for passengers
 // */
 @function get-passenger-gate($trigger, $target: "") {
-	$is-image: $target == "img" or string.index($trigger, "__featured-image") != null or string.index($trigger, "wp-block-image") != null;
+
+	$is-image: string.index($target, "img") != null;
 	$is-block: is-block($trigger);
 
     // 1. If the target is an image, return the specific image triggers
@@ -217,22 +221,36 @@ $sovereign-filter: "";
 
 //**
 // * 01.7 PASSENGER: Decorative Media / Lightbox
-// * Logic: Subtle breathing lift using config variables.
+// * Logic: Subtle breathing lift vs. functional portal growth using config tokens.
 // */
-@mixin apply-passenger {
 // %physics-passenger-standard {
-
-    // Subtle shift (e.g. -2px)
-    transform: #{config.$shift-subtle} scale(1); 
-//    transform: translateY(0) #{config.$grow-small}; 
+@mixin apply-passenger($role: "passenger") {
     
-    // Hover default shadow (e.g. Deep)    
-    box-shadow: var(--wp--custom--shadow--hover, 
-                var(--wp--preset--shadow--deep, 
-                0 4px 12px rgba(0, 0, 0, 0.12)));
+	@if $role == "passenger-grow" or $role == "passenger-zoom" {
 
-	// Add debug outline
-	@include atmos-debug("passenger");
+        // 01.9 PORTAL GEOMETRY: Functional Portals (Links) -> Kinetic Scale
+        transform: translateY(0) #{config.$grow-small}; 
+        
+        // Hover high shadow on hover (e.g. Sharp)     
+        box-shadow: var(--wp--custom--shadow--hover-high, 
+                    var(--wp--preset--shadow--sharp, 
+                    0 12px 25px rgba(0, 0, 0, 0.15)));
+        
+        // Add debug outline
+        @include atmos-debug("passenger-grow");
+
+    } @else {
+        // 01.7 STANDARD PASSENGER: Decorative Media / Lightbox -> Subtle Lift
+        transform: #{config.$shift-subtle} scale(1); 
+        
+        // Hover default shadow (e.g. Deep)    
+        box-shadow: var(--wp--custom--shadow--hover, 
+                    var(--wp--preset--shadow--deep, 
+                    0 4px 12px rgba(0, 0, 0, 0.12)));
+        
+        // Add debug outline
+        @include atmos-debug("passenger");
+    }
 }
 
 // @mixin apply-passenger {
@@ -240,21 +258,19 @@ $sovereign-filter: "";
 // }
 
 //**
-// * 01.9 PASSENGER GROW: Functional Portals (Links)
-// * Logic: Kinetic scale using config variables.
+// * 01.8 FLOORS: Tamp down physics
+// * Logic: Tamp down shadows and transform
 // */
-@mixin apply-passenger-grow {
-// %physics-passenger-grow {
+// %physics-floor-standard {
+@mixin apply-floor {
 
-    // Small growth (e.g 1.03)
-    transform: translateY(0) #{config.$grow-small}; 
-//     transform: translateY(0) #{config.$grow-standard}; 
-    
-    // Hover high shadow on hover (e.g. Sharp)    
-    box-shadow: var(--wp--custom--shadow--hover-high, 
-                var(--wp--preset--shadow--sharp, 
-                0 12px 25px rgba(0, 0, 0, 0.15)));
+		// Kill shadows and transforms
+		box-shadow: none; 
+		transform: none;
 
-	// Add debug outline
-	@include atmos-debug("passenger");
+		@include atmos-debug("silence"); 
 }
+
+// @mixin apply-floor {
+//     @extend %physics-floor-standard;
+// }

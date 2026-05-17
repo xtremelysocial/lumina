@@ -4,6 +4,7 @@
 //   ========================================================================== */
 
 @use "sass:list";
+@use "sass:string";
 
 @use "00-config" as config;
 @use "01-physics" as phys;
@@ -14,32 +15,28 @@
 	$hover: if($interactive, ":hover", "");
 
 	// 2. LOOP THROUGH PASSENGERS IN OUR PHYSICS MAP
-	@each $trigger, $meta in config.$atmos-physics-map {
-		$target: list.nth($meta, 1);
-		$role:   list.nth($meta, 2);
+	@each $trigger-target, $role in config.$atmos-physics-map { 
+		$trigger: list.nth($trigger-target, 1);
+		$target:  list.nth($trigger-target, 2);
 	
-		@if $role == "passenger" {
-			$mover:  if($target == "self", "&", #{$target});
+		@if $role == "passenger" or $role == "passenger-grow" or $role == "passenger-zoom" {
+			
+// 			$is-img: if(string.index($target, "img") != null, true, false);
 			$gate:   phys.get-passenger-gate($trigger, $target);
 			$filter: phys.$passenger-filter;
-			$is-portal: phys.is-portal($trigger, $target);
+// 			$mover:  if($target == "self", "&", #{$target});
+
+			// HARD LINE POSITIONING: Move target selector strings directly to the axis
+			$mover:  if($target == "self", "", " #{$target}");
 
 			// 3. APPLY LOGIC
-			@if $is-portal {
-				// PORTALS (Sovereigns): Standard Weight (Matches 21)
-				#{$trigger}#{$gate}#{$filter}#{$hover} {
-					#{$mover} { 
-						@if $interactive { @include phys.apply-passenger-grow; }
-						@else { @include phys.apply-resting-sovereign-state; }
-					}
-				}
-			} @else {
-				// STANDARD PASSENGERS: Wrapped in :where for zero-specificity
-				:where(#{$trigger}#{$gate}#{$filter})#{$hover} {
-					#{$mover} { 
-						@if $interactive { @include phys.apply-passenger; }
-						@else { @include phys.apply-resting-state; }
-					}
+			// Appending $mover to the line pushes element tags outside :where() natively,
+			// locking in Tier 10 ($0,1,0), Tier 11 ($0,1,1), or Tier 12 ($0,1,2) on schedule.
+			#{$trigger}:where(#{$gate}#{$filter})#{$hover}#{$mover} {
+				@if $interactive { 
+					@include phys.apply-passenger($role); 
+				} @else { 
+					@include phys.apply-resting-state; 
 				}
 			}
 		}
