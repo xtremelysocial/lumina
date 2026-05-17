@@ -1,6 +1,6 @@
 /* ==========================================================================
    ATMOS INTERACTIONS: Handles all :hover and active state physics
-   Pivot 5 Build 31 Restructure Map
+   Pivot 5 Build 32 Restore Vetos
    ========================================================================== */
 
 // Load all needed mixins
@@ -40,4 +40,4 @@
 /* ==========================================================================
    60 VETOS: Ship Overrides of Passengers
    ========================================================================== */
-// @include vetos.apply-veto-logic($interactive: true);
+@include vetos.apply-veto-logic($interactive: true);
