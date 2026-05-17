@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	Pivot 5 Build 32 Restore Vetos
+//	 	Pivot 5 Build 33 Restore Floors
 //   ========================================================================== */
 
 //**
@@ -42,7 +42,7 @@ $atmos-physics-map: (
 	// SOVEREIGNS: Fast-pass growth (Buttons, Icons)
 	(".wp-block-button__link",                  "self"):            "sovereign",
 	(".wp-element-button",                      "self"):            "sovereign",
-	(".wp-block-social-link",                   "a"):               "sovereign", // Fixed typo (swapped comma for colon)
+	(".wp-block-social-link",                   "a"):               "sovereign",
 	(".tag-cloud-link",                         "self"):            "sovereign",
 	
 	// SOVEREIGNS Except in #wpadminbar: Broad selectors like this
