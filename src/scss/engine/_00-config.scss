@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	Pivot 5 Build 33 Restore Floors
+//	 	Pivot 5 Build 34 MVP
 //   ========================================================================== */
 
 //**
@@ -78,6 +78,9 @@ $atmos-dampen-targets: (
 	"[class*=wp-block-]",
 	"[class*=wp-block-] img"
 );
+
+// Layout environments where nested child ships should sit perfectly flush
+$blocks-no-border-radius: ("wp-block-media-text", "wp-block-column");;
 
 //**
 // * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up

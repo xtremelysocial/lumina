@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   60 VETOS: Ships Overrides of Passengers
-//	    Pivot 5 Build 33 Restore Floors
+//	    Pivot 5 Build 34 MVP
 //   ========================================================================== */
 
 @use "sass:string";
@@ -19,8 +19,7 @@
 		$trigger: list.nth($trigger-target, 1);
 		$target:  list.nth($trigger-target, 2);
 
-//         @if $role == "passenger" {
-		@if string.index($role, "passenger") == 1 {
+        @if $role == "passenger" {
             $mover:  if($target == "self", "&", #{$target});
             $gate:   phys.get-passenger-gate($trigger, $target);
             $filter: phys.$passenger-filter;

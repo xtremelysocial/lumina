@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//       Pivot 5 Build 33 Restore Floors   
+//       Pivot 5 Build 33 Automation Pass  
 //   ========================================================================== */
 
 @use "sass:list";
@@ -13,6 +13,9 @@
 	// 1. Setup State Toggle
 	$hover: if($interactive, ":hover", "");
 
+	// INITIALIZE THE SHIP COLLECTOR ARRAY
+	$all-ships: ();
+
 	// 2. LOOP THROUGH SHIPS IN OUR PHYSICS MAP
 	@each $trigger-target, $role in config.$atmos-physics-map { 
 		$trigger: list.nth($trigger-target, 1);
@@ -23,20 +26,60 @@
 			$gate:   phys.get-ship-gate($trigger);
 			$filter: phys.$ship-filter;
 
-			// THE ENFORCEMENT LAYER: Leverage your native block-check function
-			// If it's an explicit block style class or naked trait, enforce Tier 20 ($0,2,0)
+			// THE ENFORCEMENT LAYER
 			@if not phys.is-block($trigger) {
 				$trigger: "[class*=wp-block-]#{$trigger}";
 			}
+			
+			// Construct the exact un-flattened baseline selector string
+			$current-ship-selector: "#{$trigger}#{$gate}:where(#{$filter})";
+			
+			// STORE THIS SELECTOR IN OUR MASTER ARRAY
+			$all-ships: list.append($all-ships, $current-ship-selector, $separator: comma);
 	
 			// 3. APPLY LOGIC WITH PERFECT TIER 20 SPECIFICITY
-			#{$trigger}#{$gate}:where(#{$filter})#{$hover} {
+			#{$current-ship-selector}#{$hover} {
 				#{$mover} { 
 					@if $interactive { 
 						@include phys.apply-ship; 
 					} @else { 
 						@include phys.apply-resting-state;
-// 						border-radius: var(--wp--custom--border--radius);
+
+						// Only write the radius if this ship is NOT inside a split-pane layout
+						@if not list.index(config.$blocks-no-border-radius, $trigger) {
+							border-radius: var(--wp--custom--border--radius);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* ==========================================================================
+	   10 SHIP OVERRIDES: Veto ships embedded in other ships
+	   ========================================================================== */
+
+	// 4. THE UNIVERSAL NESTED SHIP VETO LAUNCHPAD
+	@if list.length($all-ships) > 0 {
+		@each $parent in $all-ships {
+			@each $child in $all-ships {
+				
+				@if not $interactive {
+					// ------------------------------------------------------
+					// ENGINE.CSS PASS: Pure resting rules (Compiled ONCE, no duplicates)
+					// ------------------------------------------------------
+					#{$parent} #{$child} {
+						@include phys.apply-ship-veto($interactive: false);
+					}
+				} @else {
+					// ------------------------------------------------------
+					// INTERACTIONS.CSS PASS: Active Hover Overrides
+					// ------------------------------------------------------
+					// Line 1: Parent hovered, child resting
+					// Line 2: Parent hovered, child hovered
+					#{$parent}:hover #{$child},
+					#{$parent}:hover #{$child}:hover {
+						@include phys.apply-ship-veto($interactive: true);
 					}
 				}
 			}

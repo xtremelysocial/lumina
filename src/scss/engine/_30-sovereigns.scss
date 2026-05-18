@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    Pivot 5 Build 33 Restore Floors
+// 	    Pivot 5 Build 34 MVP
 //   ========================================================================== */
 
 @use "sass:list";
@@ -26,8 +26,6 @@
 			// 3. APPLY LOGIC
 			// Pulls the protected structural scope from physics utility to lock in 
 			// the 30-point baseline score.
-// 			#{$trigger}#{$gate}#{$filter}#{$hover} {
-// 			$sovereign-axis: "#{phys.$atmos-sovereign-scope} #{$trigger}#{$gate}:where(#{$filter})#{$hover}";
 			$sovereign-axis: "#{phys.$atmos-sovereign-scope} #{$trigger}#{$hover}";
 			#{$sovereign-axis} {
 				#{$mover} { 
