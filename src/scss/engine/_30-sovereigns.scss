@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    Pivot 5 Build 34 MVP
+// 	    Pivot 5 Build 35 MVP Optimize
 //   ========================================================================== */
 
 @use "sass:list";
@@ -32,7 +32,7 @@
 					@if $interactive { 
 						@include phys.apply-sovereign; 
 					} @else { 
-						@include phys.apply-resting-state; 
+						@include phys.apply-resting-sovereign-state; 
 					}
 				}
 			}

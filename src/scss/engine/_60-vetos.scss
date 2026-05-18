@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   60 VETOS: Ships Overrides of Passengers
-//	    Pivot 5 Build 34 MVP
+//	    Pivot 5 Build 35 MVP Optimize
 //   ========================================================================== */
 
 @use "sass:string";
@@ -50,9 +50,9 @@
 						// PROTECTION GATE: If it's a link, do not veto! Let it fly free.
 						@if not $is-link {
 							#{$mover} {                        
-								transform: none;
-								box-shadow: none; 
-								
+// 								transform: none;
+// 								box-shadow: none; 
+								@include phys.apply-silence($interactive);								
 								// Debug only fires for the interactive/hover state
 								@if $interactive {
 									@include phys.atmos-debug("silence"); 

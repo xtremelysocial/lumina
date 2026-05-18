@@ -45,19 +45,37 @@
 					} @else { 
 						@include phys.apply-resting-state;
 
-						// Only write the radius if this ship is NOT inside a split-pane layout
-						@if not list.index(config.$blocks-no-border-radius, $trigger) {
-							border-radius: var(--wp--custom--border--radius);
-						}
+						// Baseline ship rule always assigns radius safely globally
+// 						border-radius: var(--wp--custom--border--radius);
+						@include phys.apply-border-radius;
 					}
 				}
 			}
 		}
 	}
 
-	/* ==========================================================================
-	   10 SHIP OVERRIDES: Veto ships embedded in other ships
-	   ========================================================================== */
+	///* ==========================================================================
+	//   10.5 REMOVE BORDER RADIUS: These blocks shouldn't have border radius
+	//   ========================================================================== */
+	@if not $interactive and list.length($all-ships) > 0 {
+		@each $context in config.$blocks-no-border-radius {
+			
+			// 1. Establish the precise parent wrapper context class
+			//$parent-class: if($context == "wp-block-media-text", ".#{$context}__content", ".#{$context}");
+			
+			// 2. Loop through each ship individually to guarantee perfect prepending!
+			@each $ship in $all-ships {
+				#{$context} #{$ship} {
+// 					border-radius: 0;
+					@include phys.apply-no-border-radius;
+				}
+			}			
+		}
+	}
+
+	///* ==========================================================================
+	//   10.6 SHIP OVERRIDES: Veto ships embedded in other ships
+	//   ========================================================================== */
 
 	// 4. THE UNIVERSAL NESTED SHIP VETO LAUNCHPAD
 	@if list.length($all-ships) > 0 {
@@ -69,7 +87,7 @@
 					// ENGINE.CSS PASS: Pure resting rules (Compiled ONCE, no duplicates)
 					// ------------------------------------------------------
 					#{$parent} #{$child} {
-						@include phys.apply-ship-veto($interactive: false);
+						@include phys.apply-silence($interactive: false);
 					}
 				} @else {
 					// ------------------------------------------------------
@@ -79,7 +97,7 @@
 					// Line 2: Parent hovered, child hovered
 					#{$parent}:hover #{$child},
 					#{$parent}:hover #{$child}:hover {
-						@include phys.apply-ship-veto($interactive: true);
+						@include phys.apply-silence($interactive: true);
 					}
 				}
 			}

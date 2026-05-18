@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   50 VOIDS: Allow protecting #wpadminbar from the engine
-//	    Pivot 5 Build 34 MVP
+//	    Pivot 5 Build 35 MVP Optimize
 //   ========================================================================== */
 
 @use "sass:list";
@@ -25,9 +25,10 @@
 			$mover: if($target == "self", "&", #{$target});
 			#{$trigger}#{$hover} {
 				#{$mover} {
-					transition: none; // !important;
-					transform: none; // !important;
-					box-shadow: none; // !important;
+// 					transition: none; // !important;
+// 					transform: none; // !important;
+// 					box-shadow: none; // !important;
+					@include phys.apply-silence($interactive);				
 				}
 			}
 		}

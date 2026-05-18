@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   40 FLOORS: Don't allow the physics engine to act on floors
-//      Pivot 5 Build 34 MVP
+//      Pivot 5 Build 35 MVP Optimize
 //   ========================================================================== */
 
 @use "sass:list";
@@ -8,7 +8,7 @@
 @use "00-config" as config;
 @use "01-physics" as phys;
 
-@mixin apply-floor-logic($interactive: false) {
+@mixin apply-silence-logic($interactive: false) {
 
 	// 1. Setup State Toggle
 	$hover: if($interactive, ":hover", "");
@@ -24,7 +24,7 @@
 
 			#{$trigger}#{$hover} {
 				#{$mover} { 
-					@include phys.apply-floor;
+					@include phys.apply-silence($interactive);
 				}
 			}
 		}
@@ -41,7 +41,7 @@
 				// Beautifully clean: Appending the existing physics filter directly to the sub-target.
 				// This instantly bumps the specificity score to 30 points without any loop bloat!
 				#{$trigger}#{$gate}:where(#{$filter})#{$hover} #{$sub-target}#{$filter} {
-					@include phys.apply-floor;
+					@include phys.apply-silence($interactive);
 				}
 			}
 		}

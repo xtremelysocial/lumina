@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	Pivot 5 Build 34 MVP
+//	 	Pivot 5 Build 35 MVP Optimize
 //   ========================================================================== */
 
 //**
@@ -12,6 +12,7 @@ $atmos-physics-map: (
 	(".wp-block-group",                         "self"):            "ship",
 	(".wp-block-columns",                       "self"):            "ship",
 	(".wp-block-media-text",                    "self"):            "ship",
+	(".wp-block-cover", 						"self"): 			"ship",
 
 	// SHIPS: Container-lift (Automatic as these are Atmos custom styles)
 	(".is-style-object-passive",                "self"):            "ship",
@@ -80,7 +81,7 @@ $atmos-dampen-targets: (
 );
 
 // Layout environments where nested child ships should sit perfectly flush
-$blocks-no-border-radius: ("wp-block-media-text", "wp-block-column");;
+$blocks-no-border-radius: (".wp-block-media-text", ".wp-block-column");;
 
 //**
 // * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up
