@@ -3,15 +3,15 @@
 //       Pivot 5 Build 33 Automation Pass  
 //   ========================================================================== */
 
-@use "sass:list";
+@use 'sass:list';
 
-@use "00-config" as config;
-@use "01-physics" as phys;
+@use '00-config' as config;
+@use '01-physics' as phys;
 
 @mixin apply-ship-logic($interactive: false) {
 
 	// 1. Setup State Toggle
-	$hover: if($interactive, ":hover", "");
+	$hover: if($interactive, ':hover', '');
 
 	// INITIALIZE THE SHIP COLLECTOR ARRAY
 	$all-ships: ();
@@ -21,18 +21,18 @@
 		$trigger: list.nth($trigger-target, 1);
 		$target:  list.nth($trigger-target, 2);
 	
-		@if $role == "ship" {
-			$mover:  if($target == "self", "&", #{$target});
+		@if $role == 'ship' {
+			$mover:  if($target == 'self', '&', #{$target});
 			$gate:   phys.get-ship-gate($trigger);
 			$filter: phys.$ship-filter;
 
 			// THE ENFORCEMENT LAYER
 			@if not phys.is-block($trigger) {
-				$trigger: "[class*=wp-block-]#{$trigger}";
+				$trigger: '[class*="wp-block-"]#{$trigger}';
 			}
 			
 			// Construct the exact un-flattened baseline selector string
-			$current-ship-selector: "#{$trigger}#{$gate}:where(#{$filter})";
+			$current-ship-selector: '#{$trigger}#{$gate}:where(#{$filter})';
 			
 			// STORE THIS SELECTOR IN OUR MASTER ARRAY
 			$all-ships: list.append($all-ships, $current-ship-selector, $separator: comma);
@@ -45,9 +45,9 @@
 					} @else { 
 						@include phys.apply-resting-state;
 
-						// Only write the radius if this ship is NOT inside a split-pane layout
-						@if not list.index(config.$blocks-no-border-radius, $trigger) {
-							border-radius: var(--wp--custom--border--radius);
+						// Apply the radius UNLESS the ship is sitting inside one of your flat-pane contexts
+						&:not(:where(#{config.$blocks-no-border-radius}) *) {
+							@include phys.apply-border-radius;
 						}
 					}
 				}
@@ -55,31 +55,35 @@
 		}
 	}
 
-	/* ==========================================================================
-	   10 SHIP OVERRIDES: Veto ships embedded in other ships
-	   ========================================================================== */
-
-	// 4. THE UNIVERSAL NESTED SHIP VETO LAUNCHPAD
+	///* ==========================================================================
+	//   10 SHIP-IN-SHIP VETOS: Stand down embedded ships (groups, columns, etc.)
+	//   ========================================================================== */
 	@if list.length($all-ships) > 0 {
-		@each $parent in $all-ships {
-			@each $child in $all-ships {
+
+		@if config.$atmos-dev-mode {
+		/* ==========================================================================
+		   10 SHIP-IN-SHIP VETOS: Stand down embedded ships (groups, columns, etc.)
+		   ========================================================================== */
+		}		
+
+		@each $parent-selector in $all-ships {
+			@each $child-selector in $all-ships {
 				
+				// Force the loop items into clean, isolated string contexts
+				$parent: #{$parent-selector};
+				$child:  #{$child-selector};
+
 				@if not $interactive {
-					// ------------------------------------------------------
-					// ENGINE.CSS PASS: Pure resting rules (Compiled ONCE, no duplicates)
-					// ------------------------------------------------------
+					// ENGINE.CSS PASS: Distinct resting block per pairing
 					#{$parent} #{$child} {
-						@include phys.apply-ship-veto($interactive: false);
+						@include phys.apply-silence($interactive: false);
 					}
 				} @else {
-					// ------------------------------------------------------
-					// INTERACTIONS.CSS PASS: Active Hover Overrides
-					// ------------------------------------------------------
-					// Line 1: Parent hovered, child resting
-					// Line 2: Parent hovered, child hovered
+					// INTERACTIONS.CSS PASS: Distinct hover blocks per pairing
+					// The space is strictly isolated between the distinct strings
 					#{$parent}:hover #{$child},
 					#{$parent}:hover #{$child}:hover {
-						@include phys.apply-ship-veto($interactive: true);
+						@include phys.apply-silence($interactive: true);
 					}
 				}
 			}

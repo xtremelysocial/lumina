@@ -46,6 +46,18 @@ For more information, see these pages on the XtremelySocial.com website:
 
 You can check out our other themes here: https://xtremelysocial.com/wordpress/
 
+= The Atmos Physics Engine =
+
+src/scss/
+├── atmos-engine.scss        # Global Manifest: Imports config, 01, 10, and resting runs
+├── atmos-interactions.scss  # Interaction Manifest: Imports config, 01, and hover runs
+└── engine/
+    ├── _00-config.scss      # Core Map Registry (Variables, Maps, Tokens)
+    ├── _01-physics.scss     # The Logic Gates (Blueprints, Placeholders, Dispatchers)
+    ├── _10-ships.scss       # Ship Geometry, Card Radii, and Section 10.5 Resets
+    ├── _20-passengers.scss  # Passenger/Sovereign specific baseline setups (if any)
+    └── _60-vetos.scss       # The Cross-Multiplication Parent-Child Veto Loops
+
 == Changelog ==
 
 = v0.9.8 = 

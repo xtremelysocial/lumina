@@ -1,9 +1,10 @@
 /* ==========================================================================
    ATMOS INTERACTIONS: Handles all :hover and active state physics
-   Pivot 5 Build 34 MVP
+   Pivot 5 Build 35 MVP Optimize
    ========================================================================== */
 
 // Load all needed mixins
+@use 'engine/00-config' as config;
 // @use 'engine/02-global' as global;
 @use 'engine/10-ships' as ships;
 @use 'engine/20-passengers' as passengers;
@@ -12,32 +13,44 @@
 // @use 'engine/50-voids' as voids;
 @use 'engine/60-vetos' as vetos;
 
+@if config.$atmos-dev-mode {
 /* ==========================================================================
-   10 SHIPS: Containers (e.g. Groups, Columns)
+  10 SHIPS: Containers (e.g. Groups, Columns)
 ========================================================================== */
+}
 @include ships.apply-ship-logic($interactive: true);
 
+@if config.$atmos-dev-mode {
 /* ==========================================================================
-   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-   ========================================================================== */
+  20 PASSENGERS: Container Contents (e.g. Images, Columns)
+  ========================================================================== */
+}
 @include passengers.apply-passenger-logic($interactive: true);
 
+@if config.$atmos-dev-mode {
 /* ==========================================================================
-   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-   ========================================================================== */
+  30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+  ========================================================================== */
+}
 @include sovereigns.apply-sovereign-logic($interactive: true);
 
-/* ==========================================================================
-   40 FLOORS: Don't allow the physics engine to act on floors 
-   ========================================================================== */
+// @if config.$atmos-dev-mode {
+///* ==========================================================================
+//   40 FLOORS: Don't allow the physics engine to act on floors 
+//   ========================================================================== */
+// }
 // @include floors.apply-floor-logic($interactive: true);
 
-//* ==========================================================================
+// @if config.$atmos-dev-mode {
+///* ==========================================================================
 //   50 VOIDS: Allow protecting #wpadminbar from the engine (UNUSED for now)
 //   ========================================================================== */
+// }
 // @include voids.apply-void-logic($interactive: true);
 
+@if config.$atmos-dev-mode {
 /* ==========================================================================
-   60 VETOS: Ship Overrides of Passengers
-   ========================================================================== */
+  60 VETOS: Ship Overrides of Passengers
+  ========================================================================== */
+}
 @include vetos.apply-veto-logic($interactive: true);

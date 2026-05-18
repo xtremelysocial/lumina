@@ -1,67 +1,63 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	Pivot 5 Build 34 MVP
+//	 	Pivot 5 Build 35 MVP Optimize
 //   ========================================================================== */
 
-@use "sass:string"; // Required for string.index
-@use "sass:list";   // Required for list.nth
-@use "sass:map";	// Required for map.get
+@use 'sass:string'; // Required for string.index
+@use 'sass:list';   // Required for list.nth
+@use 'sass:map';	// Required for map.get
 
-@use "00-config" as config;
+@use '00-config' as config;
 
-//**
-// * 01.0 UTILITIES: Functions and lists used elsewhere in the physics logic
+// ==========================================================================
+// 01.0 UTILITIES: Functions and lists used elsewhere in the physics logic
 // * Eg. Determines generic wp-block-, detects links for images
-// */
+// ==========================================================================
 
 // CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
-// to generically scale Sovereigns to an un-flattened Tier 30 ($0,3,0$) 
+// to generically scale Sovereigns to an un-flattened Tier 30 (0-3-0) 
 // specificity baseline score. 
-// DO NOT MODIFY OR REFACTOR THIS STRING. It is required to confidently shatter 
-// the 20-point ceiling of the universal wildcard floor dampeners inside 
-// _40-floors.scss.
-// $atmos-sovereign-scope: ".wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation])";
-$atmos-sovereign-scope: ".wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation])";
+$atmos-sovereign-scope: '.wp-site-blocks [class*="wp-block-"]';
 
 // BLOCK DETECTION: Looks for core WordPress block or wildcard
 @function is-block($trigger) {
-    @return (string.index($trigger, ".wp-block-") == 1 or string.index($trigger, "[class*=wp-block-") == 1);
+    @return (string.index($trigger, '.wp-block-') == 1 or string.index($trigger, '[class*="wp-block-"]') == 1);
 }
 
 // IMAGE DETECTION: Looks for an img tag in the target
 @function is-image($target) {
-	@return string.index($target, "img") != null;
+	@return string.index($target, 'img') != null or string.index($target, 'avatar') != null;
 }
 
 // LINK DETECTION: Looks for an a tag in the target
 @function is-link($target) {
-	@return string.index($target, "a") != null;
+	@return string.index($target, 'a') != null;
 }
 
-//**
-// * 01.1 VISUAL DEBUG: Set outline colors and styles based on engine logic
-// */
+// ==========================================================================
+// 01.0 VISUAL DEBUG: Set outline colors and styles based on engine logic
+// ==========================================================================
 @mixin atmos-debug($role) {
     @if config.$atmos-debug {
 
         $debug-string: map.get((
-            "registry":  		config.$debug-registry,
-            "ship":      		config.$debug-ship,
-            "sovereign": 		config.$debug-sovereign,
-            "passenger": 		config.$debug-passenger,
-			"passenger-grow":  	config.$debug-passenger,
-            "passenger-zoom":  	config.$debug-passenger,            
-            "silence":   		config.$debug-silence
+            'registry':  		config.$debug-registry,
+            'ship':      		config.$debug-ship,
+            'sovereign': 		config.$debug-sovereign,
+            'passenger': 		config.$debug-passenger,
+			'passenger-grow':  	config.$debug-passenger,
+            'passenger-zoom':  	config.$debug-passenger,            
+            'silence':   		config.$debug-silence
         ), $role);
 
         $debug-offset: map.get((
-            "registry":  		-1px,
-            "ship":       		2px,
-            "sovereign":  		4px,
-            "passenger": 		-4px,
-            "passenger-grow": 	-4px,
-            "passenger-zoom": 	-4px,
-            "silence":  		-1px //-6px
+            'registry':  		-1px,
+            'ship':       		 2px,
+            'sovereign':  		 4px,
+            'passenger': 		-4px,
+            'passenger-grow': 	-4px,
+            'passenger-zoom': 	-4px,
+            'silence':  		-1px //-6px
         ), $role);
 
         // Set the outline color and offset
@@ -70,69 +66,76 @@ $atmos-sovereign-scope: ".wp-site-blocks [class*=wp-block-]:not([class*=wp-block
     }
 }
 
-//**
-// * 01.2 SHIP SELECTORS: Sets selectors for ships
-// */
-// SHIPS: Generates the :is() gate for blocks
+// ==========================================================================
+// 01.0 SHIP SELECTORS: Sets selectors for ships
+// 		Generates the :is() gate for ships
+// ==========================================================================
 @function get-ship-gate($trigger) {
     $is-block: is-block($trigger);
-    
-    @if $is-block {
-        // Guard against empty config to prevent :is() errors
-        @if config.$atmos-card-triggers != "" {
-            @return ":is(#{config.$atmos-card-triggers})";
+
+    @if $trigger == '.wp-block-cover' {
+		@if config.$atmos-image-is != '' {
+            @return ':is(#{config.$atmos-image-is})';
+        } @else {
+            @return '';
+        }
+    } 
+
+    @else if $is-block {
+        @if config.$atmos-ship-is != '' {
+            @return ':is(#{config.$atmos-ship-is})';
         }
     }
     
-    @return "";	
+    @return '';	
 }
 
 // SHIPS: Generates the :not() gate for blocks
-$ship-filter: ":not(#{config.$atmos-static-floors})";
+$ship-filter: ':not(#{config.$atmos-where-not})';
 
-//**
-// * 01.3 PASSENGER SELECTORS: Sets selectors for passengers
-// */
-@function get-passenger-gate($trigger, $target: "") {
+// ==========================================================================
+// 01.0 PASSENGER SELECTORS: Sets selectors for passengers
+// 		Generates the :is() gate for passengers
+// ==========================================================================
+@function get-passenger-gate($trigger, $target: '') {
 
-// 	$is-image: string.index($target, "img") != null;
 	$is-image: is-image($target);
 	$is-block: is-block($trigger);
 
     // 1. If the target is an image, return the specific image triggers
     @if $is-image {
-		@if config.$atmos-image-triggers != "" {
-            @return ":is(#{config.$atmos-image-triggers})";
+		@if config.$atmos-image-is != '' {
+            @return ':is(#{config.$atmos-image-is})';
         } @else {
-            @return "";
+            @return '';
         }
     } 
-    
+
     // 2. Otherwise, check if it's a core block and return passenger triggers
     @else if $is-block {
-        @return ":is(#{config.$atmos-passenger-triggers})";
+        @return ':is(#{config.$atmos-passenger-is})';
     }
 
     // 3. Fallback
     @else {
-        @return "";
+        @return '';
     }
 }
-$passenger-filter: ":not(#{config.$atmos-static-floors})";
+$passenger-filter: ':not(#{config.$atmos-where-not})';
 
-//**
-// * 01.4 SOVEREIGN SELECTORS: Sets selectors for sovereigns
-// */
+// ==========================================================================
+// 01.0 SOVEREIGN SELECTORS: Sets selectors for sovereigns
+// 		Generates the :is() gate for sovereigns
+// ==========================================================================
 @function get-sovereign-gate($trigger) {
-	@return "";
+	@return '';
 }
-$sovereign-filter: "";
+$sovereign-filter: '';
 
-//**
-// * 01.5 RESTING STATE: The physical baseline for all objects.
-// */
-@mixin apply-resting-state {
-// %physics-resting-state {
+// ==========================================================================
+// 01.1 RESTING STATE: The physical baseline for most objects
+// ==========================================================================
+@mixin __blueprint-resting-state {
 
 	// Setup transition timing
     transition: 
@@ -148,16 +151,33 @@ $sovereign-filter: "";
                 var(--wp--preset--shadow--natural, 
                 0 3px 10px rgba(0, 0, 0, 0.14)));
 
-	// Add debug outline
-	@include atmos-debug("registry");
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('registry');
+	}                
 }
- 
-// @mixin apply-resting-state {
-// 	@extend %physics-resting-state;
-// }
 
-@mixin apply-resting-sovereign-state {
-// %physics-resting-sovereign-state {
+%physics-resting-state {
+	/* ==========================================================================
+	   01.1/01.2 RESTING STATE: The physical baseline for most objects
+	========================================================================== */
+	@include __blueprint-resting-state;
+}
+
+@mixin apply-resting-state {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-resting-state;
+// 		@include atmos-debug('registry');
+	} @else {
+		@extend %physics-resting-state;
+	}
+}
+
+// ==========================================================================
+// 01.3 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
+// ==========================================================================
+// @mixin apply-resting-sovereign-state {
+@mixin __blueprint-resting-sovereign-state {
 
 	// Setup transition timing
     transition: 
@@ -168,51 +188,38 @@ $sovereign-filter: "";
 	// Start in place
     transform: translateY(0) scale(1);
     
-    // Resting shadow (e.g. Natural)
-//     box-shadow: var(--wp--custom--shadow--default, 
-//                 var(--wp--preset--shadow--natural, 
-//                 0 3px 10px rgba(0, 0, 0, 0.14)));
-
     // Hover default shadow (e.g. Deep)
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
 				0 6px 12px rgba(0, 0, 0, 0.13)));
 
-	// Add debug outline
-	@include atmos-debug("registry");
-}
- 
-// @mixin apply-resting-sovereign-state {
-// 	@extend %physics-resting-sovereign-state;
-// }
-
-//**
-// * 01.5 SOVEREIGN: High-intent Active Links/Buttons
-// */
-@mixin apply-sovereign {
-// %physics-sovereign-standard {
-
-	// Grow Large (e.g. x1.1)
-    transform: translateY(0) #{config.$grow-large}; 
-
-    // Hover high shadow on hover (e.g. Sharp)
-    box-shadow: var(--wp--custom--shadow--hover-high, 
-    			var(--wp--preset--shadow--sharp,
-    			0 8px 16px rgba(0, 0, 0, 0.15)));
-
-	// Add debug outline
-	@include atmos-debug("sovereign");
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('registry');
+	}                
 }
 
-// @mixin apply-sovereign {
-//     @extend %physics-sovereign-standard;
-// }
+%physics-resting-sovereign-state {
+/* ==========================================================================
+   01.3 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
+========================================================================== */
+	@include __blueprint-resting-sovereign-state;
+}
 
-//**
-// * 01.6 SHIP: Massive Containers (Groups, Columns, Covers).
-// */
-@mixin apply-ship {
-// %physics-ship-standard {
+@mixin apply-resting-sovereign-state {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-resting-sovereign-state;
+// 		@include atmos-debug('registry');	
+	} @else {
+		
+		@extend %physics-resting-sovereign-state;		
+	}
+}
+
+// ==========================================================================
+// 01.10 SHIP: Massive Containers (Groups, Columns, Covers).
+// ==========================================================================
+@mixin __blueprint-ship {
 
 	// Subtle shift (e.g. -2px)
     transform: #{config.$shift-subtle}; 
@@ -222,80 +229,237 @@ $sovereign-filter: "";
                 var(--wp--preset--shadow--deep, 
 				0 6px 12px rgba(0, 0, 0, 0.13)));
 
-	// Add debug outline
-	@include atmos-debug("ship");
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('ship');
+	}
 }
 
-// @mixin apply-ship {
-//     @extend %physics-ship-standard;
-// }
+%physics-ship {
+	/* ==========================================================================
+	   01.10 SHIP: Massive Containers (Groups, Columns, Covers).
+	========================================================================== */
+	@include __blueprint-ship;
+}
 
-//**
-// * 01.7 PASSENGER: Decorative Media / Lightbox
-// * Logic: Subtle breathing lift vs. functional portal growth using config tokens.
-// */
-// %physics-passenger-standard {
-@mixin apply-passenger($role: "passenger") {
-    
-	@if $role == "passenger-grow" or $role == "passenger-zoom" {
+@mixin apply-ship {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-ship;
+// 		@include atmos-debug('ship');
+	} @else {
+		@extend %physics-ship;
+	}
+}
 
-        // 01.9 PORTAL GEOMETRY: Functional Portals (Links) -> Kinetic Scale
+@mixin __blueprint-border-radius {
+	border-radius: var(--wp--custom--border--radius);
+}
+
+// Default standard theme border radius to ships
+%physics-border-radius {
+	/* ==========================================================================
+	   01.10 SHIP BORDER RADIUS: Apply default border radius so Ships look like
+	   		 cards.
+	========================================================================== */
+	@include __blueprint-border-radius;
+}
+
+@mixin apply-border-radius {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-border-radius;
+	} @else {
+	    @extend %physics-border-radius;
+	}
+}
+
+@mixin __blueprint-no-border-radius {
+	border-radius: 0;
+}
+
+// Remove standard border-radius from some blocks (e.g. media-text, column)
+%physics-no-border-radius {
+	/* ==========================================================================
+	   01.10 SHIP NO BORDER RADIUS: Remove default border radius on these blocks
+	========================================================================== */
+	@include __blueprint-no-border-radius;
+}
+
+@mixin apply-no-border-radius {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-no-border-radius;
+	} @else {
+	    @extend %physics-no-border-radius;
+	}
+}
+
+// ==========================================================================
+// 01.20 PASSENGER: Blocks that can be contained in Ships or promoted to
+//		 to a Ship or Portal (Image with link)
+// ==========================================================================
+@mixin __blueprint-passenger($role: 'passenger') {
+
+	// 1. CROSS-PROMOTION BRANCH: Avatars scaling & lifting like Sovereigns
+	@if $role == 'passenger-sovereign' {
+
+		// Cleanly delegate directly to your core Sovereign physics mixin!
+// 		@include __blueprint-sovereign;
+
+		// Grow Large (e.g. x1.1)
+		transform: translateY(0) #{config.$grow-large}; 
+	
+		// Hover high shadow on hover (e.g. Sharp)
+		box-shadow: var(--wp--custom--shadow--hover-high, 
+					var(--wp--preset--shadow--sharp,
+					0 8px 16px rgba(0, 0, 0, 0.15)));
+	}
+	
+	@else if $role == 'passenger-grow' or $role == 'passenger-zoom' {
+
+		// Grow Small (e.g. x1.03)
         transform: translateY(0) #{config.$grow-small}; 
         
         // Hover high shadow on hover (e.g. Sharp)     
         box-shadow: var(--wp--custom--shadow--hover-high, 
                     var(--wp--preset--shadow--sharp, 
                     0 12px 25px rgba(0, 0, 0, 0.15)));
-        
-        // Add debug outline
-        @include atmos-debug("passenger-grow");
 
     } @else {
-        // 01.7 STANDARD PASSENGER: Decorative Media / Lightbox -> Subtle Lift
+
+		// Subtle Lift (e.g. -2px)
         transform: #{config.$shift-subtle} scale(1); 
         
         // Hover default shadow (e.g. Deep)    
         box-shadow: var(--wp--custom--shadow--hover, 
                     var(--wp--preset--shadow--deep, 
                     0 4px 12px rgba(0, 0, 0, 0.12)));
-        
-        // Add debug outline
-        @include atmos-debug("passenger");
     }
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('passenger');
+	}                    
 }
 
-// @mixin apply-passenger {
-//     @extend %physics-passenger-standard;
-// }
-
-//**
-// * 01.8 FLOORS: Tamp down physics
-// * Logic: Tamp down shadows and transform
-// */
-// %physics-floor-standard {
-@mixin apply-floor {
-
-		// Kill shadows and transforms
-		box-shadow: none; 
-		transform: none;
-
-// 		@include atmos-debug("silence"); 
+%physics-passenger-standard {
+	/* ==========================================================================
+	   01.20 PASSENGER: Blocks that can be contained in Ships or promoted to
+			 a Ship or Portal (Image with link)	   
+	========================================================================== */
+	@include __blueprint-passenger('passenger');
 }
 
-// @mixin apply-floor {
-//     @extend %physics-floor-standard;
+%physics-passenger-grow {
+	/* ==========================================================================
+	   01.20 PASSENGER GROW/ZOOM: Images that grow or zoom in place	   
+	========================================================================== */
+	@include __blueprint-passenger('passenger-grow');
+}
+
+%physics-passenger-sovereign {
+	/* ==========================================================================
+	   01.20 PASSENGER SOVEREIGN: Linked avatars that act as buttons
+	========================================================================== */
+	@include __blueprint-passenger('passenger-sovereign');
+}
+
+@mixin apply-passenger($role: 'passenger') {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-passenger($role);
+//         @include atmos-debug('passenger');		
+	} @else {
+		@if $role == 'passenger-sovereign' {
+			@extend %physics-passenger-sovereign;
+		} @else if $role == 'passenger-grow' or $role == 'passenger-zoom' {
+			@extend %physics-passenger-grow;
+		} @else {
+			@extend %physics-passenger-standard;
+		}		
+	}
+}
+
+// @mixin apply-passenger($role: 'passenger') {
+// 	@if config.$atmos-debug {
+// 		@include __blueprint-passenger($role);
+// 		@include atmos-debug('passenger');		
+// 	} @else {
+// 		// BYPASS PLACEHOLDERS ON HOVER: Direct inclusion guarantees that 
+// 		// separate compiled files (like interactions.scss) get their unique scale transformations!
+// 		@include __blueprint-passenger($role);
+// 	}
 // }
 
-// _01-physics.scss
-// * 01.9 NESTED VETO: Force embedded ships to sit flush
-@mixin apply-ship-veto($interactive: false) {
-	// Force the baseline physical clamp
+// ==========================================================================
+// 01.30 SOVEREIGN: Buttons and blocks that work like buttons, such as 
+//		 social media links, outline style tag clouds, etc.
+// ==========================================================================
+@mixin __blueprint-sovereign {
+
+	// Grow Large (e.g. x1.1)
+    transform: translateY(0) #{config.$grow-large}; 
+
+    // Hover high shadow on hover (e.g. Sharp)
+    box-shadow: var(--wp--custom--shadow--hover-high, 
+    			var(--wp--preset--shadow--sharp,
+    			0 8px 16px rgba(0, 0, 0, 0.15)));
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('sovereign');
+	}
+}
+
+%physics-sovereign {
+	/* ==========================================================================
+	   01.30 SOVEREIGN: Buttons and blocks that work like buttons
+	========================================================================== */
+	@include __blueprint-sovereign;
+}
+
+@mixin apply-sovereign {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-sovereign;
+// 		@include atmos-debug('sovereign');
+	} @else {
+		@extend %physics-sovereign;
+	}
+}
+
+// ==========================================================================
+// 01.60 SILENCE: Silence Ships and Passengers embedded in another Ship
+// ==========================================================================
+@mixin __blueprint-silence {
+	// Kill shadows and transforms
+	box-shadow: none; 
 	transform: none;
-	box-shadow: none;
-// 	border-radius: 0;
+}
 
-	// Only fire the orange debug outline during the interactive/hover pass!
-	@if $interactive {
-		@include atmos-debug("silence");
+%physics-silence {
+	/* ==========================================================================
+	   01.60 SILENCE STANDARD: Flattened baseline (Used in engine sheets)
+	========================================================================== */
+	@include __blueprint-silence;
+}
+
+%physics-silence-debug {
+	/* ==========================================================================
+	   01.60 SILENCE DEBUG: Consolidated interaction lines + diagnostic outlines
+	========================================================================== */
+	@include __blueprint-silence;
+	@include atmos-debug('silence');
+}
+
+@mixin apply-silence($interactive: false) {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-silence;		
+		@if $interactive and config.$atmos-debug {
+			@include atmos-debug('silence');
+		}
+	} @else {
+		// PRODUCTION GATEWAY: Cleanly segment layout structure vs visual auditing
+		@if $interactive and config.$atmos-debug {
+			@extend %physics-silence-debug;
+		} @else {
+			@extend %physics-silence;
+		}
 	}
 }

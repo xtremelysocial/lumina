@@ -1,19 +1,49 @@
 //* ==========================================================================
 //   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    Pivot 5 Build 34 MVP
+//	    Pivot 5 Build 35 MVP Optimize
 //   ========================================================================== */
 
-// @use "00-config" as config;
-@use "01-physics" as phys;
+@use '00-config' as config;
+@use '01-physics' as phys;
 
 @mixin apply-global-logic($interactive: false) {
 
 	// 1. Setup State Toggle
-	$hover: if($interactive, ":hover", "");
+	$hover: if($interactive, ':hover', '');
 	
-	// 3. Set overflow hidden on media container *only* when hosting an active image portal link
-	// This ensures the container behaves as a rigid frame box while the inner graphic zooms
+	// 2. Set overflow hidden on media container *only* when hosting an active 
+	// image portal link. This ensures the container behaves as a rigid frame 
+	// box while the inner graphic zooms.
 	.wp-block-media-text__media:has(a > img) {
 		overflow: hidden;
+	}
+
+	/* ==========================================================================
+	   GUTENBERG BLOCK OVERRIDES: Social Links (Logos Only)
+	   Intelligently splits silhouette path-hugging vs knockout disk box-shadows
+	   ========================================================================== */
+	
+	// Dynamically inherits your engine's Tier-30 sovereign specificity footprint (0-3-0)
+	#{phys.$atmos-sovereign-scope}.is-style-logos-only .wp-block-social-link {
+		
+		// 1. Permanently erase the engine's box/container shadow from the outer <li> wrapper
+		box-shadow: none; 
+		
+		&:hover {
+			box-shadow: none; 
+		}
+	
+		// ==========================================================================
+		// BRANCH A: SILHOUETTE ICONS (Default Fallback: X, Twitter, Threads, etc.)
+		// ==========================================================================
+		svg {
+			// Traces ONLY the open vector paths—pristine presentation with no background blobs
+			filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.22));
+			transition: filter config.$atmos-timing;
+		}
+	
+		&:hover svg {
+			filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.38));
+		}
 	}
 }
