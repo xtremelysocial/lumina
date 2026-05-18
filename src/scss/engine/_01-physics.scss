@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	Pivot 5 Build 33 Restore Floors
+//	 	Pivot 5 Build 34 MVP
 //   ========================================================================== */
 
 @use "sass:string"; // Required for string.index
@@ -279,9 +279,23 @@ $sovereign-filter: "";
 		box-shadow: none; 
 		transform: none;
 
-		@include atmos-debug("silence"); 
+// 		@include atmos-debug("silence"); 
 }
 
 // @mixin apply-floor {
 //     @extend %physics-floor-standard;
 // }
+
+// _01-physics.scss
+// * 01.9 NESTED VETO: Force embedded ships to sit flush
+@mixin apply-ship-veto($interactive: false) {
+	// Force the baseline physical clamp
+	transform: none;
+	box-shadow: none;
+// 	border-radius: 0;
+
+	// Only fire the orange debug outline during the interactive/hover pass!
+	@if $interactive {
+		@include atmos-debug("silence");
+	}
+}
