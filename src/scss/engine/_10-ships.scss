@@ -45,9 +45,10 @@
 					} @else { 
 						@include phys.apply-resting-state;
 
-						// Baseline ship rule always assigns radius safely globally
-// 						border-radius: var(--wp--custom--border--radius);
-						@include phys.apply-border-radius;
+						// Apply the radius UNLESS the ship is sitting inside one of your flat-pane contexts
+						&:not(:where(#{config.$blocks-no-border-radius}) *) {
+							@include phys.apply-border-radius;
+						}
 					}
 				}
 			}
@@ -55,46 +56,31 @@
 	}
 
 	///* ==========================================================================
-	//   10.5 REMOVE BORDER RADIUS: These blocks shouldn't have border radius
+	//   10.6 SHIP OVERRIDES: Accurate Individual Matrix Blocks (20-in-20)
 	//   ========================================================================== */
-	@if not $interactive and list.length($all-ships) > 0 {
-		@each $context in config.$blocks-no-border-radius {
-			
-			// 1. Establish the precise parent wrapper context class
-			//$parent-class: if($context == "wp-block-media-text", ".#{$context}__content", ".#{$context}");
-			
-			// 2. Loop through each ship individually to guarantee perfect prepending!
-			@each $ship in $all-ships {
-				#{$context} #{$ship} {
-// 					border-radius: 0;
-					@include phys.apply-no-border-radius;
-				}
-			}			
-		}
-	}
-
-	///* ==========================================================================
-	//   10.6 SHIP OVERRIDES: Veto ships embedded in other ships
-	//   ========================================================================== */
-
-	// 4. THE UNIVERSAL NESTED SHIP VETO LAUNCHPAD
 	@if list.length($all-ships) > 0 {
-		@each $parent in $all-ships {
-			@each $child in $all-ships {
+
+		@if config.$atmos-debug {
+		/* ==========================================================================
+		  10 SHIP-IN-SHIP VETOS: Stand down embedded ships (groups, columns, etc.)
+		========================================================================== */
+		}		
+
+		@each $parent-selector in $all-ships {
+			@each $child-selector in $all-ships {
 				
+				// Force the loop items into clean, isolated string contexts
+				$parent: #{$parent-selector};
+				$child:  #{$child-selector};
+
 				@if not $interactive {
-					// ------------------------------------------------------
-					// ENGINE.CSS PASS: Pure resting rules (Compiled ONCE, no duplicates)
-					// ------------------------------------------------------
+					// ENGINE.CSS PASS: Distinct resting block per pairing
 					#{$parent} #{$child} {
 						@include phys.apply-silence($interactive: false);
 					}
 				} @else {
-					// ------------------------------------------------------
-					// INTERACTIONS.CSS PASS: Active Hover Overrides
-					// ------------------------------------------------------
-					// Line 1: Parent hovered, child resting
-					// Line 2: Parent hovered, child hovered
+					// INTERACTIONS.CSS PASS: Distinct hover blocks per pairing
+					// The space is strictly isolated between the distinct strings
 					#{$parent}:hover #{$child},
 					#{$parent}:hover #{$child}:hover {
 						@include phys.apply-silence($interactive: true);

@@ -1,76 +1,59 @@
-// webpack.config.js (Atmos Child Theme)
+// webpack.config.js (Atmos Child Theme - Locked Assets Pass)
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 
-// Plugins.
-const WebpackWatchedGlobEntries = require('webpack-watched-glob-entries-plugin');
+// Plugins
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 const autoprefixer = require('autoprefixer');
-const RemoveFilesPlugin = require('remove-files-webpack-plugin');
 
-// Utilities.
+// Utilities
 const path = require( 'path' );
 
 module.exports = {
 	...defaultConfig,
-	...{	
-	entry: WebpackWatchedGlobEntries.getEntries(
-		[ 
-			path.resolve(__dirname, 'src/scss/**/*.scss'),
-		],
-		{
-		  ignore: '**/_*.scss' // Ignores SASS partials starting with underscore
-		}
-	),
-    	module: {
-			rules: [
-				{
-					test: /\.(sa|sc|c)ss$/,
-					use: [
-						{ loader: MiniCssExtractPlugin.loader },
-						{ loader: 'css-loader',
-							options: {
-          						url: false, // Prevents Webpack from trying to process url() paths
-							},
-						},
-						{
-							loader: "postcss-loader",						
-							options: {
-								postcssOptions: {
-									plugins: [ autoprefixer() ]
-								}
-							}
-						},
-						{ loader: 'sass-loader' },
-					],
-				},
-			],
-		},
-		plugins: [
-			...defaultConfig.plugins,
-			
-			// Removes the empty .js files Webpack generates when only compiling CSS
-			new RemoveEmptyScriptsPlugin( {
-				stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,
-			} ),
-			
-			// Cleans up the assets directory, keeping only your main engine asset file
-			new RemoveFilesPlugin({
-				after: {
-					test: [
-						{
-							folder: './assets/css',
-							method: (absoluteItemPath) => {
-								return new RegExp(/\.asset.php$/, 'm').test(absoluteItemPath);
-							},
-							recursive: true
-						}
-					],
-					exclude: ['./assets/css/atmos-engine.asset.php'] 
-				}
-	        })
-		],
-		mode: 'development',
-		devtool: false,
+	entry: {
+		'atmos-engine': path.resolve(__dirname, 'src/scss/atmos-engine.scss'),
+		'atmos-interactions': path.resolve(__dirname, 'src/scss/atmos-interactions.scss'),
 	},
+	output: {
+		...defaultConfig.output,
+		path: path.resolve(__dirname, 'assets/css'),
+		filename: '[name].js',
+		clean: true, // Dynamically scrubs out any stale artifacts on startup
+	},
+	module: {
+		rules: [
+			{
+				test: /\.(sa|sc|c)ss$/,
+				use: [
+					{ loader: MiniCssExtractPlugin.loader },
+					{ 
+						loader: 'css-loader',
+						options: { url: false } // Stops Webpack from breaking internal url() paths
+					},
+					{
+						loader: "postcss-loader",						
+						options: {
+							postcssOptions: {
+								plugins: [ autoprefixer() ]
+							}
+						}
+					},
+					{ loader: 'sass-loader' },
+				],
+			},
+		],
+	},
+	plugins: [
+		...defaultConfig.plugins,
+		// The Enforcer: Catches the empty .js files and deletes them mid-extraction
+		new RemoveEmptyScriptsPlugin({
+			stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS
+		}),
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+		}),
+	],
+	mode: 'development',
+	devtool: false,
 };

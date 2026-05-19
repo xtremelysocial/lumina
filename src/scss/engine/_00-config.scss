@@ -30,25 +30,28 @@ $atmos-physics-map: (
 
 	// IMAGES: Image-Lift, Image-Grow, or Image-Zoom
 	(".wp-block-image",                         "img"):             "passenger",
-	(".wp-block-image",                         "a > img"):         "passenger-grow",
+// 	(".wp-block-image",                         "a > img"):         "passenger-grow",
 	(".wp-block-gallery .wp-block-image",       "img"):             "passenger",
-	(".wp-block-gallery .wp-block-image",       "a > img"):         "passenger-zoom",
+// 	(".wp-block-gallery .wp-block-image",       "a > img"):         "passenger-zoom",
 	(".wp-block-post-featured-image",           "img"):             "passenger",
-	(".wp-block-post-featured-image",           "a > img"):         "passenger-grow",
+// 	(".wp-block-post-featured-image",           "a > img"):         "passenger-grow",
 	(".wp-block-latest-posts__featured-image",  "img"):             "passenger",
-	(".wp-block-latest-posts__featured-image",  "a > img"):         "passenger-zoom",
-// 	(".wp-block-media-text__media",             "img"):             "passenger",
-	(".wp-block-media-text__media",             "a > img"):         "passenger-zoom",
+// 	(".wp-block-latest-posts__featured-image",  "a > img"):         "passenger-zoom",
+	(".wp-block-media-text__media",             "img"):             "passenger",
+// 	(".wp-block-media-text__media",             "a > img"):         "passenger-zoom",
 
 	// SOVEREIGNS: Fast-pass growth (Buttons, Icons)
 	(".wp-block-button__link",                  "self"):            "sovereign",
 	(".wp-element-button",                      "self"):            "sovereign",
-	(".wp-block-social-link",                   "a"):               "sovereign",
+// 	(".wp-block-social-link",                   "a"):               "sovereign",
+// 	(".wp-block-social-link",                   "self"):            "sovereign",
+// 	(".wp-block-social-link",                   "svg"):            "sovereign",
 	(".tag-cloud-link",                         "self"):            "sovereign",
 	
 	// SOVEREIGNS Except in #wpadminbar: Broad selectors like this
 	// need a block wildcard to protect avatars in the admin bar.
-	("[class*=wp-block-] a > .avatar",          "self"):            "sovereign",
+// 	("[class*=wp-block-] a > .avatar",          "self"):            "sovereign",
+	("[class*=wp-block-] a",          			".avatar"):         "passenger-sovereign",
 
 	// FLOORS: Ground only its own frame box
 	(".is-style-object-plain",                  "self"):            "floor",
@@ -81,7 +84,7 @@ $atmos-dampen-targets: (
 );
 
 // Layout environments where nested child ships should sit perfectly flush
-$blocks-no-border-radius: (".wp-block-media-text", ".wp-block-column");;
+$blocks-no-border-radius: (".wp-block-media-text", ".wp-block-column");
 
 //**
 // * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up

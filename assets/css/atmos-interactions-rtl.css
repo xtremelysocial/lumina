@@ -71,6 +71,9 @@
   outline-offset: 2px;
 }
 
+/* ==========================================================================
+  10 SHIP-IN-SHIP VETOS: Stand down embedded ships (groups, columns, etc.)
+========================================================================== */
 .wp-block-group:is(.has-background):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):where(:not(.alignfull)),
 .wp-block-group:is(.has-background):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):where(:not(.alignfull)):hover {
   box-shadow: none;
@@ -785,6 +788,13 @@
   outline-offset: -4px;
 }
 
+.wp-block-media-text__media:where(:not(.alignfull)):hover img {
+  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
+}
+
 .wp-block-media-text__media:where(:not(.alignfull)):hover a > img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
@@ -792,38 +802,31 @@
   outline-offset: -4px;
 }
 
+[class*=wp-block-] a:hover .avatar {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
+  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  outline: 1px solid #00ffff;
+  outline-offset: -4px;
+}
+
 /* ==========================================================================
   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
   ========================================================================== */
-.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .wp-block-button__link:hover {
+.wp-site-blocks [class*=wp-block-] .wp-block-button__link:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #ff00ff;
   outline-offset: 4px;
 }
 
-.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .wp-element-button:hover {
+.wp-site-blocks [class*=wp-block-] .wp-element-button:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #ff00ff;
   outline-offset: 4px;
 }
 
-.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .wp-block-social-link:hover a {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
-  outline: 1px solid #ff00ff;
-  outline-offset: 4px;
-}
-
-.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) .tag-cloud-link:hover {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
-  outline: 1px solid #ff00ff;
-  outline-offset: 4px;
-}
-
-.wp-site-blocks [class*=wp-block-]:not([class*=wp-block-navigation]):not([class*=wp-block-navigation]) [class*=wp-block-] a > .avatar:hover {
+.wp-site-blocks [class*=wp-block-] .tag-cloud-link:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #ff00ff;
@@ -838,15 +841,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):where(:not(.alignfull)):hover .wp-block-column:is(.has-background):not(.alignfull) {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -856,15 +855,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:where(:not(.alignfull)):hover .wp-block-column:is(.has-background):not(.alignfull) {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -874,15 +869,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)):hover .wp-block-column:is(.has-background):not(.alignfull) {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -892,15 +883,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)):hover .wp-block-column:is(.has-background):not(.alignfull) {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -910,15 +897,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-group:is(.has-background):where(:not(.alignfull)):hover .wp-block-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -928,15 +911,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-media-text:is(.has-background):where(:not(.alignfull)):hover .wp-block-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -946,15 +925,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)):hover .wp-block-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -964,15 +939,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)):hover .wp-block-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -982,15 +953,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)):hover .wp-block-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1000,15 +967,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):where(:not(.alignfull)):hover .wp-block-gallery .wp-block-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1018,15 +981,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:where(:not(.alignfull)):hover .wp-block-gallery .wp-block-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1036,15 +995,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)):hover .wp-block-gallery .wp-block-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1054,15 +1009,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)):hover .wp-block-gallery .wp-block-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1072,15 +1023,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-group:is(.has-background):where(:not(.alignfull)):hover .wp-block-post-featured-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1090,15 +1037,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-media-text:is(.has-background):where(:not(.alignfull)):hover .wp-block-post-featured-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1108,15 +1051,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)):hover .wp-block-post-featured-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1126,15 +1065,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)):hover .wp-block-post-featured-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1144,15 +1079,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)):hover .wp-block-post-featured-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1162,15 +1093,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):where(:not(.alignfull)):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1180,15 +1107,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:where(:not(.alignfull)):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1198,15 +1121,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1216,15 +1135,11 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)):hover .wp-block-latest-posts__featured-image:not(.alignfull) img {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
@@ -1234,6 +1149,67 @@
   transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
+}
+
+.wp-block-group:is(.has-background):where(:not(.alignfull)):hover .wp-block-media-text__media:not(.alignfull) img {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-columns:is(.has-background):where(:not(.alignfull)):hover .wp-block-media-text__media:not(.alignfull) img {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-media-text:is(.has-background):where(:not(.alignfull)):hover .wp-block-media-text__media:not(.alignfull) img {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+.wp-block-cover:where(:not(.alignfull)):hover .wp-block-media-text__media:not(.alignfull) img {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)):hover .wp-block-media-text__media:not(.alignfull) img {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)):hover .wp-block-media-text__media:not(.alignfull) img {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)):hover .wp-block-media-text__media:not(.alignfull) img {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)):hover .wp-block-media-text__media:not(.alignfull) img {
+  box-shadow: none;
+  transform: none;
+  outline: 1px solid #ff8c00;
+  outline-offset: -1px;
+}
+
+[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)):hover .wp-block-media-text__media:not(.alignfull) img {
+  box-shadow: none;
+  transform: none;
   outline: 1px solid #ff8c00;
   outline-offset: -1px;
 }
