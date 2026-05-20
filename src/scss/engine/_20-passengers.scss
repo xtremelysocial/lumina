@@ -3,16 +3,16 @@
 //	    Pivot 5 Build 35 Bulletproof Spec Guardrail Pass
 //   ========================================================================== */
 
-@use "sass:list";
-@use "sass:string";
+@use 'sass:list';
+@use 'sass:string';
 
-@use "00-config" as config;
-@use "01-physics" as phys;
+@use '00-config' as config;
+@use '01-physics' as phys;
 
 @mixin apply-passenger-logic($interactive: false) {
 
 	// 1. Setup State Toggle
-	$hover: if($interactive, ":hover", "");
+	$hover: if($interactive, ':hover', '');
 
 	// 2. Initialize our Tracking Registry List
 	$processed-triggers: ();
@@ -22,7 +22,7 @@
 		$trigger: list.nth($trigger-target, 1);
 		$target:  list.nth($trigger-target, 2);
 	
-		@if $role == "passenger" or $role == "passenger-grow" or $role == "passenger-zoom" or $role == "passenger-sovereign" {
+		@if $role == 'passenger' or $role == 'passenger-grow' or $role == 'passenger-zoom' or $role == 'passenger-sovereign' {
 			
 			$gate:   phys.get-passenger-gate($trigger, $target);
 			$filter: phys.$passenger-filter;
@@ -36,17 +36,17 @@
 					$processed-triggers: list.append($processed-triggers, $trigger);
 
 					// Route transitions cleanly onto the inner image tag at rest (Tier 11)
-// 					$base-target: if(phys.is-image($target), " img", if($target == "self", "", " #{$target}"));
+// 					$base-target: if(phys.is-image($target), ' img', if($target == 'self', '', ' #{$target}'));
 					// STRICT BASE PATH ROUTING:
-					// If it's a native img tag target, append " img".
+					// If it's a native img tag target, append ' img'.
 					// If it's a custom class target (like .avatar), use that explicit target directly!
-					$base-target: if($target == "img", " img", if($target == "self", "", " #{$target}"));
+					$base-target: if($target == 'img', ' img', if($target == 'self', '', ' #{$target}'));
 
 					#{$trigger}:where(#{$gate}#{$filter})#{$base-target} {
 
 
 						// Directly call the dedicated sovereign resting state for cross-promotion!
-						@if $role == "passenger-sovereign" {
+						@if $role == 'passenger-sovereign' {
 							@include phys.apply-resting-sovereign-state;
 						} @else {
 							@include phys.apply-resting-state;
@@ -62,15 +62,15 @@
 				// AUTOMATIC FORK WITH DYNAMIC ROLE EXTENSION:
 				@if phys.is-image($target) {
 					
-					// If your trigger wrapper already contains an "a" tag, handle it adaptively!
-					$is-anchor-trigger: string.index($trigger, " a") != null or string.slice($trigger, -2) == " a";
+					// If your trigger wrapper already contains an 'a' tag, handle it adaptively!
+					$is-anchor-trigger: string.index($trigger, ' a') != null or string.slice($trigger, -2) == ' a';
 
 					@if $is-anchor-trigger {
 						// Since the trigger is already the anchor link container, 
 						// Tier 11 (Naked) and Tier 12 (Linked Portal) converge perfectly here!
 						
-// 						$assigned-role: if($role == "passenger-sovereign", "sovereign", "#{$role}-grow");
-						$assigned-role: if($role == "passenger-sovereign", "passenger-sovereign", "#{$role}-grow");
+// 						$assigned-role: if($role == 'passenger-sovereign', 'sovereign', '#{$role}-grow');
+						$assigned-role: if($role == 'passenger-sovereign', 'passenger-sovereign', '#{$role}-grow');
 
 						#{$trigger}#{$hover} #{$target} {
 							@include phys.apply-passenger($assigned-role);
@@ -80,12 +80,12 @@
 						// Standard separate component block wrappers (e.g. .wp-block-image)
 						// Tier 11: Naked element gets standard baseline lift rules
 						#{$trigger}:where(#{$gate}#{$filter})#{$hover} #{$target} {
-							@include phys.apply-passenger("passenger");
+							@include phys.apply-passenger('passenger');
 						}
 
 						// Tier 12: Standard Portal path generation
-						$portal-target: if($target == "img", "a > img", "a > #{$target}");
-						$assigned-role: if($role == "passenger-sovereign", "sovereign", "#{$role}-grow");
+						$portal-target: if($target == 'img', 'a > img', 'a > #{$target}');
+						$assigned-role: if($role == 'passenger-sovereign', 'sovereign', '#{$role}-grow');
 
 						#{$trigger}:where(#{$gate}#{$filter})#{$hover} #{$portal-target} {
 							@include phys.apply-passenger($assigned-role);
@@ -93,8 +93,8 @@
 					}
 
 				} @else {
-					// Standard non-image structural layouts (like .wp-block-column "self")
-					$mover: if($target == "self", "", " #{$target}");
+					// Standard non-image structural layouts (like .wp-block-column 'self')
+					$mover: if($target == 'self', '', ' #{$target}');
 
 					#{$trigger}:where(#{$gate}#{$filter})#{$hover}#{$mover} {
 						@include phys.apply-passenger($role);

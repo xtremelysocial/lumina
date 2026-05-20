@@ -4,7 +4,7 @@
    ========================================================================== */
 
 // Load all needed mixins
-@use "engine/00-config" as config;
+@use 'engine/00-config' as config;
 @use 'engine/02-global' as global;
 @use 'engine/10-ships' as ships;
 @use 'engine/20-passengers' as passengers;

@@ -3,13 +3,13 @@
 //	    Pivot 5 Build 35 MVP Optimize
 //   ========================================================================== */
 
-@use "00-config" as config;
-@use "01-physics" as phys;
+@use '00-config' as config;
+@use '01-physics' as phys;
 
 @mixin apply-global-logic($interactive: false) {
 
 	// 1. Setup State Toggle
-	$hover: if($interactive, ":hover", "");
+	$hover: if($interactive, ':hover', '');
 	
 	// 2. Set overflow hidden on media container *only* when hosting an active 
 	// image portal link. This ensures the container behaves as a rigid frame 

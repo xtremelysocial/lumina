@@ -272,7 +272,7 @@
 				"elements": {
 					"button": {
 						"border": {
-							"radius": "999px"
+							"radius": "var(--wp--custom--button--radius)"
 						}
 					}
 				}

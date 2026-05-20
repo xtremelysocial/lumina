@@ -9,83 +9,86 @@
 $atmos-physics-map: (
 
 	// SHIPS: Container-lift (Requires background color if core block)
-	(".wp-block-group",                         "self"):            "ship",
-	(".wp-block-columns",                       "self"):            "ship",
-	(".wp-block-media-text",                    "self"):            "ship",
-	(".wp-block-cover", 						"self"): 			"ship",
+	('.wp-block-group',                         'self'):            'ship',
+	('.wp-block-columns',                       'self'):            'ship',
+	('.wp-block-media-text',                    'self'):            'ship',
+	('.wp-block-cover', 						'self'): 			'ship',
 
 	// SHIPS: Container-lift (Automatic as these are Atmos custom styles)
-	(".is-style-object-passive",                "self"):            "ship",
-	(".is-style-rounded-border",                "self"):            "ship",
-	(".is-style-thick-rounded-border",          "self"):            "ship",
-	(".is-style-rounded-corners",               "self"):            "ship",
+	('.is-style-object-passive',                'self'):            'ship',
+	('.is-style-rounded-border',                'self'):            'ship',
+	('.is-style-thick-rounded-border',          'self'):            'ship',
+	('.is-style-rounded-corners',               'self'):            'ship',
 
 	// SHIPS: Container-lift (Automatic as these are in theme.json)
-	// Trigger must not start with ".wp-block-" though or the engine will
+	// Trigger must not start with '.wp-block-' though or the engine will
 	// require a colored background.
-	("pre.wp-block-code",                       "self"):            "ship",    
+	('pre.wp-block-code',                       'self'):            'ship',    
 	
 	// PASSENGERS: Block-Lift (e.g. individual columns blocks)
-	(".wp-block-column",                        "self"):            "passenger",
+	('.wp-block-column',                        'self'):            'passenger',
 
 	// IMAGES: Image-Lift, Image-Grow, or Image-Zoom
-	(".wp-block-image",                         "img"):             "passenger",
-// 	(".wp-block-image",                         "a > img"):         "passenger-grow",
-	(".wp-block-gallery .wp-block-image",       "img"):             "passenger",
-// 	(".wp-block-gallery .wp-block-image",       "a > img"):         "passenger-zoom",
-	(".wp-block-post-featured-image",           "img"):             "passenger",
-// 	(".wp-block-post-featured-image",           "a > img"):         "passenger-grow",
-	(".wp-block-latest-posts__featured-image",  "img"):             "passenger",
-// 	(".wp-block-latest-posts__featured-image",  "a > img"):         "passenger-zoom",
-	(".wp-block-media-text__media",             "img"):             "passenger",
-// 	(".wp-block-media-text__media",             "a > img"):         "passenger-zoom",
+	('.wp-block-image',                         'img'):             'passenger',
+// 	('.wp-block-image',                         'a > img'):         'passenger-grow',
+	('.wp-block-gallery .wp-block-image',       'img'):             'passenger',
+// 	('.wp-block-gallery .wp-block-image',       'a > img'):         'passenger-zoom',
+	('.wp-block-post-featured-image',           'img'):             'passenger',
+// 	('.wp-block-post-featured-image',           'a > img'):         'passenger-grow',
+	('.wp-block-latest-posts__featured-image',  'img'):             'passenger',
+// 	('.wp-block-latest-posts__featured-image',  'a > img'):         'passenger-zoom',
+	('.wp-block-media-text__media',             'img'):             'passenger',
+// 	('.wp-block-media-text__media',             'a > img'):         'passenger-zoom',
 
 	// SOVEREIGNS: Fast-pass growth (Buttons, Icons)
-	(".wp-block-button__link",                  "self"):            "sovereign",
-	(".wp-element-button",                      "self"):            "sovereign",
-	(".wp-block-social-link",                   "self"):            "sovereign",
-// 	(".wp-block-social-link",                   "a"):               "sovereign",
-// 	(".wp-block-social-link",                   "svg"):            "sovereign",
-// 	(".wp-block-social-link",                   "a > svg"):            "sovereign",
-	(".tag-cloud-link",                         "self"):            "sovereign",
+	('.wp-block-button__link',                  'self'):            'sovereign',
+	('.wp-element-button',                      'self'):            'sovereign',
+	('.wp-block-social-link',                   'self'):            'sovereign',
+// 	('.wp-block-social-link',                   'a'):               'sovereign',
+// 	('.wp-block-social-link',                   'svg'):            'sovereign',
+// 	('.wp-block-social-link',                   'a > svg'):            'sovereign',
+	('.tag-cloud-link',                         'self'):            'sovereign',
 	
 	// SOVEREIGNS Except in #wpadminbar: Broad selectors like this
 	// need a block wildcard to protect avatars in the admin bar.
-// 	("[class*=wp-block-] a > .avatar",          "self"):            "sovereign",
-	("[class*=wp-block-] a",          			".avatar"):         "passenger-sovereign",
+// 	('[class*=wp-block-] a > .avatar',          'self'):            'sovereign',
+	('[class*="wp-block-"] a',          		'.avatar'):         'passenger-sovereign',
 
 	// FLOORS: Ground only its own frame box
-	(".is-style-object-plain",                  "self"):            "floor",
+	('.is-style-object-plain',                  'self'):            'floor',
 );
 
 //**
-// * 00.2 SENSING TRIGGERS: The Attribute Gate
+// * 00.2 SENSING TRIGGERS: The Attribute Gates 
+// * 	  Uses :is(), :has(), :where(), and :not()
 // */
 
 // Only for CONTAINER blocks (wp-block-*) to prove they are cards.
-$atmos-card-triggers: ".has-background";
+$atmos-ship-is: ('.has-background');
 
 // Only for IMAGE blocks (img) to prove they are cards.
-// $atmos-image-triggers: ".size-full, .size-large";
-$atmos-image-triggers: "";
+// $atmos-image-is: ('.size-full, .size-large');
+$atmos-image-is: ('');
 
 // Non-image PASSENGERS (passengers) to prove they are cards.
-$atmos-passenger-triggers: ".has-background";
-// $atmos-passenger-triggers: ".has-background, .size-full, .size-large, .size-medium, .size-thumbnail, .size-cropped-thumbnail";
+$atmos-passenger-is: '.has-background';
+// $atmos-passenger-is: '.has-background, .size-full, .size-large, .size-medium, .size-thumbnail, .size-cropped-thumbnail';
+
+$atmos-has: ('a', '.wp-element-button');
 
 // The Brake: Only real-time layout states. Keep this list very short for browser
 // performance reasons.
-$atmos-static-floors: ".alignfull";
+$atmos-where-not: '.alignfull';
 
 // UNIVERSAL DAMPENING TARGETS: Any core block components or raw graphics 
 // nested inside an active Ship that must instantly stand down.
 $atmos-dampen-targets: (
-	"[class*=wp-block-]",
-	"[class*=wp-block-] img"
+	'[class*="wp-block-"]',
+	'[class*="wp-block-"] img'
 );
 
 // Layout environments where nested child ships should sit perfectly flush
-$blocks-no-border-radius: (".wp-block-media-text", ".wp-block-column");
+$blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-column');
 
 //**
 // * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up

@@ -3,24 +3,24 @@
 //	    Pivot 5 Build 35 MVP Optimize
 //   ========================================================================== */
 
-@use "sass:string";
-@use "sass:list";
+@use 'sass:string';
+@use 'sass:list';
 
-@use "00-config" as config;
-@use "01-physics" as phys;
+@use '00-config' as config;
+@use '01-physics' as phys;
 
 @mixin apply-veto-logic($interactive: false) {
 
 	// 1. Setup State Toggle
-	$hover: if($interactive, ":hover", "");
+	$hover: if($interactive, ':hover', '');
 
 	// 2. LOOP THROUGH PASSENGERS IN OUR PHYSICS MAP
 	@each $trigger-target, $role in config.$atmos-physics-map { 
 		$trigger: list.nth($trigger-target, 1);
 		$target:  list.nth($trigger-target, 2);
 
-        @if $role == "passenger" {
-            $mover:  if($target == "self", "&", #{$target});
+        @if $role == 'passenger' {
+            $mover:  if($target == 'self', '&', #{$target});
             $gate:   phys.get-passenger-gate($trigger, $target);
             $filter: phys.$passenger-filter;
             $is-link: phys.is-link($target);
@@ -30,19 +30,19 @@
 				$ship-trigger: list.nth($ship-trigger-target, 1);
 				$ship-target:  list.nth($ship-trigger-target, 2);
 
-		        @if $ship-role == "ship" {
+		        @if $ship-role == 'ship' {
 
 					$ship-gate:   phys.get-ship-gate($ship-trigger); 
 					$ship-filter: phys.$ship-filter;
 
 					// Reinforce the class-based ships with wildcard so score is exactly 20
 					@if not phys.is-block($ship-trigger) {
-						$ship-trigger: "[class*=wp-block-]#{$ship-trigger}";
+						$ship-trigger: '[class*="wp-block-"]#{$ship-trigger}';
 					}		        
 					
 					// Construct the precise Trigger-Action Pair axis
 					// Parent uses :where() to flatten its internal filter down to 20 baseline
-					$veto-trigger: "#{$ship-trigger}#{$ship-gate}:where(#{$ship-filter})";                    
+					$veto-trigger: '#{$ship-trigger}#{$ship-gate}:where(#{$ship-filter})';                    
 
 					$parent: #{$veto-trigger}#{$hover};
 					$child:  #{$trigger}#{$gate}#{$filter};

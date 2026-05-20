@@ -3,15 +3,15 @@
 //      Pivot 5 Build 35 MVP Optimize
 //   ========================================================================== */
 
-@use "sass:list";
+@use 'sass:list';
 
-@use "00-config" as config;
-@use "01-physics" as phys;
+@use '00-config' as config;
+@use '01-physics' as phys;
 
 @mixin apply-silence-logic($interactive: false) {
 
 	// 1. Setup State Toggle
-	$hover: if($interactive, ":hover", "");
+	$hover: if($interactive, ':hover', '');
 
 	// 2. LOOP THROUGH THE PHYSICS MAP TO REVERSE-ENGINEER ISOLATION
 	@each $trigger-target, $role in config.$atmos-physics-map { 
@@ -19,8 +19,8 @@
 		$target:  list.nth($trigger-target, 2);
 	
 		// TRACK A: Handle explicit layout floors defined in the map
-		@if $role == "floor" {
-			$mover: if($target == "self", "&", #{$target});
+		@if $role == 'floor' {
+			$mover: if($target == 'self', '&', #{$target});
 
 			#{$trigger}#{$hover} {
 				#{$mover} { 
@@ -30,7 +30,7 @@
 		}
 
 		// TRACK B: Programmatic Wildcard — Dampen any nested Ship inside an active Ship
-		@else if $role == "ship" {
+		@else if $role == 'ship' {
 
 			$gate:   phys.get-ship-gate($trigger);
 			$filter: phys.$ship-filter;
