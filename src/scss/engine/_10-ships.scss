@@ -56,14 +56,14 @@
 	}
 
 	///* ==========================================================================
-	//   10.6 SHIP OVERRIDES: Accurate Individual Matrix Blocks (20-in-20)
+	//   10 SHIP-IN-SHIP VETOS: Stand down embedded ships (groups, columns, etc.)
 	//   ========================================================================== */
 	@if list.length($all-ships) > 0 {
 
-		@if config.$atmos-debug {
+		@if config.$atmos-dev-mode {
 		/* ==========================================================================
-		  10 SHIP-IN-SHIP VETOS: Stand down embedded ships (groups, columns, etc.)
-		========================================================================== */
+		   10 SHIP-IN-SHIP VETOS: Stand down embedded ships (groups, columns, etc.)
+		   ========================================================================== */
 		}		
 
 		@each $parent-selector in $all-ships {

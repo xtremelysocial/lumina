@@ -150,6 +150,11 @@ $sovereign-filter: "";
     box-shadow: var(--wp--custom--shadow--default, 
                 var(--wp--preset--shadow--natural, 
                 0 3px 10px rgba(0, 0, 0, 0.14)));
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug("registry");
+	}                
 }
 
 %physics-resting-state {
@@ -160,9 +165,9 @@ $sovereign-filter: "";
 }
 
 @mixin apply-resting-state {
-	@if config.$atmos-debug {
+	@if config.$atmos-dev-mode {
 		@include __blueprint-resting-state;
-		@include atmos-debug("registry");
+// 		@include atmos-debug("registry");
 	} @else {
 		@extend %physics-resting-state;
 	}
@@ -187,6 +192,11 @@ $sovereign-filter: "";
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
 				0 6px 12px rgba(0, 0, 0, 0.13)));
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug("registry");
+	}                
 }
 
 %physics-resting-sovereign-state {
@@ -197,9 +207,9 @@ $sovereign-filter: "";
 }
 
 @mixin apply-resting-sovereign-state {
-	@if config.$atmos-debug {
+	@if config.$atmos-dev-mode {
 		@include __blueprint-resting-sovereign-state;
-		@include atmos-debug("registry");	
+// 		@include atmos-debug("registry");	
 	} @else {
 		
 		@extend %physics-resting-sovereign-state;		
@@ -218,6 +228,11 @@ $sovereign-filter: "";
     box-shadow: var(--wp--custom--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
 				0 6px 12px rgba(0, 0, 0, 0.13)));
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug("ship");
+	}
 }
 
 %physics-ship {
@@ -228,9 +243,9 @@ $sovereign-filter: "";
 }
 
 @mixin apply-ship {
-	@if config.$atmos-debug {
+	@if config.$atmos-dev-mode {
 		@include __blueprint-ship;
-		@include atmos-debug("ship");
+// 		@include atmos-debug("ship");
 	} @else {
 		@extend %physics-ship;
 	}
@@ -250,9 +265,8 @@ $sovereign-filter: "";
 }
 
 @mixin apply-border-radius {
-	@if config.$atmos-debug {
+	@if config.$atmos-dev-mode {
 		@include __blueprint-border-radius;
-// 		@include atmos-debug("???");
 	} @else {
 	    @extend %physics-border-radius;
 	}
@@ -271,9 +285,8 @@ $sovereign-filter: "";
 }
 
 @mixin apply-no-border-radius {
-	@if config.$atmos-debug {
+	@if config.$atmos-dev-mode {
 		@include __blueprint-no-border-radius;
-// 		@include atmos-debug("???");
 	} @else {
 	    @extend %physics-no-border-radius;
 	}
@@ -289,7 +302,15 @@ $sovereign-filter: "";
 	@if $role == "passenger-sovereign" {
 
 		// Cleanly delegate directly to your core Sovereign physics mixin!
-		@include __blueprint-sovereign;
+// 		@include __blueprint-sovereign;
+
+		// Grow Large (e.g. x1.1)
+		transform: translateY(0) #{config.$grow-large}; 
+	
+		// Hover high shadow on hover (e.g. Sharp)
+		box-shadow: var(--wp--custom--shadow--hover-high, 
+					var(--wp--preset--shadow--sharp,
+					0 8px 16px rgba(0, 0, 0, 0.15)));
 	}
 	
 	@else if $role == "passenger-grow" or $role == "passenger-zoom" {
@@ -311,56 +332,61 @@ $sovereign-filter: "";
         box-shadow: var(--wp--custom--shadow--hover, 
                     var(--wp--preset--shadow--deep, 
                     0 4px 12px rgba(0, 0, 0, 0.12)));
-    }    
+    }
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug("passenger");
+	}                    
 }
 
-// %physics-passenger-standard {
-// 	/* ==========================================================================
-// 	   01.20 PASSENGER: Blocks that can be contained in Ships or promoted to
-// 			 a Ship or Portal (Image with link)	   
-// 	========================================================================== */
-// 	@include __blueprint-passenger("passenger");
-// }
-// 
-// %physics-passenger-grow {
-// 	/* ==========================================================================
-// 	   01.20 PASSENGER GROW: Images that grow or zoom in place	   
-// 	========================================================================== */
-// 	@include __blueprint-passenger("passenger-grow");
-// }
-// 
-// %physics-passenger-zoom {
-// 	/* ==========================================================================
-// 	   01.20 PASSENGER ZOOM: Images that zoom in place	   
-// 	========================================================================== */
-// 	@include __blueprint-passenger("passenger-zoom");
-// }
+%physics-passenger-standard {
+	/* ==========================================================================
+	   01.20 PASSENGER: Blocks that can be contained in Ships or promoted to
+			 a Ship or Portal (Image with link)	   
+	========================================================================== */
+	@include __blueprint-passenger("passenger");
+}
+
+%physics-passenger-grow {
+	/* ==========================================================================
+	   01.20 PASSENGER GROW/ZOOM: Images that grow or zoom in place	   
+	========================================================================== */
+	@include __blueprint-passenger("passenger-grow");
+}
+
+%physics-passenger-sovereign {
+	/* ==========================================================================
+	   01.20 PASSENGER SOVEREIGN: Linked avatars that act as buttons
+	========================================================================== */
+	@include __blueprint-passenger("passenger-sovereign");
+}
+
+@mixin apply-passenger($role: "passenger") {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-passenger($role);
+//         @include atmos-debug("passenger");		
+	} @else {
+		@if $role == "passenger-sovereign" {
+			@extend %physics-passenger-sovereign;
+		} @else if $role == "passenger-grow" or $role == "passenger-zoom" {
+			@extend %physics-passenger-grow;
+		} @else {
+			@extend %physics-passenger-standard;
+		}		
+	}
+}
 
 // @mixin apply-passenger($role: "passenger") {
 // 	@if config.$atmos-debug {
 // 		@include __blueprint-passenger($role);
-//         @include atmos-debug("passenger");		
+// 		@include atmos-debug("passenger");		
 // 	} @else {
-// 		@if $role == "passenger-grow" {
-// 			@extend %physics-passenger-grow;
-// 		} @else if $role == "passenger-zoom" {
-// 			@extend %physics-passenger-zoom;
-// 		} @else {
-// 			@extend %physics-passenger-standard;
-// 		}		
+// 		// BYPASS PLACEHOLDERS ON HOVER: Direct inclusion guarantees that 
+// 		// separate compiled files (like interactions.scss) get their unique scale transformations!
+// 		@include __blueprint-passenger($role);
 // 	}
 // }
-
-@mixin apply-passenger($role: "passenger") {
-	@if config.$atmos-debug {
-		@include __blueprint-passenger($role);
-		@include atmos-debug("passenger");		
-	} @else {
-		// BYPASS PLACEHOLDERS ON HOVER: Direct inclusion guarantees that 
-		// separate compiled files (like interactions.scss) get their unique scale transformations!
-		@include __blueprint-passenger($role);
-	}
-}
 
 // ==========================================================================
 // 01.30 SOVEREIGN: Buttons and blocks that work like buttons, such as 
@@ -375,6 +401,11 @@ $sovereign-filter: "";
     box-shadow: var(--wp--custom--shadow--hover-high, 
     			var(--wp--preset--shadow--sharp,
     			0 8px 16px rgba(0, 0, 0, 0.15)));
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug("sovereign");
+	}
 }
 
 %physics-sovereign {
@@ -385,9 +416,9 @@ $sovereign-filter: "";
 }
 
 @mixin apply-sovereign {
-	@if config.$atmos-debug {
+	@if config.$atmos-dev-mode {
 		@include __blueprint-sovereign;
-		@include atmos-debug("sovereign");
+// 		@include atmos-debug("sovereign");
 	} @else {
 		@extend %physics-sovereign;
 	}
@@ -397,30 +428,38 @@ $sovereign-filter: "";
 // 01.60 SILENCE: Silence Ships and Passengers embedded in another Ship
 // ==========================================================================
 @mixin __blueprint-silence {
-
-		// Kill shadows and transforms
-		box-shadow: none; 
-		transform: none;
-// 		transition: none;		
-
-// 		@include atmos-debug("silence"); 
+	// Kill shadows and transforms
+	box-shadow: none; 
+	transform: none;
 }
 
 %physics-silence {
 	/* ==========================================================================
-	   01.60 SILENCE: Silence Passengers within Ships
+	   01.60 SILENCE STANDARD: Flattened baseline (Used in engine sheets)
 	========================================================================== */
 	@include __blueprint-silence;
 }
 
+%physics-silence-debug {
+	/* ==========================================================================
+	   01.60 SILENCE DEBUG: Consolidated interaction lines + diagnostic outlines
+	========================================================================== */
+	@include __blueprint-silence;
+	@include atmos-debug("silence");
+}
+
 @mixin apply-silence($interactive: false) {
-	@if config.$atmos-debug {
-		@include __blueprint-silence;
-		
-		@if $interactive {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-silence;		
+		@if $interactive and config.$atmos-debug {
 			@include atmos-debug("silence");
 		}
 	} @else {
-		@extend %physics-silence;
+		// PRODUCTION GATEWAY: Cleanly segment layout structure vs visual auditing
+		@if $interactive and config.$atmos-debug {
+			@extend %physics-silence-debug;
+		} @else {
+			@extend %physics-silence;
+		}
 	}
 }

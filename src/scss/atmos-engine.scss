@@ -18,42 +18,42 @@
    ========================================================================== */
 @include global.apply-global-logic($interactive: false);
 
-@if config.$atmos-debug {
+@if config.$atmos-dev-mode {
 /* ==========================================================================
    10 SHIPS: Containers (e.g. Groups, Columns)
-========================================================================== */
+   ========================================================================== */
 }
 @include ships.apply-ship-logic($interactive: false);
 
-@if config.$atmos-debug {
+@if config.$atmos-dev-mode {
 /* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
    ========================================================================== */
 }
 @include passengers.apply-passenger-logic($interactive: false);
 
-@if config.$atmos-debug {
+@if config.$atmos-dev-mode {
 /* ==========================================================================
    30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
    ========================================================================== */
 }
 @include sovereigns.apply-sovereign-logic($interactive: false);
 
-// @if config.$atmos-debug {
+// @if config.$atmos-dev-mode {
 ///* ==========================================================================
 //   40 FLOORS: Don't allow the physics engine to act on floors 
 //   ========================================================================== */
 // }
 // @include floors.apply-floor-logic($interactive: false);
 
-// @if config.$atmos-debug {
+// @if config.$atmos-dev-mode {
 ///* ==========================================================================
 //   50 VOIDS: Allow protecting #wpadminbar from the engine (UNUSED for now)
 //   ========================================================================== */
 // }
 // @include voids.apply-void-logic($interactive: false);
 
-@if config.$atmos-debug {
+@if config.$atmos-dev-mode {
 /* ==========================================================================
    60 VETOS: Ships Overrides of Passengers
    ========================================================================== */
