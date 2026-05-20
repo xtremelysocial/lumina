@@ -17,7 +17,8 @@
 // CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
 // to generically scale Sovereigns to an un-flattened Tier 30 (0-3-0) 
 // specificity baseline score. 
-$atmos-sovereign-scope: ".wp-site-blocks [class*=wp-block-]";
+// $atmos-sovereign-scope: ".wp-site-blocks [class*=wp-block-]";
+$atmos-sovereign-scope: '.wp-site-blocks [class*="wp-block-"]';
 
 // BLOCK DETECTION: Looks for core WordPress block or wildcard
 @function is-block($trigger) {

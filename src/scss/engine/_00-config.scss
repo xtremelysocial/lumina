@@ -43,9 +43,10 @@ $atmos-physics-map: (
 	// SOVEREIGNS: Fast-pass growth (Buttons, Icons)
 	(".wp-block-button__link",                  "self"):            "sovereign",
 	(".wp-element-button",                      "self"):            "sovereign",
+	(".wp-block-social-link",                   "self"):            "sovereign",
 // 	(".wp-block-social-link",                   "a"):               "sovereign",
-// 	(".wp-block-social-link",                   "self"):            "sovereign",
 // 	(".wp-block-social-link",                   "svg"):            "sovereign",
+// 	(".wp-block-social-link",                   "a > svg"):            "sovereign",
 	(".tag-cloud-link",                         "self"):            "sovereign",
 	
 	// SOVEREIGNS Except in #wpadminbar: Broad selectors like this
@@ -99,8 +100,8 @@ $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, tr
 //**
 // * 00.4 DEBUGGING: Outline colors for visual debugging
 // */
-$atmos-dev-mode: 	false; // Separates selectors (larger file size)
-$atmos-debug: 		true; // Turns on debug outlines
+$atmos-dev-mode: 	true; // Separates selectors (larger file size)
+$atmos-debug: 		false; // Turns on debug outlines
 $debug-registry:   	1px dashed #ff8c00; // Orange dashes
 $debug-sovereign:  	1px solid  #ff00ff;  // Purple solid
 $debug-ship:       	1px solid  #00ffff;  // Blue solid
