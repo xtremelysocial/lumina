@@ -1,0 +1,111 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Atmos Gallery)",
+	"description": "A sophisticated, academic mood featuring sun-drenched earth tones, sharp architectural corners, and a weighted, luxurious physical presence.",
+	"settings": {
+		"custom": {
+			"color": {
+				"border": "var(--wp--preset--color--neutral-alt)",
+				"field": { 
+					"outline": "rgba(45, 35, 25, 0.25)" 
+				},
+				"button": { 
+					"hoverOpacity": "0.9" 
+				},
+				"link": { 
+					"hoverOpacity": "0.8" 
+				},
+				"navigation": { 
+					"background": "var(--wp--preset--color--base)" 
+				}
+			},
+			"border": {
+				"radius": "5px" 
+			},
+			"button": {
+				"radius": "0px" 
+			},
+			"spacing": {
+				"gap": "24px"
+			},
+			"animation": {
+				"duration": {
+					"short": "200ms",
+					"normal": "500ms",
+					"medium": "800ms",
+					"slow": "1200ms"
+				},
+				"timingFunction": "cubic-bezier(0.2, 0, 0, 1)",
+				"fillMode": "both",
+				"default": {
+					"hoverSmallTransform": "scale(1.01)",
+					"hoverTransform": "scale(1.02)",
+					"hoverLargeTransform": "scale(1.05)",
+					"objectSmallTransform": "translateY(-1px)",
+					"objectTransform": "translateY(-2px)"
+				}
+			},
+			"link": {
+				"style": "solid",
+				"thickness": "1px",
+				"postion": "under",
+				"offset": "4px"
+			}
+		}	
+	},	
+	"styles": {
+		"typography": {
+			"fontFamily": "var:preset|font-family|source-sans-pro",
+			"fontSize": "1.15rem",
+			"fontStyle": "normal",
+			"fontWeight": "300",
+			"lineHeight": "1.6",
+			"textTransform": "none"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var:preset|font-family|lora",
+					"fontStyle": "normal",
+					"fontWeight": "300", 
+					"lineHeight": "1.1",
+					"textTransform": "none",
+					"textDecoration": "none",
+					"letterSpacing": "-0.01em"
+				},
+				"spacing": {
+					"margin": {
+						"top": "var:preset|spacing|50",
+						"bottom": "var:preset|spacing|30"
+					}
+				}
+			},
+			"link": {
+				"typography": {
+					"textDecoration": "none"
+				},
+				"spacing": {
+					"margin": {
+						"bottom": "4px" 
+					}
+				}
+			}
+		},
+		"blocks": {
+			"core/social-link": {
+				"elements": {
+					"link": {
+						"spacing": {
+							"margin": { "top": "0", "bottom": "0" }
+						}
+					}
+				},
+				"spacing": {
+					"margin": { "top": "0", "bottom": "0" },
+					"padding": { "top": "0", "bottom": "0", "left": "0", "right": "0" }
+				}
+			}
+		}
+	}
+}

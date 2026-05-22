@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    v0.9.9 Build 01
+// 	    v0.9.9 Build 02
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -44,38 +44,69 @@
 		}
 	}
 
-	// 4. FLAT ELEMENTS: Native HTML Buttons & Theme Component Sovereigns
-	// ENGINE.CSS PASS: Pure resting rules
+	// ==========================================================================
+	// 3. FLAT ELEMENTS: Native HTML Buttons & Theme Component Sovereigns
+	//    v0.9.9 Build 02 - Fixed Pseudo-State Doubling
+	// ==========================================================================
+	
+	// 1. Build naked, high-specificity base selectors out of your config sheet
+	$flat-selectors: ();
+	@each $element in config.$atmos-flat-sovereigns {
+		$flat-selectors: list.append($flat-selectors, '#{phys.$sovereign-prefix} #{$element}', comma);
+	}
+
+	// ==========================================================================
+	// 4. PRODUCTION OUTPUT PIPELINE
+	// ==========================================================================
 	@if not $interactive {
-		button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle),
-		input[type="button"]:not(.wp-element-button),
-		input[type="submit"][class*="button"]:not(.wp-element-button),
-		input[type="submit"][class*="submit"]:not(.wp-element-button),
-		input[type="reset"][class*="button"]:not(.wp-element-button),
-		input[type="file"]::file-selector-button,
-		.wp-block-search__button,
-		.wp-block-file .wp-block-file__button,
-		.wp-block-button__link {
+		// ENGINE.CSS PASS: Applies pure resting rules directly to the naked nodes
+		#{$flat-selectors} {
 			@include phys.apply-resting-state($trigger: ".wp-block-button", $role: "sovereign");
 			margin-right: var(--wp--preset--spacing--30);			
 		}
 	} 
-	
-	// INTERACTIONS.CSS PASS: Active Hover Overrides
 	@else {
-		button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle),
-		input[type="button"]:not(.wp-element-button),
-		input[type="submit"][class*="button"]:not(.wp-element-button),
-		input[type="submit"][class*="submit"]:not(.wp-element-button),
-		input[type="reset"][class*="button"]:not(.wp-element-button),
-		input[type="file"]::file-selector-button,
-		.wp-block-search__button,
-		.wp-block-file .wp-block-file__button,
-		.wp-block-button__link {
+		// INTERACTIONS.CSS PASS: Cleanly appends distinct interaction states
+		#{$flat-selectors} {
 			&:hover,
 			&:focus-visible {
 				@include phys.apply-sovereign;
 			}
 		}
-	}	
+	}
+	
+	// 4. FLAT ELEMENTS: Native HTML Buttons & Theme Component Sovereigns
+	// ENGINE.CSS PASS: Pure resting rules
+// 	@if not $interactive {
+// 		button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle),
+// 		input[type="button"]:not(.wp-element-button),
+// 		input[type="submit"][class*="button"]:not(.wp-element-button),
+// 		input[type="submit"][class*="submit"]:not(.wp-element-button),
+// 		input[type="reset"][class*="button"]:not(.wp-element-button),
+// 		input[type="file"]::file-selector-button,
+// 		.wp-block-search__button,
+// 		.wp-block-file .wp-block-file__button,
+// 		.wp-block-button__link {
+// 			@include phys.apply-resting-state($trigger: ".wp-block-button", $role: "sovereign");
+// 			margin-right: var(--wp--preset--spacing--30);			
+// 		}
+// 	} 
+// 	
+// 	// INTERACTIONS.CSS PASS: Active Hover Overrides
+// 	@else {
+// 		button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle),
+// 		input[type="button"]:not(.wp-element-button),
+// 		input[type="submit"][class*="button"]:not(.wp-element-button),
+// 		input[type="submit"][class*="submit"]:not(.wp-element-button),
+// 		input[type="reset"][class*="button"]:not(.wp-element-button),
+// 		input[type="file"]::file-selector-button,
+// 		.wp-block-search__button,
+// 		.wp-block-file .wp-block-file__button,
+// 		.wp-block-button__link {
+// 			&:hover,
+// 			&:focus-visible {
+// 				@include phys.apply-sovereign;
+// 			}
+// 		}
+// 	}	
 }

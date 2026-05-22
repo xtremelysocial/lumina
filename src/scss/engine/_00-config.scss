@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 01
+//	 	v0.9.9 Build 02
 //   ========================================================================== */
 
 //**
@@ -48,7 +48,9 @@ $atmos-physics-map: (
 	// SOVEREIGNS Except in #wpadminbar: Broad selectors like this
 	// need a block wildcard to protect avatars in the admin bar.
 // 	('[class*=wp-block-] a > .avatar',          'self'):            'sovereign',
-	('[class*="wp-block-"] a',          		'.avatar'):         'passenger-sovereign',
+// 	('[class*="wp-block-"] a',          		'.avatar'):         'passenger-sovereign',
+	("a > .avatar", 							"self"): 			"sovereign",
+// 	(".wp-block-social-link a", 				"self"): 			"sovereign",
 
 	// FLOORS: Ground only its own frame box
 	('.is-style-object-plain',                  'self'):            'floor',
@@ -66,25 +68,40 @@ $atmos-ship-where-not: 		('.alignfull');
 
 // PASSENGER/IMAGE selectors
 $atmos-image-is: 			('');
+$atmos-image-has:			('a:not(.wp-element-caption a, figcaption a)', 'button', 'input');
+$atmos-image-where-not: 	('.alignfull');
 
 $atmos-passenger-is: 		('.has-background');
 $atmos-passenger-has: 		('a', 'button', 'input');
 $atmos-passenger-where-not: ('.alignfull');
 
-// PASSENGER/IMAGE selectors
+// SOVEREIGN selectors
 $atmos-sovereign-is:        ();
 $atmos-sovereign-has:       ();
 $atmos-sovereign-where-not: ();
+
+// HTML-only Sovereigns
+$atmos-flat-sovereigns: (
+	'button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)',
+	'input[type="button"]:not(.wp-element-button)',
+	'input[type="submit"][class*="button"]:not(.wp-element-button)',
+	'input[type="submit"][class*="submit"]:not(.wp-element-button)',
+	'input[type="reset"][class*="button"]:not(.wp-element-button)',
+	'input[type="file"]::file-selector-button',
+	'.wp-block-search__button',
+	'.wp-block-file .wp-block-file__button',
+	'.wp-block-button__link'
+);
 
 // Layout environments where nested child ships should sit perfectly flush
 $blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-column');
 
 // UNIVERSAL DAMPENING TARGETS: Any core block components or raw graphics 
 // nested inside an active Ship that must instantly stand down.
-$atmos-dampen-targets: (
-	'[class*="wp-block-"]',
-	'[class*="wp-block-"] img'
-);
+// $atmos-dampen-targets: (
+// 	'[class*="wp-block-"]',
+// 	'[class*="wp-block-"] img'
+// );
 
 //**
 // * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up

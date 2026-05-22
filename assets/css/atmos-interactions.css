@@ -3,7 +3,7 @@
   \*****************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    ATMOS INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 01
+   v0.9.9 Build 02
    ========================================================================== */
 /* ==========================================================================
   10 SHIPS: Containers (e.g. Groups, Columns)
@@ -74,86 +74,9 @@
 /* ==========================================================================
   20 PASSENGERS: Container Contents (e.g. Images, Columns)
   ========================================================================== */
-.wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)):hover {
+.wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)):hover, .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)):has(:focus-visible), .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-image:where(:has(a, button, input):not(.alignfull)):hover img {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-image:where(:has(a, button, input):not(.alignfull)):hover a > img {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)):hover img {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)):hover a > img {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)):hover img {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)):hover a > img {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)):hover img {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)):hover a > img {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)):hover img {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-.wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)):hover a > img {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
-}
-
-[class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)):hover .avatar {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   outline: 1px solid #00ffff;
   outline-offset: -4px;
 }
@@ -193,23 +116,15 @@
   outline-offset: 4px;
 }
 
-button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):hover, button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):focus-visible,
-input[type=button]:not(.wp-element-button):hover,
-input[type=button]:not(.wp-element-button):focus-visible,
-input[type=submit][class*=button]:not(.wp-element-button):hover,
-input[type=submit][class*=button]:not(.wp-element-button):focus-visible,
-input[type=submit][class*=submit]:not(.wp-element-button):hover,
-input[type=submit][class*=submit]:not(.wp-element-button):focus-visible,
-input[type=reset][class*=button]:not(.wp-element-button):hover,
-input[type=reset][class*=button]:not(.wp-element-button):focus-visible,
-input[type=file]::file-selector-button:hover,
-input[type=file]::file-selector-button:focus-visible,
-.wp-block-search__button:hover,
-.wp-block-search__button:focus-visible,
-.wp-block-file .wp-block-file__button:hover,
-.wp-block-file .wp-block-file__button:focus-visible,
-.wp-block-button__link:hover,
-.wp-block-button__link:focus-visible {
+.wp-site-blocks [class*=wp-block-] a > .avatar:hover {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
+  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  opacity: 1;
+  outline: 1px solid #ff00ff;
+  outline-offset: 4px;
+}
+
+.wp-site-blocks [class*=wp-block-] button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):hover, .wp-site-blocks [class*=wp-block-] button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=button]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=button]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=button]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=button]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=submit]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=submit]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=reset][class*=button]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=reset][class*=button]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=file]::file-selector-button:hover, .wp-site-blocks [class*=wp-block-] input[type=file]::file-selector-button:focus-visible, .wp-site-blocks [class*=wp-block-] .wp-block-search__button:hover, .wp-site-blocks [class*=wp-block-] .wp-block-search__button:focus-visible, .wp-site-blocks [class*=wp-block-] .wp-block-file .wp-block-file__button:hover, .wp-site-blocks [class*=wp-block-] .wp-block-file .wp-block-file__button:focus-visible, .wp-site-blocks [class*=wp-block-] .wp-block-button__link:hover, .wp-site-blocks [class*=wp-block-] .wp-block-button__link:focus-visible {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;

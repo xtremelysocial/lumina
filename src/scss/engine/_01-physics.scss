@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	v0.9.9 Build 01
+//	 	v0.9.9 Build 02
 //   ========================================================================== */
 
 @use 'sass:string'; // Required for string.index
@@ -74,16 +74,20 @@ $ship-prefix: 	'[class*="wp-block-"]';
 // 		Generates the :is() gate for passengers
 // ==========================================================================
 
-$passenger-is:        compile-selector(config.$atmos-passenger-is, 'is');
-$passenger-has:       compile-selector(config.$atmos-passenger-has, 'has');
-$passenger-where-not: compile-selector(config.$atmos-passenger-where-not, 'not');
+$passenger-is:        	compile-selector(config.$atmos-passenger-is, 'is');
+$passenger-has:       	compile-selector(config.$atmos-passenger-has, 'has');
+$passenger-where-not: 	compile-selector(config.$atmos-passenger-where-not, 'not');
 
-$image-is:            compile-selector(config.$atmos-image-is, 'is');
+$image-is:            	compile-selector(config.$atmos-image-is, 'is');
+$image-has:       		compile-selector(config.$atmos-image-has, 'has');
+$image-where-not: 		compile-selector(config.$atmos-image-where-not, 'not');
 
 // CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
 // to generically scale Ships to an un-flattened Tier 20 (0-2-0) 
 // specificity baseline score. 
-$passenger-prefix: 	'';
+$passenger-prefix: 		();
+
+$image-prefix: 			();
 
 // ==========================================================================
 // 01.0 SOVEREIGN SELECTORS: Sets selectors for sovereigns
@@ -110,8 +114,6 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
             'ship':      		config.$debug-ship,
             'sovereign': 		config.$debug-sovereign,
             'passenger': 		config.$debug-passenger,
-			'passenger-grow':  	config.$debug-passenger,
-            'passenger-zoom':  	config.$debug-passenger,            
             'silence':   		config.$debug-silence
         ), $role);
 
@@ -120,8 +122,6 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
             'ship':       		 2px,
             'sovereign':  		 4px,
             'passenger': 		-4px,
-            'passenger-grow': 	-4px,
-            'passenger-zoom': 	-4px,
             'silence':  		-1px //-6px
         ), $role);
 
@@ -202,7 +202,7 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 @mixin apply-resting-state($trigger: '', $role: 'ship') {
 	
 	// TRACK A: SOVEREIGNS & PASSENGER-SOVEREIGNS
-	@if $role == 'sovereign' or $role == 'passenger-sovereign' {
+	@if $role == 'sovereign' {
 		@if config.$atmos-dev-mode {
 			@include __blueprint-sovereign-resting-state;
 		} @else {
@@ -219,10 +219,12 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 			@extend %physics-resting-state;
 		}
 
-		// 1. THE COMPILER GUARD: Drops the property completely if the block itself is globally banned
+		// 1. THE COMPILER GUARD: Drops the property completely if the block 
+		// itself is globally banned
 		@if not list.index(config.$blocks-no-border-radius, $trigger) {
 			
-			// 2. ULTRA-LIGHT CONTEXT BUILDER: Maps standard ancestors and descendants flawlessly
+			// 2. ULTRA-LIGHT CONTEXT BUILDER: Maps standard ancestors and 
+			// descendants flawlessly
 			$layout-brakes: ();
 			
 			@each $block in config.$blocks-no-border-radius {
@@ -233,7 +235,8 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 				$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
 			}
 			
-			// 3. GLOBAL FULL-WIDTH OVERRIDE: Enforces hard edges on any content inside an edge-to-edge container
+			// 3. GLOBAL FULL-WIDTH OVERRIDE: Enforces hard edges on any 
+			// content inside an edge-to-edge container
 			$layout-brakes: list.append($layout-brakes, '.alignfull *', $separator: comma);
 
 			// 4. THE BROWSER CONTEXT GUARD
@@ -302,43 +305,15 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 // 01.20 PASSENGER: Blocks that can be contained in Ships or promoted to
 //		 to a Ship or Portal (Image with link)
 // ==========================================================================
-@mixin __blueprint-passenger($role: 'passenger') {
+@mixin __blueprint-passenger {
 
-	// 1. CROSS-PROMOTION BRANCH: Avatars scaling & lifting like Sovereigns
-	@if $role == 'passenger-sovereign' {
-
-		// Cleanly delegate directly to your core Sovereign physics mixin!
-// 		@include __blueprint-sovereign;
-
-		// Grow Large (e.g. x1.1)
-		transform: translateY(0) #{config.$grow-large}; 
+	// Subtle Lift (e.g. -2px)
+	transform: #{config.$shift-subtle} scale(1); 
 	
-		// Hover high shadow on hover (e.g. Sharp)
-		box-shadow: var(--wp--custom--shadow--hover-high, 
-					var(--wp--preset--shadow--sharp,
-					0 8px 16px rgba(0, 0, 0, 0.15)));
-	}
-	
-	@else if $role == 'passenger-grow' or $role == 'passenger-zoom' {
-
-		// Grow Small (e.g. x1.03)
-        transform: translateY(0) #{config.$grow-small}; 
-        
-        // Hover high shadow on hover (e.g. Sharp)     
-        box-shadow: var(--wp--custom--shadow--hover-high, 
-                    var(--wp--preset--shadow--sharp, 
-                    0 12px 25px rgba(0, 0, 0, 0.15)));
-
-    } @else {
-
-		// Subtle Lift (e.g. -2px)
-        transform: #{config.$shift-subtle} scale(1); 
-        
-        // Hover default shadow (e.g. Deep)    
-        box-shadow: var(--wp--custom--shadow--hover, 
-                    var(--wp--preset--shadow--deep, 
-                    0 4px 12px rgba(0, 0, 0, 0.12)));
-    }
+	// Hover default shadow (e.g. Deep)    
+	box-shadow: var(--wp--custom--shadow--hover, 
+				var(--wp--preset--shadow--deep, 
+				0 4px 12px rgba(0, 0, 0, 0.12)));
 
 	// Debug mode
 	@if config.$atmos-debug {
@@ -346,39 +321,19 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 	}                    
 }
 
-%physics-passenger-standard {
+%physics-passenger {
 	/* ==========================================================================
 	   01.20 PASSENGER: Blocks that can be contained in Ships or promoted to
 			 a Ship or Portal (Image with link)	   
 	========================================================================== */
-	@include __blueprint-passenger('passenger');
+	@include __blueprint-passenger;
 }
 
-%physics-passenger-grow {
-	/* ==========================================================================
-	   01.20 PASSENGER GROW/ZOOM: Images that grow or zoom in place	   
-	========================================================================== */
-	@include __blueprint-passenger('passenger-grow');
-}
-
-%physics-passenger-sovereign {
-	/* ==========================================================================
-	   01.20 PASSENGER SOVEREIGN: Linked avatars that act as buttons
-	========================================================================== */
-	@include __blueprint-passenger('passenger-sovereign');
-}
-
-@mixin apply-passenger($role: 'passenger') {
+@mixin apply-passenger {
 	@if config.$atmos-dev-mode {
-		@include __blueprint-passenger($role);
+		@include __blueprint-passenger;
 	} @else {
-		@if $role == 'passenger-sovereign' {
-			@extend %physics-passenger-sovereign;
-		} @else if $role == 'passenger-grow' or $role == 'passenger-zoom' {
-			@extend %physics-passenger-grow;
-		} @else {
-			@extend %physics-passenger-standard;
-		}		
+		@extend %physics-passenger;
 	}
 }
 
