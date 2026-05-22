@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//       Pivot 5 Build 33 Automation Pass  
+//      v0.9.9 Build 01
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -14,7 +14,7 @@
 	$hover: if($interactive, ':hover', '');
 
 	// INITIALIZE THE SHIP COLLECTOR ARRAY
-	$all-ships: ();
+	$all-ships: () !global;
 
 	// 2. LOOP THROUGH SHIPS IN OUR PHYSICS MAP
 	@each $trigger-target, $role in config.$atmos-physics-map { 
@@ -22,68 +22,32 @@
 		$target:  list.nth($trigger-target, 2);
 	
 		@if $role == 'ship' {
-			$mover:  if($target == 'self', '&', #{$target});
-			$gate:   phys.get-ship-gate($trigger);
-			$filter: phys.$ship-filter;
 
+			$is-block: phys.is-block($trigger);
+			
 			// THE ENFORCEMENT LAYER
-			@if not phys.is-block($trigger) {
-				$trigger: '[class*="wp-block-"]#{$trigger}';
-			}
+			$ship-trigger: if(not phys.is-block($trigger), '#{phys.$ship-prefix}#{$trigger}', '#{$trigger}');
+
+			$is:         if($is-block, phys.$ship-is, '');
+			$has:        phys.$ship-has;
+			$where-not:  phys.$ship-where-not;
+
+			$mover:  if($target == 'self', '&', #{$target});
 			
 			// Construct the exact un-flattened baseline selector string
-			$current-ship-selector: '#{$trigger}#{$gate}:where(#{$filter})';
+			$ship-selector: '#{$ship-trigger}#{$is}#{$has}#{$where-not}';
 			
-			// STORE THIS SELECTOR IN OUR MASTER ARRAY
-			$all-ships: list.append($all-ships, $current-ship-selector, $separator: comma);
+			// STORE THIS SELECTOR IN OUR MASTER ARRAY AND EXPOSE GLOBALLY
+			$all-ships: list.append($all-ships, $ship-selector, $separator: comma);			
+			@include phys.register-ship($ship-selector);
 	
 			// 3. APPLY LOGIC WITH PERFECT TIER 20 SPECIFICITY
-			#{$current-ship-selector}#{$hover} {
+			#{$ship-selector}#{$hover} {
 				#{$mover} { 
 					@if $interactive { 
 						@include phys.apply-ship; 
 					} @else { 
-						@include phys.apply-resting-state;
-
-						// Apply the radius UNLESS the ship is sitting inside one of your flat-pane contexts
-						&:not(:where(#{config.$blocks-no-border-radius}) *) {
-							@include phys.apply-border-radius;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	///* ==========================================================================
-	//   10 SHIP-IN-SHIP VETOS: Stand down embedded ships (groups, columns, etc.)
-	//   ========================================================================== */
-	@if list.length($all-ships) > 0 {
-
-		@if config.$atmos-dev-mode {
-		/* ==========================================================================
-		   10 SHIP-IN-SHIP VETOS: Stand down embedded ships (groups, columns, etc.)
-		   ========================================================================== */
-		}		
-
-		@each $parent-selector in $all-ships {
-			@each $child-selector in $all-ships {
-				
-				// Force the loop items into clean, isolated string contexts
-				$parent: #{$parent-selector};
-				$child:  #{$child-selector};
-
-				@if not $interactive {
-					// ENGINE.CSS PASS: Distinct resting block per pairing
-					#{$parent} #{$child} {
-						@include phys.apply-silence($interactive: false);
-					}
-				} @else {
-					// INTERACTIONS.CSS PASS: Distinct hover blocks per pairing
-					// The space is strictly isolated between the distinct strings
-					#{$parent}:hover #{$child},
-					#{$parent}:hover #{$child}:hover {
-						@include phys.apply-silence($interactive: true);
+						@include phys.apply-resting-state($trigger: $trigger, $role: $role);
 					}
 				}
 			}

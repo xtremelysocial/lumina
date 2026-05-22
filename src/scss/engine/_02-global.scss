@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    Pivot 5 Build 35 MVP Optimize
+//	    v0.9.9 Build 01
 //   ========================================================================== */
 
 @use '00-config' as config;
@@ -24,7 +24,7 @@
 	   ========================================================================== */
 	
 	// Dynamically inherits your engine's Tier-30 sovereign specificity footprint (0-3-0)
-	#{phys.$atmos-sovereign-scope}.is-style-logos-only .wp-block-social-link {
+	#{phys.$sovereign-prefix}.is-style-logos-only .wp-block-social-link {
 		
 		// 1. Permanently erase the engine's box/container shadow from the outer <li> wrapper
 		box-shadow: none; 
@@ -45,5 +45,26 @@
 		&:hover svg {
 			filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.38));
 		}
+	}
+
+	/* ==========================================================================
+	   LIGHTBOX OPTION 1: The Camera Lens Shutter (Zero-Movement Shader)
+	   ========================================================================== */
+	#{phys.$sovereign-prefix}.wp-lightbox-container {
+	  transform: none;
+	  box-shadow: none;
+
+		& img {
+		  transform: none;
+		  transition: filter var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1),
+					  transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+		  will-change: filter, transform;
+		}
+
+		&:hover img {
+		  transform: none; // <--- Intercepts and kills the engine's inherited passenger lift
+		  filter: brightness(1.08) contrast(1.03);
+		}
+
 	}
 }

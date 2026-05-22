@@ -1,0 +1,55 @@
+//* ==========================================================================
+//   40 VETOS: Centralized Nesting Boundary Controller
+//	    v0.9.9 Build 01
+//   ========================================================================== */
+
+@use 'sass:list';
+@use '01-physics' as phys;
+
+@mixin apply-veto-logic($interactive: false) {
+
+	$hover: if($interactive, ':hover', '');
+
+	// Fetch the compiled arrays natively from the central physics pipeline
+	$ships: phys.get-ships();
+	$passengers: phys.get-passengers();
+
+	// Ensure our structural ship arrays have accumulated selectors before evaluating
+	@if list.length($ships) > 0 {
+		
+		@each $parent in $ships {
+			
+			// TRACK A: SHIP-IN-SHIP BOUNDARIES
+			// Silences nested cards (e.g., columns or inner groups) inside a parent card
+			@each $child-ship in $ships {
+				@if not $interactive {
+					#{$parent} #{$child-ship} {
+						@include phys.apply-silence($interactive: false);
+					}
+				} @else {
+					#{$parent}#{$hover} #{$child-ship},
+					#{$parent}#{$hover} #{$child-ship}:hover {
+						@include phys.apply-silence($interactive: true);
+					}
+				}
+			}
+
+			// TRACK B: PASSENGER-IN-SHIP BOUNDARIES
+			// Silences inner elements (e.g., images, text blocks) when the parent card lifts
+			@if list.length($passengers) > 0 {
+				@each $child-passenger in $passengers {
+					@if not $interactive {
+						#{$parent} #{$child-passenger} {
+							@include phys.apply-silence($interactive: false);
+						}
+					} @else {
+						#{$parent}#{$hover} #{$child-passenger},
+						#{$parent}#{$hover} #{$child-passenger}:hover {
+							@include phys.apply-silence($interactive: true);
+						}
+					}
+				}
+			}
+		}
+	}
+}

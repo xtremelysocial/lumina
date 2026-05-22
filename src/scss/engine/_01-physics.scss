@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	Pivot 5 Build 35 MVP Optimize
+//	 	v0.9.9 Build 01
 //   ========================================================================== */
 
 @use 'sass:string'; // Required for string.index
@@ -14,25 +14,90 @@
 // * Eg. Determines generic wp-block-, detects links for images
 // ==========================================================================
 
-// CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
-// to generically scale Sovereigns to an un-flattened Tier 30 (0-3-0) 
-// specificity baseline score. 
-$atmos-sovereign-scope: '.wp-site-blocks [class*="wp-block-"]';
-
 // BLOCK DETECTION: Looks for core WordPress block or wildcard
 @function is-block($trigger) {
     @return (string.index($trigger, '.wp-block-') == 1 or string.index($trigger, '[class*="wp-block-"]') == 1);
 }
 
 // IMAGE DETECTION: Looks for an img tag in the target
-@function is-image($target) {
-	@return string.index($target, 'img') != null or string.index($target, 'avatar') != null;
+@function is-image($trigger, $target) {
+	@return string.index($target, 'img') != null 
+		or string.index($target, 'avatar') != null 
+		or string.index($trigger, 'wp-block-cover') != null;
 }
 
 // LINK DETECTION: Looks for an a tag in the target
 @function is-link($target) {
 	@return string.index($target, 'a') != null;
 }
+
+// THE UNIVERSAL SELECTOR COMPILER
+@function compile-selector($list, $pseudo: 'is') {
+    $clean-list: ();
+    @each $item in $list {
+        @if $item != '' and $item != null {
+            $clean-list: list.append($clean-list, $item, comma);
+        }
+    }
+
+    @if list.length($clean-list) > 0 {
+        // Passenger Gateway: Returns a clean naked exclusion filter
+        @if $pseudo == 'not' {
+            @return ':not(#{$clean-list})';
+        }
+        // Ship/Sovereign Gateway: Returns a pre-shielded exclusion filter
+        @if $pseudo == 'where-not' {
+            @return ':where(:not(#{$clean-list}))';
+        }
+        // Standard pseudo wrappers (:is, :has)
+        @return ':#{$pseudo}(#{$clean-list})';
+    }
+    @return ''; 
+}
+
+// ==========================================================================
+// 01.0 SHIP SELECTORS: Sets selectors for ships
+// 		Generates the :is() gate for ships
+// ==========================================================================
+
+$ship-is:        compile-selector(config.$atmos-ship-is, 'is');
+$ship-has:       compile-selector(config.$atmos-ship-has, 'has');
+$ship-where-not: compile-selector(config.$atmos-ship-where-not, 'where-not');
+
+// CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
+// to generically scale Ships to an un-flattened Tier 20 (0-2-0) 
+// specificity baseline score. 
+$ship-prefix: 	'[class*="wp-block-"]';
+
+// ==========================================================================
+// 01.0 PASSENGER SELECTORS: Sets selectors for passengers
+// 		Generates the :is() gate for passengers
+// ==========================================================================
+
+$passenger-is:        compile-selector(config.$atmos-passenger-is, 'is');
+$passenger-has:       compile-selector(config.$atmos-passenger-has, 'has');
+$passenger-where-not: compile-selector(config.$atmos-passenger-where-not, 'not');
+
+$image-is:            compile-selector(config.$atmos-image-is, 'is');
+
+// CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
+// to generically scale Ships to an un-flattened Tier 20 (0-2-0) 
+// specificity baseline score. 
+$passenger-prefix: 	'';
+
+// ==========================================================================
+// 01.0 SOVEREIGN SELECTORS: Sets selectors for sovereigns
+// 		Generates the :is() gate for sovereigns
+// ==========================================================================
+
+$sovereign-is:        compile-selector(config.$atmos-sovereign-is, 'is');
+$sovereign-has:       compile-selector(config.$atmos-sovereign-has, 'has');
+$sovereign-where-not: compile-selector(config.$atmos-sovereign-where-not, 'where-not');
+
+// CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
+// to generically scale Sovereigns to an un-flattened Tier 30 (0-3-0) 
+// specificity baseline score. 
+$sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 
 // ==========================================================================
 // 01.0 VISUAL DEBUG: Set outline colors and styles based on engine logic
@@ -67,72 +132,6 @@ $atmos-sovereign-scope: '.wp-site-blocks [class*="wp-block-"]';
 }
 
 // ==========================================================================
-// 01.0 SHIP SELECTORS: Sets selectors for ships
-// 		Generates the :is() gate for ships
-// ==========================================================================
-@function get-ship-gate($trigger) {
-    $is-block: is-block($trigger);
-
-    @if $trigger == '.wp-block-cover' {
-		@if config.$atmos-image-is != '' {
-            @return ':is(#{config.$atmos-image-is})';
-        } @else {
-            @return '';
-        }
-    } 
-
-    @else if $is-block {
-        @if config.$atmos-ship-is != '' {
-            @return ':is(#{config.$atmos-ship-is})';
-        }
-    }
-    
-    @return '';	
-}
-
-// SHIPS: Generates the :not() gate for blocks
-$ship-filter: ':not(#{config.$atmos-where-not})';
-
-// ==========================================================================
-// 01.0 PASSENGER SELECTORS: Sets selectors for passengers
-// 		Generates the :is() gate for passengers
-// ==========================================================================
-@function get-passenger-gate($trigger, $target: '') {
-
-	$is-image: is-image($target);
-	$is-block: is-block($trigger);
-
-    // 1. If the target is an image, return the specific image triggers
-    @if $is-image {
-		@if config.$atmos-image-is != '' {
-            @return ':is(#{config.$atmos-image-is})';
-        } @else {
-            @return '';
-        }
-    } 
-
-    // 2. Otherwise, check if it's a core block and return passenger triggers
-    @else if $is-block {
-        @return ':is(#{config.$atmos-passenger-is})';
-    }
-
-    // 3. Fallback
-    @else {
-        @return '';
-    }
-}
-$passenger-filter: ':not(#{config.$atmos-where-not})';
-
-// ==========================================================================
-// 01.0 SOVEREIGN SELECTORS: Sets selectors for sovereigns
-// 		Generates the :is() gate for sovereigns
-// ==========================================================================
-@function get-sovereign-gate($trigger) {
-	@return '';
-}
-$sovereign-filter: '';
-
-// ==========================================================================
 // 01.1 RESTING STATE: The physical baseline for most objects
 // ==========================================================================
 @mixin __blueprint-resting-state {
@@ -164,20 +163,11 @@ $sovereign-filter: '';
 	@include __blueprint-resting-state;
 }
 
-@mixin apply-resting-state {
-	@if config.$atmos-dev-mode {
-		@include __blueprint-resting-state;
-// 		@include atmos-debug('registry');
-	} @else {
-		@extend %physics-resting-state;
-	}
-}
-
 // ==========================================================================
 // 01.3 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
 // ==========================================================================
 // @mixin apply-resting-sovereign-state {
-@mixin __blueprint-resting-sovereign-state {
+@mixin __blueprint-sovereign-resting-state {
 
 	// Setup transition timing
     transition: 
@@ -199,20 +189,78 @@ $sovereign-filter: '';
 	}                
 }
 
-%physics-resting-sovereign-state {
+%physics-sovereign-resting-state {
 /* ==========================================================================
    01.3 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
 ========================================================================== */
-	@include __blueprint-resting-sovereign-state;
+	@include __blueprint-sovereign-resting-state;
 }
 
-@mixin apply-resting-sovereign-state {
-	@if config.$atmos-dev-mode {
-		@include __blueprint-resting-sovereign-state;
-// 		@include atmos-debug('registry');	
-	} @else {
+// ==========================================================================
+// CENTRALIZED TRAFFIC CONTROLLER: Streamlined Layout Context Guard
+// ==========================================================================
+@mixin apply-resting-state($trigger: '', $role: 'ship') {
+	
+	// TRACK A: SOVEREIGNS & PASSENGER-SOVEREIGNS
+	@if $role == 'sovereign' or $role == 'passenger-sovereign' {
+		@if config.$atmos-dev-mode {
+			@include __blueprint-sovereign-resting-state;
+		} @else {
+			@extend %physics-sovereign-resting-state;
+		}
+		border-radius: var(--wp--custom--border--radius-button, 100px);
+	} 
+	
+	// TRACK B: STRUCTURAL LAYOUT COMPONENTS (Ships & Passengers)
+	@else {
+		@if config.$atmos-dev-mode {
+			@include __blueprint-resting-state;
+		} @else {
+			@extend %physics-resting-state;
+		}
+
+		// 1. THE COMPILER GUARD: Drops the property completely if the block itself is globally banned
+		@if not list.index(config.$blocks-no-border-radius, $trigger) {
+			
+			// 2. ULTRA-LIGHT CONTEXT BUILDER: Maps standard ancestors and descendants flawlessly
+			$layout-brakes: ();
+			
+			@each $block in config.$blocks-no-border-radius {
+				// Protects the layout container element itself
+				$layout-brakes: list.append($layout-brakes, $block, $separator: comma);
+				
+				// Protects all structural internals and nested child elements universally
+				$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
+			}
+			
+			// 3. GLOBAL FULL-WIDTH OVERRIDE: Enforces hard edges on any content inside an edge-to-edge container
+			$layout-brakes: list.append($layout-brakes, '.alignfull *', $separator: comma);
+
+			// 4. THE BROWSER CONTEXT GUARD
+			&:not(#{$layout-brakes}) {
+				border-radius: var(--wp--custom--border--radius);
+			}
+		}
+	}
+}
+
+// ==========================================================================
+// CONTAINER FRAME MASK: Syncs parent frame rounding with image clips
+// ==========================================================================
+@mixin apply-container-border-radius($trigger: '') {
+	
+	@if not list.index(config.$blocks-no-border-radius, $trigger) {
 		
-		@extend %physics-resting-sovereign-state;		
+		$layout-brakes: ();
+		@each $block in config.$blocks-no-border-radius {
+			$layout-brakes: list.append($layout-brakes, $block, $separator: comma);
+			$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
+		}
+		$layout-brakes: list.append($layout-brakes, '.alignfull *', $separator: comma);
+
+		&:not(#{$layout-brakes}) {
+			border-radius: var(--wp--custom--border--radius);
+		}
 	}
 }
 
@@ -245,50 +293,8 @@ $sovereign-filter: '';
 @mixin apply-ship {
 	@if config.$atmos-dev-mode {
 		@include __blueprint-ship;
-// 		@include atmos-debug('ship');
 	} @else {
 		@extend %physics-ship;
-	}
-}
-
-@mixin __blueprint-border-radius {
-	border-radius: var(--wp--custom--border--radius);
-}
-
-// Default standard theme border radius to ships
-%physics-border-radius {
-	/* ==========================================================================
-	   01.10 SHIP BORDER RADIUS: Apply default border radius so Ships look like
-	   		 cards.
-	========================================================================== */
-	@include __blueprint-border-radius;
-}
-
-@mixin apply-border-radius {
-	@if config.$atmos-dev-mode {
-		@include __blueprint-border-radius;
-	} @else {
-	    @extend %physics-border-radius;
-	}
-}
-
-@mixin __blueprint-no-border-radius {
-	border-radius: 0;
-}
-
-// Remove standard border-radius from some blocks (e.g. media-text, column)
-%physics-no-border-radius {
-	/* ==========================================================================
-	   01.10 SHIP NO BORDER RADIUS: Remove default border radius on these blocks
-	========================================================================== */
-	@include __blueprint-no-border-radius;
-}
-
-@mixin apply-no-border-radius {
-	@if config.$atmos-dev-mode {
-		@include __blueprint-no-border-radius;
-	} @else {
-	    @extend %physics-no-border-radius;
 	}
 }
 
@@ -365,7 +371,6 @@ $sovereign-filter: '';
 @mixin apply-passenger($role: 'passenger') {
 	@if config.$atmos-dev-mode {
 		@include __blueprint-passenger($role);
-//         @include atmos-debug('passenger');		
 	} @else {
 		@if $role == 'passenger-sovereign' {
 			@extend %physics-passenger-sovereign;
@@ -376,17 +381,6 @@ $sovereign-filter: '';
 		}		
 	}
 }
-
-// @mixin apply-passenger($role: 'passenger') {
-// 	@if config.$atmos-debug {
-// 		@include __blueprint-passenger($role);
-// 		@include atmos-debug('passenger');		
-// 	} @else {
-// 		// BYPASS PLACEHOLDERS ON HOVER: Direct inclusion guarantees that 
-// 		// separate compiled files (like interactions.scss) get their unique scale transformations!
-// 		@include __blueprint-passenger($role);
-// 	}
-// }
 
 // ==========================================================================
 // 01.30 SOVEREIGN: Buttons and blocks that work like buttons, such as 
@@ -402,6 +396,9 @@ $sovereign-filter: '';
     			var(--wp--preset--shadow--sharp,
     			0 8px 16px rgba(0, 0, 0, 0.15)));
 
+	// Since we are growing, ensure Opacity is full
+	opacity: 1; 
+	
 	// Debug mode
 	@if config.$atmos-debug {
 		@include atmos-debug('sovereign');
@@ -418,7 +415,6 @@ $sovereign-filter: '';
 @mixin apply-sovereign {
 	@if config.$atmos-dev-mode {
 		@include __blueprint-sovereign;
-// 		@include atmos-debug('sovereign');
 	} @else {
 		@extend %physics-sovereign;
 	}
@@ -428,7 +424,6 @@ $sovereign-filter: '';
 // 01.60 SILENCE: Silence Ships and Passengers embedded in another Ship
 // ==========================================================================
 @mixin __blueprint-silence {
-	// Kill shadows and transforms
 	box-shadow: none; 
 	transform: none;
 }
@@ -462,4 +457,26 @@ $sovereign-filter: '';
 			@extend %physics-silence;
 		}
 	}
+}
+
+// ==========================================================================
+// CENTRAL REGISTRY STATE (Modern Cross-Module Communication Pipeline)
+// ==========================================================================
+$all-ships: () !global;
+$all-passengers: () !global;
+
+@mixin register-ship($selector) {
+	$all-ships: list.append($all-ships, $selector) !global;
+}
+
+@mixin register-passenger($selector) {
+	$all-passengers: list.append($all-passengers, $selector) !global;
+}
+
+@function get-ships() {
+	@return $all-ships;
+}
+
+@function get-passengers() {
+	@return $all-passengers;
 }

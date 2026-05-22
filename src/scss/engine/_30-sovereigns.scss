@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    Pivot 5 Build 35 MVP Optimize
+// 	    v0.9.9 Build 01
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -19,23 +19,63 @@
 		$target:  list.nth($trigger-target, 2);
 
 		@if $role == 'sovereign' {
+
+			$is-block: phys.is-block($trigger);
+
+			$is:         if($is-block, phys.$sovereign-is, '');
+			$has:        phys.$sovereign-has;
+			$where-not:  phys.$sovereign-where-not;
+
 			$mover:  if($target == 'self', '&', #{$target});
-			$gate:   phys.get-sovereign-gate($trigger);
-			$filter: phys.$sovereign-filter;
 
 			// 3. APPLY LOGIC
 			// Pulls the protected structural scope from physics utility to lock in 
 			// the 30-point baseline score.
-			$sovereign-axis: '#{phys.$atmos-sovereign-scope} #{$trigger}#{$hover}';
-			#{$sovereign-axis} {
+			$sovereign-selector: '#{phys.$sovereign-prefix} #{$trigger}#{$is}#{$has}#{$where-not}#{$hover}';
+			#{$sovereign-selector} {
 				#{$mover} { 
 					@if $interactive { 
 						@include phys.apply-sovereign; 
 					} @else { 
-						@include phys.apply-resting-sovereign-state; 
+						@include phys.apply-resting-state($trigger: $trigger, $role: $role);
 					}
 				}
 			}
 		}
 	}
+
+	// 4. FLAT ELEMENTS: Native HTML Buttons & Theme Component Sovereigns
+	// ENGINE.CSS PASS: Pure resting rules
+	@if not $interactive {
+		button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle),
+		input[type="button"]:not(.wp-element-button),
+		input[type="submit"][class*="button"]:not(.wp-element-button),
+		input[type="submit"][class*="submit"]:not(.wp-element-button),
+		input[type="reset"][class*="button"]:not(.wp-element-button),
+		input[type="file"]::file-selector-button,
+		.wp-block-search__button,
+		.wp-block-file .wp-block-file__button,
+		.wp-block-button__link {
+			@include phys.apply-resting-state($trigger: ".wp-block-button", $role: "sovereign");
+			margin-right: var(--wp--preset--spacing--30);			
+		}
+	} 
+	
+	// INTERACTIONS.CSS PASS: Active Hover Overrides
+	@else {
+		button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle),
+		input[type="button"]:not(.wp-element-button),
+		input[type="submit"][class*="button"]:not(.wp-element-button),
+		input[type="submit"][class*="submit"]:not(.wp-element-button),
+		input[type="reset"][class*="button"]:not(.wp-element-button),
+		input[type="file"]::file-selector-button,
+		.wp-block-search__button,
+		.wp-block-file .wp-block-file__button,
+		.wp-block-button__link {
+			&:hover,
+			&:focus-visible {
+				@include phys.apply-sovereign;
+			}
+		}
+	}	
 }

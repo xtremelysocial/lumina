@@ -1,6 +1,6 @@
 /* ==========================================================================
    ATMOS INTERACTIONS: Handles all :hover and active state physics
-   Pivot 5 Build 35 MVP Optimize
+   v0.9.9 Build 01
    ========================================================================== */
 
 // Load all needed mixins
@@ -9,9 +9,12 @@
 @use 'engine/10-ships' as ships;
 @use 'engine/20-passengers' as passengers;
 @use 'engine/30-sovereigns' as sovereigns;
-// @use 'engine/40-floors' as floors;
-// @use 'engine/50-voids' as voids;
-@use 'engine/60-vetos' as vetos;
+@use 'engine/40-vetos' as vetos;
+
+///* ==========================================================================
+//   02 GLOBAL OVERIDES: Apply styles outside the normal role-specific css
+//   ========================================================================== */
+// @include global.apply-global-logic($interactive: true);
 
 @if config.$atmos-dev-mode {
 /* ==========================================================================
@@ -34,23 +37,9 @@
 }
 @include sovereigns.apply-sovereign-logic($interactive: true);
 
-// @if config.$atmos-dev-mode {
-///* ==========================================================================
-//   40 FLOORS: Don't allow the physics engine to act on floors 
-//   ========================================================================== */
-// }
-// @include floors.apply-floor-logic($interactive: true);
-
-// @if config.$atmos-dev-mode {
-///* ==========================================================================
-//   50 VOIDS: Allow protecting #wpadminbar from the engine (UNUSED for now)
-//   ========================================================================== */
-// }
-// @include voids.apply-void-logic($interactive: true);
-
 @if config.$atmos-dev-mode {
 /* ==========================================================================
-  60 VETOS: Ship Overrides of Passengers
+  40 VETOS: Veto embedded Ships and Passengers
   ========================================================================== */
 }
 @include vetos.apply-veto-logic($interactive: true);

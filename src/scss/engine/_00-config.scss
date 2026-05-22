@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	Pivot 5 Build 35 MVP Optimize
+//	 	v0.9.9 Build 01
 //   ========================================================================== */
 
 //**
@@ -15,6 +15,7 @@ $atmos-physics-map: (
 	('.wp-block-cover', 						'self'): 			'ship',
 
 	// SHIPS: Container-lift (Automatic as these are Atmos custom styles)
+// 	('.has-background',                			'self'):            'ship',
 	('.is-style-object-passive',                'self'):            'ship',
 	('.is-style-rounded-border',                'self'):            'ship',
 	('.is-style-thick-rounded-border',          'self'):            'ship',
@@ -30,15 +31,10 @@ $atmos-physics-map: (
 
 	// IMAGES: Image-Lift, Image-Grow, or Image-Zoom
 	('.wp-block-image',                         'img'):             'passenger',
-// 	('.wp-block-image',                         'a > img'):         'passenger-grow',
 	('.wp-block-gallery .wp-block-image',       'img'):             'passenger',
-// 	('.wp-block-gallery .wp-block-image',       'a > img'):         'passenger-zoom',
 	('.wp-block-post-featured-image',           'img'):             'passenger',
-// 	('.wp-block-post-featured-image',           'a > img'):         'passenger-grow',
 	('.wp-block-latest-posts__featured-image',  'img'):             'passenger',
-// 	('.wp-block-latest-posts__featured-image',  'a > img'):         'passenger-zoom',
 	('.wp-block-media-text__media',             'img'):             'passenger',
-// 	('.wp-block-media-text__media',             'a > img'):         'passenger-zoom',
 
 	// SOVEREIGNS: Fast-pass growth (Buttons, Icons)
 	('.wp-block-button__link',                  'self'):            'sovereign',
@@ -63,22 +59,25 @@ $atmos-physics-map: (
 // * 	  Uses :is(), :has(), :where(), and :not()
 // */
 
-// Only for CONTAINER blocks (wp-block-*) to prove they are cards.
-$atmos-ship-is: ('.has-background');
+// SHIP selectors
+$atmos-ship-is: 			('.has-background');
+$atmos-ship-has: 			('a', 'button', 'input');
+$atmos-ship-where-not: 		('.alignfull');
 
-// Only for IMAGE blocks (img) to prove they are cards.
-// $atmos-image-is: ('.size-full, .size-large');
-$atmos-image-is: ('');
+// PASSENGER/IMAGE selectors
+$atmos-image-is: 			('');
 
-// Non-image PASSENGERS (passengers) to prove they are cards.
-$atmos-passenger-is: '.has-background';
-// $atmos-passenger-is: '.has-background, .size-full, .size-large, .size-medium, .size-thumbnail, .size-cropped-thumbnail';
+$atmos-passenger-is: 		('.has-background');
+$atmos-passenger-has: 		('a', 'button', 'input');
+$atmos-passenger-where-not: ('.alignfull');
 
-$atmos-has: ('a', '.wp-element-button');
+// PASSENGER/IMAGE selectors
+$atmos-sovereign-is:        ();
+$atmos-sovereign-has:       ();
+$atmos-sovereign-where-not: ();
 
-// The Brake: Only real-time layout states. Keep this list very short for browser
-// performance reasons.
-$atmos-where-not: '.alignfull';
+// Layout environments where nested child ships should sit perfectly flush
+$blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-column');
 
 // UNIVERSAL DAMPENING TARGETS: Any core block components or raw graphics 
 // nested inside an active Ship that must instantly stand down.
@@ -86,9 +85,6 @@ $atmos-dampen-targets: (
 	'[class*="wp-block-"]',
 	'[class*="wp-block-"] img'
 );
-
-// Layout environments where nested child ships should sit perfectly flush
-$blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-column');
 
 //**
 // * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up
@@ -103,8 +99,8 @@ $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, tr
 //**
 // * 00.4 DEBUGGING: Outline colors for visual debugging
 // */
+$atmos-debug: 		true; // Turns on debug outlines
 $atmos-dev-mode: 	true; // Separates selectors (larger file size)
-$atmos-debug: 		false; // Turns on debug outlines
 $debug-registry:   	1px dashed #ff8c00; // Orange dashes
 $debug-sovereign:  	1px solid  #ff00ff;  // Purple solid
 $debug-ship:       	1px solid  #00ffff;  // Blue solid

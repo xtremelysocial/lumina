@@ -3,7 +3,7 @@
   \***********************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    ATMOS ENGINE: Registers objects and sets their resting states
-   Pivot 5 Build 35 MVP Optimize
+   v0.9.9 Build 01
    ========================================================================== */
 /* ==========================================================================
    02 GLOBAL OVERIDES: Apply styles outside the normal role-specific css
@@ -31,540 +31,229 @@
 }
 
 /* ==========================================================================
-   10 SHIPS: Containers (e.g. Groups, Columns)
+   LIGHTBOX OPTION 1: The Camera Lens Shutter (Zero-Movement Shader)
    ========================================================================== */
-.wp-block-group:is(.has-background):where(:not(.alignfull)) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+.wp-site-blocks [class*=wp-block-].wp-lightbox-container {
+  transform: none;
+  box-shadow: none;
 }
-.wp-block-group:is(.has-background):where(:not(.alignfull)):not(:where(.wp-block-media-text, .wp-block-column) *) {
-  border-radius: var(--wp--custom--border--radius);
+.wp-site-blocks [class*=wp-block-].wp-lightbox-container img {
+  transform: none;
+  transition: filter var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: filter, transform;
 }
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-}
-.wp-block-columns:is(.has-background):where(:not(.alignfull)):not(:where(.wp-block-media-text, .wp-block-column) *) {
-  border-radius: var(--wp--custom--border--radius);
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-}
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)):not(:where(.wp-block-media-text, .wp-block-column) *) {
-  border-radius: var(--wp--custom--border--radius);
-}
-
-.wp-block-cover:where(:not(.alignfull)) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-}
-.wp-block-cover:where(:not(.alignfull)):not(:where(.wp-block-media-text, .wp-block-column) *) {
-  border-radius: var(--wp--custom--border--radius);
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-}
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)):not(:where(.wp-block-media-text, .wp-block-column) *) {
-  border-radius: var(--wp--custom--border--radius);
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-}
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)):not(:where(.wp-block-media-text, .wp-block-column) *) {
-  border-radius: var(--wp--custom--border--radius);
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-}
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)):not(:where(.wp-block-media-text, .wp-block-column) *) {
-  border-radius: var(--wp--custom--border--radius);
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-}
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)):not(:where(.wp-block-media-text, .wp-block-column) *) {
-  border-radius: var(--wp--custom--border--radius);
-}
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
-  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0) scale(1);
-  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-}
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)):not(:where(.wp-block-media-text, .wp-block-column) *) {
-  border-radius: var(--wp--custom--border--radius);
+.wp-site-blocks [class*=wp-block-].wp-lightbox-container:hover img {
+  transform: none;
+  filter: brightness(1.08) contrast(1.03);
 }
 
 /* ==========================================================================
-   10 SHIP-IN-SHIP VETOS: Stand down embedded ships (groups, columns, etc.)
+   10 SHIPS: Containers (e.g. Groups, Columns)
    ========================================================================== */
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-group:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
 }
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-columns:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-cover:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-group:is(.has-background):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-group:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-columns:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-cover:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-group:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-columns:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-cover:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-cover:where(:not(.alignfull)) .wp-block-group:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-cover:where(:not(.alignfull)) .wp-block-columns:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-cover:where(:not(.alignfull)) .wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-cover:where(:not(.alignfull)) .wp-block-cover:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-cover:where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-cover:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-cover:where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-cover:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-.wp-block-cover:where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-group:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-columns:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-cover:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-group:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-columns:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-cover:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-group:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-columns:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-cover:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
 }
-
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-group:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-columns:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-cover:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
-}
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
 }
 
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
 }
-
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
 }
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-group:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-columns:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
 }
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-media-text:is(.has-background):where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-cover:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
 }
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
 }
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
 }
-
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) {
-  box-shadow: none;
-  transform: none;
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
 /* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
    ========================================================================== */
-.wp-block-column:where(:is(.has-background):not(.alignfull)) {
+.wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)) {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
 }
 
-.wp-block-image:where(:not(.alignfull)) img {
+.wp-block-image:where(:has(a, button, input):not(.alignfull)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+.wp-block-image:where(:has(a, button, input):not(.alignfull)) img:not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-.wp-block-gallery .wp-block-image:where(:not(.alignfull)) img {
+.wp-block-image:where(:has(a, button, input):not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
+}
+.wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  overflow: hidden;
+}
+
+.wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+.wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) img:not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-.wp-block-post-featured-image:where(:not(.alignfull)) img {
+.wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
+}
+.wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  overflow: hidden;
+}
+
+.wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+.wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) img:not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-.wp-block-latest-posts__featured-image:where(:not(.alignfull)) img {
+.wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
+}
+.wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) {
+  overflow: hidden;
+}
+
+.wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+.wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) img:not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-.wp-block-media-text__media:where(:not(.alignfull)) img {
+.wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
+}
+.wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) {
+  overflow: hidden;
+}
+
+.wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) img {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+}
+.wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) img:not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
 }
 
-[class*=wp-block-] a:where(:not(.alignfull)) .avatar {
+.wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)):not(.wp-block-media-text, .wp-block-media-text *, .wp-block-column, .wp-block-column *, .alignfull *) {
+  border-radius: var(--wp--custom--border--radius);
+}
+.wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) {
+  overflow: hidden;
+}
+
+[class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)) .avatar {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius-button, 100px);
 }
 
 /* ==========================================================================
@@ -574,295 +263,775 @@
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius-button, 100px);
 }
 
 .wp-site-blocks [class*=wp-block-] .wp-element-button {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius-button, 100px);
 }
 
 .wp-site-blocks [class*=wp-block-] .wp-block-social-link {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius-button, 100px);
 }
 
 .wp-site-blocks [class*=wp-block-] .tag-cloud-link {
   transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius-button, 100px);
+}
+
+button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle),
+input[type=button]:not(.wp-element-button),
+input[type=submit][class*=button]:not(.wp-element-button),
+input[type=submit][class*=submit]:not(.wp-element-button),
+input[type=reset][class*=button]:not(.wp-element-button),
+input[type=file]::file-selector-button,
+.wp-block-search__button,
+.wp-block-file .wp-block-file__button,
+.wp-block-button__link {
+  transition: transform var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  outline: 1px dashed #ff8c00;
+  outline-offset: -1px;
+  border-radius: var(--wp--custom--border--radius-button, 100px);
+  margin-right: var(--wp--preset--spacing--30);
 }
 
 /* ==========================================================================
-   60 VETOS: Ships Overrides of Passengers
-   ========================================================================== */
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+  40 VETOS: Veto embedded Ships and Passengers
+  ========================================================================== */
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-cover:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-column:is(.has-background):not(.alignfull) {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-cover:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-cover:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-gallery .wp-block-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-cover:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-post-featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-cover:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-latest-posts__featured-image:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-group:is(.has-background):where(:not(.alignfull)) .wp-block-media-text__media:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-columns:is(.has-background):where(:not(.alignfull)) .wp-block-media-text__media:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-media-text:is(.has-background):where(:not(.alignfull)) .wp-block-media-text__media:not(.alignfull) img {
+.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-.wp-block-cover:where(:not(.alignfull)) .wp-block-media-text__media:not(.alignfull) img {
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-object-passive:where(:not(.alignfull)) .wp-block-media-text__media:not(.alignfull) img {
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-border:where(:not(.alignfull)) .wp-block-media-text__media:not(.alignfull) img {
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-thick-rounded-border:where(:not(.alignfull)) .wp-block-media-text__media:not(.alignfull) img {
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-].is-style-rounded-corners:where(:not(.alignfull)) .wp-block-media-text__media:not(.alignfull) img {
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-] pre.wp-block-code:where(:not(.alignfull)) .wp-block-media-text__media:not(.alignfull) img {
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) .wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) .wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) .wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) .wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) .wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) .wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) .wp-block-gallery .wp-block-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) .wp-block-post-featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) .wp-block-latest-posts__featured-image:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) .wp-block-media-text__media:where(:has(a, button, input):not(.alignfull)) {
+  box-shadow: none;
+  transform: none;
+}
+
+[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)) [class*=wp-block-] a:where(:has(a, button, input):not(.alignfull)) {
   box-shadow: none;
   transform: none;
 }
