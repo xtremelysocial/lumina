@@ -6,79 +6,82 @@
    v0.9.9 Build 02
    ========================================================================== */
 /* ==========================================================================
+   01.4 UNIFIED LAYOUT MASKS: System-wide combined rounding footprints
+   ========================================================================== */
+/* ==========================================================================
   10 SHIPS: Containers (e.g. Groups, Columns)
 ========================================================================== */
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-  outline: 1px solid #00ffff;
-  outline-offset: 2px;
 }
 
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-  outline: 1px solid #00ffff;
-  outline-offset: 2px;
 }
 
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-  outline: 1px solid #00ffff;
-  outline-offset: 2px;
 }
 
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-  outline: 1px solid #00ffff;
-  outline-offset: 2px;
 }
 
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-  outline: 1px solid #00ffff;
-  outline-offset: 2px;
 }
 
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-  outline: 1px solid #00ffff;
-  outline-offset: 2px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-  outline: 1px solid #00ffff;
-  outline-offset: 2px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-  outline: 1px solid #00ffff;
-  outline-offset: 2px;
-}
-
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-  outline: 1px solid #00ffff;
-  outline-offset: 2px;
 }
 
 /* ==========================================================================
   20 PASSENGERS: Container Contents (e.g. Images, Columns)
   ========================================================================== */
-.wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)):hover, .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)):has(:focus-visible), .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
+.wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)):hover, .wp-block-column:where(:is(.has-background):has(a, button, input):not(.alignfull)):has(:focus-visible) {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px)) scale(1);
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
-  outline: 1px solid #00ffff;
-  outline-offset: -4px;
+}
+
+.wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+}
+
+.wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+}
+
+.wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+}
+
+.wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+}
+
+.wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
 }
 
 /* ==========================================================================
@@ -88,48 +91,36 @@
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
-  outline: 1px solid #ff00ff;
-  outline-offset: 4px;
 }
 
 .wp-site-blocks [class*=wp-block-] .wp-element-button:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
-  outline: 1px solid #ff00ff;
-  outline-offset: 4px;
 }
 
 .wp-site-blocks [class*=wp-block-] .wp-block-social-link:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
-  outline: 1px solid #ff00ff;
-  outline-offset: 4px;
 }
 
 .wp-site-blocks [class*=wp-block-] .tag-cloud-link:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
-  outline: 1px solid #ff00ff;
-  outline-offset: 4px;
 }
 
 .wp-site-blocks [class*=wp-block-] a > .avatar:hover {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
-  outline: 1px solid #ff00ff;
-  outline-offset: 4px;
 }
 
 .wp-site-blocks [class*=wp-block-] button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):hover, .wp-site-blocks [class*=wp-block-] button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=button]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=button]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=button]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=button]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=submit]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=submit]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=reset][class*=button]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=reset][class*=button]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=file]::file-selector-button:hover, .wp-site-blocks [class*=wp-block-] input[type=file]::file-selector-button:focus-visible, .wp-site-blocks [class*=wp-block-] .wp-block-search__button:hover, .wp-site-blocks [class*=wp-block-] .wp-block-search__button:focus-visible, .wp-site-blocks [class*=wp-block-] .wp-block-file .wp-block-file__button:hover, .wp-site-blocks [class*=wp-block-] .wp-block-file .wp-block-file__button:focus-visible, .wp-site-blocks [class*=wp-block-] .wp-block-button__link:hover, .wp-site-blocks [class*=wp-block-] .wp-block-button__link:focus-visible {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
-  outline: 1px solid #ff00ff;
-  outline-offset: 4px;
 }
 
 /* ==========================================================================
@@ -139,646 +130,382 @@
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)),
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)),
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)),
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)),
 .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)),
-.wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)),
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)),
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)),
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)),
 .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)),
-.wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)),
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)),
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)),
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)),
 .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)),
-.wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)),
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)),
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)),
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)),
 .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)),
-.wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }
 
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)),
 [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover {
   box-shadow: none;
   transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover .wp-block-group:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover .wp-block-columns:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover .wp-block-media-text:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover .wp-block-cover:is(.has-background):has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-object-passive:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-thick-rounded-border:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-].is-style-rounded-corners:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
-}
-
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)),
-[class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover [class*=wp-block-] pre.wp-block-code:has(a, button, input):where(:not(.alignfull)):hover {
-  box-shadow: none;
-  transform: none;
-  outline: 1px solid #ff8c00;
-  outline-offset: -1px;
 }

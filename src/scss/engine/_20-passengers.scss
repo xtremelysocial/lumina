@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 02 - Keyboard Focus Parity Integrated
+//	    v0.9.9 Build 03 - Direct Map Entry Output (Audited Baseline)
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -11,12 +11,8 @@
 
 @mixin apply-passenger-logic($interactive: false) {
 
+	// Initialize the global tracker list for Module 40's stable scraping pass
 	$all-passengers: () !global;
-
-	// Establish our structural collection reservoirs
-	$resting-assets: ();
-	$resting-masks: ();
-	$interaction-selectors: ();
 
 	@each $trigger-target, $role in config.$atmos-physics-map { 
 		$trigger: list.nth($trigger-target, 1);
@@ -24,17 +20,15 @@
 	
 		@if $role == 'passenger' {
 			
-			// 1. SET IMAGE AND BLOCK
+			// 1. IDENTIFY BLOCK TYPE
 			$is-block: 	phys.is-block($trigger);
 			$is-img: 	phys.is-image($trigger, $target);
 
-			// 1. CHOOSE THE RIGHT STRUCTURAL PREFIX HOOK
+			// 2. APPLY STRUCTURAL PREFIX SCOPES
 			$prefix:    if($is-img, phys.$image-prefix, phys.$passenger-prefix);
-
-			// 2. COMPILE THE BASE TRIGGER ROOT
 			$passenger-trigger: if(not $is-block, '#{$prefix}#{$trigger}', '#{$trigger}');
 
-			// 3. APPLY FULL PIECEWISE ROLE AUTONOMY
+			// 3. COMPILE SYSTEM GATES & ACCELERATION RULES
 			$is:		if($is-img, phys.$image-is, if($is-block, phys.$passenger-is, ''));
 			$has:		if($is-img, phys.$image-has, phys.$passenger-has);
 			$where-not:	if($is-img, phys.$image-where-not, phys.$passenger-where-not);
@@ -42,68 +36,66 @@
 			$passenger-selector: '#{$passenger-trigger}:where(#{$is}#{$has}#{$where-not})';
 			
 			// ==========================================================================
-			// STAGE A: COLLECT SELECTOR CHAINS
+			// ENGINE.CSS PASS: Pure resting layout rules
 			// ==========================================================================
 			@if not $interactive {
+
+				// Deduplication Shield: Ensures unique selector registration and direct layout printing
 				@if not list.index($all-passengers, $passenger-selector) {
-					$all-passengers: list.append($all-passengers, $passenger-selector) !global;
-					@include phys.register-passenger($passenger-selector);					
+				
+					// NEW GATE: Check for links more effectively before registering
+					@if not $is-img {
+						$all-passengers: list.append($all-passengers, $passenger-selector) !global;
+						@include phys.register-passenger($passenger-selector);					
+					}
 
 					$base-target: if($target == 'self', '', ' #{$target}');
-					$resting-assets: list.append($resting-assets, '#{$passenger-selector}#{$base-target}', comma);
 
-					@if $is-img {
-						$resting-masks: list.append($resting-masks, $passenger-selector, comma);
+					// 1. ANCHOR CORE PHYSICS: Apply transition baselines and shadows
+					#{$passenger-selector}#{$base-target} {
+// 						@include phys.apply-resting-state($trigger: $trigger, $role: 'passenger', $is-img: $is-img);
+						@include phys.apply-resting-state($trigger: $trigger, $role: 'passenger');
+					}
+
+					// 2. EXPLICIT ROUNDING (Call this exactly once per path)
+					#{$passenger-selector} {
+						@include phys.apply-container-border-radius($trigger: $trigger);
+						@if $is-img { overflow: hidden; }
 					}
 				}
 			} 
+			
+			// ==========================================================================
+			// INTERACTIONS.CSS PASS: Active Hover & Focus Alignment
+			// ==========================================================================
 			@else {
-				// Iterate across both mouse hover and keyboard interaction states
+				// Local variable groups active states inside exactly ONE css block per map row
 				$states: (':hover', ':has(:focus-visible)');
+				$entry-selectors: ();
 
 				@each $state in $states {
 					@if $is-img {
-						$interaction-selectors: list.append($interaction-selectors, '#{$passenger-selector}#{$state} #{$target}', comma);
+						$entry-selectors: list.append($entry-selectors, '#{$passenger-selector}#{$state} #{$target}', comma);
 						
 						$is-anchor-trigger: (string.index($trigger, ' a') != null or string.slice($trigger, -2) == ' a');
 						@if not $is-anchor-trigger {
 							$portal-target: if($target == 'img', 'a > img', 'a > #{$target}');
-							$interaction-selectors: list.append($interaction-selectors, '#{$passenger-selector}#{$state} #{$portal-target}', comma);
+							$entry-selectors: list.append($entry-selectors, '#{$passenger-selector}#{$state} #{$portal-target}', comma);
 						}
 					} 
 					@else {
 						$mover: if($target == 'self', '', ' #{$target}');
-						$interaction-selectors: list.append($interaction-selectors, '#{$passenger-selector}#{$state}#{$mover}', comma);
+						$entry-selectors: list.append($entry-selectors, '#{$passenger-selector}#{$state}#{$mover}', comma);
 					}
 				}
-			}
-		}
-	}
 
-	// ==========================================================================
-	// STAGE B: COMPREHENSIVE COMPILATION OUTPUTS
-	// ==========================================================================
-	@if not $interactive {
-		// 1. Compile all resting transitions and shadows in one compact block
-		@if list.length($resting-assets) > 0 {
-			#{$resting-assets} {
-				@include phys.apply-resting-state($trigger: '', $role: 'passenger');
-			}
-		}
-
-		// 2. Compile image framing layout overrides uniformly 
-		@if list.length($resting-masks) > 0 {
-			#{$resting-masks} {
-				@include phys.apply-container-border-radius($trigger: '');
-				overflow: hidden;
-			}
-		}
-	} 
-	@else {
-		// 3. Compile your active interactive animations inside a single comma-grouped block
-		@if list.length($interaction-selectors) > 0 {
-			#{$interaction-selectors} {
-				@include phys.apply-passenger;
+				#{$entry-selectors} {
+					@if $is-img {
+						@include phys.apply-passenger-grow;
+					} @else {
+						@include phys.apply-passenger;
+					}
+				}
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 02
+//	 	v0.9.9 Build 03
 //   ========================================================================== */
 
 //**
@@ -24,7 +24,7 @@ $atmos-physics-map: (
 	// SHIPS: Container-lift (Automatic as these are in theme.json)
 	// Trigger must not start with '.wp-block-' though or the engine will
 	// require a colored background.
-	('pre.wp-block-code',                       'self'):            'ship',    
+// 	('pre.wp-block-code',                       'self'):            'ship',    
 	
 	// PASSENGERS: Block-Lift (e.g. individual columns blocks)
 	('.wp-block-column',                        'self'):            'passenger',
@@ -96,6 +96,12 @@ $atmos-flat-sovereigns: (
 // Layout environments where nested child ships should sit perfectly flush
 $blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-column');
 
+// Image triggers guaranteed to be pure graphic layout boxes without caption prose layout blocks
+$atmos-pure-frame-triggers: (
+	'.wp-block-gallery .wp-block-image',
+	'.wp-block-latest-posts__featured-image'
+);
+
 // UNIVERSAL DAMPENING TARGETS: Any core block components or raw graphics 
 // nested inside an active Ship that must instantly stand down.
 // $atmos-dampen-targets: (
@@ -116,7 +122,7 @@ $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, tr
 //**
 // * 00.4 DEBUGGING: Outline colors for visual debugging
 // */
-$atmos-debug: 		true; // Turns on debug outlines
+$atmos-debug: 		false; // Turns on debug outlines
 $atmos-dev-mode: 	true; // Separates selectors (larger file size)
 $debug-registry:   	1px dashed #ff8c00; // Orange dashes
 $debug-sovereign:  	1px solid  #ff00ff;  // Purple solid

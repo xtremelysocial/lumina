@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	v0.9.9 Build 02
+//	 	v0.9.9 Build 03
 //   ========================================================================== */
 
 @use 'sass:string'; // Required for string.index
@@ -29,6 +29,11 @@
 // LINK DETECTION: Looks for an a tag in the target
 @function is-link($target) {
 	@return string.index($target, 'a') != null;
+}
+
+// PURE FRAME DETECTION: Verifies if an image block is a dedicated container without caption text
+@function is-pure-frame($trigger) {
+	@return list.index(config.$atmos-pure-frame-triggers, $trigger) != null;
 }
 
 // THE UNIVERSAL SELECTOR COMPILER
@@ -119,10 +124,10 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 
         $debug-offset: map.get((
             'registry':  		-1px,
-            'ship':       		 2px,
-            'sovereign':  		 4px,
-            'passenger': 		-4px,
-            'silence':  		-1px //-6px
+            'ship':       		 1px,
+            'sovereign':  		 2px,
+            'passenger': 		-3px,
+            'silence':  		-1px
         ), $role);
 
         // Set the outline color and offset
@@ -132,7 +137,7 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 }
 
 // ==========================================================================
-// 01.1 RESTING STATE: The physical baseline for most objects
+// 01.1/01.2 RESTING STATE: The physical baseline for most objects
 // ==========================================================================
 @mixin __blueprint-resting-state {
 
@@ -166,7 +171,6 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 // ==========================================================================
 // 01.3 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
 // ==========================================================================
-// @mixin apply-resting-sovereign-state {
 @mixin __blueprint-sovereign-resting-state {
 
 	// Setup transition timing
@@ -196,9 +200,49 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 	@include __blueprint-sovereign-resting-state;
 }
 
+/* ==========================================================================
+   01.4 UNIFIED LAYOUT MASKS: System-wide combined rounding footprints
+   ========================================================================== */
+%physics-container-rounding {
+	$layout-brakes: ();
+	@each $block in config.$blocks-no-border-radius {
+		$layout-brakes: list.append($layout-brakes, $block, $separator: comma);
+		$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
+	}
+	$layout-brakes: list.append($layout-brakes, '.alignfull *', $separator: comma);
+
+	&:not(#{$layout-brakes}) {
+		border-radius: var(--wp--custom--border--radius, 16px);
+	}
+}
+
 // ==========================================================================
-// CENTRALIZED TRAFFIC CONTROLLER: Streamlined Layout Context Guard
+// 01.5 CONTAINER FRAME MASK: Sole owner of layout brakes and corner rounding
 // ==========================================================================
+@mixin apply-container-border-radius($trigger: '') {
+	
+	@if not list.index(config.$blocks-no-border-radius, $trigger) {
+		@if config.$atmos-dev-mode {
+			$layout-brakes: ();
+			@each $block in config.$blocks-no-border-radius {
+				$layout-brakes: list.append($layout-brakes, $block, $separator: comma);
+				$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
+			}
+			$layout-brakes: list.append($layout-brakes, '.alignfull *', $separator: comma);
+
+			&:not(#{$layout-brakes}) {
+				border-radius: var(--wp--custom--border--radius);
+			}
+		} @else {
+			@extend %physics-container-rounding;
+		}
+	}
+}
+
+// ==========================================================================
+// 01.5 CENTRALIZED TRAFFIC CONTROLLER: Streamlined Layout Context Guard
+// ==========================================================================
+// @mixin apply-resting-state($trigger: '', $role: 'ship', $is-img: false) {
 @mixin apply-resting-state($trigger: '', $role: 'ship') {
 	
 	// TRACK A: SOVEREIGNS & PASSENGER-SOVEREIGNS
@@ -208,7 +252,7 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 		} @else {
 			@extend %physics-sovereign-resting-state;
 		}
-		border-radius: var(--wp--custom--border--radius-button, 100px);
+// 		border-radius: var(--wp--custom--button--radius, 999px);
 	} 
 	
 	// TRACK B: STRUCTURAL LAYOUT COMPONENTS (Ships & Passengers)
@@ -219,50 +263,9 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 			@extend %physics-resting-state;
 		}
 
-		// 1. THE COMPILER GUARD: Drops the property completely if the block 
-		// itself is globally banned
-		@if not list.index(config.$blocks-no-border-radius, $trigger) {
-			
-			// 2. ULTRA-LIGHT CONTEXT BUILDER: Maps standard ancestors and 
-			// descendants flawlessly
-			$layout-brakes: ();
-			
-			@each $block in config.$blocks-no-border-radius {
-				// Protects the layout container element itself
-				$layout-brakes: list.append($layout-brakes, $block, $separator: comma);
-				
-				// Protects all structural internals and nested child elements universally
-				$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
-			}
-			
-			// 3. GLOBAL FULL-WIDTH OVERRIDE: Enforces hard edges on any 
-			// content inside an edge-to-edge container
-			$layout-brakes: list.append($layout-brakes, '.alignfull *', $separator: comma);
-
-			// 4. THE BROWSER CONTEXT GUARD
-			&:not(#{$layout-brakes}) {
-				border-radius: var(--wp--custom--border--radius);
-			}
-		}
-	}
-}
-
-// ==========================================================================
-// CONTAINER FRAME MASK: Syncs parent frame rounding with image clips
-// ==========================================================================
-@mixin apply-container-border-radius($trigger: '') {
-	
-	@if not list.index(config.$blocks-no-border-radius, $trigger) {
-		
-		$layout-brakes: ();
-		@each $block in config.$blocks-no-border-radius {
-			$layout-brakes: list.append($layout-brakes, $block, $separator: comma);
-			$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
-		}
-		$layout-brakes: list.append($layout-brakes, '.alignfull *', $separator: comma);
-
-		&:not(#{$layout-brakes}) {
-			border-radius: var(--wp--custom--border--radius);
+		// SHIPS: Apply rounding. Passengers will call it directly when needed.
+		@if $role == 'ship' {
+			@include apply-container-border-radius($trigger);
 		}
 	}
 }
@@ -334,6 +337,40 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 		@include __blueprint-passenger;
 	} @else {
 		@extend %physics-passenger;
+	}
+}
+
+// ==========================================================================
+// 01.21 PASSENGER GROW: Pure scale expansions for graphics and image portals
+// ==========================================================================
+@mixin __blueprint-passenger-grow {
+
+    // Small growth (e.g 1.03)
+    transform: translateY(0) #{config.$grow-small}; 
+    
+    // Hover high shadow on hover (e.g. Sharp)    
+    box-shadow: var(--wp--custom--shadow--hover-high, 
+                var(--wp--preset--shadow--sharp, 
+                0 12px 25px rgba(0, 0, 0, 0.15)));
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('passenger');
+	}                    
+}
+
+%physics-passenger-grow {
+	/* ==========================================================================
+	   01.21 PASSENGER GROW: Pure scale expansions for graphics and image portals
+	========================================================================== */
+	@include __blueprint-passenger-grow;
+}
+
+@mixin apply-passenger-grow {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-passenger-grow;
+	} @else {
+		@extend %physics-passenger-grow;
 	}
 }
 
