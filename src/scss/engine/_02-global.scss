@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    v0.9.9 Build 03
+//	    v0.9.9 Build 04
 //   ========================================================================== */
 
 @use '00-config' as config;
@@ -12,21 +12,32 @@
 	$hover: if($interactive, ':hover', '');
 
 	/* ==========================================================================
-	   02.1 MEDIA TEXT BLOCK: Set overflow hidden on media container *only* when 
+	   02.1 LATEST POST FEATURED IMAGE: Remove shadow because we only want it if 
+	   the image is linked to the post.
+	========================================================================== */
+    .wp-block-latest-posts__featured-image > img {
+        box-shadow: none;
+    }
+
+	/* ==========================================================================
+	   02.2 MEDIA TEXT BLOCK: Set overflow hidden on media container *only* when 
 	   hosting an active image portal link. This creates a zoom-in-place effect.
 	========================================================================== */
-	.wp-block-media-text__media:has(a > img) {
-		overflow: hidden;
-	}
+// 	.wp-block-media-text__media:has(a > img) {
+// 		overflow: hidden;
+// 	}
 	
-	// 3. Set horizontal padding to match vertical padding on colored groups
+	/* ==========================================================================
+	   02.3 PADDING: Set horizontal padding to match vertical padding on colored 
+	   groups
+	========================================================================== */
 	.wp-block-group.has-background:not(.alignfull) {
 		padding-left: var(--wp--preset--spacing--60);
 		padding-right: var(--wp--preset--spacing--60);
 	}
 
 	/* ==========================================================================
-	   02.2 SOCIAL LINKS (Logos Only): Add shadow only to the logo itself, not the 
+	   02.4 SOCIAL LINKS (Logos Only): Add shadow only to the logo itself, not the 
 	   container.
 	   ========================================================================== */	
 	// Dynamically inherits the engine's Tier-30 sovereign specificity footprint (0-3-0)
@@ -51,7 +62,7 @@
 	}
 
 	/* ==========================================================================
-	   02.3 LIGHTBOX IMAGES: The Camera Lens Shutter (Zero-Movement Shader)
+	   02.5 LIGHTBOX IMAGES: The Camera Lens Shutter (Zero-Movement Shader)
 	   ========================================================================== */
 	#{phys.$sovereign-prefix}.wp-lightbox-container {
 	  transform: none;
@@ -68,13 +79,5 @@
 		  transform: none;
 		  filter: brightness(1.08) contrast(1.03);
 		}
-	}
-	
-	/* ==========================================================================
-	   02.4 LATEST POST FEATURED IMAGE: Remove shadow because we only want it if 
-	   the image is linked to the post.
-	========================================================================== */
-    .wp-block-latest-posts__featured-image img {
-        box-shadow: none;
-    }
+	}	
 }

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    v0.9.9 Build 03
+// 	    v0.9.9 Build 04
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -10,10 +10,13 @@
 
 @mixin apply-sovereign-logic($interactive: false) {
 
-	// 1. Setup State Toggle
-	$hover: if($interactive, ':hover', '');
+	// 1. UNIFIED TOP-LEVEL STATE CONFIGURATION
+	// Rest pass evaluates to a blank string modifier; interactive pass compiles both states
+	$states: if($interactive, (':hover', ':focus-visible'), (''));
 
+	// ==========================================================================
 	// 2. LOOP THROUGH SOVEREIGNS IN OUR PHYSICS MAP
+	// ==========================================================================
 	@each $trigger-target, $role in config.$atmos-physics-map { 
 		$trigger: list.nth($trigger-target, 1);
 		$target:  list.nth($trigger-target, 2);
@@ -25,19 +28,21 @@
 			$is:         if($is-block, phys.$sovereign-is, '');
 			$has:        phys.$sovereign-has;
 			$where-not:  phys.$sovereign-where-not;
+			$mover:      if($target == 'self', '&', #{$target});
 
-			$mover:  if($target == 'self', '&', #{$target});
+			// Build the compound multi-state selector list for this map entry
+			$sovereign-selectors: ();
+			@each $state in $states {
+				$compiled-gate: '#{phys.$sovereign-prefix} #{$trigger}#{$is}#{$has}#{$where-not}#{$state}';
+				$sovereign-selectors: list.append($sovereign-selectors, $compiled-gate, comma);
+			}
 
-			// 3. APPLY LOGIC
-			// Pulls the protected structural scope from physics utility to lock in 
-			// the 30-point baseline score.
-			$sovereign-selector: '#{phys.$sovereign-prefix} #{$trigger}#{$is}#{$has}#{$where-not}#{$hover}';
-			#{$sovereign-selector} {
+			#{$sovereign-selectors} {
 				#{$mover} { 
 					@if $interactive { 
 						@include phys.apply-sovereign; 
 					} @else { 
-						@include phys.apply-resting-state($trigger: $trigger, $role: $role);
+						@include phys.apply-resting-state($trigger: $trigger, $target: $target, $role: $role);
 					}
 				}
 			}
@@ -46,67 +51,24 @@
 
 	// ==========================================================================
 	// 3. FLAT ELEMENTS: Native HTML Buttons & Theme Component Sovereigns
-	//    v0.9.9 Build 03 - Fixed Pseudo-State Doubling
 	// ==========================================================================
-	
-	// 1. Build naked, high-specificity base selectors out of your config sheet
 	$flat-selectors: ();
 	@each $element in config.$atmos-flat-sovereigns {
-		$flat-selectors: list.append($flat-selectors, '#{phys.$sovereign-prefix} #{$element}', comma);
+		@each $state in $states {
+			$compiled-flat-gate: '#{phys.$sovereign-prefix} #{$element}#{$state}';
+			$flat-selectors: list.append($flat-selectors, $compiled-flat-gate, comma);
+		}
 	}
 
 	// ==========================================================================
-	// 4. PRODUCTION OUTPUT PIPELINE
+	// 4. UNIFIED PRODUCTION OUTPUT PIPELINE
 	// ==========================================================================
-	@if not $interactive {
-		// ENGINE.CSS PASS: Applies pure resting rules directly to the naked nodes
-		#{$flat-selectors} {
-			@include phys.apply-resting-state($trigger: ".wp-block-button", $role: "sovereign");
+	#{$flat-selectors} {
+		@if not $interactive {
+			@include phys.apply-resting-state($trigger: ".wp-block-button", $target: '', $role: "sovereign");
 			margin-right: var(--wp--preset--spacing--30);			
+		} @else {
+			@include phys.apply-sovereign;
 		}
-	} 
-	@else {
-		// INTERACTIONS.CSS PASS: Cleanly appends distinct interaction states
-		#{$flat-selectors} {
-			&:hover,
-			&:focus-visible {
-				@include phys.apply-sovereign;
-			}
-		}
-	}
-	
-	// 4. FLAT ELEMENTS: Native HTML Buttons & Theme Component Sovereigns
-	// ENGINE.CSS PASS: Pure resting rules
-// 	@if not $interactive {
-// 		button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle),
-// 		input[type="button"]:not(.wp-element-button),
-// 		input[type="submit"][class*="button"]:not(.wp-element-button),
-// 		input[type="submit"][class*="submit"]:not(.wp-element-button),
-// 		input[type="reset"][class*="button"]:not(.wp-element-button),
-// 		input[type="file"]::file-selector-button,
-// 		.wp-block-search__button,
-// 		.wp-block-file .wp-block-file__button,
-// 		.wp-block-button__link {
-// 			@include phys.apply-resting-state($trigger: ".wp-block-button", $role: "sovereign");
-// 			margin-right: var(--wp--preset--spacing--30);			
-// 		}
-// 	} 
-// 	
-// 	// INTERACTIONS.CSS PASS: Active Hover Overrides
-// 	@else {
-// 		button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle),
-// 		input[type="button"]:not(.wp-element-button),
-// 		input[type="submit"][class*="button"]:not(.wp-element-button),
-// 		input[type="submit"][class*="submit"]:not(.wp-element-button),
-// 		input[type="reset"][class*="button"]:not(.wp-element-button),
-// 		input[type="file"]::file-selector-button,
-// 		.wp-block-search__button,
-// 		.wp-block-file .wp-block-file__button,
-// 		.wp-block-button__link {
-// 			&:hover,
-// 			&:focus-visible {
-// 				@include phys.apply-sovereign;
-// 			}
-// 		}
-// 	}	
+	}	
 }

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 03
+//      v0.9.9 Build 04
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -47,7 +47,11 @@
 					@if $interactive { 
 						@include phys.apply-ship; 
 					} @else { 
-						@include phys.apply-resting-state($trigger: $trigger, $role: $role);
+						@include phys.apply-resting-state(
+							$trigger: $trigger, 
+							$target: $target, 
+							$role: $role
+						);
 					}
 				}
 			}

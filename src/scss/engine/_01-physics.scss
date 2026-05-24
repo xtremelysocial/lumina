@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	v0.9.9 Build 03
+//	 	v0.9.9 Build 04
 //   ========================================================================== */
 
 @use 'sass:string'; // Required for string.index
@@ -31,9 +31,11 @@
 	@return string.index($target, 'a') != null;
 }
 
-// PURE FRAME DETECTION: Verifies if an image block is a dedicated container without caption text
-@function is-pure-frame($trigger) {
-	@return list.index(config.$atmos-pure-frame-triggers, $trigger) != null;
+// ZOOM-IN-PLACE DETECTION: Explicit structural gate. 
+// No more guessing based on border-radius brake lists.
+@function is-zoom-in-place($trigger) {
+    @return (string.index($trigger, 'wp-block-media-text') != null) 
+         or (string.index($trigger, 'wp-block-column') != null);
 }
 
 // THE UNIVERSAL SELECTOR COMPILER
@@ -137,7 +139,7 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 }
 
 // ==========================================================================
-// 01.1/01.2 RESTING STATE: The physical baseline for most objects
+// 01.1 DEFAULT RESTING STATE (e.g. SHIPS): The physical baseline for most objects
 // ==========================================================================
 @mixin __blueprint-resting-state {
 
@@ -163,9 +165,82 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 
 %physics-resting-state {
 	/* ==========================================================================
-	   01.1/01.2 RESTING STATE: The physical baseline for most objects
+	   01.1 RESTING STATE: The physical baseline for most objects
 	========================================================================== */
 	@include __blueprint-resting-state;
+}
+
+
+// ==========================================================================
+// 01.2 PORTAL RESTING STATE: The physical baseline for Linked Images (Portals)
+// ==========================================================================
+@mixin __blueprint-portal-resting-state {
+
+	// Setup transition timing
+    transition: 
+        transform config.$atmos-timing, 
+        box-shadow config.$atmos-timing, 
+        outline config.$atmos-timing;
+
+	// Start in place
+    transform: translateY(0) scale(1);
+    
+    // Resting shadow (e.g. Natural)
+    box-shadow: var(--wp--custom--shadow--default, 
+                var(--wp--preset--shadow--natural, 
+                0 3px 10px rgba(0, 0, 0, 0.14)));
+
+	// Hide overlfow
+	overflow: hidden;
+
+	// Make sure no padding on zoom-in-place
+	padding: 0;
+	
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('registry');
+	}                
+}
+
+%physics-portal-resting-state {
+	/* ==========================================================================
+	   01.2 PORTAL RESTING STATE: The physical baseline for Linked Images (Portals)
+	========================================================================== */
+	@include __blueprint-portal-resting-state;
+}
+
+// ==========================================================================
+// 01.25 ASSET RESTING STATE: Shadowless Transition Layer for Inner Graphics
+// ==========================================================================
+@mixin __blueprint-asset-resting-state {
+
+	// Setup transition timing
+    transition: 
+        transform config.$atmos-timing, 
+//         box-shadow config.$atmos-timing, 
+        outline config.$atmos-timing;
+
+	// Start in place
+    transform: translateY(0) scale(1);
+
+	@if config.$atmos-debug {
+		@include atmos-debug('registry');
+	}                
+}
+
+%physics-asset-resting-state {
+	/* ==========================================================================
+	   01.25 ASSET RESTING STATE: Shadowless Transition Layer for Inner Graphics
+	========================================================================== */
+	@include __blueprint-asset-resting-state;
+}
+
+@mixin apply-asset-resting-state {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-asset-resting-state;
+	} @else {
+		@extend %physics-asset-resting-state;
+	}
 }
 
 // ==========================================================================
@@ -201,40 +276,33 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 }
 
 /* ==========================================================================
-   01.4 UNIFIED LAYOUT MASKS: System-wide combined rounding footprints
+   01.4 CONTAINER RESTING STATE: Rounding and Shadow
    ========================================================================== */
-%physics-container-rounding {
-	$layout-brakes: ();
-	@each $block in config.$blocks-no-border-radius {
-		$layout-brakes: list.append($layout-brakes, $block, $separator: comma);
-		$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
-	}
-	$layout-brakes: list.append($layout-brakes, '.alignfull *', $separator: comma);
+// 1. Compile exception paths exactly once for the entire module
+$layout-brakes: ('.alignfull *');
+@each $block in config.$blocks-no-border-radius {
+	$layout-brakes: list.append($layout-brakes, $block, $separator: comma);
+	$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
+}
 
+%physics-container-resting-state {
 	&:not(#{$layout-brakes}) {
 		border-radius: var(--wp--custom--border--radius, 16px);
 	}
 }
 
 // ==========================================================================
-// 01.5 CONTAINER FRAME MASK: Sole owner of layout brakes and corner rounding
+// 01.4 CONTAINER RESTING STATE: Rounding and Shadow
 // ==========================================================================
-@mixin apply-container-border-radius($trigger: '') {
+@mixin apply-container-resting-state($trigger: '') {
 	
 	@if not list.index(config.$blocks-no-border-radius, $trigger) {
 		@if config.$atmos-dev-mode {
-			$layout-brakes: ();
-			@each $block in config.$blocks-no-border-radius {
-				$layout-brakes: list.append($layout-brakes, $block, $separator: comma);
-				$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
-			}
-			$layout-brakes: list.append($layout-brakes, '.alignfull *', $separator: comma);
-
 			&:not(#{$layout-brakes}) {
 				border-radius: var(--wp--custom--border--radius);
 			}
 		} @else {
-			@extend %physics-container-rounding;
+			@extend %physics-container-resting-state;
 		}
 	}
 }
@@ -242,30 +310,66 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 // ==========================================================================
 // 01.5 CENTRALIZED TRAFFIC CONTROLLER: Streamlined Layout Context Guard
 // ==========================================================================
-// @mixin apply-resting-state($trigger: '', $role: 'ship', $is-img: false) {
-@mixin apply-resting-state($trigger: '', $role: 'ship') {
+@mixin apply-resting-state($trigger, $target, $role) {
 	
-	// TRACK A: SOVEREIGNS & PASSENGER-SOVEREIGNS
+	// TRACK A: SOVEREIGNS
 	@if $role == 'sovereign' {
 		@if config.$atmos-dev-mode {
 			@include __blueprint-sovereign-resting-state;
 		} @else {
 			@extend %physics-sovereign-resting-state;
 		}
-// 		border-radius: var(--wp--custom--button--radius, 999px);
 	} 
 	
-	// TRACK B: STRUCTURAL LAYOUT COMPONENTS (Ships & Passengers)
+	// TRACK B: LINKED IMAGE PASSENGERS (PORTALS)
+	@else if is-image($trigger, $target) {
+	
+		$is-zoom-in-place: is-zoom-in-place($trigger);
+		
+		@if config.$atmos-dev-mode {
+			@include __blueprint-portal-resting-state;
+			
+			// Auto-prime the inner asset if hosted within a rigid layout framework
+			@if $is-zoom-in-place {
+				img { 
+					@include __blueprint-asset-resting-state; 
+				}
+			}
+		} @else {
+			@extend %physics-portal-resting-state;
+			
+			@if $is-zoom-in-place {
+				img { 
+					@extend %physics-asset-resting-state; 
+				}
+			}
+		}	
+	}
+// 	@else if is-image($trigger, $target) {
+// 		@if config.$atmos-dev-mode {
+// 			@include __blueprint-portal-resting-state;
+// 		} @else {
+// 			@extend %physics-portal-resting-state;
+// 		}	
+// 	}
+
+	// TRACK C: SHIPS
+	@else if $role == 'ship' {
+		@if config.$atmos-dev-mode {
+			@include __blueprint-resting-state;
+			@include apply-container-resting-state($trigger);
+		} @else {
+			@extend %physics-resting-state;
+			@extend %physics-container-resting-state;
+		}
+	}
+	
+	// TRACK D: REGULAR PASSENGERS
 	@else {
 		@if config.$atmos-dev-mode {
 			@include __blueprint-resting-state;
 		} @else {
 			@extend %physics-resting-state;
-		}
-
-		// SHIPS: Apply rounding. Passengers will call it directly when needed.
-		@if $role == 'ship' {
-			@include apply-container-border-radius($trigger);
 		}
 	}
 }
@@ -347,6 +451,7 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 
     // Small growth (e.g 1.03)
     transform: translateY(0) #{config.$grow-small}; 
+//     transform: translateY(0) #{config.$grow-standard}; 
     
     // Hover high shadow on hover (e.g. Sharp)    
     box-shadow: var(--wp--custom--shadow--hover-high, 

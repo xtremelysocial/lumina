@@ -47,19 +47,19 @@
 				"default": {
 					"hoverSmallTransform": "scale(1.03)",
 					"hoverTransform": "scale(1.05)",
-					"hoverLargeTransform": "scale(1.125)",
+					"hoverLargeTransform": "scale(1.1)",
 					"objectSmallTransform": "translateY(-2px)",
 					"objectTransform": "translateY(-4px)"
 				}
 			},
 			"shadow": {
-				"natural": "0 3px 12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08)",
-				"deep": "0 6px 16px rgba(0, 0, 0, 0.14), 0 3px 6px rgba(0, 0, 0, 0.10)",
-				"sharp": "0 16px 32px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.12)",
-				"crisp": "0 28px 56px rgba(0, 0, 0, 0.20), 0 12px 24px rgba(0, 0, 0, 0.15)",
-				"outline": "0 0 0 3px var(--wp--preset--color--base), 0 0 15px rgba(0, 0, 0, 0.1)",
+				"natural": "0 4px 8px rgba(42, 50, 61, 0.16), 0 2px 4px rgba(42, 50, 61, 0.12)",
+				"deep": "0 8px 16px rgba(42, 50, 61, 0.18), 0 4px 8px rgba(42, 50, 61, 0.14)",
+				"sharp": "0 16px 32px rgba(42, 50, 61, 0.20), 0 8px 16px rgba(42, 50, 61, 0.16)",
+				"crisp": "0 32px 64px rgba(42, 50, 61, 0.24), 0 16px 32px rgba(42, 50, 61, 0.20)",
+				"outline": "0 0 0 3px var(--wp--preset--color--base), 0 0 15px rgba(42, 50, 61, 0.15)",
 				"default": "var(--wp--preset--shadow--natural)",
-				"hover":   "var(--wp--preset--shadow--deep)",
+				"hover": "var(--wp--preset--shadow--deep)",
 				"hoverHigh": "var(--wp--preset--shadow--sharp)"
 			},
 			"typography": {
@@ -171,8 +171,8 @@
 			"presets": [
 				{ "name": "Natural", "slug": "natural", "shadow": "var(--wp--custom--shadow--natural)" },
 				{ "name": "Deep", "slug": "deep", "shadow": "var(--wp--custom--shadow--deep)" },
-				{ "name": "Crisp", "slug": "crisp", "shadow": "var(--wp--custom--shadow--crisp)" },
 				{ "name": "Sharp", "slug": "sharp", "shadow": "var(--wp--custom--shadow--sharp)" },
+				{ "name": "Crisp", "slug": "crisp", "shadow": "var(--wp--custom--shadow--crisp)" },
 				{ "name": "Outline", "slug": "outline", "shadow": "var(--wp--custom--shadow--outline)" }
 			]
 		}
@@ -282,6 +282,11 @@
 					}
 				}
     		},
+			"core/post-featured-image": {
+				"border": {
+					"style": "none"
+				}
+			},
 			"core/code": {
 				"border": {
 					"left": {

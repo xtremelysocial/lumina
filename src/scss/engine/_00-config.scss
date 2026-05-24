@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 03
+//	 	v0.9.9 Build 04
 //   ========================================================================== */
 
 //**
@@ -68,7 +68,9 @@ $atmos-ship-where-not: 		('.alignfull');
 
 // PASSENGER/IMAGE selectors
 $atmos-image-is: 			('');
-$atmos-image-has:			('a:not(.wp-element-caption a, figcaption a)', 'button', 'input');
+$atmos-image-has-link:		'a:not(.wp-element-caption a, figcaption a)';
+$atmos-image-has:			(#{$atmos-image-has-link}, 'button', 'input');
+// $atmos-image-has:			('a:not(.wp-element-caption a, figcaption a)', 'button:not(.lightbox-trigger)', 'input');
 $atmos-image-where-not: 	('.alignfull');
 
 $atmos-passenger-is: 		('.has-background');
@@ -95,28 +97,16 @@ $atmos-flat-sovereigns: (
 
 // Layout environments where nested child ships should sit perfectly flush
 $blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-column');
-
-// Image triggers guaranteed to be pure graphic layout boxes without caption prose layout blocks
-$atmos-pure-frame-triggers: (
-	'.wp-block-gallery .wp-block-image',
-	'.wp-block-latest-posts__featured-image'
-);
-
-// UNIVERSAL DAMPENING TARGETS: Any core block components or raw graphics 
-// nested inside an active Ship that must instantly stand down.
-// $atmos-dampen-targets: (
-// 	'[class*="wp-block-"]',
-// 	'[class*="wp-block-"] img'
-// );
+// $blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-media-text__media', '.wp-block-column');
 
 //**
 // * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up
 // */
 $atmos-timing: 	var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
 $grow-small: 	var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-$grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
-$grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
-$shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
+// $grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
+$grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
+// $shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
 $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px)); 
 
 //**

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   40 VETOS: Centralized Nesting Boundary Controller
-//	    v0.9.9 Build 03
+//	    v0.9.9 Build 04
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -39,23 +39,16 @@
 			@if list.length($passengers) > 0 {
 				@each $child-passenger in $passengers {
 	
-					// SURGERY: Search for 'img' string directly. 
-					// This effectively isolates image portals from layout-block passengers.
-// 					$is-image-passenger: (string.index($child-passenger, 'img') != null);
-			
-					// ONLY veto if it is NOT a linked image (Portal)
-// 					@if not $is-image-passenger {					
-						@if not $interactive {
-							#{$parent} #{$child-passenger} {
-								@include phys.apply-silence($interactive: false);
-							}
-						} @else {
-							#{$parent}#{$hover} #{$child-passenger},
-							#{$parent}#{$hover} #{$child-passenger}:hover {
-								@include phys.apply-silence($interactive: true);
-							}
+					@if not $interactive {
+						#{$parent} #{$child-passenger} {
+							@include phys.apply-silence($interactive: false);
 						}
-// 					}
+					} @else {
+						#{$parent}#{$hover} #{$child-passenger},
+						#{$parent}#{$hover} #{$child-passenger}:hover {
+							@include phys.apply-silence($interactive: true);
+						}
+					}
 				}
 			}
 		}

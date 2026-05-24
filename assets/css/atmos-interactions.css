@@ -3,10 +3,10 @@
   \*****************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    ATMOS INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 02
+   v0.9.9 Build 04
    ========================================================================== */
 /* ==========================================================================
-   01.4 UNIFIED LAYOUT MASKS: System-wide combined rounding footprints
+   01.4 CONTAINER RESTING STATE: Rounding and Shadow
    ========================================================================== */
 /* ==========================================================================
   10 SHIPS: Containers (e.g. Groups, Columns)
@@ -59,66 +59,70 @@
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
 }
 
-.wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
+.wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):hover, .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
 }
 
-.wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
+.wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):hover, .wp-block-gallery .wp-block-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
 }
 
-.wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
+.wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):hover, .wp-block-post-featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
 }
 
-.wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
+.wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):hover, .wp-block-latest-posts__featured-image:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
 }
 
-.wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):hover a > img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(:focus-visible) a > img {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+.wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):hover, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):has(:focus-visible) {
+  overflow: hidden;
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
+}
+
+.wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):hover img, .wp-block-media-text__media:where(:has(a:not(.wp-element-caption a, figcaption a), button, input):not(.alignfull)):has(a:not(.wp-element-caption a, figcaption a)):has(:focus-visible) img {
+  transform: var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
 }
 
 /* ==========================================================================
   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
   ========================================================================== */
-.wp-site-blocks [class*=wp-block-] .wp-block-button__link:hover {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
+.wp-site-blocks [class*=wp-block-] .wp-block-button__link:hover, .wp-site-blocks [class*=wp-block-] .wp-block-button__link:focus-visible {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
-.wp-site-blocks [class*=wp-block-] .wp-element-button:hover {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
+.wp-site-blocks [class*=wp-block-] .wp-element-button:hover, .wp-site-blocks [class*=wp-block-] .wp-element-button:focus-visible {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
-.wp-site-blocks [class*=wp-block-] .wp-block-social-link:hover {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
+.wp-site-blocks [class*=wp-block-] .wp-block-social-link:hover, .wp-site-blocks [class*=wp-block-] .wp-block-social-link:focus-visible {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
-.wp-site-blocks [class*=wp-block-] .tag-cloud-link:hover {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
+.wp-site-blocks [class*=wp-block-] .tag-cloud-link:hover, .wp-site-blocks [class*=wp-block-] .tag-cloud-link:focus-visible {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
-.wp-site-blocks [class*=wp-block-] a > .avatar:hover {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
+.wp-site-blocks [class*=wp-block-] a > .avatar:hover, .wp-site-blocks [class*=wp-block-] a > .avatar:focus-visible {
+  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
 .wp-site-blocks [class*=wp-block-] button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):hover, .wp-site-blocks [class*=wp-block-] button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=button]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=button]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=button]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=button]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=submit]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=submit][class*=submit]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=reset][class*=button]:not(.wp-element-button):hover, .wp-site-blocks [class*=wp-block-] input[type=reset][class*=button]:not(.wp-element-button):focus-visible, .wp-site-blocks [class*=wp-block-] input[type=file]::file-selector-button:hover, .wp-site-blocks [class*=wp-block-] input[type=file]::file-selector-button:focus-visible, .wp-site-blocks [class*=wp-block-] .wp-block-search__button:hover, .wp-site-blocks [class*=wp-block-] .wp-block-search__button:focus-visible, .wp-site-blocks [class*=wp-block-] .wp-block-file .wp-block-file__button:hover, .wp-site-blocks [class*=wp-block-] .wp-block-file .wp-block-file__button:focus-visible, .wp-site-blocks [class*=wp-block-] .wp-block-button__link:hover, .wp-site-blocks [class*=wp-block-] .wp-block-button__link:focus-visible {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.125));
+  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }

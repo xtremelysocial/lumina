@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 03 - Direct Map Entry Output (Audited Baseline)
+//	    v0.9.9 Build 04
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -35,6 +35,12 @@
 
 			$passenger-selector: '#{$passenger-trigger}:where(#{$is}#{$has}#{$where-not})';
 			
+			// Establish the uniform Layout Context Flag globally for this row pass
+// 			$is-zoom-in-place: (list.index(config.$blocks-no-border-radius, $trigger) != null);
+			$is-zoom-in-place: phys.is-zoom-in-place($trigger);
+
+			$base-target: if($target == 'self', '', ' #{$target}');
+			
 			// ==========================================================================
 			// ENGINE.CSS PASS: Pure resting layout rules
 			// ==========================================================================
@@ -43,24 +49,40 @@
 				// Deduplication Shield: Ensures unique selector registration and direct layout printing
 				@if not list.index($all-passengers, $passenger-selector) {
 				
-					// NEW GATE: Check for links more effectively before registering
+					// GATE: Check for links more effectively before registering
 					@if not $is-img {
 						$all-passengers: list.append($all-passengers, $passenger-selector) !global;
 						@include phys.register-passenger($passenger-selector);					
 					}
 
-					$base-target: if($target == 'self', '', ' #{$target}');
+					// 1. IMAGES WITH LINKS (PORTALS)
+					@if $is-img {
 
-					// 1. ANCHOR CORE PHYSICS: Apply transition baselines and shadows
-					#{$passenger-selector}#{$base-target} {
-// 						@include phys.apply-resting-state($trigger: $trigger, $role: 'passenger', $is-img: $is-img);
-						@include phys.apply-resting-state($trigger: $trigger, $role: 'passenger');
-					}
+						// Apply shadow and rounding to the wrapper and hide overflow
+						#{$passenger-selector} {
+							// BYPASS SYSTEM LAYOUT BRAKES: Rigid grids get native context rounding
+// 							@if not $is-zoom-in-place {
+// 								border-radius: var(--wp--custom--border--radius, 16px);
+// 							} @else {
+// 								@include phys.apply-container-resting-state($trigger: $trigger);
+// 							}
 
-					// 2. EXPLICIT ROUNDING (Call this exactly once per path)
-					#{$passenger-selector} {
-						@include phys.apply-container-border-radius($trigger: $trigger);
-						@if $is-img { overflow: hidden; }
+							@include phys.apply-resting-state(
+								$trigger: $trigger, 
+								$target: 'img', 
+								$role: 'passenger'
+							);
+						}
+						
+					} @else {
+						// Apply all properties to the target standard layout passenger
+						#{$passenger-selector}#{$base-target} {
+							@include phys.apply-resting-state(
+								$trigger: $trigger, 
+								$target: $target, 
+								$role: 'passenger'
+							);
+						}
 					}
 				}
 			} 
@@ -69,30 +91,68 @@
 			// INTERACTIONS.CSS PASS: Active Hover & Focus Alignment
 			// ==========================================================================
 			@else {
-				// Local variable groups active states inside exactly ONE css block per map row
 				$states: (':hover', ':has(:focus-visible)');
-				$entry-selectors: ();
+				
+				@if $is-img {
 
-				@each $state in $states {
-					@if $is-img {
-						$entry-selectors: list.append($entry-selectors, '#{$passenger-selector}#{$state} #{$target}', comma);
-						
-						$is-anchor-trigger: (string.index($trigger, ' a') != null or string.slice($trigger, -2) == ' a');
-						@if not $is-anchor-trigger {
-							$portal-target: if($target == 'img', 'a > img', 'a > #{$target}');
-							$entry-selectors: list.append($entry-selectors, '#{$passenger-selector}#{$state} #{$portal-target}', comma);
-						}
-					} 
-					@else {
-						$mover: if($target == 'self', '', ' #{$target}');
-						$entry-selectors: list.append($entry-selectors, '#{$passenger-selector}#{$state}#{$mover}', comma);
+					// 1. CONTAINER SELECTION: Collect active interaction gates
+					$container-selectors: ();
+					@each $state in $states {
+						$portal-gate: '#{$passenger-selector}:has(#{config.$atmos-image-has-link})#{$state}';
+						$container-selectors: list.append($container-selectors, $portal-gate, comma);
 					}
-				}
 
-				#{$entry-selectors} {
-					@if $is-img {
-						@include phys.apply-passenger-grow;
+					// 2. INTERACTION ROUTING BY BLOCK TYPE
+// 					@if $is-zoom-in-place {
+// 						// True Zoom-In-Place: Container locks down completely solid while asset zooms
+// 						#{$container-selectors} {
+// // 							overflow: hidden;
+// // 							box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));							 
+// 							
+// 							// Lock transform specifically onto the inner element via direct interpolation
+// // 							#{$base-target} {
+// 							img {
+// 								transform: #{config.$grow-small};
+// 							}
+// 						}
+					// 2. INTERACTION ROUTING BY BLOCK TYPE
+					@if $is-zoom-in-place {
+						// We iterate through the states and manually link the img child
+						// This produces: .media-text:hover img, .media-text:has(:focus) img { ... }
+						$img-selectors: ();
+						@each $state in $states {
+							$img-selectors: list.append(
+								$img-selectors, 
+								'#{$passenger-selector}:has(#{config.$atmos-image-has-link})#{$state} img', 
+								comma
+							);
+						}
+					
+						#{$container-selectors} {
+							overflow: hidden;
+							box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));							 
+						}
+					
+						#{$img-selectors} {
+							transform: #{config.$grow-small};
+						}
+
 					} @else {
+						// Standard standalone images scale their whole card wrappers uniformly
+						#{$container-selectors} {
+							@include phys.apply-passenger-grow;
+						}
+					}				
+				} 
+
+				@else {
+					// STANDARD LAYOUT PASSENGERS (Columns, Groups, Text Blocks)
+					$entry-selectors: ();
+					@each $state in $states {
+						$entry-selectors: list.append($entry-selectors, '#{$passenger-selector}#{$state}#{$base-target}', comma);
+					}
+
+					#{$entry-selectors} {
 						@include phys.apply-passenger;
 					}
 				}
