@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 04
+//	 	v0.9.9 Build 05
 //   ========================================================================== */
 
 //**
@@ -9,10 +9,11 @@
 $atmos-physics-map: (
 
 	// SHIPS: Container-lift (Requires background color if core block)
-	('.wp-block-group',                         'self'):            'ship',
-	('.wp-block-columns',                       'self'):            'ship',
-	('.wp-block-media-text',                    'self'):            'ship',
-	('.wp-block-cover', 						'self'): 			'ship',
+	('[class*="wp-block-"]',                    'self'):            'ship',
+// 	('.wp-block-group',                         'self'):            'ship',
+// 	('.wp-block-columns',                       'self'):            'ship',
+// 	('.wp-block-media-text',                    'self'):            'ship',
+// 	('.wp-block-cover', 						'self'): 			'ship',
 
 	// SHIPS: Container-lift (Automatic as these are Atmos custom styles)
 // 	('.has-background',                			'self'):            'ship',
@@ -28,6 +29,7 @@ $atmos-physics-map: (
 	
 	// PASSENGERS: Block-Lift (e.g. individual columns blocks)
 	('.wp-block-column',                        'self'):            'passenger',
+// 	('.wp-block-column',                        'img'):         	'passenger',
 
 	// IMAGES: Image-Lift, Image-Grow, or Image-Zoom
 	('.wp-block-image',                         'img'):             'passenger',
@@ -43,7 +45,8 @@ $atmos-physics-map: (
 // 	('.wp-block-social-link',                   'a'):               'sovereign',
 // 	('.wp-block-social-link',                   'svg'):            'sovereign',
 // 	('.wp-block-social-link',                   'a > svg'):            'sovereign',
-	('.tag-cloud-link',                         'self'):            'sovereign',
+// 	('.tag-cloud-link',    						'self'): 			'sovereign',
+	('.wp-block-tag-cloud.is-style-outline a',  'self'): 			'sovereign',
 	
 	// SOVEREIGNS Except in #wpadminbar: Broad selectors like this
 	// need a block wildcard to protect avatars in the admin bar.
@@ -63,18 +66,17 @@ $atmos-physics-map: (
 
 // SHIP selectors
 $atmos-ship-is: 			('.has-background');
-$atmos-ship-has: 			('a', 'button', 'input');
+$atmos-ship-has: 			('a', 'button');
 $atmos-ship-where-not: 		('.alignfull');
 
 // PASSENGER/IMAGE selectors
 $atmos-image-is: 			('');
-$atmos-image-has-link:		'a:not(.wp-element-caption a, figcaption a)';
-$atmos-image-has:			(#{$atmos-image-has-link}, 'button', 'input');
-// $atmos-image-has:			('a:not(.wp-element-caption a, figcaption a)', 'button:not(.lightbox-trigger)', 'input');
+$atmos-image-has-link:		'a:not(figcaption a)';
+$atmos-image-has:			(#{$atmos-image-has-link});
 $atmos-image-where-not: 	('.alignfull');
 
 $atmos-passenger-is: 		('.has-background');
-$atmos-passenger-has: 		('a', 'button', 'input');
+$atmos-passenger-has: 		('a', 'button');
 $atmos-passenger-where-not: ('.alignfull');
 
 // SOVEREIGN selectors
@@ -97,7 +99,6 @@ $atmos-flat-sovereigns: (
 
 // Layout environments where nested child ships should sit perfectly flush
 $blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-column');
-// $blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-media-text__media', '.wp-block-column');
 
 //**
 // * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up

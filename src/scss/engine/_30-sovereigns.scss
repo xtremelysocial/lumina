@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    v0.9.9 Build 04
+// 	    v0.9.9 Build 05
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -25,6 +25,10 @@
 
 			$is-block: phys.is-block($trigger);
 
+			// If not a block, then increase the spec score
+			$is-block: phys.is-block($trigger);			
+			$sovereign-trigger: if(not $is-block, '#{phys.$sovereign-prefix} #{$trigger}', '.wp-site-blocks #{$trigger}');
+
 			$is:         if($is-block, phys.$sovereign-is, '');
 			$has:        phys.$sovereign-has;
 			$where-not:  phys.$sovereign-where-not;
@@ -33,7 +37,8 @@
 			// Build the compound multi-state selector list for this map entry
 			$sovereign-selectors: ();
 			@each $state in $states {
-				$compiled-gate: '#{phys.$sovereign-prefix} #{$trigger}#{$is}#{$has}#{$where-not}#{$state}';
+// 				$compiled-gate: '#{phys.$sovereign-prefix} #{$trigger}#{$is}#{$has}#{$where-not}#{$state}';
+				$compiled-gate: '#{$sovereign-trigger}#{$is}#{$has}#{$where-not}#{$state}';
 				$sovereign-selectors: list.append($sovereign-selectors, $compiled-gate, comma);
 			}
 
@@ -42,7 +47,11 @@
 					@if $interactive { 
 						@include phys.apply-sovereign; 
 					} @else { 
-						@include phys.apply-resting-state($trigger: $trigger, $target: $target, $role: $role);
+						@include phys.apply-resting-state(
+							$trigger: $trigger, 
+							$target: $target, 
+							$role: $role
+						);
 					}
 				}
 			}
@@ -65,7 +74,11 @@
 	// ==========================================================================
 	#{$flat-selectors} {
 		@if not $interactive {
-			@include phys.apply-resting-state($trigger: ".wp-block-button", $target: '', $role: "sovereign");
+			@include phys.apply-resting-state(
+				$trigger: ".wp-block-button", 
+				$target: '', 
+				$role: "sovereign"
+			);
 			margin-right: var(--wp--preset--spacing--30);			
 		} @else {
 			@include phys.apply-sovereign;

@@ -35,6 +35,9 @@
 			"spacing": {
 				"gap": "18px"
 			},
+			"sidebar": {
+				"width": "360px"
+			},			
 			"animation": {
 				"duration": {
 					"short": "150ms",
@@ -54,10 +57,10 @@
 			},
 			"shadow": {
 				"natural": "0 4px 8px rgba(42, 50, 61, 0.16), 0 2px 4px rgba(42, 50, 61, 0.12)",
-				"deep": "0 8px 16px rgba(42, 50, 61, 0.18), 0 4px 8px rgba(42, 50, 61, 0.14)",
-				"sharp": "0 16px 32px rgba(42, 50, 61, 0.20), 0 8px 16px rgba(42, 50, 61, 0.16)",
-				"crisp": "0 32px 64px rgba(42, 50, 61, 0.24), 0 16px 32px rgba(42, 50, 61, 0.20)",
-				"outline": "0 0 0 3px var(--wp--preset--color--base), 0 0 15px rgba(42, 50, 61, 0.15)",
+				"deep":    "0 6px 12px rgba(42, 50, 61, 0.15), 0 3px 6px rgba(42, 50, 61, 0.11)",
+				"sharp":   "0 10px 20px rgba(42, 50, 61, 0.14), 0 5px 10px rgba(42, 50, 61, 0.10)",
+				"crisp":   "0 14px 28px rgba(42, 50, 61, 0.13), 0 7px 14px rgba(42, 50, 61, 0.09)",
+				"outline": "0 0 0 2px var(--wp--preset--color--base), 0 0 8px rgba(42, 50, 61, 0.10)",			
 				"default": "var(--wp--preset--shadow--natural)",
 				"hover": "var(--wp--preset--shadow--deep)",
 				"hoverHigh": "var(--wp--preset--shadow--sharp)"
@@ -287,17 +290,9 @@
 					"style": "none"
 				}
 			},
-			"core/code": {
+			"core/image": {
 				"border": {
-					"left": {
-						"color": "var:preset|color|primary",
-						"style": "solid",
-						"width": "4px"
-					},
-					"radius": "0px"
-				},
-				"color": {
-					"background": "var:preset|color|base"
+					"style": "none"
 				}
 			},
 			"core/accordion": {

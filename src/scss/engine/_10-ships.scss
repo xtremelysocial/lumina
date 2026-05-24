@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 04
+//      v0.9.9 Build 05
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -23,10 +23,9 @@
 	
 		@if $role == 'ship' {
 
-			$is-block: phys.is-block($trigger);
-			
-			// THE ENFORCEMENT LAYER
-			$ship-trigger: if(not phys.is-block($trigger), '#{phys.$ship-prefix}#{$trigger}', '#{$trigger}');
+			// If not a block, then increase the spec score
+			$is-block: phys.is-block($trigger);			
+			$ship-trigger: if(not $is-block, '#{phys.$ship-prefix}#{$trigger}', '#{$trigger}');
 
 			$is:         if($is-block, phys.$ship-is, '');
 			$has:        phys.$ship-has;

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	v0.9.9 Build 04
+//	 	v0.9.9 Build 05
 //   ========================================================================== */
 
 @use 'sass:string'; // Required for string.index
@@ -192,9 +192,6 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 
 	// Hide overlfow
 	overflow: hidden;
-
-	// Make sure no padding on zoom-in-place
-	padding: 0;
 	
 	// Debug mode
 	@if config.$atmos-debug {
@@ -222,7 +219,7 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 
 	// Start in place
     transform: translateY(0) scale(1);
-
+    
 	@if config.$atmos-debug {
 		@include atmos-debug('registry');
 	}                
@@ -285,10 +282,15 @@ $layout-brakes: ('.alignfull *');
 	$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
 }
 
-%physics-container-resting-state {
+@mixin __blueprint-container-resting-state {
 	&:not(#{$layout-brakes}) {
 		border-radius: var(--wp--custom--border--radius, 16px);
+// 		border: 1px solid var(--wp--custom--color--border); 
 	}
+}
+
+%physics-container-resting-state {
+	@include __blueprint-container-resting-state;
 }
 
 // ==========================================================================
@@ -298,9 +300,7 @@ $layout-brakes: ('.alignfull *');
 	
 	@if not list.index(config.$blocks-no-border-radius, $trigger) {
 		@if config.$atmos-dev-mode {
-			&:not(#{$layout-brakes}) {
-				border-radius: var(--wp--custom--border--radius);
-			}
+			@include __blueprint-container-resting-state;
 		} @else {
 			@extend %physics-container-resting-state;
 		}
@@ -321,37 +321,44 @@ $layout-brakes: ('.alignfull *');
 		}
 	} 
 	
-	// TRACK B: LINKED IMAGE PASSENGERS (PORTALS)
+	// TRACK B: LINKED IMAGE PASSENGERS (PORTALS & GRAPHICS)
 	@else if is-image($trigger, $target) {
 	
 		$is-zoom-in-place: is-zoom-in-place($trigger);
 		
-		@if config.$atmos-dev-mode {
-			@include __blueprint-portal-resting-state;
-			
-			// Auto-prime the inner asset if hosted within a rigid layout framework
-			@if $is-zoom-in-place {
-				img { 
-					@include __blueprint-asset-resting-state; 
+		@if $is-zoom-in-place {
+			// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Column Zoom Layouts)
+			// Outer wrapper box gets the frame mask, custom shadow, and system rounding
+			@if config.$atmos-dev-mode {
+				@include __blueprint-portal-resting-state;
+			} @else {
+				@extend %physics-portal-resting-state;
+			}
+			@include apply-container-resting-state($trigger);				
+
+			// Inner graphic asset layer remains flat, ready to scale independently
+			img {
+				@if config.$atmos-dev-mode {
+					@include __blueprint-asset-resting-state;
+				} @else {
+					@extend %physics-asset-resting-state;
 				}
 			}
-		} @else {
-			@extend %physics-portal-resting-state;
-			
-			@if $is-zoom-in-place {
-				img { 
-					@extend %physics-asset-resting-state; 
+		} 
+		@else {
+			// TRACK B.2: STANDARD GRAPHICS (Gallery Images, Core Images, Latest 
+			// Posts Featured Images)
+
+			img {
+				@if config.$atmos-dev-mode {
+					@include __blueprint-resting-state;
+				} @else {
+					@extend %physics-resting-state;
 				}
-			}
+				@include apply-container-resting-state($trigger);				
+			}			
 		}	
 	}
-// 	@else if is-image($trigger, $target) {
-// 		@if config.$atmos-dev-mode {
-// 			@include __blueprint-portal-resting-state;
-// 		} @else {
-// 			@extend %physics-portal-resting-state;
-// 		}	
-// 	}
 
 	// TRACK C: SHIPS
 	@else if $role == 'ship' {
