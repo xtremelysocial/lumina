@@ -1,6 +1,6 @@
 /* ==========================================================================
    ATMOS ENGINE: Registers objects and sets their resting states
-   v0.9.9 Build 05
+   v0.9.9 Build 06 Optimized MVP!
    ========================================================================== */
 
 // Load all needed mixins
@@ -39,7 +39,7 @@
 
 @if config.$atmos-dev-mode {
 /* ==========================================================================
-  40 VETOS: Veto embedded Ships and Passengers
+   40 VETOS: Veto embedded Ships and Passengers
   ========================================================================== */
 }
 @include vetos.apply-veto-logic($interactive: false);

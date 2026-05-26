@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	v0.9.9 Build 05
+//	 	v0.9.9 Build 06 Optimized MVP!
 //   ========================================================================== */
 
 @use 'sass:string'; // Required for string.index
@@ -11,104 +11,75 @@
 
 // ==========================================================================
 // 01.0 UTILITIES: Functions and lists used elsewhere in the physics logic
-// * Eg. Determines generic wp-block-, detects links for images
 // ==========================================================================
 
-// BLOCK DETECTION: Looks for core WordPress block or wildcard
-@function is-block($trigger) {
-    @return (string.index($trigger, '.wp-block-') == 1 or string.index($trigger, '[class*="wp-block-"]') == 1);
-}
+// ==========================================================================
+// CENTRALIZED SELECTOR COMPILER: Declarative Spec Enforcer
+// ==========================================================================
+@function compile-selector(
+	$block: '*', 
+	$is: 'none', 
+	$has: 'none', 
+	$trigger: 'self', 
+	$target: 'self', 
+	$scope: 'target', 
+	$role: 'passenger'
+) {
 
-// IMAGE DETECTION: Looks for an img tag in the target
-@function is-image($trigger, $target) {
-	@return string.index($target, 'img') != null 
-		or string.index($target, 'avatar') != null 
-		or string.index($trigger, 'wp-block-cover') != null;
-}
-
-// LINK DETECTION: Looks for an a tag in the target
-@function is-link($target) {
-	@return string.index($target, 'a') != null;
-}
-
-// ZOOM-IN-PLACE DETECTION: Explicit structural gate. 
-// No more guessing based on border-radius brake lists.
-@function is-zoom-in-place($trigger) {
-    @return (string.index($trigger, 'wp-block-media-text') != null) 
-         or (string.index($trigger, 'wp-block-column') != null);
-}
-
-// THE UNIVERSAL SELECTOR COMPILER
-@function compile-selector($list, $pseudo: 'is') {
-    $clean-list: ();
-    @each $item in $list {
-        @if $item != '' and $item != null {
-            $clean-list: list.append($clean-list, $item, comma);
-        }
+	// Initialize the selector
+    $selector: '';
+    
+	// 1. BASE BLOCK (Trusts map literals. Only maps explicit blanks to the wildcard)
+// 	   $selector: $block;
+//     @if $selector == 'any' or $selector == '*' or $selector == '' or $selector == 'none' {
+    @if $block == '*' or $block == 'any' or $block == '' {
+        $selector: '[class*="wp-block-"]';
+    } @else if $block != 'none' {
+    	$selector: $block;
     }
 
-    @if list.length($clean-list) > 0 {
-        // Passenger Gateway: Returns a clean naked exclusion filter
-        @if $pseudo == 'not' {
-            @return ':not(#{$clean-list})';
-        }
-        // Ship/Sovereign Gateway: Returns a pre-shielded exclusion filter
-        @if $pseudo == 'where-not' {
-            @return ':where(:not(#{$clean-list}))';
-        }
-        // Standard pseudo wrappers (:is, :has)
-        @return ':#{$pseudo}(#{$clean-list})';
+	// 2. SOVEREIGN PREFIX ENFORCER (Strict Tier-30 Score)
+    @if $role == 'sovereign' {
+        $selector: '.wp-site-blocks #{$selector}';
     }
-    @return ''; 
+    
+	// 3. MODIFIER SPEC COP (Appends clean modifier filters like :is(.has-background))
+    @if $is != 'none' and $is != '' and $is != '*' {
+        $selector: '#{$selector}:is(#{$is})';
+    }
+
+	// 4. LINK GATE (HAS) INTEGRATION	
+    @if $has != 'none' and $has != '' and $has != '*' {
+        $selector: '#{$selector}:has(#{$has})';
+    }
+
+	// 5. ADD ALIGNFULL IF NOT SOVEREIGN
+	@if $role != 'sovereign' {
+	    $selector: '#{$selector}:not(.alignfull)';
+	}
+    
+	// 6. PSEUDO-STATE INJECTION (Determines interactive modifier rules)
+    $state-suffix: '';
+    @if string.index($scope, 'hover') != null {
+        $state-suffix: ':hover';
+    
+    } @else if string.index($scope, 'focus') != null {
+        $state-suffix: ':has(:focus-visible)';
+    }
+        
+	// 7. RETURN LITERAL SCOPE PATHS (Wrapper vs Target)
+    @if string.index($scope, 'wrapper') != null {
+        @return '#{$selector}#{$state-suffix}';
+
+    } @else {
+        // Build base path with state suffix attached directly to the active 
+        // action boundary element
+        $action-path: if($trigger == 'self', '#{$selector}#{$state-suffix}', '#{$selector} #{$trigger}#{$state-suffix}');
+        
+        // Append the final graphic asset target layer if it isn't self-contained
+        @return if($target == 'self', $action-path, '#{$action-path} #{$target}');
+    }
 }
-
-// ==========================================================================
-// 01.0 SHIP SELECTORS: Sets selectors for ships
-// 		Generates the :is() gate for ships
-// ==========================================================================
-
-$ship-is:        compile-selector(config.$atmos-ship-is, 'is');
-$ship-has:       compile-selector(config.$atmos-ship-has, 'has');
-$ship-where-not: compile-selector(config.$atmos-ship-where-not, 'where-not');
-
-// CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
-// to generically scale Ships to an un-flattened Tier 20 (0-2-0) 
-// specificity baseline score. 
-$ship-prefix: 	'[class*="wp-block-"]';
-
-// ==========================================================================
-// 01.0 PASSENGER SELECTORS: Sets selectors for passengers
-// 		Generates the :is() gate for passengers
-// ==========================================================================
-
-$passenger-is:        	compile-selector(config.$atmos-passenger-is, 'is');
-$passenger-has:       	compile-selector(config.$atmos-passenger-has, 'has');
-$passenger-where-not: 	compile-selector(config.$atmos-passenger-where-not, 'not');
-
-$image-is:            	compile-selector(config.$atmos-image-is, 'is');
-$image-has:       		compile-selector(config.$atmos-image-has, 'has');
-$image-where-not: 		compile-selector(config.$atmos-image-where-not, 'not');
-
-// CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
-// to generically scale Ships to an un-flattened Tier 20 (0-2-0) 
-// specificity baseline score. 
-$passenger-prefix: 		();
-
-$image-prefix: 			();
-
-// ==========================================================================
-// 01.0 SOVEREIGN SELECTORS: Sets selectors for sovereigns
-// 		Generates the :is() gate for sovereigns
-// ==========================================================================
-
-$sovereign-is:        compile-selector(config.$atmos-sovereign-is, 'is');
-$sovereign-has:       compile-selector(config.$atmos-sovereign-has, 'has');
-$sovereign-where-not: compile-selector(config.$atmos-sovereign-where-not, 'where-not');
-
-// CRITICAL HARD-LINE RULE: This universal structural prefix is strictly engineered 
-// to generically scale Sovereigns to an un-flattened Tier 30 (0-3-0) 
-// specificity baseline score. 
-$sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 
 // ==========================================================================
 // 01.0 VISUAL DEBUG: Set outline colors and styles based on engine logic
@@ -126,9 +97,9 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 
         $debug-offset: map.get((
             'registry':  		-1px,
-            'ship':       		 1px,
-            'sovereign':  		 2px,
-            'passenger': 		-3px,
+            'ship':       		-2px,
+            'sovereign':  		-2px,
+            'passenger': 		-2px,
             'silence':  		-1px
         ), $role);
 
@@ -272,47 +243,134 @@ $sovereign-prefix: '.wp-site-blocks [class*="wp-block-"]';
 	@include __blueprint-sovereign-resting-state;
 }
 
-/* ==========================================================================
-   01.4 CONTAINER RESTING STATE: Rounding and Shadow
-   ========================================================================== */
-// 1. Compile exception paths exactly once for the entire module
-$layout-brakes: ('.alignfull *');
-@each $block in config.$blocks-no-border-radius {
-	$layout-brakes: list.append($layout-brakes, $block, $separator: comma);
-	$layout-brakes: list.append($layout-brakes, '#{$block} *', $separator: comma);
-}
-
-@mixin __blueprint-container-resting-state {
-	&:not(#{$layout-brakes}) {
-		border-radius: var(--wp--custom--border--radius, 16px);
+// /* ==========================================================================
+//    01.4 WRAPPER ROUNDING: Border Radius
+//    ========================================================================== */
+@mixin __blueprint-wrapper-rounding {
+	&:not(#{config.$blocks-no-border-radius}) {
+		border-radius: var(--wp--custom--border--radius, 18px);
 // 		border: 1px solid var(--wp--custom--color--border); 
 	}
 }
 
-%physics-container-resting-state {
-	@include __blueprint-container-resting-state;
+%physics-wrapper-rounding {
+/* ==========================================================================
+   01.4 WRAPPER ROUNDING: Border Radius
+   ========================================================================== */
+	@include __blueprint-wrapper-rounding;
+}
+
+// /* ==========================================================================
+//    01.5 WRAPPER ROUNDING CLIPPED: Border Radius + Overflow Hidden
+//    ========================================================================== */
+@mixin __blueprint-wrapper-rounding-clipped {
+	&:not(#{config.$blocks-no-border-radius}) {
+		border-radius: var(--wp--custom--border--radius, 18px);
+		overflow: hidden;
+	}
+}
+
+// /* ==========================================================================
+//    01.5 WRAPPER ROUNDING CLIPPED: Border Radius + Overflow Hidden
+//    ========================================================================== */
+%physics-wrapper-rounding-clipped {
+	@include __blueprint-wrapper-rounding-clipped;
+}
+
+// /* ==========================================================================
+//    01.6 WRAPPER CLIPPED: Overflow Hidden
+//    ========================================================================== */
+@mixin __blueprint-wrapper-clipped {
+// 	&:not(#{config.$blocks-no-border-radius}) {
+// 		border-radius: var(--wp--custom--border--radius, 18px);
+		overflow: hidden;
+// 	}
+}
+
+// /* ==========================================================================
+//    01.6 WRAPPER CLIPPED: Border Radius + Overflow Hidden
+//    ========================================================================== */
+%physics-wrapper-clipped {
+	@include __blueprint-wrapper-clipped;
 }
 
 // ==========================================================================
-// 01.4 CONTAINER RESTING STATE: Rounding and Shadow
+// 01.7 WRAPPER RESTING STATE: Border Radius and/or Overflow Hidden
 // ==========================================================================
-@mixin apply-container-resting-state($trigger: '') {
+// @mixin apply-wrapper-resting-state($trigger, $role) {
+@mixin apply-wrapper-resting-state($block, $trigger, $role) {
+
+	// Context Resolver: If trigger is self-contained, evaluate the parent 
+	// block class against the brakes list
+	$resolved-target: if($trigger == 'self', $block, $trigger);
+
+// High-speed substring check to catch complex nested paths within the brakes list
+	$is-braked: false;
+	@each $brake in config.$blocks-no-border-radius {
+		$clean-brake: $brake;
+		$star-index: string.index($brake, ' *');
+		@if $star-index != null {
+			$clean-brake: string.slice($brake, 1, $star-index - 1);
+		}
+		
+		@if string.index($resolved-target, $clean-brake) != null {
+			$is-braked: true;
+		}
+	}
+
+	// Don't apply rounding to certain blocks
+// 	@if not list.index(config.$blocks-no-border-radius, $trigger) and not list.index(config.$blocks-no-border-radius, '#{$trigger} *') {
+// 	@if not list.index(config.$blocks-no-border-radius, $resolved-target) and not list.index(config.$blocks-no-border-radius, '#{$resolved-target} *') {
+
+	// Route down the correct architectural tracks
+	@if not $is-braked {
 	
-	@if not list.index(config.$blocks-no-border-radius, $trigger) {
 		@if config.$atmos-dev-mode {
-			@include __blueprint-container-resting-state;
+// 			@if $role == 'passenger-grow' or $role == 'passenger-zoom' {
+			@if $role == 'passenger-zoom' {
+				@include __blueprint-wrapper-rounding-clipped;
+			} @else {
+				@include __blueprint-wrapper-rounding;			
+			}
+
 		} @else {
-			@extend %physics-container-resting-state;
+			
+// 			@if $role == 'passenger-grow' or $role == 'passenger-zoom' {
+			@if $role == 'passenger-zoom' {
+				@extend %physics-wrapper-rounding-clipped;
+			} @else {
+				@extend %physics-wrapper-rounding;
+			}			
+		}
+		
+	// For blocks excluded from rounding, just set clipping
+	} @else {
+
+		@if config.$atmos-dev-mode {
+// 			@if $role == 'passenger-zoom' {
+				@include __blueprint-wrapper-clipped;
+// 			} @else {
+// 				@include __blueprint-wrapper-clipped;			
+// 			}
+
+		} @else {
+			
+// 			@if $role == 'passenger-zoom' {
+				@extend %physics-wrapper-clipped;
+// 			} @else {
+// 				@extend %physics-wrapper-clipped;
+// 			}			
 		}
 	}
 }
 
 // ==========================================================================
-// 01.5 CENTRALIZED TRAFFIC CONTROLLER: Streamlined Layout Context Guard
+// 01.8 CENTRALIZED TRAFFIC CONTROLLER: Declarative Context Executor
 // ==========================================================================
-@mixin apply-resting-state($trigger, $target, $role) {
+// @mixin apply-resting-state($trigger, $target, $role) {
+@mixin apply-resting-state($block: 'none', $trigger: 'self', $target: 'self', $role: 'passenger') {
 	
-	// TRACK A: SOVEREIGNS
+	// TRACK A: SOVEREIGNS (Buttons & Form Triggers)
 	@if $role == 'sovereign' {
 		@if config.$atmos-dev-mode {
 			@include __blueprint-sovereign-resting-state;
@@ -321,66 +379,59 @@ $layout-brakes: ('.alignfull *');
 		}
 	} 
 	
-	// TRACK B: LINKED IMAGE PASSENGERS (PORTALS & GRAPHICS)
-	@else if is-image($trigger, $target) {
+	// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Custom Frames)
+	// Current context is the wrapper: it handles the frame mask, shadow, and rounding
+	@else if $role == 'passenger-zoom' {
+		@if config.$atmos-dev-mode {
+// 			@include __blueprint-portal-resting-state;
+			@include __blueprint-asset-resting-state;
+		} @else {
+// 			@extend %physics-portal-resting-state;
+			@extend %physics-asset-resting-state;
+		}
+	} 
 	
-		$is-zoom-in-place: is-zoom-in-place($trigger);
-		
-		@if $is-zoom-in-place {
-			// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Column Zoom Layouts)
-			// Outer wrapper box gets the frame mask, custom shadow, and system rounding
-			@if config.$atmos-dev-mode {
-				@include __blueprint-portal-resting-state;
-			} @else {
-				@extend %physics-portal-resting-state;
-			}
-			@include apply-container-resting-state($trigger);				
-
-			// Inner graphic asset layer remains flat, ready to scale independently
-			img {
-				@if config.$atmos-dev-mode {
-					@include __blueprint-asset-resting-state;
-				} @else {
-					@extend %physics-asset-resting-state;
-				}
-			}
-		} 
-		@else {
-			// TRACK B.2: STANDARD GRAPHICS (Gallery Images, Core Images, Latest 
-			// Posts Featured Images)
-
-			img {
-				@if config.$atmos-dev-mode {
-					@include __blueprint-resting-state;
-				} @else {
-					@extend %physics-resting-state;
-				}
-				@include apply-container-resting-state($trigger);				
-			}			
-		}	
+	// TRACK B.2: STANDARD GRAPHICS (Galleries, Core Images, Latest Posts Featured)
+	// Current context is the wrapper: it is completely bypassed! 
+	// All depth, transitions, and layout brakes dump straight onto the img element.
+	@else if $role == 'passenger-grow' {
+		@if config.$atmos-dev-mode {
+			@include __blueprint-resting-state;
+		} @else {
+			@extend %physics-resting-state;
+		}
 	}
 
-	// TRACK C: SHIPS
+	// TRACK B.3: REGULAR PASSENGERS (Column block)
+	@else if $role == 'passenger' {
+		@if config.$atmos-dev-mode {
+			@include __blueprint-resting-state;
+		} @else {
+			@extend %physics-resting-state;
+		}
+	}
+
+	// TRACK C: SHIPS (Layout Containers & Groups)
 	@else if $role == 'ship' {
 		@if config.$atmos-dev-mode {
 			@include __blueprint-resting-state;
-			@include apply-container-resting-state($trigger);
+// 			@include apply-wrapper-resting-state($block, $trigger, $role);
 		} @else {
 			@extend %physics-resting-state;
-			@extend %physics-container-resting-state;
+// 			@extend %physics-wrapper-resting-state;
 		}
-	}
-	
-	// TRACK D: REGULAR PASSENGERS
-	@else {
-		@if config.$atmos-dev-mode {
-			@include __blueprint-resting-state;
-		} @else {
-			@extend %physics-resting-state;
-		}
-	}
-}
 
+		// Wire this completely outside the dev-conditional wrapper so that 
+		// it routes through the internal placeholder switches inside 
+		// apply-wrapper-resting-state!
+		@include apply-wrapper-resting-state(
+			$block: if($block == 'none', $trigger, $block), 
+			$trigger: $trigger, 
+			$role: $role
+		);
+	}	
+}
+	
 // ==========================================================================
 // 01.10 SHIP: Massive Containers (Groups, Columns, Covers).
 // ==========================================================================
@@ -423,6 +474,9 @@ $layout-brakes: ('.alignfull *');
 
 	// Subtle Lift (e.g. -2px)
 	transform: #{config.$shift-subtle} scale(1); 
+
+	// Standard Lift (e.g. -4px)
+// 	transform: #{config.$shift-default} scale(1); 
 	
 	// Hover default shadow (e.g. Deep)    
 	box-shadow: var(--wp--custom--shadow--hover, 
@@ -487,6 +541,41 @@ $layout-brakes: ('.alignfull *');
 }
 
 // ==========================================================================
+// 01.22 PASSENGER ZOOM: Zoom-in-lace for graphics and image portals
+// ==========================================================================
+// @mixin __blueprint-passenger-zoom {
+// 
+//     // Small growth (e.g 1.03)
+// //     transform: translateY(0) #{config.$grow-small}; 
+//     transform: translateY(0) #{config.$grow-standard}; 
+//     
+//     // Hover high shadow on hover (e.g. Sharp)    
+//     box-shadow: var(--wp--custom--shadow--hover-high, 
+//                 var(--wp--preset--shadow--sharp, 
+//                 0 12px 25px rgba(0, 0, 0, 0.15)));
+// 
+// 	// Debug mode
+// 	@if config.$atmos-debug {
+// 		@include atmos-debug('passenger');
+// 	}                    
+// }
+
+// %physics-passenger-zoom {
+// 	/* ==========================================================================
+// 	   01.22 PASSENGER ZOOM: Zoom-in-lace for graphics and image portals
+// 	========================================================================== */
+// 	@include __blueprint-passenger-grow;
+// }
+
+// @mixin apply-passenger-zoom {
+// 	@if config.$atmos-dev-mode {
+// 		@include __blueprint-passenger-zoom;
+// 	} @else {
+// 		@extend %physics-passenger-zoom;
+// 	}
+// }
+
+// ==========================================================================
 // 01.30 SOVEREIGN: Buttons and blocks that work like buttons, such as 
 //		 social media links, outline style tag clouds, etc.
 // ==========================================================================
@@ -525,11 +614,60 @@ $layout-brakes: ('.alignfull *');
 }
 
 // ==========================================================================
+// 01.55 CENTRALIZED TRAFFIC CONTROLLER: Declarative Active State Executor
+// ==========================================================================
+@mixin apply-active-state($block, $target, $role, $context) {
+	
+	// TRACK A: SOVEREIGNS (Buttons & Form Triggers)
+	@if $role == 'sovereign' {
+		@include apply-sovereign;
+	}
+
+	// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Custom Frames)
+	@else if $role == 'passenger-zoom' {
+		@if $context == 'wrapper' {
+			// Parent clip frame lifts its structural shadow
+			box-shadow: var(--wp--custom--shadow--hover-high, 
+			            var(--wp--preset--shadow--sharp, 
+			            0 12px 25px rgba(0, 0, 0, 0.15)));
+		} 
+		@else if $context == 'target' {
+			// Isolate visual graphic asset layer for the scale shift
+			transform: #{config.$grow-standard};
+		}
+	}
+
+	// TRACK B.2: STANDARD GRAPHICS (Galleries, Core Images, Latest Posts Featured)
+	@else if $role == 'passenger-grow' {
+		@if $context == 'target' {
+			@include apply-passenger-grow;
+		}
+	}
+
+	// TRACK B.3: STANDARD PASSENGERS (Column block)
+	@else if $role == 'passenger' {
+		@if $context == 'target' {
+			@include apply-passenger;
+		}
+	}
+
+	// TRACK C: SHIPS (Layout Containers & Groups)
+	@else if $role == 'ship' {
+		@include apply-ship;
+	}
+}
+
+// ==========================================================================
 // 01.60 SILENCE: Silence Ships and Passengers embedded in another Ship
 // ==========================================================================
 @mixin __blueprint-silence {
 	box-shadow: none; 
 	transform: none;
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('sovereign');
+	}	
 }
 
 %physics-silence {
@@ -539,32 +677,31 @@ $layout-brakes: ('.alignfull *');
 	@include __blueprint-silence;
 }
 
-%physics-silence-debug {
-	/* ==========================================================================
-	   01.60 SILENCE DEBUG: Consolidated interaction lines + diagnostic outlines
-	========================================================================== */
-	@include __blueprint-silence;
-	@include atmos-debug('silence');
-}
+// %physics-silence-debug {
+// 	/* ==========================================================================
+// 	   01.60 SILENCE DEBUG: Consolidated interaction lines + diagnostic outlines
+// 	========================================================================== */
+// 	@include __blueprint-silence;
+// 	@include atmos-debug('silence');
+// }
 
 @mixin apply-silence($interactive: false) {
 	@if config.$atmos-dev-mode {
 		@include __blueprint-silence;		
-		@if $interactive and config.$atmos-debug {
-			@include atmos-debug('silence');
-		}
+// 		@if $interactive and config.$atmos-debug {
+// 			@include atmos-debug('silence');
+// 		}
 	} @else {
-		// PRODUCTION GATEWAY: Cleanly segment layout structure vs visual auditing
-		@if $interactive and config.$atmos-debug {
-			@extend %physics-silence-debug;
-		} @else {
+// 		@if $interactive and config.$atmos-debug {
+// 			@extend %physics-silence-debug;
+// 		} @else {
 			@extend %physics-silence;
-		}
+// 		}
 	}
 }
 
 // ==========================================================================
-// CENTRAL REGISTRY STATE (Modern Cross-Module Communication Pipeline)
+// 01.70 CENTRAL REGISTRY STATE (Modern Cross-Module Communication Pipeline)
 // ==========================================================================
 $all-ships: () !global;
 $all-passengers: () !global;

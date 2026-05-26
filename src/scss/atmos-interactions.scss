@@ -1,6 +1,6 @@
 /* ==========================================================================
    ATMOS INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 05
+   v0.9.9 Build 06 Optimized MVP!
    ========================================================================== */
 
 // Load all needed mixins
@@ -18,28 +18,28 @@
 
 @if config.$atmos-dev-mode {
 /* ==========================================================================
-  10 SHIPS: Containers (e.g. Groups, Columns)
+   10 SHIPS: Containers (e.g. Groups, Columns)
 ========================================================================== */
 }
 @include ships.apply-ship-logic($interactive: true);
 
 @if config.$atmos-dev-mode {
 /* ==========================================================================
-  20 PASSENGERS: Container Contents (e.g. Images, Columns)
+   20 PASSENGERS: Container Contents (e.g. Images, Columns)
   ========================================================================== */
 }
 @include passengers.apply-passenger-logic($interactive: true);
 
 @if config.$atmos-dev-mode {
 /* ==========================================================================
-  30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
   ========================================================================== */
 }
 @include sovereigns.apply-sovereign-logic($interactive: true);
 
 @if config.$atmos-dev-mode {
 /* ==========================================================================
-  40 VETOS: Veto embedded Ships and Passengers
+   40 VETOS: Veto embedded Ships and Passengers
   ========================================================================== */
 }
 @include vetos.apply-veto-logic($interactive: true);

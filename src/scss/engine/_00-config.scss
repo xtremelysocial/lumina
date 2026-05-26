@@ -1,119 +1,202 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 05
+//	 	v0.9.9 Build 06 Optimized MVP!
 //   ========================================================================== */
 
-//**
-// * 00.1 THE PHYSICS MAP (Trigger : Target): Role
-// */
+// ==========================================================================
+// ATMOS BLOCKS BUILD 06: THE DEFINITIVE DECLARATIVE MAP
+// Schema: (Block, Is, Has, Trigger, Target) : Role
+// ==========================================================================
 $atmos-physics-map: (
 
-	// SHIPS: Container-lift (Requires background color if core block)
-	('[class*="wp-block-"]',                    'self'):            'ship',
-// 	('.wp-block-group',                         'self'):            'ship',
-// 	('.wp-block-columns',                       'self'):            'ship',
-// 	('.wp-block-media-text',                    'self'):            'ship',
-// 	('.wp-block-cover', 						'self'): 			'ship',
+	// (Block, 					
+	// 	Is,
+	//	Has
+	//	Trigger 					
+	// 	Target
+	//	): Role
 
-	// SHIPS: Container-lift (Automatic as these are Atmos custom styles)
-// 	('.has-background',                			'self'):            'ship',
-	('.is-style-object-passive',                'self'):            'ship',
-	('.is-style-rounded-border',                'self'):            'ship',
-	('.is-style-thick-rounded-border',          'self'):            'ship',
-	('.is-style-rounded-corners',               'self'):            'ship',
+    // --------------------------------------------------------------------------
+    // SHIPS (Wildcard works great here, but you can override for specific blocks)
+    // --------------------------------------------------------------------------
+	(
+		'*', 
+		'.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .is-style-object-passive', 
+    	'a, button', 	
+		'self', 
+		'self' 
+	): 	'ship',
 
-	// SHIPS: Container-lift (Automatic as these are in theme.json)
-	// Trigger must not start with '.wp-block-' though or the engine will
-	// require a colored background.
-// 	('pre.wp-block-code',                       'self'):            'ship',    
+    // --------------------------------------------------------------------------
+    // PASSENGERS
+    // --------------------------------------------------------------------------
+
+    // Column Block:Requires background color and link or button
+    (
+    	'.wp-block-column',        
+    	'.has-background', 		
+    	'a, button', 	
+    	'self',                
+    	'self'
+    ):	'passenger',
+
+    // --------------------------------------------------------------------------
+    // IMAGE PASSENGERS
+    // --------------------------------------------------------------------------
+
+    // Core Image in Column Block: Requires link
+    (
+    	'.wp-block-column .wp-block-image',        
+    	'none', 		
+    	'a:not(figcaption a)', 	
+    	'self',                
+    	'img'
+    ):	'passenger-zoom',
+
+    // Core Image: Requires link
+    (
+    	'.wp-block-image',        
+    	'none', 		
+    	'a:not(figcaption a)', 	
+    	'self',                
+    	'img'
+    ):	'passenger-grow',
+    
+    // Gallery Image: Requires link
+    (
+    	'.wp-block-gallery .wp-block-image', 
+    	'none', 		
+    	'a:not(figcaption a)', 
+    	'self',
+    	'img'
+    ): 	'passenger-zoom',
+
+    // Post Featured Image: Requires link
+    (
+    	'.wp-block-post-featured-image', 
+    	'none', 		
+    	'a:not(figcaption a)', 
+    	'self', 
+    	'img'
+    ) : 'passenger-grow',
+
+    // Latest Posts Featured Image: Requires link
+    (
+    	'.wp-block-latest-posts__featured-image', 
+    	'none', 		
+    	'a:not(figcaption a)', 
+    	'self', 
+    	'img'
+    ) : 'passenger-grow',
+    
+    // Media & Text: Requires link, Wrapper is the hover trigger
+    (
+    	'.wp-block-media-text__media',   
+    	'none', 
+    	'a:not(figcaption a)', 
+    	'self',
+    	'img'
+    ) : 'passenger-zoom',
+
+    // --------------------------------------------------------------------------
+    // SOVEREIGNS
+    // --------------------------------------------------------------------------
+
+	// Buttons
+    (
+    	'*', 
+    	'none',
+    	'none', 
+    	'.wp-element-button',
+    	'self'
+    ) : 'sovereign',
+
+//     (
+//     	'*', 
+//     	'none',
+//     	'none', 
+//     	'.wp-block-button__link',
+//     	'self'
+//     ) : 'sovereign',
+
+	// Avatars
+    (
+    	'*', 
+    	'none', 
+    	'none', 
+    	'a > .avatar',
+    	'self'
+    ) : 'sovereign',
+
+	// Social links
+    (
+    	'.wp-block-social-links', 
+    	'none',
+    	'none', 
+    	'.wp-block-social-link',
+    	'self'
+    ) : 'sovereign',
 	
-	// PASSENGERS: Block-Lift (e.g. individual columns blocks)
-	('.wp-block-column',                        'self'):            'passenger',
-// 	('.wp-block-column',                        'img'):         	'passenger',
+	// Outline style tag clouds
+    (
+    	'.wp-block-tag-cloud', 
+    	'.is-style-outline', 
+    	'none', 
+    	'a',
+    	'self'
+    ) : 'sovereign',
 
-	// IMAGES: Image-Lift, Image-Grow, or Image-Zoom
-	('.wp-block-image',                         'img'):             'passenger',
-	('.wp-block-gallery .wp-block-image',       'img'):             'passenger',
-	('.wp-block-post-featured-image',           'img'):             'passenger',
-	('.wp-block-latest-posts__featured-image',  'img'):             'passenger',
-	('.wp-block-media-text__media',             'img'):             'passenger',
-
-	// SOVEREIGNS: Fast-pass growth (Buttons, Icons)
-	('.wp-block-button__link',                  'self'):            'sovereign',
-	('.wp-element-button',                      'self'):            'sovereign',
-	('.wp-block-social-link',                   'self'):            'sovereign',
-// 	('.wp-block-social-link',                   'a'):               'sovereign',
-// 	('.wp-block-social-link',                   'svg'):            'sovereign',
-// 	('.wp-block-social-link',                   'a > svg'):            'sovereign',
-// 	('.tag-cloud-link',    						'self'): 			'sovereign',
-	('.wp-block-tag-cloud.is-style-outline a',  'self'): 			'sovereign',
-	
-	// SOVEREIGNS Except in #wpadminbar: Broad selectors like this
-	// need a block wildcard to protect avatars in the admin bar.
-// 	('[class*=wp-block-] a > .avatar',          'self'):            'sovereign',
-// 	('[class*="wp-block-"] a',          		'.avatar'):         'passenger-sovereign',
-	("a > .avatar", 							"self"): 			"sovereign",
-// 	(".wp-block-social-link a", 				"self"): 			"sovereign",
-
-	// FLOORS: Ground only its own frame box
-	('.is-style-object-plain',                  'self'):            'floor',
+	// Legacy HTML buttons for WordPress.org theme preview
+//     ( 'none', '','', 'input[type="submit"]', 					   'self'): 'sovereign',
+//     ( 'none', '','', 'input[type="button"]', 					   'self'): 'sovereign',
+//     ( 'none', '','', 'input[type="reset"]', 					   'self'): 'sovereign',
+//     ( 'none', '','', 'button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)', 'self'): 'sovereign',
+// 	( 'none', '', '', 'input[type=file]::file-selector-button', 'self' ) : 'sovereign',    
 );
 
 //**
-// * 00.2 SENSING TRIGGERS: The Attribute Gates 
-// * 	  Uses :is(), :has(), :where(), and :not()
+// * 00.2 ADDITIONAL LISTS
+// * 	  Blocks w/no border radius, HTML-only button selectors
 // */
 
-// SHIP selectors
-$atmos-ship-is: 			('.has-background');
-$atmos-ship-has: 			('a', 'button');
-$atmos-ship-where-not: 		('.alignfull');
-
-// PASSENGER/IMAGE selectors
-$atmos-image-is: 			('');
-$atmos-image-has-link:		'a:not(figcaption a)';
-$atmos-image-has:			(#{$atmos-image-has-link});
-$atmos-image-where-not: 	('.alignfull');
-
-$atmos-passenger-is: 		('.has-background');
-$atmos-passenger-has: 		('a', 'button');
-$atmos-passenger-where-not: ('.alignfull');
-
-// SOVEREIGN selectors
-$atmos-sovereign-is:        ();
-$atmos-sovereign-has:       ();
-$atmos-sovereign-where-not: ();
+// Layout environments where nested child ships should sit perfectly flush
+// $blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-column');
+$blocks-no-border-radius: (
+// 	'.alignfull *',						// Blocks all elements inside an alignfull block
+	'.wp-block-media-text__content *', 	// Blocks all interior children, leaves container open!
+	'.wp-block-media-text__media *', 	// Blocks all interior children, leaves container open!
+	'.wp-block-column',       			// Blocks the column container frame
+	'.wp-block-column *'      			// Blocks all elements inside columns
+);
 
 // HTML-only Sovereigns
 $atmos-flat-sovereigns: (
 	'button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)',
 	'input[type="button"]:not(.wp-element-button)',
-	'input[type="submit"][class*="button"]:not(.wp-element-button)',
-	'input[type="submit"][class*="submit"]:not(.wp-element-button)',
+// 	'input[type="submit"][class*="button"]:not(.wp-element-button)',
+// 	'input[type="submit"][class*="submit"]:not(.wp-element-button)',
+	'input[type="submit"]:not(.wp-element-button)',
 	'input[type="reset"][class*="button"]:not(.wp-element-button)',
 	'input[type="file"]::file-selector-button',
-	'.wp-block-search__button',
-	'.wp-block-file .wp-block-file__button',
-	'.wp-block-button__link'
+// 	'.wp-block-search__button',
+// 	'.wp-block-file .wp-block-file__button',
+// 	'.wp-block-button__link'
 );
-
-// Layout environments where nested child ships should sit perfectly flush
-$blocks-no-border-radius: ('.wp-block-media-text', '.wp-block-column');
 
 //**
 // * 00.3 PHYSICS CONSTANTS: Animation for grow and shift up
 // */
 $atmos-timing: 	var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
 $grow-small: 	var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-// $grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.05));
+$grow-standard: var(--wp--custom--animation--default--hover-transform, scale(1.06));
 $grow-large:    var(--wp--custom--animation--default--hover-large-transform, scale(1.1));
-// $shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
+$shift-default: var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
 $shift-subtle:  var(--wp--custom--animation--default--object-small-transform, translateY(-2px)); 
 
 //**
 // * 00.4 DEBUGGING: Outline colors for visual debugging
 // */
-$atmos-debug: 		false; // Turns on debug outlines
+$atmos-debug: 		true; // Turns on debug outlines
 $atmos-dev-mode: 	true; // Separates selectors (larger file size)
 $debug-registry:   	1px dashed #ff8c00; // Orange dashes
 $debug-sovereign:  	1px solid  #ff00ff;  // Purple solid

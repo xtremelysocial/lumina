@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 05
+//      v0.9.9 Build 06 Optimized MVP!
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -10,48 +10,79 @@
 
 @mixin apply-ship-logic($interactive: false) {
 
-	// 1. Setup State Toggle
-	$hover: if($interactive, ':hover', '');
-
 	// INITIALIZE THE SHIP COLLECTOR ARRAY
-	$all-ships: () !global;
+// 	$all-ships: () !global;
 
-	// 2. LOOP THROUGH SHIPS IN OUR PHYSICS MAP
-	@each $trigger-target, $role in config.$atmos-physics-map { 
-		$trigger: list.nth($trigger-target, 1);
-		$target:  list.nth($trigger-target, 2);
-	
+	// Fetch the compiled arrays natively from the central physics pipeline
+// 	$all-ships: phys.get-ships();
+
+	// LOOP THROUGH SHIPS IN OUR PHYSICS MAP
+	@each $map-entry, $role in config.$atmos-physics-map {
+
 		@if $role == 'ship' {
 
-			// If not a block, then increase the spec score
-			$is-block: phys.is-block($trigger);			
-			$ship-trigger: if(not $is-block, '#{phys.$ship-prefix}#{$trigger}', '#{$trigger}');
-
-			$is:         if($is-block, phys.$ship-is, '');
-			$has:        phys.$ship-has;
-			$where-not:  phys.$ship-where-not;
-
-			$mover:  if($target == 'self', '&', #{$target});
+			// 1. SPLIT OUT MAP ENTRY VARIABLES
+			$block:   list.nth($map-entry, 1);
+			$is:      list.nth($map-entry, 2);
+			$has:     list.nth($map-entry, 3);
+			$trigger: list.nth($map-entry, 4);
+			$target:  list.nth($map-entry, 5);
 			
-			// Construct the exact un-flattened baseline selector string
-			$ship-selector: '#{$ship-trigger}#{$is}#{$has}#{$where-not}';
+			// 2. GET THE TARGET SELECTOR
+			$target-sel: phys.compile-selector(
+				$block, $is, $has, 
+				$trigger, $target, 
+				'target',
+				$role
+			);
+
+			// 3. ADD THE SHIP TO THE SHIP VETO LIST
+			@if not list.index(phys.get-ships(), $target-sel) {
+				@include phys.register-ship($target-sel);
+			}			
+
+			// ----------------------------------------------------------------------
+			// PHASE 1: RESTING STATE (atmos-engine.css)
+			// ----------------------------------------------------------------------
+			@if not $interactive {
+							
+				// WRITE OUT THE CSS FOR THE TARGET
+				#{$target-sel} {
+					@include phys.apply-resting-state(
+						$block: $block,
+// 						$trigger: $trigger, 
+						$trigger: if($trigger == 'self', $block, $trigger),
+						$target: $target, 
+						$role: $role
+					);
+				}
+
+			// ----------------------------------------------------------------------
+			// PHASE 2: INTERACTION STATE (atmos-interactions.css)
+			// ----------------------------------------------------------------------
+			} @else {
 			
-			// STORE THIS SELECTOR IN OUR MASTER ARRAY AND EXPOSE GLOBALLY
-			$all-ships: list.append($all-ships, $ship-selector, $separator: comma);			
-			@include phys.register-ship($ship-selector);
+				$target-hover: phys.compile-selector(
+					$block, $is, $has, 
+					$trigger, $target, 
+					'target-hover',
+					$role
+				);
 	
-			// 3. APPLY LOGIC WITH PERFECT TIER 20 SPECIFICITY
-			#{$ship-selector}#{$hover} {
-				#{$mover} { 
-					@if $interactive { 
-						@include phys.apply-ship; 
-					} @else { 
-						@include phys.apply-resting-state(
-							$trigger: $trigger, 
-							$target: $target, 
-							$role: $role
-						);
-					}
+				$target-focus: phys.compile-selector(
+					$block, $is, $has, 
+					$trigger, $target, 
+					'target-focus', 
+					$role
+				);
+	
+				#{$target-hover}, #{$target-focus} {
+					@include phys.apply-active-state(
+						$block: $block,
+						$target: $target,
+						$role: $role,
+						$context: 'target'
+					);
 				}
 			}
 		}

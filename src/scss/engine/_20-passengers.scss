@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 05
+//	    v0.9.9 Build 06 Optimized MVP!
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -11,125 +11,138 @@
 
 @mixin apply-passenger-logic($interactive: false) {
 
-	// Initialize the global tracker list for Module 40's stable scraping pass
-	$all-passengers: () !global;
+	// INITIALIZE THE PASSENGER MASTER COLLECTOR ARRAY
+// 	$all-passengers: () !global;
 
-	@each $trigger-target, $role in config.$atmos-physics-map { 
-		$trigger: list.nth($trigger-target, 1);
-		$target:  list.nth($trigger-target, 2);
+	// Fetch the compiled arrays natively from the central physics pipeline
+// 	$all-ships: phys.get-ships();
+// 	$all-passengers: phys.get-passengers();
 	
-		@if $role == 'passenger' {
-			
-			// 1. IDENTIFY BLOCK TYPE
-			$is-block: 	phys.is-block($trigger);
-			$is-img: 	phys.is-image($trigger, $target);
+	// LOOP THROUGH PASSENGERS IN OUR PHYSICS MAP
+	@each $map-entry, $role in config.$atmos-physics-map {
+	
+		@if string.index($role, 'passenger') != null {
+	
+			// 1. SPLIT OUT MAP ENTRY VARIABLES
+			$block:   list.nth($map-entry, 1);
+			$is:      list.nth($map-entry, 2);
+			$has:     list.nth($map-entry, 3);
+			$trigger: list.nth($map-entry, 4);
+			$target:  list.nth($map-entry, 5);
 
-			// 2. APPLY STRUCTURAL PREFIX SCOPES
-			$prefix:    if($is-img, phys.$image-prefix, phys.$passenger-prefix);
-			$passenger-trigger: if(not $is-block, '#{$prefix}#{$trigger}', '#{$trigger}');
+			// 2. GET WRAPPER AND TARGET SELECTORS
+			$wrapper-sel: phys.compile-selector(
+				$block, $is, $has, 
+				$trigger, $target, 
+				'wrapper',
+				$role
+			);
 
-			// 3. COMPILE SYSTEM GATES & ACCELERATION RULES
-			$is:		if($is-img, phys.$image-is, if($is-block, phys.$passenger-is, ''));
-			$has:		if($is-img, phys.$image-has, phys.$passenger-has);
-			$where-not:	if($is-img, phys.$image-where-not, phys.$passenger-where-not);
+			$target-sel: phys.compile-selector(
+				$block, $is, $has, 
+				$trigger, $target, 
+				'target',
+				$role
+			);
 
-			$passenger-selector: '#{$passenger-trigger}:where(#{$is}#{$has}#{$where-not})';
-			
-			// Establish the uniform Layout Context Flag globally for this row pass
-			$is-zoom-in-place: phys.is-zoom-in-place($trigger);
-// 			$is-zoom-in-place: if($is-img, is-zoom-in-place($trigger), false);
-
-			$base-target: if($target == 'self', '', ' #{$target}');
-			
-			// ==========================================================================
-			// ENGINE.CSS PASS: Pure resting layout rules
-			// ==========================================================================
-			@if not $interactive {
-
-				// Deduplication Shield: Ensures unique selector registration and direct layout printing
-				@if not list.index($all-passengers, $passenger-selector) {
-				
-					// GATE: Check for links more effectively before registering
-					@if not $is-img {
-						$all-passengers: list.append($all-passengers, $passenger-selector) !global;
-						@include phys.register-passenger($passenger-selector);					
+			// 3. ADD REGULAR PASSENGERS ONLY TO THE PASSENGERS VETO LIST
+			@if $role == 'passenger' {
+				@if $target != 'self' {
+					@if not list.index(phys.get-passengers(), $wrapper-sel) {
+						@include phys.register-passenger($wrapper-sel);
 					}
-
-					// 1. IMAGES WITH LINKS (PORTALS)
-					@if $is-img {
-
-						// Apply shadow and rounding to the wrapper and hide overflow
-						#{$passenger-selector} {
-							@include phys.apply-resting-state(
-								$trigger: $trigger, 
-								$target: 'img', 
-								$role: 'passenger'
-							);
-						}
-						
-					} @else {
-						// Apply all properties to the target standard layout passenger
-						#{$passenger-selector}#{$base-target} {
-							@include phys.apply-resting-state(
-								$trigger: $trigger, 
-								$target: $target, 
-								$role: 'passenger'
-							);
-						}
-					}
-				}
-			} 
-
-			// ==========================================================================
-			// INTERACTIONS.CSS PASS: Active Hover & Focus Alignment
-			// ==========================================================================
-			@else {
-				$states: (':hover', ':has(:focus-visible)');
-				
-				@if $is-img {
-
-					// 1. SELECTION PASS: Collect active interaction gates for containers AND assets
-					$container-selectors: ();
-					$img-selectors: ();
-					@each $state in $states {
-						$portal-gate: '#{$passenger-selector}#{$state}';
-						$container-selectors: list.append($container-selectors, $portal-gate, comma);
-						$img-selectors: list.append($img-selectors, '#{$portal-gate} img', comma);
-					}
-
-					// 2. INTERACTION ROUTING BY BLOCK TYPE
-					@if $is-zoom-in-place {
-						// True Zoom-In-Place: Container locks down framework mask while inner asset scales
-						#{$container-selectors} {
-							overflow: hidden;
-							box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
-						}
-					
-						#{$img-selectors} {
-							transform: #{config.$grow-small};
-						}
-
-					} @else {
-						// Standard standalone images: Wrapper container is completely bypassed.
-						// The inner img asset handles the full lift & grow physics directly!
-						#{$img-selectors} {
-							@include phys.apply-passenger-grow;
-						}
-					}				
-				} 
-
-				@else {
-					// STANDARD LAYOUT PASSENGERS (Columns, Groups, Text Blocks)
-					$entry-selectors: ();
-					@each $state in $states {
-						$entry-selectors: list.append($entry-selectors, '#{$passenger-selector}#{$state}#{$base-target}', comma);
-					}
-
-					#{$entry-selectors} {
-						@include phys.apply-passenger;
+				} @else {
+					@if not list.index(phys.get-passengers(), $target-sel) {
+						@include phys.register-passenger($target-sel);
 					}
 				}
 			}			
+			
+			// ----------------------------------------------------------------------
+			// PHASE 1: RESTING STATE (Rendered to atmos-engine.css)
+			// ----------------------------------------------------------------------
+			@if not $interactive {
+			
+				// CONDITION 1: Separate Wrapper Behavior Needed (e.g. Zoom Portals)
+				// Only apply wrapper styling if target is NOT self.
+				@if $target != 'self' {
+					#{$wrapper-sel} {
+						@include phys.apply-wrapper-resting-state(
+							$block: $block,
+							$trigger: $trigger,
+							$role: $role
+						);
+					}
+				}
+		
+				// CONDITION 2: Main Target Behavior (Applies to everything)
+				// For Columns, this naturally grabs the wrapper level string. 
+				// For Images, the child path.
+				#{$target-sel} {
+					@include phys.apply-resting-state(
+						$block: $block,
+						$trigger: $trigger, 
+						$target: $target, 
+						$role: $role
+					);
+				}
+			}
+			
+			// ----------------------------------------------------------------------
+			// PHASE 2: INTERACTION STATE (Rendered to atmos-interactions.css)
+			// ----------------------------------------------------------------------
+			@else {
+				
+				// CONDITION 1: Separate Wrapper Interaction (Depth Lifts / Structural Shadows)
+				@if $target != 'self' {
+					$wrapper-hover: phys.compile-selector(
+						$block, $is, $has, 
+						$trigger, $target, 
+						'wrapper-hover',
+						$role
+					);
+					
+					$wrapper-focus: phys.compile-selector(
+						$block, $is, $has, 
+						$trigger, $target, 
+						'wrapper-focus',
+						$role
+					);
+	
+					#{$wrapper-hover}, #{$wrapper-focus} {
+						@include phys.apply-active-state(
+							$block: $block,
+							$target: $target,
+							$role: $role,
+							$context: 'wrapper'
+						);
+					}
+				}
+	
+				// CONDITION 2: Main Target Interaction (Kinetic Scale / Structural Leaps)
+				$target-hover: phys.compile-selector(
+					$block, $is, $has, 
+					$trigger, $target, 
+					'target-hover',
+					$role
+				);
+	
+				$target-focus: phys.compile-selector(
+					$block, $is, $has, 
+					$trigger, $target, 
+					'target-focus', 
+					$role
+				);
+	
+				#{$target-hover}, #{$target-focus} {
+					@include phys.apply-active-state(
+						$block: $block,
+						$target: $target,
+						$role: $role,
+						$context: 'target'
+					);
+				}        
+			}
 		}
 	}
 }

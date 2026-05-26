@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    v0.9.9 Build 05
+//	    v0.9.9 Build 06 Optimized MVP!
 //   ========================================================================== */
 
 @use '00-config' as config;
@@ -12,31 +12,7 @@
 	$hover: if($interactive, ':hover', '');
 
 	/* ==========================================================================
-	   02.1 LATEST POST FEATURED IMAGE: Remove shadow because we only want it if 
-	   the image is linked to the post.
-	========================================================================== */
-	// Remove shadow only on non-linked featured images
-	.wp-block-latest-posts__featured-image > img {
-	  box-shadow: none;
-	}
-
-	// Remove border and padding added by parent theme	
-// 	.wp-block-latest-posts__featured-image img {
-// 	  border: none;
-// 	  padding: 0;
-// 	}
-    
-	/* ==========================================================================
-	   02.2 MEDIA TEXT BLOCK: Set overflow hidden on media container *only* when 
-	   hosting an active image portal link. This creates a zoom-in-place effect.
-	========================================================================== */
-//	Moved to 01-physics
-// 	.wp-block-media-text__media:has(a > img) {
-// 		overflow: hidden;
-// 	}
-	
-	/* ==========================================================================
-	   02.3 PADDING: Set horizontal padding to match vertical padding on colored 
+	   02.1 PADDING: Set horizontal padding to match vertical padding on colored 
 	   groups
 	========================================================================== */
 	.wp-block-group.has-background:not(.alignfull) {
@@ -59,114 +35,29 @@
 		padding: var(--wp--preset--spacing--40);
 	}
 	
-	.wp-block-social-links.has-small-icon-size {
-        font-size: var(--wp--preset--font-size--large);
-    }
-
-    .wp-block-social-links.has-normal-icon-size {
-        font-size: var(--wp--preset--font-size--x-large);
-    }
-    
     .wp-block-tag-cloud.is-style-outline .tag-cloud-link {
     	padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
     }
 
 	/* ==========================================================================
-	   02.4 SOCIAL LINKS (Logos Only): Add shadow only to the logo itself, not the 
-	   		container.
-// 	   		TO-DO: This makes light-colored icon-only icons look horible! We can't
-// 	   		actually use this in production. We have to find another way. 
-	   ========================================================================== */	
-	// Dynamically inherits the engine's Tier-30 sovereign specificity footprint (0-3-0)
-	#{phys.$sovereign-prefix}.is-style-logos-only .wp-block-social-link {
-		
-		// 1. Permanently erase the engine's box/container shadow from the outer <li> wrapper
-		box-shadow: none; 
-		
-		&:hover {
-			box-shadow: none; 
-		}
-	
-		svg {
-			// Traces ONLY the open vector paths—pristine presentation with no background blobs
-			filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.22));
-			transition: filter config.$atmos-timing;
-		}
-	
-		&:hover svg {
-			filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.38));
-		}
+	   02.2 LATEST POST FEATURED IMAGE: Remove shadow because we only want it if 
+	   the image is linked to the post.
+	========================================================================== */
+	// Remove shadow only on non-linked featured images
+	.wp-block-latest-posts__featured-image > img {
+	  box-shadow: none;
 	}
 
-//	/* ==========================================================================
-// 	   02.5 LIGHTBOX IMAGES: Dim them with overlay
-// 	   ========================================================================== */
-// 	#{phys.$sovereign-prefix}.wp-lightbox-container {
-// 		position: relative;
-// 		transform: none;
-// 		box-shadow: none;
-// 
-// 		& img {
-// 			transform: none;
-// 			// No filters, padding, or border overrides—completely untouched
-// 		}
-// 
-// 		// The Indicator: A clean, non-destructive layer mask
-// 		&::after {
-// 			content: '';
-// 			position: absolute;
-// 			// Inset matches your padding layout boundaries automatically
-// 			top: 0;
-// 			left: 0;
-// 			right: 0;
-// 			bottom: 0;
-// 			background-color: rgba(0, 0, 0, 0);
-// 			pointer-events: none;
-// 			transition: background-color config.$atmos-timing;
-// 			z-index: 2;
-// 		}
-// 
-// 		&:hover::after {
-// 			// A micro-dim that adds deep contrast to the asset without washing out borders
-// 			background-color: rgba(42, 50, 61, 0.08); 
-// 		}
-// 	}
-
 	/* ==========================================================================
-	   02.5 LIGHTBOX IMAGES: Apply multi-layered shadow
+	   02.3 SOCIAL LINK ICONS: Increase size a bit
 	   ========================================================================== */
-// 	#{phys.$sovereign-prefix}.wp-lightbox-container {
-// 		transform: none;
-// 		box-shadow: none;
-// 		transition: box-shadow config.$atmos-timing;
-// 
-// 		&:hover {
-// 			// Casts a sharp, tactical ring directly outside your custom border paths
-// 			box-shadow: 0 0 0 2px var(--wp--preset--color--base), 
-// 			            0 4px 12px rgba(42, 50, 61, 0.14);
-// 		}
-// 	}
+	.wp-block-social-links.has-small-icon-size {
+        font-size: var(--wp--preset--font-size--large);
+    }
 
-//	/* ==========================================================================
-// 	   02.5 LIGHTBOX IMAGES: Brighten the image
-// 	   ========================================================================== */
-// 	#{phys.$sovereign-prefix}.wp-lightbox-container {
-// 		transform: none;
-// 		box-shadow: none;
-// 		
-// 		// The transition now watches the whole container frame
-// 		transition: filter var(--wp--custom--animation--duration--normal, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-// 		will-change: filter;
-// 
-// 		& img {
-// 			transform: none;
-// 			// Entirely stripped of hardcoded padding/border rules to preserve user editor choices
-// 		}
-// 
-// 		&:hover {
-// 			transform: none;
-// 			// Brightens the entire composite frame: image, custom borders, and padding altogether!
-// 			filter: brightness(1.08) contrast(1.03);
-// 		}
-// 	}
+	.wp-block-social-links, .wp-block-social-links.has-normal-icon-size {
+//         font-size: calc( var(--wp--preset--font-size--large) + 4px );
+        font-size: var(--wp--preset--font-size--large);
+	}
+    	   
 }

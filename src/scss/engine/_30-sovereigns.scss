@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    v0.9.9 Build 05
+// 	    v0.9.9 Build 06 Optimized MVP!
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -10,78 +10,91 @@
 
 @mixin apply-sovereign-logic($interactive: false) {
 
-	// 1. UNIFIED TOP-LEVEL STATE CONFIGURATION
-	// Rest pass evaluates to a blank string modifier; interactive pass compiles both states
-	$states: if($interactive, (':hover', ':focus-visible'), (''));
-
-	// ==========================================================================
-	// 2. LOOP THROUGH SOVEREIGNS IN OUR PHYSICS MAP
-	// ==========================================================================
-	@each $trigger-target, $role in config.$atmos-physics-map { 
-		$trigger: list.nth($trigger-target, 1);
-		$target:  list.nth($trigger-target, 2);
+	// LOOP THROUGH SOVEREIGNS IN OUR PHYSICS MAP
+	@each $map-entry, $role in config.$atmos-physics-map {
 
 		@if $role == 'sovereign' {
 
-			$is-block: phys.is-block($trigger);
+			// SPLIT OUT MAP ENTRY VARIABLES
+			$block:   list.nth($map-entry, 1);
+			$is:      list.nth($map-entry, 2);
+			$has:     list.nth($map-entry, 3);
+			$trigger: list.nth($map-entry, 4);
+			$target:  list.nth($map-entry, 5);
 
-			// If not a block, then increase the spec score
-			$is-block: phys.is-block($trigger);			
-			$sovereign-trigger: if(not $is-block, '#{phys.$sovereign-prefix} #{$trigger}', '.wp-site-blocks #{$trigger}');
+			@if not $interactive {
 
-			$is:         if($is-block, phys.$sovereign-is, '');
-			$has:        phys.$sovereign-has;
-			$where-not:  phys.$sovereign-where-not;
-			$mover:      if($target == 'self', '&', #{$target});
+				// GET THE TARGET SELECTOR
+				$target-sel: phys.compile-selector(
+					$block, $is, $has, 
+					$trigger, $target, 
+					'target',
+					$role
+				);
+					
+				// WRITE OUT THE CSS FOR THE TARGET
+				#{$target-sel} {
+					@include phys.apply-resting-state(
+						$trigger: $trigger, 
+						$target: $target, 
+						$role: $role
+					);
+				}
 
-			// Build the compound multi-state selector list for this map entry
-			$sovereign-selectors: ();
-			@each $state in $states {
-// 				$compiled-gate: '#{phys.$sovereign-prefix} #{$trigger}#{$is}#{$has}#{$where-not}#{$state}';
-				$compiled-gate: '#{$sovereign-trigger}#{$is}#{$has}#{$where-not}#{$state}';
-				$sovereign-selectors: list.append($sovereign-selectors, $compiled-gate, comma);
-			}
-
-			#{$sovereign-selectors} {
-				#{$mover} { 
-					@if $interactive { 
-						@include phys.apply-sovereign; 
-					} @else { 
-						@include phys.apply-resting-state(
-							$trigger: $trigger, 
-							$target: $target, 
-							$role: $role
-						);
-					}
+			} @else {
+			
+				$target-hover: phys.compile-selector(
+					$block, $is, $has, 
+					$trigger, $target, 
+					'target-hover',
+					$role
+				);
+	
+				$target-focus: phys.compile-selector(
+					$block, $is, $has, 
+					$trigger, $target, 
+					'target-focus', 
+					$role
+				);
+	
+				#{$target-hover}, #{$target-focus} {
+					@include phys.apply-active-state(
+						$block: $block,
+						$target: $target,
+						$role: $role,
+						$context: 'target'
+					);
 				}
 			}
 		}
 	}
 
 	// ==========================================================================
-	// 3. FLAT ELEMENTS: Native HTML Buttons & Theme Component Sovereigns
+	// LEGACY HTML ELEMENTS: Needed for WordPress.org theme preview
 	// ==========================================================================
-	$flat-selectors: ();
+
+	$states: if($interactive, (':hover', ':focus-visible'), (''));
+		
 	@each $element in config.$atmos-flat-sovereigns {
+		
+		// Compile precise state pairs specifically for this element
+		$element-selectors: ();
 		@each $state in $states {
-			$compiled-flat-gate: '#{phys.$sovereign-prefix} #{$element}#{$state}';
-			$flat-selectors: list.append($flat-selectors, $compiled-flat-gate, comma);
+			$compiled-flat-gate: '.wp-site-blocks #{$element}#{$state}';
+			$element-selectors: list.append($element-selectors, $compiled-flat-gate, comma);
+		}
+
+		#{$element-selectors} {
+			@if not $interactive {
+				@include phys.apply-resting-state(
+					$trigger: $element, 
+					$target: 'self', 
+					$role: "sovereign"
+				);
+				margin-right: var(--wp--preset--spacing--30);			
+			} @else {
+				@include phys.apply-sovereign;
+			}
 		}
 	}
-
-	// ==========================================================================
-	// 4. UNIFIED PRODUCTION OUTPUT PIPELINE
-	// ==========================================================================
-	#{$flat-selectors} {
-		@if not $interactive {
-			@include phys.apply-resting-state(
-				$trigger: ".wp-block-button", 
-				$target: '', 
-				$role: "sovereign"
-			);
-			margin-right: var(--wp--preset--spacing--30);			
-		} @else {
-			@include phys.apply-sovereign;
-		}
-	}	
 }
