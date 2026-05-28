@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 06 Optimized MVP!
+//      v0.9.9 Build 07 Refine Imaging Handling
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -9,12 +9,6 @@
 @use '01-physics' as phys;
 
 @mixin apply-ship-logic($interactive: false) {
-
-	// INITIALIZE THE SHIP COLLECTOR ARRAY
-// 	$all-ships: () !global;
-
-	// Fetch the compiled arrays natively from the central physics pipeline
-// 	$all-ships: phys.get-ships();
 
 	// LOOP THROUGH SHIPS IN OUR PHYSICS MAP
 	@each $map-entry, $role in config.$atmos-physics-map {
@@ -27,7 +21,7 @@
 			$has:     list.nth($map-entry, 3);
 			$trigger: list.nth($map-entry, 4);
 			$target:  list.nth($map-entry, 5);
-			
+
 			// 2. GET THE TARGET SELECTOR
 			$target-sel: phys.compile-selector(
 				$block, $is, $has, 
@@ -45,16 +39,40 @@
 			// PHASE 1: RESTING STATE (atmos-engine.css)
 			// ----------------------------------------------------------------------
 			@if not $interactive {
-							
-				// WRITE OUT THE CSS FOR THE TARGET
-				#{$target-sel} {
-					@include phys.apply-resting-state(
-						$block: $block,
-// 						$trigger: $trigger, 
-						$trigger: if($trigger == 'self', $block, $trigger),
-						$target: $target, 
-						$role: $role
+
+				// OPTION 1: SEPARATE WRAPPER AND TARGET
+				@if $target != 'self' {
+
+					$wrapper-sel: phys.compile-selector(
+						$block, $is, $has, 
+						$trigger, $target, 
+						'wrapper',
+						$role
 					);
+											
+					#{$wrapper-sel} {
+						@include phys.apply-wrapper-resting-state(
+							$block: $block,
+							$trigger: if($trigger == 'self', $block, $trigger),
+							$role: $role
+						);
+					}
+
+					#{$target-sel} {
+						@include phys.apply-resting-state($role: $role);
+					}			
+
+				// OPTION 2: SINGLE TARGET
+				} @else {
+				
+					#{$target-sel} {
+						@include phys.apply-wrapper-resting-state(
+							$block: $block,
+							$trigger: if($trigger == 'self', $block, $trigger),
+							$role: $role
+						);
+						@include phys.apply-resting-state($role: $role);
+					}
 				}
 
 			// ----------------------------------------------------------------------

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   01 ATMOS PHYSICS MIXINS: Apply Resting States, Actions, and Debug Outlines
-//	 	v0.9.9 Build 06 Optimized MVP!
+//	 	v0.9.9 Build 07 Refine Imaging Handling
 //   ========================================================================== */
 
 @use 'sass:string'; // Required for string.index
@@ -10,7 +10,7 @@
 @use '00-config' as config;
 
 // ==========================================================================
-// 01.0 UTILITIES: Functions and lists used elsewhere in the physics logic
+// 01.0 UTILITIES: Functions and lists used elsewhere in the physics engine
 // ==========================================================================
 
 // ==========================================================================
@@ -30,8 +30,6 @@
     $selector: '';
     
 	// 1. BASE BLOCK (Trusts map literals. Only maps explicit blanks to the wildcard)
-// 	   $selector: $block;
-//     @if $selector == 'any' or $selector == '*' or $selector == '' or $selector == 'none' {
     @if $block == '*' or $block == 'any' or $block == '' {
         $selector: '[class*="wp-block-"]';
     } @else if $block != 'none' {
@@ -97,9 +95,9 @@
 
         $debug-offset: map.get((
             'registry':  		-1px,
-            'ship':       		-2px,
-            'sovereign':  		-2px,
-            'passenger': 		-2px,
+            'ship':       		 1px,
+            'sovereign':  		 1px,
+            'passenger': 		 1px,
             'silence':  		-1px
         ), $role);
 
@@ -124,10 +122,12 @@
     transform: translateY(0) scale(1);
     
     // Resting shadow (e.g. Natural)
-    box-shadow: var(--wp--custom--shadow--default, 
-                var(--wp--preset--shadow--natural, 
-                0 3px 10px rgba(0, 0, 0, 0.14)));
-
+	&:not(#{config.$blocks-no-border-radius}) {
+		box-shadow: var(--wp--custom--shadow--default, 
+					var(--wp--preset--shadow--natural, 
+					0 3px 10px rgba(0, 0, 0, 0.14)));
+	}
+	
 	// Debug mode
 	@if config.$atmos-debug {
 		@include atmos-debug('registry');
@@ -139,42 +139,6 @@
 	   01.1 RESTING STATE: The physical baseline for most objects
 	========================================================================== */
 	@include __blueprint-resting-state;
-}
-
-
-// ==========================================================================
-// 01.2 PORTAL RESTING STATE: The physical baseline for Linked Images (Portals)
-// ==========================================================================
-@mixin __blueprint-portal-resting-state {
-
-	// Setup transition timing
-    transition: 
-        transform config.$atmos-timing, 
-        box-shadow config.$atmos-timing, 
-        outline config.$atmos-timing;
-
-	// Start in place
-    transform: translateY(0) scale(1);
-    
-    // Resting shadow (e.g. Natural)
-    box-shadow: var(--wp--custom--shadow--default, 
-                var(--wp--preset--shadow--natural, 
-                0 3px 10px rgba(0, 0, 0, 0.14)));
-
-	// Hide overlfow
-	overflow: hidden;
-	
-	// Debug mode
-	@if config.$atmos-debug {
-		@include atmos-debug('registry');
-	}                
-}
-
-%physics-portal-resting-state {
-	/* ==========================================================================
-	   01.2 PORTAL RESTING STATE: The physical baseline for Linked Images (Portals)
-	========================================================================== */
-	@include __blueprint-portal-resting-state;
 }
 
 // ==========================================================================
@@ -190,7 +154,11 @@
 
 	// Start in place
     transform: translateY(0) scale(1);
-    
+
+	// Kills any typography baseline that adds gap to the image
+	vertical-align: middle;
+	
+	// Debug mode    
 	@if config.$atmos-debug {
 		@include atmos-debug('registry');
 	}                
@@ -244,7 +212,7 @@
 }
 
 // /* ==========================================================================
-//    01.4 WRAPPER ROUNDING: Border Radius
+//    01.4 WRAPPER ROUNDING: Border Radius (but with brakes on certain blocks)
 //    ========================================================================== */
 @mixin __blueprint-wrapper-rounding {
 	&:not(#{config.$blocks-no-border-radius}) {
@@ -261,24 +229,7 @@
 }
 
 // /* ==========================================================================
-//    01.5 WRAPPER ROUNDING CLIPPED: Border Radius + Overflow Hidden
-//    ========================================================================== */
-@mixin __blueprint-wrapper-rounding-clipped {
-	&:not(#{config.$blocks-no-border-radius}) {
-		border-radius: var(--wp--custom--border--radius, 18px);
-		overflow: hidden;
-	}
-}
-
-// /* ==========================================================================
-//    01.5 WRAPPER ROUNDING CLIPPED: Border Radius + Overflow Hidden
-//    ========================================================================== */
-%physics-wrapper-rounding-clipped {
-	@include __blueprint-wrapper-rounding-clipped;
-}
-
-// /* ==========================================================================
-//    01.6 WRAPPER CLIPPED: Overflow Hidden
+//    01.5 WRAPPER CLIPPED: Overflow Hidden
 //    ========================================================================== */
 @mixin __blueprint-wrapper-clipped {
 // 	&:not(#{config.$blocks-no-border-radius}) {
@@ -288,23 +239,322 @@
 }
 
 // /* ==========================================================================
-//    01.6 WRAPPER CLIPPED: Border Radius + Overflow Hidden
+//    01.5 WRAPPER CLIPPED: Overflow Hidden
 //    ========================================================================== */
 %physics-wrapper-clipped {
 	@include __blueprint-wrapper-clipped;
 }
 
 // ==========================================================================
-// 01.7 WRAPPER RESTING STATE: Border Radius and/or Overflow Hidden
+// 01.6 ZOOM WRAPPER ROUNDING: Border Radius
 // ==========================================================================
-// @mixin apply-wrapper-resting-state($trigger, $role) {
+@mixin __blueprint-zoom-wrapper-rounding {
+
+	// Medium transitions and transforms for all interactive frames
+	transition: 
+		transform config.$atmos-timing-medium, 
+		box-shadow config.$atmos-timing-medium, 
+		outline config.$atmos-timing-medium;
+
+	transform: translateY(0) scale(1);
+	
+	&:not(#{config.$blocks-no-border-radius}) {	
+
+		// Reseting shadow
+		box-shadow: var(--wp--custom--shadow--default, 
+					var(--wp--preset--shadow--natural, 
+					0 3px 10px rgba(0, 0, 0, 0.14)));
+
+		// Adjust border radius to match the inner image
+		border-radius: var(--wp--custom--border--radius, 18px);
+		padding: var(--wp--preset--spacing--20);
+		border: 1px solid var(--wp--custom--color--border);	
+	
+		> a {
+	// 		border-radius: inherit;  // Mirrors whatever radius the parent has
+			border-radius: calc(
+				var(--wp--custom--border--radius, 18px) - 
+				var(--wp--preset--spacing--20, 4.5px) - 
+				var(--wp--custom--border--width, 1px)
+			);
+		}
+	}
+		
+	// --------------------------------------------------------------------------
+	// VARIANT A: STANDARD BORDER (is-style-image-border)
+	// --------------------------------------------------------------------------
+	&.is-style-image-border {
+
+		&:not(#{config.$blocks-no-border-radius}) {	
+			border: 1px solid var(--wp--custom--color--border, rgba(255,255,255,0.15));
+			padding: var(--wp--preset--spacing--20, 4.5px);
+			border-radius: var(--wp--custom--border--radius, 18px);
+	
+			> a {
+				overflow: hidden;
+				// Inner Radius = Outer Radius (18px) - Padding (4.5px) - Border (1px)
+				border-radius: calc(
+					var(--wp--custom--border--radius, 18px) - 
+					var(--wp--preset--spacing--20, 4.5px) - 1px
+				);
+			}
+		}
+	}
+
+	// --------------------------------------------------------------------------
+	// VARIANT B: PILL/AVATAR (is-style-image-round-border)
+	// --------------------------------------------------------------------------
+	&.is-style-image-round-border {
+
+		&:not(#{config.$blocks-no-border-radius}) {	
+			border: 1px solid var(--wp--custom--color--border, rgba(255,255,255,0.15));
+			padding: var(--wp--preset--spacing--20, 4.5px);
+			border-radius: 9999px; // Complete capsule shape
+	
+			> a {
+				overflow: hidden;
+				border-radius: 9999px; // Inner fence mirrors the perfect circle execution
+			}
+		}
+	}
+
+	// --------------------------------------------------------------------------
+	// VARIANT C: COMPUTER MONITOR MOCKUP (is-style-image-computer-screen)
+	// --------------------------------------------------------------------------
+	&.is-style-image-computer-screen {
+
+		&:not(#{config.$blocks-no-border-radius}) {	
+
+			// Maps directly to your 034 JSON specification
+			border-style: solid;
+			border-color: var(--wp--preset--color--almost-black, #111);
+			border-width: 36px 36px 9px 36px; 
+			padding: 0; // Seamless bezel execution
+			
+			border-top-left-radius: 18px;
+			border-top-right-radius: 18px;
+			border-bottom-left-radius: 0px;
+			border-bottom-right-radius: 0px;
+	
+			> a {
+				overflow: hidden;
+				// Outer curve (18px) - Padding (0px) - Border thickness (36px) = 
+				// Square interior
+				border-top-left-radius: 0px;
+				border-top-right-radius: 0px;
+				border-bottom-left-radius: 0px;
+				border-bottom-right-radius: 0px;
+			}
+		}
+	}
+
+	// --------------------------------------------------------------------------
+	// VARIANT D: HARD BEZEL DEVICE (is-style-image-tablet-phone-screen)
+	// --------------------------------------------------------------------------
+	&.is-style-image-tablet-phone-screen {
+
+		&:not(#{config.$blocks-no-border-radius}) {	
+	
+			// Maps directly to your 036 JSON specification
+			border: 27px solid var(--wp--preset--color--almost-black, #111);
+			padding: 0;
+			border-radius: 18px;
+	
+			> a {
+				overflow: hidden;
+				// The thick 27px bezel swallows the 18px outer arc, forcing square interior lines
+				border-radius: 0px; 
+			}
+		}
+	}
+
+	// --------------------------------------------------------------------------
+	// VARIANT E: CLEAN CUT (is-style-image-no-border / Fallback Baseline)
+	// --------------------------------------------------------------------------
+	&.is-style-image-no-border {
+
+		&:not(#{config.$blocks-no-border-radius}) {		
+			border: none;
+			padding: 0;
+			border-radius: 0;
+	
+			> a {
+				overflow: hidden;
+				border-radius: 0;
+			}
+		}
+	}
+}
+
+// /* ==========================================================================
+//    01.6 ZOOM WRAPPER ROUNDING: Border Radius
+//    ========================================================================== */
+%physics-zoom-wrapper-rounding {
+	@include __blueprint-zoom-wrapper-rounding;
+}
+
+// ==========================================================================
+// 01.7 ZOOM WRAPPER CLIPPED: Overflow Hidden + Overlay
+// ==========================================================================
+@mixin __blueprint-zoom-wrapper-clipped {
+
+// 	position: relative;
+// 	display: inline-block;
+// 	vertical-align: middle;
+// 	width: 100%;
+
+// 	@if not $is-braked {
+// 		// Baseline transitions and transforms for all interactive frames
+// 	// 	transition: 
+// 	// 		transform config.$atmos-timing, 
+// 	// 		box-shadow config.$atmos-timing, 
+// 	// 		outline config.$atmos-timing;
+// 		transition: 
+// 			transform config.$atmos-timing-medium, 
+// 			box-shadow config.$atmos-timing-medium, 
+// 			outline config.$atmos-timing-medium;
+// 	
+// 		transform: translateY(0) scale(1);
+// 		
+// 		box-shadow: var(--wp--custom--shadow--default, 
+// 					var(--wp--preset--shadow--natural, 
+// 					0 3px 10px rgba(0, 0, 0, 0.14)));
+// 	
+// 		// Adjust border radius to match the inner image
+// 		border-radius: var(--wp--custom--border--radius, 18px);
+// 		padding: var(--wp--preset--spacing--20);
+// 		border: 1px solid var(--wp--custom--color--border);	
+// 
+// 	}
+
+	// 2. Viewport Window Fence: Configured on the nested anchor link block
+	> a {
+
+		// CRITICAL: Binds the absolute veil coordinate system to this element!
+		position: relative;      
+
+		// Ensures the click target is the whole image
+		display: inline-block;
+		max-width: 100%;
+		cursor: pointer;    
+		
+		// CRITICAL: Pulls the anchor up off the text baseline,
+		vertical-align: middle;
+		
+		// Slices the zooming graphic cleanly
+		overflow: hidden;    
+
+// 		@if not $is-braked {
+// 	// 		border-radius: inherit;  // Mirrors whatever radius the parent has
+// 			border-radius: calc(
+// 				var(--wp--custom--border--radius, 18px) - 
+// 				var(--wp--preset--spacing--20, 4.5px) - 
+// 				var(--wp--custom--border--width, 1px)
+// 			);
+// 		}
+		
+		// THE VEIL: Absolute-positioned mask layer sitting naturally above the image
+		&::after {
+			content: '';
+			position: absolute;
+
+			// Tracks the edges of the newly block-level <a> box
+			inset: 0;
+
+			// Fluidly inherits concentric curves (e.g., 12.5px) OR sharp flat corners (0px) based on context!
+			border-radius: inherit;
+			
+			// THE VECTOR SOLVE: An embedded inline SVG that stretches perfectly corner-to-corner.
+			// Change stroke-width='0.5' to '0.75' or '1' to perfectly tune the hairline weight!
+			background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><line x1='0' y1='0' x2='100%' y2='100%' stroke='white' stroke-width='0.5'/><line x1='100%' y1='0' x2='0' y2='100%' stroke='white' stroke-width='0.5'/></svg>");
+// 			background-color: var(--wp--preset--color--almost-black);
+			background-color: var(--wp--preset--color--primary);
+			background-size: 100% 100%;
+												
+			// Use a longer timing function
+			transition: config.$atmos-timing-medium;
+			
+// 			opacity: calc(1 - var(--wp--custom--button--hover-opacity, 0.8));
+// 			opacity: 0.8; //0.35;
+			opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+
+			pointer-events: none; // Completely click-transparent
+		}
+	}
+}
+
+%physics-zoom-wrapper-clipped {
+/* ==========================================================================
+   01.7 ZOOM WRAPPER CLIPPED: Overflow Hidden + Overlay
+========================================================================== */
+	@include __blueprint-zoom-wrapper-clipped;
+}
+
+// ==========================================================================
+// 01.6 PORTAL FRAME FLAT: Neutralized Framework for Braked Grid Components
+// ==========================================================================
+// @mixin __blueprint-portal-frame-flat {
+// 
+// 	// Baseline kinetic setup is preserved so the hover timelines don't fracture
+// 	transition: 
+// 		transform var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), 
+// 		box-shadow var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), 
+// 		outline var(--wp--custom--animation--duration--normal, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+// 
+// 	transform: translateY(0) scale(1);
+// 	box-shadow: none; // No shadows on flat context components
+// 
+// 	// The Brakes: Clear structural layout borders and pads back to pure 0
+// 	border: none;
+// 	padding: 0;
+// 	border-radius: 0;
+// 
+// 	> a {
+// 		position: relative;      // Coordinates remain steady
+// 		display: inline-block;
+// 		vertical-align: middle;  // Your typography descender baseline alignment fix stays active!
+// 		width: 100%;
+// 		overflow: hidden;        // Clean flat clipping window for interior graphic transforms
+// 		border-radius: 0;        // Strips any internal rounding calculations
+// 
+// 		// Vaporize the atmospheric veil and inline vector cross-lines completely
+// // 		&::after {
+// // 			content: none !important;
+// // 			display: none !important;
+// // 		}
+// 
+// 		&::after {
+// 			content: "";
+// 			position: absolute;
+// 			inset: 0;
+// 			border-radius: inherit; // Smoothly inherits the flat 0 radius layout context
+// 			
+// 			background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><line x1='0' y1='0' x2='100%' y2='100%' stroke='white' stroke-width='0.5'/><line x1='100%' y1='0' x2='0' y2='100%' stroke='white' stroke-width='0.5'/></svg>");
+// 			background-color: var(--wp--preset--color--primary);
+// 			background-size: 100% 100%;
+// 			
+// 			transition: var(--wp--custom--animation--duration--medium, 400ms) cubic-bezier(0.4, 0, 0.2, 1);
+// 			opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+// 			pointer-events: none;
+// 		}
+// 
+// 	}
+// }
+// 
+// %physics-portal-frame-flat {
+// 	@include __blueprint-portal-frame-flat;
+// }
+
+// ==========================================================================
+// 01.7 WRAPPER RESTING STATE: Specialized Container Geometry & Clipping
+// ==========================================================================
 @mixin apply-wrapper-resting-state($block, $trigger, $role) {
 
-	// Context Resolver: If trigger is self-contained, evaluate the parent 
-	// block class against the brakes list
+	// ==========================================================================
+	// ROUNDING BRAKES: Evaluate structural targets against exclusions
+	// ==========================================================================
 	$resolved-target: if($trigger == 'self', $block, $trigger);
 
-// High-speed substring check to catch complex nested paths within the brakes list
 	$is-braked: false;
 	@each $brake in config.$blocks-no-border-radius {
 		$clean-brake: $brake;
@@ -312,54 +562,52 @@
 		@if $star-index != null {
 			$clean-brake: string.slice($brake, 1, $star-index - 1);
 		}
-		
 		@if string.index($resolved-target, $clean-brake) != null {
 			$is-braked: true;
 		}
 	}
 
-	// Don't apply rounding to certain blocks
-// 	@if not list.index(config.$blocks-no-border-radius, $trigger) and not list.index(config.$blocks-no-border-radius, '#{$trigger} *') {
-// 	@if not list.index(config.$blocks-no-border-radius, $resolved-target) and not list.index(config.$blocks-no-border-radius, '#{$resolved-target} *') {
-
-	// Route down the correct architectural tracks
-	@if not $is-braked {
-	
-		@if config.$atmos-dev-mode {
-// 			@if $role == 'passenger-grow' or $role == 'passenger-zoom' {
-			@if $role == 'passenger-zoom' {
-				@include __blueprint-wrapper-rounding-clipped;
+	// --------------------------------------------------------------------------
+	// TRACK A: PASSENGER ZOOM (Wrapper Shadow + Sharp Clipping Viewport)
+	// --------------------------------------------------------------------------
+	@if $role == 'passenger-zoom' {
+		@if not $is-braked {
+			// standard portal framing layout (borders, padding, concentric 
+			// curves, vector veil)
+			@if config.$atmos-dev-mode {
+				@include __blueprint-zoom-wrapper-rounding;
+				@include __blueprint-zoom-wrapper-clipped;
 			} @else {
-				@include __blueprint-wrapper-rounding;			
+				@extend %physics-zoom-wrapper-rounding;
+				@extend %physics-zoom-wrapper-clipped;
 			}
-
 		} @else {
-			
-// 			@if $role == 'passenger-grow' or $role == 'passenger-zoom' {
-			@if $role == 'passenger-zoom' {
-				@extend %physics-wrapper-rounding-clipped;
+			// The brakes are applied! Strip framing while maintaining fluid 
+			// layout gate execution
+			@if config.$atmos-dev-mode {
+				@include __blueprint-zoom-wrapper-clipped;
+			} @else {
+				@extend %physics-zoom-wrapper-clipped;
+			}
+		}
+	}	
+
+	// --------------------------------------------------------------------------
+	// TRACK B: SHIPS (Pure Layout Container Rounding vs. Flat Boundary Gates)
+	// --------------------------------------------------------------------------
+	@else if $role == 'ship' {
+		@if not $is-braked {
+			@if config.$atmos-dev-mode {
+				@include __blueprint-wrapper-rounding;				
 			} @else {
 				@extend %physics-wrapper-rounding;
-			}			
-		}
-		
-	// For blocks excluded from rounding, just set clipping
-	} @else {
-
-		@if config.$atmos-dev-mode {
-// 			@if $role == 'passenger-zoom' {
-				@include __blueprint-wrapper-clipped;
-// 			} @else {
-// 				@include __blueprint-wrapper-clipped;			
-// 			}
-
+			}
 		} @else {
-			
-// 			@if $role == 'passenger-zoom' {
+			@if config.$atmos-dev-mode {
+				@include __blueprint-wrapper-clipped;
+			} @else {
 				@extend %physics-wrapper-clipped;
-// 			} @else {
-// 				@extend %physics-wrapper-clipped;
-// 			}			
+			}			
 		}
 	}
 }
@@ -380,20 +628,15 @@
 	} 
 	
 	// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Custom Frames)
-	// Current context is the wrapper: it handles the frame mask, shadow, and rounding
 	@else if $role == 'passenger-zoom' {
 		@if config.$atmos-dev-mode {
-// 			@include __blueprint-portal-resting-state;
 			@include __blueprint-asset-resting-state;
 		} @else {
-// 			@extend %physics-portal-resting-state;
 			@extend %physics-asset-resting-state;
 		}
 	} 
 	
 	// TRACK B.2: STANDARD GRAPHICS (Galleries, Core Images, Latest Posts Featured)
-	// Current context is the wrapper: it is completely bypassed! 
-	// All depth, transitions, and layout brakes dump straight onto the img element.
 	@else if $role == 'passenger-grow' {
 		@if config.$atmos-dev-mode {
 			@include __blueprint-resting-state;
@@ -415,20 +658,9 @@
 	@else if $role == 'ship' {
 		@if config.$atmos-dev-mode {
 			@include __blueprint-resting-state;
-// 			@include apply-wrapper-resting-state($block, $trigger, $role);
 		} @else {
 			@extend %physics-resting-state;
-// 			@extend %physics-wrapper-resting-state;
 		}
-
-		// Wire this completely outside the dev-conditional wrapper so that 
-		// it routes through the internal placeholder switches inside 
-		// apply-wrapper-resting-state!
-		@include apply-wrapper-resting-state(
-			$block: if($block == 'none', $trigger, $block), 
-			$trigger: $trigger, 
-			$role: $role
-		);
 	}	
 }
 	
@@ -441,10 +673,12 @@
     transform: #{config.$shift-subtle}; 
 
     // Hover default shadow (e.g. Deep)
-    box-shadow: var(--wp--custom--shadow--hover, 
-                var(--wp--preset--shadow--deep, 
-				0 6px 12px rgba(0, 0, 0, 0.13)));
-
+	&:not(#{config.$blocks-no-border-radius}) {
+		box-shadow: var(--wp--custom--shadow--hover, 
+					var(--wp--preset--shadow--deep, 
+					0 6px 12px rgba(0, 0, 0, 0.13)));
+	}
+	
 	// Debug mode
 	@if config.$atmos-debug {
 		@include atmos-debug('ship');
@@ -479,9 +713,11 @@
 // 	transform: #{config.$shift-default} scale(1); 
 	
 	// Hover default shadow (e.g. Deep)    
-	box-shadow: var(--wp--custom--shadow--hover, 
-				var(--wp--preset--shadow--deep, 
-				0 4px 12px rgba(0, 0, 0, 0.12)));
+	&:not(#{config.$blocks-no-border-radius}) {	
+		box-shadow: var(--wp--custom--shadow--hover, 
+					var(--wp--preset--shadow--deep, 
+					0 4px 12px rgba(0, 0, 0, 0.12)));
+	}
 
 	// Debug mode
 	@if config.$atmos-debug {
@@ -515,10 +751,12 @@
 //     transform: translateY(0) #{config.$grow-standard}; 
     
     // Hover high shadow on hover (e.g. Sharp)    
-    box-shadow: var(--wp--custom--shadow--hover-high, 
-                var(--wp--preset--shadow--sharp, 
-                0 12px 25px rgba(0, 0, 0, 0.15)));
-
+	&:not(#{config.$blocks-no-border-radius}) {	
+		box-shadow: var(--wp--custom--shadow--hover-high, 
+					var(--wp--preset--shadow--sharp, 
+					0 12px 25px rgba(0, 0, 0, 0.15)));
+	}
+	
 	// Debug mode
 	@if config.$atmos-debug {
 		@include atmos-debug('passenger');
@@ -541,39 +779,73 @@
 }
 
 // ==========================================================================
-// 01.22 PASSENGER ZOOM: Zoom-in-lace for graphics and image portals
+// 01.22 PASSENGER ZOOM (WRAPPER): Lifts the structural viewport box depth
 // ==========================================================================
-// @mixin __blueprint-passenger-zoom {
-// 
-//     // Small growth (e.g 1.03)
-// //     transform: translateY(0) #{config.$grow-small}; 
-//     transform: translateY(0) #{config.$grow-standard}; 
-//     
-//     // Hover high shadow on hover (e.g. Sharp)    
-//     box-shadow: var(--wp--custom--shadow--hover-high, 
-//                 var(--wp--preset--shadow--sharp, 
-//                 0 12px 25px rgba(0, 0, 0, 0.15)));
-// 
-// 	// Debug mode
-// 	@if config.$atmos-debug {
-// 		@include atmos-debug('passenger');
-// 	}                    
-// }
+@mixin __blueprint-passenger-zoom-wrapper {
 
-// %physics-passenger-zoom {
-// 	/* ==========================================================================
-// 	   01.22 PASSENGER ZOOM: Zoom-in-lace for graphics and image portals
-// 	========================================================================== */
-// 	@include __blueprint-passenger-grow;
-// }
 
-// @mixin apply-passenger-zoom {
-// 	@if config.$atmos-dev-mode {
-// 		@include __blueprint-passenger-zoom;
-// 	} @else {
-// 		@extend %physics-passenger-zoom;
-// 	}
-// }
+	// 1. Applied directly to the root wrapper container context (&)
+	
+	&:not(#{config.$blocks-no-border-radius}) {	
+	
+		// Hover high shadow on hover (e.g. Sharp)    
+		box-shadow: var(--wp--custom--shadow--hover-high, 
+					var(--wp--preset--shadow--sharp, 
+					0 12px 25px rgba(0, 0, 0, 0.15)));
+
+	}
+		
+	// 2. Interaction: Melts the tint layer away cleanly to expose full image fidelity
+	> a {
+		&::after {
+			opacity: 0;
+		}
+	}                
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('passenger');
+	}                    
+}
+
+%physics-passenger-zoom-wrapper {
+	/* ==========================================================================
+	   01.22 PASSENGER ZOOM (WRAPPER): Lifts the structural viewport box depth
+	========================================================================== */
+	@include __blueprint-passenger-zoom-wrapper;
+}
+
+@mixin apply-passenger-zoom-wrapper {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-passenger-zoom-wrapper;
+	} @else {
+		@extend %physics-passenger-zoom-wrapper;
+	}
+}
+
+// ==========================================================================
+// 01.23 PASSENGER ZOOM (ASSET): Dynamically scales the internal graphic
+// ==========================================================================
+@mixin __blueprint-passenger-zoom-asset {
+
+    // Standard growth (e.g 1.05)
+	transform: #{config.$grow-standard};
+}
+
+%physics-passenger-zoom-asset {
+	/* ==========================================================================
+	   01.23 PASSENGER ZOOM (ASSET): Dynamically scales the internal graphic
+	========================================================================== */
+	@include __blueprint-passenger-zoom-asset;
+}
+
+@mixin apply-passenger-zoom-asset {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-passenger-zoom-asset;
+	} @else {
+		@extend %physics-passenger-zoom-asset;
+	}
+}
 
 // ==========================================================================
 // 01.30 SOVEREIGN: Buttons and blocks that work like buttons, such as 
@@ -626,14 +898,10 @@
 	// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Custom Frames)
 	@else if $role == 'passenger-zoom' {
 		@if $context == 'wrapper' {
-			// Parent clip frame lifts its structural shadow
-			box-shadow: var(--wp--custom--shadow--hover-high, 
-			            var(--wp--preset--shadow--sharp, 
-			            0 12px 25px rgba(0, 0, 0, 0.15)));
+			@include apply-passenger-zoom-wrapper;
 		} 
 		@else if $context == 'target' {
-			// Isolate visual graphic asset layer for the scale shift
-			transform: #{config.$grow-standard};
+			@include apply-passenger-zoom-asset;
 		}
 	}
 
@@ -666,7 +934,7 @@
 
 	// Debug mode
 	@if config.$atmos-debug {
-		@include atmos-debug('sovereign');
+		@include atmos-debug('silence');
 	}	
 }
 

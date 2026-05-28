@@ -50,9 +50,9 @@
 				"default": {
 					"hoverSmallTransform": "scale(1.03)",
 					"hoverTransform": "scale(1.05)",
-					"hoverLargeTransform": "scale(1.1)",
+					"hoverLargeTransform": "scale(1.08)",
 					"objectSmallTransform": "translateY(-2px)",
-					"objectTransform": "translateY(-4px)"
+					"objectTransform": "translateY(-3px)"
 				}
 			},
 			"shadow": {
@@ -285,16 +285,6 @@
 					}
 				}
     		},
-			"core/post-featured-image": {
-				"border": {
-					"style": "none"
-				}
-			},
-			"core/image": {
-				"border": {
-					"style": "none"
-				}
-			},
 			"core/accordion": {
 				"elements": {
 					"button": {

@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Atmos Gallery)",
+	"title": "Atmos Gallery",
 	"description": "A sophisticated, academic mood featuring sun-drenched earth tones, sharp architectural corners, and a weighted, luxurious physical presence.",
 	"settings": {
 		"custom": {

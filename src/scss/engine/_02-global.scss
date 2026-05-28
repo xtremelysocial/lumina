@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    v0.9.9 Build 06 Optimized MVP!
+//	    v0.9.9 Build 07 Refine Imaging Handling
 //   ========================================================================== */
 
 @use '00-config' as config;
@@ -40,13 +40,61 @@
     }
 
 	/* ==========================================================================
-	   02.2 LATEST POST FEATURED IMAGE: Remove shadow because we only want it if 
-	   the image is linked to the post.
+	   02.2 IMAGES: Override parent theme's handing of certain images
 	========================================================================== */
-	// Remove shadow only on non-linked featured images
-	.wp-block-latest-posts__featured-image > img {
-	  box-shadow: none;
-	}
+
+	/* Post Featured Images */
+// 	.wp-block-post-featured-image {
+// 		padding: var(--wp--preset--spacing--20);
+// 		border: 1px solid var(--wp--custom--color--border);
+// 		border-radius: var(--wp--custom--border--radius, 18px);
+// 	}
+	
+// 	.wp-block-post-featured-image img {
+// 		padding: 0;
+// 		border: none;
+// 		/* Keeps image rounding concentric inside the padded well */
+// 		border-radius: calc(var(--wp--custom--border--radius, 18px) - var(--wp--preset--spacing--20));
+// 	}
+
+	/* Latest Posts Block Featured Images
+// 	.wp-block-latest-posts__featured-image > img {
+// 	  box-shadow: none;
+// 	}
+
+/* The Wrapper handles 100% of the visual styles */
+// .wp-block-post-featured-image {
+//     border: 1px solid var(--wp--custom--color--border);
+//     padding: 10px;
+//     border-radius: 18px;
+// }
+
+/* The Link handles 100% of the clipping, safely inside the padding well */
+// .wp-block-post-featured-image > a {
+//     display: block; /* Gives the link layout dimensions */
+//     overflow: hidden;
+//     border-radius: 12px; /* Shrunk slightly to keep the corner curves concentric */
+// }
+
+/* The Image just handles the smooth scale */
+// .wp-block-post-featured-image img {
+//     transition: transform 250ms ease;
+// }
+// .wp-block-post-featured-image:hover img {
+//     transform: scale(1.08);
+// }
+
+	/* Add top and bottom margin to post content unless alignfull */
+// 	:root :where(.is-layout-constrained, .is-layout-flow) > :first-child.wp-block-cover:not(.alignfull) {
+// 	.wp-block-post-content > :first-child.wp-block-cover:not(.alignfull) {
+	.wp-block-post-content > :first-child:not(.alignfull) {
+        margin-block-start: var(--wp--style--block-gap);
+    }
+    
+//     :root :where(.is-layout-constrained) > :last-child {
+	.wp-block-post-content > :last-child:not(.alignfull) {
+        margin-block-end: var(--wp--style--block-gap);
+    }
 
 	/* ==========================================================================
 	   02.3 SOCIAL LINK ICONS: Increase size a bit
