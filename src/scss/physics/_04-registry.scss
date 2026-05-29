@@ -1,0 +1,243 @@
+//* ==========================================================================
+//   04 PHYSICS REGISTRY: The air traffic controller. This acts as the final 
+//		logical database layer, housing your context execution macros, silence
+//		overrides, and cross-module registry data loops.
+//   ========================================================================== */
+
+//* ==========================================================================
+//	 v0.9.9 Build 08 Physics Mixin Restructure
+//   ========================================================================== */
+
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:map';
+
+@use '../engine/00-config' as config;
+
+// INTERNAL ENGINE CONNECTIONS
+// @use '01-compiler' as *; // Grants access to compile-selector and atmos-debug
+@use '02-resting' as *;  // Grants access to resting blueprints and placeholders
+@use '03-actions' as *;  // Grants access to hover mixins and silence blueprints
+
+// ==========================================================================
+// 04.1 WRAPPER RESTING STATE: Specialized Container Geometry & Clipping
+// ==========================================================================
+@mixin apply-wrapper-resting-state($block, $trigger, $role) {
+
+	// ==========================================================================
+	// ROUNDING BRAKES: Evaluate structural targets against exclusions
+	// ==========================================================================
+	$resolved-target: if($trigger == 'self', $block, $trigger);
+
+	$is-braked: false;
+	@each $brake in config.$blocks-no-border-radius {
+		$clean-brake: $brake;
+		$star-index: string.index($brake, ' *');
+		@if $star-index != null {
+			$clean-brake: string.slice($brake, 1, $star-index - 1);
+		}
+		@if string.index($resolved-target, $clean-brake) != null {
+			$is-braked: true;
+		}
+	}
+
+	// --------------------------------------------------------------------------
+	// TRACK A: PASSENGER ZOOM (Wrapper Shadow + Sharp Clipping Viewport)
+	// --------------------------------------------------------------------------
+	@if $role == 'passenger-zoom' {
+		@if not $is-braked {
+			// standard portal framing layout (borders, padding, concentric 
+			// curves, vector veil)
+			@if config.$atmos-dev-mode {
+				@include blueprint-zoom-wrapper-rounding;
+				@include blueprint-zoom-wrapper-clipped;
+			} @else {
+				@extend %physics-zoom-wrapper-rounding;
+				@extend %physics-zoom-wrapper-clipped;
+			}
+		} @else {
+			// The brakes are applied! Strip framing while maintaining fluid 
+			// layout gate execution
+			@if config.$atmos-dev-mode {
+				@include blueprint-zoom-wrapper-clipped;
+			} @else {
+				@extend %physics-zoom-wrapper-clipped;
+			}
+		}
+	}	
+
+	// --------------------------------------------------------------------------
+	// TRACK B: SHIPS (Pure Layout Container Rounding vs. Flat Boundary Gates)
+	// --------------------------------------------------------------------------
+	@else if $role == 'ship' {
+		@if not $is-braked {
+			@if config.$atmos-dev-mode {
+				@include blueprint-wrapper-rounding;				
+			} @else {
+				@extend %physics-wrapper-rounding;
+			}
+		} @else {
+			@if config.$atmos-dev-mode {
+				@include blueprint-wrapper-clipped;
+			} @else {
+				@extend %physics-wrapper-clipped;
+			}			
+		}
+	}
+}
+
+// ==========================================================================
+// 04.2 CENTRALIZED TRAFFIC CONTROLLER: Declarative Context Executor
+// ==========================================================================
+@mixin apply-resting-state($block: 'none', $trigger: 'self', $target: 'self', $role: 'passenger') {
+	
+	// TRACK A: SOVEREIGNS (Buttons & Form Triggers)
+	@if $role == 'sovereign' {
+		@if config.$atmos-dev-mode {
+			@include blueprint-sovereign-resting-state;
+		} @else {
+			@extend %physics-sovereign-resting-state;
+		}
+	} 
+	
+	// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Custom Frames)
+	@else if $role == 'passenger-zoom' {
+		@if config.$atmos-dev-mode {
+			@include blueprint-asset-resting-state;
+		} @else {
+			@extend %physics-asset-resting-state;
+		}
+	} 
+	
+	// TRACK B.2: STANDARD GRAPHICS (Galleries, Core Images, Latest Posts Featured)
+	@else if $role == 'passenger-grow' {
+		@if config.$atmos-dev-mode {
+			@include blueprint-resting-state;
+		} @else {
+			@extend %physics-resting-state;
+		}
+	}
+
+	// TRACK B.3: REGULAR PASSENGERS (Column block)
+	@else if $role == 'passenger' {
+		@if config.$atmos-dev-mode {
+			@include blueprint-resting-state;
+		} @else {
+			@extend %physics-resting-state;
+		}
+	}
+
+	// TRACK C: SHIPS (Layout Containers & Groups)
+	@else if $role == 'ship' {
+		@if config.$atmos-dev-mode {
+			@include blueprint-resting-state;
+		} @else {
+			@extend %physics-resting-state;
+		}
+	}	
+}
+
+// ==========================================================================
+// 04.55 CENTRALIZED TRAFFIC CONTROLLER: Declarative Active State Executor
+// ==========================================================================
+@mixin apply-active-state($block, $target, $role, $context) {
+	
+	// TRACK A: SOVEREIGNS (Buttons & Form Triggers)
+	@if $role == 'sovereign' {
+		@include apply-sovereign;
+	}
+
+	// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Custom Frames)
+	@else if $role == 'passenger-zoom' {
+		@if $context == 'wrapper' {
+			@include apply-passenger-zoom-wrapper;
+		} 
+		@else if $context == 'target' {
+			@include apply-passenger-zoom-asset;
+		}
+	}
+
+	// TRACK B.2: STANDARD GRAPHICS (Galleries, Core Images, Latest Posts Featured)
+	@else if $role == 'passenger-grow' {
+		@if $context == 'target' {
+			@include apply-passenger-grow;
+		}
+	}
+
+	// TRACK B.3: STANDARD PASSENGERS (Column block)
+	@else if $role == 'passenger' {
+		@if $context == 'target' {
+			@include apply-passenger;
+		}
+	}
+
+	// TRACK C: SHIPS (Layout Containers & Groups)
+	@else if $role == 'ship' {
+		@include apply-ship;
+	}
+}
+
+// ==========================================================================
+// 04.60 SILENCE: Silence Ships and Passengers embedded in another Ship
+// ==========================================================================
+@mixin blueprint-silence {
+	box-shadow: none; 
+	transform: none;
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('silence');
+	}	
+}
+
+%physics-silence {
+	/* ==========================================================================
+	   04.60 SILENCE STANDARD: Flattened baseline (Used in engine sheets)
+	========================================================================== */
+	@include blueprint-silence;
+}
+
+// %physics-silence-debug {
+// 	/* ==========================================================================
+// 	   04.60 SILENCE DEBUG: Consolidated interaction lines + diagnostic outlines
+// 	========================================================================== */
+// 	@include blueprint-silence;
+// 	@include atmos-debug('silence');
+// }
+
+@mixin apply-silence($interactive: false) {
+	@if config.$atmos-dev-mode {
+		@include blueprint-silence;		
+// 		@if $interactive and config.$atmos-debug {
+// 			@include atmos-debug('silence');
+// 		}
+	} @else {
+// 		@if $interactive and config.$atmos-debug {
+// 			@extend %physics-silence-debug;
+// 		} @else {
+			@extend %physics-silence;
+// 		}
+	}
+}
+
+// ==========================================================================
+// 04.70 CENTRAL REGISTRY STATE (Modern Cross-Module Communication Pipeline)
+// ==========================================================================
+$all-ships: (); // !global;
+$all-passengers: (); // !global;
+
+@mixin register-ship($selector) {
+	$all-ships: list.append($all-ships, $selector) !global;
+}
+
+@mixin register-passenger($selector) {
+	$all-passengers: list.append($all-passengers, $selector) !global;
+}
+
+@function get-ships() {
+	@return $all-ships;
+}
+
+@function get-passengers() {
+	@return $all-passengers;
+}

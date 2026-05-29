@@ -1,10 +1,11 @@
 //* ==========================================================================
 //   40 VETOS: Centralized Nesting Boundary Controller
-//	    v0.9.9 Build 07 Refine Imaging Handling
+//	    v0.9.9 Build 08 Physics Mixin Restructure
 //   ========================================================================== */
 
 @use 'sass:list';
-@use '01-physics' as phys;
+
+@use '../physics' as phys;
 
 @mixin apply-veto-logic($interactive: false) {
 

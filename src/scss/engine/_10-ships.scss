@@ -1,28 +1,34 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 07 Refine Imaging Handling
+//      v0.9.9 Build 08 Physics Mixin Restructure
 //   ========================================================================== */
 
 @use 'sass:list';
+@use 'sass:map';
 
 @use '00-config' as config;
-@use '01-physics' as phys;
+@use '../physics' as phys;
 
 @mixin apply-ship-logic($interactive: false) {
 
-	// LOOP THROUGH SHIPS IN OUR PHYSICS MAP
-	@each $map-entry, $role in config.$atmos-physics-map {
+	// LOOP THROUGH SHIPS IN OUR BLOCK REGISTRY
+// 	@each $entry, $role in config.$atmos-block-registry {
+	@each $entry in config.$atmos-block-registry {
+
+		// 1. MERGE REGISTRY ENTRY WITH DEFAULTS
+		$config: map.merge(config.$registry-defaults, $entry);
+		$role:   map.get($config, role);
 
 		@if $role == 'ship' {
 
-			// 1. SPLIT OUT MAP ENTRY VARIABLES
-			$block:   list.nth($map-entry, 1);
-			$is:      list.nth($map-entry, 2);
-			$has:     list.nth($map-entry, 3);
-			$trigger: list.nth($map-entry, 4);
-			$target:  list.nth($map-entry, 5);
-
-			// 2. GET THE TARGET SELECTOR
+			// 2. EXTRACT INDIVIDIAL FIELDS
+			$block:   map.get($config, block);
+			$is:      map.get($config, is);
+			$has:     map.get($config, has);
+			$trigger: map.get($config, trigger);
+			$target:  map.get($config, target);
+			
+			// 3. GET THE TARGET SELECTOR
 			$target-sel: phys.compile-selector(
 				$block, $is, $has, 
 				$trigger, $target, 
@@ -30,13 +36,13 @@
 				$role
 			);
 
-			// 3. ADD THE SHIP TO THE SHIP VETO LIST
+			// 4. ADD THE SHIP TO THE SHIP VETO LIST
 			@if not list.index(phys.get-ships(), $target-sel) {
 				@include phys.register-ship($target-sel);
 			}			
 
 			// ----------------------------------------------------------------------
-			// PHASE 1: RESTING STATE (atmos-engine.css)
+			// 5. PHASE 1: RESTING STATE (atmos-engine.css)
 			// ----------------------------------------------------------------------
 			@if not $interactive {
 
@@ -76,7 +82,7 @@
 				}
 
 			// ----------------------------------------------------------------------
-			// PHASE 2: INTERACTION STATE (atmos-interactions.css)
+			// 6. PHASE 2: INTERACTION STATE (atmos-interactions.css)
 			// ----------------------------------------------------------------------
 			} @else {
 			

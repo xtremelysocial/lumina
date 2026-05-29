@@ -19,37 +19,88 @@
 //     }
 // endif;
 
+
+/**
+ * Load the themes PHP include files, such as block patterns
+ */
+ 
+// Build array of include files relative to theme root
+$includes = array (
+	'/inc/default-image.php',
+// 	'/inc/ image-move-border.php',	
+);
+
+// Allow child themes to override the list of PHP files to load
+$includes = apply_filters( 'atmos_load_includes', $includes );
+
+// Load each of the include files
+foreach ( $includes as $include ) {
+	if ( file_exists( get_stylesheet_directory() . $include ) ) {
+		include_once get_stylesheet_directory() . $include;
+// 		require_once get_stylesheet_directory() . $include;
+	}
+}
+
 /**
  * ATMOS GRAVITY ENGINE: Front-End Enqueue ONLY
  */
 function atmos_enqueue_gravity_engine() {
+
+	// Get the theme version
+	$version = wp_get_theme()->get( 'Version' ) ?? false;
     
+    // Get the Atmos Engine css
     $engine_uri = get_stylesheet_directory_uri() . '/assets/css/atmos-engine.css';
     $engine_path = get_stylesheet_directory() . '/assets/css/atmos-engine.css';
     
     $interaction_uri = get_stylesheet_directory_uri() . '/assets/css/atmos-interactions.css';
     $interaction_path = get_stylesheet_directory() . '/assets/css/atmos-interactions.css';
 
+	// Get the CSS build version or use the theme version
+	$asset = str_replace( '.css', '.asset.php', $style );
+
+	if ( file_exists ( $asset ) ) {
+		$asset_file = include( $asset );
+		if ( $asset_file['version'] ) {
+			$version = $asset_file['version'];
+		}
+	}
+
     // 1. REGISTER handles first to establish the "library"
     if ( file_exists( $engine_path ) ) {
-//     	echo "registering atmos-engine"; //TEST
+
+		// Use specific asset version if there is one
+		$asset = str_replace( '.css', '.asset.php', $engine_path );
+		$asset_file = include( $asset );
+		if ( $asset_file['version'] ) {
+			$asset_version = $asset_file['version'];
+		}
+
         wp_register_style(
             'atmos-engine',
             $engine_uri,
 //             array('flat-blocks'),
 			array(),            
-            filemtime( $engine_path )
+//             filemtime( $engine_path )
+			$asset_version ?? $version;
         );
     }
 
     if ( file_exists( $interaction_path ) ) {
-//     	echo "registering atmos-interactions"; //TEST    
+
+		// Use specific asset version if there is one
+		$asset = str_replace( '.css', '.asset.php', $interaction_path );
+		$asset_file = include( $asset );
+		if ( $asset_file['version'] ) {
+			$asset_version = $asset_file['version'];
+		}
+
         wp_register_style(
             'atmos-interactions',
             $interaction_uri,
             array('atmos-engine'), 
-//             array(),
-            filemtime( $interaction_path )
+//             filemtime( $engine_path )
+			$asset_version ?? $version;
         );
     }
 
@@ -64,71 +115,3 @@ function atmos_enqueue_gravity_engine() {
 // add_action( 'wp_enqueue_scripts', 'atmos_enqueue_gravity_engine', 20 );
 // add_action( 'wp_enqueue_scripts', 'atmos_enqueue_gravity_engine' );
 add_action( 'enqueue_block_assets', 'atmos_enqueue_gravity_engine' );
-
-/**
- * Post-Process Core Images: Surgically migrates theme.json borders to <a> wrappers while protecting image sizing layout dimensions.
- */
-add_filter( 'render_block_core/image', 'atmos_migrate_image_borders_to_link', 10, 2 );
-
-function atmos_migrate_image_borders_to_link( $block_content, $block ) {
-	// 1. Only run if an interactive custom style variation is explicitly active
-	if ( empty( $block['attrs']['className'] ) || ! str_contains( $block['attrs']['className'], 'is-style-image-' ) ) {
-		return $block_content;
-	}
-
-	// 2. DEFENSIVE GATE: If this block isn't a link, it doesn't conflict with our overlay masks.
-	// Return immediately to protect unlinked custom patterns and pseudo-icons.
-	if ( ! str_contains( $block_content, '<a ' ) ) {
-		return $block_content;
-	}
-
-	// 3. Initialize the processor to target the inner graphic element
-	$processor = new WP_HTML_Tag_Processor( $block_content );
-	if ( $processor->next_tag( array( 'tag_name' => 'img' ) ) ) {
-		$all_styles_string = $processor->get_attribute( 'style' );
-
-		if ( ! empty( $all_styles_string ) ) {
-			// 4. Split the inline rules array to isolate layout geometry vs design traits
-			$style_rules = explode( ';', $all_styles_string );
-			$img_retained_styles = array();
-			$link_migrated_styles = array();
-
-			foreach ( $style_rules as $rule ) {
-				$rule = trim( $rule );
-				if ( empty( $rule ) ) {
-					continue;
-				}
-
-				// If the rule explicitly targets borders or clipping paths, flag it for migration
-				if ( str_contains( $rule, 'border' ) ) {
-					$link_migrated_styles[] = $rule;
-				} else {
-					// Retain custom width, height, aspect-ratio, and object-fit on the <img> tag
-					$img_retained_styles[] = $rule;
-				}
-			}
-
-			// 5. Re-apply layout bounding metrics to the <img> element
-			if ( ! empty( $img_retained_styles ) ) {
-				$processor->set_attribute( 'style', implode( '; ', $img_retained_styles ) . ';' );
-			} else {
-				$processor->remove_attribute( 'style' );
-			}
-			$block_content = $processor->get_updated_html();
-
-			// 6. Migrate border rules straight to the interactive viewport wrapper
-			if ( ! empty( $link_migrated_styles ) ) {
-				$link_processor = new WP_HTML_Tag_Processor( $block_content );
-				if ( $link_processor->next_tag( array( 'tag_name' => 'a' ) ) ) {
-					$existing_link_styles = $link_processor->get_attribute( 'style' );
-					$new_link_styles = trim( $existing_link_styles . '; ' . implode( '; ', $link_migrated_styles ), '; ' );
-					
-					$link_processor->set_attribute( 'style', $new_link_styles . ';' );
-					$block_content = $link_processor->get_updated_html();
-				}
-			}
-		}
-	}
-
-	return $block_content;
-}

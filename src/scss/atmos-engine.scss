@@ -1,15 +1,20 @@
-/* ==========================================================================
-   ATMOS ENGINE: Registers objects and sets their resting states
-   v0.9.9 Build 07 Refine Imaging Handling
-   ========================================================================== */
+// /* ==========================================================================
+//    ATMOS ENGINE: Registers objects and sets their resting states
+//    ========================================================================== */
 
 // Load all needed mixins
 @use 'engine/00-config' as config;
+@use 'physics' as phys;
 @use 'engine/02-global' as global;
 @use 'engine/10-ships' as ships;
 @use 'engine/20-passengers' as passengers;
 @use 'engine/30-sovereigns' as sovereigns;
 @use 'engine/40-vetos' as vetos;
+
+/* ==========================================================================
+   ATMOS ENGINE: Registers objects and sets their resting states
+   v0.9.9 Build 08 Physics Mixin Restructure
+   ========================================================================== */
 
 /* ==========================================================================
    02 GLOBAL OVERIDES: Apply styles outside the normal role-specific css

@@ -1,0 +1,109 @@
+//* ==========================================================================
+//   01 PHYSICS COMPILER: The foundational logic engine. This file contains 
+//		the helper utilities and selector compiling engines that have no 
+//		upstream dependencies, but are required by every other file to compile.
+//   ========================================================================== */
+
+//* ==========================================================================
+//	 v0.9.9 Build 08 Physics Mixin Restructure
+//   ========================================================================== */
+
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:map';
+
+@use '../engine/00-config' as config;
+
+// ==========================================================================
+// 01.1 CENTRALIZED SELECTOR COMPILER: Declarative Spec Enforcer
+// ==========================================================================
+@function compile-selector(
+	$block: '*', 
+	$is: 'none', 
+	$has: 'none', 
+	$trigger: 'self', 
+	$target: 'self', 
+	$scope: 'target', 
+	$role: 'passenger'
+) {
+
+	// Initialize the selector
+    $selector: '';
+    
+	// 1. BASE BLOCK (Trusts map literals. Only maps explicit blanks to the wildcard)
+    @if $block == '*' or $block == 'any' or $block == '' {
+        $selector: '[class*="wp-block-"]';
+    } @else if $block != 'none' {
+    	$selector: $block;
+    }
+
+	// 2. SOVEREIGN PREFIX ENFORCER (Strict Tier-30 Score)
+    @if $role == 'sovereign' {
+        $selector: '.wp-site-blocks #{$selector}';
+    }
+    
+	// 3. MODIFIER SPEC COP (Appends clean modifier filters like :is(.has-background))
+    @if $is != 'none' and $is != '' and $is != '*' {
+        $selector: '#{$selector}:is(#{$is})';
+    }
+
+	// 4. LINK GATE (HAS) INTEGRATION	
+    @if $has != 'none' and $has != '' and $has != '*' {
+        $selector: '#{$selector}:has(#{$has})';
+    }
+
+	// 5. ADD ALIGNFULL IF NOT SOVEREIGN
+	@if $role != 'sovereign' {
+	    $selector: '#{$selector}:not(.alignfull)';
+	}
+    
+	// 6. PSEUDO-STATE INJECTION (Determines interactive modifier rules)
+    $state-suffix: '';
+    @if string.index($scope, 'hover') != null {
+        $state-suffix: ':hover';
+    
+    } @else if string.index($scope, 'focus') != null {
+        $state-suffix: ':has(:focus-visible)';
+    }
+        
+	// 7. RETURN LITERAL SCOPE PATHS (Wrapper vs Target)
+    @if string.index($scope, 'wrapper') != null {
+        @return '#{$selector}#{$state-suffix}';
+
+    } @else {
+        // Build base path with state suffix attached directly to the active 
+        // action boundary element
+        $action-path: if($trigger == 'self', '#{$selector}#{$state-suffix}', '#{$selector} #{$trigger}#{$state-suffix}');
+        
+        // Append the final graphic asset target layer if it isn't self-contained
+        @return if($target == 'self', $action-path, '#{$action-path} #{$target}');
+    }
+}
+
+// ==========================================================================
+// 01.2 VISUAL DEBUG: Set outline colors and styles based on engine logic
+// ==========================================================================
+@mixin atmos-debug($role) {
+    @if config.$atmos-debug {
+
+        $debug-string: map.get((
+            'registry':  		config.$debug-registry,
+            'ship':      		config.$debug-ship,
+            'sovereign': 		config.$debug-sovereign,
+            'passenger': 		config.$debug-passenger,
+            'silence':   		config.$debug-silence
+        ), $role);
+
+        $debug-offset: map.get((
+            'registry':  		-1px,
+            'ship':       		 1px,
+            'sovereign':  		 1px,
+            'passenger': 		 1px,
+            'silence':  		-1px
+        ), $role);
+
+        // Set the outline color and offset
+        outline: #{$debug-string}; 
+        outline-offset: #{$debug-offset};
+    }
+}

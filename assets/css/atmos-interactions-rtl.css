@@ -1,9 +1,9 @@
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/atmos-interactions.scss ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/scss/atmos-interactions.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    ATMOS INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 07 Refine Imaging Handling
+   v0.9.9 Build 08 Physics Mixin Restructure
    ========================================================================== */
 /* ==========================================================================
    10 SHIPS: Containers (e.g. Groups, Columns)
@@ -32,44 +32,28 @@
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 4px 12px rgba(0, 0, 0, 0.12)));
 }
 
-.wp-block-column .wp-block-image:has(a:not(figcaption a)):not(.alignfull):hover:not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *), .wp-block-column .wp-block-image:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible):not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *) {
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
-}
-.wp-block-column .wp-block-image:has(a:not(figcaption a)):not(.alignfull):hover > a::after, .wp-block-column .wp-block-image:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible) > a::after {
-  opacity: 0;
-}
-
-.wp-block-column .wp-block-image:has(a:not(figcaption a)):not(.alignfull):hover img, .wp-block-column .wp-block-image:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible) img {
-  transform: var(--wp--custom--animation--default--hover-transform, scale(1.05));
-}
-
 .wp-block-image:has(a:not(figcaption a)):not(.alignfull):hover:not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *), .wp-block-image:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible):not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *) {
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
 }
+.wp-block-image:has(a:not(figcaption a)):not(.alignfull):hover img, .wp-block-image:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible) img {
+  filter: brightness(1.15);
+}
 .wp-block-image:has(a:not(figcaption a)):not(.alignfull):hover > a::after, .wp-block-image:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible) > a::after {
-  opacity: 0;
+  opacity: 0.85;
 }
 
 .wp-block-image:has(a:not(figcaption a)):not(.alignfull):hover img, .wp-block-image:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible) img {
   transform: var(--wp--custom--animation--default--hover-transform, scale(1.05));
 }
 
-.wp-block-gallery .wp-block-image:has(a:not(figcaption a)):not(.alignfull):hover:not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *), .wp-block-gallery .wp-block-image:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible):not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *) {
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
-}
-.wp-block-gallery .wp-block-image:has(a:not(figcaption a)):not(.alignfull):hover > a::after, .wp-block-gallery .wp-block-image:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible) > a::after {
-  opacity: 0;
-}
-
-.wp-block-gallery .wp-block-image:has(a:not(figcaption a)):not(.alignfull):hover img, .wp-block-gallery .wp-block-image:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible) img {
-  transform: var(--wp--custom--animation--default--hover-transform, scale(1.05));
-}
-
 .wp-block-post-featured-image:has(a):not(.alignfull):hover:not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *), .wp-block-post-featured-image:has(a):not(.alignfull):has(:focus-visible):not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *) {
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
 }
+.wp-block-post-featured-image:has(a):not(.alignfull):hover img, .wp-block-post-featured-image:has(a):not(.alignfull):has(:focus-visible) img {
+  filter: brightness(1.15);
+}
 .wp-block-post-featured-image:has(a):not(.alignfull):hover > a::after, .wp-block-post-featured-image:has(a):not(.alignfull):has(:focus-visible) > a::after {
-  opacity: 0;
+  opacity: 0.85;
 }
 
 .wp-block-post-featured-image:has(a):not(.alignfull):hover img, .wp-block-post-featured-image:has(a):not(.alignfull):has(:focus-visible) img {
@@ -79,8 +63,11 @@
 .wp-block-latest-posts__featured-image:has(a):not(.alignfull):hover:not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *), .wp-block-latest-posts__featured-image:has(a):not(.alignfull):has(:focus-visible):not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *) {
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
 }
+.wp-block-latest-posts__featured-image:has(a):not(.alignfull):hover img, .wp-block-latest-posts__featured-image:has(a):not(.alignfull):has(:focus-visible) img {
+  filter: brightness(1.15);
+}
 .wp-block-latest-posts__featured-image:has(a):not(.alignfull):hover > a::after, .wp-block-latest-posts__featured-image:has(a):not(.alignfull):has(:focus-visible) > a::after {
-  opacity: 0;
+  opacity: 0.85;
 }
 
 .wp-block-latest-posts__featured-image:has(a):not(.alignfull):hover img, .wp-block-latest-posts__featured-image:has(a):not(.alignfull):has(:focus-visible) img {
@@ -90,8 +77,11 @@
 .wp-block-media-text__media:has(a:not(figcaption a)):not(.alignfull):hover:not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *), .wp-block-media-text__media:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible):not(.wp-block-media-text__content *, .wp-block-media-text__media *, .wp-block-column, .wp-block-column *) {
   box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 12px 25px rgba(0, 0, 0, 0.15)));
 }
+.wp-block-media-text__media:has(a:not(figcaption a)):not(.alignfull):hover img, .wp-block-media-text__media:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible) img {
+  filter: brightness(1.15);
+}
 .wp-block-media-text__media:has(a:not(figcaption a)):not(.alignfull):hover > a::after, .wp-block-media-text__media:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible) > a::after {
-  opacity: 0;
+  opacity: 0.85;
 }
 
 .wp-block-media-text__media:has(a:not(figcaption a)):not(.alignfull):hover img, .wp-block-media-text__media:has(a:not(figcaption a)):not(.alignfull):has(:focus-visible) img {

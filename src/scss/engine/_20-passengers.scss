@@ -1,13 +1,14 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 07 Refine Imaging Handling
+//	    v0.9.9 Build 08 Physics Mixin Restructure
 //   ========================================================================== */
 
 @use 'sass:list';
 @use 'sass:string';
+@use 'sass:map';
 
 @use '00-config' as config;
-@use '01-physics' as phys;
+@use '../physics' as phys;
 
 @mixin apply-passenger-logic($interactive: false) {
 
@@ -19,17 +20,22 @@
 // 	$all-passengers: phys.get-passengers();
 	
 	// LOOP THROUGH PASSENGERS IN OUR PHYSICS MAP
-	@each $map-entry, $role in config.$atmos-physics-map {
+// 	@each $map-entry, $role in config.$atmos-physics-map {
+	@each $entry in config.$atmos-block-registry {
+
+		// 1. MERGE REGISTRY ENTRY WITH DEFAULTS
+		$config: map.merge(config.$registry-defaults, $entry);
+		$role:   map.get($config, role);
 	
 		@if string.index($role, 'passenger') != null {
-	
-			// 1. SPLIT OUT MAP ENTRY VARIABLES
-			$block:   list.nth($map-entry, 1);
-			$is:      list.nth($map-entry, 2);
-			$has:     list.nth($map-entry, 3);
-			$trigger: list.nth($map-entry, 4);
-			$target:  list.nth($map-entry, 5);
 
+			// 2. EXTRACT INDIVIDIAL FIELDS
+			$block:   map.get($config, block);
+			$is:      map.get($config, is);
+			$has:     map.get($config, has);
+			$trigger: map.get($config, trigger);
+			$target:  map.get($config, target);
+				
 			// 2. GET WRAPPER AND TARGET SELECTORS
 			$wrapper-sel: phys.compile-selector(
 				$block, $is, $has, 

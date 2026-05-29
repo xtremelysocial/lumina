@@ -1,27 +1,36 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    v0.9.9 Build 07 Refine Imaging Handling
+// 	    v0.9.9 Build 08 Physics Mixin Restructure
 //   ========================================================================== */
 
 @use 'sass:list';
+@use 'sass:map';
 
 @use '00-config' as config;
-@use '01-physics' as phys;
+@use '../physics' as phys;
 
 @mixin apply-sovereign-logic($interactive: false) {
 
 	// LOOP THROUGH SOVEREIGNS IN OUR PHYSICS MAP
-	@each $map-entry, $role in config.$atmos-physics-map {
+// 	@each $map-entry, $role in config.$atmos-physics-map {
+	@each $entry in config.$atmos-block-registry {
+
+		// 1. MERGE REGISTRY ENTRY WITH DEFAULTS
+		$config: map.merge(config.$registry-defaults, $entry);
+		$role:   map.get($config, role);
 
 		@if $role == 'sovereign' {
 
-			// SPLIT OUT MAP ENTRY VARIABLES
-			$block:   list.nth($map-entry, 1);
-			$is:      list.nth($map-entry, 2);
-			$has:     list.nth($map-entry, 3);
-			$trigger: list.nth($map-entry, 4);
-			$target:  list.nth($map-entry, 5);
+			// 2. EXTRACT INDIVIDIAL FIELDS
+			$block:   map.get($config, block);
+			$is:      map.get($config, is);
+			$has:     map.get($config, has);
+			$trigger: map.get($config, trigger);
+			$target:  map.get($config, target);
 
+			// ----------------------------------------------------------------------
+			// PHASE 1: RESTING STATE (Rendered to atmos-engine.css)
+			// ----------------------------------------------------------------------
 			@if not $interactive {
 
 				// GET THE TARGET SELECTOR
@@ -41,6 +50,9 @@
 					);
 				}
 
+			// ----------------------------------------------------------------------
+			// PHASE 2: INTERACTION STATE (Rendered to atmos-interactions.css)
+			// ----------------------------------------------------------------------
 			} @else {
 			
 				$target-hover: phys.compile-selector(

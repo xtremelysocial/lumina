@@ -1,166 +1,185 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 07 Refine Imaging Handling
+//	 	v0.9.9 Build 08 Physics Mixin Restructure
 //   ========================================================================== */
 
 // ==========================================================================
 // ATMOS BLOCKS BUILD 06: THE DEFINITIVE DECLARATIVE MAP
 // Schema: (Block, Is, Has, Trigger, Target) : Role
 // ==========================================================================
-$atmos-physics-map: (
 
-	// (Block, 					
-	// 	Is,
-	//	Has
-	//	Trigger 					
-	// 	Target
-	//	): Role
+// SETUP DEFAULTS SO WE DON'T HAVE TO INCLUDE ALL FIELDS IN THE REGISTRY
+$registry-defaults: (
+	block:   '*',       	// Block wildcard [class*="wp-block-"]
+	is:      'none',    	// Don't require specific classes
+	has:     'a, button',   // Default to requiring an embedded link or button
+	trigger: 'self',    	// Default hover trigger to the block
+	target:  'self',    	// Default traget class to receive animation to the block
+	role:    'passenger' 	// Default role to Passenger
+);
 
-    // --------------------------------------------------------------------------
-    // SHIPS (Wildcard works great here, but you can override for specific blocks)
-    // --------------------------------------------------------------------------
+// PUT WILDCARDS AND/OR SPECIFIC BLOCKS INTO THE REGISTRY
+$atmos-block-registry: (
+
+	// --------------------------------------------------------------------------
+	// SHIPS (Wildcard works great here, but you can override for specific blocks)
+	// --------------------------------------------------------------------------
 	(
-		'*', 
-		'.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .is-style-object-passive', 
-    	'a, button', 	
-		'self', 
-		'self' 
-	): 	'ship',
+		block:   '*', 
+		is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .is-style-object-passive', 
+		has:     'a, button', 	
+		trigger: 'self', 
+		target:  'self', 
+		role:    'ship'
+	),
 	
-    // Cover Block: Acts as a Ship if it has a link or button
-    (
-    	'.wp-block-cover',   
-    	'none', 
-    	'a:not(figcaption a)', 
-    	'self',
-    	'self'
-    ) : 'ship',
-
-    // --------------------------------------------------------------------------
-    // PASSENGERS
-    // --------------------------------------------------------------------------
-
-    // Column Block:Requires background color and link or button
-    (
-    	'.wp-block-column',        
-    	'.has-background', 		
-    	'a, button', 	
-    	'self',                
-    	'self'
-    ):	'passenger',
-
-    // --------------------------------------------------------------------------
-    // IMAGE PASSENGERS
-    // --------------------------------------------------------------------------
-
-    // Core Image in Column Block: Requires link
-    (
-    	'.wp-block-column .wp-block-image',        
-    	'none', 		
-    	'a:not(figcaption a)', 	
-    	'self',                
-    	'img'
-    ):	'passenger-zoom',
-
-    // Core Image: Requires link
-    (
-    	'.wp-block-image',        
-    	'none', 		
-    	'a:not(figcaption a)', 	
-    	'self',                
-    	'img'
-    ):	'passenger-zoom',  // 'passenger-grow'
-    
-    // Gallery Image: Requires link
-    (
-    	'.wp-block-gallery .wp-block-image', 
-    	'none', 		
-    	'a:not(figcaption a)', 
-    	'self',
-    	'img'
-    ): 	'passenger-zoom',  // 'passenger-grow'
-
-    // Post Featured Image: Requires link
+	// Cover Block: Acts as a Ship if it has a link or button
 	(
-		'.wp-block-post-featured-image',        
-		'none',         
-		'a',    
-		'self',                 
-		'img'
-	): 'passenger-zoom', // 'passenger-grow'
+		block:   '.wp-block-cover',   
+		is:      'none', 
+		has:     'a:not(figcaption a)', 
+		trigger: 'self',
+		target:  'self',
+		role:    'ship'
+	),
 
-    // Latest Posts Featured Image: Requires link
+	// --------------------------------------------------------------------------
+	// PASSENGERS
+	// --------------------------------------------------------------------------
+
+	// Column Block: Requires background color and link or button
 	(
-		'.wp-block-latest-posts__featured-image',        
-		'none',         
-		'a',    
-		'self',                 
-		'img'
-	): 'passenger-zoom', // 'passenger-grow'
-    
-    // Media & Text: Requires link, Wrapper is the hover trigger
-    (
-    	'.wp-block-media-text__media',   
-    	'none', 
-    	'a:not(figcaption a)', 
-    	'self',
-    	'img'
-    ) : 'passenger-zoom',
+		block:   '.wp-block-column',        
+		is:      '.has-background', 		
+		has:     'a, button', 	
+		trigger: 'self',                
+		target:  'self',
+		role:    'passenger'
+	),
 
-    // --------------------------------------------------------------------------
-    // SOVEREIGNS
-    // --------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
+	// IMAGE PASSENGERS
+	// --------------------------------------------------------------------------
+
+	// Core Image in Column Block: Requires link
+// 	(
+// 		block:   '.wp-block-column .wp-block-image',        
+// 		is:      'none', 		
+// 		has:     'a:not(figcaption a)', 	
+// 		trigger: 'self',                
+// 		target:  'img',
+// 		role:    'passenger-zoom'
+// 	),
+
+	// Core Image: Requires link
+	(
+		block:   '.wp-block-image',        
+		is:      'none', 		
+		has:     'a:not(figcaption a)', 	
+		trigger: 'self',                
+		target:  'img',
+		role:    'passenger-zoom' // 'passenger-grow'
+	),
+    
+	// Gallery Image: Requires link
+// 	(
+// 		block:   '.wp-block-gallery .wp-block-image', 
+// 		is:      'none', 		
+// 		has:     'a:not(figcaption a)', 	
+// 		trigger: 'self',
+// 		target:  'img',
+// 		role:    'passenger-zoom' // 'passenger-grow'
+// 	),
+
+	// Post Featured Image: Requires link
+	(
+		block:   '.wp-block-post-featured-image',        
+		is:      'none',         
+		has:     'a',    
+		trigger: 'self',                 
+		target:  'img',
+		role:    'passenger-zoom' // 'passenger-grow'
+	),
+
+	// Latest Posts Featured Image: Requires link
+	(
+		block:   '.wp-block-latest-posts__featured-image',        
+		is:      'none',         
+		has:     'a',    
+		trigger: 'self',                 
+		target:  'img',
+		role:    'passenger-zoom' // 'passenger-grow'
+	),
+    
+	// Media & Text: Requires link, Wrapper is the hover trigger
+	(
+		block:   '.wp-block-media-text__media',   
+		is:      'none', 
+		has:     'a:not(figcaption a)', 
+		trigger: 'self',
+		target:  'img',
+		role:    'passenger-zoom'
+	),
+
+	// --------------------------------------------------------------------------
+	// SOVEREIGNS
+	// --------------------------------------------------------------------------
 
 	// Buttons
-    (
-    	'*', 
-    	'none',
-    	'none', 
-    	'.wp-element-button',
-    	'self'
-    ) : 'sovereign',
+	(
+		block:   '*', 
+		is:      'none',
+		has:     'none', 
+		trigger: '.wp-element-button',
+		target:  'self',
+		role:    'sovereign'
+	),
 
-//     (
-//     	'*', 
-//     	'none',
-//     	'none', 
-//     	'.wp-block-button__link',
-//     	'self'
-//     ) : 'sovereign',
+// 	(
+// 		block:   '*', 
+// 		is:      'none',
+// 		has:     'none', 
+// 		trigger: '.wp-block-button__link',
+// 		target:  'self',
+// 		role:    'sovereign'
+// 	),
 
 	// Avatars
-    (
-    	'*', 
-    	'none', 
-    	'none', 
-    	'a > .avatar',
-    	'self'
-    ) : 'sovereign',
+	(
+		block:   '*', 
+		is:      'none', 
+		has:     'none', 
+		trigger: 'a > .avatar',
+		target:  'self',
+		role:    'sovereign'
+	),
 
 	// Social links
-    (
-    	'.wp-block-social-links', 
-    	'none',
-    	'none', 
-    	'.wp-block-social-link',
-    	'self'
-    ) : 'sovereign',
+	(
+		block:   '.wp-block-social-links', 
+		is:      'none',
+		has:     'none', 
+		trigger: '.wp-block-social-link',
+		target:  'self',
+		role:    'sovereign'
+	),
 	
 	// Outline style tag clouds
-    (
-    	'.wp-block-tag-cloud', 
-    	'.is-style-outline', 
-    	'none', 
-    	'a',
-    	'self'
-    ) : 'sovereign',
+	(
+		block:   '.wp-block-tag-cloud', 
+		is:      '.is-style-outline', 
+		has:     'none', 
+		trigger: 'a',
+		target:  'self',
+		role:    'sovereign'
+	),
 
 	// Legacy HTML buttons for WordPress.org theme preview
-//     ( 'none', '','', 'input[type="submit"]', 					   'self'): 'sovereign',
-//     ( 'none', '','', 'input[type="button"]', 					   'self'): 'sovereign',
-//     ( 'none', '','', 'input[type="reset"]', 					   'self'): 'sovereign',
-//     ( 'none', '','', 'button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)', 'self'): 'sovereign',
-// 	( 'none', '', '', 'input[type=file]::file-selector-button', 'self' ) : 'sovereign',    
+// 	( block: 'none', is: '', has: '', trigger: 'input[type="submit"]', target: 'self', role: 'sovereign' ),
+// 	( block: 'none', is: '', has: '', trigger: 'input[type="button"]', target: 'self', role: 'sovereign' ),
+// 	( block: 'none', is: '', has: '', trigger: 'input[type="reset"]',  target: 'self', role: 'sovereign' ),
+// 	( block: 'none', is: '', has: '', trigger: 'button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)', target: 'self', role: 'sovereign' ),
+// 	( block: 'none', is: '', has: '', trigger: 'input[type=file]::file-selector-button', target: 'self', role: 'sovereign' ),    
 );
 
 //**

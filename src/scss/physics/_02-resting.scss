@@ -1,0 +1,327 @@
+//* ==========================================================================
+//   02 PHYSICS RESTING STATES: he geometric baselines. This file handles how 
+//		blocks sit passively in the layout before an end-user interacts with 
+//		them (borders, padding, default shadows, and concentric calculation 
+//		curves).
+//   ========================================================================== */
+
+//* ==========================================================================
+//	 	v0.9.9 Build 08 Physics Mixin Restructure
+//   ========================================================================== */
+
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:map';
+
+// @use '00-config' as config;
+@use '../engine/00-config' as config;
+
+// INTERNAL ENGINE CONNECTIONS
+// @use '01-compiler' as *; // Grants access to atmos-debug
+
+// ==========================================================================
+// 02.01 DEFAULT RESTING STATE (e.g. SHIPS): The physical baseline for most objects
+// ==========================================================================
+@mixin blueprint-resting-state {
+
+	// Setup transition timing
+    transition: 
+        transform config.$atmos-timing, 
+        box-shadow config.$atmos-timing, 
+        outline config.$atmos-timing;
+
+	// Start in place
+    transform: translateY(0) scale(1);
+    
+    // Resting shadow (e.g. Natural)
+	&:not(#{config.$blocks-no-border-radius}) {
+		box-shadow: var(--wp--custom--shadow--default, 
+					var(--wp--preset--shadow--natural, 
+					0 3px 10px rgba(0, 0, 0, 0.14)));
+	}
+	
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('registry');
+	}                
+}
+
+%physics-resting-state {
+	/* ==========================================================================
+	   02.01 RESTING STATE: The physical baseline for most objects
+	========================================================================== */
+	@include blueprint-resting-state;
+}
+
+// ==========================================================================
+// 02.02 ASSET RESTING STATE: Shadowless Transition Layer for Inner Graphics
+// ==========================================================================
+@mixin blueprint-asset-resting-state {
+
+	// Setup transition timing
+//     transition: 
+//         transform config.$atmos-timing, 
+// //         box-shadow config.$atmos-timing, 
+//         outline config.$atmos-timing;
+
+	// TIMING SYNCHRONIZATION: Upgraded to match your 400ms viewport speed
+    transition: 
+        transform config.$atmos-timing-medium, 
+        filter config.$atmos-timing-medium, 
+        outline config.$atmos-timing-medium;
+
+	// Start in place
+    transform: translateY(0) scale(1);
+
+	// Kills any typography baseline that adds gap to the image
+	vertical-align: middle;
+	
+	// Debug mode    
+	@if config.$atmos-debug {
+		@include atmos-debug('registry');
+	}                
+}
+
+%physics-asset-resting-state {
+	/* ==========================================================================
+	   02.02 ASSET RESTING STATE: Shadowless Transition Layer for Inner Graphics
+	========================================================================== */
+	@include blueprint-asset-resting-state;
+}
+
+@mixin apply-asset-resting-state {
+	@if config.$atmos-dev-mode {
+		@include blueprint-asset-resting-state;
+	} @else {
+		@extend %physics-asset-resting-state;
+	}
+}
+
+// ==========================================================================
+// 02.03 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
+// ==========================================================================
+@mixin blueprint-sovereign-resting-state {
+
+	// Setup transition timing
+    transition: 
+        transform config.$atmos-timing, 
+        box-shadow config.$atmos-timing, 
+        outline config.$atmos-timing;
+
+	// Start in place
+    transform: translateY(0) scale(1);
+    
+    // Hover default shadow (e.g. Deep)
+    box-shadow: var(--wp--custom--shadow--hover, 
+                var(--wp--preset--shadow--deep, 
+				0 6px 12px rgba(0, 0, 0, 0.13)));
+
+	// Debug mode
+	@if config.$atmos-debug {
+		@include atmos-debug('registry');
+	}                
+}
+
+%physics-sovereign-resting-state {
+/* ==========================================================================
+   02.03 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
+========================================================================== */
+	@include blueprint-sovereign-resting-state;
+}
+
+// /* ==========================================================================
+//    02.04 WRAPPER ROUNDING: Border Radius (but with brakes on certain blocks)
+//    ========================================================================== */
+@mixin blueprint-wrapper-rounding {
+	&:not(#{config.$blocks-no-border-radius}) {
+		border-radius: var(--wp--custom--border--radius, 18px);
+// 		border: 1px solid var(--wp--custom--color--border); 
+	}
+}
+
+%physics-wrapper-rounding {
+/* ==========================================================================
+   02.04 WRAPPER ROUNDING: Border Radius
+   ========================================================================== */
+	@include blueprint-wrapper-rounding;
+}
+
+// /* ==========================================================================
+//    02.05 WRAPPER CLIPPED: Overflow Hidden
+//    ========================================================================== */
+@mixin blueprint-wrapper-clipped {
+// 	&:not(#{config.$blocks-no-border-radius}) {
+// 		border-radius: var(--wp--custom--border--radius, 18px);
+		overflow: hidden;
+// 	}
+}
+
+// /* ==========================================================================
+//    02.05 WRAPPER CLIPPED: Overflow Hidden
+//    ========================================================================== */
+%physics-wrapper-clipped {
+	@include blueprint-wrapper-clipped;
+}
+
+// ==========================================================================
+// 02.06 ZOOM WRAPPER ROUNDING: Border Radius
+// ==========================================================================
+@mixin blueprint-zoom-wrapper-rounding {
+
+	// Medium transitions and transforms for all interactive frames
+	transition: 
+		transform config.$atmos-timing-medium, 
+		box-shadow config.$atmos-timing-medium, 
+		outline config.$atmos-timing-medium;
+
+	transform: translateY(0) scale(1);
+	
+	&:not(#{config.$blocks-no-border-radius}) {	
+
+		// Reseting shadow
+		box-shadow: var(--wp--custom--shadow--default, 
+					var(--wp--preset--shadow--natural, 
+					0 3px 10px rgba(0, 0, 0, 0.14)));
+
+		// Adjust border radius to match the inner image
+		border: 1px solid var(--wp--custom--color--border);
+		border-radius: var(--wp--custom--border--radius, 18px);
+		padding: var(--wp--preset--spacing--20);
+	
+		> a {
+	// 		border-radius: inherit;  // Mirrors whatever radius the parent has
+			border-radius: calc(
+				var(--wp--custom--border--radius, 18px) - 
+				var(--wp--preset--spacing--20, 4.5px) - 
+				var(--wp--custom--border--width, 1px)
+			);
+		}
+
+		// POLITE VETO: Clear the editor's :where() styles on the core image
+		// placed inside the active rounding block scope.
+		img {
+			border: none;
+			border-radius: 0;
+			box-shadow: none;
+// 			padding: 0;
+// 			margin: 0;
+// 			display: block;
+// 			max-width: 100%;
+// 			height: auto;
+		}
+	}
+		
+	// --------------------------------------------------------------------------
+	// VARIANT A: STANDARD BORDER (is-style-image-border)
+	// --------------------------------------------------------------------------
+	&.is-style-image-border {
+
+		&:not(#{config.$blocks-no-border-radius}) {	
+			border: 1px solid var(--wp--custom--color--border, rgba(255,255,255,0.15));
+			padding: var(--wp--preset--spacing--20, 4.5px);
+			border-radius: var(--wp--custom--border--radius, 18px);
+	
+			> a {
+				overflow: hidden;
+				// Inner Radius = Outer Radius (18px) - Padding (4.5px) - Border (1px)
+				border-radius: calc(
+					var(--wp--custom--border--radius, 18px) - 
+					var(--wp--preset--spacing--20, 4.5px) - 1px
+				);
+			}
+		}
+	}
+
+	// --------------------------------------------------------------------------
+	// VARIANT B: PILL/AVATAR (is-style-image-round-border)
+	// --------------------------------------------------------------------------
+	&.is-style-image-round-border {
+
+		&:not(#{config.$blocks-no-border-radius}) {	
+			border: 1px solid var(--wp--custom--color--border, rgba(255,255,255,0.15));
+			padding: var(--wp--preset--spacing--20, 4.5px);
+			border-radius: 9999px; // Complete capsule shape
+	
+			> a {
+				overflow: hidden;
+				border-radius: 9999px; // Inner fence mirrors the perfect circle execution
+			}
+		}
+	}
+
+	// --------------------------------------------------------------------------
+	// VARIANT C: COMPUTER MONITOR MOCKUP (is-style-image-computer-screen)
+	// --------------------------------------------------------------------------
+	&.is-style-image-computer-screen {
+
+		&:not(#{config.$blocks-no-border-radius}) {	
+
+			// Maps directly to your 034 JSON specification
+			border-style: solid;
+			border-color: var(--wp--preset--color--almost-black, #111);
+			border-width: 36px 36px 9px 36px; 
+			padding: 0; // Seamless bezel execution
+			
+			border-top-left-radius: 18px;
+			border-top-right-radius: 18px;
+			border-bottom-left-radius: 0px;
+			border-bottom-right-radius: 0px;
+	
+			> a {
+				overflow: hidden;
+				// Outer curve (18px) - Padding (0px) - Border thickness (36px) = 
+				// Square interior
+				border-top-left-radius: 0px;
+				border-top-right-radius: 0px;
+				border-bottom-left-radius: 0px;
+				border-bottom-right-radius: 0px;
+			}
+		}
+	}
+
+	// --------------------------------------------------------------------------
+	// VARIANT D: HARD BEZEL DEVICE (is-style-image-tablet-phone-screen)
+	// --------------------------------------------------------------------------
+	&.is-style-image-tablet-phone-screen {
+
+		&:not(#{config.$blocks-no-border-radius}) {	
+	
+			// Maps directly to your 036 JSON specification
+			border: 27px solid var(--wp--preset--color--almost-black, #111);
+			padding: 0;
+			border-radius: 18px;
+	
+			> a {
+				overflow: hidden;
+				// The thick 27px bezel swallows the 18px outer arc, forcing square interior lines
+				border-radius: 0px; 
+			}
+		}
+	}
+
+	// --------------------------------------------------------------------------
+	// VARIANT E: CLEAN CUT (is-style-image-no-border / Fallback Baseline)
+	// --------------------------------------------------------------------------
+	&.is-style-image-no-border {
+
+		&:not(#{config.$blocks-no-border-radius}) {		
+			border: none;
+			padding: 0;
+			border-radius: 0;
+	
+			> a {
+				overflow: hidden;
+				border-radius: 0;
+			}
+		}
+	}
+}
+
+// /* ==========================================================================
+//    02.06 ZOOM WRAPPER ROUNDING: Border Radius
+//    ========================================================================== */
+%physics-zoom-wrapper-rounding {
+	@include blueprint-zoom-wrapper-rounding;
+}
+
+
