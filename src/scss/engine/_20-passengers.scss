@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 08 Physics Mixin Restructure
+//	    v0.9.9 Build 09 Physics and Image Updates
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -12,31 +12,29 @@
 
 @mixin apply-passenger-logic($interactive: false) {
 
-	// INITIALIZE THE PASSENGER MASTER COLLECTOR ARRAY
-// 	$all-passengers: () !global;
+	@if config.$atmos-dev-mode {
+	/* ==========================================================================
+	   20 PASSENGERS: Container Contents (e.g. Images, Columns)
+	   ========================================================================== */
+	}
 
-	// Fetch the compiled arrays natively from the central physics pipeline
-// 	$all-ships: phys.get-ships();
-// 	$all-passengers: phys.get-passengers();
-	
-	// LOOP THROUGH PASSENGERS IN OUR PHYSICS MAP
-// 	@each $map-entry, $role in config.$atmos-physics-map {
+	// LOOP THROUGH PASSENGERS IN OUR BLOCK REGISTRY
 	@each $entry in config.$atmos-block-registry {
 
-		// 1. MERGE REGISTRY ENTRY WITH DEFAULTS
+		// MERGE REGISTRY ENTRY WITH DEFAULTS
 		$config: map.merge(config.$registry-defaults, $entry);
 		$role:   map.get($config, role);
 	
 		@if string.index($role, 'passenger') != null {
 
-			// 2. EXTRACT INDIVIDIAL FIELDS
+			// EXTRACT INDIVIDIAL FIELDS
 			$block:   map.get($config, block);
 			$is:      map.get($config, is);
 			$has:     map.get($config, has);
 			$trigger: map.get($config, trigger);
 			$target:  map.get($config, target);
 				
-			// 2. GET WRAPPER AND TARGET SELECTORS
+			// GET WRAPPER SELECTOR
 			$wrapper-sel: phys.compile-selector(
 				$block, $is, $has, 
 				$trigger, $target, 
@@ -44,6 +42,7 @@
 				$role
 			);
 
+			// GET TARGET SELECTOR
 			$target-sel: phys.compile-selector(
 				$block, $is, $has, 
 				$trigger, $target, 
@@ -51,7 +50,7 @@
 				$role
 			);
 
-			// 3. ADD REGULAR PASSENGERS ONLY TO THE PASSENGERS VETO LIST
+			// ADD REGULAR PASSENGERS ONLY TO THE PASSENGERS VETO LIST
 			@if $role == 'passenger' {
 				@if $target != 'self' {
 					@if not list.index(phys.get-passengers(), $wrapper-sel) {
@@ -74,9 +73,9 @@
 				@if $target != 'self' {
 					#{$wrapper-sel} {
 						@include phys.apply-wrapper-resting-state(
+							$role: $role,
 							$block: $block,
-							$trigger: $trigger,
-							$role: $role
+							$trigger: $trigger
 						);
 					}
 				}
@@ -86,10 +85,9 @@
 				// For Images, the child path.
 				#{$target-sel} {
 					@include phys.apply-resting-state(
+						$role: $role,
 						$block: $block,
-						$trigger: $trigger, 
-						$target: $target, 
-						$role: $role
+						$trigger: $trigger
 					);
 				}
 			}
@@ -108,6 +106,7 @@
 						$role
 					);
 					
+					// GET WRAPPER FOCUS SELECTOR
 					$wrapper-focus: phys.compile-selector(
 						$block, $is, $has, 
 						$trigger, $target, 
@@ -115,11 +114,13 @@
 						$role
 					);
 	
-					#{$wrapper-hover}, #{$wrapper-focus} {
+					// WRITE WRAPPER FOCUS
+					#{$wrapper-hover}, 
+					#{$wrapper-focus} {
 						@include phys.apply-active-state(
-							$block: $block,
-							$target: $target,
 							$role: $role,
+							$block: $block,
+							$trigger: $trigger,
 							$context: 'wrapper'
 						);
 					}
@@ -133,6 +134,7 @@
 					$role
 				);
 	
+				// GET TARGET FOCUS SELECTOR
 				$target-focus: phys.compile-selector(
 					$block, $is, $has, 
 					$trigger, $target, 
@@ -140,11 +142,12 @@
 					$role
 				);
 	
+				// WRITE TARGET FOCUS
 				#{$target-hover}, #{$target-focus} {
 					@include phys.apply-active-state(
-						$block: $block,
-						$target: $target,
 						$role: $role,
+						$block: $block,
+						$trigger: $trigger,
 						$context: 'target'
 					);
 				}        

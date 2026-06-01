@@ -13,38 +13,20 @@
 
 /* ==========================================================================
    ATMOS INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 08 Physics Mixin Restructure
+   v0.9.9 Build 09 Physics and Image Updates
    ========================================================================== */
 
-///* ==========================================================================
-//   02 GLOBAL OVERIDES: Apply styles outside the normal role-specific css
-//   ========================================================================== */
+// LOAD GLOBAL CSS
 @include global.apply-global-logic($interactive: true);
 
-@if config.$atmos-dev-mode {
-/* ==========================================================================
-   10 SHIPS: Containers (e.g. Groups, Columns)
-========================================================================== */
-}
+// LOAD SHIP CSS
 @include ships.apply-ship-logic($interactive: true);
 
-@if config.$atmos-dev-mode {
-/* ==========================================================================
-   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-  ========================================================================== */
-}
+// LOAD PASSENGER CSS
 @include passengers.apply-passenger-logic($interactive: true);
 
-@if config.$atmos-dev-mode {
-/* ==========================================================================
-   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-  ========================================================================== */
-}
+// LOAD SOVEREIGN CSS
 @include sovereigns.apply-sovereign-logic($interactive: true);
 
-@if config.$atmos-dev-mode {
-/* ==========================================================================
-   40 VETOS: Veto embedded Ships and Passengers
-  ========================================================================== */
-}
+// LOAD SHIP AND PASSENGER VETO CSS
 @include vetos.apply-veto-logic($interactive: true);

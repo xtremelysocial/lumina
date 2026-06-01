@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 08 Physics Mixin Restructure
+//      v0.9.9 Build 09 Physics and Image Updates
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -11,24 +11,29 @@
 
 @mixin apply-ship-logic($interactive: false) {
 
+	@if config.$atmos-dev-mode {
+	/* ==========================================================================
+	   10 SHIPS: Containers (e.g. Groups, Columns)
+	   ========================================================================== */
+	}
+
 	// LOOP THROUGH SHIPS IN OUR BLOCK REGISTRY
-// 	@each $entry, $role in config.$atmos-block-registry {
 	@each $entry in config.$atmos-block-registry {
 
-		// 1. MERGE REGISTRY ENTRY WITH DEFAULTS
+		// MERGE REGISTRY ENTRY WITH DEFAULTS
 		$config: map.merge(config.$registry-defaults, $entry);
 		$role:   map.get($config, role);
 
 		@if $role == 'ship' {
 
-			// 2. EXTRACT INDIVIDIAL FIELDS
+			// EXTRACT INDIVIDIAL FIELDS
 			$block:   map.get($config, block);
 			$is:      map.get($config, is);
 			$has:     map.get($config, has);
 			$trigger: map.get($config, trigger);
 			$target:  map.get($config, target);
 			
-			// 3. GET THE TARGET SELECTOR
+			// GET THE TARGET SELECTOR
 			$target-sel: phys.compile-selector(
 				$block, $is, $has, 
 				$trigger, $target, 
@@ -36,19 +41,20 @@
 				$role
 			);
 
-			// 4. ADD THE SHIP TO THE SHIP VETO LIST
+			// ADD THE SHIP TO THE SHIP VETO LIST
 			@if not list.index(phys.get-ships(), $target-sel) {
 				@include phys.register-ship($target-sel);
 			}			
 
 			// ----------------------------------------------------------------------
-			// 5. PHASE 1: RESTING STATE (atmos-engine.css)
+			// PHASE 1: RESTING STATE (atmos-engine.css)
 			// ----------------------------------------------------------------------
 			@if not $interactive {
 
 				// OPTION 1: SEPARATE WRAPPER AND TARGET
 				@if $target != 'self' {
 
+					// GET WRAPPER SELECTOR
 					$wrapper-sel: phys.compile-selector(
 						$block, $is, $has, 
 						$trigger, $target, 
@@ -56,36 +62,43 @@
 						$role
 					);
 											
+					// WRITE WRAPPER
 					#{$wrapper-sel} {
 						@include phys.apply-wrapper-resting-state(
+							$role: $role,
 							$block: $block,
-							$trigger: if($trigger == 'self', $block, $trigger),
-							$role: $role
+							$trigger: $trigger
 						);
 					}
 
+					// WRITE TARGET
 					#{$target-sel} {
-						@include phys.apply-resting-state($role: $role);
+						@include phys.apply-resting-state(
+							$role: $role,
+							$block: $block,
+							$trigger: $trigger
+						);
 					}			
 
 				// OPTION 2: SINGLE TARGET
 				} @else {
 				
+					// WRITE TARGET
 					#{$target-sel} {
-						@include phys.apply-wrapper-resting-state(
+						@include phys.apply-resting-state(
+							$role: $role,
 							$block: $block,
-							$trigger: if($trigger == 'self', $block, $trigger),
-							$role: $role
+							$trigger: $trigger
 						);
-						@include phys.apply-resting-state($role: $role);
 					}
 				}
 
 			// ----------------------------------------------------------------------
-			// 6. PHASE 2: INTERACTION STATE (atmos-interactions.css)
+			// PHASE 2: INTERACTION STATE (atmos-interactions.css)
 			// ----------------------------------------------------------------------
 			} @else {
 			
+				// GET TARGET HOVER SELECTOR
 				$target-hover: phys.compile-selector(
 					$block, $is, $has, 
 					$trigger, $target, 
@@ -93,6 +106,7 @@
 					$role
 				);
 	
+				// GET TARGET FOCUS SELECTOR
 				$target-focus: phys.compile-selector(
 					$block, $is, $has, 
 					$trigger, $target, 
@@ -100,11 +114,13 @@
 					$role
 				);
 	
-				#{$target-hover}, #{$target-focus} {
+				// WRITE TARGET HOVER AND FOCUS
+				#{$target-hover}, 
+				#{$target-focus} {
 					@include phys.apply-active-state(
-						$block: $block,
-						$target: $target,
 						$role: $role,
+						$block: $block,
+						$trigger: $trigger,
 						$context: 'target'
 					);
 				}

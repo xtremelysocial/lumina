@@ -5,24 +5,93 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 08 Physics Mixin Restructure
+//	 v0.9.9 Build 09 Physics and Image Updates
 //   ========================================================================== */
 
 @use 'sass:string';
 @use 'sass:list';
 @use 'sass:map';
 
-// @use '00-config' as config;
 @use '../engine/00-config' as config;
-
-// INTERNAL ENGINE CONNECTIONS
-// @use '01-compiler' as *; // Grants access to atmos-debug
-// @use '02-resting' as *;
+@use '01-compiler' as *;
 
 // TO-DO: Move this to 00-config and address in theme.json
 $color: var(--wp--preset--color--base);
-$bg: transparent; //var(--wp--preset--color--primary);
-$opacity: 0; //0.6;
+$bg: var(--wp--preset--color--primary);
+// $bg: transparent;
+$opacity: 0.6;
+// $opacity: 0;
+
+// ==========================================================================
+// 03.01 SHIP PHYSICS: Lift
+// ==========================================================================
+@mixin blueprint-ship-physics {
+
+	// Subtle shift (e.g. -2px)
+    transform: #{config.$shift-subtle}; 
+	
+	// Debug mode
+	@include atmos-debug('ship');
+}
+
+%physics-ship-physics {
+	/* ==========================================================================
+	   03.01 SHIP PHYSICS: Lift
+	========================================================================== */
+	@include blueprint-ship-physics;
+}
+
+// ==========================================================================
+// 03.02 SHIP VISUALS: Deep Shadow
+// ==========================================================================
+@mixin blueprint-ship-visuals {
+
+    // Hover default shadow (e.g. Deep)
+	box-shadow: var(--wp--custom--shadow--hover, 
+				var(--wp--preset--shadow--deep, 
+				0 6px 12px rgba(0, 0, 0, 0.13)));	
+}
+
+%physics-ship-visuals {
+	/* ==========================================================================
+	   03.02 SHIP VISUALS: Deep Shadow
+	========================================================================== */
+	@include blueprint-ship-visuals;
+}
+
+// /* ==========================================================================
+//    02.03 APPLY RESTING STATE: Apply physics and conditional visuals
+//    ========================================================================== */
+@mixin apply-ship($block, $trigger) {
+
+    // 1. APPLY PHYSICS (Always)
+    @if config.$atmos-dev-mode {
+        @include blueprint-ship-physics;
+    } @else {
+        @extend %physics-ship-physics;
+    }
+
+    // 2. APPLY VISUALS (Conditionally)
+    $is-braked: is-braked($block, $trigger);
+
+    @if $is-braked {
+        // Forced: Apply directly (no exclusion)
+//         @if config.$atmos-dev-mode {
+//             @include blueprint-wrapper-clipped;
+//         } @else {
+//             @extend %physics-wrapper-clipped;
+//         }
+    } @else {
+        // Standard: Apply with exclusion selector
+        &:not(#{config.$blocks-no-border-radius}) {
+            @if config.$atmos-dev-mode {
+                @include blueprint-ship-visuals;
+            } @else {
+                @extend %physics-ship-visuals;
+            }
+        }
+    }
+}
 
 // ==========================================================================
 // 03.01 VEIL X: Thin X overlay
@@ -91,105 +160,6 @@ $opacity: 0; //0.6;
 }
 
 // ==========================================================================
-// 03.05 OVERLAY RESTING STATE: mask layer sitting naturally above the image
-// ==========================================================================
-@mixin blueprint-resting-overlay {
-
-	&::after {
-		content: '';
-		position: absolute;
-
-		// Tracks the edges of the newly block-level <a> box
-		inset: 0;
-
-		// Fluidly inherits concentric curves (e.g., 12.5px) OR sharp flat corners (0px) based on context!
-		border-radius: inherit;
-		
-// 			background-color: var(--wp--preset--color--almost-black);
-//// 		background-color: var(--wp--preset--color--primary);
-// 			background-size: 100% 100%;
-											
-		background-color: #{$bg};
-											
-		// Use a longer timing function
-		transition: config.$atmos-timing-medium;
-		
-// 			opacity: calc(1 - var(--wp--custom--button--hover-opacity, 0.8));
-// 			opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
-////		opacity: 0.6; //0.35;
-		opacity: #{$opacity};
-
-		pointer-events: none; // Completely click-transparent
-		
-		// ==============================================================
-		// THE LUMINANCE SHIELD: Automatically inverts white lines over light areas
-		// ==============================================================
-		mix-blend-mode: exclusion; // Or 'difference'
-				
-		// ==============================================================
-		// SWAP VEIL PATTERN HERE: Toggle your active visual overlay engine
-		// ==============================================================
-// 			@include blueprint-veil-vector-x;
-			@include blueprint-veil-brackets;
-// 		@include blueprint-veil-crosshair;
-// 			@include blueprint-veil-matrix;
-		
-	}
-}
-
-// ==========================================================================
-// 03.06 RESTING BRIGHTNESS: Define the resting baseline for images
-// ==========================================================================
-@mixin blueprint-resting-brightness {
-
-		img {
-			// CRITICAL: Bind the filter transition to your core timing curve
-// 			transition: 
-// 				transform config.$atmos-timing-medium, 
-// 				filter config.$atmos-timing-medium;
-			
-			// Baseline standard exposure state
-			filter: brightness(1);
-		}
-}
-
-// ==========================================================================
-// 03.10 SHIP: Massive Containers (Groups, Columns, Covers).
-// ==========================================================================
-@mixin blueprint-ship {
-
-	// Subtle shift (e.g. -2px)
-    transform: #{config.$shift-subtle}; 
-
-    // Hover default shadow (e.g. Deep)
-	&:not(#{config.$blocks-no-border-radius}) {
-		box-shadow: var(--wp--custom--shadow--hover, 
-					var(--wp--preset--shadow--deep, 
-					0 6px 12px rgba(0, 0, 0, 0.13)));
-	}
-	
-	// Debug mode
-	@if config.$atmos-debug {
-		@include atmos-debug('ship');
-	}
-}
-
-%physics-ship {
-	/* ==========================================================================
-	   03.10 SHIP: Massive Containers (Groups, Columns, Covers).
-	========================================================================== */
-	@include blueprint-ship;
-}
-
-@mixin apply-ship {
-	@if config.$atmos-dev-mode {
-		@include blueprint-ship;
-	} @else {
-		@extend %physics-ship;
-	}
-}
-
-// ==========================================================================
 // 03.20 PASSENGER: Blocks that can be contained in Ships or promoted to
 //		 to a Ship or Portal (Image with link)
 // ==========================================================================
@@ -209,9 +179,7 @@ $opacity: 0; //0.6;
 	}
 
 	// Debug mode
-	@if config.$atmos-debug {
-		@include atmos-debug('passenger');
-	}                    
+	@include atmos-debug('passenger');
 }
 
 %physics-passenger {
@@ -247,9 +215,7 @@ $opacity: 0; //0.6;
 	}
 	
 	// Debug mode
-	@if config.$atmos-debug {
-		@include atmos-debug('passenger');
-	}                    
+	@include atmos-debug('passenger');
 }
 
 %physics-passenger-grow {
@@ -268,7 +234,7 @@ $opacity: 0; //0.6;
 }
 
 // ==========================================================================
-// 03.22 ZOOM REMOVE OVERLAY: Fade out the overlay color
+// 03.22 REMOVE OVERLAY: Fade out the overlay color
 // ==========================================================================
 @mixin blueprint-remove-overlay {
 
@@ -280,25 +246,50 @@ $opacity: 0; //0.6;
 	} 
 }
 
-// ==========================================================================
-// 03.23 PASSENGER INTERACTION: Increase brightness on the image
-// ==========================================================================
-@mixin blueprint-hover-brighten-image {
+%physics-remove-overlay {
+	/* ==========================================================================
+	   03.22 REMOVE OVERLAY: Fade out the overlay color
+	========================================================================== */
+	@include blueprint-remove-overlay;
+}
 
-	img {
-			// 1. ZOOM PHYSICS: Keeps your existing high-end zoom momentum
-// 			transform: scale(config.$atmos-zoom-ratio, 1.05); 
-			
-			// 2. EXPOSURE LIFT: Elegant, clean brightness glow (1.15 = 15% brighter)
-			// This leaves your container borders and frame padding completely pristine!
-			filter: brightness(1.15); 
-		}
+@mixin apply-remove-overlay {
+	@if config.$atmos-dev-mode {
+		@include blueprint-remove-overlay;
+	} @else {
+		@extend %physics-remove-overlay;
+	}
 }
 
 // ==========================================================================
-// 03.23PASSENGER INTERACTION: Target the Transparent Veil on Hover
+// 03.23 BRIGHTEN IMAGE: Increase brightness on the image
 // ==========================================================================
-@mixin blueprint-hover-veil-reveal {
+@mixin blueprint-brighten-image {
+
+	img {
+		filter: brightness(1.15); 
+	}
+}
+
+%physics-brighten-image {
+	/* ==========================================================================
+	   03.23 BRIGHTEN IMAGE: Increase brightness on the image
+	========================================================================== */
+	@include blueprint-brighten-image;
+}
+
+@mixin apply-brighten-image {
+	@if config.$atmos-dev-mode {
+		@include blueprint-brighten-image;
+	} @else {
+		@extend %physics-brighten-image;
+	}
+}
+
+// ==========================================================================
+// 03.24 VEIL REVEAL: Reveals veil by setting opacity 
+// ==========================================================================
+@mixin blueprint-veil-reveal {
 	> a {
 		&::after {
 			// Brings the lines into view over the brightened image layout
@@ -306,7 +297,22 @@ $opacity: 0; //0.6;
 		}
 	}
 }
-	
+
+%physics-veil-reveal {
+	/* ==========================================================================
+	   03.24 VEIL REVEAL: Reveals veil by setting opacity 
+	========================================================================== */
+	@include blueprint-veil-reveal;
+}
+
+@mixin apply-veil-reveal {
+	@if config.$atmos-dev-mode {
+		@include blueprint-veil-reveal;
+	} @else {
+		@extend %physics-veil-reveal;
+	}
+}	
+
 // ==========================================================================
 // 03.24 PASSENGER ZOOM (WRAPPER): Lifts the structural viewport box depth
 // ==========================================================================
@@ -326,19 +332,17 @@ $opacity: 0; //0.6;
 		
 	// 2. Interaction: Melts the tint layer away cleanly to expose full image fidelity
 // 	@include blueprint-remove-overlay;
-// 	@include blueprint-hover-shutter-snap;	
-	@include blueprint-hover-brighten-image;	
+// 	@include apply-remove-overlay;
+
+	@include blueprint-brighten-image;	
+// 	@include apply-brighten-image;	
 	
-	@include blueprint-hover-veil-reveal;
-// 	@include blueprint-veil-crosshair;
-	
-	// 3. Shutter click animation
-// 	@include blueprint-trigger-shutter;
-	
-	// Debug mode
-	@if config.$atmos-debug {
-		@include atmos-debug('passenger');
-	}                    
+	@include blueprint-veil-reveal;
+// 	@include apply-veil-reveal;
+		
+	// Debug mode - TO-DO: Ruins image border, find another way
+// 	@include atmos-debug('passenger');
+// 	@include atmos-debug('wrapper-active');
 }
 
 %physics-passenger-zoom-wrapper {
@@ -354,41 +358,6 @@ $opacity: 0; //0.6;
 	} @else {
 		@extend %physics-passenger-zoom-wrapper;
 	}
-}
-
-// ==========================================================================
-// 03.25 ZOOM WRAPPER CLIPPED: Overflow Hidden + Overlay
-// ==========================================================================
-@mixin blueprint-zoom-wrapper-clipped {
-
-	// 2. Viewport Window Fence: Configured on the nested anchor link block
-	> a {
-
-		// CRITICAL: Binds the absolute veil coordinate system to this element!
-		position: relative;      
-
-		// Ensures the click target is the whole image
-		display: inline-block;
-		max-width: 100%;
-		cursor: pointer;    
-		
-		// CRITICAL: Pulls the anchor up off the text baseline,
-		vertical-align: middle;
-		
-		// Slices the zooming graphic cleanly
-		overflow: hidden;
-		
-		@include blueprint-resting-overlay; 
-		@include blueprint-resting-brightness; 
-
-	}
-}
-
-%physics-zoom-wrapper-clipped {
-/* ==========================================================================
-   03.25 ZOOM WRAPPER CLIPPED: Overflow Hidden + Overlay
-========================================================================== */
-	@include blueprint-zoom-wrapper-clipped;
 }
 
 // ==========================================================================
@@ -433,9 +402,7 @@ $opacity: 0; //0.6;
 	opacity: 1; 
 	
 	// Debug mode
-	@if config.$atmos-debug {
-		@include atmos-debug('sovereign');
-	}
+	@include atmos-debug('sovereign');
 }
 
 %physics-sovereign {
@@ -450,6 +417,34 @@ $opacity: 0; //0.6;
 		@include blueprint-sovereign;
 	} @else {
 		@extend %physics-sovereign;
+	}
+}
+
+// ==========================================================================
+// 03.40 SILENCE ACTIVE: Silence Ships and Passengers with debug outline
+// ==========================================================================
+@mixin blueprint-silence {
+
+	// Reset shadow and transform
+	box-shadow: none; 
+	transform: none;
+
+	// Debug mode    
+	@include atmos-debug('silence-active');
+}
+
+%physics-silence {
+	/* ==========================================================================
+	   03.40 SILENCE ACTIVE: Silence Ships and Passengers with debug outline
+	========================================================================== */
+	@include blueprint-silence;
+}
+
+@mixin apply-silence {
+	@if config.$atmos-dev-mode {	
+		@include blueprint-silence;
+	} @else {
+		@extend %physics-silence;
 	}
 }
 

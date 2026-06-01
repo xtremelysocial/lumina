@@ -1,21 +1,32 @@
 //* ==========================================================================
 //   40 VETOS: Centralized Nesting Boundary Controller
-//	    v0.9.9 Build 08 Physics Mixin Restructure
+//	    v0.9.9 Build 09 Physics and Image Updates
 //   ========================================================================== */
 
 @use 'sass:list';
 
+@use '../engine/00-config' as config;
 @use '../physics' as phys;
 
 @mixin apply-veto-logic($interactive: false) {
 
-	$hover: if($interactive, ':hover', '');
+	@if config.$atmos-dev-mode {
+	/* ==========================================================================
+	   40 VETOS: Veto embedded Ships and Passengers
+	  ========================================================================== */
+	}
 
-	// Fetch the compiled arrays natively from the central physics pipeline
+	// SET HOVER STATE
+	$hover: '';
+	@if $interactive {
+		$hover: ':hover';
+	}
+
+	// FETCH SHIPS AND PASSENGERS FROM THE VETO LISTS
 	$ships: phys.get-ships();
 	$passengers: phys.get-passengers();
-
-	// Ensure our structural ship arrays have accumulated selectors before evaluating
+	
+	// LOOP THROUGH SHIPS
 	@if list.length($ships) > 0 {
 		
 		@each $parent in $ships {
@@ -47,6 +58,7 @@
 					} @else {
 						#{$parent}#{$hover} #{$child-passenger},
 						#{$parent}#{$hover} #{$child-passenger}:hover {
+							@debug "CALLING APPLY-SILENCE"; // ADD THIS						
 							@include phys.apply-silence($interactive: true);
 						}
 					}

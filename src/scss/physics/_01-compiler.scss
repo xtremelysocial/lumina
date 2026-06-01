@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 08 Physics Mixin Restructure
+//	 v0.9.9 Build 09 Physics and Image Updates
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -15,7 +15,7 @@
 @use '../engine/00-config' as config;
 
 // ==========================================================================
-// 01.1 CENTRALIZED SELECTOR COMPILER: Declarative Spec Enforcer
+// 01.01 CENTRALIZED SELECTOR COMPILER: Declarative Spec Enforcer
 // ==========================================================================
 @function compile-selector(
 	$block: '*', 
@@ -53,6 +53,7 @@
     }
 
 	// 5. ADD ALIGNFULL IF NOT SOVEREIGN
+	// 	  TO-DO: MOVE THIS SOONER FOR BROWSER PERFORMANCE
 	@if $role != 'sovereign' {
 	    $selector: '#{$selector}:not(.alignfull)';
 	}
@@ -73,37 +74,82 @@
     } @else {
         // Build base path with state suffix attached directly to the active 
         // action boundary element
-        $action-path: if($trigger == 'self', '#{$selector}#{$state-suffix}', '#{$selector} #{$trigger}#{$state-suffix}');
+		$action-path: '#{$selector} #{$trigger}#{$state-suffix}';
+		@if $trigger == 'self' {
+			$action-path: '#{$selector}#{$state-suffix}';
+		}
         
-        // Append the final graphic asset target layer if it isn't self-contained
-        @return if($target == 'self', $action-path, '#{$action-path} #{$target}');
+        // Append the final graphic asset target layer if it isn't self-contained        
+		@if $target == 'self' {
+			@return $action-path;
+		} @else {
+			@return '#{$action-path} #{$target}';
+		}        
     }
 }
 
 // ==========================================================================
-// 01.2 VISUAL DEBUG: Set outline colors and styles based on engine logic
+// 01.02 VISUAL DEBUG: Set outline colors and styles based on engine logic
+// ==========================================================================
+@function is-braked($block, $trigger) {
+
+    // 1. Resolve target (Logic that was working in 04)
+    $resolved-target: $trigger;
+    @if $trigger == 'self' {
+        $resolved-target: $block;
+    }
+
+    // 2. Evaluate brakes
+    $is-braked: false;
+    @each $brake in config.$blocks-no-border-radius {
+        $clean-brake: $brake;
+        $star-index: string.index($brake, ' *');
+        
+        @if $star-index != null {
+            $clean-brake: string.slice($brake, 1, $star-index - 1);
+        }
+        
+        @if string.index($resolved-target, $clean-brake) != null {
+            $is-braked: true;
+        }
+    }
+    
+    @return $is-braked;
+}
+
+// ==========================================================================
+// 01.03 VISUAL DEBUG: Set outline colors and styles based on engine logic
 // ==========================================================================
 @mixin atmos-debug($role) {
+
     @if config.$atmos-debug {
 
-        $debug-string: map.get((
-            'registry':  		config.$debug-registry,
-            'ship':      		config.$debug-ship,
-            'sovereign': 		config.$debug-sovereign,
-            'passenger': 		config.$debug-passenger,
-            'silence':   		config.$debug-silence
+		// GET THE DEBUG OUTLINE
+        $debug-val: map.get((
+            'registry':      	config.$debug-registry,
+            'wrapper':      	config.$debug-wrapper,
+            'wrapper-active':   config.$debug-wrapper-active,
+            'ship':          	config.$debug-ship,
+            'passenger':     	config.$debug-passenger,
+            'sovereign':     	config.$debug-sovereign,
+            'silence':       	config.$debug-silence,
+            'silence-active':	config.$debug-silence-active
         ), $role);
 
+		// GET THE DEBUG OUTLINE OFFSET
         $debug-offset: map.get((
-            'registry':  		-1px,
-            'ship':       		 1px,
-            'sovereign':  		 1px,
-            'passenger': 		 1px,
-            'silence':  		-1px
+            'registry':     	-2px,
+            'wrapper':     		-4px,
+            'wrapper-active':   -6px,
+            'ship':         	-2px,
+            'passenger':    	-2px,
+            'sovereign':    	-2px,
+            'silence':      	-2px,
+            'silence-active':   -4px
         ), $role);
 
-        // Set the outline color and offset
-        outline: #{$debug-string}; 
-        outline-offset: #{$debug-offset};
+        // WRITE THE OUTLINE
+        outline: $debug-val;
+        outline-offset: $debug-offset;
     }
 }

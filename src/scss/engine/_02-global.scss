@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    v0.9.9 Build 08 Physics Mixin Restructure
+//	    v0.9.9 Build 09 Physics and Image Updates
 //   ========================================================================== */
 
 // @use '00-config' as config;
@@ -9,12 +9,36 @@
 @mixin apply-global-logic($interactive: false) {
 
 	// Setup State Toggle
-	$hover: if($interactive, ':hover', '');
+	$hover: '';
+	@if $interactive {
+		$hover: ':hover';
+	}
 
 	// ----------------------------------------------------------------------
 	// PHASE 1: RESTING STATE (atmos-engine.css)
 	// ----------------------------------------------------------------------
 	@if not $interactive {
+	
+		/* ==========================================================================
+		   02.00 REDUCE MOTION: Slow down and reduce the scale of animations for
+		   		 for users that set this for accessibility reasons.
+		========================================================================== */
+		@media (prefers-reduced-motion: reduce) {
+			:root {
+				/* Slow down the timing (e.g., from 400ms to 800ms) */
+				--wp--custom--animation--duration--normal: 500ms;
+				--wp--custom--animation--duration--medium: 800ms;
+		
+				/* Make the transforms subtle (e.g., 1.05 becomes 1.01) */
+				--wp--custom--animation--default--hover-small-transform: scale(1.01);
+				--wp--custom--animation--default--hover-transform: scale(1.03);
+				--wp--custom--animation--default--hover-large-transform: scale(1.04);
+		
+				/* Reduce the "lift" (e.g., -3px becomes -1px) */
+				--wp--custom--animation--default--object-small-transform: translateY(-1px);
+				--wp--custom--animation--default--object-transform: translateY(-2px);
+			}
+		}
 	
 		/* ==========================================================================
 		   02.1 PADDING: Set horizontal padding to match vertical padding on colored 
@@ -115,7 +139,7 @@
 	// ----------------------------------------------------------------------
 	// PHASE 2: INTERACTION STATE (atmos-interactions.css)
 	// ----------------------------------------------------------------------
-	} @else {
+// 	} @else {
 	}
 
 }

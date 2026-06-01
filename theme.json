@@ -27,10 +27,10 @@
 				}
 			},
 			"border": {
-				"radius": "18px" 
+				"radius": "var(--wp--preset--border-radius--lg, 18px)"
 			},
 			"button": {
-				"radius": "999px" 
+				"radius": "9999px"
 			},
 			"spacing": {
 				"gap": "18px"
@@ -40,10 +40,9 @@
 			},			
 			"animation": {
 				"duration": {
-					"short": "150ms",
-					"normal": "250ms",
-					"medium": "400ms",
-					"slow": "800ms"
+					"short": "250ms",
+					"medium": "500ms",
+					"normal": "800ms"
 				},
 				"timingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
 				"fillMode": "both",
@@ -177,6 +176,18 @@
 				{ "name": "Sharp", "slug": "sharp", "shadow": "var(--wp--custom--shadow--sharp)" },
 				{ "name": "Crisp", "slug": "crisp", "shadow": "var(--wp--custom--shadow--crisp)" },
 				{ "name": "Outline", "slug": "outline", "shadow": "var(--wp--custom--shadow--outline)" }
+			]
+		},
+		"border": {
+			"customRadius": true,
+			"radiusSizes": [
+				{ "name": "Extra Small", "slug": "xs", "size": "4.5px" },
+				{ "name": "Small", "slug": "sm", "size": "9px" },
+				{ "name": "Medium", "slug": "md", "size": "13.5px" },
+				{ "name": "Large", "slug": "lg", "size": "18px" },
+				{ "name": "Extra Large", "slug": "xl", "size": "22.5px" },
+				{ "name": "2X-Large", "slug": "2-xl", "size": "27px" },
+				{ "name": "3X-Large", "slug": "3-xl", "size": "36px" }
 			]
 		}
 	},

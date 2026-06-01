@@ -6,7 +6,7 @@
 	"settings": {
 		"custom": {
 			"border": {
-				"radius": "40px" 
+				"radius": "var(--wp--preset--border-radius--3-xl, 36px)" 
 			},
 			"button": {
 				"radius": "999px" 
@@ -16,10 +16,8 @@
 			},
 			"animation": {
 				"duration": {
-					"short": "200ms",
-					"normal": "350ms",
-					"medium": "500ms",
-					"slow": "900ms"
+					"short": "350ms",
+					"medium": "500ms"
 				},
 				"timingFunction": "cubic-bezier(0.34, 1.56, 0.64, 1)",
 				"fillMode": "both",

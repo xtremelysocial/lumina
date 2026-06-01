@@ -8,26 +8,16 @@
 //   ========================================================================== */
 
 // 1. COMPILER LAYER: Only expose the master selector builder
-@forward '01-compiler' show compile-selector;
-
-// 2. RESTING LAYER: All mixins here are private blueprints, forward nothing!
-// (Keeps your global namespace perfectly pristine)
-
-// 3. ACTIONS LAYER: Expose the standalone interactive click/hover targets
-@forward '03-actions' show 
-	apply-passenger-zoom-wrapper, 
-	apply-passenger-zoom-asset, 
-	apply-passenger-grow, 
-	apply-passenger, 
-	apply-sovereign;
+@forward '01-compiler' show 
+	compile-selector;
 
 // 4. REGISTRY LAYER: Expose traffic managers and data registry streams
 @forward '04-registry' show 
-	apply-wrapper-resting-state, 
-	apply-resting-state, 
-	apply-active-state, 
-	apply-silence, 
 	register-ship, 
 	register-passenger, 
 	get-ships, 
-	get-passengers;
+	get-passengers,
+	apply-wrapper-resting-state, 
+	apply-resting-state, 
+	apply-active-state, 
+	apply-silence;

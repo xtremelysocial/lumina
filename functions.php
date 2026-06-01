@@ -56,16 +56,6 @@ function atmos_enqueue_gravity_engine() {
     $interaction_uri = get_stylesheet_directory_uri() . '/assets/css/atmos-interactions.css';
     $interaction_path = get_stylesheet_directory() . '/assets/css/atmos-interactions.css';
 
-	// Get the CSS build version or use the theme version
-	$asset = str_replace( '.css', '.asset.php', $style );
-
-	if ( file_exists ( $asset ) ) {
-		$asset_file = include( $asset );
-		if ( $asset_file['version'] ) {
-			$version = $asset_file['version'];
-		}
-	}
-
     // 1. REGISTER handles first to establish the "library"
     if ( file_exists( $engine_path ) ) {
 
@@ -82,7 +72,7 @@ function atmos_enqueue_gravity_engine() {
 //             array('flat-blocks'),
 			array(),            
 //             filemtime( $engine_path )
-			$asset_version ?? $version;
+			$asset_version ?? $version
         );
     }
 
@@ -100,7 +90,7 @@ function atmos_enqueue_gravity_engine() {
             $interaction_uri,
             array('atmos-engine'), 
 //             filemtime( $engine_path )
-			$asset_version ?? $version;
+			$asset_version ?? $version
         );
     }
 

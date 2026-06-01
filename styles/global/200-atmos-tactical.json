@@ -6,20 +6,18 @@
 	"settings": {
 		"custom": {
 			"border": {
-				"radius": "8px" 
+				"radius": "var(--wp--preset--border-radius--sm, 9px)"
 			},
 			"button": {
-				"radius": "4px" 
+				"radius": "var(--wp--preset--border-radius--xs, 4.5px)" 
 			},
 			"spacing": {
 				"gap": "20px"
 			},
 			"animation": {
 				"duration": {
-					"short": "100ms",
-					"normal": "180ms",
-					"medium": "300ms",
-					"slow": "600ms"
+					"short": "180ms",
+					"medium": "300ms"
 				},
 				"timingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
 				"fillMode": "both",

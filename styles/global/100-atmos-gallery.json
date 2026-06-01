@@ -20,11 +20,12 @@
 					"background": "var(--wp--preset--color--base)" 
 				}
 			},
+			},
 			"border": {
-				"radius": "5px" 
+				"radius": "var(--wp--preset--border-radius--xs, 4.5px)"
 			},
 			"button": {
-				"radius": "0px" 
+				"radius": "0px"
 			},
 			"spacing": {
 				"gap": "24px"
@@ -32,9 +33,7 @@
 			"animation": {
 				"duration": {
 					"short": "200ms",
-					"normal": "500ms",
-					"medium": "800ms",
-					"slow": "1200ms"
+					"medium": "800ms"
 				},
 				"timingFunction": "cubic-bezier(0.2, 0, 0, 1)",
 				"fillMode": "both",

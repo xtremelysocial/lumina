@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    v0.9.9 Build 08 Physics Mixin Restructure
+// 	    v0.9.9 Build 09 Physics and Image Updates
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -11,8 +11,13 @@
 
 @mixin apply-sovereign-logic($interactive: false) {
 
+	@if config.$atmos-dev-mode {
+	/* ==========================================================================
+	   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+	   ========================================================================== */
+	}
+
 	// LOOP THROUGH SOVEREIGNS IN OUR PHYSICS MAP
-// 	@each $map-entry, $role in config.$atmos-physics-map {
 	@each $entry in config.$atmos-block-registry {
 
 		// 1. MERGE REGISTRY ENTRY WITH DEFAULTS
@@ -27,6 +32,8 @@
 			$has:     map.get($config, has);
 			$trigger: map.get($config, trigger);
 			$target:  map.get($config, target);
+			
+			$spacing: map.get($config, spacing);
 
 			// ----------------------------------------------------------------------
 			// PHASE 1: RESTING STATE (Rendered to atmos-engine.css)
@@ -44,10 +51,15 @@
 				// WRITE OUT THE CSS FOR THE TARGET
 				#{$target-sel} {
 					@include phys.apply-resting-state(
-						$trigger: $trigger, 
-						$target: $target, 
-						$role: $role
+						$role: $role,
+						$block: $block,
+						$trigger: $trigger
 					);
+
+					// ADD MARGIN TO LEGACY HTML BUTTONS ONLY
+					@if $spacing {
+						margin-right: config.$html-button-spacing;
+					}
 				}
 
 			// ----------------------------------------------------------------------
@@ -69,43 +81,15 @@
 					$role
 				);
 	
-				#{$target-hover}, #{$target-focus} {
+				#{$target-hover}, 
+				#{$target-focus} {
 					@include phys.apply-active-state(
-						$block: $block,
-						$target: $target,
 						$role: $role,
+						$block: $block,
+						$trigger: $trigger,
 						$context: 'target'
 					);
 				}
-			}
-		}
-	}
-
-	// ==========================================================================
-	// LEGACY HTML ELEMENTS: Needed for WordPress.org theme preview
-	// ==========================================================================
-
-	$states: if($interactive, (':hover', ':focus-visible'), (''));
-		
-	@each $element in config.$atmos-flat-sovereigns {
-		
-		// Compile precise state pairs specifically for this element
-		$element-selectors: ();
-		@each $state in $states {
-			$compiled-flat-gate: '.wp-site-blocks #{$element}#{$state}';
-			$element-selectors: list.append($element-selectors, $compiled-flat-gate, comma);
-		}
-
-		#{$element-selectors} {
-			@if not $interactive {
-				@include phys.apply-resting-state(
-					$trigger: $element, 
-					$target: 'self', 
-					$role: "sovereign"
-				);
-				margin-right: var(--wp--preset--spacing--30);			
-			} @else {
-				@include phys.apply-sovereign;
 			}
 		}
 	}
