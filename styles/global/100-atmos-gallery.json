@@ -20,7 +20,6 @@
 					"background": "var(--wp--preset--color--base)" 
 				}
 			},
-			},
 			"border": {
 				"radius": "var(--wp--preset--border-radius--xs, 4.5px)"
 			},

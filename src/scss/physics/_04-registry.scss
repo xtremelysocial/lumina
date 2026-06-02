@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 09 Physics and Image Updates
+//	 v0.9.9 Build 10 CSS Optimization
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -81,13 +81,11 @@
 	
 	// TRACK B.2: STANDARD GRAPHICS (Galleries, Core Images, Latest Posts Featured)
 	@else if $role == 'passenger-grow' {
-// 		@include resting.apply-asset-resting-state;
 		@include resting.apply-resting-state;
 	}
 
 	// TRACK B.3: REGULAR PASSENGERS (Column block)
 	@else if $role == 'passenger' {
-// 		@include resting.apply-asset-resting-state;
 		@include resting.apply-resting-state;
 	}
 
@@ -103,7 +101,29 @@
 }
 
 // ==========================================================================
-// 04.03 CENTRALIZED TRAFFIC CONTROLLER: Declarative Active State Executor
+// 04.03 BUTTON SPACING: Spacing for legacy HTML-only buttons
+// ==========================================================================
+@mixin __blueprint-button-spacing {
+	margin-right: config.$html-button-spacing;     
+}
+
+%physics-button-spacing {
+/* ==========================================================================
+   04.03 BUTTON SPACING: Spacing for legacy HTML-only buttons
+========================================================================== */
+	@include __blueprint-button-spacing;
+}
+
+@mixin apply-button-spacing {
+	@if config.$atmos-dev-mode {
+		@include __blueprint-button-spacing;
+	} @else {
+		@extend %physics-button-spacing;
+	}
+}
+
+// ==========================================================================
+// 04.04 CENTRALIZED TRAFFIC CONTROLLER: Declarative Active State Executor
 // ==========================================================================
 @mixin apply-active-state(
 	$role, 
@@ -155,7 +175,7 @@
 
 	// Handle resting silence
 	@if not $interactive {
-	    @include resting.apply-silence;
+	    @include resting.apply-resting-silence;
 
 	// Handle active silence
 	} @else {

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    v0.9.9 Build 09 Physics and Image Updates
+// 	    v0.9.9 Build 10 CSS Optimization
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -58,7 +58,8 @@
 
 					// ADD MARGIN TO LEGACY HTML BUTTONS ONLY
 					@if $spacing {
-						margin-right: config.$html-button-spacing;
+// 						margin-right: config.$html-button-spacing;
+						@include phys.apply-button-spacing;
 					}
 				}
 

@@ -1,22 +1,13 @@
 === Atmos Blocks ===
 
 == Description ==
-Atmos Blocks is a high-end evolution of the flat design aesthetic. 
-Moving beyond the limitations of standard layouts, Atmos introduces 
-a 'Flat 3.0' philosophy centered on atmospheric depth and tactile 
-hardware inspiration. 
+Atmos Blocks is a high-end evolution of the flat design aesthetic to a modern "Post Flat" era. Moving beyond the limitations of "flat" layouts, Atmos introduces a philosophy centered on atmospheric depth, light and interactive physics. 
 
-Built on a foundation of earthy notes and ambient lighting, the 
-theme utilizes sophisticated dark-mode variations and deep 
-monochromatic palettes to create a focused, high-contrast 
-environment. With a signature 'object-oriented' layout, Atmos 
-containerizes content within high-radius surfaces—evoking the 
-premium feel of modern tech—while maintaining sharp, immersive 
-horizon lines for cinematic hero sections.
+Built on a foundation of earthy notes and ambient lighting, the theme utilizes sophisticated color-scheme variations to provide a rich set of color palettes to create a focused, high-contrast environment. With a signature 'card-like' layout, Atmos containerizes content within high-radius surfaces—evoking the premium feel of modern tech—while maintaining sharp, immersive horizon lines for cinematic hero sections.
 
-Atmos Blocks is a Child Theme of Flat Blocks but with a completely different color palette and block styling.
+Atmos Blocks is a Child Theme of Flat Blocks but with a completely different color palette, styles, and block patterns while adding automatic object-sensing and animation.
 
-For more information go to [http://xtremelysocial.com/wordpress/atmos/].
+For more information go to [http://xtremelysocial.com/wordpress/atmos/]. 
 
 == Installation ==
 
@@ -46,24 +37,12 @@ For more information, see these pages on the XtremelySocial.com website:
 
 You can check out our other themes here: https://xtremelysocial.com/wordpress/
 
-= The Atmos Physics Engine =
-
-src/scss/
-├── atmos-engine.scss        # Global Manifest: Imports config, 01, 10, and resting runs
-├── atmos-interactions.scss  # Interaction Manifest: Imports config, 01, and hover runs
-└── engine/
-    ├── _00-config.scss      # Core Map Registry (Variables, Maps, Tokens)
-    ├── _01-physics.scss     # The Logic Gates (Blueprints, Placeholders, Dispatchers)
-    ├── _10-ships.scss       # Ship Geometry, Card Radii, and Section 10.5 Resets
-    ├── _20-passengers.scss  # Passenger/Sovereign specific baseline setups (if any)
-    └── _60-vetos.scss       # The Cross-Multiplication Parent-Child Veto Loops
-
 == Changelog ==
 
-= v0.9.8 = 
-May 2, 2026
+= v1.0.0 = 
+June 1, 2026
 
-Initial theme version
+* Initial theme version
 
 == Copyright ==
 

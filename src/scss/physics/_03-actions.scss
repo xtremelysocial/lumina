@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 09 Physics and Image Updates
+//	 v0.9.9 Build 10 CSS Optimization
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -23,53 +23,120 @@ $opacity: 0.6;
 // $opacity: 0;
 
 // ==========================================================================
-// 03.01 SHIP PHYSICS: Lift
+// 03.01 SUBTLE LIFT: Apply shift up (e.g. -2px)
 // ==========================================================================
-@mixin blueprint-ship-physics {
-
-	// Subtle shift (e.g. -2px)
+@mixin __blueprint-lift-subtle {
     transform: #{config.$shift-subtle}; 
-	
-	// Debug mode
-	@include atmos-debug('ship');
 }
 
-%physics-ship-physics {
+%physics-lift-subtle {
 	/* ==========================================================================
-	   03.01 SHIP PHYSICS: Lift
+	   03.01 SUBTLE LIFT: Apply shift up (e.g. -2px)
 	========================================================================== */
-	@include blueprint-ship-physics;
+	@include __blueprint-lift-subtle;
 }
 
 // ==========================================================================
-// 03.02 SHIP VISUALS: Deep Shadow
+// 03.02 DEFAULT LIFT: Apply shift up (e.g. -2px)
 // ==========================================================================
-@mixin blueprint-ship-visuals {
+@mixin __blueprint-lift-standard {
+    transform: #{config.$shift-standard}; 
+}
 
-    // Hover default shadow (e.g. Deep)
+%physics-lift-standard {
+	/* ==========================================================================
+	   03.02 DEFAULT LIFT: Apply shift up (e.g. -2px)
+	========================================================================== */
+	@include __blueprint-lift-standard;
+}
+
+// ==========================================================================
+// 03.03 GROW SMALL: Apply small growth (e.g. 1.03x)
+// ==========================================================================
+@mixin __blueprint-grow-small {
+    transform: translateY(0) #{config.$grow-small};     
+}
+
+%physics-grow-small  {
+	/* ==========================================================================
+	   03.03 GROW SMALL: Apply small growth (e.g. 1.03x)
+	========================================================================== */
+	@include __blueprint-grow-small ;
+}
+
+// ==========================================================================
+// 03.04 STANDARD GROW: Apply standard growth (e.g. 1.05x)
+// ==========================================================================
+@mixin __blueprint-grow-standard {
+    transform: translateY(0) #{config.$grow-standard};     
+}
+
+%physics-grow-standard  {
+	/* ==========================================================================
+	   03.04 STANDARD GROW: Apply standard growth (e.g. 1.05x)
+	========================================================================== */
+	@include __blueprint-grow-standard ;
+}
+
+// ==========================================================================
+// 03.05 LARGE GROW: Apply large growth (e.g. 1.1x)
+// ==========================================================================
+@mixin __blueprint-grow-large {
+    transform: translateY(0) #{config.$grow-large}; 
+}
+
+%physics-grow-large  {
+	/* ==========================================================================
+	   03.05 LARGE GROW: Apply large growth (e.g. 1.1x)
+	========================================================================== */
+	@include __blueprint-grow-large ;
+}
+
+// ==========================================================================
+// 03.06 DEEP SHADOW: Apply deep shadow
+// ==========================================================================
+@mixin __blueprint-shadow-deep {
 	box-shadow: var(--wp--custom--shadow--hover, 
 				var(--wp--preset--shadow--deep, 
 				0 6px 12px rgba(0, 0, 0, 0.13)));	
 }
 
-%physics-ship-visuals {
+%physics-shadow-deep {
 	/* ==========================================================================
-	   03.02 SHIP VISUALS: Deep Shadow
+	   03.06 DEEP SHADOW: Apply deep shadow
 	========================================================================== */
-	@include blueprint-ship-visuals;
+	@include __blueprint-shadow-deep;
+}
+
+// ==========================================================================
+// 03.07 HIGH SHADOW: Apply high (sharp) shadow
+// ==========================================================================
+@mixin __blueprint-shadow-high {
+	box-shadow: var(--wp--custom--shadow--hover-high, 
+				var(--wp--preset--shadow--sharp, 
+				0 12px 25px rgba(0, 0, 0, 0.15)));
+}
+
+%physics-shadow-high {
+	/* ==========================================================================
+	   03.07 HIGH SHADOW: Apply high (sharp) shadow
+	========================================================================== */
+	@include __blueprint-shadow-high;
 }
 
 // /* ==========================================================================
-//    02.03 APPLY RESTING STATE: Apply physics and conditional visuals
+//    03.10 APPLY SHIP: Apply physics and conditional visuals
 //    ========================================================================== */
 @mixin apply-ship($block, $trigger) {
 
     // 1. APPLY PHYSICS (Always)
     @if config.$atmos-dev-mode {
-        @include blueprint-ship-physics;
+        @include __blueprint-lift-subtle;
     } @else {
-        @extend %physics-ship-physics;
+        @extend %physics-lift-subtle;
     }
+
+	@include atmos-debug('ship');
 
     // 2. APPLY VISUALS (Conditionally)
     $is-braked: is-braked($block, $trigger);
@@ -77,318 +144,218 @@ $opacity: 0.6;
     @if $is-braked {
         // Forced: Apply directly (no exclusion)
 //         @if config.$atmos-dev-mode {
-//             @include blueprint-wrapper-clipped;
+//             @include __blueprint-wrapper-clipped;
 //         } @else {
 //             @extend %physics-wrapper-clipped;
 //         }
     } @else {
         // Standard: Apply with exclusion selector
-        &:not(#{config.$blocks-no-border-radius}) {
+//         &:not(#{config.$blocks-no-border-radius}) {
             @if config.$atmos-dev-mode {
-                @include blueprint-ship-visuals;
+                @include __blueprint-shadow-deep;
             } @else {
-                @extend %physics-ship-visuals;
+                @extend %physics-shadow-deep;
             }
-        }
+//         }
     }
 }
 
-// ==========================================================================
-// 03.01 VEIL X: Thin X overlay
-// ==========================================================================
-@mixin blueprint-veil-vector-x {
-	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><line x1='0' y1='0' x2='100%' y2='100%' stroke='white' stroke-width='0.5'/><line x1='100%' y1='0' x2='0' y2='100%' stroke='white' stroke-width='0.5'/></svg>");
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-// ==========================================================================
-// 03.02 VIEWFINDER BRACKETS: Bold Inset Viewfinder Brackets
-// ==========================================================================
-@mixin blueprint-veil-brackets {
-	
-	background-image:
-		// Top-Left Bracket (Horizontal line, then Vertical line)
-		linear-gradient(to bottom, #{$color} 2px, transparent 0),
-		linear-gradient(to right, #{$color} 2px, transparent 0),
-		
-		// Top-Right Bracket
-		linear-gradient(to bottom, #{$color} 2px, transparent 0),
-		linear-gradient(to left, #{$color} 2px, transparent 0),
-		
-		// Bottom-Left Bracket
-		linear-gradient(to top, #{$color} 2px, transparent 0),
-		linear-gradient(to right, #{$color} 2px, transparent 0),
-		
-		// Bottom-Right Bracket
-		linear-gradient(to top, #{$color} 2px, transparent 0),
-		linear-gradient(to left, #{$color} 2px, transparent 0);
-		
-	// DEEPER INSET: Pulled 16px inward to comfortably clear large border-radii
-	background-position: 
-		left 16px top 16px, left 16px top 16px, 
-		right 16px top 16px, right 16px top 16px, 
-		left 16px bottom 16px, left 16px bottom 16px, 
-		right 16px bottom 16px, right 16px bottom 16px;
-		
-	background-repeat: no-repeat;
-	
-	// BOLDER SIZE: Expanded to 24px arms with a solid 2px line thickness
-	background-size: 24px 24px; 
-}
-
-// ==========================================================================
-// 03.03 CROSSHAIR: Plus Crosshair (+)
-// ==========================================================================
-@mixin blueprint-veil-crosshair {
-	background-image: 
-		linear-gradient(to right, #{$color} 100%, transparent 0), 
-		linear-gradient(to bottom, #{$color} 100%, transparent 0);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 32px 2px, 2px 32px;
-}
-
-// ==========================================================================
-// 03.04 DOT MATRIX: Precision Dot Matrix (Sensor Grid)
-// ==========================================================================
-@mixin blueprint-veil-matrix {
-	background-image: radial-gradient(#{$color} 1px, transparent 1px);
-	background-size: 8px 8px;
-	background-repeat: repeat;
-}
-
-// ==========================================================================
-// 03.20 PASSENGER: Blocks that can be contained in Ships or promoted to
-//		 to a Ship or Portal (Image with link)
-// ==========================================================================
-@mixin blueprint-passenger {
-
-	// Subtle Lift (e.g. -2px)
-	transform: #{config.$shift-subtle} scale(1); 
-
-	// Standard Lift (e.g. -4px)
-// 	transform: #{config.$shift-default} scale(1); 
-	
-	// Hover default shadow (e.g. Deep)    
-	&:not(#{config.$blocks-no-border-radius}) {	
-		box-shadow: var(--wp--custom--shadow--hover, 
-					var(--wp--preset--shadow--deep, 
-					0 4px 12px rgba(0, 0, 0, 0.12)));
-	}
-
-	// Debug mode
-	@include atmos-debug('passenger');
-}
-
-%physics-passenger {
-	/* ==========================================================================
-	   03.20 PASSENGER: Blocks that can be contained in Ships or promoted to
-			 a Ship or Portal (Image with link)	   
-	========================================================================== */
-	@include blueprint-passenger;
-}
-
+// /* ==========================================================================
+//    03.20 APPLY PASSENGER: Standard passenger (e.g. Column)
+//    ========================================================================== */
 @mixin apply-passenger {
-	@if config.$atmos-dev-mode {
-		@include blueprint-passenger;
-	} @else {
-		@extend %physics-passenger;
-	}
-}
 
-// ==========================================================================
-// 03.21 PASSENGER GROW: Pure scale expansions for graphics and image portals
-// ==========================================================================
-@mixin blueprint-passenger-grow {
+    // 1. APPLY PHYSICS (Always)
+    @if config.$atmos-dev-mode {
+        @include __blueprint-lift-standard;
+    } @else {
+        @extend %physics-lift-standard;
+    }
 
-    // Small growth (e.g 1.03)
-    transform: translateY(0) #{config.$grow-small}; 
-//     transform: translateY(0) #{config.$grow-standard}; 
-    
-    // Hover high shadow on hover (e.g. Sharp)    
-	&:not(#{config.$blocks-no-border-radius}) {	
-		box-shadow: var(--wp--custom--shadow--hover-high, 
-					var(--wp--preset--shadow--sharp, 
-					0 12px 25px rgba(0, 0, 0, 0.15)));
-	}
-	
-	// Debug mode
 	@include atmos-debug('passenger');
+
+    // 2. APPLY VISUALS (Conditionally)
+//     $is-braked: is-braked($block, $trigger);
+
+//     @if $is-braked {
+        // Forced: Apply directly (no exclusion)
+//         @if config.$atmos-dev-mode {
+//             @include __blueprint-wrapper-clipped;
+//         } @else {
+//             @extend %physics-wrapper-clipped;
+//         }
+//     } @else {
+        // Standard: Apply with exclusion selector
+        &:not(#{config.$blocks-no-border-radius}) {
+            @if config.$atmos-dev-mode {
+                @include __blueprint-shadow-deep;
+            } @else {
+                @extend %physics-shadow-deep;
+            }
+        }
+//     }
 }
 
-%physics-passenger-grow {
-	/* ==========================================================================
-	   03.21 PASSENGER GROW: Pure scale expansions for graphics and image portals
-	========================================================================== */
-	@include blueprint-passenger-grow;
-}
-
+// /* ==========================================================================
+//    03.21 APPLY PASSENGER GROW: Image grow 
+//    ========================================================================== */
 @mixin apply-passenger-grow {
-	@if config.$atmos-dev-mode {
-		@include blueprint-passenger-grow;
-	} @else {
-		@extend %physics-passenger-grow;
-	}
+
+    // 1. APPLY PHYSICS (Always)
+    @if config.$atmos-dev-mode {
+        @include __blueprint-grow-standard;
+    } @else {
+        @extend %physics-grow-standard;
+    }
+
+	@include atmos-debug('passenger');
+
+    // 2. APPLY VISUALS (Conditionally)
+//     $is-braked: is-braked($block, $trigger);
+
+//     @if $is-braked {
+        // Forced: Apply directly (no exclusion)
+//         @if config.$atmos-dev-mode {
+//             @include __blueprint-wrapper-clipped;
+//         } @else {
+//             @extend %physics-wrapper-clipped;
+//         }
+//     } @else {
+        // Standard: Apply with exclusion selector
+        &:not(#{config.$blocks-no-border-radius}) {
+            @if config.$atmos-dev-mode {
+                @include __blueprint-shadow-deep;
+            } @else {
+                @extend %physics-shadow-deep;
+            }
+        }
+//     }
 }
 
 // ==========================================================================
 // 03.22 REMOVE OVERLAY: Fade out the overlay color
 // ==========================================================================
-@mixin blueprint-remove-overlay {
-
-	// 2. Interaction: Melts the tint layer away cleanly to expose full image fidelity
-	> a {
-		&::after {
-			opacity: 0;
-		}
-	} 
+@mixin __blueprint-remove-overlay {
+	opacity: 0;
 }
 
 %physics-remove-overlay {
 	/* ==========================================================================
 	   03.22 REMOVE OVERLAY: Fade out the overlay color
 	========================================================================== */
-	@include blueprint-remove-overlay;
+	@include __blueprint-remove-overlay;
 }
 
 @mixin apply-remove-overlay {
-	@if config.$atmos-dev-mode {
-		@include blueprint-remove-overlay;
-	} @else {
-		@extend %physics-remove-overlay;
+
+	> a {
+		&::after {
+
+			@if config.$atmos-dev-mode {
+				@include __blueprint-remove-overlay;
+			} @else {
+				@extend %physics-remove-overlay;
+			}
+		}
 	}
 }
 
 // ==========================================================================
 // 03.23 BRIGHTEN IMAGE: Increase brightness on the image
 // ==========================================================================
-@mixin blueprint-brighten-image {
-
-	img {
-		filter: brightness(1.15); 
-	}
+@mixin __blueprint-brighten-image {
+	filter: brightness(1.15); 
 }
 
 %physics-brighten-image {
 	/* ==========================================================================
 	   03.23 BRIGHTEN IMAGE: Increase brightness on the image
 	========================================================================== */
-	@include blueprint-brighten-image;
+	@include __blueprint-brighten-image;
 }
 
 @mixin apply-brighten-image {
-	@if config.$atmos-dev-mode {
-		@include blueprint-brighten-image;
-	} @else {
-		@extend %physics-brighten-image;
+	
+	img {
+		@if config.$atmos-dev-mode {
+			@include __blueprint-brighten-image;
+		} @else {
+			@extend %physics-brighten-image;
+		}
 	}
 }
 
 // ==========================================================================
 // 03.24 VEIL REVEAL: Reveals veil by setting opacity 
 // ==========================================================================
-@mixin blueprint-veil-reveal {
-	> a {
-		&::after {
-			// Brings the lines into view over the brightened image layout
-			opacity: 0.85; 
-		}
-	}
+@mixin __blueprint-veil-reveal {
+	opacity: 0.85; //1;
 }
 
 %physics-veil-reveal {
 	/* ==========================================================================
 	   03.24 VEIL REVEAL: Reveals veil by setting opacity 
 	========================================================================== */
-	@include blueprint-veil-reveal;
+	@include __blueprint-veil-reveal;
 }
 
 @mixin apply-veil-reveal {
-	@if config.$atmos-dev-mode {
-		@include blueprint-veil-reveal;
-	} @else {
-		@extend %physics-veil-reveal;
+
+	> a {
+		&::after {
+			@if config.$atmos-dev-mode {
+				@include __blueprint-veil-reveal;
+			} @else {
+				@extend %physics-veil-reveal;
+			}
+		}
 	}
 }	
 
 // ==========================================================================
-// 03.24 PASSENGER ZOOM (WRAPPER): Lifts the structural viewport box depth
+// 03.24 PASSENGER ZOOM (WRAPPER): Apply deep shadow
 // ==========================================================================
-@mixin blueprint-passenger-zoom-wrapper {
+@mixin apply-passenger-zoom-wrapper {
 
-
-	// 1. Applied directly to the root wrapper container context (&)
-	
+	// Don't apply shadow if braked
 	&:not(#{config.$blocks-no-border-radius}) {	
 	
-		// Hover high shadow on hover (e.g. Sharp)    
-		box-shadow: var(--wp--custom--shadow--hover-high, 
-					var(--wp--preset--shadow--sharp, 
-					0 12px 25px rgba(0, 0, 0, 0.15)));
-
+		@if config.$atmos-dev-mode {
+			@include __blueprint-shadow-deep;
+		} @else {
+			@extend %physics-shadow-deep;
+		}
 	}
-		
-	// 2. Interaction: Melts the tint layer away cleanly to expose full image fidelity
-// 	@include blueprint-remove-overlay;
-// 	@include apply-remove-overlay;
 
-	@include blueprint-brighten-image;	
-// 	@include apply-brighten-image;	
+	// Brighten image
+	@include apply-brighten-image;	
 	
-	@include blueprint-veil-reveal;
-// 	@include apply-veil-reveal;
-		
-	// Debug mode - TO-DO: Ruins image border, find another way
-// 	@include atmos-debug('passenger');
-// 	@include atmos-debug('wrapper-active');
-}
+	// Reveal veil if there is one
+	@include apply-veil-reveal;
 
-%physics-passenger-zoom-wrapper {
-	/* ==========================================================================
-	   03.24 PASSENGER ZOOM (WRAPPER): Lifts the structural viewport box depth
-	========================================================================== */
-	@include blueprint-passenger-zoom-wrapper;
-}
-
-@mixin apply-passenger-zoom-wrapper {
-	@if config.$atmos-dev-mode {
-		@include blueprint-passenger-zoom-wrapper;
-	} @else {
-		@extend %physics-passenger-zoom-wrapper;
-	}
+	// Handle debug
+	@include atmos-debug('wrapper-active');	
 }
 
 // ==========================================================================
 // 03.26 PASSENGER ZOOM (ASSET): Dynamically scales the internal graphic
 // ==========================================================================
-@mixin blueprint-passenger-zoom-asset {
-
-    // Standard growth (e.g 1.05)
-	transform: #{config.$grow-standard};
-}
-
-%physics-passenger-zoom-asset {
-	/* ==========================================================================
-	   03.26 PASSENGER ZOOM (ASSET): Dynamically scales the internal graphic
-	========================================================================== */
-	@include blueprint-passenger-zoom-asset;
-}
-
 @mixin apply-passenger-zoom-asset {
 	@if config.$atmos-dev-mode {
-		@include blueprint-passenger-zoom-asset;
+		@include __blueprint-grow-standard;
 	} @else {
-		@extend %physics-passenger-zoom-asset;
+		@extend %physics-grow-standard;
 	}
+
+	// Handle debug
+	@include atmos-debug('passenger');	
+	
 }
 
 // ==========================================================================
-// 03.30 SOVEREIGN: Buttons and blocks that work like buttons, such as 
-//		 social media links, outline style tag clouds, etc.
+// 03.30 SOVEREIGN: Buttons and blocks that work like buttons
 // ==========================================================================
-@mixin blueprint-sovereign {
+@mixin __blueprint-sovereign {
 
 	// Grow Large (e.g. x1.1)
     transform: translateY(0) #{config.$grow-large}; 
@@ -398,7 +365,7 @@ $opacity: 0.6;
     			var(--wp--preset--shadow--sharp,
     			0 8px 16px rgba(0, 0, 0, 0.15)));
 
-	// Since we are growing, ensure Opacity is full
+	// Since we are growing, ensure opacity is full
 	opacity: 1; 
 	
 	// Debug mode
@@ -409,21 +376,21 @@ $opacity: 0.6;
 	/* ==========================================================================
 	   03.30 SOVEREIGN: Buttons and blocks that work like buttons
 	========================================================================== */
-	@include blueprint-sovereign;
+	@include __blueprint-sovereign;
 }
 
 @mixin apply-sovereign {
 	@if config.$atmos-dev-mode {
-		@include blueprint-sovereign;
+		@include __blueprint-sovereign;
 	} @else {
 		@extend %physics-sovereign;
 	}
 }
 
 // ==========================================================================
-// 03.40 SILENCE ACTIVE: Silence Ships and Passengers with debug outline
+// 03.40 SILENCE ACTIVE: Silence Ships and Passengers
 // ==========================================================================
-@mixin blueprint-silence {
+@mixin __blueprint-silence {
 
 	// Reset shadow and transform
 	box-shadow: none; 
@@ -435,16 +402,15 @@ $opacity: 0.6;
 
 %physics-silence {
 	/* ==========================================================================
-	   03.40 SILENCE ACTIVE: Silence Ships and Passengers with debug outline
+	   03.40 SILENCE ACTIVE: Silence Ships and Passengers
 	========================================================================== */
-	@include blueprint-silence;
+	@include __blueprint-silence;
 }
 
 @mixin apply-silence {
 	@if config.$atmos-dev-mode {	
-		@include blueprint-silence;
+		@include __blueprint-silence;
 	} @else {
 		@extend %physics-silence;
 	}
 }
-

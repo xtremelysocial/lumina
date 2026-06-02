@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   40 VETOS: Centralized Nesting Boundary Controller
-//	    v0.9.9 Build 09 Physics and Image Updates
+//	    v0.9.9 Build 10 CSS Optimization
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -58,7 +58,6 @@
 					} @else {
 						#{$parent}#{$hover} #{$child-passenger},
 						#{$parent}#{$hover} #{$child-passenger}:hover {
-							@debug "CALLING APPLY-SILENCE"; // ADD THIS						
 							@include phys.apply-silence($interactive: true);
 						}
 					}
