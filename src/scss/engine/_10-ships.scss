@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 10 CSS Optimization
+//      v0.9.9 Build 11 Separate Borders from Shading
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -67,7 +67,6 @@
 						@include phys.apply-wrapper-resting-state(
 							$role: $role,
 							$block: $block,
-							$trigger: $trigger
 						);
 					}
 
@@ -119,8 +118,6 @@
 				#{$target-focus} {
 					@include phys.apply-active-state(
 						$role: $role,
-						$block: $block,
-						$trigger: $trigger,
 						$context: 'target'
 					);
 				}

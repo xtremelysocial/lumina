@@ -11,6 +11,9 @@
 @forward '01-compiler' show 
 	compile-selector;
 
+@forward '02-resting' show 
+	apply-button-spacing;
+
 // 4. REGISTRY LAYER: Expose traffic managers and data registry streams
 @forward '04-registry' show 
 	register-ship, 

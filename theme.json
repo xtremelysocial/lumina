@@ -296,6 +296,9 @@
 					}
 				}
     		},
+			"core/query-pagination": {
+				"shadow": "none"
+			},
 			"core/accordion": {
 				"elements": {
 					"button": {

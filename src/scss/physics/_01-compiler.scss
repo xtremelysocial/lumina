@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 10 CSS Optimization
+//	 v0.9.9 Build 11 Separate Borders from Shading
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -27,7 +27,7 @@
 	$role: 'passenger'
 ) {
 
-	// Initialize the selector
+	// INITIALIZE THE SELECTOR
     $selector: '';
     
 	// 1. BASE BLOCK (Trusts map literals. Only maps explicit blanks to the wildcard)
@@ -41,22 +41,21 @@
     @if $role == 'sovereign' {
         $selector: '.wp-site-blocks #{$selector}';
     }
+
+	// 3. ADD ALIGNFULL IF NOT SOVEREIGN
+	@if $role != 'sovereign' {
+	    $selector: '#{$selector}:not(.alignfull)';
+	}
     
-	// 3. MODIFIER SPEC COP (Appends clean modifier filters like :is(.has-background))
+	// 4. MODIFIER SPEC COP (Appends clean modifier filters like :is(.has-background))
     @if $is != 'none' and $is != '' and $is != '*' {
         $selector: '#{$selector}:is(#{$is})';
     }
 
-	// 4. LINK GATE (HAS) INTEGRATION	
+	// 5. LINK GATE (HAS) INTEGRATION	
     @if $has != 'none' and $has != '' and $has != '*' {
         $selector: '#{$selector}:has(#{$has})';
     }
-
-	// 5. ADD ALIGNFULL IF NOT SOVEREIGN
-	// 	  TO-DO: MOVE THIS SOONER FOR BROWSER PERFORMANCE
-	@if $role != 'sovereign' {
-	    $selector: '#{$selector}:not(.alignfull)';
-	}
     
 	// 6. PSEUDO-STATE INJECTION (Determines interactive modifier rules)
     $state-suffix: '';
@@ -89,32 +88,10 @@
 }
 
 // ==========================================================================
-// 01.02 VISUAL DEBUG: Set outline colors and styles based on engine logic
+// 01.02 IS NO ROUNDING: Check if block shouldn't receive rounding
 // ==========================================================================
-@function is-braked($block, $trigger) {
-
-    // 1. Resolve target (Logic that was working in 04)
-    $resolved-target: $trigger;
-    @if $trigger == 'self' {
-        $resolved-target: $block;
-    }
-
-    // 2. Evaluate brakes
-    $is-braked: false;
-    @each $brake in config.$blocks-no-border-radius {
-        $clean-brake: $brake;
-        $star-index: string.index($brake, ' *');
-        
-        @if $star-index != null {
-            $clean-brake: string.slice($brake, 1, $star-index - 1);
-        }
-        
-        @if string.index($resolved-target, $clean-brake) != null {
-            $is-braked: true;
-        }
-    }
-    
-    @return $is-braked;
+@function is-no-rounding($block) {
+	@return list.index(config.$blocks-no-rounding, $block) != null;
 }
 
 // ==========================================================================

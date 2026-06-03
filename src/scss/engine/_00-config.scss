@@ -1,11 +1,11 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 10 CSS Optimization
+//	 	v0.9.9 Build 11 Separate Borders from Shading
 //   ========================================================================== */
 
 // ==========================================================================
 // ATMOS BLOCKS BUILD 06: THE DEFINITIVE DECLARATIVE MAP
-// Schema: (Block, Is, Has, Trigger, Target) : Role
+// Schema: (Block, Is, Has, Trigger, Target, Spacing, Role)
 // ==========================================================================
 
 // SETUP DEFAULTS SO WE DON'T HAVE TO INCLUDE ALL FIELDS IN THE REGISTRY
@@ -15,7 +15,6 @@ $registry-defaults: (
 	has:     'a, button',   // Default to requiring an embedded link or button
 	trigger: 'self',    	// Default hover trigger to the block
 	target:  'self',    	// Default traget class to receive animation to the block
-// 	styles:  false,			// Add image custom block styles
 	spacing: false,			// Add margin only to html buttons
 	role:    'passenger' 	// Default role to Passenger
 );
@@ -25,7 +24,7 @@ $atmos-block-registry: (
 
 	// --------------------------------------------------------------------------
 	// SHIPS (Wildcard works great here, but you can override for specific blocks)
-	// TO-DO: Add .is-style-object-passive and .wp-block-cover
+	// TO-DO: Consider .is-style-object-passive, .wp-block-cover, .wp-block-query-pagination
 	// --------------------------------------------------------------------------
 	(
 		block:   '*', 
@@ -40,16 +39,6 @@ $atmos-block-registry: (
 	// --------------------------------------------------------------------------
 	// PASSENGERS
 	// --------------------------------------------------------------------------
-
-	// Column Block: Requires background color and link or button
-	(
-		block:   '.wp-block-column',        
-		is:      '.has-background', 		
-		has:     'a, button', 	
-		trigger: 'self',                
-		target:  'self',
-		role:    'passenger'
-	),
 
 	// --------------------------------------------------------------------------
 	// IMAGE PASSENGERS
@@ -66,16 +55,16 @@ $atmos-block-registry: (
 		role:    'passenger-zoom'
 	),
     
-	// Gallery Image: Requires link
-	(
-		block:   '.wp-block-gallery .wp-block-image', 
-		is:      'none', 		
-		has:     'a:not(figcaption a)', 	
-		trigger: 'self',
-		target:  'img',
-// 		role:    'passenger-grow'
-		role:    'passenger-zoom'
-	),
+	// Gallery Image: Only needed if wp-block-image isn't zoom
+// 	(
+// 		block:   '.wp-block-gallery .wp-block-image', 
+// 		is:      'none', 		
+// 		has:     'a:not(figcaption a)', 	
+// 		trigger: 'self',
+// 		target:  'img',
+// // 		role:    'passenger-grow'
+// 		role:    'passenger-zoom'
+// 	),
 
 	// Post Featured Image: Requires link
 	(
@@ -99,7 +88,7 @@ $atmos-block-registry: (
 		role:    'passenger-zoom'
 	),
     
-	// Media & Text: Requires link, Wrapper is the hover trigger
+	// Media & Text: Needed because it's not a standard wp-block-image
 	(
 		block:   '.wp-block-media-text__media',   
 		is:      'none', 
@@ -130,6 +119,7 @@ $atmos-block-registry: (
 		has:     'none', 
 		trigger: 'a > .avatar',
 		target:  'self',
+// 		border:	 true,
 		role:    'sovereign'
 	),
 
@@ -163,18 +153,23 @@ $atmos-block-registry: (
 
 //**
 // * 00.2 ADDITIONAL LISTS
-// * 	  Blocks w/no border radius, HTML-only button selectors
+// * 	  Blocks w/no border radius, images with custom block styles, 
+// *	  HTML-only button spacing
 // */
 
-// Layout environments where nested child ships should sit perfectly flush
-$blocks-no-border-radius: (
-// 	'.alignfull *',						// Blocks all elements inside an alignfull block
-	'.wp-block-media-text__content *', 	// Blocks all interior children, leaves container open!
-	'.wp-block-media-text__media *', 	// Blocks all interior children, leaves container open!
-	'.wp-block-column',       			// Blocks the column container frame
-	'.wp-block-column *'      			// Blocks all elements inside columns
+// Layout environments that require clipping (Zoom-focused portals)
+$blocks-layout-brakes: (
+	'.wp-block-media-text__content *',
+	'.wp-block-media-text__media *',
+	'.wp-block-column',
+	'.wp-block-column *',
 );
 
+// Aesthetic Vetoes (Blocks where the engine should NOT automatically 
+// apply border, rounding, or shadows)
+$blocks-no-rounding:	('.wp-block-column');
+
+// Blocks that have custom block styles to add to the compiled CSS
 $blocks-custom-borders: ('.wp-block-image');
 
 // HTML-only Sovereigns

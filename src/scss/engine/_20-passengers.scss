@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 10 CSS Optimization
+//	    v0.9.9 Build 11 Separate Borders from Shading
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -75,7 +75,6 @@
 						@include phys.apply-wrapper-resting-state(
 							$role: $role,
 							$block: $block,
-							$trigger: $trigger
 						);
 					}
 				}
@@ -119,8 +118,6 @@
 					#{$wrapper-focus} {
 						@include phys.apply-active-state(
 							$role: $role,
-							$block: $block,
-							$trigger: $trigger,
 							$context: 'wrapper'
 						);
 					}
@@ -146,8 +143,6 @@
 				#{$target-hover}, #{$target-focus} {
 					@include phys.apply-active-state(
 						$role: $role,
-						$block: $block,
-						$trigger: $trigger,
 						$context: 'target'
 					);
 				}        

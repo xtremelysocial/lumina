@@ -11,10 +11,12 @@
 @use 'engine/30-sovereigns' as sovereigns;
 @use 'engine/40-vetos' as vetos;
 
+@if config.$atmos-dev-mode {
 /* ==========================================================================
    ATMOS INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 10 CSS Optimization
+   v0.9.9 Build 11 Separate Borders from Shading
    ========================================================================== */
+}
 
 // LOAD GLOBAL CSS
 @include global.apply-global-logic($interactive: true);

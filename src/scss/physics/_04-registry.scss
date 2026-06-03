@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 10 CSS Optimization
+//	 v0.9.9 Build 11 Separate Borders from Shading
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -14,8 +14,8 @@
 
 @use '../engine/00-config' as config;
 @use '01-compiler' as *;
-@use '02-resting' as resting;  // Needed for resting blueprints and placeholders
-@use '03-actions' as actions;  // Needed for active blueprints and placeholders
+@use '02-resting' as resting; // Needed for resting state mixins
+@use '03-actions' as actions; // Needed for active state mixins
 
 // ==========================================================================
 // 04.01 WRAPPER RESTING STATE: Specialized Container Geometry & Clipping
@@ -23,39 +23,22 @@
 @mixin apply-wrapper-resting-state(
 	$role, 
 	$block: null, 
-	$trigger: 'self'
 ) {
 
-	// ==========================================================================
-	// ROUNDING BRAKES: Evaluate structural targets against exclusions
-	// ==========================================================================
-	$is-braked: is-braked($block, $trigger);
-	
 	// --------------------------------------------------------------------------
 	// TRACK A: PASSENGER ZOOM (Wrapper Shadow + Sharp Clipping Viewport)
 	// --------------------------------------------------------------------------
 	@if $role == 'passenger-zoom' {
-		@if not $is-braked {
-			// Add both visuals (border, radius, shadow) and clipping
-			@include resting.apply-zoom-wrapper-visuals($block, $trigger);
-			@include resting.apply-zoom-wrapper-clipped;
-		} @else {
-			// The brakes are applied! Strip framing while maintaining fluid 
-			// layout gate execution
-			@include resting.apply-zoom-wrapper-clipped;
-		}
+		@include resting.apply-zoom-wrapper-visuals($block);
+		@include resting.apply-zoom-wrapper-clipped;
 	}	
 
 	// --------------------------------------------------------------------------
 	// TRACK B: SHIPS (Pure Layout Container Rounding vs. Flat Boundary Gates)
 	// --------------------------------------------------------------------------
 	@else if $role == 'ship' {
-		@if not $is-braked {
-			@include resting.apply-wrapper-visuals($block, $trigger);
-			@include resting.apply-wrapper-clipped;
-		} @else {
-			@include resting.apply-wrapper-clipped;
-		}
+		@include resting.apply-wrapper-visuals($block);
+		@include resting.apply-wrapper-clipped;
 	}
 }
 
@@ -66,7 +49,6 @@
 	$role, 
 	$block: null, 
 	$trigger: 'self', 
-// 	$context: 'target'
 ) {
 	
 	// TRACK A: SOVEREIGNS (Buttons & Form Triggers)
@@ -87,6 +69,7 @@
 	// TRACK B.3: REGULAR PASSENGERS (Column block)
 	@else if $role == 'passenger' {
 		@include resting.apply-resting-state;
+		@include resting.apply-wrapper-visuals($block);
 	}
 
 	// TRACK C: SHIPS (Layout Containers & Groups)
@@ -94,41 +77,17 @@
 		@if $trigger != 'self' {
 			@include resting.apply-resting-state;
 		} @else {
-			@include resting.apply-wrapper-visuals($block, $trigger);
 			@include resting.apply-resting-state;
+			@include resting.apply-wrapper-visuals($block);
 		}
 	}	
 }
 
 // ==========================================================================
-// 04.03 BUTTON SPACING: Spacing for legacy HTML-only buttons
-// ==========================================================================
-@mixin __blueprint-button-spacing {
-	margin-right: config.$html-button-spacing;     
-}
-
-%physics-button-spacing {
-/* ==========================================================================
-   04.03 BUTTON SPACING: Spacing for legacy HTML-only buttons
-========================================================================== */
-	@include __blueprint-button-spacing;
-}
-
-@mixin apply-button-spacing {
-	@if config.$atmos-dev-mode {
-		@include __blueprint-button-spacing;
-	} @else {
-		@extend %physics-button-spacing;
-	}
-}
-
-// ==========================================================================
-// 04.04 CENTRALIZED TRAFFIC CONTROLLER: Declarative Active State Executor
+// 04.03 CENTRALIZED TRAFFIC CONTROLLER: Declarative Active State Executor
 // ==========================================================================
 @mixin apply-active-state(
 	$role, 
-	$block, 
-	$trigger, 
 	$context: 'target'
 ) {
 	
@@ -163,13 +122,12 @@
 
 	// TRACK C: SHIPS (Layout Containers & Groups)
 	@else if $role == 'ship' {
-		@include actions.apply-ship($block, $trigger);
+		@include actions.apply-ship;
 	}
 }
 
-
 // ==========================================================================
-// 04.05 APPLY SILENCE: Silence Ships and Passengers
+// 04.04 APPLY SILENCE: Silence Ships and Passengers
 // ==========================================================================
 @mixin apply-silence($interactive: false) {
 
@@ -184,7 +142,7 @@
 }
 
 // ==========================================================================
-// 04.07 SHIP AND PASSENGER LISTS: Used for ships to veto passengers physics
+// 04.05 SHIP AND PASSENGER LISTS: Used for ships to veto passengers physics
 // ==========================================================================
 $all-ships: (); 
 $all-passengers: ();

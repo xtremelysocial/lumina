@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 10 CSS Optimization
+//	 v0.9.9 Build 11 Separate Borders from Shading
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -125,39 +125,26 @@ $opacity: 0.6;
 }
 
 // /* ==========================================================================
-//    03.10 APPLY SHIP: Apply physics and conditional visuals
+//    03.10 APPLY SHIP: Apply physics and active shadow
 //    ========================================================================== */
-@mixin apply-ship($block, $trigger) {
+@mixin apply-ship {
 
-    // 1. APPLY PHYSICS (Always)
+    // Apply physics
     @if config.$atmos-dev-mode {
         @include __blueprint-lift-subtle;
     } @else {
         @extend %physics-lift-subtle;
     }
 
+    // Apply Deep Shadow
+	@if config.$atmos-dev-mode {
+		@include __blueprint-shadow-deep;
+	} @else {
+		@extend %physics-shadow-deep;
+	}
+
+	// Handle debug
 	@include atmos-debug('ship');
-
-    // 2. APPLY VISUALS (Conditionally)
-    $is-braked: is-braked($block, $trigger);
-
-    @if $is-braked {
-        // Forced: Apply directly (no exclusion)
-//         @if config.$atmos-dev-mode {
-//             @include __blueprint-wrapper-clipped;
-//         } @else {
-//             @extend %physics-wrapper-clipped;
-//         }
-    } @else {
-        // Standard: Apply with exclusion selector
-//         &:not(#{config.$blocks-no-border-radius}) {
-            @if config.$atmos-dev-mode {
-                @include __blueprint-shadow-deep;
-            } @else {
-                @extend %physics-shadow-deep;
-            }
-//         }
-    }
 }
 
 // /* ==========================================================================
@@ -165,35 +152,22 @@ $opacity: 0.6;
 //    ========================================================================== */
 @mixin apply-passenger {
 
-    // 1. APPLY PHYSICS (Always)
+    // Apply Physics
     @if config.$atmos-dev-mode {
         @include __blueprint-lift-standard;
     } @else {
         @extend %physics-lift-standard;
     }
 
+    // Apply Deep Shadow
+	@if config.$atmos-dev-mode {
+		@include __blueprint-shadow-deep;
+	} @else {
+		@extend %physics-shadow-deep;
+	}
+
+	// Handle debug
 	@include atmos-debug('passenger');
-
-    // 2. APPLY VISUALS (Conditionally)
-//     $is-braked: is-braked($block, $trigger);
-
-//     @if $is-braked {
-        // Forced: Apply directly (no exclusion)
-//         @if config.$atmos-dev-mode {
-//             @include __blueprint-wrapper-clipped;
-//         } @else {
-//             @extend %physics-wrapper-clipped;
-//         }
-//     } @else {
-        // Standard: Apply with exclusion selector
-        &:not(#{config.$blocks-no-border-radius}) {
-            @if config.$atmos-dev-mode {
-                @include __blueprint-shadow-deep;
-            } @else {
-                @extend %physics-shadow-deep;
-            }
-        }
-//     }
 }
 
 // /* ==========================================================================
@@ -201,35 +175,22 @@ $opacity: 0.6;
 //    ========================================================================== */
 @mixin apply-passenger-grow {
 
-    // 1. APPLY PHYSICS (Always)
+    // Apply Physics
     @if config.$atmos-dev-mode {
         @include __blueprint-grow-standard;
     } @else {
         @extend %physics-grow-standard;
     }
 
+    // Apply Deep Shadow
+	@if config.$atmos-dev-mode {
+		@include __blueprint-shadow-deep;
+	} @else {
+		@extend %physics-shadow-deep;
+	}
+
+	// Handle debug
 	@include atmos-debug('passenger');
-
-    // 2. APPLY VISUALS (Conditionally)
-//     $is-braked: is-braked($block, $trigger);
-
-//     @if $is-braked {
-        // Forced: Apply directly (no exclusion)
-//         @if config.$atmos-dev-mode {
-//             @include __blueprint-wrapper-clipped;
-//         } @else {
-//             @extend %physics-wrapper-clipped;
-//         }
-//     } @else {
-        // Standard: Apply with exclusion selector
-        &:not(#{config.$blocks-no-border-radius}) {
-            @if config.$atmos-dev-mode {
-                @include __blueprint-shadow-deep;
-            } @else {
-                @extend %physics-shadow-deep;
-            }
-        }
-//     }
 }
 
 // ==========================================================================
@@ -313,12 +274,12 @@ $opacity: 0.6;
 }	
 
 // ==========================================================================
-// 03.24 PASSENGER ZOOM (WRAPPER): Apply deep shadow
+// 03.25 PASSENGER ZOOM (WRAPPER): Apply deep shadow
 // ==========================================================================
 @mixin apply-passenger-zoom-wrapper {
 
 	// Don't apply shadow if braked
-	&:not(#{config.$blocks-no-border-radius}) {	
+	&:not(#{config.$blocks-layout-brakes}) {	
 	
 		@if config.$atmos-dev-mode {
 			@include __blueprint-shadow-deep;
@@ -349,7 +310,6 @@ $opacity: 0.6;
 
 	// Handle debug
 	@include atmos-debug('passenger');	
-	
 }
 
 // ==========================================================================
