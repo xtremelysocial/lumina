@@ -6,7 +6,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 	v0.9.9 Build 11 Separate Borders from Shading
+//	 	v0.9.9 Build 12 Image Overlays
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -73,25 +73,6 @@
 }
 
 // /* ==========================================================================
-//    02.04 WRAPPER VISUALS: Border, radius, and resting shadow
-//    ========================================================================== */
-@mixin apply-wrapper-visuals($block) {
-
-	// Only blocks that get rounding
-	@if not is-no-rounding($block) {
-		
-		// Apply rounding but with brakes
-		 &:not(#{config.$blocks-layout-brakes}) {
-		 	@include __blueprint-rounding;
-			@include __blueprint-wrapper-clipped;		 	
-		 }		
-	}
-
-	// Always include resting shadow
-	@include __blueprint-shadow-natural;
-}
-
-// /* ==========================================================================
 //    02.05 WRAPPER CLIPPED: Overflow Hidden
 //    ========================================================================== */
 @mixin __blueprint-wrapper-clipped {
@@ -116,6 +97,25 @@
 	} @else {
 		@extend %physics-wrapper-clipped;
 	}
+}
+
+// /* ==========================================================================
+//    02.04 WRAPPER VISUALS: Border, radius, and resting shadow
+//    ========================================================================== */
+@mixin apply-wrapper-visuals($block) {
+
+	// Only blocks that get rounding
+	@if not is-no-rounding($block) {
+		
+		// Apply rounding but with brakes
+		 &:not(#{config.$blocks-layout-brakes}) {
+		 	@include __blueprint-rounding;
+			@include __blueprint-wrapper-clipped;		 	
+		 }		
+	}
+
+	// Always include resting shadow
+	@include __blueprint-shadow-natural;
 }
 
 // /* ==========================================================================
@@ -165,6 +165,72 @@
 	} @else {
 		@extend %physics-asset-resting-state;
 	}
+}
+
+// ==========================================================================
+// 02.09 ZOOM WRAPPER VISUALS: Border, radius, and shadow
+// ==========================================================================
+@mixin __blueprint-zoom-wrapper-visuals {
+
+	// Resting shadow (e.g. natural)
+	box-shadow: var(--wp--custom--shadow--default, 
+				var(--wp--preset--shadow--natural, 
+				0 3px 10px rgba(0, 0, 0, 0.14)));
+
+	// Add border, radius, and padding for a framed portait look
+	border: 1px solid var(--wp--custom--color--border);
+	border-radius: var(--wp--custom--border--radius, 18px);
+	padding: var(--wp--preset--spacing--20);
+
+	// Set border radius on the <a> tag adjusted for border and padding
+	> a {
+// 		border-radius: inherit;
+		border-radius: calc(
+			var(--wp--custom--border--radius, 18px) - 
+			var(--wp--preset--spacing--20, 4.5px) - 
+			var(--wp--custom--border--width, 1px)
+		);
+	}
+
+	// Since we put borders on the wrapper, remove them from the img itself
+	img {
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
+	}
+}
+
+%physics-zoom-wrapper-visuals {
+ /* ==========================================================================
+   02.09 ZOOM WRAPPER VISUALS: Border, radius, and shadow
+   ========================================================================== */
+	@include __blueprint-zoom-wrapper-visuals;
+}
+
+@mixin apply-zoom-wrapper-visuals($block) {
+
+	// Only blocks that get rounding
+	@if not is-no-rounding($block) {
+
+		// Apply rounding but with brakes in CSS selector
+		&:not(#{config.$blocks-layout-brakes}) {
+	
+			// APPLY VISUALS (Brakes in selector)
+			@if config.$atmos-dev-mode {	
+				@include __blueprint-zoom-wrapper-visuals;
+		
+				@if list.index(config.$blocks-custom-borders, $block) {
+					@include __blueprint-zoom-wrapper-border;
+				}
+			} @else {
+				@extend %physics-zoom-wrapper-visuals;
+		
+				@if list.index(config.$blocks-custom-borders, $block) {
+					@extend %physics-zoom-wrapper-border;
+				}
+			}
+		}
+	}			
 }
 
 // ==========================================================================
@@ -284,82 +350,16 @@
 }
 
 // ==========================================================================
-// 02.09 ZOOM WRAPPER VISUALS: Border, radius, and shadow
-// ==========================================================================
-@mixin __blueprint-zoom-wrapper-visuals {
-
-	// Reseting shadow
-	box-shadow: var(--wp--custom--shadow--default, 
-				var(--wp--preset--shadow--natural, 
-				0 3px 10px rgba(0, 0, 0, 0.14)));
-
-	// Adjust border radius to match the inner image
-	border: 1px solid var(--wp--custom--color--border);
-	border-radius: var(--wp--custom--border--radius, 18px);
-	padding: var(--wp--preset--spacing--20);
-
-	// Set border radius and clipping on the <a> tag	
-	> a {
-
-		// Set inner radius to account for wrapper border/padding
-// 		border-radius: inherit;
-		border-radius: calc(
-			var(--wp--custom--border--radius, 18px) - 
-			var(--wp--preset--spacing--20, 4.5px) - 
-			var(--wp--custom--border--width, 1px)
-		);
-
-	}
-
-	// Since we put borders on the wrapper, remove them from the img itself
-	img {
-		border: none;
-		border-radius: 0;
-		box-shadow: none;
-	}
-}
-
-%physics-zoom-wrapper-visuals {
- /* ==========================================================================
-   02.09 ZOOM WRAPPER VISUALS: Border, radius, and shadow
-   ========================================================================== */
-	@include __blueprint-zoom-wrapper-visuals;
-}
-
-@mixin apply-zoom-wrapper-visuals($block) {
-
-	&:not(#{config.$blocks-layout-brakes}) {
-
-		// APPLY VISUALS (Brakes in selector)
-		@if config.$atmos-dev-mode {	
-			@include __blueprint-zoom-wrapper-visuals;
-	
-			@if list.index(config.$blocks-custom-borders, $block) {
-				@include __blueprint-zoom-wrapper-border;
-			}
-		} @else {
-			@extend %physics-zoom-wrapper-visuals;
-	
-			@if list.index(config.$blocks-custom-borders, $block) {
-				@extend %physics-zoom-wrapper-border;
-			}
-		}
-	}
-}
-
-// ==========================================================================
 // 02.10 VEIL X: Thin X overlay
 // ==========================================================================
 
 // Variation 1: Your Original Thin X (Vector Cross)
 @mixin __blueprint-veil-x {
-	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><line x1='0' y1='0' x2='100%' y2='100%' stroke='white' stroke-width='0.5'/><line x1='100%' y1='0' x2='0' y2='100%' stroke='white' stroke-width='0.5'/></svg>");
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><line x1='0' y1='0' x2='100%' y2='100%' stroke='#{config.$veil-color}' stroke-width='0.5'/><line x1='100%' y1='0' x2='0' y2='100%' stroke='#{config.$veil-color}' stroke-width='0.5'/></svg>");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
 }
-
-$color:			var(--wp--preset--color--base);
 
 // ==========================================================================
 // 02.11 VEIL BRACKETS: Inset Viewfinder Brackets
@@ -368,20 +368,20 @@ $color:			var(--wp--preset--color--base);
 	
 	background-image:
 		// Top-Left Bracket (Horizontal line, then Vertical line)
-		linear-gradient(to bottom, #{$color} 2px, transparent 0),
-		linear-gradient(to right, #{$color} 2px, transparent 0),
+		linear-gradient(to bottom, #{config.$veil-color} 2px, transparent 0),
+		linear-gradient(to right, #{config.$veil-color} 2px, transparent 0),
 		
 		// Top-Right Bracket
-		linear-gradient(to bottom, #{$color} 2px, transparent 0),
-		linear-gradient(to left, #{$color} 2px, transparent 0),
+		linear-gradient(to bottom, #{config.$veil-color} 2px, transparent 0),
+		linear-gradient(to left, #{config.$veil-color} 2px, transparent 0),
 		
 		// Bottom-Left Bracket
-		linear-gradient(to top, #{$color} 2px, transparent 0),
-		linear-gradient(to right, #{$color} 2px, transparent 0),
+		linear-gradient(to top, #{config.$veil-color} 2px, transparent 0),
+		linear-gradient(to right, #{config.$veil-color} 2px, transparent 0),
 		
 		// Bottom-Right Bracket
-		linear-gradient(to top, #{$color} 2px, transparent 0),
-		linear-gradient(to left, #{$color} 2px, transparent 0);
+		linear-gradient(to top, #{config.$veil-color} 2px, transparent 0),
+		linear-gradient(to left, #{config.$veil-color} 2px, transparent 0);
 		
 	// DEEPER INSET: Pulled 16px inward to comfortably clear large border-radii
 	background-position: 
@@ -401,8 +401,8 @@ $color:			var(--wp--preset--color--base);
 // ==========================================================================
 @mixin __blueprint-veil-crosshair {
 	background-image: 
-		linear-gradient(to right, #{$color} 100%, transparent 0), 
-		linear-gradient(to bottom, #{$color} 100%, transparent 0);
+		linear-gradient(to right, #{config.$veil-color} 100%, transparent 0), 
+		linear-gradient(to bottom, #{config.$veil-color} 100%, transparent 0);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 32px 2px, 2px 32px;
@@ -412,35 +412,14 @@ $color:			var(--wp--preset--color--base);
 // 02.13 VEIL DOT MATRIX: Small dots like a sensor grid
 // ==========================================================================
 @mixin __blueprint-veil-matrix {
-	background-image: radial-gradient(#{$color} 1px, transparent 1px);
+	background-image: radial-gradient(#{config.$veil-color} 1px, transparent 1px);
 	background-size: 8px 8px;
 	background-repeat: repeat;
 }
 
-// @mixin apply-veil($type: 'dark') {
-//     $veil-map: (
-//         'dark': rgba(0,0,0,0.4),
-//         'light': rgba(255,255,255,0.2),
-//         'primary': var(--wp--preset--color--primary),
-//         'none': transparent
-//     );
-// 
-//     background-color: map.get($veil-map, $type);
-//     transition: opacity config.$atmos-timing;
-//     // ... rest of your overlay logic
-// }
-
 // ==========================================================================
 // 02.14 RESTING OVERLAY: Image mask overlay 
 // ==========================================================================
-$bg-color: 		transparent;
-// $bg-color: 		var(--wp--preset--color--primary);
-$bg-opacity: 	0;
-// $bg-opacity: 	0.6;
-// $bg-opacity: 	1;
-// $veil:			'';
-$veil:			'crosshair';
-
 @mixin __blueprint-resting-overlay {
 
 	content: '';
@@ -455,26 +434,29 @@ $veil:			'crosshair';
 	// Completely click-transparent
 	pointer-events: none; 
 												
-	background-color: #{$bg-color};
+	background-color: #{config.$overlay-background};
 // 	background-size: 100% 100%;
 										
 	// Use a longer timing function
 	transition: config.$atmos-timing-medium;
 
 	// Set resting opacity		
-	opacity: #{$bg-opacity};
+	opacity: #{config.$overlay-opacity};
 
 	// Automatically inverts color over light or dark background
 	mix-blend-mode: exclusion; // Or 'difference'
 
 	// Apply resting graphic overlay
-	@if $veil == 'x' {
+	@if config.$veil-type == 'x' {
 		@include __blueprint-veil-vector-x;
-	} @else if $veil == 'brackets' {
+
+	} @else if config.$veil-type == 'brackets' {
 		@include __blueprint-veil-brackets;
-	} @else if $veil == 'crosshair' {
+
+	} @else if config.$veil-type == 'crosshair' {
 		@include __blueprint-veil-crosshair;
-	} @else if $veil == 'matrix' {
+
+	} @else if config.$veil-type == 'matrix' {
 		@include __blueprint-veil-matrix;
 	}
 }
@@ -487,15 +469,6 @@ $veil:			'crosshair';
 }
 
 @mixin apply-resting-overlay {
-// @mixin apply-resting-overlay(
-// 	$bg-color: 		transparent,
-// 	$bg-opacity: 	0,
-// 	$bg-color: 		var(--wp--preset--color--primary),
-// 	$bg-opacity: 	0.6,
-// 	$color:			var(--wp--preset--color--base),
-// 	$veil:			'',
-// ) {
-
 	@if config.$atmos-dev-mode {
 		@include __blueprint-resting-overlay;
 	} @else {
@@ -507,7 +480,7 @@ $veil:			'crosshair';
 // 02.15 RESTING BRIGHTNESS: Normal image brightness as baseline
 // ==========================================================================
 @mixin __blueprint-resting-brightness {
-	filter: brightness(1);
+	filter: config.$image-filter;
 }
 
 %physics-resting-brightness {

@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 11 Separate Borders from Shading
+//	 v0.9.9 Build 12 Image Overlays
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -30,7 +30,7 @@
 	// INITIALIZE THE SELECTOR
     $selector: '';
     
-	// 1. BASE BLOCK (Trusts map literals. Only maps explicit blanks to the wildcard)
+	// 1. BASE BLOCK (Adds wildcard if block is not specified)
     @if $block == '*' or $block == 'any' or $block == '' {
         $selector: '[class*="wp-block-"]';
     } @else if $block != 'none' {

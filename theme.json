@@ -24,7 +24,21 @@
 				},
 				"navigation": { 
 					"background": "var(--wp--preset--color--base)" 
+				},
+				"overlay": {
+					"background": "transparent",
+					"opacity": "0",
+					"hoverOpacity": "0"
+				},
+				"veil": {
+					"color": "var(--wp--preset--color--base)",
+					"opacity": "0",
+					"hoverOpacity": "0.85"
 				}
+			},
+			"image": {
+				"filter": "brightness(1)",
+				"hoverFilter": "brightness(1.15)"
 			},
 			"border": {
 				"radius": "var(--wp--preset--border-radius--lg, 18px)"

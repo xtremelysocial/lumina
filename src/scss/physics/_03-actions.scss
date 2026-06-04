@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 11 Separate Borders from Shading
+//	 v0.9.9 Build 12 Image Overlays
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -14,13 +14,6 @@
 
 @use '../engine/00-config' as config;
 @use '01-compiler' as *;
-
-// TO-DO: Move this to 00-config and address in theme.json
-$color: var(--wp--preset--color--base);
-$bg: var(--wp--preset--color--primary);
-// $bg: transparent;
-$opacity: 0.6;
-// $opacity: 0;
 
 // ==========================================================================
 // 03.01 SUBTLE LIFT: Apply shift up (e.g. -2px)
@@ -197,7 +190,7 @@ $opacity: 0.6;
 // 03.22 REMOVE OVERLAY: Fade out the overlay color
 // ==========================================================================
 @mixin __blueprint-remove-overlay {
-	opacity: 0;
+	opacity: config.$overlay-hover-opacity;
 }
 
 %physics-remove-overlay {
@@ -225,7 +218,7 @@ $opacity: 0.6;
 // 03.23 BRIGHTEN IMAGE: Increase brightness on the image
 // ==========================================================================
 @mixin __blueprint-brighten-image {
-	filter: brightness(1.15); 
+	filter: config.$image-hover-filter;
 }
 
 %physics-brighten-image {
@@ -250,7 +243,7 @@ $opacity: 0.6;
 // 03.24 VEIL REVEAL: Reveals veil by setting opacity 
 // ==========================================================================
 @mixin __blueprint-veil-reveal {
-	opacity: 0.85; //1;
+	opacity: config.$veil-hover-opacity; 
 }
 
 %physics-veil-reveal {
