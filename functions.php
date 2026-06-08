@@ -25,6 +25,22 @@ foreach ( $includes as $include ) {
 	}
 }
 
+// add_action( 'after_setup_theme', 'atmosblocks_support' );
+// 
+// if ( ! function_exists( 'atmosblocks_support' ) ) :
+// 
+// 	function atmosblocks_support() {
+// 
+// 		// Enqueue the styles needed for the editor
+// 		$editor_styles = array(
+// 			'/assets/css/editor-styles.css',
+// 		);
+// 
+// 		// Load the editor styles
+// 		add_editor_style( $editor_styles ); 		
+// 	}
+// endif;
+
 /**
  * ATMOS GRAVITY ENGINE: Front-End Enqueue ONLY
  */

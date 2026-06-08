@@ -3,7 +3,7 @@
   \***********************************************************************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    ATMOS ENGINE: Registers objects and sets their resting states
-   v0.9.9 Build 12 Image Overlays
+   v0.9.9 Build 13 Image Overlays
    ========================================================================== */
 /* ==========================================================================
    02 THEME CSS: Reduce motion, adjust menus and icons, etc. 
@@ -47,19 +47,25 @@
   row-gap: var(--wp--preset--spacing--30);
 }
 
+/* Set avatars to look like images with border */
+a > .avatar {
+  border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--border--color);
+  border-radius: var(--wp--custom--button--radius);
+}
+
 /* ==========================================================================
    10 SHIPS: Containers (e.g. Groups, Columns)
    ========================================================================== */
-[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button) {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)) {
   transition: transform var(--wp--custom--animation--duration--short, 250ms) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--wp--custom--animation--duration--short, 250ms) cubic-bezier(0.4, 0, 0.2, 1), outline var(--wp--custom--animation--duration--short, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0) scale(1);
 }
-[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) {
-  border-radius: var(--wp--custom--border--radius, 18px);
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) {
+  border-radius: var(--wp--custom--border--radius, 13.5px);
   border: 1px solid var(--wp--custom--color--border);
   overflow: hidden;
 }
-[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button) {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)) {
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
 }
 
@@ -68,26 +74,27 @@
    ========================================================================== */
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) {
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-  border: 1px solid var(--wp--custom--color--border);
-  border-radius: var(--wp--custom--border--radius, 18px);
+  border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--color--border);
+  border-radius: var(--wp--custom--border--radius, 13.5px);
   padding: var(--wp--preset--spacing--20);
 }
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) > a {
-  border-radius: calc(var(--wp--custom--border--radius, 18px) - var(--wp--preset--spacing--20, 4.5px) - var(--wp--custom--border--width, 1px));
+  border-radius: clamp(var(--wp--custom--border--radius) * 0.5, var(--wp--custom--border--radius) - var(--wp--preset--spacing--20), var(--wp--custom--border--radius));
 }
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) img {
   border: none;
-  border-radius: 0;
+  padding: 0;
+  border-radius: inherit;
   box-shadow: none;
 }
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *).is-style-image-border:not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) {
   border: 1px solid var(--wp--custom--color--border, rgba(255, 255, 255, 0.15));
   padding: var(--wp--preset--spacing--20, 4.5px);
-  border-radius: var(--wp--custom--border--radius, 18px);
+  border-radius: var(--wp--custom--border--radius, 13.5px);
 }
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *).is-style-image-border:not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) > a {
   overflow: hidden;
-  border-radius: calc(var(--wp--custom--border--radius, 18px) - var(--wp--preset--spacing--20, 4.5px) - 1px);
+  border-radius: calc(var(--wp--custom--border--radius, 13.5px) - var(--wp--preset--spacing--20, 4.5px) - 1px);
 }
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *).is-style-image-round-border:not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) {
   border: 1px solid var(--wp--custom--color--border, rgba(255, 255, 255, 0.15));
@@ -141,20 +148,30 @@
   vertical-align: middle;
   overflow: hidden;
 }
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)) > a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: var(--wp--preset--color--primary);
+  transition: var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+  z-index: 1;
+}
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)) > a::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background-color: var(--wp--custom--color--overlay--background, transparent);
   transition: var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: var(--wp--custom--color--overlay--opacity, 0);
-  mix-blend-mode: exclusion;
-  background-image: linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 100%, transparent 0), linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 100%, transparent 0);
-  background-position: center center;
+  z-index: 2;
+  opacity: 0.85;
+  background-image: linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to left, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to top, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to top, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to left, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0);
+  background-position: left 16px top 16px, left 16px top 16px, right 16px top 16px, right 16px top 16px, left 16px bottom 16px, left 16px bottom 16px, right 16px bottom 16px, right 16px bottom 16px;
   background-repeat: no-repeat;
-  background-size: 32px 2px, 2px 32px;
+  background-size: 24px 24px;
 }
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)) > a img {
   filter: var(--wp--custom--image--filter, brightness(1));
@@ -168,16 +185,17 @@
 
 .wp-block-post-featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) {
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-  border: 1px solid var(--wp--custom--color--border);
-  border-radius: var(--wp--custom--border--radius, 18px);
+  border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--color--border);
+  border-radius: var(--wp--custom--border--radius, 13.5px);
   padding: var(--wp--preset--spacing--20);
 }
 .wp-block-post-featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) > a {
-  border-radius: calc(var(--wp--custom--border--radius, 18px) - var(--wp--preset--spacing--20, 4.5px) - var(--wp--custom--border--width, 1px));
+  border-radius: clamp(var(--wp--custom--border--radius) * 0.5, var(--wp--custom--border--radius) - var(--wp--preset--spacing--20), var(--wp--custom--border--radius));
 }
 .wp-block-post-featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) img {
   border: none;
-  border-radius: 0;
+  padding: 0;
+  border-radius: inherit;
   box-shadow: none;
 }
 .wp-block-post-featured-image:not(.alignfull):has(a) > a {
@@ -188,20 +206,30 @@
   vertical-align: middle;
   overflow: hidden;
 }
+.wp-block-post-featured-image:not(.alignfull):has(a) > a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: var(--wp--preset--color--primary);
+  transition: var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+  z-index: 1;
+}
 .wp-block-post-featured-image:not(.alignfull):has(a) > a::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background-color: var(--wp--custom--color--overlay--background, transparent);
   transition: var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: var(--wp--custom--color--overlay--opacity, 0);
-  mix-blend-mode: exclusion;
-  background-image: linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 100%, transparent 0), linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 100%, transparent 0);
-  background-position: center center;
+  z-index: 2;
+  opacity: 0.85;
+  background-image: linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to left, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to top, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to top, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to left, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0);
+  background-position: left 16px top 16px, left 16px top 16px, right 16px top 16px, right 16px top 16px, left 16px bottom 16px, left 16px bottom 16px, right 16px bottom 16px, right 16px bottom 16px;
   background-repeat: no-repeat;
-  background-size: 32px 2px, 2px 32px;
+  background-size: 24px 24px;
 }
 .wp-block-post-featured-image:not(.alignfull):has(a) > a img {
   filter: var(--wp--custom--image--filter, brightness(1));
@@ -215,16 +243,17 @@
 
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) {
   box-shadow: var(--wp--custom--shadow--default, var(--wp--preset--shadow--natural, 0 3px 10px rgba(0, 0, 0, 0.14)));
-  border: 1px solid var(--wp--custom--color--border);
-  border-radius: var(--wp--custom--border--radius, 18px);
+  border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--color--border);
+  border-radius: var(--wp--custom--border--radius, 13.5px);
   padding: var(--wp--preset--spacing--20);
 }
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) > a {
-  border-radius: calc(var(--wp--custom--border--radius, 18px) - var(--wp--preset--spacing--20, 4.5px) - var(--wp--custom--border--width, 1px));
+  border-radius: clamp(var(--wp--custom--border--radius) * 0.5, var(--wp--custom--border--radius) - var(--wp--preset--spacing--20), var(--wp--custom--border--radius));
 }
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .wp-block-column, .wp-block-column *) img {
   border: none;
-  border-radius: 0;
+  padding: 0;
+  border-radius: inherit;
   box-shadow: none;
 }
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a) > a {
@@ -235,20 +264,30 @@
   vertical-align: middle;
   overflow: hidden;
 }
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a) > a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: var(--wp--preset--color--primary);
+  transition: var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+  z-index: 1;
+}
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a) > a::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background-color: var(--wp--custom--color--overlay--background, transparent);
   transition: var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: var(--wp--custom--color--overlay--opacity, 0);
-  mix-blend-mode: exclusion;
-  background-image: linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 100%, transparent 0), linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 100%, transparent 0);
-  background-position: center center;
+  z-index: 2;
+  opacity: 0.85;
+  background-image: linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to left, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to top, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to top, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to left, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0);
+  background-position: left 16px top 16px, left 16px top 16px, right 16px top 16px, right 16px top 16px, left 16px bottom 16px, left 16px bottom 16px, right 16px bottom 16px, right 16px bottom 16px;
   background-repeat: no-repeat;
-  background-size: 32px 2px, 2px 32px;
+  background-size: 24px 24px;
 }
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a) > a img {
   filter: var(--wp--custom--image--filter, brightness(1));
@@ -268,20 +307,30 @@
   vertical-align: middle;
   overflow: hidden;
 }
+.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)) > a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-color: var(--wp--preset--color--primary);
+  transition: var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+  z-index: 1;
+}
 .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)) > a::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background-color: var(--wp--custom--color--overlay--background, transparent);
   transition: var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: var(--wp--custom--color--overlay--opacity, 0);
-  mix-blend-mode: exclusion;
-  background-image: linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 100%, transparent 0), linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 100%, transparent 0);
-  background-position: center center;
+  z-index: 2;
+  opacity: 0.85;
+  background-image: linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to bottom, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to left, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to top, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to right, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to top, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0), linear-gradient(to left, var(--wp--custom--color--veil--color, var(--wp--preset--color--base)) 2px, transparent 0);
+  background-position: left 16px top 16px, left 16px top 16px, right 16px top 16px, right 16px top 16px, left 16px bottom 16px, left 16px bottom 16px, right 16px bottom 16px, right 16px bottom 16px;
   background-repeat: no-repeat;
-  background-size: 32px 2px, 2px 32px;
+  background-size: 24px 24px;
 }
 .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)) > a img {
   filter: var(--wp--custom--image--filter, brightness(1));
@@ -358,7 +407,7 @@
 /* ==========================================================================
    40 VETOS: Veto embedded Ships and Passengers
   ========================================================================== */
-[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button) [class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button) {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)) [class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)) {
   box-shadow: none;
   transform: none;
 }

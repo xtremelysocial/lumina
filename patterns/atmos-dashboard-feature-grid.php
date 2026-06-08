@@ -5,14 +5,14 @@
  * Categories: atmos
  */
 ?>
-<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<!-- wp:group {"templateLock":"contentOnly","align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
 	
 	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} -->
 	<div class="wp-block-columns alignwide">
 		
-		<!-- wp:column {"width":"33.33%","className":"is-style-shadow is-style-rounded-border","backgroundColor":"primary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}}} -->
-		<div class="wp-block-column is-style-shadow is-style-rounded-border has-primary-alt-background-color has-background" style="flex-basis:33.33%;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+		<!-- wp:column {"width":"33.33%","className":"is-style-rounded-border","backgroundColor":"primary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}}} -->
+		<div class="wp-block-column is-style-rounded-border has-primary-alt-background-color has-background" style="flex-basis:33.33%;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
 			<!-- wp:heading {"level":4} -->
 			<h4 class="wp-block-heading">01. Precision</h4>
 			<!-- /wp:heading -->
@@ -22,8 +22,8 @@
 		</div>
 		<!-- /wp:column -->
 
-		<!-- wp:column {"width":"33.33%","className":"is-style-shadow is-style-rounded-border","backgroundColor":"secondary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}}} -->
-		<div class="wp-block-column is-style-shadow is-style-rounded-border has-secondary-alt-background-color has-background" style="flex-basis:33.33%;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+		<!-- wp:column {"width":"33.33%","className":"is-style-rounded-border","backgroundColor":"secondary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}}} -->
+		<div class="wp-block-column is-style-rounded-border has-secondary-alt-background-color has-background" style="flex-basis:33.33%;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
 			<!-- wp:heading {"level":4} -->
 			<h4 class="wp-block-heading">02. Utility</h4>
 			<!-- /wp:heading -->
@@ -33,8 +33,8 @@
 		</div>
 		<!-- /wp:column -->
 
-		<!-- wp:column {"width":"33.33%","className":"is-style-shadow is-style-rounded-border","backgroundColor":"primary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}}} -->
-		<div class="wp-block-column is-style-shadow is-style-rounded-border has-primary-alt-background-color has-background" style="flex-basis:33.33%;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+		<!-- wp:column {"width":"33.33%","className":"is-style-rounded-border","backgroundColor":"primary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}}} -->
+		<div class="wp-block-column is-style-rounded-border has-primary-alt-background-color has-background" style="flex-basis:33.33%;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
 			<!-- wp:heading {"level":4} -->
 			<h4 class="wp-block-heading">03. Interface</h4>
 			<!-- /wp:heading -->
@@ -51,8 +51,8 @@
 	<div style="height:var(--wp--preset--spacing--30)" aria-hidden="true" class="wp-block-spacer"></div>
 	<!-- /wp:spacer -->
 
-	<!-- wp:group {"align":"wide","className":"is-style-shadow is-style-rounded-border","backgroundColor":"secondary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-	<div class="wp-block-group alignwide is-style-shadow is-style-rounded-border has-secondary-alt-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+	<!-- wp:group {"align":"wide","className":"is-style-rounded-border","backgroundColor":"secondary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignwide is-style-rounded-border has-secondary-alt-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
 		<!-- wp:columns {"verticalAlignment":"center"} -->
 		<div class="wp-block-columns are-vertically-aligned-center">
 			<!-- wp:column {"width":"70%"} -->

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 12 Image Overlays
+//	    v0.9.9 Build 13 Image Overlays
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -140,7 +140,8 @@
 				);
 	
 				// WRITE TARGET FOCUS
-				#{$target-hover}, #{$target-focus} {
+				#{$target-hover}, 
+				#{$target-focus} {
 					@include phys.apply-active-state(
 						$role: $role,
 						$context: 'target'

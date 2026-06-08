@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 12 Image Overlays
+//	 	v0.9.9 Build 13 Image Overlays
 //   ========================================================================== */
 
 // ==========================================================================
@@ -30,7 +30,7 @@ $atmos-block-registry: (
 		block:   '*', 
 // 		is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners', 		
 		is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover',
-		has:     'a, button', 	
+		has:     'a, button:not(.components-button)',
 		trigger: 'self', 
 		target:  'self', 
 		role:    'ship'
@@ -201,15 +201,15 @@ $image-filter:			var(--wp--custom--image--filter, brightness(1));
 $image-hover-filter:	var(--wp--custom--image--hover-filter, brightness(1.15));
 
 // Image Overlay
-$overlay-background:    var(--wp--custom--color--overlay--background, transparent);
-$overlay-opacity:   	var(--wp--custom--color--overlay--opacity, 0);
+$overlay-background:    'var(--wp--preset--color--primary)'; //''; //var(--wp--custom--color--overlay--background, transparent);
+$overlay-opacity:   	0.6; //var(--wp--custom--color--overlay--opacity, 0);
 $overlay-hover-opacity: var(--wp--custom--color--overlay--hover-opacity, 0);
 
 // Veil visual definitions (types: x, crosshair, brackets, matrix)
-$veil-type:				'crosshair'; //'brackets', 'matrix', 'x'
+$veil-type:				'brackets'; //'crosshair'; //'brackets', 'matrix', 'x'
 $veil-color:			var(--wp--custom--color--veil--color, var(--wp--preset--color--base));
-$veil-opacity:   		var(--wp--custom--color--veil--opacity, 0);
-$veil-hover-opacity: 	var(--wp--custom--color--veil--hover-opacity, 0.85);
+$veil-opacity:   		0.85; //var(--wp--custom--color--veil--opacity, 0);
+$veil-hover-opacity: 	0; //var(--wp--custom--color--veil--hover-opacity, 0.85);
 
 //**
 // * 00.5 DEBUGGING: Outline colors for visual debugging

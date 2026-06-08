@@ -6,7 +6,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 	v0.9.9 Build 12 Image Overlays
+//	 	v0.9.9 Build 13 Image Overlays
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -58,18 +58,18 @@
 }
 
 // /* ==========================================================================
-//    02.03 ROUNDING: Border and radius
+//    02.03 BORDER: Border and radius
 //    ========================================================================== */
-@mixin __blueprint-rounding {
-	border-radius: var(--wp--custom--border--radius, 18px);
+@mixin __blueprint-border {
+	border-radius: var(--wp--custom--border--radius, 13.5px);
 	border: 1px solid var(--wp--custom--color--border); 
 }
 
-%physics-rounding {
+%physics-border {
 /* ==========================================================================
-   02.03 ROUNDING: Border and radius
+   02.03 BORDER: Border and radius
    ========================================================================== */
-	@include __blueprint-rounding;
+	@include __blueprint-border;
 }
 
 // /* ==========================================================================
@@ -109,7 +109,7 @@
 		
 		// Apply rounding but with brakes
 		 &:not(#{config.$blocks-layout-brakes}) {
-		 	@include __blueprint-rounding;
+		 	@include __blueprint-border;
 			@include __blueprint-wrapper-clipped;		 	
 		 }		
 	}
@@ -178,24 +178,25 @@
 				0 3px 10px rgba(0, 0, 0, 0.14)));
 
 	// Add border, radius, and padding for a framed portait look
-	border: 1px solid var(--wp--custom--color--border);
-	border-radius: var(--wp--custom--border--radius, 18px);
+	border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--color--border);
+	border-radius: var(--wp--custom--border--radius, 13.5px);
 	padding: var(--wp--preset--spacing--20);
+// 	padding: var(--wp--preset--spacing--30);
 
 	// Set border radius on the <a> tag adjusted for border and padding
 	> a {
-// 		border-radius: inherit;
-		border-radius: calc(
-			var(--wp--custom--border--radius, 18px) - 
-			var(--wp--preset--spacing--20, 4.5px) - 
-			var(--wp--custom--border--width, 1px)
+		border-radius: clamp(
+			calc(var(--wp--custom--border--radius) * 0.5),
+			calc(var(--wp--custom--border--radius) - var(--wp--preset--spacing--20)),
+			var(--wp--custom--border--radius)
 		);
 	}
 
 	// Since we put borders on the wrapper, remove them from the img itself
 	img {
 		border: none;
-		border-radius: 0;
+		padding: 0;
+		border-radius: inherit;
 		box-shadow: none;
 	}
 }
@@ -234,6 +235,56 @@
 }
 
 // ==========================================================================
+// 02.10 ZOOM WRAPPER CLIPPED: Overflow hidden on nested <a> tag
+// ==========================================================================
+@mixin __blueprint-zoom-wrapper-clipped {
+
+	// CRITICAL: Binds the absolute veil coordinate system to this element!
+	position: relative;      
+
+	// Ensures the click target is the whole image
+	display: inline-block;
+	max-width: 100%;
+	cursor: pointer;    
+	
+	// CRITICAL: Pulls the anchor up off the text baseline,
+	vertical-align: middle;
+	
+	// Slices the zooming graphic cleanly
+	overflow: hidden;
+}
+
+%physics-zoom-wrapper-clipped {
+/* ==========================================================================
+   02.10 ZOOM WRAPPER CLIPPED: Overflow hidden on nested <a> tag
+========================================================================== */
+	@include __blueprint-zoom-wrapper-clipped;
+}
+
+@mixin apply-zoom-wrapper-clipped {
+
+	> a {
+		@if config.$atmos-dev-mode {
+			@include __blueprint-zoom-wrapper-clipped;
+		} @else {
+			@extend %physics-zoom-wrapper-clipped;
+		}
+
+		&::before {
+			@include apply-resting-overlay;
+		}
+
+		&::after {
+			@include apply-resting-veil;
+		}
+
+		img {
+			@include apply-resting-image-filter;
+		}
+	}
+}
+
+// ==========================================================================
 // 02.08 IMAGE CUSTOM BORDERS: Theme custom image block border styles
 // ==========================================================================
 @mixin __blueprint-zoom-wrapper-border {
@@ -246,13 +297,13 @@
 		&:not(#{config.$blocks-layout-brakes}) {	
 			border: 1px solid var(--wp--custom--color--border, rgba(255,255,255,0.15));
 			padding: var(--wp--preset--spacing--20, 4.5px);
-			border-radius: var(--wp--custom--border--radius, 18px);
+			border-radius: var(--wp--custom--border--radius, 13.5px);
 	
 			> a {
 				overflow: hidden;
 				// Inner Radius = Outer Radius (18px) - Padding (4.5px) - Border (1px)
 				border-radius: calc(
-					var(--wp--custom--border--radius, 18px) - 
+					var(--wp--custom--border--radius, 13.5px) - 
 					var(--wp--preset--spacing--20, 4.5px) - 1px
 				);
 			}
@@ -418,10 +469,11 @@
 }
 
 // ==========================================================================
-// 02.14 RESTING OVERLAY: Image mask overlay 
+// 02.14 RESTING OVERLAY: Image mask overlay (:before)
 // ==========================================================================
 @mixin __blueprint-resting-overlay {
 
+	// Absolute positioning
 	content: '';
 	position: absolute;
 
@@ -435,18 +487,75 @@
 	pointer-events: none; 
 												
 	background-color: #{config.$overlay-background};
-// 	background-size: 100% 100%;
 										
 	// Use a longer timing function
 	transition: config.$atmos-timing-medium;
 
 	// Set resting opacity		
 	opacity: #{config.$overlay-opacity};
+	
+	// Move it above the image
+	z-index: 1;
+}
 
-	// Automatically inverts color over light or dark background
-	mix-blend-mode: exclusion; // Or 'difference'
+%physics-resting-overlay {
+/* ==========================================================================
+   02.14 RESTING OVERLAY: Image mask overlay (:before)
+========================================================================== */
+	@include __blueprint-resting-overlay;
+}
 
-	// Apply resting graphic overlay
+@mixin apply-resting-overlay {
+
+	// Only apply overlay if configured
+	@if config.$overlay-background != '' {
+
+		@if config.$atmos-dev-mode {
+			@include __blueprint-resting-overlay;
+		} @else {
+			@extend %physics-resting-overlay;
+		}
+	}
+}
+
+// ==========================================================================
+// 02.15 RESTING VEIL: Image veil graphic overlay (::after)
+// ==========================================================================
+@mixin __blueprint-resting-veil {
+
+	// Absolute positioning
+	content: '';
+	position: absolute;
+
+	// Tracks the edges of the newly block-level <a> box
+	inset: 0;
+
+	// Inherit border-radius from parent
+	border-radius: inherit;
+
+	// Completely click-transparent
+	pointer-events: none; 
+
+	// Use a longer timing function
+	transition: config.$atmos-timing-medium;
+
+	// Force veil graphic on top of the tint (which is in turn on top of the img)
+	z-index: 2;
+
+	// Use veil-opacity so it stays hidden at rest (set to 0 in config)
+	opacity: #{config.$veil-opacity};
+		
+	// Apply Blend Mode (ONLY if we have a graphic, but NO tint)
+	// If we have a tint, we stay 'normal' so we don't distort the color.
+	@if config.$overlay-background == '' and 
+		config.$veil-type != '' and
+		config.$veil-opacity != '' and 
+		config.$veil-opacity != 0 
+	{
+		mix-blend-mode: exclusion;
+	}
+
+	// 5. Apply the configured veil type			
 	@if config.$veil-type == 'x' {
 		@include __blueprint-veil-vector-x;
 
@@ -461,85 +570,49 @@
 	}
 }
 
-%physics-resting-overlay {
+%physics-resting-veil {
 /* ==========================================================================
-   02.14 RESTING OVERLAY: Image mask overlay 
+   02.15 RESTING VEIL: Image veil graphic overlay (::after)
 ========================================================================== */
-	@include __blueprint-resting-overlay;
+	@include __blueprint-resting-veil;
 }
 
-@mixin apply-resting-overlay {
-	@if config.$atmos-dev-mode {
-		@include __blueprint-resting-overlay;
-	} @else {
-		@extend %physics-resting-overlay;
+@mixin apply-resting-veil {
+
+	// Only apply veil graphic if configured
+	@if config.$veil-type != '' {
+
+		@if config.$atmos-dev-mode {
+			@include __blueprint-resting-veil;
+		} @else {
+			@extend %physics-resting-veil;
+		}
 	}
 }
 
 // ==========================================================================
-// 02.15 RESTING BRIGHTNESS: Normal image brightness as baseline
+// 02.16 RESTING IMAGE FILTER: Filter (e.g. brightness)
 // ==========================================================================
-@mixin __blueprint-resting-brightness {
+@mixin __blueprint-resting-image-filter {
 	filter: config.$image-filter;
 }
 
-%physics-resting-brightness {
+%physics-resting-image-filter {
 /* ==========================================================================
-   02.15 RESTING BRIGHTNESS: Normal image brightness as baseline
+   02.16 RESTING IMAGE FILTER: Filter (e.g. brightness)
 ========================================================================== */
-	@include __blueprint-resting-brightness;
+	@include __blueprint-resting-image-filter;
 }
 
-@mixin apply-resting-brightness {
-	@if config.$atmos-dev-mode {
-		@include __blueprint-resting-brightness;
-	} @else {
-		@extend %physics-resting-brightness;
-	}
-}
-	
-// ==========================================================================
-// 02.16 ZOOM WRAPPER CLIPPED: Overflow hidden on nested <a> tag
-// ==========================================================================
-@mixin __blueprint-zoom-wrapper-clipped {
+@mixin apply-resting-image-filter {
 
-	// CRITICAL: Binds the absolute veil coordinate system to this element!
-	position: relative;      
+	// Only apply image filter if configured
+	@if config.$image-filter != '' {
 
-	// Ensures the click target is the whole image
-	display: inline-block;
-	max-width: 100%;
-	cursor: pointer;    
-	
-	// CRITICAL: Pulls the anchor up off the text baseline,
-	vertical-align: middle;
-	
-	// Slices the zooming graphic cleanly
-	overflow: hidden;
-}
-
-%physics-zoom-wrapper-clipped {
-/* ==========================================================================
-   02.16 ZOOM WRAPPER CLIPPED: Overflow Hidden
-========================================================================== */
-	@include __blueprint-zoom-wrapper-clipped;
-}
-
-@mixin apply-zoom-wrapper-clipped {
-
-	> a {
 		@if config.$atmos-dev-mode {
-			@include __blueprint-zoom-wrapper-clipped;
+			@include __blueprint-resting-image-filter;
 		} @else {
-			@extend %physics-zoom-wrapper-clipped;
-		}
-
-		&::after {
-			@include apply-resting-overlay;
-		}
-
-		img {
-			@include apply-resting-brightness;
+			@extend %physics-resting-image-filter;
 		}
 	}
 }

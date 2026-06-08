@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    v0.9.9 Build 12 Image Overlays
+//	    v0.9.9 Build 13 Image Overlays
 //   ========================================================================== */
 
 // @use '00-config' as config;
@@ -60,6 +60,13 @@
 		/* Reduce row grap so nav line-wrapping is tighter */
 		.wp-block-navigation.is-layout-flex {
 			row-gap: var(--wp--preset--spacing--30);
+		}
+		
+		/* Set avatars to look like images with border */
+		a > .avatar {
+// 			padding: var(--wp--preset--spacing--20);
+			border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--border--color);
+			border-radius: var(--wp--custom--button--radius);
 		}
 
 	// ----------------------------------------------------------------------

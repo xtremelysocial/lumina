@@ -3,7 +3,7 @@
   \*****************************************************************************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    ATMOS INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 12 Image Overlays
+   v0.9.9 Build 13 Image Overlays
    ========================================================================== */
 /* ==========================================================================
    02 THEME CSS: Reduce motion, adjust menus and icons, etc. 
@@ -16,8 +16,8 @@
 /* ==========================================================================
    10 SHIPS: Containers (e.g. Groups, Columns)
    ========================================================================== */
-[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button):hover,
-[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button):has(:focus-visible) {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)):hover,
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)):has(:focus-visible) {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
@@ -33,12 +33,17 @@
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
   filter: var(--wp--custom--image--hover-filter, brightness(1.15));
 }
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover > a::before,
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) > a::before {
+  opacity: var(--wp--custom--color--overlay--hover-opacity, 0);
+}
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover > a::after,
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) > a::after {
-  opacity: var(--wp--custom--color--veil--hover-opacity, 0.85);
+  opacity: 0;
 }
 
-.wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover img, .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover img,
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-transform, scale(1.05));
 }
 
@@ -50,12 +55,17 @@
 .wp-block-post-featured-image:not(.alignfull):has(a):has(:focus-visible) img {
   filter: var(--wp--custom--image--hover-filter, brightness(1.15));
 }
+.wp-block-post-featured-image:not(.alignfull):has(a):hover > a::before,
+.wp-block-post-featured-image:not(.alignfull):has(a):has(:focus-visible) > a::before {
+  opacity: var(--wp--custom--color--overlay--hover-opacity, 0);
+}
 .wp-block-post-featured-image:not(.alignfull):has(a):hover > a::after,
 .wp-block-post-featured-image:not(.alignfull):has(a):has(:focus-visible) > a::after {
-  opacity: var(--wp--custom--color--veil--hover-opacity, 0.85);
+  opacity: 0;
 }
 
-.wp-block-post-featured-image:not(.alignfull):has(a):hover img, .wp-block-post-featured-image:not(.alignfull):has(a):has(:focus-visible) img {
+.wp-block-post-featured-image:not(.alignfull):has(a):hover img,
+.wp-block-post-featured-image:not(.alignfull):has(a):has(:focus-visible) img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-transform, scale(1.05));
 }
 
@@ -67,12 +77,17 @@
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a):has(:focus-visible) img {
   filter: var(--wp--custom--image--hover-filter, brightness(1.15));
 }
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a):hover > a::before,
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a):has(:focus-visible) > a::before {
+  opacity: var(--wp--custom--color--overlay--hover-opacity, 0);
+}
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a):hover > a::after,
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a):has(:focus-visible) > a::after {
-  opacity: var(--wp--custom--color--veil--hover-opacity, 0.85);
+  opacity: 0;
 }
 
-.wp-block-latest-posts__featured-image:not(.alignfull):has(a):hover img, .wp-block-latest-posts__featured-image:not(.alignfull):has(a):has(:focus-visible) img {
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a):hover img,
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a):has(:focus-visible) img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-transform, scale(1.05));
 }
 
@@ -84,12 +99,17 @@
 .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
   filter: var(--wp--custom--image--hover-filter, brightness(1.15));
 }
+.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover > a::before,
+.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) > a::before {
+  opacity: var(--wp--custom--color--overlay--hover-opacity, 0);
+}
 .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover > a::after,
 .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) > a::after {
-  opacity: var(--wp--custom--color--veil--hover-opacity, 0.85);
+  opacity: 0;
 }
 
-.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover img, .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
+.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover img,
+.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-transform, scale(1.05));
 }
 
@@ -162,8 +182,8 @@
 /* ==========================================================================
    40 VETOS: Veto embedded Ships and Passengers
   ========================================================================== */
-[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button):hover [class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button),
-[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button):hover [class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button):hover {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)):hover [class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)),
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)):hover [class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a, button:not(.components-button)):hover {
   box-shadow: none;
   transform: none;
 }

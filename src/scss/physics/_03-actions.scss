@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 12 Image Overlays
+//	 v0.9.9 Build 13 Image Overlays
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -202,39 +202,47 @@
 
 @mixin apply-remove-overlay {
 
-	> a {
-		&::after {
+	// Only apply overlay if configured
+	@if config.$overlay-background != '' {
 
-			@if config.$atmos-dev-mode {
-				@include __blueprint-remove-overlay;
-			} @else {
-				@extend %physics-remove-overlay;
+		> a {
+			&::before {
+	
+				@if config.$atmos-dev-mode {
+					@include __blueprint-remove-overlay;
+				} @else {
+					@extend %physics-remove-overlay;
+				}
 			}
 		}
 	}
 }
 
 // ==========================================================================
-// 03.23 BRIGHTEN IMAGE: Increase brightness on the image
+// 03.23 FILTER IMAGE: Apply hover filter (e.g. brightness) on the image
 // ==========================================================================
-@mixin __blueprint-brighten-image {
+@mixin __blueprint-filter-image {
 	filter: config.$image-hover-filter;
 }
 
-%physics-brighten-image {
+%physics-filter-image {
 	/* ==========================================================================
-	   03.23 BRIGHTEN IMAGE: Increase brightness on the image
+	   03.23 FILTER IMAGE: Apply hover filter (e.g. brightness) on the image
 	========================================================================== */
-	@include __blueprint-brighten-image;
+	@include __blueprint-filter-image;
 }
 
-@mixin apply-brighten-image {
+@mixin apply-filter-image {
+
+	// Only apply image filter if configured
+	@if config.$image-filter != '' {
 	
-	img {
-		@if config.$atmos-dev-mode {
-			@include __blueprint-brighten-image;
-		} @else {
-			@extend %physics-brighten-image;
+		img {
+			@if config.$atmos-dev-mode {
+				@include __blueprint-filter-image;
+			} @else {
+				@extend %physics-filter-image;
+			}
 		}
 	}
 }
@@ -255,12 +263,16 @@
 
 @mixin apply-veil-reveal {
 
-	> a {
-		&::after {
-			@if config.$atmos-dev-mode {
-				@include __blueprint-veil-reveal;
-			} @else {
-				@extend %physics-veil-reveal;
+	// Only apply veil graphic if configured
+	@if config.$veil-type != '' {
+
+		> a {
+			&::after {
+				@if config.$atmos-dev-mode {
+					@include __blueprint-veil-reveal;
+				} @else {
+					@extend %physics-veil-reveal;
+				}
 			}
 		}
 	}
@@ -281,8 +293,11 @@
 		}
 	}
 
-	// Brighten image
-	@include apply-brighten-image;	
+	// Filter image (e.g. Brighten)
+	@include apply-filter-image;	
+
+	// Remove tinted overlay
+	@include apply-remove-overlay;
 	
 	// Reveal veil if there is one
 	@include apply-veil-reveal;
