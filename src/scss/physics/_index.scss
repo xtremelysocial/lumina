@@ -18,9 +18,12 @@
 @forward '04-registry' show 
 	register-ship, 
 	register-passenger, 
+	register-image, 
 	get-ships, 
 	get-passengers,
+	get-images,
 	apply-wrapper-resting-state, 
 	apply-resting-state, 
 	apply-active-state, 
-	apply-silence;
+	apply-silence,
+	apply-silence-shadow;

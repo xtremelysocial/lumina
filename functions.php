@@ -1,7 +1,14 @@
 <?php
 /**
- * File:    functions.php
- * Theme:   Atmos Blocks (Child of Flat Blocks)
+ * File:	functions.php
+ * Theme:	Atmos Blocks 
+ * 
+ * Atmos Blocks functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package atmos-blocks
+ * @since	1.0
  */
 
 /**

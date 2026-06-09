@@ -5,7 +5,7 @@
  * Categories: atmos
  */
 ?>
-<!-- wp:group {"templateLock":"contentOnly","align":"wide","backgroundColor":"secondary-alt","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->
+<!-- wp:group {"align":"wide","backgroundColor":"secondary-alt","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide is-style-rounded-border has-secondary-alt-background-color has-background" id="quote-large">
 	<!-- wp:image {"align":"center","width":80,"height":80,"sizeSlug":"full","linkDestination":"none","className":"is-style-rounded"} -->
 	<figure class="wp-block-image aligncenter size-full is-resized is-style-rounded">

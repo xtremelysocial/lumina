@@ -5,7 +5,7 @@
  * Categories: atmos
  */
 ?>
-<!-- wp:columns {"templateLock":"contentOnly","align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} -->
+<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} -->
 <div class="wp-block-columns alignwide">
 	<!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"primary-alt"} -->
 	<div class="wp-block-column is-style-rounded-border has-primary-alt-background-color has-background">

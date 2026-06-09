@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 13 Image Overlays
+//	 v0.9.9 Build 14 Physics Engine MVP
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -142,10 +142,26 @@
 }
 
 // ==========================================================================
+// 04.04 APPLY SILENCE SHADOW: Silence Shadows on Embedded Images
+// ==========================================================================
+@mixin apply-silence-shadow($interactive: false) {
+
+	// Handle resting silence
+	@if not $interactive {
+	    @include resting.apply-resting-silence-shadow;
+
+	// Handle active silence
+	} @else {
+	    @include actions.apply-silence-shadow;
+	}	
+}
+
+// ==========================================================================
 // 04.05 SHIP AND PASSENGER LISTS: Used for ships to veto passengers physics
 // ==========================================================================
 $all-ships: (); 
 $all-passengers: ();
+$all-images: ();
 
 // Add the full ship selector to the list
 @mixin register-ship($selector) {
@@ -157,6 +173,11 @@ $all-passengers: ();
 	$all-passengers: list.append($all-passengers, $selector) !global;
 }
 
+// Add the full image selector to the list
+@mixin register-image($selector) {
+	$all-images: list.append($all-images, $selector) !global;
+}
+
 // Get ships from list
 @function get-ships() {
 	@return $all-ships;
@@ -165,4 +186,9 @@ $all-passengers: ();
 // Get passengers from list
 @function get-passengers() {
 	@return $all-passengers;
+}
+
+// Get images from list
+@function get-images() {
+	@return $all-images;
 }

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 13 Image Overlays
+//	    v0.9.9 Build 14 Physics Engine MVP
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -50,18 +50,17 @@
 				$role
 			);
 
-			// ADD REGULAR PASSENGERS ONLY TO THE PASSENGERS VETO LIST
+			// ADD PASSENGERS AND IMAGES TO THE VETO LISTS
+			$sel-to-register: if($target != 'self', $wrapper-sel, $target-sel);			
 			@if $role == 'passenger' {
-				@if $target != 'self' {
-					@if not list.index(phys.get-passengers(), $wrapper-sel) {
-						@include phys.register-passenger($wrapper-sel);
-					}
-				} @else {
-					@if not list.index(phys.get-passengers(), $target-sel) {
-						@include phys.register-passenger($target-sel);
-					}
+				@if not list.index(phys.get-passengers(), $sel-to-register) {
+					@include phys.register-passenger($sel-to-register);
 				}
-			}			
+			} @else if $role == 'passenger-zoom' or $role == 'passenger-grow' {
+				@if not list.index(phys.get-images(), $sel-to-register) {
+					@include phys.register-image($sel-to-register);
+				}
+			}
 			
 			// ----------------------------------------------------------------------
 			// PHASE 1: RESTING STATE (Rendered to atmos-engine.css)

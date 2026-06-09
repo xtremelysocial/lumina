@@ -2,7 +2,7 @@
     "$schema": "https://schemas.wp.org/trunk/theme.json",
     "version": 3,
     "name": "object-plain",
-    "title": "No Motion",
+    "title": "No Shadow/Motion",
     "isDefault": false,    
     "blockTypes": [
         "core/group",
@@ -11,9 +11,10 @@
         "core/paragraph",
         "core/code",
         "core/image",
+        "core/post-featured-image",
+        "core/latest-posts",
         "core/media-text",
         "core/list",
-        "core/query-pagination",
-        "core/post-featured-image"
+        "core/query-pagination"
     ]
 }

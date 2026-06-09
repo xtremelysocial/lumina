@@ -6,7 +6,7 @@
  * Block Types: core/group
  */
 ?>
-<!-- wp:group {"templateLock":"contentOnly","align":"wide","backgroundColor":"primary-alt","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->
+<!-- wp:group {,"align":"wide","backgroundColor":"primary-alt","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide is-style-rounded-border has-primary-alt-background-color has-background" id="call-to-action-2-columns">
 	<!-- wp:heading {"textAlign":"left","placeholder":"Call to Action 2 Columns","align":"wide"} -->
 	<h2 class="wp-block-heading alignwide has-text-align-left" id="call-to-action-2-columns">Call to Action 2 Columns</h2>

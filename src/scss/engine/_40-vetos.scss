@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   40 VETOS: Centralized Nesting Boundary Controller
-//	    v0.9.9 Build 13 Image Overlays
+//	    v0.9.9 Build 14 Physics Engine MVP
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -25,6 +25,7 @@
 	// FETCH SHIPS AND PASSENGERS FROM THE VETO LISTS
 	$ships: phys.get-ships();
 	$passengers: phys.get-passengers();
+	$images: phys.get-images();
 	
 	// LOOP THROUGH SHIPS
 	@if list.length($ships) > 0 {
@@ -47,7 +48,7 @@
 			}
 
 			// TRACK B: PASSENGER-IN-SHIP BOUNDARIES
-			// Silences inner elements (e.g., images, text blocks) when the parent card lifts
+			// Silences inner elements (e.g., column block) when the parent card lifts
 			@if list.length($passengers) > 0 {
 				@each $child-passenger in $passengers {
 	
@@ -63,6 +64,24 @@
 					}
 				}
 			}
+
+			// TRACK C: IMAGE-IN-SHIP BOUNDARIES
+			// Silences only shadows (e.g., image block) when the parent card lifts
+			@if list.length($images) > 0 {
+				@each $child-image in $images {
+	
+					@if not $interactive {
+						#{$parent} #{$child-image} {
+							@include phys.apply-silence-shadow($interactive: false);
+						}
+					} @else {
+						#{$parent}#{$hover} #{$child-image},
+						#{$parent}#{$hover} #{$child-image}:hover {
+							@include phys.apply-silence-shadow($interactive: true);
+						}
+					}
+				}
+			}			
 		}
 	}
 }

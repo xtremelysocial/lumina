@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 13 Image Overlays
+//	 	v0.9.9 Build 14 Physics Engine MVP
 //   ========================================================================== */
 
 // ==========================================================================
@@ -30,7 +30,8 @@ $atmos-block-registry: (
 		block:   '*', 
 // 		is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners', 		
 		is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover',
-		has:     'a, button:not(.components-button)',
+// 		has:     'a, button:not(.components-button)',
+		has:     'a:not(figcaption a), button',
 		trigger: 'self', 
 		target:  'self', 
 		role:    'ship'
@@ -144,10 +145,10 @@ $atmos-block-registry: (
 	),
 
 	// Legacy HTML buttons for WordPress.org theme preview
-	( trigger: 'input[type="submit"]', has: 'none', spacing: true, role: 'sovereign' ),
-	( trigger: 'input[type="button"]', has: 'none', spacing: true, role: 'sovereign' ),
-	( trigger: 'input[type="reset"]', has: 'none',  spacing: true, role: 'sovereign' ),
-	( trigger: 'button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)', has: 'none', spacing: true, role: 'sovereign' ),
+	( trigger: 'input[type="submit"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
+	( trigger: 'input[type="button"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
+	( trigger: 'input[type="reset"]:not(.wp-element-button)', has: 'none',  spacing: true, role: 'sovereign' ),
+	( trigger: 'button:not(.wp-element-button, .wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)', has: 'none', spacing: true, role: 'sovereign' ),
 	( trigger: 'input[type=file]::file-selector-button', has: 'none', spacing: true, role: 'sovereign' ),    
 );
 
@@ -162,16 +163,16 @@ $atmos-block-registry: (
 $blocks-no-rounding: (
 	'.wp-block-column', 
 	'.wp-block-media-text__media', 
-	'.wp-block-media-text__content'
+	'.wp-block-media-text__content',
 );
 
 // Rounding Conditional Stop: Write CSS to stop borders/rounding WITHIN these blocks
 $blocks-layout-brakes: (
-// 	'.wp-block-media-text__content *',
-// 	'.wp-block-media-text__media *',
-	'.wp-block-media-text *',
-	'.wp-block-column',
-	'.wp-block-column *',
+	'.wp-block-media-text *', // Nothing in this block
+// 	'.wp-block-column',
+	'.is-style-object-plain',
+	'.is-style-image-no-border',
+	'.is-style-no-gap *', // Nothing in this class
 );
 
 // Blocks that have custom block styles to add to the compiled CSS
@@ -197,18 +198,18 @@ $shift-subtle:  		var(--wp--custom--animation--default--object-small-transform, 
 $shift-standard: 		var(--wp--custom--animation--default--object-transform, translateY(-3px)); 
 
 // Image Filter
-$image-filter:			var(--wp--custom--image--filter, brightness(1));
-$image-hover-filter:	var(--wp--custom--image--hover-filter, brightness(1.15));
+$image-filter:			''; //var(--wp--custom--image--filter, brightness(1));
+$image-hover-filter:	''; //var(--wp--custom--image--hover-filter, brightness(1.15));
 
 // Image Overlay
-$overlay-background:    'var(--wp--preset--color--primary)'; //''; //var(--wp--custom--color--overlay--background, transparent);
-$overlay-opacity:   	0.6; //var(--wp--custom--color--overlay--opacity, 0);
-$overlay-hover-opacity: var(--wp--custom--color--overlay--hover-opacity, 0);
+$overlay-background:    ''; //'var(--wp--preset--color--primary)'; //var(--wp--custom--color--overlay--background, var(--wp--preset--color--primary));
+$overlay-opacity:   	''; //var(--wp--custom--color--overlay--opacity, 0.6);
+$overlay-hover-opacity: ''; //var(--wp--custom--color--overlay--hover-opacity, 0);
 
 // Veil visual definitions (types: x, crosshair, brackets, matrix)
-$veil-type:				'brackets'; //'crosshair'; //'brackets', 'matrix', 'x'
-$veil-color:			var(--wp--custom--color--veil--color, var(--wp--preset--color--base));
-$veil-opacity:   		0.85; //var(--wp--custom--color--veil--opacity, 0);
+$veil-type:				''; //'brackets'; //'crosshair'; //'matrix';, //'x';
+$veil-color:			''; //var(--wp--custom--color--veil--color, var(--wp--preset--color--base));
+$veil-opacity:   		0; //var(--wp--custom--color--veil--opacity, 0);
 $veil-hover-opacity: 	0; //var(--wp--custom--color--veil--hover-opacity, 0.85);
 
 //**

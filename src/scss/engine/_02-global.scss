@@ -1,10 +1,10 @@
 //* ==========================================================================
 //   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    v0.9.9 Build 13 Image Overlays
+//	    v0.9.9 Build 14 Physics Engine MVP
 //   ========================================================================== */
 
-// @use '00-config' as config;
-// @use '../physics' as phys;
+@use '00-config' as config;
+@use '../physics' as phys;
 
 @mixin apply-global-logic($interactive: false) {
 
@@ -68,12 +68,87 @@
 			border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--border--color);
 			border-radius: var(--wp--custom--button--radius);
 		}
+		
+		/* Don't round images that are immediate children of a column */
+		// Build selector for the column block only
+// 		$target-sel: phys.compile-selector(
+// 			$block:   '.wp-block-column', 
+// 			$is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners',
+// 			$has:     'a, button',
+// 			$trigger: 'self', 
+// 			$target:  'self', 
+// 		);
+// 		#{$target-sel} {						
+// 		.wp-block-column:has(a, button) {
+// 			& > .wp-block-image,
+// 			& > .wp-block-post-featured-image,
+// 			& > .wp-block-cover {
+// 				border: none !important; 
+// 				border-radius: 0 !important;
+// 				padding: 0 !important;
+// 				box-shadow: none !important; 
+// 				
+// 				& > a,
+// 				& > a > img {
+// 					border-radius: 0 !important; 
+// // 					border-radius: inherit; 
+// 				}
+// 			}
+// 		}
+		
+		/* Allow user to turn off shadow and animation for particular blocks */
+		[class*=wp-block-].is-style-object-plain {
+			box-shadow: none !important;
+// 			border: none;
+// 			border-radius: 0;
+		}
+		
+// 		.is-style-object-plain {
+// 			&, 
+// 			> a {
+// 				border: none; // !important;
+// 				border-radius: 0; // !important;
+// // 				border-radius: inherit; // !important;
+// 				box-shadow: none; // !important;
+// 				padding: 0; // !important;
+// 
+// 				// If overlay, then disable it
+// 				@if config.$overlay-background != '' {
+// 					::before {
+// 						content: none;
+// 					}
+// 				}
+// 
+// 				// If veil graphic, then disable it
+// 				@if config.$veil-type != '' {
+// 					::after {
+// 						content: none;
+// 					}
+// 				}
+// 				// If image filter, then disable it
+// 				@if config.$image-filter != '' {
+// 					img {
+// 						filter: none; // !important;
+// 					}
+// 				}
+// 				
+// 			}				
+// 		}	
 
 	// ----------------------------------------------------------------------
 	// PHASE 2: INTERACTION STATE (atmos-interactions.css)
 	// ----------------------------------------------------------------------
 	} @else {
 	
+		/* Remove shadow on hover for is-style-object plain custom block style */
+		[class*=wp-block-].is-style-object-plain {
+			&:hover,
+			&:has(:focus-visible) {
+				box-shadow: none !important;
+				transform: none !important; 
+			}
+		}		
+		
 		/* Remove shadow from logo-only or the shadow will be round */		
 		.wp-site-blocks .wp-block-social-links.is-style-logos-only {
 			& .wp-block-social-link:hover,

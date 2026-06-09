@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 13 Image Overlays
+//	 v0.9.9 Build 14 Physics Engine MVP
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -380,5 +380,33 @@
 		@include __blueprint-silence;
 	} @else {
 		@extend %physics-silence;
+	}
+}
+
+// ==========================================================================
+// 03.41 SILENCE ACTIVE SHADOW: Silence shadows embedded in Ships
+// ==========================================================================
+@mixin __blueprint-silence-shadow {
+
+	// Reset shadow and transform
+	box-shadow: none; 
+// 	transform: none;
+
+	// Debug mode    
+	@include atmos-debug('silence-shadow');
+}
+
+%physics-silence {
+	/* ==========================================================================
+	   03.41 SILENCE ACTIVE SHADOW: Silence shadows embedded in Ships
+	========================================================================== */
+	@include __blueprint-silence-shadow;
+}
+
+@mixin apply-silence-shadow {
+	@if config.$atmos-dev-mode {	
+		@include __blueprint-silence-shadow;
+	} @else {
+		@extend %physics-silence-shadow;
 	}
 }
