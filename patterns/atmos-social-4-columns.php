@@ -12,8 +12,8 @@
 		<!-- wp:heading {"textAlign":"center","level":6} -->
 		<h6 class="wp-block-heading has-text-align-center">FACEBOOK</h6>
 		<!-- /wp:heading -->
-		<!-- wp:social-links {"iconColor":"white","size":"has-large-icon-size","align":"center","className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"center"}} -->
-		<ul class="wp-block-social-links aligncenter has-large-icon-size has-icon-color is-style-logos-only"><!-- wp:social-link {"url":"#","service":"facebook"} /--></ul>
+		<!-- wp:social-links {"align":"center","className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"center"}} -->
+		<ul class="wp-block-social-links aligncenter has-large-icon-sizeis-style-logos-only"><!-- wp:social-link {"url":"#content-start","service":"facebook"} /--></ul>
 		<!-- /wp:social-links -->
 	</div>
 	<!-- /wp:column -->
@@ -23,8 +23,8 @@
 		<!-- wp:heading {"textAlign":"center","level":6} -->
 		<h6 class="wp-block-heading has-text-align-center">INSTAGRAM</h6>
 		<!-- /wp:heading -->
-		<!-- wp:social-links {"iconColor":"white","size":"has-large-icon-size","align":"center","className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"center"}} -->
-		<ul class="wp-block-social-links aligncenter has-large-icon-size has-icon-color is-style-logos-only"><!-- wp:social-link {"url":"#","service":"instagram"} /--></ul>
+		<!-- wp:social-links {"align":"center","className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"center"}} -->
+		<ul class="wp-block-social-links aligncenter has-large-icon-size is-style-logos-only"><!-- wp:social-link {"url":"#content-start","service":"instagram"} /--></ul>
 		<!-- /wp:social-links -->
 	</div>
 	<!-- /wp:column -->
@@ -34,8 +34,8 @@
 		<!-- wp:heading {"textAlign":"center","level":6} -->
 		<h6 class="wp-block-heading has-text-align-center">LINKEDIN</h6>
 		<!-- /wp:heading -->
-		<!-- wp:social-links {"iconColor":"white","size":"has-large-icon-size","align":"center","className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"center"}} -->
-		<ul class="wp-block-social-links aligncenter has-large-icon-size has-icon-color is-style-logos-only"><!-- wp:social-link {"url":"#","service":"linkedin"} /--></ul>
+		<!-- wp:social-links {"align":"center","className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"center"}} -->
+		<ul class="wp-block-social-links aligncenter has-large-icon-size is-style-logos-only"><!-- wp:social-link {"url":"#"content-start,"service":"linkedin"} /--></ul>
 		<!-- /wp:social-links -->
 	</div>
 	<!-- /wp:column -->
@@ -45,8 +45,8 @@
 		<!-- wp:heading {"textAlign":"center","level":6} -->
 		<h6 class="wp-block-heading has-text-align-center">THREADS</h6>
 		<!-- /wp:heading -->
-		<!-- wp:social-links {"iconColor":"white","size":"has-large-icon-size","align":"center","className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"center"}} -->
-		<ul class="wp-block-social-links aligncenter has-large-icon-size has-icon-color is-style-logos-only"><!-- wp:social-link {"url":"#","service":"threads"} /--></ul>
+		<!-- wp:social-links {"align":"center","className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"center"}} -->
+		<ul class="wp-block-social-links aligncenter has-large-icon-size is-style-logos-only"><!-- wp:social-link {"url":"#content-start","service":"threads"} /--></ul>
 		<!-- /wp:social-links -->
 	</div>
 	<!-- /wp:column -->

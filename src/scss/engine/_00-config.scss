@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 14 Physics Engine MVP
+//	 	v0.9.9 Build 15 Physics Engine MVP
 //   ========================================================================== */
 
 // ==========================================================================
@@ -24,21 +24,18 @@ $atmos-block-registry: (
 
 	// --------------------------------------------------------------------------
 	// SHIPS (Wildcard works great here, but you can override for specific blocks)
-	// TO-DO: Consider .is-style-object-passive, .wp-block-cover, .wp-block-query-pagination
 	// --------------------------------------------------------------------------
 	(
 		block:   '*', 
-// 		is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners', 		
 		is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover',
-// 		has:     'a, button:not(.components-button)',
-		has:     'a:not(figcaption a), button',
+		has:     'a:not(figcaption a), button, .wp-element-button',
 		trigger: 'self', 
 		target:  'self', 
 		role:    'ship'
 	),
 	
 	// --------------------------------------------------------------------------
-	// PASSENGERS
+	// PASSENGERS: None needed at this time
 	// --------------------------------------------------------------------------
 
 	// --------------------------------------------------------------------------
@@ -52,8 +49,9 @@ $atmos-block-registry: (
 		has:     'a:not(figcaption a)', 	
 		trigger: 'self',                
 		target:  'img',
+		role:    'passenger'
 // 		role:    'passenger-grow'
-		role:    'passenger-zoom'
+// 		role:    'passenger-zoom'
 	),
     
 	// Gallery Image: Only needed if wp-block-image isn't zoom
@@ -74,8 +72,9 @@ $atmos-block-registry: (
 		has:     'a',    
 		trigger: 'self',                 
 		target:  'img',
+		role:    'passenger'
 // 		role:    'passenger-grow'
-		role:    'passenger-zoom'
+// 		role:    'passenger-zoom'
 	),
 
 	// Latest Posts Featured Image: Requires link
@@ -85,8 +84,9 @@ $atmos-block-registry: (
 		has:     'a',    
 		trigger: 'self',                 
 		target:  'img',
+		role:    'passenger'
 // 		role:    'passenger-grow'
-		role:    'passenger-zoom'
+// 		role:    'passenger-zoom'
 	),
     
 	// Media & Text: Needed because it's not a standard wp-block-image

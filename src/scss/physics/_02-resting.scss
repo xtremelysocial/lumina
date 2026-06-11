@@ -6,7 +6,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 	v0.9.9 Build 14 Physics Engine MVP
+//	 	v0.9.9 Build 15 Physics Engine MVP
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -110,7 +110,7 @@
 		// Apply rounding but with brakes
 		 &:not(#{config.$blocks-layout-brakes}) {
 		 	@include __blueprint-border;
-			@include __blueprint-wrapper-clipped;		 	
+// 			@include __blueprint-wrapper-clipped;		 	
 		 }		
 	}
 
@@ -130,8 +130,55 @@
     }
 }
 
+// /* ==========================================================================
+//    02.07 IMAGE VISUALS: Border, radius, and shadow
+//    ========================================================================== */
+@mixin __blueprint-image-wrapper-visuals {
+
+	// Apply shadow directly to image and resting filter if configured
+	img {
+		@include __blueprint-shadow-natural;
+
+// 		@include apply-resting-image-filter;
+// 		@include __blueprint-resting-image-filter;
+	}
+
+	// Apply border to plain image only
+	&:not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) {
+		img {	
+			border-radius: var(--wp--custom--border--radius, 13.5px);
+			border: 1px solid var(--wp--custom--color--border);
+		}
+	}
+}
+
+%physics-image-wrapper-visuals {
+/* ==========================================================================
+   02.07 IMAGE VISUALS: Border, radius, and shadow
+   ========================================================================== */
+	@include __blueprint-image-wrapper-visuals;
+}
+
+@mixin apply-image-wrapper-visuals($block) {
+
+	// Only blocks that get rounding
+	@if not is-no-rounding($block) {
+
+		// Apply rounding but with brakes in CSS selector
+		&:not(#{config.$blocks-layout-brakes}) {
+		
+			// Apply border
+			@if config.$atmos-dev-mode {	
+				@include __blueprint-image-wrapper-visuals;		
+			} @else {
+				@extend %physics-image-wrapper-visuals;
+			}
+		}
+	}		
+}
+
 // ==========================================================================
-// 02.07 IMAGE RESTING STATE: Setup transitions and transforms
+// 02.08 IMAGE RESTING STATE: Setup transitions and transforms
 // ==========================================================================
 @mixin __blueprint-asset-resting-state {
 
@@ -154,7 +201,7 @@
 
 %physics-asset-resting-state {
 	/* ==========================================================================
-	   02.07 IMAGE RESTING STATE: Setup transitions and transforms
+	   02.08 IMAGE RESTING STATE: Setup transitions and transforms
 	========================================================================== */
 	@include __blueprint-asset-resting-state;
 }
@@ -173,15 +220,17 @@
 @mixin __blueprint-zoom-wrapper-visuals {
 
 	// Resting shadow (e.g. natural)
-	box-shadow: var(--wp--custom--shadow--default, 
-				var(--wp--preset--shadow--natural, 
-				0 3px 10px rgba(0, 0, 0, 0.14)));
+// 	box-shadow: var(--wp--custom--shadow--default, 
+// 				var(--wp--preset--shadow--natural, 
+// 				0 3px 10px rgba(0, 0, 0, 0.14)));
+	@include __blueprint-shadow-natural;
 
 	// Add border, radius, and padding for a framed portait look
-	border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--color--border);
-	border-radius: var(--wp--custom--border--radius, 13.5px);
+// 	border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--color--border);
+// 	border-radius: var(--wp--custom--border--radius, 13.5px);
+	@include __blueprint-border;
+
 	padding: var(--wp--preset--spacing--20);
-// 	padding: var(--wp--preset--spacing--30);
 
 	// Set border radius on the <a> tag adjusted for border and padding
 	> a {
@@ -210,10 +259,10 @@
 
 @mixin apply-zoom-wrapper-visuals($block) {
 
-	// Only blocks that get rounding
+	// Don't round containers that are braked from rounding
 	@if not is-no-rounding($block) {
 
-		// Apply rounding but with brakes in CSS selector
+		// Otherwise, apply rounding but with brakes in CSS selector
 		&:not(#{config.$blocks-layout-brakes}) {
 	
 			// APPLY VISUALS (Brakes in selector)
@@ -231,7 +280,23 @@
 				}
 			}
 		}
-	}			
+	}
+	
+	// Always apply overlay, veil, and image filter if configured in 
+	// the engine
+	> a {
+		&::before {
+			@include apply-resting-overlay;
+		}
+
+		&::after {
+			@include apply-resting-veil;
+		}
+
+		img {
+			@include apply-resting-image-filter;
+		}
+	}
 }
 
 // ==========================================================================
@@ -268,18 +333,6 @@
 			@include __blueprint-zoom-wrapper-clipped;
 		} @else {
 			@extend %physics-zoom-wrapper-clipped;
-		}
-
-		&::before {
-			@include apply-resting-overlay;
-		}
-
-		&::after {
-			@include apply-resting-veil;
-		}
-
-		img {
-			@include apply-resting-image-filter;
 		}
 	}
 }

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    v0.9.9 Build 14 Physics Engine MVP
+//	    v0.9.9 Build 15 Physics Engine MVP
 //   ========================================================================== */
 
 @use '00-config' as config;
@@ -47,7 +47,7 @@
 				box-shadow: none;
 			}
 		}
-
+		
 		/* Set nav drop-down touch target to 44px */
 		// TO-DO: Add this to flat-blocks theme instead
 		.wp-block-navigation .wp-block-navigation__submenu-icon {
@@ -64,76 +64,42 @@
 		
 		/* Set avatars to look like images with border */
 		a > .avatar {
-// 			padding: var(--wp--preset--spacing--20);
 			border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--border--color);
 			border-radius: var(--wp--custom--button--radius);
 		}
-		
-		/* Don't round images that are immediate children of a column */
-		// Build selector for the column block only
-// 		$target-sel: phys.compile-selector(
-// 			$block:   '.wp-block-column', 
-// 			$is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners',
-// 			$has:     'a, button',
-// 			$trigger: 'self', 
-// 			$target:  'self', 
-// 		);
-// 		#{$target-sel} {						
-// 		.wp-block-column:has(a, button) {
-// 			& > .wp-block-image,
-// 			& > .wp-block-post-featured-image,
-// 			& > .wp-block-cover {
-// 				border: none !important; 
-// 				border-radius: 0 !important;
-// 				padding: 0 !important;
-// 				box-shadow: none !important; 
-// 				
-// 				& > a,
-// 				& > a > img {
-// 					border-radius: 0 !important; 
-// // 					border-radius: inherit; 
-// 				}
-// 			}
+
+		/* Remove the shadow from fixed header and add bottom border */
+		.wp-site-blocks > header:has(.is-position-sticky),
+		.wp-site-blocks > header:has(.is-style-fixed-header) {
+			box-shadow: none;
+			border: var(--wp--custom--color--border--width, 1px) solid var(--wp--custom--color--border);
+			z-index: 101;
+		}
+
+		/* Default separator width */
+		.wp-block-separator:not(.is-style-wide, .is-style-dots, .is-style-thick-wide) {
+			width: var(--wp--style--global--content-size);
+		}
+
+//		/* Target only standard separators that aren't wide/full */
+// 		.wp-block-separator:not(.alignwide, .alignfull, .aligncenter, .is-style-wide) {
+// 			margin-left: 0 !important; /* Force left */
+// 			margin-right: auto !important; /* Push remaining space to the right */
+// // 			width: 144px; 
+// // 			text-align: left;
 // 		}
 		
+//		/* User-Centering Override */
+//		/* If the user explicitly selects "Center" in the editor, this ensures it overrides the left-align */
+// 		.wp-block-separator.aligncenter {
+// 			margin-left: auto !important;
+// 			margin-right: auto !important;
+// 		}
+				
 		/* Allow user to turn off shadow and animation for particular blocks */
 		[class*=wp-block-].is-style-object-plain {
 			box-shadow: none !important;
-// 			border: none;
-// 			border-radius: 0;
 		}
-		
-// 		.is-style-object-plain {
-// 			&, 
-// 			> a {
-// 				border: none; // !important;
-// 				border-radius: 0; // !important;
-// // 				border-radius: inherit; // !important;
-// 				box-shadow: none; // !important;
-// 				padding: 0; // !important;
-// 
-// 				// If overlay, then disable it
-// 				@if config.$overlay-background != '' {
-// 					::before {
-// 						content: none;
-// 					}
-// 				}
-// 
-// 				// If veil graphic, then disable it
-// 				@if config.$veil-type != '' {
-// 					::after {
-// 						content: none;
-// 					}
-// 				}
-// 				// If image filter, then disable it
-// 				@if config.$image-filter != '' {
-// 					img {
-// 						filter: none; // !important;
-// 					}
-// 				}
-// 				
-// 			}				
-// 		}	
 
 	// ----------------------------------------------------------------------
 	// PHASE 2: INTERACTION STATE (atmos-interactions.css)

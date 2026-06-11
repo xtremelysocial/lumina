@@ -7,13 +7,14 @@
 			"color": {
 				"contrast": {
 					"primary": "var(--wp--preset--color--almost-black)",
+					"primary-alt": "var(--wp--preset--color--almost-black)",
 					"secondary": "var(--wp--preset--color--almost-black)",
 					"secondary-alt": "var(--wp--preset--color--white)",
 					"tertiary": "var(--wp--preset--color--white)",
 					"highlight": "var(--wp--preset--color--white)",
 					"highlight-alt": "var(--wp--preset--color--white)",
 					"dark": "var(--wp--preset--color--almost-black)",
-					"dark-alt": "var(--wp--preset--color--almost-black)",
+					"darkAlt": "var(--wp--preset--color--almost-black)",
 					"neutral": "var(--wp--preset--color--almost-black)",
 					"neutral-alt": "var(--wp--preset--color--almost-black)",
 					"yellow": "var(--wp--preset--color--foreground-alt)",

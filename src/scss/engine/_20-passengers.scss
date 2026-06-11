@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 14 Physics Engine MVP
+//	    v0.9.9 Build 15 Physics Engine MVP
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -51,7 +51,8 @@
 			);
 
 			// ADD PASSENGERS AND IMAGES TO THE VETO LISTS
-			$sel-to-register: if($target != 'self', $wrapper-sel, $target-sel);			
+// 			$sel-to-register: if($target != 'self', $wrapper-sel, $target-sel);
+			$sel-to-register: if(sass($target != "self"): $wrapper-sel; else: $target-sel);	
 			@if $role == 'passenger' {
 				@if not list.index(phys.get-passengers(), $sel-to-register) {
 					@include phys.register-passenger($sel-to-register);

@@ -7,6 +7,7 @@
 			"color": {
 				"contrast": {
 					"primary": "var(--wp--preset--color--almost-black)",
+					"primary-alt": "var(--wp--preset--color--almost-black)",
 					"tertiary": "var(--wp--preset--color--almost-black)",
 					"tertiary-alt": "var(--wp--preset--color--foreground-alt)",
 					"highlight": "var(--wp--preset--color--white)",

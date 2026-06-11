@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 14 Physics Engine MVP
+//	 v0.9.9 Build 15 Physics Engine MVP
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -170,9 +170,9 @@
 
     // Apply Physics
     @if config.$atmos-dev-mode {
-        @include __blueprint-grow-standard;
+        @include __blueprint-grow-small;
     } @else {
-        @extend %physics-grow-standard;
+        @extend %physics-grow-small;
     }
 
     // Apply Deep Shadow
@@ -293,15 +293,36 @@
 		}
 	}
 
-	// Filter image (e.g. Brighten)
+	// Filter image (e.g. Brighten) if configured
 	@include apply-filter-image;	
 
-	// Remove tinted overlay
+	// Remove tinted overlay if configured
 	@include apply-remove-overlay;
 	
-	// Reveal veil if there is one
+	// Reveal veil if configured
 	@include apply-veil-reveal;
 
+	// Handle debug
+	@include atmos-debug('wrapper-active');	
+}
+
+// ==========================================================================
+// 03.25 IMAGE WRAPPER: Apply deep shadow
+// ==========================================================================
+@mixin apply-passenger-image-wrapper {
+
+	// Don't apply shadow if braked
+	&:not(#{config.$blocks-layout-brakes}) {
+	
+		// Apply shadow directly to the image
+		img {
+			@if config.$atmos-dev-mode {
+				@include __blueprint-shadow-deep;
+			} @else {
+				@extend %physics-shadow-deep;
+			}
+		}	
+	}
 	// Handle debug
 	@include atmos-debug('wrapper-active');	
 }

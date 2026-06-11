@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 14 Physics Engine MVP
+//	 v0.9.9 Build 15 Physics Engine MVP
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -25,18 +25,17 @@
 	$block: null, 
 ) {
 
-	// --------------------------------------------------------------------------
-	// TRACK A: PASSENGER ZOOM (Wrapper Shadow + Sharp Clipping Viewport)
-	// --------------------------------------------------------------------------
+	// TRACK A: IMAGE ZOOM (Wrapper Shadow + Sharp Clipping Viewport)
 	@if $role == 'passenger-zoom' {
 		@include resting.apply-zoom-wrapper-visuals($block);
 		@include resting.apply-zoom-wrapper-clipped;
-	}	
 
-	// --------------------------------------------------------------------------
-	// TRACK B: SHIPS (Pure Layout Container Rounding vs. Flat Boundary Gates)
-	// --------------------------------------------------------------------------
-	@else if $role == 'ship' {
+	// TRACK B: IMAGE STANDARD OR GROW (Border & radius)
+	} @else if $role == 'passenger' or $role == 'passenger-grow' {
+		@include resting.apply-image-wrapper-visuals($block);
+
+	// TRACK C: SHIPS (Pure Layout Container Rounding vs. Flat Boundary Gates)
+	} @else if $role == 'ship' {
 		@include resting.apply-wrapper-visuals($block);
 		@include resting.apply-wrapper-clipped;
 	}
@@ -54,26 +53,29 @@
 	// TRACK A: SOVEREIGNS (Buttons & Form Triggers)
 	@if $role == 'sovereign' {
 		@include resting.apply-sovereign-resting-state;
-	} 
 	
 	// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Custom Frames)
-	@else if $role == 'passenger-zoom' {
+	} @else if $role == 'passenger-zoom' {
 		@include resting.apply-asset-resting-state;
-	} 
 	
 	// TRACK B.2: STANDARD GRAPHICS (Galleries, Core Images, Latest Posts Featured)
-	@else if $role == 'passenger-grow' {
-		@include resting.apply-resting-state;
-	}
+	} @else if $role == 'passenger-grow' {
+// 		@include resting.apply-resting-state;
+		@include resting.apply-asset-resting-state;
 
 	// TRACK B.3: REGULAR PASSENGERS (Column block)
-	@else if $role == 'passenger' {
-		@include resting.apply-resting-state;
-		@include resting.apply-wrapper-visuals($block);
-	}
+	} @else if $role == 'passenger' {
+// 		@include resting.apply-resting-state;
+// 		@include resting.apply-wrapper-visuals($block);
+		@if $trigger != 'self' {
+			@include resting.apply-asset-resting-state;
+		} @else {
+			@include resting.apply-asset-resting-state;
+			@include resting.apply-image-wrapper-visuals($block);
+		}
 
 	// TRACK C: SHIPS (Layout Containers & Groups)
-	@else if $role == 'ship' {
+	} @else if $role == 'ship' {
 		@if $trigger != 'self' {
 			@include resting.apply-resting-state;
 		} @else {
@@ -96,7 +98,7 @@
 		@include actions.apply-sovereign;
 	}
 
-	// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Custom Frames)
+	// TRACK B.1: ZOOM-IN-PLACE IMAGES (e.g. Media & Text)
 	@else if $role == 'passenger-zoom' {
 		@if $context == 'wrapper' {
 			@include actions.apply-passenger-zoom-wrapper;
@@ -106,16 +108,22 @@
 		}
 	}
 
-	// TRACK B.2: STANDARD GRAPHICS (Galleries, Core Images, Latest Posts Featured)
+	// TRACK B.2: IMAGES THAT GROW (e.g. Gallery Images)
 	@else if $role == 'passenger-grow' {
-		@if $context == 'target' {
+		@if $context == 'wrapper' {
+			@include actions.apply-passenger-image-wrapper;
+		}
+		@else if $context == 'target' {
 			@include actions.apply-passenger-grow;
 		}
 	}
 
-	// TRACK B.3: STANDARD PASSENGERS (Column block)
+	// TRACK B.3: STANDARD IMAGES (e.g. Standard Image)
 	@else if $role == 'passenger' {
-		@if $context == 'target' {
+		@if $context == 'wrapper' {
+			@include actions.apply-passenger-image-wrapper;
+		}
+		@else if $context == 'target' {
 			@include actions.apply-passenger;
 		}
 	}
