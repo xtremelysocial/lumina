@@ -1,0 +1,97 @@
+/*--------------------------------------------------------------
+# Heading Block Styles
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Custom Heading w/Separator
+--------------------------------------------------------------*/
+
+$heading-separator: '.wp-block-heading.is-style-separator';
+// $heading-scope: 	'.wp-block-post-content';
+// $heading-in-card: 	':is(.is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners)';
+
+/* Add separator to heading */
+// #{$heading-scope} #{$heading-separator} {
+#{$heading-separator} {
+
+	// Add bottom margin to the heading
+	position: relative;
+	margin-bottom: calc(11.5px + var(--wp--style--block-gap));
+
+	// Add separator underneath the heading
+	&:after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 0; 
+		right: 0;
+		width: calc(1.5 * var(--wp--preset--spacing--80));
+		margin: calc(0.5 * var(--wp--style--block-gap)) 0;
+		height: 3px;
+		background-color: var(--wp--preset--color--primary);	
+	}
+	
+	// Align the separator based on the alignment of its heading 
+	&.has-text-align-center:after {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&.has-text-align-right::after {
+		margin-right: 0;
+		margin-left: auto;
+	}	
+}
+
+/* Override separator color on colored backgrounds */
+// #{$heading-scope} .has-background #{$heading-separator}::after {
+.has-background #{$heading-separator}::after {
+    background-color: currentcolor;
+}
+
+// /* Don't auto-add separator on colored backgrounds or in animated cards */
+// #{$heading-scope} .has-background #{$heading-separator}::after,
+// #{$heading-scope} .has-background-gradient #{$heading-separator}::after,
+// #{$heading-scope} .wp-block-cover__inner-container #{$heading-separator}::after,
+// #{$heading-scope} #{$heading-in-card} #{$heading-separator}::after {
+// 	content: none;
+// 	margin: none;
+// 	height: 0;
+// }
+
+// Remove the from animated cards
+// #{$heading-in-card} #{$heading-separator} {
+// 	margin-bottom: 0;
+// 	&:after {
+// 		content: none;
+// 	}
+// }
+
+// /* In the Block Editor, don't let the active block position move up our separator */
+//  .is-root-container #{$heading-separator}::after {
+// 	top: 100% !important;
+// }
+
+/*--------------------------------------------------------------
+## Custom Heading Link Animation
+ --------------------------------------------------------------*/
+// $heading-scope: 	'.wp-site-blocks';
+$heading-link: 	'.wp-block-heading a, .wp-block-site-title a, .wp-block-post-title a, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title';
+
+#{$heading-link} {
+	position: 			 relative;
+	display: 			 inline;
+	background: 		 linear-gradient(to right, currentColor 0%, currentColor 100%);
+	background-size: 	 0 2px;
+	background-position: 0 95%;
+// 	transition: 		 background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+	transition: 		 background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+	padding: 			 0 0 5px 0;
+	background-repeat: 	 no-repeat;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-size: 100% 2px;
+	}
+}

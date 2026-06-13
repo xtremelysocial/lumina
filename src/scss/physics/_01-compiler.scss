@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 15 Physics Engine MVP
+//	 v0.9.9 Build 16 Theme Styles
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -44,9 +44,9 @@
 
 	// 3. ADD ALIGNFULL IF NOT SOVEREIGN
 	@if $role != 'sovereign' {
-	    $selector: '#{$selector}:not(.alignfull)';
+	    $selector: '#{$selector}:not(.alignfull, .block-editor-block-list__block)';
 	}
-    
+        
 	// 4. MODIFIER SPEC COP (Appends clean modifier filters like :is(.has-background))
     @if $is != 'none' and $is != '' and $is != '*' {
         $selector: '#{$selector}:is(#{$is})';

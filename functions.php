@@ -39,6 +39,7 @@ if ( ! function_exists( 'atmosblocks_support' ) ) :
 		// Enqueue the styles needed for the editor. Do this here to 
 		// avoid interfering with the Editor UI. 
 		$editor_styles = array(
+			'/assets/css/atmos-theme.css',
 			'/assets/css/atmos-engine.css',
 // 			'/assets/css/editor-styles.css',
 		);
@@ -49,6 +50,43 @@ if ( ! function_exists( 'atmosblocks_support' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'atmosblocks_support' );
+
+/**
+ * ATMOS THEME CSS
+ */
+function atmos_load_styles() {
+
+	// Get the theme version
+	$version = wp_get_theme()->get( 'Version' ) ?? false;
+
+	// Set the CSS path and URI
+    $css_uri = get_stylesheet_directory_uri() . '/assets/css/atmos-theme.css';
+    $css_path = get_stylesheet_directory() . '/assets/css/atmos-theme.css';
+
+    // 1. REGISTER handles for CSS first to establish the "library"
+    
+    // Atmos Engine Resting State CSS
+	if ( file_exists( $css_path ) ) {
+
+		// Use specific asset version if there is one
+		$asset = str_replace( '.css', '.asset.php', $css_path );
+		$asset_file = include( $asset );
+		if ( $asset_file['version'] ) {
+			$asset_version = $asset_file['version'];
+		}
+
+        wp_register_style(
+            'atmos-theme',
+            $css_uri,
+			array(),            
+			$asset_version ?? $version
+        );
+        
+		wp_enqueue_style( 'atmos-theme' );
+    }
+}
+
+add_action( 'wp_enqueue_scripts', 'atmos_load_styles' );
 
 /**
  * ATMOS GRAVITY ENGINE CSS: Only on the Front-end.
@@ -82,9 +120,7 @@ function atmos_enqueue_gravity_engine() {
         wp_register_style(
             'atmos-engine',
             $engine_uri,
-//             array('flat-blocks'),
-			array(),            
-//             filemtime( $engine_path )
+            array('atmos-theme'),
 			$asset_version ?? $version
         );
     }
@@ -104,7 +140,6 @@ function atmos_enqueue_gravity_engine() {
             'atmos-interactions',
             $interaction_uri,
             array('atmos-engine'), 
-//             filemtime( $engine_path )
 			$asset_version ?? $version
         );
     }

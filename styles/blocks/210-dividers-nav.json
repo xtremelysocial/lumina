@@ -1,0 +1,10 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "nav-dividers",
+	"title": "Dividers",
+	"blockTypes": [ "core/navigation" ],
+	"styles": {
+		"css": ""
+	}
+}

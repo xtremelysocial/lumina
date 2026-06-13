@@ -1,0 +1,93 @@
+/*--------------------------------------------------------------
+# Navigation Block Styles
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Custom: Nav Dividers
+--------------------------------------------------------------*/
+
+/* Desktop Submenu Dividers */
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) {
+
+    & .wp-block-navigation__submenu-container {
+	
+        // Add container rounding and padding so the dividers don't touch the edge
+        width: 100%; 
+        border-radius: var(--wp--custom--border--radius);
+        padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
+
+        // Then remove padding from the individual menu item's <a> tag 
+        & .wp-block-navigation-item__content { //},
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        // Add divider as border-bottom to every list item except the last one
+        & > .wp-block-navigation-item:not(:last-child),
+        & > .wp-block-pages-list__item:not(:last-child) {
+            border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+        }
+    }
+}
+
+/* Mobile menu dividers */
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open {
+
+	// Style the mobile navigation container
+	& .wp-block-navigation__container,
+// 	& .wp-block-navigation__submenu-container, //this makes them all 100% wide
+	& .wp-block-page-list {	
+		width: 100%;
+		gap: 0;
+	}
+
+	& .wp-block-navigation__container {
+
+		// Make each nav item full-width
+		& .wp-block-navigation-item {
+			width: 100%;
+		}
+
+		// Add border to the nav item (li) other than the last one
+		& .wp-block-navigation-item:not(:last-child) { //,
+			border-bottom: 1px solid rgba(128, 128, 128, 0.2);		
+		}
+
+		// Add padding to the nav item link (a)
+        & .wp-block-navigation-item__content { //},
+			padding-top: var(--wp--preset--spacing--30);
+			padding-bottom: var(--wp--preset--spacing--30);
+		}
+		
+		// Top-level nav items need their own bottom border and padding as well
+		& .wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
+			width: 100%;
+			border-bottom: 1px solid rgba(128, 128, 128, 0.2);		
+		}
+
+		// Since now full-width, align the items
+		&.items-justified-right {
+			.wp-block-navigation-item,
+			.wp-block-navigation-item__content {
+				text-align: right;
+				justify-content: flex-end;				
+			}
+		}
+
+		&.items-justified-left {
+			.wp-block-navigation-item,
+			.wp-block-navigation-item__content {
+				text-align: left;
+				justify-content: flex-start;				
+			}
+		}
+
+		&.items-justified-center {
+			.wp-block-navigation-item,
+			.wp-block-navigation-item__content {
+				text-align: center;
+				justify-content: flex-center;				
+			}
+		}
+	}
+}

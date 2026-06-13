@@ -53,8 +53,8 @@
 
 	<!-- wp:group {"align":"wide","className":"is-style-rounded-border","backgroundColor":"secondary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
 	<div class="wp-block-group alignwide is-style-rounded-border has-secondary-alt-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
-		<!-- wp:columns {"verticalAlignment":"center"} -->
-		<div class="wp-block-columns are-vertically-aligned-center">
+		<!-- wp:columns {"align":"wide","verticalAlignment":"center"} -->
+		<div class="wp-block-columns alignwide are-vertically-aligned-center">
 			<!-- wp:column {"width":"70%"} -->
 			<div class="wp-block-column" style="flex-basis:70%">
 				<!-- wp:heading {"level":2} -->

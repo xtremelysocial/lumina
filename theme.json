@@ -41,7 +41,7 @@
 				"hoverFilter": "brightness(1.15)"
 			},
 			"border": {
-				"radius": "var(--wp--preset--border-radius--md, 13.5px)"
+				"radius": "var(--wp--preset--border-radius--lg, 18px)"
 			},
 			"button": {
 				"radius": "9999px"
@@ -344,5 +344,13 @@
 				}
 			}
 		}
-	}
+	},
+	"templateParts": [
+		{
+			"name": "header-home",
+			"title": "Home Page Header",
+			"description": "Header for the Home page",
+			"area": "header"
+		}		
+	]
 }

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 15 Physics Engine MVP
+//	 	v0.9.9 Build 16 Theme Styles
 //   ========================================================================== */
 
 // ==========================================================================
@@ -52,6 +52,18 @@ $atmos-block-registry: (
 		role:    'passenger'
 // 		role:    'passenger-grow'
 // 		role:    'passenger-zoom'
+	),
+
+	// Column Image: Image as direct descendent of a column should zoom
+	(
+		block:   '.wp-block-column .wp-block-image', 
+		is:      'none', 		
+		has:     'a:not(figcaption a)', 	
+		trigger: 'self',
+		target:  'img',
+// 		role:    'passenger'
+// 		role:    'passenger-grow'
+		role:    'passenger-zoom'
 	),
     
 	// Gallery Image: Only needed if wp-block-image isn't zoom
@@ -185,8 +197,8 @@ $html-button-spacing: var(--wp--preset--spacing--30);
 // * 00.3 PHYSICS VARIABLES: Animation for grow and shift up
 // */
 // Animation for grow and shift up
-$atmos-timing: 			var(--wp--custom--animation--duration--short, 250ms) cubic-bezier(0.4, 0, 0.2, 1);
-$atmos-timing-medium: 	var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.4, 0, 0.2, 1);
+$atmos-timing: 			var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+$atmos-timing-medium: 	var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 
 // Growth
 $grow-small: 			var(--wp--custom--animation--default--hover-small-transform, scale(1.03));

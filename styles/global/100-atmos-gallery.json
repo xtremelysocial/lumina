@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"title": "Atmos Gallery",
-	"description": "A sophisticated, academic mood featuring sun-drenched earth tones, sharp architectural corners, and a weighted, luxurious physical presence.",
+	"description": "A sophisticated, art gallery mood featuring sharp architectural corners, and a weighted, luxurious physical presence.",
 	"settings": {
 		"custom": {
 			"color": {
@@ -24,7 +24,7 @@
 				"radius": "var(--wp--preset--border-radius--xs, 4.5px)"
 			},
 			"button": {
-				"radius": "0px"
+				"radius": "var(--wp--preset--border-radius--xs, 4.5px)"
 			},
 			"spacing": {
 				"gap": "24px"
@@ -37,11 +37,11 @@
 				"timingFunction": "cubic-bezier(0.2, 0, 0, 1)",
 				"fillMode": "both",
 				"default": {
-					"hoverSmallTransform": "scale(1.01)",
-					"hoverTransform": "scale(1.02)",
+					"hoverSmallTransform": "scale(1.02)",
+					"hoverTransform": "scale(1.03)",
 					"hoverLargeTransform": "scale(1.05)",
-					"objectSmallTransform": "translateY(-1px)",
-					"objectTransform": "translateY(-2px)"
+					"objectSmallTransform": "translateY(-2px)",
+					"objectTransform": "translateY(-3px)"
 				}
 			},
 			"link": {
@@ -51,59 +51,5 @@
 				"offset": "4px"
 			}
 		}	
-	},	
-	"styles": {
-		"typography": {
-			"fontFamily": "var:preset|font-family|source-sans-pro",
-			"fontSize": "1.15rem",
-			"fontStyle": "normal",
-			"fontWeight": "300",
-			"lineHeight": "1.6",
-			"textTransform": "none"
-		},
-		"elements": {
-			"heading": {
-				"typography": {
-					"fontFamily": "var:preset|font-family|lora",
-					"fontStyle": "normal",
-					"fontWeight": "300", 
-					"lineHeight": "1.1",
-					"textTransform": "none",
-					"textDecoration": "none",
-					"letterSpacing": "-0.01em"
-				},
-				"spacing": {
-					"margin": {
-						"top": "var:preset|spacing|50",
-						"bottom": "var:preset|spacing|30"
-					}
-				}
-			},
-			"link": {
-				"typography": {
-					"textDecoration": "none"
-				},
-				"spacing": {
-					"margin": {
-						"bottom": "4px" 
-					}
-				}
-			}
-		},
-		"blocks": {
-			"core/social-link": {
-				"elements": {
-					"link": {
-						"spacing": {
-							"margin": { "top": "0", "bottom": "0" }
-						}
-					}
-				},
-				"spacing": {
-					"margin": { "top": "0", "bottom": "0" },
-					"padding": { "top": "0", "bottom": "0", "left": "0", "right": "0" }
-				}
-			}
-		}
 	}
 }

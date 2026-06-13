@@ -1,0 +1,10 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "list-dividers",
+	"title": "Dividers",
+	"blockTypes": [ "core/list", "core/page-list", "core/categories", "core/latest-posts", "core/latest-comments"  ],
+	"styles": {
+		"css": ""
+	}
+}

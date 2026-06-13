@@ -1,0 +1,25 @@
+/**
+ * File:	atmos-theme.css
+ * Theme:	Atmos Blocks
+ * 
+ * The stylesheet for the Atmos Blocks theme
+ *
+ * NOTE: This file is AUTO-GENERATED from the SASS source files 
+ * in /src/sass/pro-custom-styles.scss. Do not make updates here.
+ * 
+ * @package atmos-blocks
+ * @since 	1.0
+ */
+
+// /*--------------------------------------------------------------
+//   BASE STYLES
+// --------------------------------------------------------------*/
+@use "theme/base";
+@use "theme/list-dividers";
+
+// /*--------------------------------------------------------------
+//   BLOCK STYLES
+// --------------------------------------------------------------*/
+@use "theme/heading";
+@use "theme/latest-posts";
+@use "theme/navigation";

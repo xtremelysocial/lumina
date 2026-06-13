@@ -28,14 +28,6 @@
 					"objectSmallTransform": "translateY(-2px)",
 					"objectTransform": "translateY(-4px)"
 				}
-			},
-			"typography": {
-				"fontWeight": {
-					"light": "200",
-					"normal": "300",
-					"medium": "400",
-					"bold": "500"
-				}
 			}
 		}
 	}

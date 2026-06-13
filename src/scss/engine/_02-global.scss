@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    v0.9.9 Build 15 Physics Engine MVP
+//	    v0.9.9 Build 16 Theme Styles
 //   ========================================================================== */
 
 @use '00-config' as config;
@@ -35,39 +35,13 @@
 			}
 		}
 	
-		/* Override parent theme's padding on colored blocks */
-		.wp-block-group.has-background:not(.alignfull) {
-			padding-left: var(--wp--preset--spacing--60);
-			padding-right: var(--wp--preset--spacing--60);
-		}
-
 		/* Remove shadow from logo-only or the shadow will be round */		
 		.wp-site-blocks .wp-block-social-links.is-style-logos-only {
 			& .wp-block-social-link {
 				box-shadow: none;
 			}
 		}
-		
-		/* Set nav drop-down touch target to 44px */
-		// TO-DO: Add this to flat-blocks theme instead
-		.wp-block-navigation .wp-block-navigation__submenu-icon {
-			height: 16px;
-			width: 16px;
-			margin-left: 14px;
-			margin-right: 14px;
-		}
-
-		/* Reduce row grap so nav line-wrapping is tighter */
-		.wp-block-navigation.is-layout-flex {
-			row-gap: var(--wp--preset--spacing--30);
-		}
-		
-		/* Set avatars to look like images with border */
-		a > .avatar {
-			border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--border--color);
-			border-radius: var(--wp--custom--button--radius);
-		}
-
+				
 		/* Remove the shadow from fixed header and add bottom border */
 		.wp-site-blocks > header:has(.is-position-sticky),
 		.wp-site-blocks > header:has(.is-style-fixed-header) {
@@ -76,26 +50,6 @@
 			z-index: 101;
 		}
 
-		/* Default separator width */
-		.wp-block-separator:not(.is-style-wide, .is-style-dots, .is-style-thick-wide) {
-			width: var(--wp--style--global--content-size);
-		}
-
-//		/* Target only standard separators that aren't wide/full */
-// 		.wp-block-separator:not(.alignwide, .alignfull, .aligncenter, .is-style-wide) {
-// 			margin-left: 0 !important; /* Force left */
-// 			margin-right: auto !important; /* Push remaining space to the right */
-// // 			width: 144px; 
-// // 			text-align: left;
-// 		}
-		
-//		/* User-Centering Override */
-//		/* If the user explicitly selects "Center" in the editor, this ensures it overrides the left-align */
-// 		.wp-block-separator.aligncenter {
-// 			margin-left: auto !important;
-// 			margin-right: auto !important;
-// 		}
-				
 		/* Allow user to turn off shadow and animation for particular blocks */
 		[class*=wp-block-].is-style-object-plain {
 			box-shadow: none !important;
