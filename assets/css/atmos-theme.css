@@ -13,6 +13,10 @@
  * @package atmos-blocks
  * @since 	1.0
  */
+/* ==========================================================================
+   ATMOS THEME: CSS styles
+   v0.9.9 Build 17 Theme Styles
+   ========================================================================== */
 /*--------------------------------------------------------------
 # Base Styles
 --------------------------------------------------------------*/
@@ -67,7 +71,6 @@ main > :last-child:not(.wp-block-post-content),
   margin-block-end: var(--wp--preset--spacing--50);
 }
 
-/* Increase font-weight of page subtitles */
 /*--------------------------------------------------------------
 # Custom: List Dividers (Lists, Latest Posts, Latest Comments)
 --------------------------------------------------------------*/
@@ -90,53 +93,67 @@ main > :last-child:not(.wp-block-post-content),
 # Heading Block Styles
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-## Custom Heading w/Separator
+## Custom: Heading w/Separator
 --------------------------------------------------------------*/
-/* Add separator to heading */
-.wp-block-heading.is-style-separator {
+.is-style-separator {
   position: relative;
-  margin-bottom: calc(11.5px + var(--wp--style--block-gap));
+  margin-bottom: calc(var(--wp--style--block-gap) + 3px);
 }
-.wp-block-heading.is-style-separator:after {
+.is-style-separator::after {
   content: "";
   position: absolute;
-  top: 100%;
   left: 0;
-  right: 0;
+  bottom: calc(-1 * var(--wp--preset--spacing--30));
   width: calc(1.5 * var(--wp--preset--spacing--80));
-  margin: calc(0.5 * var(--wp--style--block-gap)) 0;
   height: 3px;
   background-color: var(--wp--preset--color--primary);
 }
-.wp-block-heading.is-style-separator.has-text-align-center:after {
-  margin-left: auto;
-  margin-right: auto;
+.is-style-separator.has-text-align-center:after {
+  left: 50%;
+  transform: translateX(-50%);
 }
-.wp-block-heading.is-style-separator.has-text-align-right::after {
-  margin-right: 0;
-  margin-left: auto;
+.is-style-separator.has-text-align-right:after {
+  left: auto;
+  right: 0;
 }
-
-/* Override separator color on colored backgrounds */
-.has-background .wp-block-heading.is-style-separator::after {
+.has-background .is-style-separator::after, .is-style-separator.has-background::after {
   background-color: currentcolor;
 }
 
-/*--------------------------------------------------------------
-## Custom Heading Link Animation
- --------------------------------------------------------------*/
-.wp-block-heading a, .wp-block-site-title a, .wp-block-post-title a, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title {
+.entry-header .entry-subtitle {
   position: relative;
-  display: inline;
-  background: linear-gradient(to right, currentColor 0%, currentColor 100%);
-  background-size: 0 2px;
-  background-position: 0 95%;
-  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
-  padding: 0 0 5px 0;
-  background-repeat: no-repeat;
+  margin-bottom: calc(var(--wp--style--block-gap) + 3px);
 }
-.wp-block-heading a:hover, .wp-block-heading a:active, .wp-block-heading a:focus, .wp-block-site-title a:hover, .wp-block-site-title a:active, .wp-block-site-title a:focus, .wp-block-post-title a:hover, .wp-block-post-title a:active, .wp-block-post-title a:focus, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:focus {
-  background-size: 100% 2px;
+.entry-header .entry-subtitle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: calc(-1 * var(--wp--preset--spacing--30));
+  width: calc(1.5 * var(--wp--preset--spacing--80));
+  height: 3px;
+  background-color: var(--wp--preset--color--primary);
+}
+.entry-header .entry-subtitle.has-text-align-center:after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.entry-header .entry-subtitle.has-text-align-right:after {
+  left: auto;
+  right: 0;
+}
+.has-background .entry-header .entry-subtitle::after, .entry-header .entry-subtitle.has-background::after {
+  background-color: currentcolor;
+}
+
+/* Editor Stability: Fix the position of the separator */
+.is-root-container .is-style-separator::after {
+  bottom: calc(-1 * var(--wp--preset--spacing--30));
+  top: auto !important;
+}
+
+.is-root-container .entry-header .entry-subtitle::after {
+  bottom: calc(-1 * var(--wp--preset--spacing--30));
+  top: auto !important;
 }
 
 /*--------------------------------------------------------------

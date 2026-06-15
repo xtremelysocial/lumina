@@ -22,9 +22,6 @@
 				"link": { 
 					"hoverOpacity": "0.8" 
 				},
-				"navigation": { 
-					"background": "var(--wp--preset--color--base)" 
-				},
 				"overlay": {
 					"background": "var(--wp--preset--color--primary)",
 					"opacity": "0.6",
@@ -351,6 +348,12 @@
 			"title": "Home Page Header",
 			"description": "Header for the Home page",
 			"area": "header"
+		},
+		{
+			"name": "author-bio",
+			"title": "Author Bio",
+			"description": "Author avatar, name, and bio",
+			"area": "content"
 		}		
 	]
 }

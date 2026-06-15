@@ -22,23 +22,6 @@
 	row-gap: var(--wp--preset--spacing--30);
 }
 
-// /* Default separator width */
-// .wp-block-separator:not(.is-style-wide, .is-style-dots, .is-style-thick-wide) {
-// 	width: var(--wp--style--global--content-size);
-// }
-// 
-// .wp-block-separator.is-style-wide,
-// .wp-block-separator.is-style-dots {
-// // 	max-width: var(--wp--style--global--wide-size);
-// // 	width: 100% !important;
-// }
-// 
-// .is-layout constrained .wp-block-separator.is-style-wide,
-// .is-layout constrained .wp-block-separator.is-style-dots {
-// 	max-width: var(--wp--style--global--wide-size);
-// // 	width: 100% !important;
-// }
-
 /* Set avatars to look like images with border */
 a > .avatar {
 	border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--border--color);
@@ -66,14 +49,25 @@ main > :first-child.wp-block-template-part {
 
 /* Add bottom margin to main unless its the post content, then add it to that */
 main > :last-child:not(.wp-block-post-content),
-// main > :last-child:not(.wp-block-post-content):not(.wp-block-template-part),
 :root :where(.is-layout-flow).wp-block-post-content > :last-child,
 :root :where(.is-layout-constrained).wp-block-post-content > :last-child {	
-// 	margin-block-end: var(--wp--style--block-gap);
 	margin-block-end: var(--wp--preset--spacing--50);
 }
 
-/* Increase font-weight of page subtitles */
-// .entry-header .entry-subtitle {
-// 	font-weight: var(--wp--custom--typography--font-weight--medium);
+// /* Default color for page/post titles  */
+// .entry-header {
+// 	background-color: 	var(--wp--custom--color--title--background, 
+// 					  	none);
+// 
+// 	color: 				var(--wp--custom--color--title--text,
+// 						var(--wp--preset--color--contrast));
+// 
+// 	padding: 			var(--wp--custom--color--title--padding,
+// 						none);
+// 
+// 	margin: 			var(--wp--custom--color--title--margin,
+// 						none);
+// 
+// 	border: 			var(--wp--custom--title--border,
+// 						none);
 // }
