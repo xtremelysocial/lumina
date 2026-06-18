@@ -3,7 +3,7 @@
 	"version": 3,
 	"slug": "separator",
 	"title": "Separator",
-	"blockTypes": [ "core/heading", "core/post-excerpt" ],
+	"blockTypes": [ "core/heading", "core/paragraph", "core/query-title", "core/post-excerpt" ],
 	"isDefault": true,
 	"styles": {
 		"css": ""

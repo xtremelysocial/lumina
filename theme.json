@@ -1,4 +1,4 @@
-{
+{	
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"title": "Atmos Blocks",
@@ -21,21 +21,7 @@
 				},
 				"link": { 
 					"hoverOpacity": "0.8" 
-				},
-				"overlay": {
-					"background": "var(--wp--preset--color--primary)",
-					"opacity": "0.6",
-					"hoverOpacity": "0"
-				},
-				"veil": {
-					"color": "var(--wp--preset--color--base)",
-					"opacity": "0",
-					"hoverOpacity": "0.85"
 				}
-			},
-			"image": {
-				"filter": "brightness(1)",
-				"hoverFilter": "brightness(1.15)"
 			},
 			"border": {
 				"radius": "var(--wp--preset--border-radius--lg, 18px)"
@@ -94,14 +80,14 @@
 			"palette": [
 				{ "slug": "primary", "color": "#78A391", "name": "Primary (Green)" },
 				{ "slug": "primary-alt", "color": "#4A6E5D", "name": "Primary Alt (Dark Bright Green)" },
-				{ "slug": "secondary", "color": "#3D4E5B", "name": "Secondary (Midnight Blue)" },
-				{ "slug": "secondary-alt", "color": "#2A323D", "name": "Secondary Alt (Dark Midnight Blue)" },
+				{ "slug": "secondary", "color": "#26323C", "name": "Secondary (Atmos Midnight Navy)" },
+				{ "slug": "secondary-alt", "color": "#171E24", "name": "Secondary Alt (Deep Atmos Shadow)" },
 				{ "slug": "tertiary", "color": "#B38B59", "name": "Tertiary (Yellow)" },
 				{ "slug": "tertiary-alt", "color": "#946E42", "name": "Tertiary Alt (Antique Gold)" },
 				{ "slug": "base", "color": "#FAF9F6", "name": "Base (Off White)" },
 				{ "slug": "contrast", "color": "#1B1B1B", "name": "Contrast (Not Quite Black)" },
-				{ "slug": "neutral", "color": "#F2F1ED", "name": "Neutral (Very Light Gray)" },
-				{ "slug": "neutral-alt", "color": "#E5E4DF", "name": "Neutral Alt (Light Gray)" },
+				{ "slug": "neutral", "color": "#F7F6F2", "name": "Neutral (Airy Template Fill)" },
+				{ "slug": "neutral-alt", "color": "#EBEAE5", "name": "Neutral Alt (Structural Border)" },
 				{ "slug": "foreground-alt", "color": "#FDFDFB", "name": "Foreground Alt (Bone White)" },
 				{ "slug": "highlight", "color": "#77B399", "name": "Luminous Sage" },
 				{ "slug": "highlight-alt", "color": "#629681", "name": "Deep Sage" },
@@ -109,34 +95,53 @@
 				{ "slug": "dark-alt", "color": "#1E2621", "name": "Dark Alt (Deep Forest Shadow)" },
 				{ "slug": "white", "color": "#FFFFFF", "name": "White (Pure White)" },
 				{ "slug": "off-white", "color": "#FAF9F6", "name": "Off White (Gallery Bone)" },
-				{ "slug": "very-light-gray", "color": "#F2F1ED", "name": "Very Light Gray (Ash Mist)" },
-				{ "slug": "light-gray", "color": "#E5E4DF", "name": "Light Gray (Silt)" },
+				{ "slug": "very-light-gray", "color": "#F1EFEA", "name": "Very Light Gray (Ash Mist)" },
+				{ "slug": "light-gray", "color": "#E2DFD7", "name": "Light Gray (Silt)" },
 				{ "slug": "gray", "color": "#B0AFA9", "name": "Gray (Pebble)" },
 				{ "slug": "dark-gray", "color": "#706F6A", "name": "Dark Gray (Stone)" },
 				{ "slug": "very-dark-gray", "color": "#3D3D3A", "name": "Very Dark Gray (Muted Obsidian)" },
-				{ "slug": "light-green", "color": "#C8D6CF", "name": "Light Green (Dusty Sage)" },
+				{ "slug": "light-green", "color": "#F2F6F4", "name": "Light Green (Alabaster Mint)" },
 				{ "slug": "green", "color": "#78A391", "name": "Green (Luminous Sage)" },
 				{ "slug": "bright-green", "color": "#8DBA9D", "name": "Bright Green (Spring Sage)" },
 				{ "slug": "dark-bright-green", "color": "#4A6E5D", "name": "Dark Bright Green (Deep Sage)" },
-				{ "slug": "light-yellow", "color": "#EDE6D8", "name": "Light Yellow (Cream)" },
+				{ "slug": "dark-green", "color": "#2C3831", "name": "Dark Green (Midnight Sage)" },
+				{ "slug": "very-dark-green", "color": "#1E2621", "name": "Very Dark Green (Deep Forest Shadow)" },
+				{ "slug": "light-yellow", "color": "#F7F5F0", "name": "Light Yellow (Gallery Ivory)" },
 				{ "slug": "yellow", "color": "#B38B59", "name": "Yellow (Muted Gold)" },
-				{ "slug": "light-orange", "color": "#E6C6BA", "name": "Light Orange (apricot)" },
+				{ "slug": "dark-yellow", "color": "#544129", "name": "Dark Yellow (Burnished Bronze)" },
+				{ "slug": "light-orange", "color": "#F7F2EF", "name": "Light Orange (Chalk Sand)" },
 				{ "slug": "orange", "color": "#A36555", "name": "Orange (Terra Cotta)" },
 				{ "slug": "dark-orange", "color": "#7D483B", "name": "Dark Orange (Burnt Sienna)" },
-				{ "slug": "light-blue", "color": "#C0CCD3", "name": "Light Blue (Sky Slate)" },
+				{ "slug": "light-blue", "color": "#F1F5F7", "name": "Light Blue (Misty Slate White)" },
 				{ "slug": "blue", "color": "#536A78", "name": "Blue (Steel)" },
-				{ "slug": "dark-blue", "color": "#384952", "name": "Dark Blue (Deep Steel)" },
-				{ "slug": "midnight-blue", "color": "#3D4E5B", "name": "Midnight Blue (Atmos Midnight)" },
-				{ "slug": "dark-midnight-blue", "color": "#2A323D", "name": "Dark Midnight Blue (Deep Atmos)" },
-				{ "slug": "light-purple", "color": "#D2C9CE", "name": "Light Purple (Lavender Mist)" },
+				{ "slug": "dark-blue", "color": "#33414A", "name": "Dark Blue (Deep Steel Slate)" },
+				{ "slug": "midnight-blue", "color": "#26323C", "name": "Midnight Blue (Atmos Midnight)" },
+				{ "slug": "dark-midnight-blue", "color": "#171E24", "name": "Dark Midnight Blue (Deep Atmos)" },
+				{ "slug": "light-purple", "color": "#F4F2F5", "name": "Light Purple (Alabaster Heather)" },
 				{ "slug": "purple", "color": "#7D7178", "name": "Purple (Muted Heather)" },
 				{ "slug": "dark-purple", "color": "#574E53", "name": "Dark Purple (Deep Heather)" },
-				{ "slug": "light-red", "color": "#D9C4C4", "name": "Light Red (Rose Mist)" },
+				{ "slug": "light-red", "color": "#F7F1F1", "name": "Light Red (Chalk Blush)" },
 				{ "slug": "red", "color": "#946B6B", "name": "Red (Muted Clay)" },
 				{ "slug": "dark-red", "color": "#6E4C4C", "name": "Dark Red (Deep Clay)" },
 				{ "slug": "almost-black", "color": "#2D2D2D", "name": "Almost Black (Carbon)" },
 				{ "slug": "not-quite-black", "color": "#1A1A1A", "name": "Not Quite Black (Rich Carbon)" },
 				{ "slug": "black", "color": "#000000", "name": "Black (True Black)" }
+			],
+			"duotone": [
+				{ "colors": ["#4A6E5D", "#FAF9F6"], "slug": "primary", "name": "Primary" },
+				{ "colors": ["#78A391", "#FAF9F6"], "slug": "primary-alt", "name": "Primary Alt" },
+				{ "colors": ["#26323C", "#FAF9F6"], "slug": "secondary", "name": "Secondary" },
+				{ "colors": ["#171E24", "#FAF9F6"], "slug": "secondary-alt", "name": "Secondary Alt" },
+				{ "colors": ["#B38B59", "#FAF9F6"], "slug": "tertiary", "name": "Tertiary" },
+				{ "colors": ["#946E42", "#FAF9F6"], "slug": "tertiary-alt", "name": "Tertiary Alt" },
+				{ "colors": ["#7D7178", "#B38B59"], "slug": "purple-yellow", "name": "Purple and Yellow" },
+				{ "colors": ["#171E24", "#946B6B"], "slug": "blue-red", "name": "Blue and Red" },
+				{ "colors": ["#2D2D2D", "#26323C"], "slug": "midnight", "name": "Midnight" },
+				{ "colors": ["#946B6B", "#B38B59"], "slug": "magenta-yellow", "name": "Red and Yellow" },
+				{ "colors": ["#7D7178", "#78A391"], "slug": "purple-green", "name": "Purple and Green" },
+				{ "colors": ["#26323C", "#A36555"], "slug": "blue-orange", "name": "Blue and Orange" },
+				{ "colors": ["#000000", "#FFFFFF"], "slug": "grayscale", "name": "Grayscale" },
+				{ "colors": ["#000000", "#706F6A"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			],
 			"gradients": [
 				{ "slug": "primary", "gradient": "linear-gradient(160deg, var(--wp--preset--color--primary), var(--wp--preset--color--primary-alt))", "name": "Primary" },
@@ -148,35 +153,19 @@
 				{ "slug": "tertiary-to-primary", "gradient": "linear-gradient(160deg, var(--wp--preset--color--tertiary), var(--wp--preset--color--primary))", "name": "Tertiary to Primary" },
 				{ "slug": "secondary-to-tertiary", "gradient": "linear-gradient(160deg, var(--wp--preset--color--secondary), var(--wp--preset--color--tertiary))", "name": "Secondary to Tertiary" },
 				{ "slug": "tertiary-to-secondary", "gradient": "linear-gradient(160deg, var(--wp--preset--color--tertiary), var(--wp--preset--color--secondary))", "name": "Tertiary to Secondary" },
-				{ "slug": "green", "gradient": "linear-gradient(160deg, var(--wp--preset--color--light-green), var(--wp--preset--color--dark-bright-green))", "name": "Green" },
-				{ "slug": "yellow", "gradient": "linear-gradient(160deg, var(--wp--preset--color--light-yellow), var(--wp--preset--color--light-orange))", "name": "Yellow" },
-				{ "slug": "blue", "gradient": "linear-gradient(160deg, var(--wp--preset--color--light-blue), var(--wp--preset--color--dark-midnight-blue))", "name": "Blue" },
-				{ "slug": "orange", "gradient": "linear-gradient(160deg, var(--wp--preset--color--light-orange), var(--wp--preset--color--dark-orange))", "name": "Orange" },
-				{ "slug": "purple", "gradient": "linear-gradient(160deg, var(--wp--preset--color--light-purple), var(--wp--preset--color--dark-purple))", "name": "Purple" },
-				{ "slug": "red", "gradient": "linear-gradient(160deg, var(--wp--preset--color--light-red), var(--wp--preset--color--dark-red))", "name": "Red" },
-				{ "slug": "purple-yellow", "gradient": "linear-gradient(160deg, var(--wp--preset--color--light-purple), var(--wp--preset--color--yellow))", "name": "Purple to Yellow" },
-				{ "slug": "purple-green", "gradient": "linear-gradient(160deg, var(--wp--preset--color--light-purple), var(--wp--preset--color--green))", "name": "Purple to Green" },
-				{ "slug": "blue-red", "gradient": "linear-gradient(160deg, var(--wp--preset--color--light-blue), var(--wp--preset--color--dark-red))", "name": "Blue to Red" },
-				{ "slug": "blue-orange", "gradient": "linear-gradient(160deg, var(--wp--preset--color--light-blue), var(--wp--preset--color--orange))", "name": "Blue to Orange" },
+				{ "slug": "green", "gradient": "linear-gradient(160deg, var(--wp--preset--color--green), var(--wp--preset--color--dark-green))", "name": "Green" },
+				{ "slug": "yellow", "gradient": "linear-gradient(160deg, var(--wp--preset--color--yellow), var(--wp--preset--color--dark-yellow))", "name": "Yellow" },
+				{ "slug": "blue", "gradient": "linear-gradient(160deg, var(--wp--preset--color--blue), var(--wp--preset--color--dark-blue))", "name": "Blue" },
+				{ "slug": "orange", "gradient": "linear-gradient(160deg, var(--wp--preset--color--orange), var(--wp--preset--color--dark-orange))", "name": "Orange" },
+				{ "slug": "purple", "gradient": "linear-gradient(160deg, var(--wp--preset--color--purple), var(--wp--preset--color--dark-purple))", "name": "Purple" },
+				{ "slug": "red", "gradient": "linear-gradient(160deg, var(--wp--preset--color--red), var(--wp--preset--color--dark-red))", "name": "Red" },
+				{ "slug": "purple-yellow", "gradient": "linear-gradient(160deg, var(--wp--preset--color--purple), var(--wp--preset--color--yellow))", "name": "Purple to Yellow" },
+				{ "slug": "purple-green", "gradient": "linear-gradient(160deg, var(--wp--preset--color--purple), var(--wp--preset--color--green))", "name": "Purple to Green" },
+				{ "slug": "blue-red", "gradient": "linear-gradient(160deg, var(--wp--preset--color--blue), var(--wp--preset--color--dark-red))", "name": "Blue to Red" },
+				{ "slug": "blue-orange", "gradient": "linear-gradient(160deg, var(--wp--preset--color--blue), var(--wp--preset--color--orange))", "name": "Blue to Orange" },
 				{ "slug": "midnight", "gradient": "linear-gradient(160deg, var(--wp--preset--color--dark-midnight-blue), var(--wp--preset--color--blue))", "name": "Midnight" },
 				{ "slug": "gray", "gradient": "linear-gradient(160deg, var(--wp--preset--color--gray), var(--wp--preset--color--dark-gray))", "name": "Gray" },
 				{ "slug": "dark-gray", "gradient": "linear-gradient(160deg, var(--wp--preset--color--dark-gray), var(--wp--preset--color--very-dark-gray))", "name": "Dark Gray" }
-			],
-			"duotone": [
-				{ "colors": ["#4A6E5D", "#FAF9F6"], "slug": "primary", "name": "Primary" },
-				{ "colors": ["#78A391", "#FAF9F6"], "slug": "primary-alt", "name": "Primary Alt" },
-				{ "colors": ["#2A323D", "#FAF9F6"], "slug": "secondary", "name": "Secondary" },
-				{ "colors": ["#1E242C", "#FAF9F6"], "slug": "secondary-alt", "name": "Secondary Alt" },
-				{ "colors": ["#B38B59", "#FAF9F6"], "slug": "tertiary", "name": "Tertiary" },
-				{ "colors": ["#946E42", "#FAF9F6"], "slug": "tertiary-alt", "name": "Tertiary Alt" },
-				{ "colors": ["#7D7178", "#B38B59"], "slug": "purple-yellow", "name": "Purple and Yellow" },
-				{ "colors": ["#384952", "#946B6B"], "slug": "blue-red", "name": "Blue and Red" },
-				{ "colors": ["#2D2D2D", "#384952"], "slug": "midnight", "name": "Midnight" },
-				{ "colors": ["#946B6B", "#B38B59"], "slug": "magenta-yellow", "name": "Red and Yellow" },
-				{ "colors": ["#7D7178", "#78A391"], "slug": "purple-green", "name": "Purple and Green" },
-				{ "colors": ["#384952", "#A36555"], "slug": "blue-orange", "name": "Blue and Orange" },
-				{ "colors": ["#000000", "#FFFFFF"], "slug": "grayscale", "name": "Grayscale" },
-				{ "colors": ["#000000", "#706F6A"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			]
 		},
 		"shadow": {
@@ -217,26 +206,26 @@
 		},
 		"elements": {
 			"heading": {
+				"color": {
+                    "text": "var(--wp--preset--color--secondary)"
+                },
 				"typography": {
-					"fontWeight": "var(--wp--custom--typography--font-weight--light)",
+					"fontWeight": "var(--wp--custom--typography--font-weight--normal)",
 					"letterSpacing": "0.01em",
 					"lineHeight": "1.2"
 				}
 			},
 			"h1": {
 				"typography": {
+					"fontWeight": "var(--wp--custom--typography--font-weight--light)",
 					"letterSpacing": "-0.01em"
 				}
 			},
-			"h4": { 
-				"typography": { 
-					"fontWeight": "var(--wp--custom--typography--font-weight--normal)"					 
-				} 
-			},
-			"h5": { 
-				"typography": { 
-					"fontWeight": "var(--wp--custom--typography--font-weight--normal)"					 
-				} 
+			"h2": {
+				"typography": {
+					"fontWeight": "var(--wp--custom--typography--font-weight--light)",
+					"letterSpacing": "-0.01em"
+				}
 			},
 			"h6": { 
 				"typography": { 
@@ -271,10 +260,24 @@
 				"typography": {
 					"fontSize": "var:preset|font-size|medium",
 					"fontWeight": "var(--wp--custom--typography--font-weight--medium)"
-				}
+				}		
 			} 
 		},			
 		"blocks": {
+			"core/button" : {
+				"variations": {
+					"button-alt": {
+						"border": {
+							"radius": "var(--wp--preset--border-radius--xs, 4.5px)"
+						}
+					},
+					"button-outline-alt": {
+						"border": {
+							"radius": "var(--wp--preset--border-radius--xs, 4.5px)"
+						}
+					}
+				}
+			},
 			"core/site-title": {
 				"typography": {
 					"fontSize": "var:preset|font-size|large",
@@ -296,6 +299,31 @@
 				"typography": {
 					"fontWeight": "var(--wp--custom--typography--font-weight--normal)",
 					"letterSpacing": "-0.01em"
+				}
+			},
+			"core/post-date": {
+				"color": {
+					"text": "var(--wp--preset--color--secondary)"
+				}
+			},
+			"core/post-terms": {
+				"color": {
+					"text": "var(--wp--preset--color--secondary)"
+				}
+			},
+			"core/post-time-to-read": {
+				"color": {
+					"text": "var(--wp--preset--color--secondary)"
+				}
+			},
+			"core/post-comments-link": {
+				"color": {
+					"text": "var(--wp--preset--color--secondary)"
+				}
+			},
+			"core/post-author-name": {
+				"color": {
+					"text": "var(--wp--preset--color--secondary)"
 				}
 			},
 			"core/navigation": {

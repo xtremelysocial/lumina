@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 17 Theme Styles
+//	 v0.9.9 Build 18 Colors
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -96,40 +96,37 @@
 	// TRACK A: SOVEREIGNS (Buttons & Form Triggers)
 	@if $role == 'sovereign' {
 		@include actions.apply-sovereign;
-	}
 
 	// TRACK B.1: ZOOM-IN-PLACE IMAGES (e.g. Media & Text)
-	@else if $role == 'passenger-zoom' {
+	} @else if $role == 'passenger-zoom' {
 		@if $context == 'wrapper' {
 			@include actions.apply-passenger-zoom-wrapper;
 		} 
 		@else if $context == 'target' {
 			@include actions.apply-passenger-zoom-asset;
 		}
-	}
 
 	// TRACK B.2: IMAGES THAT GROW (e.g. Gallery Images)
-	@else if $role == 'passenger-grow' {
+	} @else if $role == 'passenger-grow' {
 		@if $context == 'wrapper' {
 			@include actions.apply-passenger-image-wrapper;
-		}
-		@else if $context == 'target' {
+		} @else if $context == 'target' {
 			@include actions.apply-passenger-grow;
 		}
-	}
 
 	// TRACK B.3: STANDARD IMAGES (e.g. Standard Image)
-	@else if $role == 'passenger' {
+	} @else if $role == 'passenger' {
 		@if $context == 'wrapper' {
-			@include actions.apply-passenger-image-wrapper;
-		}
-		@else if $context == 'target' {
+// 			> a {
+// 				@include actions.apply-passenger;
+// 			}
+ 			@include actions.apply-passenger-image-wrapper;
+		} @else if $context == 'target' {
 			@include actions.apply-passenger;
 		}
-	}
 
 	// TRACK C: SHIPS (Layout Containers & Groups)
-	@else if $role == 'ship' {
+	} @else if $role == 'ship' {
 		@include actions.apply-ship;
 	}
 }

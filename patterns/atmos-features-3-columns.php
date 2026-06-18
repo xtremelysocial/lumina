@@ -16,7 +16,7 @@
 		<!-- wp:column -->
 		<div class="wp-block-column">
 			<!-- wp:image {"align":"center","width":100,"height":100,"sizeSlug":"thumbnail","linkDestination":"none","className":"is-style-rounded"} -->
-			<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri() ); ?>/assets/images/thumbnail-gears.jpg" alt="photo of golden cogwheel on black background" width="100" height="100"/></figure>
+			<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/thumbnail-gears.jpg' ) ); ?>" alt="photo of golden cogwheel on black background" width="100" height="100"/></figure>
 			<!-- /wp:image -->
 
 			<!-- wp:heading {"textAlign":"center","level":3} -->
@@ -32,7 +32,7 @@
 		<!-- wp:column -->
 		<div class="wp-block-column">
 			<!-- wp:image {"align":"center","width":100,"height":100,"sizeSlug":"thumbnail","linkDestination":"none","className":"is-style-rounded"} -->
-			<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri() ); ?>/assets/images/thumbnail-hands.jpg" alt="crop psychologist supporting patient during counseling indoors" width="100" height="100"/></figure>
+			<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/thumbnail-hands.jpg' ) ); ?>" alt="crop psychologist supporting patient during counseling indoors" width="100" height="100"/></figure>
 			<!-- /wp:image -->
 
 			<!-- wp:heading {"textAlign":"center","level":3} -->
@@ -48,7 +48,7 @@
 		<!-- wp:column -->
 		<div class="wp-block-column">
 			<!-- wp:image {"align":"center","width":100,"height":100,"sizeSlug":"thumbnail","linkDestination":"none","className":"is-style-rounded"} -->
-			<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri() ); ?>/assets/images/thumbnail-dollars.jpg" alt="pexels-photo-164661.jpeg" width="100" height="100"/></figure>
+			<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/thumbnail-dollars.jpg' ) ); ?>" alt="pexels-photo-164661.jpeg" width="100" height="100"/></figure>
 			<!-- /wp:image -->
 
 			<!-- wp:heading {"textAlign":"center","level":3} -->

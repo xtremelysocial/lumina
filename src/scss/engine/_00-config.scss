@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 17 Theme Styles
+//	 	v0.9.9 Build 18 Colors
 //   ========================================================================== */
 
 // ==========================================================================
@@ -219,10 +219,10 @@ $overlay-opacity:   	''; //var(--wp--custom--color--overlay--opacity, 0.6);
 $overlay-hover-opacity: ''; //var(--wp--custom--color--overlay--hover-opacity, 0);
 
 // Veil visual definitions (types: x, crosshair, brackets, matrix)
-$veil-type:				''; //'brackets'; //'crosshair'; //'matrix';, //'x';
+$veil-type:				''; //'link-detect'; //'brackets'; //'crosshair'; //'matrix';, //'x';
 $veil-color:			''; //var(--wp--custom--color--veil--color, var(--wp--preset--color--base));
-$veil-opacity:   		0; //var(--wp--custom--color--veil--opacity, 0);
-$veil-hover-opacity: 	0; //var(--wp--custom--color--veil--hover-opacity, 0.85);
+$veil-opacity:   		1; //var(--wp--custom--color--veil--opacity, 0);
+$veil-hover-opacity: 	1; //var(--wp--custom--color--veil--hover-opacity, 0.85);
 
 //**
 // * 00.5 DEBUGGING: Outline colors for visual debugging

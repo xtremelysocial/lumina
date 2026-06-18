@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 17 Theme Styles
+//	 v0.9.9 Build 18 Colors
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -145,22 +145,26 @@
 //    ========================================================================== */
 @mixin apply-passenger {
 
-    // Apply Physics
-    @if config.$atmos-dev-mode {
-        @include __blueprint-lift-standard;
-    } @else {
-        @extend %physics-lift-standard;
-    }
+	// Apply to wrapper!
+// 	> a {
 
-    // Apply Deep Shadow
-	@if config.$atmos-dev-mode {
-		@include __blueprint-shadow-deep;
-	} @else {
-		@extend %physics-shadow-deep;
-	}
-
-	// Handle debug
-	@include atmos-debug('passenger');
+		// Apply Physics
+		@if config.$atmos-dev-mode {
+			@include __blueprint-lift-standard;
+		} @else {
+			@extend %physics-lift-standard;
+		}
+	
+		// Apply Deep Shadow
+		@if config.$atmos-dev-mode {
+			@include __blueprint-shadow-deep;
+		} @else {
+			@extend %physics-shadow-deep;
+		}
+		
+		// Handle debug
+		@include atmos-debug('passenger');
+// 	}
 }
 
 // /* ==========================================================================
@@ -307,7 +311,8 @@
 }
 
 // ==========================================================================
-// 03.25 IMAGE WRAPPER: Apply deep shadow
+// 03.25 IMAGE WRAPPER: Apply deep shadow, filter, remove overlay, and reveal 
+// 		 veil
 // ==========================================================================
 @mixin apply-passenger-image-wrapper {
 
@@ -323,6 +328,16 @@
 			}
 		}	
 	}
+
+	// Filter image (e.g. Brighten) if configured
+	@include apply-filter-image;	
+
+	// Remove tinted overlay if configured
+	@include apply-remove-overlay;
+	
+	// Reveal veil if configured
+	@include apply-veil-reveal;
+	
 	// Handle debug
 	@include atmos-debug('wrapper-active');	
 }

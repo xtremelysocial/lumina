@@ -6,7 +6,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 	v0.9.9 Build 17 Theme Styles
+//	 	v0.9.9 Build 18 Colors
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -17,7 +17,7 @@
 @use '01-compiler' as *;
 
 // ==========================================================================
-// 02.01 RESTING STATE: Setup transitions and transforms
+// 02.10 RESTING STATE: Setup transitions and transforms
 // ==========================================================================
 @mixin __blueprint-resting-state {
 
@@ -36,13 +36,13 @@
 
 %physics-resting-state {
 	/* ==========================================================================
-	   02.01 RESTING STATE: Setup transitions and transforms
+	   02.10 RESTING STATE: Setup transitions and transforms
 	========================================================================== */
 	@include __blueprint-resting-state;
 }
 
 // ==========================================================================
-// 02.02 NATURAL SHADOW: Apply resting (natural) shadow
+// 02.11 NATURAL SHADOW: Apply resting (natural) shadow
 // ==========================================================================
 @mixin __blueprint-shadow-natural {
 	box-shadow: var(--wp--custom--shadow--default, 
@@ -52,13 +52,13 @@
 
 %physics-shadow-natural {
 	/* ==========================================================================
-	   02.02 NATURAL SHADOW: Apply resting (natural) shadow
+	   02.12 NATURAL SHADOW: Apply resting (natural) shadow
 	========================================================================== */
 	@include __blueprint-shadow-natural;
 }
 
 // /* ==========================================================================
-//    02.03 BORDER: Border and radius
+//    02.13 BORDER: Border and radius
 //    ========================================================================== */
 @mixin __blueprint-border {
 	border-radius: var(--wp--custom--border--radius, 18px);
@@ -67,13 +67,13 @@
 
 %physics-border {
 /* ==========================================================================
-   02.03 BORDER: Border and radius
+   02.13 BORDER: Border and radius
    ========================================================================== */
 	@include __blueprint-border;
 }
 
 // /* ==========================================================================
-//    02.05 WRAPPER CLIPPED: Overflow Hidden
+//    02.14 WRAPPER CLIPPED: Overflow Hidden
 //    ========================================================================== */
 @mixin __blueprint-wrapper-clipped {
 
@@ -85,7 +85,7 @@
 }
 
 // /* ==========================================================================
-//    02.05 WRAPPER CLIPPED: Overflow Hidden
+//    02.14 WRAPPER CLIPPED: Overflow Hidden
 //    ========================================================================== */
 %physics-wrapper-clipped {
 	@include __blueprint-wrapper-clipped;
@@ -100,7 +100,7 @@
 }
 
 // /* ==========================================================================
-//    02.04 WRAPPER VISUALS: Border, radius, and resting shadow
+//    02.20 WRAPPER VISUALS: Border, radius, and resting shadow
 //    ========================================================================== */
 @mixin apply-wrapper-visuals($block) {
 
@@ -119,7 +119,7 @@
 }
 
 // /* ==========================================================================
-//    02.06 APPLY RESTING STATE: Apply physics
+//    02.21 APPLY RESTING STATE: Apply physics
 //    ========================================================================== */
 @mixin apply-resting-state {
 
@@ -130,31 +130,285 @@
     }
 }
 
+// ==========================================================================
+// 02.22 VEIL X: Thin X overlay
+// ==========================================================================
+@mixin __blueprint-veil-x {
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><line x1='0' y1='0' x2='100%' y2='100%' stroke='#{config.$veil-color}' stroke-width='0.5'/><line x1='100%' y1='0' x2='0' y2='100%' stroke='#{config.$veil-color}' stroke-width='0.5'/></svg>");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+// ==========================================================================
+// 02.23 VEIL BRACKETS: Inset Viewfinder Brackets
+// ==========================================================================
+@mixin __blueprint-veil-brackets {	
+	background-image:
+		// Top-Left Bracket (Horizontal line, then Vertical line)
+		linear-gradient(to bottom, #{config.$veil-color} 2px, transparent 0),
+		linear-gradient(to right, #{config.$veil-color} 2px, transparent 0),
+		
+		// Top-Right Bracket
+		linear-gradient(to bottom, #{config.$veil-color} 2px, transparent 0),
+		linear-gradient(to left, #{config.$veil-color} 2px, transparent 0),
+		
+		// Bottom-Left Bracket
+		linear-gradient(to top, #{config.$veil-color} 2px, transparent 0),
+		linear-gradient(to right, #{config.$veil-color} 2px, transparent 0),
+		
+		// Bottom-Right Bracket
+		linear-gradient(to top, #{config.$veil-color} 2px, transparent 0),
+		linear-gradient(to left, #{config.$veil-color} 2px, transparent 0);
+		
+	// DEEPER INSET: Pulled 16px inward to comfortably clear large border-radii
+	background-position: 
+		left 16px top 16px, left 16px top 16px, 
+		right 16px top 16px, right 16px top 16px, 
+		left 16px bottom 16px, left 16px bottom 16px, 
+		right 16px bottom 16px, right 16px bottom 16px;
+		
+	background-repeat: no-repeat;
+	
+	// BOLDER SIZE: Expanded to 24px arms with a solid 2px line thickness
+	background-size: 24px 24px; 
+}
+
+// ==========================================================================
+// 02.24 VEIL CROSSHAIR: Centered crosshair (+)
+// ==========================================================================
+@mixin __blueprint-veil-crosshair {
+	background-image: 
+		linear-gradient(to right, #{config.$veil-color} 100%, transparent 0), 
+		linear-gradient(to bottom, #{config.$veil-color} 100%, transparent 0);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 32px 2px, 2px 32px;
+}
+
+// ==========================================================================
+// 02.25 VEIL DOT MATRIX: Small dots like a sensor grid
+// ==========================================================================
+@mixin __blueprint-veil-matrix {
+	background-image: radial-gradient(#{config.$veil-color} 1px, transparent 1px);
+	background-size: 8px 8px;
+	background-repeat: repeat;
+}
+
+// ==========================================================================
+// 02.26 VEIL INTERNAL LINK: WordPress "Arrow Right" (Internal)
+// ==========================================================================
+@mixin __blueprint-veil-internal {
+    // Replace # with %23. Encodings are critical for CSS data-URIs.
+$svg: "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='%23ffffff' d='M6 15l5-5-5-5 1-2 7 7-7 7z'/></svg>";
+    background-image: url("data:image/svg+xml;utf8,#{ $svg }");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+
+//     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='#{config.$veil-color}' d='M6 15l5-5-5-5 1-2 7 7-7 7z'/></svg>");
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: 24px 24px;
+}
+
+// ==========================================================================
+// 02.27 VEIL EXTERNAL LINK: WordPress "External" (New Tab)
+// ==========================================================================
+@mixin __blueprint-veil-external {
+$svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%23ffffff' d='M18 11v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h6v2H4v12h12v-6h2zm-7 1h2v-5.59l5.3 5.3 1.41-1.41L12.41 5H18V3h-7v9z'/></svg>";
+    background-image: url("data:image/svg+xml;utf8,#{ $svg }");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+}
+
+// ==========================================================================
+// 02.28 RESTING OVERLAY: Image mask overlay (:before)
+// ==========================================================================
+@mixin __blueprint-resting-overlay {
+
+	// Absolute positioning
+	content: '';
+	position: absolute;
+
+	// Tracks the edges of the newly block-level <a> box
+	inset: 0;
+
+	// Inherit border-radius from parent
+	border-radius: inherit;
+
+	// Completely click-transparent
+	pointer-events: none; 
+												
+	background-color: #{config.$overlay-background};
+										
+	// Use a longer timing function
+	transition: config.$atmos-timing-medium;
+
+	// Set resting opacity		
+	opacity: #{config.$overlay-opacity};
+	
+	// Move it above the image
+	z-index: 1;
+}
+
+%physics-resting-overlay {
+/* ==========================================================================
+   02.28 RESTING OVERLAY: Image mask overlay (:before)
+========================================================================== */
+	@include __blueprint-resting-overlay;
+}
+
+@mixin apply-resting-overlay {
+
+	// Only apply overlay if configured
+	@if config.$overlay-background != '' {
+
+		@if config.$atmos-dev-mode {
+			@include __blueprint-resting-overlay;
+		} @else {
+			@extend %physics-resting-overlay;
+		}
+	}
+}
+
+// ==========================================================================
+// 02.29 RESTING VEIL: Image veil graphic overlay (::after)
+// ==========================================================================
+@mixin __blueprint-resting-veil {
+
+	// Absolute positioning
+	content: '';
+	position: absolute;
+
+	// Tracks the edges of the newly block-level <a> box
+	inset: 0;
+
+	// Inherit border-radius from parent
+	border-radius: inherit;
+
+	// Completely click-transparent
+	pointer-events: none; 
+
+	// Use a longer timing function
+	transition: config.$atmos-timing-medium;
+
+	// Force veil graphic on top of the tint (which is in turn on top of the img)
+	z-index: 2;
+
+	// Use veil-opacity so it stays hidden at rest (set to 0 in config)
+	opacity: #{config.$veil-opacity};
+		
+	// Apply Blend Mode (ONLY if we have a graphic, but NO tint)
+	// If we have a tint, we stay 'normal' so we don't distort the color.
+	@if config.$overlay-background == '' and 
+		config.$veil-type != '' and
+		config.$veil-opacity != '' and 
+		config.$veil-opacity != 0 
+	{
+		mix-blend-mode: exclusion;
+	}
+
+	// 5. Apply the configured veil type
+
+	@if config.$veil-type == 'link-detect' {
+		// Default to internal arrow
+		@include __blueprint-veil-internal;
+		
+		// Override if link has target="_blank"
+		&[target="_blank"] {
+			@include __blueprint-veil-external;
+		}		
+	} @else if config.$veil-type == 'x' {
+		@include __blueprint-veil-vector-x;
+
+	} @else if config.$veil-type == 'brackets' {
+		@include __blueprint-veil-brackets;
+
+	} @else if config.$veil-type == 'crosshair' {
+		@include __blueprint-veil-crosshair;
+
+	} @else if config.$veil-type == 'matrix' {
+		@include __blueprint-veil-matrix;
+	}
+}
+
+%physics-resting-veil {
+/* ==========================================================================
+   02.29 RESTING VEIL: Image veil graphic overlay (::after)
+========================================================================== */
+	@include __blueprint-resting-veil;
+}
+
+@mixin apply-resting-veil {
+
+	// Only apply veil graphic if configured
+	@if config.$veil-type != '' {
+
+		@if config.$atmos-dev-mode {
+			@include __blueprint-resting-veil;
+		} @else {
+			@extend %physics-resting-veil;
+		}
+	}
+}
+
+// ==========================================================================
+// 02.30 RESTING IMAGE FILTER: Filter (e.g. brightness)
+// ==========================================================================
+@mixin __blueprint-resting-image-filter {
+	filter: config.$image-filter;
+}
+
+%physics-resting-image-filter {
+/* ==========================================================================
+   02.30 RESTING IMAGE FILTER: Filter (e.g. brightness)
+========================================================================== */
+	@include __blueprint-resting-image-filter;
+}
+
+@mixin apply-resting-image-filter {
+
+	// Only apply image filter if configured
+	@if config.$image-filter != '' {
+
+		@if config.$atmos-dev-mode {
+			@include __blueprint-resting-image-filter;
+		} @else {
+			@extend %physics-resting-image-filter;
+		}
+	}
+}
+
 // /* ==========================================================================
-//    02.07 IMAGE VISUALS: Border, radius, and shadow
+//    02.31 IMAGE VISUALS: Border, radius, and shadow
 //    ========================================================================== */
 @mixin __blueprint-image-wrapper-visuals {
 
 	// Apply shadow directly to image and resting filter if configured
 	img {
 		@include __blueprint-shadow-natural;
-
-// 		@include apply-resting-image-filter;
-// 		@include __blueprint-resting-image-filter;
 	}
 
-	// Apply border to plain image only
+	// Apply border, radius, and padding to plain images only
 	&:not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) {
 		img {	
-			border-radius: var(--wp--custom--border--radius, 18px);
-			border: 1px solid var(--wp--custom--color--border);
+// 			border-radius: var(--wp--custom--border--radius, 18px);
+// 			border: 1px solid var(--wp--custom--color--border);
+			@include __blueprint-border;
+			padding: var(--wp--preset--spacing--20);
 		}
-	}
+	}	
+	
+// 	> a {
+// 		@include apply-resting-state;
+// 	}
 }
 
 %physics-image-wrapper-visuals {
 /* ==========================================================================
-   02.07 IMAGE VISUALS: Border, radius, and shadow
+   02.31 IMAGE VISUALS: Border, radius, and shadow
    ========================================================================== */
 	@include __blueprint-image-wrapper-visuals;
 }
@@ -167,18 +421,34 @@
 		// Apply rounding but with brakes in CSS selector
 		&:not(#{config.$blocks-layout-brakes}) {
 		
-			// Apply border
+			// Apply border and radius
 			@if config.$atmos-dev-mode {	
 				@include __blueprint-image-wrapper-visuals;		
 			} @else {
 				@extend %physics-image-wrapper-visuals;
 			}
 		}
+	}
+
+	// Always apply overlay, veil, and image filter if configured in 
+	// the engine
+	> a {
+// 		&::before {
+// 			@include apply-resting-overlay;
+// 		}
+
+// 		&::after {
+// 			@include apply-resting-veil;
+// 		}
+
+		img {
+			@include apply-resting-image-filter;
+		}
 	}		
 }
 
 // ==========================================================================
-// 02.08 IMAGE RESTING STATE: Setup transitions and transforms
+// 02.32 IMAGE RESTING STATE: Setup transitions and transforms
 // ==========================================================================
 @mixin __blueprint-asset-resting-state {
 
@@ -201,7 +471,7 @@
 
 %physics-asset-resting-state {
 	/* ==========================================================================
-	   02.08 IMAGE RESTING STATE: Setup transitions and transforms
+	   02.32 IMAGE RESTING STATE: Setup transitions and transforms
 	========================================================================== */
 	@include __blueprint-asset-resting-state;
 }
@@ -215,7 +485,7 @@
 }
 
 // ==========================================================================
-// 02.09 ZOOM WRAPPER VISUALS: Border, radius, and shadow
+// 02.33 ZOOM WRAPPER VISUALS: Border, radius, and shadow
 // ==========================================================================
 @mixin __blueprint-zoom-wrapper-visuals {
 
@@ -252,7 +522,7 @@
 
 %physics-zoom-wrapper-visuals {
  /* ==========================================================================
-   02.09 ZOOM WRAPPER VISUALS: Border, radius, and shadow
+   02.33 ZOOM WRAPPER VISUALS: Border, radius, and shadow
    ========================================================================== */
 	@include __blueprint-zoom-wrapper-visuals;
 }
@@ -268,14 +538,14 @@
 			// APPLY VISUALS (Brakes in selector)
 			@if config.$atmos-dev-mode {	
 				@include __blueprint-zoom-wrapper-visuals;
-		
-				@if list.index(config.$blocks-custom-borders, $block) {
+
+				@if has-custom-borders($block) {
 					@include __blueprint-zoom-wrapper-border;
-				}
+				}		
 			} @else {
 				@extend %physics-zoom-wrapper-visuals;
 		
-				@if list.index(config.$blocks-custom-borders, $block) {
+				@if has-custom-borders($block) {
 					@extend %physics-zoom-wrapper-border;
 				}
 			}
@@ -300,7 +570,7 @@
 }
 
 // ==========================================================================
-// 02.10 ZOOM WRAPPER CLIPPED: Overflow hidden on nested <a> tag
+// 02.34 ZOOM WRAPPER CLIPPED: Overflow hidden on nested <a> tag
 // ==========================================================================
 @mixin __blueprint-zoom-wrapper-clipped {
 
@@ -321,7 +591,7 @@
 
 %physics-zoom-wrapper-clipped {
 /* ==========================================================================
-   02.10 ZOOM WRAPPER CLIPPED: Overflow hidden on nested <a> tag
+   02.34 ZOOM WRAPPER CLIPPED: Overflow hidden on nested <a> tag
 ========================================================================== */
 	@include __blueprint-zoom-wrapper-clipped;
 }
@@ -338,10 +608,27 @@
 }
 
 // ==========================================================================
-// 02.08 IMAGE CUSTOM BORDERS: Theme custom image block border styles
+// 02.35 IMAGE CUSTOM BORDERS: Theme custom image block border styles
 // ==========================================================================
 @mixin __blueprint-zoom-wrapper-border {
-		
+
+	// --------------------------------------------------------------------------
+	// ROUND IMAGES: NATIVE WORDPRESS ROUNDED (is-style-rounded)
+	// --------------------------------------------------------------------------
+// 	&.is-style-rounded {
+// 
+// 		&:not(#{config.$blocks-layout-brakes}) {	
+// // 			border: none;
+// // 			padding: 0;
+// 			border-radius: 9999px;
+// 	
+// 			> a {
+// 				overflow: hidden;
+// 				border-radius: 9999px;
+// 			}
+// 		}
+// 	}
+
 	// --------------------------------------------------------------------------
 	// VARIANT A: STANDARD BORDER (is-style-image-border)
 	// --------------------------------------------------------------------------
@@ -364,8 +651,9 @@
 	}
 
 	// --------------------------------------------------------------------------
-	// VARIANT B: PILL/AVATAR (is-style-image-round-border)
+	// VARIANT B: PILL/AVATAR (is-style-rounded, is-style-image-round-border)
 	// --------------------------------------------------------------------------
+	&.is-style-rounded,
 	&.is-style-image-round-border {
 
 		&:not(#{config.$blocks-layout-brakes}) {	
@@ -448,230 +736,13 @@
 
 %physics-zoom-wrapper-border {
  /* ==========================================================================
-   02.08 IMAGE CUSTOM BORDERS: Theme custom image block border styles
+   02.35 IMAGE CUSTOM BORDERS: Theme custom image block border styles
    ========================================================================== */
 	@include __blueprint-zoom-wrapper-border;
 }
 
 // ==========================================================================
-// 02.10 VEIL X: Thin X overlay
-// ==========================================================================
-
-// Variation 1: Your Original Thin X (Vector Cross)
-@mixin __blueprint-veil-x {
-	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><line x1='0' y1='0' x2='100%' y2='100%' stroke='#{config.$veil-color}' stroke-width='0.5'/><line x1='100%' y1='0' x2='0' y2='100%' stroke='#{config.$veil-color}' stroke-width='0.5'/></svg>");
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-// ==========================================================================
-// 02.11 VEIL BRACKETS: Inset Viewfinder Brackets
-// ==========================================================================
-@mixin __blueprint-veil-brackets {
-	
-	background-image:
-		// Top-Left Bracket (Horizontal line, then Vertical line)
-		linear-gradient(to bottom, #{config.$veil-color} 2px, transparent 0),
-		linear-gradient(to right, #{config.$veil-color} 2px, transparent 0),
-		
-		// Top-Right Bracket
-		linear-gradient(to bottom, #{config.$veil-color} 2px, transparent 0),
-		linear-gradient(to left, #{config.$veil-color} 2px, transparent 0),
-		
-		// Bottom-Left Bracket
-		linear-gradient(to top, #{config.$veil-color} 2px, transparent 0),
-		linear-gradient(to right, #{config.$veil-color} 2px, transparent 0),
-		
-		// Bottom-Right Bracket
-		linear-gradient(to top, #{config.$veil-color} 2px, transparent 0),
-		linear-gradient(to left, #{config.$veil-color} 2px, transparent 0);
-		
-	// DEEPER INSET: Pulled 16px inward to comfortably clear large border-radii
-	background-position: 
-		left 16px top 16px, left 16px top 16px, 
-		right 16px top 16px, right 16px top 16px, 
-		left 16px bottom 16px, left 16px bottom 16px, 
-		right 16px bottom 16px, right 16px bottom 16px;
-		
-	background-repeat: no-repeat;
-	
-	// BOLDER SIZE: Expanded to 24px arms with a solid 2px line thickness
-	background-size: 24px 24px; 
-}
-
-// ==========================================================================
-// 02.12 VEIL CROSSHAIR: Centered crosshair (+)
-// ==========================================================================
-@mixin __blueprint-veil-crosshair {
-	background-image: 
-		linear-gradient(to right, #{config.$veil-color} 100%, transparent 0), 
-		linear-gradient(to bottom, #{config.$veil-color} 100%, transparent 0);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 32px 2px, 2px 32px;
-}
-
-// ==========================================================================
-// 02.13 VEIL DOT MATRIX: Small dots like a sensor grid
-// ==========================================================================
-@mixin __blueprint-veil-matrix {
-	background-image: radial-gradient(#{config.$veil-color} 1px, transparent 1px);
-	background-size: 8px 8px;
-	background-repeat: repeat;
-}
-
-// ==========================================================================
-// 02.14 RESTING OVERLAY: Image mask overlay (:before)
-// ==========================================================================
-@mixin __blueprint-resting-overlay {
-
-	// Absolute positioning
-	content: '';
-	position: absolute;
-
-	// Tracks the edges of the newly block-level <a> box
-	inset: 0;
-
-	// Inherit border-radius from parent
-	border-radius: inherit;
-
-	// Completely click-transparent
-	pointer-events: none; 
-												
-	background-color: #{config.$overlay-background};
-										
-	// Use a longer timing function
-	transition: config.$atmos-timing-medium;
-
-	// Set resting opacity		
-	opacity: #{config.$overlay-opacity};
-	
-	// Move it above the image
-	z-index: 1;
-}
-
-%physics-resting-overlay {
-/* ==========================================================================
-   02.14 RESTING OVERLAY: Image mask overlay (:before)
-========================================================================== */
-	@include __blueprint-resting-overlay;
-}
-
-@mixin apply-resting-overlay {
-
-	// Only apply overlay if configured
-	@if config.$overlay-background != '' {
-
-		@if config.$atmos-dev-mode {
-			@include __blueprint-resting-overlay;
-		} @else {
-			@extend %physics-resting-overlay;
-		}
-	}
-}
-
-// ==========================================================================
-// 02.15 RESTING VEIL: Image veil graphic overlay (::after)
-// ==========================================================================
-@mixin __blueprint-resting-veil {
-
-	// Absolute positioning
-	content: '';
-	position: absolute;
-
-	// Tracks the edges of the newly block-level <a> box
-	inset: 0;
-
-	// Inherit border-radius from parent
-	border-radius: inherit;
-
-	// Completely click-transparent
-	pointer-events: none; 
-
-	// Use a longer timing function
-	transition: config.$atmos-timing-medium;
-
-	// Force veil graphic on top of the tint (which is in turn on top of the img)
-	z-index: 2;
-
-	// Use veil-opacity so it stays hidden at rest (set to 0 in config)
-	opacity: #{config.$veil-opacity};
-		
-	// Apply Blend Mode (ONLY if we have a graphic, but NO tint)
-	// If we have a tint, we stay 'normal' so we don't distort the color.
-	@if config.$overlay-background == '' and 
-		config.$veil-type != '' and
-		config.$veil-opacity != '' and 
-		config.$veil-opacity != 0 
-	{
-		mix-blend-mode: exclusion;
-	}
-
-	// 5. Apply the configured veil type			
-	@if config.$veil-type == 'x' {
-		@include __blueprint-veil-vector-x;
-
-	} @else if config.$veil-type == 'brackets' {
-		@include __blueprint-veil-brackets;
-
-	} @else if config.$veil-type == 'crosshair' {
-		@include __blueprint-veil-crosshair;
-
-	} @else if config.$veil-type == 'matrix' {
-		@include __blueprint-veil-matrix;
-	}
-}
-
-%physics-resting-veil {
-/* ==========================================================================
-   02.15 RESTING VEIL: Image veil graphic overlay (::after)
-========================================================================== */
-	@include __blueprint-resting-veil;
-}
-
-@mixin apply-resting-veil {
-
-	// Only apply veil graphic if configured
-	@if config.$veil-type != '' {
-
-		@if config.$atmos-dev-mode {
-			@include __blueprint-resting-veil;
-		} @else {
-			@extend %physics-resting-veil;
-		}
-	}
-}
-
-// ==========================================================================
-// 02.16 RESTING IMAGE FILTER: Filter (e.g. brightness)
-// ==========================================================================
-@mixin __blueprint-resting-image-filter {
-	filter: config.$image-filter;
-}
-
-%physics-resting-image-filter {
-/* ==========================================================================
-   02.16 RESTING IMAGE FILTER: Filter (e.g. brightness)
-========================================================================== */
-	@include __blueprint-resting-image-filter;
-}
-
-@mixin apply-resting-image-filter {
-
-	// Only apply image filter if configured
-	@if config.$image-filter != '' {
-
-		@if config.$atmos-dev-mode {
-			@include __blueprint-resting-image-filter;
-		} @else {
-			@extend %physics-resting-image-filter;
-		}
-	}
-}
-
-// ==========================================================================
-// 02.17 BUTTON SPACING: Spacing for legacy HTML-only buttons
+// 02.36 BUTTON SPACING: Spacing for legacy HTML-only buttons
 // ==========================================================================
 @mixin __blueprint-button-spacing {
 	margin-right: config.$html-button-spacing;     
@@ -679,7 +750,7 @@
 
 %physics-button-spacing {
 /* ==========================================================================
-   02.17 BUTTON SPACING: Spacing for legacy HTML-only buttons
+   02.36 BUTTON SPACING: Spacing for legacy HTML-only buttons
 ========================================================================== */
 	@include __blueprint-button-spacing;
 }
@@ -693,7 +764,7 @@
 }
 
 // ==========================================================================
-// 02.30 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
+// 02.37 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
 // ==========================================================================
 @mixin __blueprint-sovereign-resting-state {
 
@@ -717,7 +788,7 @@
 
 %physics-sovereign-resting-state {
 /* ==========================================================================
-   02.30 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
+   02.37 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
 ========================================================================== */
 	@include __blueprint-sovereign-resting-state;
 }
@@ -731,7 +802,7 @@
 }
 
 // ==========================================================================
-// 02.40 RESTING SILENCE: Silence Ships and Passengers embedded in another Ship
+// 02.38 RESTING SILENCE: Silence Ships and Passengers embedded in another Ship
 // ==========================================================================
 @mixin __blueprint-resting-silence {
 
@@ -745,7 +816,7 @@
 
 %physics-resting-silence {
 	/* ==========================================================================
-	   02.40 RESTING SILENCE: Silence Ships and Passengers embedded in another Ship
+	   02.38 RESTING SILENCE: Silence Ships and Passengers embedded in another Ship
 	========================================================================== */
 	@include __blueprint-resting-silence;
 }
@@ -759,7 +830,7 @@
 }
 
 // ==========================================================================
-// 02.41 RESTING SILENCE SHADOW: Silence shadows on embedded images
+// 02.39 RESTING SILENCE SHADOW: Silence shadows on embedded images
 // ==========================================================================
 @mixin __blueprint-resting-silence-shadow {
 
@@ -773,7 +844,7 @@
 
 %physics-resting-silence-shadow {
 	/* ==========================================================================
-	   02.41 RESTING SILENCE SHADOW: Silence shadows on embedded images
+	   02.39 RESTING SILENCE SHADOW: Silence shadows on embedded images
 	========================================================================== */
 	@include __blueprint-resting-silence-shadow;
 }

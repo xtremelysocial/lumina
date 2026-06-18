@@ -22,8 +22,8 @@
 /* ==========================================================================
    10 SHIPS: Containers (e.g. Groups, Columns)
    ========================================================================== */
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover,
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):has(:focus-visible) {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover,
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):has(:focus-visible) {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-2px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
@@ -31,56 +31,56 @@
 /* ==========================================================================
    20 PASSENGERS: Container Contents (e.g. Images, Columns)
    ========================================================================== */
-.wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
-.wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
-.wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):hover img,
-.wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):has(:focus-visible) img {
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover img,
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-3px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
-.wp-block-column .wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *),
-.wp-block-column .wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *),
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
-.wp-block-column .wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):hover img,
-.wp-block-column .wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):has(:focus-visible) img {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover img,
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-transform, scale(1.05));
 }
 
-.wp-block-post-featured-image:not(.alignfull, .block-editor-block-list__block):has(a):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
-.wp-block-post-featured-image:not(.alignfull, .block-editor-block-list__block):has(a):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
+.wp-block-post-featured-image:not(.alignfull):has(a):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
+.wp-block-post-featured-image:not(.alignfull):has(a):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
-.wp-block-post-featured-image:not(.alignfull, .block-editor-block-list__block):has(a):hover img,
-.wp-block-post-featured-image:not(.alignfull, .block-editor-block-list__block):has(a):has(:focus-visible) img {
+.wp-block-post-featured-image:not(.alignfull):has(a):hover img,
+.wp-block-post-featured-image:not(.alignfull):has(a):has(:focus-visible) img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-3px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
-.wp-block-latest-posts__featured-image:not(.alignfull, .block-editor-block-list__block):has(a):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
-.wp-block-latest-posts__featured-image:not(.alignfull, .block-editor-block-list__block):has(a):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
-.wp-block-latest-posts__featured-image:not(.alignfull, .block-editor-block-list__block):has(a):hover img,
-.wp-block-latest-posts__featured-image:not(.alignfull, .block-editor-block-list__block):has(a):has(:focus-visible) img {
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a):hover img,
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a):has(:focus-visible) img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-3px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
-.wp-block-media-text__media:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *),
-.wp-block-media-text__media:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *),
+.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
-.wp-block-media-text__media:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):hover img,
-.wp-block-media-text__media:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):has(:focus-visible) img {
+.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover img,
+.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
   transform: translateY(0) var(--wp--custom--animation--default--hover-transform, scale(1.05));
 }
 
@@ -153,36 +153,36 @@
 /* ==========================================================================
    40 VETOS: Veto embedded Ships and Passengers
   ========================================================================== */
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover [class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button),
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover [class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover [class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button),
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover [class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)),
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):hover {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-image:not(.alignfull):has(a:not(figcaption a)),
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-post-featured-image:not(.alignfull, .block-editor-block-list__block):has(a),
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-post-featured-image:not(.alignfull, .block-editor-block-list__block):has(a):hover {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-post-featured-image:not(.alignfull):has(a),
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-post-featured-image:not(.alignfull):has(a):hover {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-latest-posts__featured-image:not(.alignfull, .block-editor-block-list__block):has(a),
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-latest-posts__featured-image:not(.alignfull, .block-editor-block-list__block):has(a):hover {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-latest-posts__featured-image:not(.alignfull):has(a),
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-latest-posts__featured-image:not(.alignfull):has(a):hover {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-column .wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)),
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-column .wp-block-image:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):hover {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)),
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover {
   box-shadow: none;
 }
 
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-media-text__media:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)),
-[class*=wp-block-]:not(.alignfull, .block-editor-block-list__block):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-media-text__media:not(.alignfull, .block-editor-block-list__block):has(a:not(figcaption a)):hover {
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)),
+[class*=wp-block-]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover {
   box-shadow: none;
 }

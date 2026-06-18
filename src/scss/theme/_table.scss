@@ -1,0 +1,121 @@
+/*--------------------------------------------------------------
+# Table: Custom
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Custom: Colored Table
+--------------------------------------------------------------*/
+
+// Colored tables and Colored Alternate tables */
+// .wp-block-table.is-style-table-colored,
+// .wp-block-table.is-style-table-alternate {
+// 	border-radius: calc(2 * var(--wp--custom--border--radius));
+// }*/
+// 
+// .wp-block-table.is-style-table-colored table,
+// .wp-block-table.is-style-table-alternate table {
+// 	border-collapse: separate;*/ /*collapse;*/
+// 	border-spacing: 20px 0;
+// 	background-color: transparent !important;
+// }*/
+
+.wp-block-table.is-style-table-colored thead,
+.wp-block-table.is-style-table-colored tfoot,
+.wp-block-table.is-style-table-alternate thead,
+.wp-block-table.is-style-table-alternate tfoot {
+	border: none;
+}
+
+.wp-block-table.is-style-table-colored tr:nth-child(even),
+.wp-block-table.is-style-table-alternate tr:nth-child(even) {
+	color: var(--wp--preset--color--almost-black);
+	background-color: var(--wp--preset--color--off-white);
+}
+.wp-block-table.is-style-table-colored tr:nth-child(odd),
+.wp-block-table.is-style-table-alternate tr:nth-child(odd) {
+	color: var(--wp--preset--color--almost-black);
+	background-color: var(--wp--preset--color--white);
+}
+
+// .wp-block-table.is-style-table-colored td:hover,
+// .wp-block-table.is-style-table-alternate td:hover {*/
+// .wp-block-table.is-style-table-colored tr:hover,
+// .wp-block-table.is-style-table-alternate tr:hover {
+// 	background-color: #ddd;
+// 	cursor: pointer;
+// }*/
+
+.wp-block-table.is-style-table-colored th,
+.wp-block-table.is-style-table-colored td,
+.wp-block-table.is-style-table-alternate th,
+.wp-block-table.is-style-table-alternate td {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+.wp-block-table.is-style-table-colored th,
+// .wp-block-table.is-style-table-colored tr:first-child td,*/
+.wp-block-table.is-style-table-colored tfoot td,
+.wp-block-table.is-style-table-alternate th,
+// .wp-block-table.is-style-table-alternate tr:first-child td,*/
+.wp-block-table.is-style-table-alternate tfoot td {
+	color: var(--wp--preset--color--foreground-alt);	
+	background-color: var(--wp--preset--color--primary-alt);
+}
+.wp-block-table.is-style-table-colored th a,
+.wp-block-table.is-style-table-colored tfoot td a,
+.wp-block-table.is-style-table-alternate th a,
+.wp-block-table.is-style-table-alternate tfoot td a {
+	color: var(--wp--preset--color--foreground-alt);
+}
+.wp-block-table.is-style-table-colored th a:hover,
+.wp-block-table.is-style-table-colored th a:focus,
+.wp-block-table.is-style-table-colored tfoot td a:hover,
+.wp-block-table.is-style-table-colored tfoot td a:focus,
+.wp-block-table.is-style-table-alternate th a:hover,
+.wp-block-table.is-style-table-alternate th a:focus,
+.wp-block-table.is-style-table-alternate tfoot td a:hover,
+.wp-block-table.is-style-table-alternate tfoot td a:focus {
+// 	color: var(--wp--preset--color--foreground-alt);*/
+	opacity: 0.8;
+}
+
+/*--------------------------------------------------------------
+## Custom: Alternate Colored Table
+--------------------------------------------------------------*/
+// .wp-block-table.is-style-table-alternate tr:first-child td:nth-child(3n-2) {
+// 	background-color: var(--wp--preset--color--primary);
+// }
+// 
+// .wp-block-table.is-style-table-alternate tr:first-child td:nth-child(3n-1) {
+// 	background-color: var(--wp--preset--color--secondary);
+// }
+// 
+// .wp-block-table.is-style-table-alternate tr:first-child td:nth-child(3n-3) {
+// 	background-color: var(--wp--preset--color--tertiary);
+// }
+
+.wp-block-table.is-style-table-alternate th:nth-child(6n+1),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+1) {
+	background-color: var(--wp--preset--color--primary);
+}
+.wp-block-table.is-style-table-alternate th:nth-child(6n+2),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+2) {
+	background-color: var(--wp--preset--color--secondary);
+}
+.wp-block-table.is-style-table-alternate th:nth-child(6n+3),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+3) {
+	background-color: var(--wp--preset--color--tertiary);
+}
+.wp-block-table.is-style-table-alternate th:nth-child(6n+4),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+4) {
+	background-color: var(--wp--preset--color--primary-alt);
+}
+.wp-block-table.is-style-table-alternate th:nth-child(6n+5),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+5) {
+	background-color: var(--wp--preset--color--secondary-alt);
+}
+.wp-block-table.is-style-table-alternate th:nth-child(6n+6),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+6) {
+	background-color: var(--wp--preset--color--tertiary-alt);
+}

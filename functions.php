@@ -32,24 +32,24 @@ foreach ( $includes as $include ) {
 	}
 }
 
-if ( ! function_exists( 'atmosblocks_support' ) ) :
-
-	function atmosblocks_support() {
-
-		// Enqueue the styles needed for the editor. Do this here to 
-		// avoid interfering with the Editor UI. 
-		$editor_styles = array(
-			'/assets/css/atmos-theme.css',
-			'/assets/css/atmos-engine.css',
-// 			'/assets/css/editor-styles.css',
-		);
-
-		// Load the editor styles
-		add_editor_style( $editor_styles ); 		
-	}
-endif;
-
-add_action( 'after_setup_theme', 'atmosblocks_support' );
+// if ( ! function_exists( 'atmos_blocks_support' ) ) :
+// 
+// 	function atmosblocks_support() {
+// 
+// 		// Enqueue the styles needed for the editor. Do this here to 
+// 		// avoid interfering with the Editor UI. 
+// 		$editor_styles = array(
+// 			'/assets/css/atmos-theme.css',
+// 			'/assets/css/atmos-engine.css',
+// // 			'/assets/css/editor-styles.css',
+// 		);
+// 
+// 		// Load the editor styles
+// 		add_editor_style( $editor_styles ); 		
+// 	}
+// endif;
+// 
+// add_action( 'after_setup_theme', 'atmos_blocks_support' );
 
 /**
  * ATMOS THEME CSS
@@ -63,8 +63,6 @@ function atmos_load_styles() {
     $css_uri = get_stylesheet_directory_uri() . '/assets/css/atmos-theme.css';
     $css_path = get_stylesheet_directory() . '/assets/css/atmos-theme.css';
 
-    // 1. REGISTER handles for CSS first to establish the "library"
-    
     // Atmos Engine Resting State CSS
 	if ( file_exists( $css_path ) ) {
 
@@ -86,13 +84,14 @@ function atmos_load_styles() {
     }
 }
 
-add_action( 'wp_enqueue_scripts', 'atmos_load_styles' );
+// add_action( 'wp_enqueue_scripts', 'atmos_load_styles' );
+add_action( 'enqueue_block_assets', 'atmos_load_styles' );
 
 /**
- * ATMOS GRAVITY ENGINE CSS: Only on the Front-end.
- * Engine is loaded in the Editor above via add_editor_styles(). 
+ * ATMOS PHYSICS CSS: Load core engine on front-end and backend. Load 
+ * animation only on the front-end.
  */
-function atmos_enqueue_gravity_engine() {
+function atmos_load_physics_styles() {
 
 	// Get the theme version
 	$version = wp_get_theme()->get( 'Version' ) ?? false;
@@ -107,8 +106,9 @@ function atmos_enqueue_gravity_engine() {
     // 1. REGISTER handles for CSS first to establish the "library"
     
     // Atmos Engine Resting State CSS
-	if ( ! is_admin()	
-    	AND file_exists( $engine_path ) ) {
+// 	if ( ! is_admin()	
+//     	AND file_exists( $engine_path ) ) {
+	if ( file_exists( $engine_path ) ) {
 
 		// Use specific asset version if there is one
 		$asset = str_replace( '.css', '.asset.php', $engine_path );
@@ -145,16 +145,19 @@ function atmos_enqueue_gravity_engine() {
     }
 
     // 2. ENQUEUE CSS - This actually puts them on the page
-	if ( ! is_admin() ) {
+// 	if ( ! is_admin() ) {
 	    wp_enqueue_style( 'atmos-engine' );
 
+	if ( ! is_admin() ) {
     	wp_enqueue_style( 'atmos-interactions' );
     }    
 }
 
-if ( ! is_admin() ) {
-	add_action( 'enqueue_block_assets', 'atmos_enqueue_gravity_engine' );
-}
+// add_action( 'wp_enqueue_scripts', 'atmos_load_physics_styles' );
+
+// if ( ! is_admin() ) {
+	add_action( 'enqueue_block_assets', 'atmos_load_physics_styles' );
+// }
 
 /**
  * ATMOS GRAVITY ENGINE JS: Only on Front-end.

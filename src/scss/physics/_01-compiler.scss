@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 17 Theme Styles
+//	 v0.9.9 Build 18 Colors
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -44,7 +44,8 @@
 
 	// 3. ADD ALIGNFULL IF NOT SOVEREIGN
 	@if $role != 'sovereign' {
-	    $selector: '#{$selector}:not(.alignfull, .block-editor-block-list__block)';
+	    $selector: '#{$selector}:not(.alignfull)';
+// 	    $selector: '#{$selector}:not(.alignfull, .block-editor-block-list__block)';
 	}
         
 	// 4. MODIFIER SPEC COP (Appends clean modifier filters like :is(.has-background))
@@ -95,7 +96,21 @@
 }
 
 // ==========================================================================
-// 01.03 VISUAL DEBUG: Set outline colors and styles based on engine logic
+// 01.03 HAS CUSTOM BORDERS: Substring match for composite layout selectors
+// ==========================================================================
+@function has-custom-borders($block) {
+	@each $custom-block in config.$blocks-custom-borders {
+		// If the target block string (e.g. '.wp-block-image') is found anywhere 
+		// inside the active compiler selector string, return true immediately.
+		@if string.index($block, $custom-block) != null {
+			@return true;
+		}
+	}
+	@return false;
+}
+
+// ==========================================================================
+// 01.04 VISUAL DEBUG: Set outline colors and styles based on engine logic
 // ==========================================================================
 @mixin atmos-debug($role) {
 

@@ -33,7 +33,7 @@ main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-imag
 	margin-block-start: var(--wp--preset--spacing--50);
 }
 
-/* But don't add it to query block */
+/* But don't add it to template parts */
 main > :first-child.wp-block-template-part {
 	margin-block-start: 0 !important; 
 }

@@ -1,14 +1,10 @@
 /**
  * File:	atmos-physics.js
  * Theme: 	Atmos Blocks
- * 
- * Javascript for turning cards with a single link or button into a click target.
+ * * Javascript for turning cards with a single link or button into a click target.
  *
  * @package atmos-blocks
  * @since	1.0
- * 
- * Ensure that the $interactiveCards string matches the Atmos Physics Engine
- * wildcard for "cards". e.g. [class*="wp-block-"]:is():has():not()
  */
  
 ( function( $ ) {
@@ -28,11 +24,6 @@
 			var $buttons = $card.find('.wp-element-button');
 			var $links = $card.find('a').not('.wp-element-button');
 
-			// Debugging: uncomment these lines to see exactly what is being counted
-// 			console.log('Card ID:', $card.attr('id'));
-// 			console.log('Buttons found:', $buttons.length);
-// 			console.log('Links found:', $links.length);
-
 			// Return link or button or nothing if neither found			
 			if ($buttons.length === 1 && $links.length === 0) return $buttons.first();
 			if ($buttons.length === 0 && $links.length === 1) return $links.first();
@@ -47,14 +38,38 @@
 			}
 		});
 	
-		// 4. ACTION: The click listener uses the same helper
+		// 4. ACTION: Mobile-optimized click/navigation listener
 		$interactiveCards.on('click', function(e) {
-			if ($(e.target).is('button, a, .wp-element-button, input, select')) return;
+			
+			// Check if the user tapped an actual interactive element OR any of its nested children
+			if ($(e.target).closest('button, a, .wp-element-button, input, select').length) {
+				return;
+			}
 	
 			var $target = getValidTarget($(this));
 	
 			if ($target !== null) {
-				$target[0].click();
+				if ($target.is('a')) {
+					var href = $target.attr('href');
+					var targetAttr = $target.attr('target');
+
+					if (href) {
+						// DETECT INTERNAL ANCHOR: Check if the link is a same-page hash link
+						var isAnchor = href.indexOf('#') === 0 || (href.indexOf('#') > -1 && href.split('#')[0] === window.location.href.split('#')[0]);
+
+						if (isAnchor) {
+							// Pass control directly to smoothscroll.js to execute your header padding subtractions
+							$target.trigger('click');
+						} else if (targetAttr === '_blank') {
+							window.open(href, '_blank');
+						} else {
+							window.location.href = href;
+						}
+					}
+				} else {
+					// If it's a physical form submission button, programmatic click is safe
+					$target[0].click();
+				}
 			}
 		});
 			

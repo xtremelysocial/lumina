@@ -50,7 +50,7 @@ main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-imag
   margin-block-start: var(--wp--preset--spacing--50);
 }
 
-/* But don't add it to query block */
+/* But don't add it to template parts */
 main > :first-child.wp-block-template-part {
   margin-block-start: 0 !important;
 }
@@ -97,7 +97,7 @@ main > :last-child:not(.wp-block-post-content),
 --------------------------------------------------------------*/
 .is-style-separator {
   position: relative;
-  margin-bottom: calc(var(--wp--style--block-gap) + 3px);
+  margin-bottom: calc(var(--wp--preset--spacing--30) + var(--wp--style--block-gap));
 }
 .is-style-separator::after {
   content: "";
@@ -122,7 +122,7 @@ main > :last-child:not(.wp-block-post-content),
 
 .entry-header .entry-subtitle {
   position: relative;
-  margin-bottom: calc(var(--wp--style--block-gap) + 3px);
+  margin-bottom: calc(var(--wp--preset--spacing--30) + var(--wp--style--block-gap));
 }
 .entry-header .entry-subtitle::after {
   content: "";
@@ -154,6 +154,65 @@ main > :last-child:not(.wp-block-post-content),
 .is-root-container .entry-header .entry-subtitle::after {
   bottom: calc(-1 * var(--wp--preset--spacing--30));
   top: auto !important;
+}
+
+/*--------------------------------------------------------------
+## Custom Heading Link Animation
+--------------------------------------------------------------*/
+.wp-block-heading a {
+  position: relative;
+  display: inline;
+  background: linear-gradient(to right, currentColor 0%, currentColor 100%);
+  background-size: 0 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+  padding-bottom: 0.1em;
+}
+.wp-block-heading a:hover, .wp-block-heading a:active, .wp-block-heading a:focus {
+  background-size: 100% 2px;
+}
+
+.wp-block-site-title a {
+  position: relative;
+  display: inline;
+  background: linear-gradient(to right, currentColor 0%, currentColor 100%);
+  background-size: 0 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+  padding-bottom: 0.1em;
+}
+.wp-block-site-title a:hover, .wp-block-site-title a:active, .wp-block-site-title a:focus {
+  background-size: 100% 2px;
+}
+
+.wp-block-post-title a {
+  position: relative;
+  display: inline;
+  background: linear-gradient(to right, currentColor 0%, currentColor 100%);
+  background-size: 0 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+  padding-bottom: 0.1em;
+}
+.wp-block-post-title a:hover, .wp-block-post-title a:active, .wp-block-post-title a:focus {
+  background-size: 100% 2px;
+}
+
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title {
+  position: relative;
+  display: inline;
+  background: linear-gradient(to right, currentColor 0%, currentColor 100%);
+  background-size: 0 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+  padding-bottom: 0.1em;
+}
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:focus {
+  background-size: 100% 2px;
 }
 
 /*--------------------------------------------------------------
@@ -225,6 +284,98 @@ main > :last-child:not(.wp-block-post-content),
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-center .wp-block-navigation-item__content {
   text-align: center;
   justify-content: flex-center;
+}
+
+/*--------------------------------------------------------------
+# Table: Custom
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Custom: Colored Table
+--------------------------------------------------------------*/
+.wp-block-table.is-style-table-colored thead,
+.wp-block-table.is-style-table-colored tfoot,
+.wp-block-table.is-style-table-alternate thead,
+.wp-block-table.is-style-table-alternate tfoot {
+  border: none;
+}
+
+.wp-block-table.is-style-table-colored tr:nth-child(even),
+.wp-block-table.is-style-table-alternate tr:nth-child(even) {
+  color: var(--wp--preset--color--almost-black);
+  background-color: var(--wp--preset--color--off-white);
+}
+
+.wp-block-table.is-style-table-colored tr:nth-child(odd),
+.wp-block-table.is-style-table-alternate tr:nth-child(odd) {
+  color: var(--wp--preset--color--almost-black);
+  background-color: var(--wp--preset--color--white);
+}
+
+.wp-block-table.is-style-table-colored th,
+.wp-block-table.is-style-table-colored td,
+.wp-block-table.is-style-table-alternate th,
+.wp-block-table.is-style-table-alternate td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.wp-block-table.is-style-table-colored th,
+.wp-block-table.is-style-table-colored tfoot td,
+.wp-block-table.is-style-table-alternate th,
+.wp-block-table.is-style-table-alternate tfoot td {
+  color: var(--wp--preset--color--foreground-alt);
+  background-color: var(--wp--preset--color--primary-alt);
+}
+
+.wp-block-table.is-style-table-colored th a,
+.wp-block-table.is-style-table-colored tfoot td a,
+.wp-block-table.is-style-table-alternate th a,
+.wp-block-table.is-style-table-alternate tfoot td a {
+  color: var(--wp--preset--color--foreground-alt);
+}
+
+.wp-block-table.is-style-table-colored th a:hover,
+.wp-block-table.is-style-table-colored th a:focus,
+.wp-block-table.is-style-table-colored tfoot td a:hover,
+.wp-block-table.is-style-table-colored tfoot td a:focus,
+.wp-block-table.is-style-table-alternate th a:hover,
+.wp-block-table.is-style-table-alternate th a:focus,
+.wp-block-table.is-style-table-alternate tfoot td a:hover,
+.wp-block-table.is-style-table-alternate tfoot td a:focus {
+  opacity: 0.8;
+}
+
+/*--------------------------------------------------------------
+## Custom: Alternate Colored Table
+--------------------------------------------------------------*/
+.wp-block-table.is-style-table-alternate th:nth-child(6n+1),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+1) {
+  background-color: var(--wp--preset--color--primary);
+}
+
+.wp-block-table.is-style-table-alternate th:nth-child(6n+2),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+2) {
+  background-color: var(--wp--preset--color--secondary);
+}
+
+.wp-block-table.is-style-table-alternate th:nth-child(6n+3),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+3) {
+  background-color: var(--wp--preset--color--tertiary);
+}
+
+.wp-block-table.is-style-table-alternate th:nth-child(6n+4),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+4) {
+  background-color: var(--wp--preset--color--primary-alt);
+}
+
+.wp-block-table.is-style-table-alternate th:nth-child(6n+5),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+5) {
+  background-color: var(--wp--preset--color--secondary-alt);
+}
+
+.wp-block-table.is-style-table-alternate th:nth-child(6n+6),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+6) {
+  background-color: var(--wp--preset--color--tertiary-alt);
 }
 
 /*# sourceMappingURL=atmos-theme.css.map*/
