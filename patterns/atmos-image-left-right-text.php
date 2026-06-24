@@ -5,8 +5,8 @@
  * Categories: atmos
  */
 ?>
-<!-- wp:group {"align":"wide","className":"is-style-rounded-border","backgroundColor":"primary-alt","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide is-style-rounded-border has-primary-alt-background-color has-background" id="image-with-left-and-right-text">
+<!-- wp:group {"align":"wide","className":"is-style-rounded-border","backgroundColor":"primary","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide is-style-rounded-border has-primary-background-color has-background" id="image-with-left-and-right-text">
 	
 	<!-- wp:heading {"textAlign":"center","level":2} -->
 	<h2 class="wp-block-heading has-text-align-center">Featured Spotlight</h2>

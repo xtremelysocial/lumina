@@ -7,8 +7,8 @@
 ?>
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|30"}}} -->
 <div class="wp-block-columns alignwide">
-	<!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"secondary-alt"} -->
-	<div class="wp-block-column is-style-rounded-border has-secondary-alt-background-color has-background">
+	<!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"secondary"} -->
+	<div class="wp-block-column is-style-rounded-border has-secondary-background-color has-background">
 		<!-- wp:heading {"textAlign":"center","level":6} -->
 		<h6 class="wp-block-heading has-text-align-center">FACEBOOK</h6>
 		<!-- /wp:heading -->
@@ -18,8 +18,8 @@
 	</div>
 	<!-- /wp:column -->
 
-	<!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"secondary-alt"} -->
-	<div class="wp-block-column is-style-rounded-border has-secondary-alt-background-color has-background">
+	<!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"secondary"} -->
+	<div class="wp-block-column is-style-rounded-border has-secondary-background-color has-background">
 		<!-- wp:heading {"textAlign":"center","level":6} -->
 		<h6 class="wp-block-heading has-text-align-center">INSTAGRAM</h6>
 		<!-- /wp:heading -->
@@ -29,8 +29,8 @@
 	</div>
 	<!-- /wp:column -->
 
-	<!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"secondary-alt"} -->
-	<div class="wp-block-column is-style-rounded-border has-secondary-alt-background-color has-background">
+	<!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"secondary"} -->
+	<div class="wp-block-column is-style-rounded-border has-secondary-background-color has-background">
 		<!-- wp:heading {"textAlign":"center","level":6} -->
 		<h6 class="wp-block-heading has-text-align-center">LINKEDIN</h6>
 		<!-- /wp:heading -->
@@ -40,8 +40,8 @@
 	</div>
 	<!-- /wp:column -->
 
-	<!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"secondary-alt"} -->
-	<div class="wp-block-column is-style-rounded-border has-secondary-alt-background-color has-background">
+	<!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"secondary"} -->
+	<div class="wp-block-column is-style-rounded-border has-secondary-background-color has-background">
 		<!-- wp:heading {"textAlign":"center","level":6} -->
 		<h6 class="wp-block-heading has-text-align-center">THREADS</h6>
 		<!-- /wp:heading -->

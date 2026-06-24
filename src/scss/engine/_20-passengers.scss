@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 18 Colors
+//	    v0.9.9 Build 19 Colors
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -31,12 +31,13 @@
 			$block:   map.get($config, block);
 			$is:      map.get($config, is);
 			$has:     map.get($config, has);
+			$exclude: map.get($config, exclude);			
 			$trigger: map.get($config, trigger);
 			$target:  map.get($config, target);
 				
 			// GET WRAPPER SELECTOR
 			$wrapper-sel: phys.compile-selector(
-				$block, $is, $has, 
+				$block, $is, $has, $exclude,
 				$trigger, $target, 
 				'wrapper',
 				$role
@@ -44,7 +45,7 @@
 
 			// GET TARGET SELECTOR
 			$target-sel: phys.compile-selector(
-				$block, $is, $has, 
+				$block, $is, $has, $exclude,
 				$trigger, $target, 
 				'target',
 				$role
@@ -99,7 +100,7 @@
 				// CONDITION 1: Separate Wrapper Interaction (Depth Lifts / Structural Shadows)
 				@if $target != 'self' {
 					$wrapper-hover: phys.compile-selector(
-						$block, $is, $has, 
+						$block, $is, $has, $exclude,
 						$trigger, $target, 
 						'wrapper-hover',
 						$role
@@ -107,7 +108,7 @@
 					
 					// GET WRAPPER FOCUS SELECTOR
 					$wrapper-focus: phys.compile-selector(
-						$block, $is, $has, 
+						$block, $is, $has, $exclude,
 						$trigger, $target, 
 						'wrapper-focus',
 						$role
@@ -125,7 +126,7 @@
 	
 				// CONDITION 2: Main Target Interaction (Kinetic Scale / Structural Leaps)
 				$target-hover: phys.compile-selector(
-					$block, $is, $has, 
+					$block, $is, $has, $exclude,
 					$trigger, $target, 
 					'target-hover',
 					$role
@@ -133,7 +134,7 @@
 	
 				// GET TARGET FOCUS SELECTOR
 				$target-focus: phys.compile-selector(
-					$block, $is, $has, 
+					$block, $is, $has, $exclude,
 					$trigger, $target, 
 					'target-focus', 
 					$role

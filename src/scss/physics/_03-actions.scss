@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 18 Colors
+//	 v0.9.9 Build 19 Colors
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -347,9 +347,11 @@
 // ==========================================================================
 @mixin apply-passenger-zoom-asset {
 	@if config.$atmos-dev-mode {
-		@include __blueprint-grow-standard;
+// 		@include __blueprint-grow-standard;
+		@include __blueprint-grow-large;
 	} @else {
-		@extend %physics-grow-standard;
+// 		@extend %physics-grow-standard;
+		@extend %physics-grow-large;
 	}
 
 	// Handle debug

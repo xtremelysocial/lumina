@@ -2,11 +2,11 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"title": "Atmos Spacious",
-	"description": "An ultra-modern, fluid mood. Organic 40px 'pebble' corners, elastic spring physics, and soft-focus glassmorphic diffusion designed for warm, burnished clay palettes.",
+	"description": "An ultra-modern, fluid mood. Organic 30px 'pebble' corners, elastic spring physics.",
 	"settings": {
 		"custom": {
 			"border": {
-				"radius": "var(--wp--preset--border-radius--3-xl, 36px)" 
+				"radius": "var(--wp--preset--border-radius--3-xl, 30px)" 
 			},
 			"button": {
 				"radius": "999px" 
@@ -25,8 +25,26 @@
 					"hoverSmallTransform": "scale(1.03)",
 					"hoverTransform": "scale(1.07)",
 					"hoverLargeTransform": "scale(1.15)",
-					"objectSmallTransform": "translateY(-2px)",
-					"objectTransform": "translateY(-4px)"
+					"objectSmallTransform": "translateY(-4px)",
+					"objectTransform": "translateY(-5px)"
+				}
+			}
+		}
+	},
+	"styles": {
+		"blocks": {
+			"core/button" : {
+				"variations": {
+					"button-alt": {
+						"border": {
+							"radius": "var(--wp--preset--border-radius--3-xl, 30px)"
+						}
+					},
+					"button-outline-alt": {
+						"border": {
+							"radius": "var(--wp--preset--border-radius--3-xl, 30px)"
+						}
+					}
 				}
 			}
 		}

@@ -11,7 +11,7 @@ $separators: (
     '.is-style-separator',
     '.entry-header .entry-subtitle'
 );
-$sep-color: var(--wp--preset--color--primary);
+$sep-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
 // $sep-color: var(--wp--preset--color--secondary);
 $sep-height: 3px;
 $sep-width: calc(1.5 * var(--wp--preset--spacing--80));
@@ -24,14 +24,7 @@ $sep-margin: var(--wp--style--block-gap);
     
     	// Anchor the parent and add margin to make room for the separator
 		position: relative; 
-// 		margin-bottom: calc(var(--wp--style--block-gap) + 3px);
-// 		margin-bottom: calc(0.5 * var(--wp--style--block-gap));
-// 		margin-bottom: var(--wp--style--block-gap);
-// 		margin-bottom: calc(var(--wp--style--block-gap) + var(--wp--preset--spacing--30));
-// 		margin-bottom: #{$sep-padding};
 		margin-bottom: calc(#{$sep-padding} + #{$sep-margin});
-// 		padding-bottom: #{$sep-padding};
-// 		margin-bottom: #{$sep-margin};
 
         // Add the separator after the parent
         &::after {
@@ -41,9 +34,7 @@ $sep-margin: var(--wp--style--block-gap);
             left: 0;
 			bottom: calc(-1 * #{$sep-padding});
 
-// 			width: calc(1.5 * var(--wp--preset--spacing--80));
 			width: #{$sep-width};
-//             height: 3px;
 			height: #{$sep-height}; 
             background-color: #{$sep-color};
         }
@@ -71,7 +62,6 @@ $sep-margin: var(--wp--style--block-gap);
 /* Editor Stability: Fix the position of the separator */
 @each $selector in $separators {
     .is-root-container #{$selector}::after {
-// 		bottom: calc(-1 * var(--wp--preset--spacing--30));        
 		bottom: calc(-1 * #{$sep-padding});
         top: auto !important; 
     }
@@ -90,34 +80,82 @@ $heading-links: (
 );
 
 $link-height: 2px;
-$link-offset: 0.1em; 
+// $link-offset: 0.1em; 
+$link-offset: var(--wp--custom--link--offset, 0.1em);
+$link-color: var(--wp--preset--color--highlight);
 
 // Iterate through the list
 @each $link in $heading-links {
     #{$link} {
-
-		// Setup the container
         position: relative;
-        display: inline;
-        
-        // Background-based underline
-        background: linear-gradient(to right, currentColor 0%, currentColor 100%);
-        background-size: 0 #{$link-height};
-        background-position: 0 100%;
-        background-repeat: no-repeat;
-        
-        // Animation tokens
-        transition: background-size 
-            var(--wp--custom--animation--duration--medium, 500ms) 
-            var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
-        
-        // Keeps the underline away from the text descenders
-        padding-bottom: #{$link-offset};
+        display: inline; /* Keeps text perfectly locked on the baseline */
+        text-decoration: none !important;
 
-        &:hover,
-        &:active,
-        &:focus {
-            background-size: 100% #{$link-height};
+        &::after {
+            content: "";
+            position: absolute;
+            
+            /* Position the line right at the baseline, then drop it down by your link offset */
+//             bottom: calc(-1 * var(--wp--custom--link--offset, 0.1em));
+// 			bottom: calc(-1 * #{$link-offset});
+			top: calc(100% + #{$link-offset});
+            left: 0;
+            
+            /* Set your explicit thickness */
+            height: #{$link-height}; //2px; 
+            background-color: #{$link-color}; //currentColor;
+            
+            /* The Animation Setup: Start at zero width */
+            width: 0;
+            transition: width 
+                var(--wp--custom--animation--duration--medium, 500ms) 
+                var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+            
+            pointer-events: none;
+        }
+
+        &:hover::after,
+        &:active::after,
+        &:focus::after {
+            /* Animate out cleanly from left to right */
+            width: 100%; 
         }
     }
 }
+
+// @each $link in $heading-links {
+//     #{$link} {
+// 
+// 		// Setup the container
+//         position: relative;
+//         display: inline;
+// //         display: inline-block;
+//         
+//         // Background-based underline
+//         background: linear-gradient(to right, currentColor 0%, currentColor 100%);
+//         background-size: 0 #{$link-height};
+// //         background-position: 0 100%;
+// // 		background-position: 0 calc(100% + #{$link-offset});
+// 		background-position: 0 calc(100% - var(--wp--custom--link--offset, 0.1em) * -1);
+//         background-repeat: no-repeat;
+//         
+//         // Animation tokens
+//         transition: background-size 
+//             var(--wp--custom--animation--duration--medium, 500ms) 
+//             var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+//         
+//         // Keeps the underline away from the text descenders
+// // 		vertical-align: baseline;
+//         padding-bottom: #{$link-offset};
+//         
+//         // Turn off text decoration
+//         text-decoration: none !important; 
+// 
+//         &:hover,
+//         &:active,
+//         &:focus {
+//             background-size: 100% #{$link-height};
+// 	        text-decoration: none !important; 
+//         }
+//     }
+// }

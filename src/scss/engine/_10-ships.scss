@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 18 Colors
+//      v0.9.9 Build 19 Colors
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -30,12 +30,13 @@
 			$block:   map.get($config, block);
 			$is:      map.get($config, is);
 			$has:     map.get($config, has);
+			$exclude: map.get($config, exclude);			
 			$trigger: map.get($config, trigger);
 			$target:  map.get($config, target);
 			
 			// GET THE TARGET SELECTOR
 			$target-sel: phys.compile-selector(
-				$block, $is, $has, 
+				$block, $is, $has, $exclude,
 				$trigger, $target, 
 				'target',
 				$role
@@ -56,7 +57,7 @@
 
 					// GET WRAPPER SELECTOR
 					$wrapper-sel: phys.compile-selector(
-						$block, $is, $has, 
+						$block, $is, $has, $exclude,
 						$trigger, $target, 
 						'wrapper',
 						$role
@@ -99,7 +100,7 @@
 			
 				// GET TARGET HOVER SELECTOR
 				$target-hover: phys.compile-selector(
-					$block, $is, $has, 
+					$block, $is, $has, $exclude,
 					$trigger, $target, 
 					'target-hover',
 					$role
@@ -107,7 +108,7 @@
 	
 				// GET TARGET FOCUS SELECTOR
 				$target-focus: phys.compile-selector(
-					$block, $is, $has, 
+					$block, $is, $has, $exclude,
 					$trigger, $target, 
 					'target-focus', 
 					$role

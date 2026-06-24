@@ -21,10 +21,10 @@
 				}
 			},
 			"border": {
-				"radius": "var(--wp--preset--border-radius--xs, 4.5px)"
+				"radius": "var(--wp--preset--border-radius--sm, 6px)"
 			},
 			"button": {
-				"radius": "var(--wp--preset--border-radius--xs, 4.5px)"
+				"radius": "var(--wp--preset--border-radius--sm, 6px)"
 			},
 			"spacing": {
 				"gap": "24px"
@@ -40,16 +40,34 @@
 					"hoverSmallTransform": "scale(1.02)",
 					"hoverTransform": "scale(1.03)",
 					"hoverLargeTransform": "scale(1.05)",
-					"objectSmallTransform": "translateY(-2px)",
-					"objectTransform": "translateY(-3px)"
+					"objectSmallTransform": "translateY(-3px)",
+					"objectTransform": "translateY(-4px)"
 				}
 			},
 			"link": {
 				"style": "solid",
 				"thickness": "1px",
-				"postion": "under",
+				"position": "under",
 				"offset": "4px"
 			}
 		}	
+	},
+	"styles": {
+		"blocks": {
+			"core/button" : {
+				"variations": {
+					"button-alt": {
+						"border": {
+							"radius": "var(--wp--preset--border-radius--md, 9px)"
+						}
+					},
+					"button-outline-alt": {
+						"border": {
+							"radius": "var(--wp--preset--border-radius--md, 9px)"
+						}
+					}
+				}
+			}
+		}
 	}
 }

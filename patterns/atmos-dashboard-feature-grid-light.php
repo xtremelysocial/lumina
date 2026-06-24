@@ -5,14 +5,14 @@
  * Categories: atmos
  */
 ?>
-<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"} -->
-<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:group {"align":"wide","layout":{"type":"constrained"} -->
+<div class="wp-block-group alignwide">
 	
 	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} -->
 	<div class="wp-block-columns alignwide">
 		
-		<!-- wp:column {"width":"33.33%","className":"is-style-rounded-border","backgroundColor":"light-blue","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}}} -->
-		<div class="wp-block-column is-style-rounded-border has-light-blue-background-color has-background" style="flex-basis:33.33%;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+		<!-- wp:column {"width":"33.33%","className":"is-style-rounded-border","backgroundColor":"secondary-subtle"} -->
+		<div class="wp-block-column is-style-rounded-border has-secondary-subtle-background-color has-background" style="flex-basis:33.33%">
 			<!-- wp:heading {"level":4} -->
 			<h4 class="wp-block-heading">01. Precision</h4>
 			<!-- /wp:heading -->
@@ -22,8 +22,8 @@
 		</div>
 		<!-- /wp:column -->
 
-		<!-- wp:column {"width":"33.33%","className":"is-style-rounded-border","backgroundColor":"light-green","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}}} -->
-		<div class="wp-block-column is-style-rounded-border has-light-green-background-color has-background" style="flex-basis:33.33%;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+		<!-- wp:column {"width":"33.33%","className":"is-style-rounded-border","backgroundColor":"primary-subtle"} -->
+		<div class="wp-block-column is-style-rounded-border has-primary-subtle-background-color has-background" style="flex-basis:33.33%">
 			<!-- wp:heading {"level":4} -->
 			<h4 class="wp-block-heading">02. Efficiency</h4>
 			<!-- /wp:heading -->
@@ -50,8 +50,8 @@
 	<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer"></div>
 	<!-- /wp:spacer -->
 
-	<!-- wp:group {"align":"wide","className":"is-style-rounded-border","backgroundColor":"secondary","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-	<div class="wp-block-group alignwide is-style-rounded-border has-secondary-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+	<!-- wp:group {"align":"wide","className":"is-style-rounded-border","backgroundColor":"secondary","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignwide is-style-rounded-border has-secondary-background-color has-background">
 		<!-- wp:columns {"align":"wide","verticalAlignment":"center"} -->
 		<div class="wp-block-columns alignwide are-vertically-aligned-center">
 			<!-- wp:column {"width":"70%"} -->

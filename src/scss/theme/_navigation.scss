@@ -1,6 +1,39 @@
 /*--------------------------------------------------------------
 # Navigation Block Styles
 --------------------------------------------------------------*/
+// TO-DO: Add these to flat-blocks theme instead
+
+/* Reduce row-gap on navigation menus */
+.wp-block-navigation {
+	row-gap: var(--wp--preset--spacing--30);
+}
+
+/* Set nav drop-down touch target to 44px */
+.wp-block-navigation .wp-block-navigation__submenu-icon {
+	height: 16px;
+	width: 16px;
+	margin-left: 14px;
+	margin-right: 14px;
+}
+
+/* On menu's with background color, remove the extra padding and rely on gap */
+// .wp-block-navigation.has-background .wp-block-navigation-item.has-child .wp-block-navigation-item__content {
+// 	padding-right: 0;
+// }
+
+.wp-block-navigation.has-background .wp-block-navigation-item a:not(.wp-element-button), 
+.wp-block-navigation.has-background .wp-block-navigation-submenu a:not(.wp-element-button) {
+// 	padding-right: 0;
+	padding: 0;
+}
+
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item a:not(.wp-element-button), 
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu a:not(.wp-element-button), 
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu button.wp-block-navigation-item__content, 
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-pages-list__item button.wp-block-navigation-item__content {
+// 	padding-right: 0;
+	padding: 0;
+}
 
 /*--------------------------------------------------------------
 ## Custom: Nav Dividers
@@ -13,32 +46,69 @@
 	
         // Add container rounding and padding so the dividers don't touch the edge
         width: 100%; 
-        border-radius: var(--wp--custom--border--radius);
-        padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
+        border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--preset--color--dark);
+        border-radius: var(--wp--custom--border--radius, 8px);
+//         overflow: hidden;
+//         padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
 
         // Then remove padding from the individual menu item's <a> tag 
-        & .wp-block-navigation-item__content { //},
-            padding-left: 0;
-            padding-right: 0;
-        }
+//         & .wp-block-navigation-item__content { //},
+//             padding-left: 0;
+//             padding-right: 0;
+//         }
+		/* 2. Round the top corners of the absolute first link item */
+		& > :first-child,
+		& > :first-child > a {
+			border-top-left-radius: var(--wp--custom--border--radius, 8px);
+			border-top-right-radius: var(--wp--custom--border--radius, 8px);
+		}
+		
+		/* 3. Round the bottom corners of the absolute last link item */
+		& > :last-child,
+		& > :last-child > a {
+			border-bottom-left-radius: var(--wp--custom--border--radius, 8px);
+			border-bottom-right-radius: var(--wp--custom--border--radius, 8px);
+		}
 
-        // Add divider as border-bottom to every list item except the last one
+        // Add divider using an ::after pseudo-element to every list item except the last one
         & > .wp-block-navigation-item:not(:last-child),
         & > .wp-block-pages-list__item:not(:last-child) {
-            border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+//             border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+
+			// Establish stacking context for the absolute pseudo-element
+			position: relative; 
+			
+			// Override core WordPress padding
+// 			padding: var(--wp--preset--spacing--30);
+
+			// Add an inset bottom border	
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: var(--wp--preset--spacing--30);
+				right: var(--wp--preset--spacing--30);
+// 				width: auto; //100%;
+				height: 1px;
+				background-color: rgba(128, 128, 128, 0.2);
+
+				// Ensures the pseudo-element doesn't interfere with clicks
+				pointer-events: none;
+			}
         }
     }
 }
 
 /* Mobile menu dividers */
+.wp-block-navigation.is-vertical.is-style-nav-dividers,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open {
 
 	// Style the mobile navigation container
 	& .wp-block-navigation__container,
-// 	& .wp-block-navigation__submenu-container, //this makes them all 100% wide
+	& .wp-block-navigation__submenu-container, //this makes them all 100% wide
 	& .wp-block-page-list {	
 		width: 100%;
-		gap: 0;
+// 		gap: 0;
 	}
 
 	& .wp-block-navigation__container {
@@ -55,7 +125,7 @@
 
 		// Add padding to the nav item link (a)
         & .wp-block-navigation-item__content { //},
-			padding-top: var(--wp--preset--spacing--30);
+// 			padding-top: var(--wp--preset--spacing--30);
 			padding-bottom: var(--wp--preset--spacing--30);
 		}
 		

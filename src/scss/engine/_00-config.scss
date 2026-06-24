@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 18 Colors
+//	 	v0.9.9 Build 19 Colors
 //   ========================================================================== */
 
 // ==========================================================================
@@ -13,6 +13,7 @@ $registry-defaults: (
 	block:   '*',       	// Block wildcard [class*="wp-block-"]
 	is:      'none',    	// Don't require specific classes
 	has:     'a, button',   // Default to requiring an embedded link or button
+	exclude: '.alignfull', 	// Don't let full-width blocks become ships
 	trigger: 'self',    	// Default hover trigger to the block
 	target:  'self',    	// Default traget class to receive animation to the block
 	spacing: false,			// Add margin only to html buttons
@@ -29,6 +30,9 @@ $atmos-block-registry: (
 		block:   '*', 
 		is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover',
 		has:     'a:not(figcaption a), button, .wp-element-button',
+// 		exclude: '.alignfull, .wp-block-navigation *',
+// 		exclude: '.alignfull, .wp-block-page-list, .wp-block-navigation, .wp-block-navigation__responsive-container, .wp-block-navigation-submenu',
+		exclude: '.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *',
 		trigger: 'self', 
 		target:  'self', 
 		role:    'ship'
@@ -159,7 +163,7 @@ $atmos-block-registry: (
 	// Legacy HTML buttons for WordPress.org theme preview
 	( trigger: 'input[type="submit"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
 	( trigger: 'input[type="button"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
-	( trigger: 'input[type="reset"]:not(.wp-element-button)', has: 'none',  spacing: true, role: 'sovereign' ),
+	( trigger: 'input[type="reset"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
 	( trigger: 'button:not(.wp-element-button, .wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)', has: 'none', spacing: true, role: 'sovereign' ),
 	( trigger: 'input[type=file]::file-selector-button', has: 'none', spacing: true, role: 'sovereign' ),    
 );
@@ -176,6 +180,7 @@ $blocks-no-rounding: (
 	'.wp-block-column', 
 	'.wp-block-media-text__media', 
 	'.wp-block-media-text__content',
+// 	'.wp-block-navigation'	
 );
 
 // Rounding Conditional Stop: Write CSS to stop borders/rounding WITHIN these blocks
@@ -206,8 +211,8 @@ $grow-standard: 		var(--wp--custom--animation--default--hover-transform, scale(1
 $grow-large:    		var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
 
 // Shift Up
-$shift-subtle:  		var(--wp--custom--animation--default--object-small-transform, translateY(-2px)); 
-$shift-standard: 		var(--wp--custom--animation--default--object-transform, translateY(-3px)); 
+$shift-subtle:  		var(--wp--custom--animation--default--object-small-transform, translateY(-3px)); 
+$shift-standard: 		var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
 
 // Image Filter
 $image-filter:			''; //var(--wp--custom--image--filter, brightness(1));

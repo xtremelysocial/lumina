@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    v0.9.9 Build 18 Colors
+// 	    v0.9.9 Build 19 Colors
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -30,6 +30,7 @@
 			$block:   map.get($config, block);
 			$is:      map.get($config, is);
 			$has:     map.get($config, has);
+			$exclude: map.get($config, exclude);			
 			$trigger: map.get($config, trigger);
 			$target:  map.get($config, target);
 			
@@ -42,7 +43,7 @@
 
 				// GET THE TARGET SELECTOR
 				$target-sel: phys.compile-selector(
-					$block, $is, $has, 
+					$block, $is, $has, $exclude,
 					$trigger, $target, 
 					'target',
 					$role
@@ -68,14 +69,14 @@
 			} @else {
 			
 				$target-hover: phys.compile-selector(
-					$block, $is, $has, 
+					$block, $is, $has, $exclude,
 					$trigger, $target, 
 					'target-hover',
 					$role
 				);
 	
 				$target-focus: phys.compile-selector(
-					$block, $is, $has, 
+					$block, $is, $has, $exclude,
 					$trigger, $target, 
 					'target-focus', 
 					$role

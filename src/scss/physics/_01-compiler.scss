@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 18 Colors
+//	 v0.9.9 Build 19 Colors
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -18,13 +18,14 @@
 // 01.01 CENTRALIZED SELECTOR COMPILER: Declarative Spec Enforcer
 // ==========================================================================
 @function compile-selector(
-	$block: '*', 
-	$is: 'none', 
-	$has: 'none', 
-	$trigger: 'self', 
-	$target: 'self', 
-	$scope: 'target', 
-	$role: 'passenger'
+	$block: 	'*', 
+	$is: 		'none', 
+	$has: 		'none', 
+	$exclude: 	'none',
+	$trigger: 	'self', 
+	$target: 	'self', 
+	$scope: 	'target', 
+	$role: 		'passenger',
 ) {
 
 	// INITIALIZE THE SELECTOR
@@ -43,9 +44,8 @@
     }
 
 	// 3. ADD ALIGNFULL IF NOT SOVEREIGN
-	@if $role != 'sovereign' {
-	    $selector: '#{$selector}:not(.alignfull)';
-// 	    $selector: '#{$selector}:not(.alignfull, .block-editor-block-list__block)';
+	@if $role != 'sovereign' and $exclude != 'none' and $exclude != '' {
+	    $selector: '#{$selector}:not(#{$exclude})';
 	}
         
 	// 4. MODIFIER SPEC COP (Appends clean modifier filters like :is(.has-background))

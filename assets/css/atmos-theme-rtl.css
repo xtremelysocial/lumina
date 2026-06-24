@@ -15,28 +15,16 @@
  */
 /* ==========================================================================
    ATMOS THEME: CSS styles
-   v0.9.9 Build 17 Theme Styles
+   v0.9.9 Build 19 Colors
    ========================================================================== */
 /*--------------------------------------------------------------
 # Base Styles
 --------------------------------------------------------------*/
+/* Inherit site title color on colored backgrounds */
 /* Override parent theme's padding on colored blocks */
 .wp-block-group.has-background:not(.alignfull) {
   padding-right: var(--wp--preset--spacing--60);
   padding-left: var(--wp--preset--spacing--60);
-}
-
-/* Set nav drop-down touch target to 44px */
-.wp-block-navigation .wp-block-navigation__submenu-icon {
-  height: 16px;
-  width: 16px;
-  margin-right: 14px;
-  margin-left: 14px;
-}
-
-/* Reduce row grap so nav line-wrapping is tighter */
-.wp-block-navigation.is-layout-flex {
-  row-gap: var(--wp--preset--spacing--30);
 }
 
 /* Set avatars to look like images with border */
@@ -106,7 +94,7 @@ main > :last-child:not(.wp-block-post-content),
   bottom: calc(-1 * var(--wp--preset--spacing--30));
   width: calc(1.5 * var(--wp--preset--spacing--80));
   height: 3px;
-  background-color: var(--wp--preset--color--primary);
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
 }
 .is-style-separator.has-text-align-center:after {
   right: 50%;
@@ -131,7 +119,7 @@ main > :last-child:not(.wp-block-post-content),
   bottom: calc(-1 * var(--wp--preset--spacing--30));
   width: calc(1.5 * var(--wp--preset--spacing--80));
   height: 3px;
-  background-color: var(--wp--preset--color--primary);
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
 }
 .entry-header .entry-subtitle.has-text-align-center:after {
   right: 50%;
@@ -161,58 +149,98 @@ main > :last-child:not(.wp-block-post-content),
 --------------------------------------------------------------*/
 .wp-block-heading a {
   position: relative;
-  display: inline;
-  background: linear-gradient(to left, currentColor 0%, currentColor 100%);
-  background-size: 0 2px;
-  background-position: 100% 100%;
-  background-repeat: no-repeat;
-  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
-  padding-bottom: 0.1em;
+  display: inline; /* Keeps text perfectly locked on the baseline */
+  text-decoration: none !important;
 }
-.wp-block-heading a:hover, .wp-block-heading a:active, .wp-block-heading a:focus {
-  background-size: 100% 2px;
+.wp-block-heading a::after {
+  content: "";
+  position: absolute;
+  /* Position the line right at the baseline, then drop it down by your link offset */
+  top: calc(100% + var(--wp--custom--link--offset, 0.1em));
+  right: 0;
+  /* Set your explicit thickness */
+  height: 2px;
+  background-color: var(--wp--preset--color--highlight);
+  /* The Animation Setup: Start at zero width */
+  width: 0;
+  transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+  pointer-events: none;
+}
+.wp-block-heading a:hover::after, .wp-block-heading a:active::after, .wp-block-heading a:focus::after {
+  /* Animate out cleanly from left to right */
+  width: 100%;
 }
 
 .wp-block-site-title a {
   position: relative;
-  display: inline;
-  background: linear-gradient(to left, currentColor 0%, currentColor 100%);
-  background-size: 0 2px;
-  background-position: 100% 100%;
-  background-repeat: no-repeat;
-  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
-  padding-bottom: 0.1em;
+  display: inline; /* Keeps text perfectly locked on the baseline */
+  text-decoration: none !important;
 }
-.wp-block-site-title a:hover, .wp-block-site-title a:active, .wp-block-site-title a:focus {
-  background-size: 100% 2px;
+.wp-block-site-title a::after {
+  content: "";
+  position: absolute;
+  /* Position the line right at the baseline, then drop it down by your link offset */
+  top: calc(100% + var(--wp--custom--link--offset, 0.1em));
+  right: 0;
+  /* Set your explicit thickness */
+  height: 2px;
+  background-color: var(--wp--preset--color--highlight);
+  /* The Animation Setup: Start at zero width */
+  width: 0;
+  transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+  pointer-events: none;
+}
+.wp-block-site-title a:hover::after, .wp-block-site-title a:active::after, .wp-block-site-title a:focus::after {
+  /* Animate out cleanly from left to right */
+  width: 100%;
 }
 
 .wp-block-post-title a {
   position: relative;
-  display: inline;
-  background: linear-gradient(to left, currentColor 0%, currentColor 100%);
-  background-size: 0 2px;
-  background-position: 100% 100%;
-  background-repeat: no-repeat;
-  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
-  padding-bottom: 0.1em;
+  display: inline; /* Keeps text perfectly locked on the baseline */
+  text-decoration: none !important;
 }
-.wp-block-post-title a:hover, .wp-block-post-title a:active, .wp-block-post-title a:focus {
-  background-size: 100% 2px;
+.wp-block-post-title a::after {
+  content: "";
+  position: absolute;
+  /* Position the line right at the baseline, then drop it down by your link offset */
+  top: calc(100% + var(--wp--custom--link--offset, 0.1em));
+  right: 0;
+  /* Set your explicit thickness */
+  height: 2px;
+  background-color: var(--wp--preset--color--highlight);
+  /* The Animation Setup: Start at zero width */
+  width: 0;
+  transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+  pointer-events: none;
+}
+.wp-block-post-title a:hover::after, .wp-block-post-title a:active::after, .wp-block-post-title a:focus::after {
+  /* Animate out cleanly from left to right */
+  width: 100%;
 }
 
 .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title {
   position: relative;
-  display: inline;
-  background: linear-gradient(to left, currentColor 0%, currentColor 100%);
-  background-size: 0 2px;
-  background-position: 100% 100%;
-  background-repeat: no-repeat;
-  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
-  padding-bottom: 0.1em;
+  display: inline; /* Keeps text perfectly locked on the baseline */
+  text-decoration: none !important;
 }
-.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:focus {
-  background-size: 100% 2px;
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title::after {
+  content: "";
+  position: absolute;
+  /* Position the line right at the baseline, then drop it down by your link offset */
+  top: calc(100% + var(--wp--custom--link--offset, 0.1em));
+  right: 0;
+  /* Set your explicit thickness */
+  height: 2px;
+  background-color: var(--wp--preset--color--highlight);
+  /* The Animation Setup: Start at zero width */
+  width: 0;
+  transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+  pointer-events: none;
+}
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover::after, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active::after, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:focus::after {
+  /* Animate out cleanly from left to right */
+  width: 100%;
 }
 
 /*--------------------------------------------------------------
@@ -234,52 +262,107 @@ main > :last-child:not(.wp-block-post-content),
 /*--------------------------------------------------------------
 # Navigation Block Styles
 --------------------------------------------------------------*/
+/* Reduce row-gap on navigation menus */
+.wp-block-navigation {
+  row-gap: var(--wp--preset--spacing--30);
+}
+
+/* Set nav drop-down touch target to 44px */
+.wp-block-navigation .wp-block-navigation__submenu-icon {
+  height: 16px;
+  width: 16px;
+  margin-right: 14px;
+  margin-left: 14px;
+}
+
+/* On menu's with background color, remove the extra padding and rely on gap */
+.wp-block-navigation.has-background .wp-block-navigation-item a:not(.wp-element-button),
+.wp-block-navigation.has-background .wp-block-navigation-submenu a:not(.wp-element-button) {
+  padding: 0;
+}
+
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item a:not(.wp-element-button),
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu a:not(.wp-element-button),
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu button.wp-block-navigation-item__content,
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-pages-list__item button.wp-block-navigation-item__content {
+  padding: 0;
+}
+
 /*--------------------------------------------------------------
 ## Custom: Nav Dividers
 --------------------------------------------------------------*/
 /* Desktop Submenu Dividers */
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
   width: 100%;
-  border-radius: var(--wp--custom--border--radius);
-  padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
+  border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--preset--color--dark);
+  border-radius: var(--wp--custom--border--radius, 8px);
+  /* 2. Round the top corners of the absolute first link item */
 }
-.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
-  padding-right: 0;
-  padding-left: 0;
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :first-child, .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :first-child > a {
+  border-top-right-radius: var(--wp--custom--border--radius, 8px);
+  border-top-left-radius: var(--wp--custom--border--radius, 8px);
+}
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
+  /* 3. Round the bottom corners of the absolute last link item */
+}
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child, .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child > a {
+  border-bottom-right-radius: var(--wp--custom--border--radius, 8px);
+  border-bottom-left-radius: var(--wp--custom--border--radius, 8px);
 }
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-navigation-item:not(:last-child), .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-pages-list__item:not(:last-child) {
-  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  position: relative;
+}
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-navigation-item:not(:last-child)::after, .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-pages-list__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: var(--wp--preset--spacing--30);
+  left: var(--wp--preset--spacing--30);
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.2);
+  pointer-events: none;
 }
 
 /* Mobile menu dividers */
-.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container, .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-page-list {
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container, .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__submenu-container, .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-page-list,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-page-list {
   width: 100%;
-  gap: 0;
 }
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item {
   width: 100%;
 }
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item:not(:last-child),
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item:not(:last-child) {
   border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 }
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item__content {
-  padding-top: var(--wp--preset--spacing--30);
   padding-bottom: var(--wp--preset--spacing--30);
 }
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
   width: 100%;
   border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 }
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-right .wp-block-navigation-item,
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-right .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-right .wp-block-navigation-item,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-right .wp-block-navigation-item__content {
   text-align: left;
   justify-content: flex-end;
 }
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-left .wp-block-navigation-item,
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-left .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-left .wp-block-navigation-item,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-left .wp-block-navigation-item__content {
   text-align: right;
   justify-content: flex-start;
 }
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-center .wp-block-navigation-item,
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-center .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-center .wp-block-navigation-item,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-center .wp-block-navigation-item__content {
   text-align: center;

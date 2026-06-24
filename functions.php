@@ -18,6 +18,7 @@
 // Build array of include files relative to theme root
 $includes = array (
 	'/inc/default-image.php',
+	'/inc/add-body-classes.php',
 // 	'/inc/ image-move-border.php',	
 );
 

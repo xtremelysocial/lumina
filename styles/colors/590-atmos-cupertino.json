@@ -96,5 +96,11 @@
 				{ "colors": ["#000000", "#706F6A"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			]
 		}
-	}
+	},
+	"styles": {
+		"color": {
+			"background": "var:preset|color|base",
+			"text": "var:preset|color|contrast"
+		}
+	}	
 }

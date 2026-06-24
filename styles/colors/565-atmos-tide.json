@@ -1,0 +1,122 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Atmos Tide (Deep water receding to expose dark, wet, glistening sand and rocks)",
+	"settings": {
+		"custom": {
+			"color": {			
+				"contrast": {
+					"primary-subtle": "var(--wp--preset--color--foreground-alt)",
+					"primary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
+					"secondary-subtle": "var(--wp--preset--color--foreground-alt)",
+					"secondary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
+					"tertiary-subtle": "var(--wp--preset--color--foreground-alt)",
+					"tertiary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
+					"neutral": "var(--wp--preset--color--foreground-alt)",
+					"neutral-alt": "var(--wp--preset--color--foreground-alt)"
+				},
+				"heading": {
+					"text": "#D4C1B8 /*#F2EFE9*/",
+					"separator": "var(--wp--preset--color--highlight)"
+				},				
+				"shadow": {
+					"natural": "0 2px 8px rgba(27, 37, 48, 0.45), 0 1px 3px rgba(0, 0, 0, 0.25)",
+					"deep":    "0 6px 16px rgba(18, 25, 32, 0.55), 0 3px 6px rgba(0, 0, 0, 0.35)",
+					"sharp":   "0 14px 30px rgba(18, 25, 32, 0.65), 0 6px 12px rgba(0, 0, 0, 0.40)",
+					"crisp":   "0 24px 50px rgba(18, 25, 32, 0.75), 0 10px 20px rgba(0, 0, 0, 0.50)",				
+					"outline": "0 0 0 2px var(--wp--preset--color--base), 0 0 0 4px var(--wp--preset--color--primary)"
+				}
+			}
+		},
+		"color": {
+			"palette": [
+				{ "slug": "primary", "color": "#A36555", "name": "Primary (Muted Terracotta)" },
+				{ "slug": "primary-alt", "color": "#BC7765", "name": "Primary Alt (Warm Terracotta)" },
+				{ "slug": "secondary", "color": "#706F6A", "name": "Secondary (Machine Stone Gray)" },
+				{ "slug": "secondary-alt", "color": "#575652", "name": "Secondary Alt (Oiled Gunmetal)" },
+				{ "slug": "tertiary", "color": "#5C5346", "name": "Tertiary (Muted Antique Bronze)" },
+				{ "slug": "tertiary-alt", "color": "#463F35", "name": "Tertiary Alt (Dark Antique Bronze)" },
+				{ "slug": "primary-subtle", "color": "#1B2530", "name": "Primary Subtle (Abyssal Trench Fill)" },
+				{ "slug": "primary-subtle-alt", "color": "#2E3D4E", "name": "Primary Subtle Alt (Submerged Panel)" },
+				{ "slug": "secondary-subtle", "color": "#212830", "name": "Secondary Subtle (Gunmetal Blue Fill)" },
+				{ "slug": "secondary-subtle-alt", "color": "#2C3540", "name": "Secondary Subtle Alt (Light Gunmetal)" },
+				{ "slug": "tertiary-subtle", "color": "#252522", "name": "Tertiary Subtle (Technical Stone Fill)" },
+				{ "slug": "tertiary-subtle-alt", "color": "#33322F", "name": "Tertiary Subtle Alt (Light Stone)" },
+				{ "slug": "base", "color": "#24313F", "name": "Base (Deep Sea Slate Canvas)" },
+				{ "slug": "contrast", "color": "#FAF9F6", "name": "Contrast (Off White Paper Typography)" },
+				{ "slug": "neutral", "color": "#293745", "name": "Neutral (Industrial Marine Slate)" },
+				{ "slug": "neutral-alt", "color": "#314457", "name": "Neutral Alt (Technical Maritime Blue Border)" },
+				{ "slug": "foreground-alt", "color": "#FAF9F6", "name": "Foreground Alt (Off White)" },
+				{ "slug": "highlight", "color": "#E27D60", "name": "Highlight (Terracotta Link)" },
+				{ "slug": "highlight-alt", "color": "#F0A792", "name": "Highlight Alt (Sun-Bleached Clay)" },
+				{ "slug": "dark", "color": "#111111", "name": "Dark (Abyssal Carbon)" },
+				{ "slug": "dark-alt", "color": "#000000", "name": "Dark Alt (True True Black)" },							
+				{ "slug": "white", "color": "#FFFFFF", "name": "White" },
+				{ "slug": "off-white", "color": "#FAF9F6", "name": "Off White (Gallery Bone)" },
+				{ "slug": "very-light-gray", "color": "#F2F1ED", "name": "Very Light Gray" },
+				{ "slug": "light-gray", "color": "#E5E4DF", "name": "Light Gray" },
+				{ "slug": "gray", "color": "#B0AFA9", "name": "Gray (Pebble)" },
+				{ "slug": "dark-gray", "color": "#706F6A", "name": "Dark Gray (Stone)" },
+				{ "slug": "very-dark-gray", "color": "#3D3D3A", "name": "Very Dark Gray" },
+				{ "slug": "almost-black", "color": "#2D2D2D", "name": "Almost Black" },
+				{ "slug": "not-quite-black", "color": "#1B1B1B", "name": "Not Quite Black" },
+				{ "slug": "black", "color": "#000000", "name": "Black" },
+				{ "slug": "very-light-green", "color": "#E4EBE7", "name": "Very Light Green" },
+				{ "slug": "light-green", "color": "#CED9D3", "name": "Light Green" },
+				{ "slug": "green", "color": "#638979", "name": "Green" },
+				{ "slug": "dark-green", "color": "#3A463F", "name": "Dark Green" },
+				{ "slug": "very-light-yellow", "color": "#ECE9E1", "name": "Very Light Yellow" },
+				{ "slug": "light-yellow", "color": "#D6D1C2", "name": "Light Yellow" },
+				{ "slug": "yellow", "color": "#A8855A", "name": "Yellow" },
+				{ "slug": "dark-yellow", "color": "#946E42", "name": "Dark Yellow" },
+				{ "slug": "very-light-orange", "color": "#F0E8E1", "name": "Very Light Orange" },
+				{ "slug": "light-orange", "color": "#DBCFC6", "name": "Light Orange" },
+				{ "slug": "orange", "color": "#A36555", "name": "Orange" },
+				{ "slug": "dark-orange", "color": "#7D483B", "name": "Dark Orange" },
+				{ "slug": "very-light-blue", "color": "#E2E7EA", "name": "Very Light Blue" },
+				{ "slug": "light-blue", "color": "#C9D1D6", "name": "Light Blue" },
+				{ "slug": "blue", "color": "#425360", "name": "Blue" },
+				{ "slug": "dark-blue", "color": "#26323C", "name": "Dark Blue" },
+				{ "slug": "midnight-blue", "color": "#2D3A45", "name": "Midnight Blue" },
+				{ "slug": "dark-midnight-blue", "color": "#1F2932", "name": "Dark Midnight Blue" },
+				{ "slug": "very-light-purple", "color": "#E8E4E7", "name": "Very Light Purple" },
+				{ "slug": "light-purple", "color": "#D3CED2", "name": "Light Purple" },
+				{ "slug": "purple", "color": "#8E838A", "name": "Purple" },
+				{ "slug": "dark-purple", "color": "#6B6066", "name": "Dark Purple" },
+				{ "slug": "very-light-red", "color": "#F0E6E6", "name": "Very Light Red" },
+				{ "slug": "light-red", "color": "#D9CACA", "name": "Light Red" },
+				{ "slug": "red", "color": "#946B6B", "name": "Red" },
+				{ "slug": "dark-red", "color": "#6E4C4C", "name": "Dark Red" }
+			],
+			"duotone": [
+				{ "colors": ["#3A4D5C", "#FAF9F6"], "slug": "primary", "name": "Primary" },
+				{ "colors": ["#2A3742", "#FAF9F6"], "slug": "primary-alt", "name": "Primary Alt" },
+				{ "colors": ["#706F6A", "#FAF9F6"], "slug": "secondary", "name": "Secondary" },
+				{ "colors": ["#575652", "#FAF9F6"], "slug": "secondary-alt", "name": "Secondary Alt" },
+				{ "colors": ["#5C5346", "#FAF9F6"], "slug": "tertiary", "name": "Tertiary" },
+				{ "colors": ["#463F35", "#FAF9F6"], "slug": "tertiary-alt", "name": "Tertiary Alt" },
+				{ "colors": ["#8E838A", "#A8855A"], "slug": "purple-yellow", "name": "Purple and Yellow" },
+				{ "colors": ["#425360", "#946B6B"], "slug": "blue-red", "name": "Blue and Red" },
+				{ "colors": ["#2D2D2D", "#425360"], "slug": "midnight", "name": "Midnight" },
+				{ "colors": ["#946B6B", "#A8855A"], "slug": "magenta-yellow", "name": "Red and Yellow" },
+				{ "colors": ["#8E838A", "#638979"], "slug": "purple-green", "name": "Purple and Green" },
+				{ "colors": ["#425360", "#A36555"], "slug": "blue-orange", "name": "Blue and Orange" },
+				{ "colors": ["#000000", "#FFFFFF"], "slug": "grayscale", "name": "Grayscale" },
+				{ "colors": ["#000000", "#706F6A"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var:preset|color|base",
+			"text": "var:preset|color|contrast"
+		},
+		"elements": {
+			"heading": {
+				"color": {
+					"text": "inherit"
+				}
+			}
+		}
+	}
+}

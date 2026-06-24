@@ -19,8 +19,8 @@
 	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|50"}}} -->
 	<div class="wp-block-columns alignwide">
 		
-		<!-- wp:column {"width":"40%","className":"is-style-rounded-border","backgroundColor":"primary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}}} -->
-		<div class="wp-block-column is-style-rounded-border has-primary-alt-background-color has-background" style="flex-basis:40%;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+		<!-- wp:column {"width":"40%","className":"is-style-rounded-border","backgroundColor":"primary"} -->
+		<div class="wp-block-column is-style-rounded-border has-primary-background-color has-background" style="flex-basis:40%">
 			<!-- wp:heading {"level":3} -->
 			<h3 class="wp-block-heading">Tactile Depth</h3>
 			<!-- /wp:heading -->
@@ -30,8 +30,8 @@
 		</div>
 		<!-- /wp:column -->
 
-		<!-- wp:column {"width":"60%","className":"is-style-rounded-border","backgroundColor":"secondary-alt","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}}}} -->
-		<div class="wp-block-column is-style-rounded-border has-secondary-alt-background-color has-background" style="flex-basis:60%;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+		<!-- wp:column {"width":"60%","className":"is-style-rounded-border","backgroundColor":"secondary"} -->
+		<div class="wp-block-column is-style-rounded-border has-secondary-background-color has-background" style="flex-basis:60%">
 			<!-- wp:heading {"level":3} -->
 			<h3 class="wp-block-heading">Modern Industrialism</h3>
 			<!-- /wp:heading -->
