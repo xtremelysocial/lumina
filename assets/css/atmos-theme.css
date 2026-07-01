@@ -15,7 +15,7 @@
  */
 /* ==========================================================================
    ATMOS THEME: CSS styles
-   v0.9.9 Build 20 Colors, Images & Templates
+   v0.9.9 Build 21 Colors and Footers
    ========================================================================== */
 /*--------------------------------------------------------------
 # Base Styles
@@ -28,8 +28,20 @@
 # Link hover styles
 --------------------------------------------------------------*/
 /* Default to opacity on hover */
-a:not(.wp-element-button, wp-block-social-link, .wp-block-navigation-item, .wp-block-navigation-item__content):hover, a:not(.wp-element-button, wp-block-social-link, .wp-block-navigation-item, .wp-block-navigation-item__content):active {
+a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item,
+.wp-block-navigation-item__content):hover, a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item,
+.wp-block-navigation-item__content):active {
   opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
+}
+
+/* Use button hover opacity on linked images */
+a:hover:has(> img),
+a:active:has(> img) {
+  opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
 }
 
 /*--------------------------------------------------------------
@@ -61,7 +73,7 @@ main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-imag
 }
 
 /* Add bottom margin to main unless its the post content, then add it to that */
-main > :last-child:not(.wp-block-post-content):not(:empty),
+main > :last-child:not(.wp-block-post-content),
 :root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
 :root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {
   margin-block-end: var(--wp--preset--spacing--50);
@@ -127,7 +139,7 @@ img.size-cropped-slim {
 }
 
 /*-----------------------------------------------------------------------------
-## Custom: Intrinsic Equal-Width Grid Buttons (Alignfull Protective Matrix)
+## Custom: Intrinsic Equal-Width Grid Buttons (Mobile-Hugging Upgrades)
 -----------------------------------------------------------------------------*/
 .wp-block-buttons:not(.is-vertical) {
   display: grid;
@@ -165,15 +177,15 @@ img.size-cropped-slim {
 @media only screen and (max-width: 600px) {
   .wp-block-buttons:not(.is-vertical) {
     grid-auto-flow: row;
-    grid-template-columns: 1fr;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    grid-auto-rows: auto;
   }
   .wp-block-buttons:not(.is-vertical) .wp-block-button {
-    max-width: 100%;
+    width: 100%;
   }
 }
+/*-----------------------------------------------------------------------------
+## Custom: Intrinsic Equal-Width Grid Buttons
+-----------------------------------------------------------------------------*/
 /* =========================================================================
    Atmos Content Layout Structural Stabilization (No !important)
    ========================================================================= */

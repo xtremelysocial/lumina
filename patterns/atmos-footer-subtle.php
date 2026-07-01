@@ -1,5 +1,14 @@
-<!-- wp:group {"tagName":"footer","metadata":{"name":"Footer Light"},"align":"full","style":{"spacing":{"margin":{"top":"0"}}},"backgroundColor":"secondary-subtle","className":"site-footer is-style-link-underline-hover","layout":{"type":"constrained"}} -->
-<footer id="site-footer" class="wp-block-group alignfull site-footer is-style-link-underline-hover has-secondary-subtle-background-color has-background" style="margin-top:0;"><!-- wp:columns {"align":"wide","className":"footer-widgets is-style-thick-gap"} -->
+<?php
+/**
+ * Title: Atmos Fixed Header
+ * Description: Header fixed to the top of the site
+ * Slug: atmos-blocks/atmos-footer-subtle
+ * Categories: footer
+ * Block Types: core/template-part/footer 
+ */
+?>
+<!-- wp:group {"tagName":"footer","metadata":{"name":"Footer Light"},"align":"full","style":{"spacing":{"margin":{"top":"0"}}},"backgroundColor":"secondary-subtle","className":"site-footer","layout":{"type":"constrained"}} -->
+<footer id="site-footer" class="wp-block-group alignfull site-footer has-secondary-subtle-background-color has-background" style="margin-top:0;"><!-- wp:columns {"align":"wide","className":"footer-widgets is-style-thick-gap"} -->
 <div class="wp-block-columns alignwide footer-widgets is-style-thick-gap"><!-- wp:column {"className":"footer-column"} -->
 <div class="wp-block-column footer-column"><!-- wp:template-part {"slug":"footer-block-1"} /--></div>
 <!-- /wp:column -->

@@ -17,12 +17,24 @@
 // .wp-block-navigation a,
 // .wp-block-navigation-submenu__toggle {
 // 	font-weight: var(--wp--custom--typography--font-weight--medium);
-a:not(.wp-element-button, wp-block-social-link, .wp-block-navigation-item, .wp-block-navigation-item__content) {
+a:not(
+	.wp-element-button, 
+// 	.wp-block-social-link, 
+	.wp-block-social-link-anchor, 
+	.wp-block-navigation-item, 
+	.wp-block-navigation-item__content
+) {
 	
 	&:hover,
 	&:active {
 		opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
 	}	
+}
+
+/* Use button hover opacity on linked images */
+a:hover:has(> img),
+a:active:has(> img) {
+	opacity: var(--wp--custom--color--button--hover-opacity, 0.8);	
 }
 
 /*--------------------------------------------------------------
@@ -61,7 +73,8 @@ main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-imag
 } 
 
 /* Add bottom margin to main unless its the post content, then add it to that */
-main > :last-child:not(.wp-block-post-content):not(:empty),
+main > :last-child:not(.wp-block-post-content),
+// main > :last-child:not(.wp-block-post-content):not(:empty),
 :root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
 :root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {	
 	margin-block-end: var(--wp--preset--spacing--50);
@@ -87,6 +100,17 @@ main > :last-child:not(.wp-block-post-content):not(:empty),
 		max-width: none;
 	}
 }
+
+// /* Use darker border on images */
+// TO-DO: Move this to the physics engine so has the specificity to work
+// .wp-block-image {
+// 	border-color: var(--wp--preset--color--gray);
+// 
+// 	&.is-style-image-border,
+// 	&.is-style-image-round-border {
+// 		border-color: var(--wp--preset--color--gray);
+// 	}
+// }
 
 /*--------------------------------------------------------------
 ## Browser-Side Aspect Ratio Fixes (High-Res Layout Sizes Only)
@@ -148,7 +172,7 @@ img.size-cropped-slim {
 // }
 
 /*-----------------------------------------------------------------------------
-## Custom: Intrinsic Equal-Width Grid Buttons (Alignfull Protective Matrix)
+## Custom: Intrinsic Equal-Width Grid Buttons (Mobile-Hugging Upgrades)
 -----------------------------------------------------------------------------*/
 .wp-block-buttons:not(.is-vertical) {
 	display: grid;
@@ -164,7 +188,7 @@ img.size-cropped-slim {
 	max-width: 100%;
 	gap: var(--wp--style--block-gap, 1.5rem);
 
-	// 4. FIX: Standardize auto-margins so full-width breakouts stay centered by default
+	// 4. Standardize auto-margins so full-width breakouts stay centered by default
 	margin-left: auto;
 	margin-right: auto;
 
@@ -197,18 +221,82 @@ img.size-cropped-slim {
 // Mobile Responsive Transition Block
 @media only screen and (max-width: #{ (breakpoints.$break-small) }) {
 	.wp-block-buttons:not(.is-vertical) {
-		// Flip the engine to a full-width vertical stack on small screens
+		// 1. Flip the grid track configuration to rows
 		grid-auto-flow: row;
-		grid-template-columns: 1fr;
-		width: 100%;
-		margin-left: 0;
-		margin-right: 0;
+		grid-auto-rows: auto;
+		
+		// 2. REMOVED: width: 100% and margin clearing.
+		// By leaving width: fit-content active, the grid block shrinks to match 
+		// its contents and honors your active toolbar justification flags perfectly on mobile.
 		
 		.wp-block-button {
-			max-width: 100%;
+			width: 100%; // Ensures sibling vertical stacks stay uniformly equalized
 		}
 	}
 }
+
+/*-----------------------------------------------------------------------------
+## Custom: Intrinsic Equal-Width Grid Buttons
+-----------------------------------------------------------------------------*/
+// .wp-block-buttons:not(.is-vertical) {
+// 	display: grid;
+// 	
+// 	// 1. Every button added generates a new column automatically
+// 	grid-auto-flow: column;
+// 	
+// 	// 2. Force every single column to be an identical, uniform fraction
+// 	grid-auto-columns: 1fr;
+// 	
+// 	// 3. Wrap parent tightly around buttons to match widest sibling asset
+// 	width: fit-content;
+// 	max-width: 100%;
+// 	gap: var(--wp--style--block-gap, 1.5rem);
+// 
+// 	// 4. FIX: Standardize auto-margins so full-width breakouts stay centered by default
+// 	margin-left: auto;
+// 	margin-right: auto;
+// 
+// 	// Respect explicit block alignment toolbar commands natively
+// 	&.is-content-justification-left {
+// 		margin-left: 0;
+// 		margin-right: auto;
+// 	}
+// 	&.is-content-justification-right {
+// 		margin-left: auto;
+// 		margin-right: 0;
+// 	}
+// 	&.is-content-justification-center {
+// 		margin-left: auto;
+// 		margin-right: auto;
+// 	}
+// 
+// 	.wp-block-button {
+// 		width: 100%; 
+// 
+// 		.wp-block-button__link {
+// 			display: block;
+// 			width: 100%;
+// 			text-align: center;
+// 			white-space: nowrap; /* Ensure padding is respected and text stays single-line */
+// 		}
+// 	}
+// }
+// 
+// // Mobile Responsive Transition Block
+// @media only screen and (max-width: #{ (breakpoints.$break-small) }) {
+// 	.wp-block-buttons:not(.is-vertical) {
+// 		// Flip the engine to a full-width vertical stack on small screens
+// 		grid-auto-flow: row;
+// 		grid-template-columns: 1fr;
+// 		width: 100%;
+// 		margin-left: 0;
+// 		margin-right: 0;
+// 		
+// 		.wp-block-button {
+// 			max-width: 100%;
+// 		}
+// 	}
+// }
 
 /* =========================================================================
    Atmos Content Layout Structural Stabilization (No !important)
@@ -275,7 +363,6 @@ body[class*="-single-sidebar-left"] {
 ## Core Override: Calibrated Gallery Gutter Matrix
 --------------------------------------------------------------*/
 .wp-block-gallery {
-	// Fall back to half of the global block-gap if spacing-30 isn't registered
 	--wp--style--gallery-gap-default: var(--wp--preset--spacing--30, calc(var(--wp--style--block-gap, 24px) / 2));
 }
 
