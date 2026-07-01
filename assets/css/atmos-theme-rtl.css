@@ -15,12 +15,26 @@
  */
 /* ==========================================================================
    ATMOS THEME: CSS styles
-   v0.9.9 Build 19 Colors
+   v0.9.9 Build 20 Colors, Images & Templates
    ========================================================================== */
 /*--------------------------------------------------------------
 # Base Styles
 --------------------------------------------------------------*/
+/**
+ * Breakpoints & Media Queries
+ */
 /* Inherit site title color on colored backgrounds */
+/*--------------------------------------------------------------
+# Link hover styles
+--------------------------------------------------------------*/
+/* Default to opacity on hover */
+a:not(.wp-element-button, wp-block-social-link, .wp-block-navigation-item, .wp-block-navigation-item__content):hover, a:not(.wp-element-button, wp-block-social-link, .wp-block-navigation-item, .wp-block-navigation-item__content):active {
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
+}
+
+/*--------------------------------------------------------------
+# Padding and Margin Styles
+--------------------------------------------------------------*/
 /* Override parent theme's padding on colored blocks */
 .wp-block-group.has-background:not(.alignfull) {
   padding-right: var(--wp--preset--spacing--60);
@@ -34,13 +48,8 @@ a > .avatar {
 }
 
 /* Add top margin to main unless its the post content or a featured image */
-main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-image):not(.wp-block-cover):not(.wp-block-template-part) {
+main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-image):not(.wp-block-cover):not(.wp-block-template-part):not(.wp-block-image) {
   margin-block-start: var(--wp--preset--spacing--50);
-}
-
-/* But don't add it to template parts */
-main > :first-child.wp-block-template-part {
-  margin-block-start: 0 !important;
 }
 
 /* 
@@ -49,16 +58,162 @@ main > :first-child.wp-block-template-part {
  */
 .main-content.wp-block-columns .entry-header.wp-block-group {
   padding-top: 0 !important;
-  padding-bottom: 0 !important;
 }
 
 /* Add bottom margin to main unless its the post content, then add it to that */
-main > :last-child:not(.wp-block-post-content),
-:root :where(.is-layout-flow).wp-block-post-content > :last-child,
-:root :where(.is-layout-constrained).wp-block-post-content > :last-child {
+main > :last-child:not(.wp-block-post-content):not(:empty),
+:root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
+:root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {
   margin-block-end: var(--wp--preset--spacing--50);
 }
 
+/*-----------------------------------------------------------------------------
+# Image styles
+-----------------------------------------------------------------------------*/
+/* Remove parent theme's featured image padding and shadow */
+.wp-block-post-featured-image img {
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Protect layout columns from manual oversized featured images */
+.wp-block-post-featured-image {
+  max-width: 100%;
+  height: auto;
+}
+.wp-block-post-featured-image.alignfull {
+  max-width: none;
+}
+
+/*--------------------------------------------------------------
+## Browser-Side Aspect Ratio Fixes (High-Res Layout Sizes Only)
+--------------------------------------------------------------*/
+.wp-block-latest-posts__featured-image img.size-cropped-thumbnail,
+.wp-block-latest-posts__featured-image img.size-cropped-large,
+.wp-block-latest-posts__featured-image img.size-cropped-slim,
+.wp-block-latest-posts__featured-image img.size-large,
+.wp-block-post-featured-image img.size-cropped-thumbnail,
+.wp-block-post-featured-image img.size-cropped-large,
+.wp-block-post-featured-image img.size-cropped-slim,
+.wp-block-post-featured-image img.size-large,
+.wp-block-query img.size-cropped-thumbnail,
+.wp-block-query img.size-cropped-large,
+.wp-block-query img.size-cropped-slim,
+.wp-block-query img.size-large {
+  width: 100%;
+  height: auto; /* Suppresses legacy HTML height constraints */
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center; /* Corrected to Center-Center for Atmos Editorial alignment */
+}
+
+img.size-cropped-large,
+img.size-cropped-thumbnail,
+img.size-large {
+  aspect-ratio: 16/9;
+}
+
+img.size-cropped-slim {
+  aspect-ratio: 16/4.5;
+}
+
+/*-----------------------------------------------------------------------------
+# Collapsing Ghost Blocks (Bypassing WordPress Whitespace Outtakes)
+-----------------------------------------------------------------------------*/
+.wp-block-template-part:empty {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+/*-----------------------------------------------------------------------------
+## Custom: Intrinsic Equal-Width Grid Buttons (Alignfull Protective Matrix)
+-----------------------------------------------------------------------------*/
+.wp-block-buttons:not(.is-vertical) {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+  gap: var(--wp--style--block-gap, 1.5rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+.wp-block-buttons:not(.is-vertical).is-content-justification-left {
+  margin-right: 0;
+  margin-left: auto;
+}
+.wp-block-buttons:not(.is-vertical).is-content-justification-right {
+  margin-right: auto;
+  margin-left: 0;
+}
+.wp-block-buttons:not(.is-vertical).is-content-justification-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+.wp-block-buttons:not(.is-vertical) .wp-block-button {
+  width: 100%;
+}
+.wp-block-buttons:not(.is-vertical) .wp-block-button .wp-block-button__link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap; /* Ensure padding is respected and text stays single-line */
+}
+
+@media only screen and (max-width: 600px) {
+  .wp-block-buttons:not(.is-vertical) {
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .wp-block-buttons:not(.is-vertical) .wp-block-button {
+    max-width: 100%;
+  }
+}
+/* =========================================================================
+   Atmos Content Layout Structural Stabilization (No !important)
+   ========================================================================= */
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column,
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column {
+  order: 1;
+}
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
+  order: 2;
+}
+
+@media only screen and (max-width: 782px) {
+  body[class*=-page-sidebar-left] .wp-block-columns.main-content,
+  body[class*=-single-sidebar-left] .wp-block-columns.main-content {
+    display: flex;
+    flex-direction: column;
+  }
+  body[class*=-page-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column,
+  body[class*=-single-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column {
+    order: 1;
+  }
+  body[class*=-page-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+  body[class*=-single-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
+    order: 2;
+  }
+}
+
+/*--------------------------------------------------------------
+## Core Override: Calibrated Gallery Gutter Matrix
+--------------------------------------------------------------*/
+.wp-block-gallery {
+  --wp--style--gallery-gap-default: var(--wp--preset--spacing--30, calc(var(--wp--style--block-gap, 24px) / 2));
+}
+
+/*-----------------------------------------------------------------------------
+# Atmos Post Category Colors
+-----------------------------------------------------------------------------*/
+/* Force the heading separator variable to inherit the active category token */
+/* Add a smooth accent bar on top of your slim banner layouts */
 /*--------------------------------------------------------------
 # Custom: List Dividers (Lists, Latest Posts, Latest Comments)
 --------------------------------------------------------------*/
@@ -81,18 +236,18 @@ main > :last-child:not(.wp-block-post-content),
 # Heading Block Styles
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-## Custom: Heading w/Separator
+## Custom: Heading w/Separator (Layout-Aware Sibling Edition)
 --------------------------------------------------------------*/
 .is-style-separator {
   position: relative;
-  margin-bottom: calc(var(--wp--preset--spacing--30) + var(--wp--style--block-gap));
 }
 .is-style-separator::after {
   content: "";
   position: absolute;
   right: 0;
-  bottom: calc(-1 * var(--wp--preset--spacing--30));
-  width: calc(1.5 * var(--wp--preset--spacing--80));
+  top: 100%;
+  margin-top: 10px;
+  width: calc(6 * var(--wp--style--block-gap));
   height: 3px;
   background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
 }
@@ -104,20 +259,23 @@ main > :last-child:not(.wp-block-post-content),
   right: auto;
   left: 0;
 }
+.is-style-separator + * {
+  margin-top: calc(var(--wp--style--block-gap, 1.5rem) + 10px + 3px) !important;
+}
 .has-background .is-style-separator::after, .is-style-separator.has-background::after {
   background-color: currentcolor;
 }
 
 .entry-header .entry-subtitle {
   position: relative;
-  margin-bottom: calc(var(--wp--preset--spacing--30) + var(--wp--style--block-gap));
 }
 .entry-header .entry-subtitle::after {
   content: "";
   position: absolute;
   right: 0;
-  bottom: calc(-1 * var(--wp--preset--spacing--30));
-  width: calc(1.5 * var(--wp--preset--spacing--80));
+  top: 100%;
+  margin-top: 10px;
+  width: calc(6 * var(--wp--style--block-gap));
   height: 3px;
   background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
 }
@@ -129,19 +287,22 @@ main > :last-child:not(.wp-block-post-content),
   right: auto;
   left: 0;
 }
+.entry-header .entry-subtitle + * {
+  margin-top: calc(var(--wp--style--block-gap, 1.5rem) + 10px + 3px) !important;
+}
 .has-background .entry-header .entry-subtitle::after, .entry-header .entry-subtitle.has-background::after {
   background-color: currentcolor;
 }
 
-/* Editor Stability: Fix the position of the separator */
+/* Editor Stability Mapping */
 .is-root-container .is-style-separator::after {
-  bottom: calc(-1 * var(--wp--preset--spacing--30));
-  top: auto !important;
+  top: 100% !important;
+  bottom: auto !important;
 }
 
 .is-root-container .entry-header .entry-subtitle::after {
-  bottom: calc(-1 * var(--wp--preset--spacing--30));
-  top: auto !important;
+  top: 100% !important;
+  bottom: auto !important;
 }
 
 /*--------------------------------------------------------------
@@ -155,12 +316,11 @@ main > :last-child:not(.wp-block-post-content),
 .wp-block-heading a::after {
   content: "";
   position: absolute;
-  /* Position the line right at the baseline, then drop it down by your link offset */
   top: calc(100% + var(--wp--custom--link--offset, 0.1em));
   right: 0;
   /* Set your explicit thickness */
   height: 2px;
-  background-color: var(--wp--preset--color--highlight);
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
   /* The Animation Setup: Start at zero width */
   width: 0;
   transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
@@ -179,12 +339,11 @@ main > :last-child:not(.wp-block-post-content),
 .wp-block-site-title a::after {
   content: "";
   position: absolute;
-  /* Position the line right at the baseline, then drop it down by your link offset */
   top: calc(100% + var(--wp--custom--link--offset, 0.1em));
   right: 0;
   /* Set your explicit thickness */
   height: 2px;
-  background-color: var(--wp--preset--color--highlight);
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
   /* The Animation Setup: Start at zero width */
   width: 0;
   transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
@@ -203,12 +362,11 @@ main > :last-child:not(.wp-block-post-content),
 .wp-block-post-title a::after {
   content: "";
   position: absolute;
-  /* Position the line right at the baseline, then drop it down by your link offset */
   top: calc(100% + var(--wp--custom--link--offset, 0.1em));
   right: 0;
   /* Set your explicit thickness */
   height: 2px;
-  background-color: var(--wp--preset--color--highlight);
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
   /* The Animation Setup: Start at zero width */
   width: 0;
   transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
@@ -227,12 +385,11 @@ main > :last-child:not(.wp-block-post-content),
 .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title::after {
   content: "";
   position: absolute;
-  /* Position the line right at the baseline, then drop it down by your link offset */
   top: calc(100% + var(--wp--custom--link--offset, 0.1em));
   right: 0;
   /* Set your explicit thickness */
   height: 2px;
-  background-color: var(--wp--preset--color--highlight);
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
   /* The Animation Setup: Start at zero width */
   width: 0;
   transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
@@ -275,6 +432,24 @@ main > :last-child:not(.wp-block-post-content),
   margin-left: 14px;
 }
 
+/* Set default drop-down menu background */
+.wp-block-navigation:not(.has-background) .wp-block-navigation__submenu-container {
+  background-color: var(--wp--preset--color--base);
+  border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(0, 0, 0, 0.1490196078));
+}
+
+.wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
+  border-radius: var(--wp--custom--border--radius, 8px);
+}
+.wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :first-child, .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :first-child > a {
+  border-top-right-radius: var(--wp--custom--border--radius, 8px);
+  border-top-left-radius: var(--wp--custom--border--radius, 8px);
+}
+.wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child, .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child > a {
+  border-bottom-right-radius: var(--wp--custom--border--radius, 8px);
+  border-bottom-left-radius: var(--wp--custom--border--radius, 8px);
+}
+
 /* On menu's with background color, remove the extra padding and rely on gap */
 .wp-block-navigation.has-background .wp-block-navigation-item a:not(.wp-element-button),
 .wp-block-navigation.has-background .wp-block-navigation-submenu a:not(.wp-element-button) {
@@ -288,26 +463,18 @@ main > :last-child:not(.wp-block-post-content),
   padding: 0;
 }
 
+.wp-block-navigation.is-style-link-underline-hover .wp-block-navigation-item a:not(.wp-element-button) {
+  text-decoration-line: underline;
+}
+
 /*--------------------------------------------------------------
 ## Custom: Nav Dividers
 --------------------------------------------------------------*/
 /* Desktop Submenu Dividers */
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
   width: 100%;
-  border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--preset--color--dark);
-  border-radius: var(--wp--custom--border--radius, 8px);
   /* 2. Round the top corners of the absolute first link item */
-}
-.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :first-child, .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :first-child > a {
-  border-top-right-radius: var(--wp--custom--border--radius, 8px);
-  border-top-left-radius: var(--wp--custom--border--radius, 8px);
-}
-.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
   /* 3. Round the bottom corners of the absolute last link item */
-}
-.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child, .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child > a {
-  border-bottom-right-radius: var(--wp--custom--border--radius, 8px);
-  border-bottom-left-radius: var(--wp--custom--border--radius, 8px);
 }
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-navigation-item:not(:last-child), .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-pages-list__item:not(:last-child) {
   position: relative;
@@ -406,15 +573,8 @@ main > :last-child:not(.wp-block-post-content),
 .wp-block-table.is-style-table-colored tfoot td,
 .wp-block-table.is-style-table-alternate th,
 .wp-block-table.is-style-table-alternate tfoot td {
-  color: var(--wp--preset--color--foreground-alt);
-  background-color: var(--wp--preset--color--primary-alt);
-}
-
-.wp-block-table.is-style-table-colored th a,
-.wp-block-table.is-style-table-colored tfoot td a,
-.wp-block-table.is-style-table-alternate th a,
-.wp-block-table.is-style-table-alternate tfoot td a {
-  color: var(--wp--preset--color--foreground-alt);
+  background-color: var(--wp--preset--color--primary-subtle-alt);
+  font-weight: var(--wp--custom--typography--font-weight--medium);
 }
 
 .wp-block-table.is-style-table-colored th a:hover,
@@ -433,30 +593,30 @@ main > :last-child:not(.wp-block-post-content),
 --------------------------------------------------------------*/
 .wp-block-table.is-style-table-alternate th:nth-child(6n+1),
 .wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+1) {
-  background-color: var(--wp--preset--color--primary);
+  background-color: var(--wp--preset--color--primary-subtle);
 }
 
 .wp-block-table.is-style-table-alternate th:nth-child(6n+2),
 .wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+2) {
-  background-color: var(--wp--preset--color--secondary);
+  background-color: var(--wp--preset--color--secondary-subtle);
 }
 
 .wp-block-table.is-style-table-alternate th:nth-child(6n+3),
 .wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+3) {
-  background-color: var(--wp--preset--color--tertiary);
+  background-color: var(--wp--preset--color--tertiary-subtle);
 }
 
 .wp-block-table.is-style-table-alternate th:nth-child(6n+4),
 .wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+4) {
-  background-color: var(--wp--preset--color--primary-alt);
+  background-color: var(--wp--preset--color--primary-subtle-alt);
 }
 
 .wp-block-table.is-style-table-alternate th:nth-child(6n+5),
 .wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+5) {
-  background-color: var(--wp--preset--color--secondary-alt);
+  background-color: var(--wp--preset--color--secondary-subtle-alt);
 }
 
 .wp-block-table.is-style-table-alternate th:nth-child(6n+6),
 .wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+6) {
-  background-color: var(--wp--preset--color--tertiary-alt);
+  background-color: var(--wp--preset--color--tertiary-subtle-alt);
 }

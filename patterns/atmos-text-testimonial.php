@@ -5,8 +5,8 @@
  * Categories: atmos
  */
 ?>
-<!-- wp:group {"align":"wide","backgroundColor":"secondary","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide is-style-rounded-border has-secondary-background-color has-background" id="quote-large">
+<!-- wp:group {"align":"wide","backgroundColor":"secondary-subtle","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide is-style-rounded-border has-secondary-subtle-background-color has-background" id="quote-large">
 	<!-- wp:image {"align":"center","width":80,"height":80,"sizeSlug":"full","linkDestination":"none","className":"is-style-rounded"} -->
 	<figure class="wp-block-image aligncenter size-full is-resized is-style-rounded">
 		<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/person-male.jpg' ) ); ?>" alt="" width="80" height="80"/>

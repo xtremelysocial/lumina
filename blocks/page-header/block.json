@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "atmos/page-header",
+	"title": "Atmos Dynamic Page Header",
+	"category": "theme",
+	"description": "Renders context-aware titles and subtitles dynamically using your theme matrix logic.",
+	"textdomain": "atmos",
+	"attributes": {
+		"textAlign": {
+			"type": "string",
+			"default": "left"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"fontSize": {
+			"type": "string",
+			"default": "large"
+		}
+	},
+	"supports": {
+		"color": {
+			"text": true,
+			"background": false
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		}
+	},
+	"style": "wp-block-atmos-page-header"
+}

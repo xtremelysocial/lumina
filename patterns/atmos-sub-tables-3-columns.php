@@ -7,8 +7,8 @@
  */
 ?>
 <!-- wp:group {"metadata":{"name":"Subscription Tables"},"align":"wide","className":"is-style-default","layout":{"type":"grid","minimumColumnWidth":"20rem","columnCount":null}} -->
-<div class="wp-block-group alignwide is-style-default" id="membership-levels-groups"><!-- wp:group {"align":"wide","className":"animate__fadeInLeft","backgroundColor":"primary","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
-<div class="wp-block-group alignwide animate__fadeInLeft has-primary-background-color has-background" id="single"><!-- wp:heading {"className":"animate__fadeInRight","style":{"typography":{"fontSize":"40px"}}} -->
+<div class="wp-block-group alignwide is-style-default" id="membership-levels-groups"><!-- wp:group {"align":"wide","className":"animate__fadeInLeft","backgroundColor":"primary-subtle","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
+<div class="wp-block-group alignwide animate__fadeInLeft has-primary-subtle-background-color has-background" id="single"><!-- wp:heading {"className":"animate__fadeInRight","style":{"typography":{"fontSize":"40px"}}} -->
 <h2 class="wp-block-heading animate__fadeInRight" id="single" style="font-size:40px"><strong>Single</strong></h2>
 <!-- /wp:heading -->
 
@@ -41,8 +41,8 @@
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"name":""},"align":"wide","className":"animate__auto__all animate__scroll-fadeInUp","backgroundColor":"secondary","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
-<div class="wp-block-group alignwide animate__auto__all animate__scroll-fadeInUp has-secondary-background-color has-background" id="family"><!-- wp:heading {"style":{"typography":{"fontSize":"40px"}}} -->
+<!-- wp:group {"metadata":{"name":""},"align":"wide","className":"animate__auto__all animate__scroll-fadeInUp","backgroundColor":"secondary-subtle","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
+<div class="wp-block-group alignwide animate__auto__all animate__scroll-fadeInUp has-secondary-subtle-background-color has-background" id="family"><!-- wp:heading {"style":{"typography":{"fontSize":"40px"}}} -->
 <h2 class="wp-block-heading" id="family" style="font-size:40px"><strong>Family</strong></h2>
 <!-- /wp:heading -->
 
@@ -75,8 +75,8 @@
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","className":"animate__fadeInRight animate__scroll-fadeInRight","backgroundColor":"tertiary","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
-<div class="wp-block-group alignwide animate__fadeInRight animate__scroll-fadeInRight has-tertiary-background-color has-background" id="patron"><!-- wp:heading {"style":{"typography":{"fontSize":"40px"}}} -->
+<!-- wp:group {"align":"wide","className":"animate__fadeInRight animate__scroll-fadeInRight","backgroundColor":"tertiary-subtle","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
+<div class="wp-block-group alignwide animate__fadeInRight animate__scroll-fadeInRight has-tertiary-subtle-background-color has-background" id="patron"><!-- wp:heading {"style":{"typography":{"fontSize":"40px"}}} -->
 <h2 class="wp-block-heading" id="patron" style="font-size:40px"><strong>Patron</strong></h2>
 <!-- /wp:heading -->
 

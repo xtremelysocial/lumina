@@ -52,7 +52,7 @@
 	<!-- /wp:spacer -->
 
 	<!-- wp:group {"align":"wide","className":"is-style-rounded-border","backgroundColor":"secondary","layout":{"type":"constrained"}} -->
-	<div class="wp-block-group alignwide is-style-rounded-border has-secondary-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+	<div class="wp-block-group alignwide is-style-rounded-border has-secondary-background-color has-background">
 		<!-- wp:columns {"align":"wide","verticalAlignment":"center"} -->
 		<div class="wp-block-columns alignwide are-vertically-aligned-center">
 			<!-- wp:column {"width":"70%"} -->

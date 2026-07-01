@@ -3,6 +3,8 @@
  * Title: Atmos Fixed Header
  * Description: Header fixed to the top of the site
  * Slug: atmos-blocks/atmos-header-fixed
+ * Categories: header
+ * Block Types: core/template-part/header 
  */
 ?>
 <!-- wp:group {"tagName":"header","metadata":{"name":"Header"},"align":"full","className":"site-header is-position-sticky","style":{"position":{"type":"sticky","top":"0px"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}},"border":{"bottom":{"color":"var:preset|color|neutral-alt","width":"1px"},"top":[],"right":[],"left":[]}},"layout":{"type":"constrained"}} -->

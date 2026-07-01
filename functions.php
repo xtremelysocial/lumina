@@ -19,6 +19,7 @@
 $includes = array (
 	'/inc/default-image.php',
 	'/inc/add-body-classes.php',
+// 	'/inc/category-colors.php',
 // 	'/inc/ image-move-border.php',	
 );
 
@@ -33,12 +34,29 @@ foreach ( $includes as $include ) {
 	}
 }
 
-// if ( ! function_exists( 'atmos_blocks_support' ) ) :
-// 
-// 	function atmosblocks_support() {
-// 
-// 		// Enqueue the styles needed for the editor. Do this here to 
-// 		// avoid interfering with the Editor UI. 
+/**
+ * Sets up theme defaults and registers support for various WordPress features
+ */
+add_action( 'after_setup_theme', 'atmos_theme_support' );
+
+if ( ! function_exists( 'atmos_theme_support' ) ) :
+
+	function atmos_theme_support() {
+
+		// Set the standard post thumbnail image size for the blog (Center Cropped)
+// 		set_post_thumbnail_size( 1100, 619, true );
+				
+		// Also add this as a selectable size in the Block Editor (Center Cropped)
+// 		add_image_size( 'cropped-large', 1100, 619, true );
+
+		// And add a smaller size for recent posts in columns (Center Cropped)
+// 		add_image_size( 'cropped-thumbnail', 760, 428, true );
+
+		// Add a half-height 16:4.5 image (Center Cropped)
+		add_image_size( 'cropped-slim', 1100, 309, true );
+
+		// Enqueue the styles needed for the editor. Do this here to 
+		// avoid interfering with the Editor UI. 
 // 		$editor_styles = array(
 // 			'/assets/css/atmos-theme.css',
 // 			'/assets/css/atmos-engine.css',
@@ -47,10 +65,26 @@ foreach ( $includes as $include ) {
 // 
 // 		// Load the editor styles
 // 		add_editor_style( $editor_styles ); 		
-// 	}
-// endif;
-// 
-// add_action( 'after_setup_theme', 'atmos_blocks_support' );
+	}
+endif;
+
+/**
+ * Add our custom image size(s) to the list that user can pick in the editor.
+ * Note: Medium Large is standard WordPress 768px but isn't exposed to the 
+ * user by default.
+ */
+add_filter( 'image_size_names_choose', 'atmos_image_sizes' );
+
+if ( ! function_exists( 'atmos_image_sizes' ) ) :
+	function atmos_image_sizes( $sizes ) {
+		return array_merge( $sizes, array(
+// 			'cropped-thumbnail' => __( 'Atmos Column Feature (760px cropped)', 'atmos-blocks' ),
+// 			'medium-large' 		=> __( 'Medium Large (768px)', 'atmos-blocks' ),
+// 			'cropped-large' 	=> __( 'Atmos Page Hero (1100px cropped)', 'atmos-blocks' ),		
+			'cropped-slim' 		=> __( 'Atmos Slim Banner 16:4.5 (1100px cropped)', 'atmos-blocks' ),
+		) );
+	}
+endif;
 
 /**
  * ATMOS THEME CSS
@@ -182,5 +216,37 @@ function atmos_load_scripts() {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'atmos_load_scripts' );
+// Conditionally load javascript that turns cards into links
+if ( apply_filters( 'atmos_card_link_js', true ) ) {
+	add_action( 'wp_enqueue_scripts', 'atmos_load_scripts' );
+}
 
+/**
+ * Register Featured Image Block Binding for the Core Image Block
+ * Built for Atmos Design Engine
+ */
+// add_action( 'init', 'record_atmos_featured_image_binding' );
+// function record_atmos_featured_image_binding() {
+// 	register_block_bindings_source( 'atmos/featured-image', array(
+// 		'label'              => __( 'Featured Image (Atmos)', 'atmos' ),
+// 		'get_value_callback' => 'atmos_featured_image_binding_callback',
+// 	) );
+// }
+// 
+// function atmos_featured_image_binding_callback( $source_args, $block_instance, $attribute_name ) {
+// 	// Don't render anything if the post lacks a featured image asset
+// 	if ( ! has_post_thumbnail() ) {
+// 		return null;
+// 	}
+// 	
+// 	$thumb_id = get_post_thumbnail_id();
+// 	
+// 	switch ( $attribute_name ) {
+// 		case 'url':
+// 			return get_the_post_thumbnail_url( null, 'full' );
+// 		case 'alt':
+// 			return get_post_meta( $thumb_id, '_wp_attachment_image_alt', true );
+// 		default:
+// 			return null;
+// 		}
+// }

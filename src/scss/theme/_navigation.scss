@@ -16,6 +16,32 @@
 	margin-right: 14px;
 }
 
+/* Set default drop-down menu background */
+.wp-block-navigation:not(.has-background) .wp-block-navigation__submenu-container {
+    background-color: var(--wp--preset--color--base);
+    border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, #00000026);
+}
+
+.wp-block-navigation__responsive-container:not(.is-menu-open) {
+	.wp-block-navigation__submenu-container {
+		border-radius: var(--wp--custom--border--radius, 8px);
+	
+		//  Round the top corners of the absolute first link item
+		& > :first-child,
+		& > :first-child > a {
+			border-top-left-radius: var(--wp--custom--border--radius, 8px);
+			border-top-right-radius: var(--wp--custom--border--radius, 8px);
+		}
+		
+		// 3. Round the bottom corners of the absolute last link item
+		& > :last-child,
+		& > :last-child > a {
+			border-bottom-left-radius: var(--wp--custom--border--radius, 8px);
+			border-bottom-right-radius: var(--wp--custom--border--radius, 8px);
+		}	
+	}
+}
+
 /* On menu's with background color, remove the extra padding and rely on gap */
 // .wp-block-navigation.has-background .wp-block-navigation-item.has-child .wp-block-navigation-item__content {
 // 	padding-right: 0;
@@ -35,6 +61,22 @@
 	padding: 0;
 }
 
+// Custom style to underline navigation links
+.wp-block-navigation.is-style-link-underline-hover {
+	& .wp-block-navigation-item a:not(.wp-element-button) {
+		text-decoration-line: underline;
+	}
+}
+
+// In site footer and footer info, underline on hover by default
+// .site-footer .wp-block-navigation,
+// .footer-info .wp-block-navigation {
+// 	& .wp-block-navigation-item:hover a:not(.wp-element-button) {
+// 		text-decoration-line: underline;
+// 		opacity: 1; 
+// 	}
+// }
+
 /*--------------------------------------------------------------
 ## Custom: Nav Dividers
 --------------------------------------------------------------*/
@@ -46,8 +88,8 @@
 	
         // Add container rounding and padding so the dividers don't touch the edge
         width: 100%; 
-        border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--preset--color--dark);
-        border-radius: var(--wp--custom--border--radius, 8px);
+//         border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--preset--color--dark);
+//         border-radius: var(--wp--custom--border--radius, 8px);
 //         overflow: hidden;
 //         padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
 
@@ -57,18 +99,18 @@
 //             padding-right: 0;
 //         }
 		/* 2. Round the top corners of the absolute first link item */
-		& > :first-child,
-		& > :first-child > a {
-			border-top-left-radius: var(--wp--custom--border--radius, 8px);
-			border-top-right-radius: var(--wp--custom--border--radius, 8px);
-		}
+// 		& > :first-child,
+// 		& > :first-child > a {
+// 			border-top-left-radius: var(--wp--custom--border--radius, 8px);
+// 			border-top-right-radius: var(--wp--custom--border--radius, 8px);
+// 		}
 		
 		/* 3. Round the bottom corners of the absolute last link item */
-		& > :last-child,
-		& > :last-child > a {
-			border-bottom-left-radius: var(--wp--custom--border--radius, 8px);
-			border-bottom-right-radius: var(--wp--custom--border--radius, 8px);
-		}
+// 		& > :last-child,
+// 		& > :last-child > a {
+// 			border-bottom-left-radius: var(--wp--custom--border--radius, 8px);
+// 			border-bottom-right-radius: var(--wp--custom--border--radius, 8px);
+// 		}
 
         // Add divider using an ::after pseudo-element to every list item except the last one
         & > .wp-block-navigation-item:not(:last-child),

@@ -1,10 +1,11 @@
 /**
- * File:	atmos-physics.js
- * Theme: 	Atmos Blocks
- * * Javascript for turning cards with a single link or button into a click target.
+ * File:        atmos-physics.js
+ * Theme:       Atmos Blocks
+ *
+ * Javascript for turning cards with a single link or button into a click target.
  *
  * @package atmos-blocks
- * @since	1.0
+ * @since   1.0
  */
  
 ( function( $ ) {
@@ -21,10 +22,13 @@
 
 		// 2. GET TARGET: Returns the target link/button if the card is "valid"
 		function getValidTarget($card) {
+			if ($card.find('form, input:not([type="hidden"]), textarea, select').length > 0) {
+				return null;
+			}
+		
 			var $buttons = $card.find('.wp-element-button');
 			var $links = $card.find('a').not('.wp-element-button');
-
-			// Return link or button or nothing if neither found			
+			
 			if ($buttons.length === 1 && $links.length === 0) return $buttons.first();
 			if ($buttons.length === 0 && $links.length === 1) return $links.first();
 			
@@ -38,10 +42,10 @@
 			}
 		});
 	
-		// 4. ACTION: Mobile-optimized click/navigation listener
+		// 4. ACTION: Clean click/navigation listener
 		$interactiveCards.on('click', function(e) {
 			
-			// Check if the user tapped an actual interactive element OR any of its nested children
+			// If the user clicked a real interactive element inside, let it go natively
 			if ($(e.target).closest('button, a, .wp-element-button, input, select').length) {
 				return;
 			}
@@ -49,17 +53,27 @@
 			var $target = getValidTarget($(this));
 	
 			if ($target !== null) {
+				
+				// Kill the parent card highlight state immediately
+				e.preventDefault();
+				e.stopPropagation();
+	
 				if ($target.is('a')) {
 					var href = $target.attr('href');
 					var targetAttr = $target.attr('target');
 
 					if (href) {
-						// DETECT INTERNAL ANCHOR: Check if the link is a same-page hash link
 						var isAnchor = href.indexOf('#') === 0 || (href.indexOf('#') > -1 && href.split('#')[0] === window.location.href.split('#')[0]);
 
 						if (isAnchor) {
-							// Pass control directly to smoothscroll.js to execute your header padding subtractions
+							// Pass control over to smoothscroll.js exactly like a native link click
 							$target.trigger('click');
+
+							// SAFETY VALVE: If the user moves their wheel or touches the screen mid-scroll,
+							// instantly kill the running animation so it never fights their manual input.
+							$('html, body').one('wheel mousewheel touchmove DOMMouseScroll mousedown', function() {
+								$('html, body').stop();
+							});
 						} else if (targetAttr === '_blank') {
 							window.open(href, '_blank');
 						} else {
@@ -67,12 +81,10 @@
 						}
 					}
 				} else {
-					// If it's a physical form submission button, programmatic click is safe
 					$target[0].click();
 				}
 			}
 		});
-			
 	});
 	
 } )( jQuery );

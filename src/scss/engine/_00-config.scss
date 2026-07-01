@@ -1,10 +1,10 @@
 //* ==========================================================================
 //   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 19 Colors
+//	 	v0.9.9 Build 20 Colors, Images & Templates
 //   ========================================================================== */
 
 // ==========================================================================
-// ATMOS BLOCKS BUILD 06: THE DEFINITIVE DECLARATIVE MAP
+// ATMOS BLOCK REGISTRY: Declare each block and how the engine handles it
 // Schema: (Block, Is, Has, Trigger, Target, Spacing, Role)
 // ==========================================================================
 
@@ -164,7 +164,7 @@ $atmos-block-registry: (
 	( trigger: 'input[type="submit"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
 	( trigger: 'input[type="button"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
 	( trigger: 'input[type="reset"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
-	( trigger: 'button:not(.wp-element-button, .wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)', has: 'none', spacing: true, role: 'sovereign' ),
+// 	( trigger: 'button:not(.wp-element-button, .wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)', has: 'none', spacing: true, role: 'sovereign' ),
 	( trigger: 'input[type=file]::file-selector-button', has: 'none', spacing: true, role: 'sovereign' ),    
 );
 

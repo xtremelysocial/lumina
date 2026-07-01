@@ -3,6 +3,8 @@
  * Title: Atmos Dark Fixed Header
  * Description: Dark header fixed to the top of the site
  * Slug: atmos-blocks/atmos-header-fixed-dark
+ * Categories: header
+ * Block Types: core/template-part/header 
  */
 ?>
 <!-- wp:group {"tagName":"header","metadata":{"name":"Header"},"align":"full","className":"site-header is-position-sticky","style":{"position":{"type":"sticky","top":"0px"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}},"border":{"bottom":{"color":"var:preset|color|dark-alt","width":"1px"},"top":{},"right":{},"left":{}}},"backgroundColor":"dark","layout":{"type":"constrained"}} -->
