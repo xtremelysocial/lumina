@@ -1,0 +1,82 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Atmos Elements: Sol (The Golden Hour: Sun-drenched earth tones)",
+	"settings": {
+		"custom": {
+			"color": {
+				"shadow": {
+					"natural": "0 2px 8px rgba(45, 35, 25, 0.20), 0 1px 3px rgba(45, 35, 25, 0.12)",
+					"deep":    "0 6px 16px rgba(45, 35, 25, 0.35), 0 3px 6px rgba(45, 35, 25, 0.20)",
+					"sharp":   "0 14px 30px rgba(45, 35, 25, 0.45), 0 6px 12px rgba(45, 35, 25, 0.25)",
+					"crisp":   "0 24px 50px rgba(45, 35, 25, 0.55), 0 10px 20px rgba(45, 35, 25, 0.35)",				
+					"outline": "0 0 0 2px var(--wp--preset--color--base), 0 0 0 4px var(--wp--preset--color--primary)"
+				}
+			}
+		},	
+		"color": {
+			"palette": [
+				{ "slug": "primary", "color": "hsl(34, 36%, 53%)", "name": "Primary (Antique Gold Core 53%)" },
+				{ "slug": "primary-alt", "color": "hsl(34, 34%, 42%)", "name": "Primary Alt (Burnished Ochre Action 42%)" },
+				{ "slug": "secondary", "color": "hsl(207, 20%, 32%)", "name": "Secondary (Midnight Blue Core 32%)" },
+				{ "slug": "secondary-alt", "color": "hsl(215, 19%, 22%)", "name": "Secondary Alt (Dark Midnight Action 22%)" },
+				{ "slug": "tertiary", "color": "hsl(152, 20%, 32%)", "name": "Tertiary (Deep Alpine Sage Core 32%)" },
+				{ "slug": "tertiary-alt", "color": "hsl(151, 18%, 22%)", "name": "Tertiary Alt (Deep Shadow Sage Action 22%)" },
+				
+				{ "slug": "primary-subtle", "color": "hsl(44, 20%, 83%)", "name": "Primary Subtle (83% Gold Well)" },
+				{ "slug": "primary-subtle-alt", "color": "hsl(44, 18%, 71%)", "name": "Primary Subtle Alt (71% Gold Border)" },
+				{ "slug": "secondary-subtle", "color": "hsl(218, 15%, 83%)", "name": "Secondary Subtle (83% Sapphire Mist)" },
+				{ "slug": "secondary-subtle-alt", "color": "hsl(218, 15%, 71%)", "name": "Secondary Subtle Alt (71% Tailored Slate)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(146, 15%, 83%)", "name": "Tertiary Subtle (83% Sage Mist)" },
+				{ "slug": "tertiary-subtle-alt", "color": "hsl(146, 12%, 71%)", "name": "Tertiary Subtle Alt (71% Sage Seam)" },
+				
+				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White)" },
+				{ "slug": "contrast", "color": "hsl(0, 0%, 11%)", "name": "Contrast (Not Quite Black)" },
+				{ "slug": "neutral", "color": "hsl(48, 25%, 96%)", "name": "Neutral (Ochre Linen Fill)" },
+				{ "slug": "neutral-alt", "color": "hsl(50, 13%, 91%)", "name": "Neutral Alt (Ochre Structural Border)" },
+				{ "slug": "foreground-alt", "color": "hsl(45, 27%, 97%)", "name": "Foreground Alt (Off White)" },
+				
+				{ "slug": "highlight", "color": "hsl(152, 20%, 54%)", "name": "Highlight (Soft Sage Hover)" },
+				{ "slug": "highlight-alt", "color": "hsl(149, 40%, 35%)", "name": "Highlight Alt (Clear Moss Anchor)" },
+				
+				{ "slug": "dark", "color": "hsl(24, 16%, 16%)", "name": "Dark (Baked Earth Heading 16%)" },
+				{ "slug": "dark-alt", "color": "hsl(24, 16%, 10%)", "name": "Dark Alt (Classic Baked Earth Floor 10%)" },							
+				{ "slug": "dark-secondary", "color": "hsl(209, 20%, 16%)", "name": "Dark Secondary (Deep Midnight Heading 16%)" },
+				{ "slug": "dark-secondary-alt", "color": "hsl(207, 24%, 10%)", "name": "Dark Secondary Alt (Midnight Footer Floor 10%)" },						
+				
+				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
+				{ "slug": "off-white", "color": "hsl(45, 27%, 97%)", "name": "Off White (Gallery Bone)" },
+				{ "slug": "very-light-gray", "color": "hsl(50, 13%, 91%)", "name": "Very Light Gray (Ash Mist)" },
+				{ "slug": "light-gray", "color": "hsl(44, 16%, 86%)", "name": "Light Gray (Silt)" },
+				{ "slug": "gray", "color": "hsl(51, 4%, 68%)", "name": "Gray (Pebble)" },
+				{ "slug": "dark-gray", "color": "hsl(50, 3%, 43%)", "name": "Dark Gray (Stone)" },
+				{ "slug": "very-dark-gray", "color": "hsl(60, 2%, 23%)", "name": "Very Dark Gray (Muted Obsidian)" },
+				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black (Carbon)" },
+				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black (Rich Carbon)" },
+				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black (True Black)" }
+			],
+			"duotone": [
+				{ "colors": ["hsl(34, 36%, 53%)", "hsl(45, 27%, 97%)"], "slug": "primary", "name": "Primary (Antique Gold)" },
+				{ "colors": ["hsl(34, 34%, 42%)", "hsl(45, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Burnished Ochre)" },
+				{ "colors": ["hsl(207, 20%, 32%)", "hsl(45, 27%, 97%)"], "slug": "secondary", "name": "Secondary (Midnight Blue)" },
+				{ "colors": ["hsl(215, 19%, 22%)", "hsl(45, 27%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Dark Midnight)" },
+				{ "colors": ["hsl(152, 20%, 32%)", "hsl(45, 27%, 97%)"], "slug": "tertiary", "name": "Tertiary (Deep Alpine Sage)" },
+				{ "colors": ["hsl(151, 18%, 22%)", "hsl(45, 27%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Deep Shadow Sage)" },
+				{ "colors": ["hsl(327, 5%, 40%)", "hsl(33, 30%, 51%)"], "slug": "purple-yellow", "name": "Purple and Yellow" },
+				{ "colors": ["hsl(207, 22%, 19%)", "hsl(0, 18%, 36%)"], "slug": "blue-red", "name": "Blue and Red" },
+				{ "colors": ["hsl(0, 0%, 18%)", "hsl(207, 22%, 19%)"], "slug": "midnight", "name": "Midnight Blue" },
+				{ "colors": ["hsl(0, 18%, 36%)", "hsl(33, 30%, 51%)"], "slug": "magenta-yellow", "name": "Red and Yellow" },
+				{ "colors": ["hsl(327, 5%, 40%)", "hsl(155, 16%, 46%)"], "slug": "purple-green", "name": "Purple and Green" },
+				{ "colors": ["hsl(207, 22%, 19%)", "hsl(12, 31%, 49%)"], "slug": "blue-orange", "name": "Blue and Orange" },
+				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale" },
+				{ "colors": ["hsl(0, 0%, 0%)", "hsl(50, 3%, 43%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
+			]		
+		}	
+	},
+	"styles": {
+		"color": {
+			"background": "var:preset|color|base",
+			"text": "var:preset|color|contrast"
+		}
+	}
+}

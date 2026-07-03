@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 21 Colors and Footers
+//	 v0.9.9 Build 22 Colors & Templates
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -39,9 +39,9 @@
     }
 
 	// 2. SOVEREIGN PREFIX ENFORCER (Strict Tier-30 Score)
-    @if $role == 'sovereign' {
-        $selector: '.wp-site-blocks #{$selector}';
-    }
+//     @if $role == 'sovereign' {
+//         $selector: '.wp-site-blocks #{$selector}';
+//     }
 
 	// 3. ADD ALIGNFULL IF NOT SOVEREIGN
 	@if $role != 'sovereign' and $exclude != 'none' and $exclude != '' {

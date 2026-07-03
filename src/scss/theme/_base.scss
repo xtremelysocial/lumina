@@ -58,10 +58,11 @@ main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-imag
 	margin-block-start: var(--wp--preset--spacing--50);
 }
 
-// /* But don't add it to template parts */
-// main > :first-child.wp-block-template-part {
-// 	margin-block-start: 0 !important; 
-// }
+// /* But don't add it to empty template parts */
+main > :first-child.wp-block-template-part:empty {
+	margin-block-start: 0 !important; 
+}
+
 
 /* 
  * Remove top margin on page/post title when placed into the content side of 
@@ -78,6 +79,11 @@ main > :last-child:not(.wp-block-post-content),
 :root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
 :root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {	
 	margin-block-end: var(--wp--preset--spacing--50);
+}
+
+/* But don't add it to empty template parts */
+main > :last-child.wp-block-template-part:empty {
+	margin-block-end: 0 !important; 	
 }
 
 /*-----------------------------------------------------------------------------
@@ -235,69 +241,6 @@ img.size-cropped-slim {
 	}
 }
 
-/*-----------------------------------------------------------------------------
-## Custom: Intrinsic Equal-Width Grid Buttons
------------------------------------------------------------------------------*/
-// .wp-block-buttons:not(.is-vertical) {
-// 	display: grid;
-// 	
-// 	// 1. Every button added generates a new column automatically
-// 	grid-auto-flow: column;
-// 	
-// 	// 2. Force every single column to be an identical, uniform fraction
-// 	grid-auto-columns: 1fr;
-// 	
-// 	// 3. Wrap parent tightly around buttons to match widest sibling asset
-// 	width: fit-content;
-// 	max-width: 100%;
-// 	gap: var(--wp--style--block-gap, 1.5rem);
-// 
-// 	// 4. FIX: Standardize auto-margins so full-width breakouts stay centered by default
-// 	margin-left: auto;
-// 	margin-right: auto;
-// 
-// 	// Respect explicit block alignment toolbar commands natively
-// 	&.is-content-justification-left {
-// 		margin-left: 0;
-// 		margin-right: auto;
-// 	}
-// 	&.is-content-justification-right {
-// 		margin-left: auto;
-// 		margin-right: 0;
-// 	}
-// 	&.is-content-justification-center {
-// 		margin-left: auto;
-// 		margin-right: auto;
-// 	}
-// 
-// 	.wp-block-button {
-// 		width: 100%; 
-// 
-// 		.wp-block-button__link {
-// 			display: block;
-// 			width: 100%;
-// 			text-align: center;
-// 			white-space: nowrap; /* Ensure padding is respected and text stays single-line */
-// 		}
-// 	}
-// }
-// 
-// // Mobile Responsive Transition Block
-// @media only screen and (max-width: #{ (breakpoints.$break-small) }) {
-// 	.wp-block-buttons:not(.is-vertical) {
-// 		// Flip the engine to a full-width vertical stack on small screens
-// 		grid-auto-flow: row;
-// 		grid-template-columns: 1fr;
-// 		width: 100%;
-// 		margin-left: 0;
-// 		margin-right: 0;
-// 		
-// 		.wp-block-button {
-// 			max-width: 100%;
-// 		}
-// 	}
-// }
-
 /* =========================================================================
    Atmos Content Layout Structural Stabilization (No !important)
    ========================================================================= */
@@ -306,6 +249,7 @@ img.size-cropped-slim {
 // Works globally: Content stays left on desktop / stacks on top on mobile
 // body[class*="-page-sidebar-right"],
 // body[class*="-single-sidebar-right"] {
+.is-style-sidebar-right,
 body[class*="-sidebar-right"],
 body[class*="-sidebar-right"] {
 
@@ -333,6 +277,7 @@ body[class*="-sidebar-right"] {
 
 // 2. LEFT SIDEBAR TEMPLATES
 // Desktop uses natural DOM flow (Sidebar first), Mobile forces Sidebar to the bottom
+.is-style-sidebar-left,
 body[class*="-page-sidebar-left"],
 body[class*="-single-sidebar-left"] {
 
@@ -364,6 +309,17 @@ body[class*="-single-sidebar-left"] {
 --------------------------------------------------------------*/
 .wp-block-gallery {
 	--wp--style--gallery-gap-default: var(--wp--preset--spacing--30, calc(var(--wp--style--block-gap, 24px) / 2));
+}
+
+
+/*-----------------------------------------------------------------------------
+# Style Jetpack Contact Form buttons to match ours
+-----------------------------------------------------------------------------*/
+.wp-block-jetpack-contact-form :is(.wp-block-button, .wp-block-jetpack-button) .wp-block-button__link {
+//     min-height: var(--jetpack--contact-form--input-height, auto);
+//     padding-bottom: var(--jetpack--contact-form--input-padding-top);
+//     padding-top:var(--jetpack--contact-form--input-padding-top)
+	padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40); 
 }
 
 /*-----------------------------------------------------------------------------

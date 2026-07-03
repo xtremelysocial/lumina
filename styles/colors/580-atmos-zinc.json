@@ -1,8 +1,8 @@
 {
-    "$schema": "https://schemas.wp.org/trunk/theme.json",
-    "version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
 	"title": "Atmos Zinc (Industrial Prototype: Machined metal and gunmetal zinc alloy)",
-    "settings": {
+	"settings": {
 		"custom": {
 			"color": {			
 				"contrast": {
@@ -16,9 +16,9 @@
 					"neutral-alt": "var(--wp--preset--color--foreground-alt)"
 				},
 				"heading": {
-					"text": "#EBF1F5",
+					"text": "hsl(204, 29%, 94%)",
 					"separator": "var(--wp--preset--color--highlight-alt)"
-				},				
+				},
 				"shadow": {
 					"natural": "0 2px 8px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.25)",
 					"deep":    "0 6px 16px rgba(0, 0, 0, 0.55), 0 3px 6px rgba(0, 0, 0, 0.35)",
@@ -28,84 +28,89 @@
 				}
 			}
 		},
-        "color": {
+		"color": {
 			"palette": [
-				{ "slug": "primary", "color": "#706F6A", "name": "Primary (Machine Stone Gray)" },
-				{ "slug": "primary-alt", "color": "#575652", "name": "Primary Alt (Oiled Gunmetal Steel)" },
-				{ "slug": "secondary", "color": "#3D4E5B", "name": "Secondary (Midnight Industrial Blue)" },
-				{ "slug": "secondary-alt", "color": "#2A323D", "name": "Secondary Alt (Dark Midnight Steel)" },
-				{ "slug": "tertiary", "color": "#B0AFA9", "name": "Tertiary (Machined Silver)" },
-				{ "slug": "tertiary-alt", "color": "#8E8D88", "name": "Tertiary Alt (Burnished Zinc)" },
-				{ "slug": "primary-subtle", "color": "#2D2D2D", "name": "Primary Subtle (Carbon Plate Fill)" },
-				{ "slug": "primary-subtle-alt", "color": "#3D3D3A", "name": "Primary Subtle Alt (Light Carbon)" },
-				{ "slug": "secondary-subtle", "color": "#212830", "name": "Secondary Subtle (Gunmetal Blue Fill)" },
-				{ "slug": "secondary-subtle-alt", "color": "#2C3540", "name": "Secondary Subtle Alt (Light Gunmetal)" },
-				{ "slug": "tertiary-subtle", "color": "#252522", "name": "Tertiary Subtle (Technical Stone Fill)" },
-				{ "slug": "tertiary-subtle-alt", "color": "#33322F", "name": "Tertiary Subtle Alt (Light Stone)" },
-				{ "slug": "base", "color": "#1A1A1A", "name": "Base (Rich Carbon Dark Canvas)" },
-				{ "slug": "contrast", "color": "#FAF9F6", "name": "Contrast (Off White Paper Typography)" },
-				{ "slug": "neutral", "color": "#2D2D2D", "name": "Neutral (Industrial Grid Fill)" },
-				{ "slug": "neutral-alt", "color": "#252522", "name": "Neutral Alt (Technical Structural Border)" },
-				{ "slug": "foreground-alt", "color": "#FAF9F6", "name": "Foreground Alt (Off White)" },
-				{ "slug": "highlight", "color": "#3EBCD2", "name": "Highlight (Technical Aqua Link)" },
-				{ "slug": "highlight-alt", "color": "#6CE0F5", "name": "Highlight Alt (Glow Aqua Hover)" },
-				{ "slug": "dark", "color": "#111111", "name": "Dark (Abyssal Carbon)" },
-				{ "slug": "dark-alt", "color": "#000000", "name": "Dark Alt (True True Black)" },							
-				{ "slug": "white", "color": "#FFFFFF", "name": "White" },
-				{ "slug": "off-white", "color": "#FAF9F6", "name": "Off White (Gallery Bone)" },
-				{ "slug": "very-light-gray", "color": "#F2F1ED", "name": "Very Light Gray" },
-				{ "slug": "light-gray", "color": "#E5E4DF", "name": "Light Gray" },
-				{ "slug": "gray", "color": "#B0AFA9", "name": "Gray (Pebble)" },
-				{ "slug": "dark-gray", "color": "#706F6A", "name": "Dark Gray (Stone)" },
-				{ "slug": "very-dark-gray", "color": "#3D3D3A", "name": "Very Dark Gray" },
-				{ "slug": "almost-black", "color": "#2D2D2D", "name": "Almost Black" },
-				{ "slug": "not-quite-black", "color": "#1B1B1B", "name": "Not Quite Black" },
-				{ "slug": "black", "color": "#000000", "name": "Black" },
-				{ "slug": "very-light-green", "color": "#E4EBE7", "name": "Very Light Green" },
-				{ "slug": "light-green", "color": "#CED9D3", "name": "Light Green" },
-				{ "slug": "green", "color": "#638979", "name": "Green" },
-				{ "slug": "dark-green", "color": "#3A463F", "name": "Dark Green" },
-				{ "slug": "very-light-yellow", "color": "#ECE9E1", "name": "Very Light Yellow" },
-				{ "slug": "light-yellow", "color": "#D6D1C2", "name": "Light Yellow" },
-				{ "slug": "yellow", "color": "#A8855A", "name": "Yellow" },
-				{ "slug": "dark-yellow", "color": "#946E42", "name": "Dark Yellow" },
-				{ "slug": "very-light-orange", "color": "#F0E8E1", "name": "Very Light Orange" },
-				{ "slug": "light-orange", "color": "#DBCFC6", "name": "Light Orange" },
-				{ "slug": "orange", "color": "#A36555", "name": "Orange" },
-				{ "slug": "dark-orange", "color": "#7D483B", "name": "Dark Orange" },
-				{ "slug": "very-light-blue", "color": "#E2E7EA", "name": "Very Light Blue" },
-				{ "slug": "light-blue", "color": "#C9D1D6", "name": "Light Blue" },
-				{ "slug": "blue", "color": "#425360", "name": "Blue" },
-				{ "slug": "dark-blue", "color": "#26323C", "name": "Dark Blue" },
-				{ "slug": "midnight-blue", "color": "#2D3A45", "name": "Midnight Blue" },
-				{ "slug": "dark-midnight-blue", "color": "#1F2932", "name": "Dark Midnight Blue" },
-				{ "slug": "very-light-purple", "color": "#E8E4E7", "name": "Very Light Purple" },
-				{ "slug": "light-purple", "color": "#D3CED2", "name": "Light Purple" },
-				{ "slug": "purple", "color": "#8E838A", "name": "Purple" },
-				{ "slug": "dark-purple", "color": "#6B6066", "name": "Dark Purple" },
-				{ "slug": "very-light-red", "color": "#F0E6E6", "name": "Very Light Red" },
-				{ "slug": "light-red", "color": "#D9CACA", "name": "Light Red" },
-				{ "slug": "red", "color": "#946B6B", "name": "Red" },
-				{ "slug": "dark-red", "color": "#6E4C4C", "name": "Dark Red" }
+				{ "slug": "primary", "color": "hsl(50, 4%, 44%)", "name": "Primary (Machine Stone Gray)" },
+				{ "slug": "primary-alt", "color": "hsl(50, 4%, 32%)", "name": "Primary Alt (Oiled Gunmetal Steel)" },
+				{ "slug": "secondary", "color": "hsl(210, 18%, 32%)", "name": "Secondary (Midnight Industrial Blue)" },
+				{ "slug": "secondary-alt", "color": "hsl(210, 18%, 22%)", "name": "Secondary Alt (Dark Midnight Steel)" },
+				{ "slug": "tertiary", "color": "hsl(50, 4%, 68%)", "name": "Tertiary (Machined Silver)" },
+				{ "slug": "tertiary-alt", "color": "hsl(50, 4%, 56%)", "name": "Tertiary Alt (Burnished Zinc)" },
+
+				{ "slug": "primary-subtle", "color": "hsl(0, 0%, 14%)", "name": "Primary Subtle (Carbon Plate Fill)" },
+				{ "slug": "primary-subtle-alt", "color": "hsl(0, 0%, 18%)", "name": "Primary Subtle Alt (Light Carbon)" },
+				{ "slug": "secondary-subtle", "color": "hsl(210, 14%, 14%)", "name": "Secondary Subtle (Gunmetal Blue Fill)" },
+				{ "slug": "secondary-subtle-alt", "color": "hsl(210, 14%, 18%)", "name": "Secondary Subtle Alt (Light Gunmetal)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(50, 4%, 14%)", "name": "Tertiary Subtle (Technical Stone Fill)" },
+				{ "slug": "tertiary-subtle-alt", "color": "hsl(50, 4%, 18%)", "name": "Tertiary Subtle Alt (Light Stone)" },
+
+				{ "slug": "base", "color": "hsl(0, 0%, 10%)", "name": "Base (Rich Carbon Dark Canvas)" },
+				{ "slug": "contrast", "color": "hsl(45, 29%, 97%)", "name": "Contrast (Off White Paper Typography)" },
+				{ "slug": "neutral", "color": "hsl(0, 0%, 18%)", "name": "Neutral (Industrial Grid Fill)" },
+				{ "slug": "neutral-alt", "color": "hsl(50, 4%, 14%)", "name": "Neutral Alt (Technical Structural Border)" },
+				{ "slug": "foreground-alt", "color": "hsl(45, 29%, 97%)", "name": "Foreground Alt (Off White)" },
+
+				{ "slug": "highlight", "color": "hsl(189, 64%, 53%)", "name": "Highlight (Technical Aqua Link)" },
+				{ "slug": "highlight-alt", "color": "hsl(189, 87%, 69%)", "name": "Highlight Alt (Glow Aqua Hover)" },
+				{ "slug": "dark", "color": "hsl(0, 0%, 7%)", "name": "Dark (Abyssal Carbon)" },
+				{ "slug": "dark-alt", "color": "hsl(0, 0%, 0%)", "name": "Dark Alt (True True Black)" },							
+
+				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
+				{ "slug": "off-white", "color": "hsl(45, 29%, 97%)", "name": "Off White (Gallery Bone)" },
+				{ "slug": "very-light-gray", "color": "hsl(45, 15%, 91%)", "name": "Very Light Gray" },
+				{ "slug": "light-gray", "color": "hsl(45, 10%, 88%)", "name": "Light Gray" },
+				{ "slug": "gray", "color": "hsl(50, 4%, 68%)", "name": "Gray (Pebble)" },
+				{ "slug": "dark-gray", "color": "hsl(50, 4%, 44%)", "name": "Dark Gray (Stone)" },
+				{ "slug": "very-dark-gray", "color": "hsl(60, 2%, 23%)", "name": "Very Dark Gray" },
+				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black" },
+				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
+				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black" },
+
+				{ "slug": "very-light-green", "color": "hsl(154, 13%, 91%)", "name": "Very Light Green" },
+				{ "slug": "light-green", "color": "hsl(154, 11%, 83%)", "name": "Light Green" },
+				{ "slug": "green", "color": "hsl(155, 16%, 46%)", "name": "Green" },
+				{ "slug": "dark-green", "color": "hsl(154, 9%, 25%)", "name": "Dark Green" },
+				{ "slug": "very-light-yellow", "color": "hsl(43, 15%, 91%)", "name": "Very Light Yellow" },
+				{ "slug": "light-yellow", "color": "hsl(43, 19%, 80%)", "name": "Light Yellow" },
+				{ "slug": "yellow", "color": "hsl(33, 30%, 51%)", "name": "Yellow" },
+				{ "slug": "dark-yellow", "color": "hsl(32, 38%, 42%)", "name": "Dark Yellow" },
+				{ "slug": "very-light-orange", "color": "hsl(27, 27%, 91%)", "name": "Very Light Orange" },
+				{ "slug": "light-orange", "color": "hsl(26, 21%, 82%)", "name": "Light Orange" },
+				{ "slug": "orange", "color": "hsl(12, 31%, 49%)", "name": "Orange" },
+				{ "slug": "dark-orange", "color": "hsl(11, 36%, 36%)", "name": "Dark Orange" },
+				{ "slug": "very-light-blue", "color": "hsl(200, 15%, 90%)", "name": "Very Light Blue" },
+				{ "slug": "light-blue", "color": "hsl(202, 13%, 81%)", "name": "Light Blue" },
+				{ "slug": "blue", "color": "hsl(207, 18%, 32%)", "name": "Blue" },
+				{ "slug": "dark-blue", "color": "hsl(210, 22%, 19%)", "name": "Dark Blue" },
+				{ "slug": "midnight-blue", "color": "hsl(208, 21%, 22%)", "name": "Midnight Blue" },
+				{ "slug": "dark-midnight-blue", "color": "hsl(209, 24%, 16%)", "name": "Dark Midnight Blue" },
+				{ "slug": "very-light-purple", "color": "hsl(320, 7%, 91%)", "name": "Very Light Purple" },
+				{ "slug": "light-purple", "color": "hsl(320, 5%, 82%)", "name": "Light Purple" },
+				{ "slug": "purple", "color": "hsl(327, 5%, 40%)", "name": "Purple" },
+				{ "slug": "dark-purple", "color": "hsl(327, 5%, 31%)", "name": "Dark Purple" },
+				{ "slug": "very-light-red", "color": "hsl(0, 17%, 92%)", "name": "Very Light Red" },
+				{ "slug": "light-red", "color": "hsl(0, 16%, 82%)", "name": "Light Red" },
+				{ "slug": "red", "color": "hsl(0, 18%, 36%)", "name": "Red" },
+				{ "slug": "dark-red", "color": "hsl(0, 18%, 27%)", "name": "Dark Red" }
 			],
 			"duotone": [
-				{ "colors": ["#706F6A", "#FAF9F6"], "slug": "primary", "name": "Primary (Machine Gray)" },
-				{ "colors": ["#575652", "#FAF9F6"], "slug": "primary-alt", "name": "Primary Alt (Oiled Gunmetal)" },
-				{ "colors": ["#3D4E5B", "#FAF9F6"], "slug": "secondary", "name": "Secondary (Midnight Blue)" },
-				{ "colors": ["#2A323D", "#FAF9F6"], "slug": "secondary-alt", "name": "Secondary Alt (Dark Midnight)" },
-				{ "colors": ["#B0AFA9", "#FAF9F6"], "slug": "tertiary", "name": "Tertiary (Machined Silver)" },
-				{ "colors": ["#8E8D88", "#FAF9F6"], "slug": "tertiary-alt", "name": "Tertiary Alt (Burnished Zinc)" },
-				{ "colors": ["#6B6066", "#A8855A"], "slug": "purple-yellow", "name": "Purple and Yellow" },
-				{ "colors": ["#26323C", "#6E4C4C"], "slug": "blue-red", "name": "Blue and Red" },
-				{ "colors": ["#2D2D2D", "#26323C"], "slug": "midnight", "name": "Midnight Blue" },
-				{ "colors": ["#6E4C4C", "#A8855A"], "slug": "magenta-yellow", "name": "Red and Yellow" },
-				{ "colors": ["#6B6066", "#638979"], "slug": "purple-green", "name": "Purple and Green" },
-				{ "colors": ["#26323C", "#A36555"], "slug": "blue-orange", "name": "Blue and Orange" },
-				{ "colors": ["#000000", "#FFFFFF"], "slug": "grayscale", "name": "Grayscale" },
-				{ "colors": ["#000000", "#706F6A"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
+				{ "colors": ["hsl(50, 4%, 44%)", "hsl(45, 29%, 97%)"], "slug": "primary", "name": "Primary (Machine Gray)" },
+				{ "colors": ["hsl(50, 4%, 32%)", "hsl(45, 29%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Oiled Gunmetal)" },
+				{ "colors": ["hsl(210, 18%, 32%)", "hsl(45, 29%, 97%)"], "slug": "secondary", "name": "Secondary (Midnight Blue)" },
+				{ "colors": ["hsl(210, 18%, 22%)", "hsl(45, 29%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Dark Midnight)" },
+				{ "colors": ["hsl(50, 4%, 68%)", "hsl(45, 29%, 97%)"], "slug": "tertiary", "name": "Tertiary (Machined Silver)" },
+				{ "colors": ["hsl(50, 4%, 56%)", "hsl(45, 29%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Burnished Zinc)" },
+				{ "colors": ["hsl(327, 5%, 31%)", "hsl(33, 30%, 51%)"], "slug": "purple-yellow", "name": "Purple and Yellow" },
+				{ "colors": ["hsl(210, 22%, 19%)", "hsl(0, 18%, 27%)"], "slug": "blue-red", "name": "Blue and Red" },
+				{ "colors": ["hsl(0, 0%, 18%)", "hsl(210, 22%, 19%)"], "slug": "midnight", "name": "Midnight Blue" },
+				{ "colors": ["hsl(0, 18%, 27%)", "hsl(33, 30%, 51%)"], "slug": "magenta-yellow", "name": "Red and Yellow" },
+				{ "colors": ["hsl(327, 5%, 31%)", "hsl(155, 16%, 46%)"], "slug": "purple-green", "name": "Purple and Green" },
+				{ "colors": ["hsl(210, 22%, 19%)", "hsl(12, 31%, 49%)"], "slug": "blue-orange", "name": "Blue and Orange" },
+				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale" },
+				{ "colors": ["hsl(0, 0%, 0%)", "hsl(50, 4%, 44%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			]
-        }
-    },
+		}
+	},
 	"styles": {
 		"color": {
 			"background": "var:preset|color|base",
@@ -114,9 +119,9 @@
 		"elements": {
 			"heading": {
 				"color": {
-                    "text": "var(--wp--custom--color--heading--text)"
-                }
-            }
-        }
-    }
+					"text": "var(--wp--custom--color--heading--text)"
+				}
+			}
+		}
+	}
 }

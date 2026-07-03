@@ -1,0 +1,18 @@
+/*--------------------------------------------------------------
+## Map TwentyTwentyFive and TwentyTwentyFour colors to Atmos
+--------------------------------------------------------------*/
+body,
+.editor-styles-wrapper {
+
+	// Twenty Twenty-Four (TT4) Primary Anchor
+	--wp--preset--color--accent:       var(--wp--preset--color--primary);
+
+	// Twenty Twenty-Five (TT5) Abstract Accent Grid
+	--wp--preset--color--accent-1:     var(--wp--preset--color--primary);
+	--wp--preset--color--accent-2:     var(--wp--preset--color--secondary);
+	--wp--preset--color--accent-3:     var(--wp--preset--color--tertiary);
+	
+	--wp--preset--color--accent-4:     var(--wp--preset--color--dark-gray);
+	--wp--preset--color--accent-5:     var(--wp--preset--color--neutral-alt);
+	--wp--preset--color--accent-6:     var(--wp--preset--color--very-dark-alt);
+}

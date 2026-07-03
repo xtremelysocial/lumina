@@ -1,8 +1,8 @@
 {	
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Atmos Blocks",
-	"description": "A high-end evolution of the flat design aesthetic. Featuring atmospheric depth, tactile hardware inspiration, and kinetic motion.",
+	"title": "Atmos Elements",
+	"description": "A post-flat aesthetic, featuring atmospheric depth, tactile hardware inspiration, and kinetic motion.",
 	"settings": {
 		"custom": {
 			"color": {
@@ -21,7 +21,7 @@
 					"hoverOpacity": "0.7" 
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--very-dark-alt)",
+					"text": "var(--wp--preset--color--contrast)",
 					"separator": "var(--wp--preset--color--primary)"
 				}				
 			},
@@ -64,6 +64,7 @@
 			},
 			"typography": {
 				"fontWeight": {
+					"light": "200",
 					"normal": "300",
 					"medium": "400",
 					"bold": "400"
@@ -78,21 +79,89 @@
 				"default": "var:preset|shadow|natural",
 				"hover": "var:preset|shadow|deep",
 				"hoverHigh": "var:preset|shadow|sharp"
-			},
-			"typography": {
-				"fontWeight": {
-					"light": "200",
-					"normal": "300",
-					"medium": "400",
-					"bold": "500"
-				}
 			}
 		},
 		"layout": {
 			"contentSize": "760px",
 			"wideSize": "1100px",
 			"allowCustomContentAndWideSize": false
-		},		
+		},
+		"typography": {
+			"fontSizes": [
+				{
+					"slug": "extra-small",
+					"size": "14px",
+					"name": "Extra Small",
+					"fluid": false
+				},
+				{
+					"slug": "small",
+					"size": "16px",
+					"name": "Small",
+					"fluid": false
+				},
+				{
+					"slug": "normal",
+					"size": "18px",
+					"name": "Normal",
+					"fluid": false
+				},
+				{
+					"slug": "medium",
+					"size": "23px",
+					"name": "Medium (h4)",
+					"fluid": {
+						"min": "21px",
+						"max": "23px"
+					}
+				},
+				{
+					"slug": "large",
+					"size": "28px",
+					"name": "Large (h3)",
+					"fluid": {
+						"min": "25px",
+						"max": "28px"
+					}
+				},
+				{
+					"slug": "x-large",
+					"size": "36px",
+					"name": "Extra Large (h2)",
+					"fluid": {
+						"min": "32px",
+						"max": "36px"
+					}
+				},
+				{
+					"slug": "xx-large",
+					"size": "48px",
+					"name": "2X Large (h1)",
+					"fluid": {
+						"min": "40px",
+						"max": "48px"
+					}
+				},
+				{
+					"slug": "huge",
+					"size": "56px",
+					"name": "Huge",
+					"fluid": {
+						"min": "46px",
+						"max": "56px"
+					}
+				},
+				{
+					"slug": "gigantic",
+					"size": "68px",
+					"name": "Gigantic",
+					"fluid": {
+						"min": "54px",
+						"max": "68px"
+					}
+				}
+			]
+		},	
 		"dimensions": {
 			"aspectRatios": [
 				{
@@ -159,7 +228,7 @@
 			]
 		},
 		"color": {
-"palette": [
+			"palette": [
 				{ "slug": "primary", "color": "#749A8B", "name": "Primary (Crisp Sage 53%)" },
 				{ "slug": "primary-alt", "color": "#5B7D70", "name": "Primary Alt (Deep Alpine Sage 41%)" },
 				{ "slug": "secondary", "color": "#728A9D", "name": "Secondary (Ocean Blue 53%)" },
@@ -182,11 +251,11 @@
 				
 				{ "slug": "highlight", "color": "#7FE3BE", "name": "Highlight (Electric Sage for Dark BG)" },
 				{ "slug": "highlight-alt", "color": "#208b5c", "name": "Highlight Alt (Imperial Jade for Light BG)" },
-				
-				{ "slug": "dark", "color": "#425C52", "name": "Dark (Forest Sage 29%)" },
-				{ "slug": "dark-alt", "color": "#2A3A34", "name": "Dark Alt (Deep Forest Balanced 17%)" },
-				{ "slug": "very-dark", "color": "#3A4B5A", "name": "Very Dark (Midnight Slate 29%)" },
-				{ "slug": "very-dark-alt", "color": "#202A34", "name": "Very Dark Alt (Deep Midnight 17%)" },
+
+				{ "slug": "dark", "color": "#425C52", "name": "Dark (Primary Deep 29%)" },
+				{ "slug": "dark-alt", "color": "#2A3A34", "name": "Dark Alt (Primary Deep 17%)" },				
+				{ "slug": "dark-secondary", "color": "#3A4B5A", "name": "Dark Secondary (Midnight 29%)" },
+				{ "slug": "dark-secondary-alt", "color": "#202A34", "name": "Dark Secondary Alt (Midnight 17%)" },
 				
 				{ "slug": "white", "color": "#FFFFFF", "name": "White" },
 				{ "slug": "off-white", "color": "#FAF9F6", "name": "Off White (Gallery Bone)" },
@@ -488,7 +557,23 @@
 						}
 					}
 				}
-			}
+			},
+			"core/tag-cloud": {
+				"variations": {
+					"outline": {
+						"elements": {
+							"link": {
+								"border": {
+									"width": "2px",
+									"color": "var:preset|color|neutral-alt",
+									"radius": "var(--wp--custom--button--radius)"
+								},
+								"shadow": "none"
+							}
+						}
+					}
+				}
+			}			
 		}
 	},
 	"templateParts": [

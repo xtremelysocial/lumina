@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Atmos Fixed Header
- * Description: Header fixed to the top of the site
+ * Title: Atmos Subtle Footer
+ * Description: Footer with subtle primary colors
  * Slug: atmos-blocks/atmos-footer-subtle
  * Categories: footer
  * Block Types: core/template-part/footer 
