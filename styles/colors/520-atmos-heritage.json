@@ -1,10 +1,14 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-    "title": "Atmos Elements: Heritage (The Professor’s Library: Deep greens and rich reds)",
+	"title": "Lumina: Heritage (The Professor’s Library: Deep greens and rich reds)",
 	"settings": {
 		"custom": {
 			"color": {
+				"heading": {
+					"text": "var(--wp--preset--color--contrast)",
+					"separator": "var(--wp--preset--color--tertiary)"
+				},
 				"shadow": {
 					"natural": "0 2px 8px rgba(45, 35, 25, 0.20), 0 1px 3px rgba(45, 35, 25, 0.12)",
 					"deep":    "0 6px 16px rgba(45, 35, 25, 0.35), 0 3px 6px rgba(45, 35, 25, 0.20)",
@@ -31,7 +35,7 @@
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(0, 10%, 71%)", "name": "Tertiary Subtle Alt (71% Rose Concrete)" },
 				
 				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White)" },
-				{ "slug": "contrast", "color": "hsl(0, 0%, 11%)", "name": "Contrast (Not Quite Black)" },
+				{ "slug": "contrast", "color": "hsl(0, 15%, 11%)", "name": "Contrast (Mahogany Infused Typographic Ink)" },
 				{ "slug": "neutral", "color": "hsl(48, 25%, 96%)", "name": "Neutral (Ochre Linen Fill)" },
 				{ "slug": "neutral-alt", "color": "hsl(50, 13%, 91%)", "name": "Neutral Alt (Ochre Structural Border)" },
 				{ "slug": "foreground-alt", "color": "hsl(45, 27%, 97%)", "name": "Foreground Alt (Off White)" },
@@ -77,6 +81,13 @@
 		"color": {
 			"background": "var:preset|color|base",
 			"text": "var:preset|color|contrast"
+		},
+		"elements": {
+			"heading": {
+				"color": {
+					"text": "var(--wp--custom--color--heading--text)"
+				}
+			}
 		}
 	}
 }

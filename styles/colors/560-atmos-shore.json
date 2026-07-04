@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Atmos Elements: Shore (Coastal Fog: Cool slates and misty blues)",
+	"title": "Lumina: Shore (Coastal Fog: Cool slates and misty blues)",
 	"settings": {
 		"custom": {
 			"color": {

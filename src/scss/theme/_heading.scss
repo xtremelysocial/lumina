@@ -11,7 +11,7 @@ $separators: (
     '.is-style-separator',
     '.entry-header .entry-subtitle'
 );
-$sep-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
+$sep-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
 $sep-height: 3px;
 $sep-width: calc(6 * var(--wp--style--block-gap));
 $sep-clearance: 10px; // Fixed breathing room to clear text descenders (g, j, p, q, y)

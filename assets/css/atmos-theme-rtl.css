@@ -15,7 +15,7 @@
  */
 /* ==========================================================================
    ATMOS THEME: CSS styles
-   v0.9.9 Build 22 Colors & Templates
+   v0.9.9 Build 23 Colors
    ========================================================================== */
 /*--------------------------------------------------------------
 # Base Styles
@@ -306,7 +306,7 @@ body,
   margin-top: 10px;
   width: calc(6 * var(--wp--style--block-gap));
   height: 3px;
-  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
 }
 .is-style-separator.has-text-align-center:after {
   right: 50%;
@@ -334,7 +334,7 @@ body,
   margin-top: 10px;
   width: calc(6 * var(--wp--style--block-gap));
   height: 3px;
-  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
 }
 .entry-header .entry-subtitle.has-text-align-center:after {
   right: 50%;

@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Atmos Light NEW (Clean & Crisp: Bright neutrals and airy sage)",
+	"title": "Atmos Light (Clean & Crisp: Bright neutrals and airy sage)",
 	"settings": {
 		"custom": {
 			"color": {		
@@ -41,7 +41,7 @@
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 18%, 71%)", "name": "Tertiary Subtle Alt (71% Gold Border)" },
 				
 				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White)" },
-				{ "slug": "contrast", "color": "hsl(0, 0%, 11%)", "name": "Contrast (Rich Carbon)" },
+				{ "slug": "contrast", "color": "hsl(154, 16%, 12%)", "name": "Contrast (Sage Infused Technical Ink)" },
 				{ "slug": "neutral", "color": "hsl(48, 25%, 96%)", "name": "Neutral (Ochre Linen Fill)" },
 				{ "slug": "neutral-alt", "color": "hsl(50, 13%, 91%)", "name": "Neutral Alt (Ochre Structural Border)" },
 				{ "slug": "foreground-alt", "color": "hsl(45, 27%, 97%)", "name": "Foreground Alt (Off White)" },
@@ -87,6 +87,13 @@
 		"color": {
 			"background": "var:preset|color|base",
 			"text": "var:preset|color|contrast"
+		},
+		"elements": {
+			"heading": {
+				"color": {
+					"text": "var(--wp--custom--color--heading--text)"
+				}
+			}
 		}
 	}
 }

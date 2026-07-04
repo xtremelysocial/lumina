@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Atmos Elements: Lumina (Precision White: Minimalist, clean-room clarity)",
+	"title": "Lumina: Lumina (Precision White: Minimalist, clean-room clarity)",
 	"settings": {
 		"custom": {
 			"color": {
@@ -47,7 +47,7 @@
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 20%, 91%)", "name": "Tertiary Subtle Alt (91% Gold Border)" },
 				
 				{ "slug": "base", "color": "hsl(0, 0%, 100%)", "name": "Base (Pure White)" },
-				{ "slug": "contrast", "color": "hsl(0, 0%, 11%)", "name": "Contrast (Rich Carbon)" },
+				{ "slug": "contrast", "color": "hsl(206, 15%, 12%)", "name": "Contrast (Slate Infused Technical Ink)" },
 				{ "slug": "neutral", "color": "hsl(206, 10%, 98%)", "name": "Neutral (Cupertino Clean Fill)" },
 				{ "slug": "neutral-alt", "color": "hsl(206, 12%, 93%)", "name": "Neutral Alt (Cupertino Structural Border)" },
 				{ "slug": "foreground-alt", "color": "hsl(0, 0%, 100%)", "name": "Foreground Alt (White)" },
@@ -57,15 +57,15 @@
 				
 				{ "slug": "dark", "color": "hsl(34, 25%, 96%)", "name": "Dark (Warm Gold Footer Floor 96%)" },
 				{ "slug": "dark-alt", "color": "hsl(34, 20%, 91%)", "name": "Dark Alt (Gold Footer Base 91%)" },			
-				{ "slug": "dark-secondary", "color": "hsl(206, 20%, 96%)", "name": "Dark Secondary (Slate Footer Floor 96%)" },
-				{ "slug": "dark-secondary-alt", "color": "hsl(206, 16%, 91%)", "name": "Dark Secondary Alt (Slate Footer Base 91%)" },						
-				
+				{ "slug": "dark-tertiary", "color": "hsl(206, 20%, 96%)", "name": "Dark Tertiary (Slate Footer Floor 96%)" },
+				{ "slug": "dark-tertiary-alt", "color": "hsl(206, 16%, 91%)", "name": "Dark Tertiary Alt (Slate Footer Base 91%)" },
+
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(45, 27%, 97%)", "name": "Off White" },
-				{ "slug": "very-light-gray", "color": "hsl(206, 12%, 93%)", "name": "Very Light Gray" },
-				{ "slug": "light-gray", "color": "hsl(206, 8%, 88%)", "name": "Light Gray" },
-				{ "slug": "gray", "color": "hsl(206, 4%, 65%)", "name": "Gray" },
-				{ "slug": "dark-gray", "color": "hsl(206, 3%, 45%)", "name": "Dark Gray" },
+				{ "slug": "very-light-gray", "color": "hsl(206, 12%, 91%)", "name": "Very Light Gray (Clean Surface 91%)" },
+				{ "slug": "light-gray", "color": "hsl(206, 8%, 83%)", "name": "Light Gray (Clean Card Well 83%)" },
+				{ "slug": "gray", "color": "hsl(206, 4%, 71%)", "name": "Gray (Clean Border Seam 71%)" },
+				{ "slug": "dark-gray", "color": "hsl(206, 3%, 44%)", "name": "Dark Gray" },
 				{ "slug": "very-dark-gray", "color": "hsl(206, 2%, 25%)", "name": "Very Dark Gray" },
 				{ "slug": "almost-black", "color": "hsl(206, 30%, 12%)", "name": "Almost Black (Deep Slate Ink)" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
@@ -93,6 +93,13 @@
 		"color": {
 			"background": "var:preset|color|base",
 			"text": "var:preset|color|contrast"
+		},
+		"elements": {
+			"heading": {
+				"color": {
+					"text": "var(--wp--custom--color--heading--text)"
+				}
+			}
 		}
 	}
 }
