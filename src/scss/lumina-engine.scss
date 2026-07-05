@@ -6,29 +6,29 @@
 @use 'engine/00-config' as config;
 @use 'physics' as phys;
 @use 'engine/02-global' as global;
-@use 'engine/10-ships' as ships;
-@use 'engine/20-passengers' as passengers;
-@use 'engine/30-sovereigns' as sovereigns;
+@use 'engine/10-ships' as cards;
+@use 'engine/20-passengers' as objects;
+@use 'engine/30-sovereigns' as buttons;
 @use 'engine/40-vetos' as vetos;
 
 @if config.$lumina-dev-mode {
 /* ==========================================================================
    LUMINA ENGINE: Registers objects and sets their resting states
-   v0.9.9 Build 25 Rename to Lumina
+   v0.9.9 Build 26 Rename Ships/Objects/Buttons
    ========================================================================== */
 }
 
 // LOAD GLOBAL CSS
 @include global.apply-global-logic($interactive: false);
 
-// LOAD SHIP CSS
-@include ships.apply-ship-logic($interactive: false);
+// LOAD CARD CSS
+@include cards.apply-card-logic($interactive: false);
 
-// LOAD PASSENGER CSS
-@include passengers.apply-passenger-logic($interactive: false);
+// LOAD OBJECT CSS
+@include objects.apply-object-logic($interactive: false);
 
-// LOAD SOVEREIGN CSS
-@include sovereigns.apply-sovereign-logic($interactive: false);
+// LOAD BUTTON CSS
+@include buttons.apply-button-logic($interactive: false);
 
-// LOAD SHIP AND PASSENGER VETO CSS
+// LOAD CARD AND OBJECT VETO CSS
 @include vetos.apply-veto-logic($interactive: false);

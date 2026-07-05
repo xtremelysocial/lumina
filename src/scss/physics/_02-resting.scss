@@ -6,7 +6,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 	v0.9.9 Build 25 Rename to Lumina
+//	 	v0.9.9 Build 26 Rename Ships/Objects/Buttons
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -764,9 +764,9 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 }
 
 // ==========================================================================
-// 02.37 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
+// 02.37 BUTTON RESTING STATE: The physical baseline for buttons
 // ==========================================================================
-@mixin __blueprint-sovereign-resting-state {
+@mixin __blueprint-button-resting-state {
 
 	// Setup transition timing
     transition: 
@@ -786,23 +786,23 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	@include lumina-debug('registry');
 }
 
-%physics-sovereign-resting-state {
+%physics-button-resting-state {
 /* ==========================================================================
-   02.37 SOVEREIGN RESTING STATE: The physical baseline for sovereigns
+   02.37 BUTTON RESTING STATE: The physical baseline for buttons
 ========================================================================== */
-	@include __blueprint-sovereign-resting-state;
+	@include __blueprint-button-resting-state;
 }
 
-@mixin apply-sovereign-resting-state {
+@mixin apply-button-resting-state {
 	@if config.$lumina-dev-mode {
-		@include __blueprint-sovereign-resting-state;
+		@include __blueprint-button-resting-state;
 	} @else {
-		@extend %physics-sovereign-resting-state;
+		@extend %physics-button-resting-state;
 	}
 }
 
 // ==========================================================================
-// 02.38 RESTING SILENCE: Silence Ships and Passengers embedded in another Ship
+// 02.38 RESTING SILENCE: Silence Cards and Objects embedded in another Card
 // ==========================================================================
 @mixin __blueprint-resting-silence {
 
@@ -816,7 +816,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 
 %physics-resting-silence {
 	/* ==========================================================================
-	   02.38 RESTING SILENCE: Silence Ships and Passengers embedded in another Ship
+	   02.38 RESTING SILENCE: Silence Cards and Objects embedded in another Card
 	========================================================================== */
 	@include __blueprint-resting-silence;
 }

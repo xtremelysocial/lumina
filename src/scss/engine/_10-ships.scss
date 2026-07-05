@@ -1,6 +1,6 @@
 //* ==========================================================================
-//   10 SHIPS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 25 Rename to Lumina
+//   10 CARDS: Containers (e.g. Groups, Columns)
+//      v0.9.9 Build 26 Rename Ships/Objects/Buttons
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -9,22 +9,22 @@
 @use '00-config' as config;
 @use '../physics' as phys;
 
-@mixin apply-ship-logic($interactive: false) {
+@mixin apply-card-logic($interactive: false) {
 
 	@if config.$lumina-dev-mode {
 	/* ==========================================================================
-	   10 SHIPS: Containers (e.g. Groups, Columns)
+	   10 CARDS: Containers (e.g. Groups, Columns)
 	   ========================================================================== */
 	}
 
-	// LOOP THROUGH SHIPS IN OUR BLOCK REGISTRY
+	// LOOP THROUGH CARDS IN OUR BLOCK REGISTRY
 	@each $entry in config.$lumina-block-registry {
 
 		// MERGE REGISTRY ENTRY WITH DEFAULTS
 		$config: map.merge(config.$registry-defaults, $entry);
 		$role:   map.get($config, role);
 
-		@if $role == 'ship' {
+		@if $role == 'card' {
 
 			// EXTRACT INDIVIDIAL FIELDS
 			$block:   map.get($config, block);
@@ -42,9 +42,9 @@
 				$role
 			);
 
-			// ADD THE SHIP TO THE SHIP VETO LIST
-			@if not list.index(phys.get-ships(), $target-sel) {
-				@include phys.register-ship($target-sel);
+			// ADD THE CARD TO THE CARD VETO LIST
+			@if not list.index(phys.get-cards(), $target-sel) {
+				@include phys.register-card($target-sel);
 			}			
 
 			// ----------------------------------------------------------------------

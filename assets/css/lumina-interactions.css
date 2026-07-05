@@ -3,7 +3,7 @@
   \******************************************************************************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    LUMINA INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 25 Rename to Lumina
+   v0.9.9 Build 26 Rename Ships/Objects/Buttons
    ========================================================================== */
 /* ==========================================================================
    02 THEME CSS: Reduce motion, adjust menus and icons, etc. 
@@ -20,16 +20,10 @@
 }
 
 /* ==========================================================================
-   10 SHIPS: Containers (e.g. Groups, Columns)
+   10 CARDS: Containers (e.g. Groups, Columns)
    ========================================================================== */
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover,
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):has(:focus-visible) {
-  transform: var(--wp--custom--animation--default--object-small-transform, translateY(-3px));
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-}
-
 /* ==========================================================================
-   20 PASSENGERS: Container Contents (e.g. Images, Columns)
+   20 OBJECTS: Container Contents (e.g. Images, Columns)
    ========================================================================== */
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
@@ -40,16 +34,6 @@
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-}
-
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *),
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-}
-
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover img,
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
 }
 
 .wp-block-post-featured-image:not(.alignfull):has(a):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
@@ -74,18 +58,8 @@
   box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
-.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *),
-.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
-}
-
-.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover img,
-.wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
-  transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-}
-
 /* ==========================================================================
-   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+   30 BUTTONS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
    ========================================================================== */
 [class*=wp-block-] .wp-element-button:hover,
 [class*=wp-block-] .wp-element-button:has(:focus-visible) {
@@ -144,7 +118,7 @@
 }
 
 /* ==========================================================================
-   40 VETOS: Veto embedded Ships and Passengers
+   40 VETOS: Veto embedded Cards and Objects
   ========================================================================== */
 [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button),
 [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover {
@@ -168,16 +142,6 @@
 [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-latest-posts__featured-image:not(.alignfull):has(a):hover {
   box-shadow: none;
   transform: none;
-}
-
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)),
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover {
-  box-shadow: none;
-}
-
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)),
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover {
-  box-shadow: none;
 }
 
 /*# sourceMappingURL=lumina-interactions.css.map*/

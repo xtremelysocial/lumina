@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 25 Rename to Lumina
+//	 v0.9.9 Build 26 Rename Ships/Objects/Buttons
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -25,7 +25,7 @@
 	$trigger: 	'self', 
 	$target: 	'self', 
 	$scope: 	'target', 
-	$role: 		'passenger',
+	$role: 		'object',
 ) {
 
 	// INITIALIZE THE SELECTOR
@@ -38,13 +38,13 @@
     	$selector: $block;
     }
 
-	// 2. SOVEREIGN PREFIX ENFORCER (Strict Tier-30 Score)
-//     @if $role == 'sovereign' {
+	// 2. BUTTON PREFIX ENFORCER (Strict Tier-30 Score)
+//     @if $role == 'button' {
 //         $selector: '.wp-site-blocks #{$selector}';
 //     }
 
-	// 3. ADD ALIGNFULL IF NOT SOVEREIGN
-	@if $role != 'sovereign' and $exclude != 'none' and $exclude != '' {
+	// 3. ADD ALIGNFULL IF NOT BUTTON
+	@if $role != 'button' and $exclude != 'none' and $exclude != '' {
 	    $selector: '#{$selector}:not(#{$exclude})';
 	}
         
@@ -121,9 +121,9 @@
             'registry':      	config.$debug-registry,
             'wrapper':      	config.$debug-wrapper,
             'wrapper-active':   config.$debug-wrapper-active,
-            'ship':          	config.$debug-ship,
-            'passenger':     	config.$debug-passenger,
-            'sovereign':     	config.$debug-sovereign,
+            'dard':          	config.$debug-card,
+            'object':     	config.$debug-object,
+            'button':     	config.$debug-button,
             'silence':       	config.$debug-silence,
             'silence-active':	config.$debug-silence-active
         ), $role);
@@ -133,9 +133,9 @@
             'registry':     	-2px,
             'wrapper':     		-4px,
             'wrapper-active':   -6px,
-            'ship':         	-2px,
-            'passenger':    	-2px,
-            'sovereign':    	-2px,
+            'dard':         	-2px,
+            'object':    	-2px,
+            'button':    	-2px,
             'silence':      	-2px,
             'silence-active':   -4px
         ), $role);

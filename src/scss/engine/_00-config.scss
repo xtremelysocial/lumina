@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 LUMINA CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 25 Rename to Lumina
+//	 	v0.9.9 Build 26 Rename Ships/Objects/Buttons
 //   ========================================================================== */
 
 // ==========================================================================
@@ -13,18 +13,18 @@ $registry-defaults: (
 	block:   '*',       	// Block wildcard [class*="wp-block-"]
 	is:      'none',    	// Don't require specific classes
 	has:     'a, button',   // Default to requiring an embedded link or button
-	exclude: '.alignfull', 	// Don't let full-width blocks become ships
+	exclude: '.alignfull', 	// Don't let full-width blocks become cards
 	trigger: 'self',    	// Default hover trigger to the block
 	target:  'self',    	// Default traget class to receive animation to the block
 	spacing: false,			// Add margin only to html buttons
-	role:    'passenger' 	// Default role to Passenger
+	role:    'object' 	// Default role to Object
 );
 
 // PUT WILDCARDS AND/OR SPECIFIC BLOCKS INTO THE REGISTRY
 $lumina-block-registry: (
 
 	// --------------------------------------------------------------------------
-	// SHIPS (Wildcard works great here, but you can override for specific blocks)
+	// CARDS (Wildcard works great here, but you can override for specific blocks)
 	// --------------------------------------------------------------------------
 	(
 		block:   '*', 
@@ -35,15 +35,15 @@ $lumina-block-registry: (
 		exclude: '.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *',
 		trigger: 'self', 
 		target:  'self', 
-		role:    'ship'
+		role:    'card'
 	),
 	
 	// --------------------------------------------------------------------------
-	// PASSENGERS: None needed at this time
+	// OBJECTS: None needed at this time
 	// --------------------------------------------------------------------------
 
 	// --------------------------------------------------------------------------
-	// IMAGE PASSENGERS
+	// IMAGE OBJECTS
 	// --------------------------------------------------------------------------
 
 	// Core Image: Requires link
@@ -53,9 +53,9 @@ $lumina-block-registry: (
 		has:     'a:not(figcaption a)', 	
 		trigger: 'self',                
 		target:  'img',
-		role:    'passenger'
-// 		role:    'passenger-grow'
-// 		role:    'passenger-zoom'
+		role:    'object'
+// 		role:    'image-grow'
+// 		role:    'image-zoom'
 	),
 
 	// Column Image: Image as direct descendent of a column should zoom
@@ -65,9 +65,9 @@ $lumina-block-registry: (
 		has:     'a:not(figcaption a)', 	
 		trigger: 'self',
 		target:  'img',
-// 		role:    'passenger'
-// 		role:    'passenger-grow'
-		role:    'passenger-zoom'
+// 		role:    'object'
+// 		role:    'image-grow'
+		role:    'image-zoom'
 	),
     
 	// Gallery Image: Only needed if wp-block-image isn't zoom
@@ -77,8 +77,8 @@ $lumina-block-registry: (
 // 		has:     'a:not(figcaption a)', 	
 // 		trigger: 'self',
 // 		target:  'img',
-// // 		role:    'passenger-grow'
-// 		role:    'passenger-zoom'
+// // 		role:    'image-grow'
+// 		role:    'image-zoom'
 // 	),
 
 	// Post Featured Image: Requires link
@@ -88,9 +88,9 @@ $lumina-block-registry: (
 		has:     'a',    
 		trigger: 'self',                 
 		target:  'img',
-		role:    'passenger'
-// 		role:    'passenger-grow'
-// 		role:    'passenger-zoom'
+		role:    'object'
+// 		role:    'image-grow'
+// 		role:    'image-zoom'
 	),
 
 	// Latest Posts Featured Image: Requires link
@@ -100,9 +100,9 @@ $lumina-block-registry: (
 		has:     'a',    
 		trigger: 'self',                 
 		target:  'img',
-		role:    'passenger'
-// 		role:    'passenger-grow'
-// 		role:    'passenger-zoom'
+		role:    'object'
+// 		role:    'image-grow'
+// 		role:    'image-zoom'
 	),
     
 	// Media & Text: Needed because it's not a standard wp-block-image
@@ -112,11 +112,11 @@ $lumina-block-registry: (
 		has:     'a:not(figcaption a)', 
 		trigger: 'self',
 		target:  'img',
-		role:    'passenger-zoom'
+		role:    'image-zoom'
 	),
 
 	// --------------------------------------------------------------------------
-	// SOVEREIGNS
+	// BUTTONS
 	// --------------------------------------------------------------------------
 
 	// Buttons
@@ -126,7 +126,7 @@ $lumina-block-registry: (
 		has:     'none', 
 		trigger: '.wp-element-button',
 		target:  'self',
-		role:    'sovereign'
+		role:    'button'
 	),
 
 	// Avatars
@@ -137,7 +137,7 @@ $lumina-block-registry: (
 		trigger: 'a > .avatar',
 		target:  'self',
 // 		border:	 true,
-		role:    'sovereign'
+		role:    'button'
 	),
 
 	// Social links
@@ -147,7 +147,7 @@ $lumina-block-registry: (
 		has:     'none', 
 		trigger: '.wp-block-social-link',
 		target:  'self',
-		role:    'sovereign'
+		role:    'button'
 	),
 	
 	// Outline style tag clouds
@@ -157,15 +157,15 @@ $lumina-block-registry: (
 		has:     'none', 
 		trigger: 'a',
 		target:  'self',
-		role:    'sovereign'
+		role:    'button'
 	),
 
 	// Legacy HTML buttons for WordPress.org theme preview
-	( trigger: 'input[type="submit"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
-	( trigger: 'input[type="button"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
-	( trigger: 'input[type="reset"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'sovereign' ),
-// 	( trigger: 'button:not(.wp-element-button, .wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)', has: 'none', spacing: true, role: 'sovereign' ),
-	( trigger: 'input[type=file]::file-selector-button', has: 'none', spacing: true, role: 'sovereign' ),    
+	( trigger: 'input[type="submit"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'button' ),
+	( trigger: 'input[type="button"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'button' ),
+	( trigger: 'input[type="reset"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'button' ),
+// 	( trigger: 'button:not(.wp-element-button, .wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle)', has: 'none', spacing: true, role: 'button' ),
+	( trigger: 'input[type=file]::file-selector-button', has: 'none', spacing: true, role: 'button' ),    
 );
 
 //**
@@ -195,7 +195,7 @@ $blocks-layout-brakes: (
 // Blocks that have custom block styles to add to the compiled CSS
 $blocks-custom-borders: ('.wp-block-image');
 
-// HTML-only Sovereigns
+// HTML-only Buttons
 $html-button-spacing: var(--wp--preset--spacing--30);
 
 //**
@@ -239,9 +239,9 @@ $debug-registry:   		1px dashed #ff8c00; // Orange
 $debug-wrapper:   		1px dashed #ff8c00; //#ff00ff; // Purple
 
 $debug-wrapper-active:  1px solid  #ff00ff; // Purple
-$debug-ship:       		1px solid  #00ffff; // Cyan
-$debug-passenger:  		1px solid  #00ffff; // Cyan
-$debug-sovereign:  		1px solid  #00ffff; // Cyan
+$debug-card:       		1px solid  #00ffff; // Cyan
+$debug-object:  		1px solid  #00ffff; // Cyan
+$debug-button:  		1px solid  #00ffff; // Cyan
 
 $debug-silence:    		1px dashed #ff3b30; // Red
 $debug-silence-active:	1px solid  #ff3b30; // Red

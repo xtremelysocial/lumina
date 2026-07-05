@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 25 Rename to Lumina
+//	 v0.9.9 Build 26 Rename Ships/Objects/Buttons
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -118,9 +118,9 @@
 }
 
 // /* ==========================================================================
-//    03.10 APPLY SHIP: Apply physics and active shadow
+//    03.10 APPLY CARD: Apply physics and active shadow
 //    ========================================================================== */
-@mixin apply-ship {
+@mixin apply-card {
 
     // Apply physics
     @if config.$lumina-dev-mode {
@@ -137,13 +137,13 @@
 	}
 
 	// Handle debug
-	@include lumina-debug('ship');
+	@include lumina-debug('dard');
 }
 
 // /* ==========================================================================
-//    03.20 APPLY PASSENGER: Standard passenger (e.g. Column)
+//    03.20 APPLY OBJECT: Standard object (e.g. Column)
 //    ========================================================================== */
-@mixin apply-passenger {
+@mixin apply-object {
 
 	// Apply to wrapper!
 // 	> a {
@@ -163,14 +163,14 @@
 		}
 		
 		// Handle debug
-		@include lumina-debug('passenger');
+		@include lumina-debug('object');
 // 	}
 }
 
 // /* ==========================================================================
-//    03.21 APPLY PASSENGER GROW: Image grow 
+//    03.21 APPLY OBJECT GROW: Image grow 
 //    ========================================================================== */
-@mixin apply-passenger-grow {
+@mixin apply-image-grow {
 
     // Apply Physics
     @if config.$lumina-dev-mode {
@@ -187,7 +187,7 @@
 	}
 
 	// Handle debug
-	@include lumina-debug('passenger');
+	@include lumina-debug('object');
 }
 
 // ==========================================================================
@@ -283,9 +283,9 @@
 }	
 
 // ==========================================================================
-// 03.25 PASSENGER ZOOM (WRAPPER): Apply deep shadow
+// 03.25 OBJECT ZOOM (WRAPPER): Apply deep shadow
 // ==========================================================================
-@mixin apply-passenger-zoom-wrapper {
+@mixin apply-image-zoom-wrapper {
 
 	// Don't apply shadow if braked
 	&:not(#{config.$blocks-layout-brakes}) {	
@@ -314,7 +314,7 @@
 // 03.25 IMAGE WRAPPER: Apply deep shadow, filter, remove overlay, and reveal 
 // 		 veil
 // ==========================================================================
-@mixin apply-passenger-image-wrapper {
+@mixin apply-object-image-wrapper {
 
 	// Don't apply shadow if braked
 	&:not(#{config.$blocks-layout-brakes}) {
@@ -343,9 +343,9 @@
 }
 
 // ==========================================================================
-// 03.26 PASSENGER ZOOM (ASSET): Dynamically scales the internal graphic
+// 03.26 OBJECT ZOOM (ASSET): Dynamically scales the internal graphic
 // ==========================================================================
-@mixin apply-passenger-zoom-asset {
+@mixin apply-image-zoom-asset {
 	@if config.$lumina-dev-mode {
 // 		@include __blueprint-grow-standard;
 		@include __blueprint-grow-large;
@@ -355,13 +355,13 @@
 	}
 
 	// Handle debug
-	@include lumina-debug('passenger');	
+	@include lumina-debug('object');	
 }
 
 // ==========================================================================
-// 03.30 SOVEREIGN: Buttons and blocks that work like buttons
+// 03.30 BUTTON: Buttons and blocks that work like buttons
 // ==========================================================================
-@mixin __blueprint-sovereign {
+@mixin __blueprint-button {
 
 	// Grow Large (e.g. x1.1)
     transform: translateY(0) #{config.$grow-large}; 
@@ -375,26 +375,26 @@
 	opacity: 1; 
 	
 	// Debug mode
-	@include lumina-debug('sovereign');
+	@include lumina-debug('button');
 }
 
-%physics-sovereign {
+%physics-button {
 	/* ==========================================================================
-	   03.30 SOVEREIGN: Buttons and blocks that work like buttons
+	   03.30 BUTTON: Buttons and blocks that work like buttons
 	========================================================================== */
-	@include __blueprint-sovereign;
+	@include __blueprint-button;
 }
 
-@mixin apply-sovereign {
+@mixin apply-button {
 	@if config.$lumina-dev-mode {
-		@include __blueprint-sovereign;
+		@include __blueprint-button;
 	} @else {
-		@extend %physics-sovereign;
+		@extend %physics-button;
 	}
 }
 
 // ==========================================================================
-// 03.40 SILENCE ACTIVE: Silence Ships and Passengers
+// 03.40 SILENCE ACTIVE: Silence Cards and Objects
 // ==========================================================================
 @mixin __blueprint-silence {
 
@@ -408,7 +408,7 @@
 
 %physics-silence {
 	/* ==========================================================================
-	   03.40 SILENCE ACTIVE: Silence Ships and Passengers
+	   03.40 SILENCE ACTIVE: Silence Cards and Objects
 	========================================================================== */
 	@include __blueprint-silence;
 }
@@ -422,7 +422,7 @@
 }
 
 // ==========================================================================
-// 03.41 SILENCE ACTIVE SHADOW: Silence shadows embedded in Ships
+// 03.41 SILENCE ACTIVE SHADOW: Silence shadows embedded in Cards
 // ==========================================================================
 @mixin __blueprint-silence-shadow {
 
@@ -436,7 +436,7 @@
 
 %physics-silence {
 	/* ==========================================================================
-	   03.41 SILENCE ACTIVE SHADOW: Silence shadows embedded in Ships
+	   03.41 SILENCE ACTIVE SHADOW: Silence shadows embedded in Cards
 	========================================================================== */
 	@include __blueprint-silence-shadow;
 }

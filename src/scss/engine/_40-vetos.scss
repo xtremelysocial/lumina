@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   40 VETOS: Centralized Nesting Boundary Controller
-//	    v0.9.9 Build 25 Rename to Lumina
+//	    v0.9.9 Build 26 Rename Ships/Objects/Buttons
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -12,7 +12,7 @@
 
 	@if config.$lumina-dev-mode {
 	/* ==========================================================================
-	   40 VETOS: Veto embedded Ships and Passengers
+	   40 VETOS: Veto embedded Cards and Objects
 	  ========================================================================== */
 	}
 
@@ -22,50 +22,50 @@
 		$hover: ':hover';
 	}
 
-	// FETCH SHIPS AND PASSENGERS FROM THE VETO LISTS
-	$ships: phys.get-ships();
-	$passengers: phys.get-passengers();
+	// FETCH CARDS AND OBJECTS FROM THE VETO LISTS
+	$cards: phys.get-cards();
+	$objects: phys.get-objects();
 	$images: phys.get-images();
 	
-	// LOOP THROUGH SHIPS
-	@if list.length($ships) > 0 {
+	// LOOP THROUGH CARDS
+	@if list.length($cards) > 0 {
 		
-		@each $parent in $ships {
+		@each $parent in $cards {
 			
-			// TRACK A: SHIP-IN-SHIP BOUNDARIES
+			// TRACK A: CARD-IN-CARD BOUNDARIES
 			// Silences nested cards (e.g., columns or inner groups) inside a parent card
-			@each $child-ship in $ships {
+			@each $child-card in $cards {
 				@if not $interactive {
-					#{$parent} #{$child-ship} {
+					#{$parent} #{$child-card} {
 						@include phys.apply-silence($interactive: false);
 					}
 				} @else {
-					#{$parent}#{$hover} #{$child-ship},
-					#{$parent}#{$hover} #{$child-ship}:hover {
+					#{$parent}#{$hover} #{$child-card},
+					#{$parent}#{$hover} #{$child-card}:hover {
 						@include phys.apply-silence($interactive: true);
 					}
 				}
 			}
 
-			// TRACK B: PASSENGER-IN-SHIP BOUNDARIES
+			// TRACK B: OBJECT-IN-CARD BOUNDARIES
 			// Silences inner elements (e.g., column block) when the parent card lifts
-			@if list.length($passengers) > 0 {
-				@each $child-passenger in $passengers {
+			@if list.length($objects) > 0 {
+				@each $child-object in $objects {
 	
 					@if not $interactive {
-						#{$parent} #{$child-passenger} {
+						#{$parent} #{$child-object} {
 							@include phys.apply-silence($interactive: false);
 						}
 					} @else {
-						#{$parent}#{$hover} #{$child-passenger},
-						#{$parent}#{$hover} #{$child-passenger}:hover {
+						#{$parent}#{$hover} #{$child-object},
+						#{$parent}#{$hover} #{$child-object}:hover {
 							@include phys.apply-silence($interactive: true);
 						}
 					}
 				}
 			}
 
-			// TRACK C: IMAGE-IN-SHIP BOUNDARIES
+			// TRACK C: IMAGE-IN-CARD BOUNDARIES
 			// Silences only shadows (e.g., image block) when the parent card lifts
 			@if list.length($images) > 0 {
 				@each $child-image in $images {

@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 25 Rename to Lumina
+//	 v0.9.9 Build 26 Rename Ships/Objects/Buttons
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -26,16 +26,16 @@
 ) {
 
 	// TRACK A: IMAGE ZOOM (Wrapper Shadow + Sharp Clipping Viewport)
-	@if $role == 'passenger-zoom' {
+	@if $role == 'image-zoom' {
 		@include resting.apply-zoom-wrapper-visuals($block);
 		@include resting.apply-zoom-wrapper-clipped;
 
 	// TRACK B: IMAGE STANDARD OR GROW (Border & radius)
-	} @else if $role == 'passenger' or $role == 'passenger-grow' {
+	} @else if $role == 'object' or $role == 'image-grow' {
 		@include resting.apply-image-wrapper-visuals($block);
 
-	// TRACK C: SHIPS (Pure Layout Container Rounding vs. Flat Boundary Gates)
-	} @else if $role == 'ship' {
+	// TRACK C: CARDS (Pure Layout Container Rounding vs. Flat Boundary Gates)
+	} @else if $role == 'dard' {
 		@include resting.apply-wrapper-visuals($block);
 		@include resting.apply-wrapper-clipped;
 	}
@@ -50,21 +50,21 @@
 	$trigger: 'self', 
 ) {
 	
-	// TRACK A: SOVEREIGNS (Buttons & Form Triggers)
-	@if $role == 'sovereign' {
-		@include resting.apply-sovereign-resting-state;
+	// TRACK A: BUTTONS (Buttons & Form Triggers)
+	@if $role == 'button' {
+		@include resting.apply-button-resting-state;
 	
 	// TRACK B.1: ZOOM-IN-PLACE PORTALS (Media & Text, Custom Frames)
-	} @else if $role == 'passenger-zoom' {
+	} @else if $role == 'image-zoom' {
 		@include resting.apply-asset-resting-state;
 	
 	// TRACK B.2: STANDARD GRAPHICS (Galleries, Core Images, Latest Posts Featured)
-	} @else if $role == 'passenger-grow' {
+	} @else if $role == 'image-grow' {
 // 		@include resting.apply-resting-state;
 		@include resting.apply-asset-resting-state;
 
-	// TRACK B.3: REGULAR PASSENGERS (Column block)
-	} @else if $role == 'passenger' {
+	// TRACK B.3: REGULAR OBJECTS (Column block)
+	} @else if $role == 'object' {
 // 		@include resting.apply-resting-state;
 // 		@include resting.apply-wrapper-visuals($block);
 		@if $trigger != 'self' {
@@ -74,8 +74,8 @@
 			@include resting.apply-image-wrapper-visuals($block);
 		}
 
-	// TRACK C: SHIPS (Layout Containers & Groups)
-	} @else if $role == 'ship' {
+	// TRACK C: CARDS (Layout Containers & Groups)
+	} @else if $role == 'dard' {
 		@if $trigger != 'self' {
 			@include resting.apply-resting-state;
 		} @else {
@@ -93,46 +93,46 @@
 	$context: 'target'
 ) {
 	
-	// TRACK A: SOVEREIGNS (Buttons & Form Triggers)
-	@if $role == 'sovereign' {
-		@include actions.apply-sovereign;
+	// TRACK A: BUTTONS (Buttons & Form Triggers)
+	@if $role == 'button' {
+		@include actions.apply-button;
 
 	// TRACK B.1: ZOOM-IN-PLACE IMAGES (e.g. Media & Text)
-	} @else if $role == 'passenger-zoom' {
+	} @else if $role == 'image-zoom' {
 		@if $context == 'wrapper' {
-			@include actions.apply-passenger-zoom-wrapper;
+			@include actions.apply-image-zoom-wrapper;
 		} 
 		@else if $context == 'target' {
-			@include actions.apply-passenger-zoom-asset;
+			@include actions.apply-image-zoom-asset;
 		}
 
 	// TRACK B.2: IMAGES THAT GROW (e.g. Gallery Images)
-	} @else if $role == 'passenger-grow' {
+	} @else if $role == 'image-grow' {
 		@if $context == 'wrapper' {
-			@include actions.apply-passenger-image-wrapper;
+			@include actions.apply-object-image-wrapper;
 		} @else if $context == 'target' {
-			@include actions.apply-passenger-grow;
+			@include actions.apply-image-grow;
 		}
 
 	// TRACK B.3: STANDARD IMAGES (e.g. Standard Image)
-	} @else if $role == 'passenger' {
+	} @else if $role == 'object' {
 		@if $context == 'wrapper' {
 // 			> a {
-// 				@include actions.apply-passenger;
+// 				@include actions.apply-object;
 // 			}
- 			@include actions.apply-passenger-image-wrapper;
+ 			@include actions.apply-object-image-wrapper;
 		} @else if $context == 'target' {
-			@include actions.apply-passenger;
+			@include actions.apply-object;
 		}
 
-	// TRACK C: SHIPS (Layout Containers & Groups)
-	} @else if $role == 'ship' {
-		@include actions.apply-ship;
+	// TRACK C: CARDS (Layout Containers & Groups)
+	} @else if $role == 'dard' {
+		@include actions.apply-card;
 	}
 }
 
 // ==========================================================================
-// 04.04 APPLY SILENCE: Silence Ships and Passengers
+// 04.04 APPLY SILENCE: Silence Cards and Objects
 // ==========================================================================
 @mixin apply-silence($interactive: false) {
 
@@ -162,20 +162,20 @@
 }
 
 // ==========================================================================
-// 04.05 SHIP AND PASSENGER LISTS: Used for ships to veto passengers physics
+// 04.05 CARD AND OBJECT LISTS: Used for cards to veto objects physics
 // ==========================================================================
-$all-ships: (); 
-$all-passengers: ();
+$all-cards: (); 
+$all-objects: ();
 $all-images: ();
 
-// Add the full ship selector to the list
-@mixin register-ship($selector) {
-	$all-ships: list.append($all-ships, $selector) !global;
+// Add the full dard selector to the list
+@mixin register-card($selector) {
+	$all-cards: list.append($all-cards, $selector) !global;
 }
 
-// Add the full passenger selector to the list
-@mixin register-passenger($selector) {
-	$all-passengers: list.append($all-passengers, $selector) !global;
+// Add the full object selector to the list
+@mixin register-object($selector) {
+	$all-objects: list.append($all-objects, $selector) !global;
 }
 
 // Add the full image selector to the list
@@ -183,14 +183,14 @@ $all-images: ();
 	$all-images: list.append($all-images, $selector) !global;
 }
 
-// Get ships from list
-@function get-ships() {
-	@return $all-ships;
+// Get cards from list
+@function get-cards() {
+	@return $all-cards;
 }
 
-// Get passengers from list
-@function get-passengers() {
-	@return $all-passengers;
+// Get objects from list
+@function get-objects() {
+	@return $all-objects;
 }
 
 // Get images from list

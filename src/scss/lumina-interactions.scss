@@ -6,29 +6,29 @@
 @use 'engine/00-config' as config;
 @use 'physics' as phys;
 @use 'engine/02-global' as global;
-@use 'engine/10-ships' as ships;
-@use 'engine/20-passengers' as passengers;
-@use 'engine/30-sovereigns' as sovereigns;
+@use 'engine/10-ships' as cards;
+@use 'engine/20-passengers' as objects;
+@use 'engine/30-sovereigns' as buttons;
 @use 'engine/40-vetos' as vetos;
 
 @if config.$lumina-dev-mode {
 /* ==========================================================================
    LUMINA INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 25 Rename to Lumina
+   v0.9.9 Build 26 Rename Ships/Objects/Buttons
    ========================================================================== */
 }
 
 // LOAD GLOBAL CSS
 @include global.apply-global-logic($interactive: true);
 
-// LOAD SHIP CSS
-@include ships.apply-ship-logic($interactive: true);
+// LOAD CARD CSS
+@include cards.apply-card-logic($interactive: true);
 
-// LOAD PASSENGER CSS
-@include passengers.apply-passenger-logic($interactive: true);
+// LOAD OBJECT CSS
+@include objects.apply-object-logic($interactive: true);
 
-// LOAD SOVEREIGN CSS
-@include sovereigns.apply-sovereign-logic($interactive: true);
+// LOAD BUTTON CSS
+@include buttons.apply-button-logic($interactive: true);
 
-// LOAD SHIP AND PASSENGER VETO CSS
+// LOAD CARD AND OBJECT VETO CSS
 @include vetos.apply-veto-logic($interactive: true);

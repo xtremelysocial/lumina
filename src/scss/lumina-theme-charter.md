@@ -37,44 +37,44 @@ No movement, scaling, or interactive translation offset can occur instantly. Eve
   
 ## Lumina Charter: Section 3 - Lumina Physics Engine Guidelines  
   
-**Hard Line Stance on Specificity by Role**. Returning to this foundational logic is exactly how we solve the nested ship lift without breaking the system or escalating weights arbitrarily.  
+**Hard Line Stance on Specificity by Role**. Returning to this foundational logic is exactly how we solve the nested dard lift without breaking the system or escalating weights arbitrarily.  
 The entire principle rests on giving every single role in the engine an immutable, programmatic **Specificity Tier**. We do this by controlling exactly how many raw class tokens sit *outside* of the flattening :where() wrapper.  
   
 ## The Strict Specificity Scale Blueprint  
 By enforcing these exact scores across your files, the browser handles cascade victories automatically, entirely eliminating the need for !important hacks.  
   
-**Tier 10: Passengers & Floors (Score: 0,1,0 — 10 Points)**  
-Passengers and basic Floor anchors represent the baseline elements of your site. They must carry exactly **one** primary class weight.  
+**Tier 10: Objects & Floors (Score: 0,1,0 — 10 Points)**  
+Objects and basic Floor anchors represent the baseline elements of your site. They must carry exactly **one** primary class weight.  
 * **The Rule:** Only the raw $trigger class sits outside :where(). Gates and filters are completely flattened inside.  
 * **The Compiled Output Examples:**  
     * .wp-block-column:where(:is(.has-background):not(.alignfull)) → **10 points**  
     * .is-style-object-plain → **10 points**  
   
-**Tier 11: Passenger Portals / Images (Score: 0,1,1 to 0,1,2 — 11-12 Points)**  
+**Tier 11: Object Portals / Images (Score: 0,1,1 to 0,1,2 — 11-12 Points)**  
 Images and linked portals need a tiny single-digit tie-breaker advantage to cleanly execute bounded scales over their static states, which is why their loop checks for the tag (img or a > img) on the outside of the gate structure.  
 * **The Compiled Output Example:** * .wp-block-image:where() img → **11 points**  
   
-**Tier 20: Ships / Containers (Score: 0,2,0 — 20 Points)**  
-Ships are massive layout boxes (Groups, Columns, Media-Texts). They must *always* carry exactly **two** class weights on the outside of the gate so they natively crush passenger actions sitting inside them.  
+**Tier 20: Cards / Containers (Score: 0,2,0 — 20 Points)**  
+Cards are massive layout boxes (Groups, Columns, Media-Texts). They must *always* carry exactly **two** class weights on the outside of the gate so they natively crush object actions sitting inside them.  
 * **The Rule:** The primary $trigger class **AND** the dynamic $gate (like .has-background) must both stand outside :where(). Only the $filter state stays hidden inside.  
 * **The Compiled Output Example:**  
     * .wp-block-group.has-background:where(:not(.alignfull)) → **20 points**  
   
 **Tier 21: The Programmatic Floor Wildcard (Score: 0,2,1 — 21 Points)**  
-This is where the magic happens. By structuring Track B in your floors loop to match the Ship tier weight (0,2,0) and appending the descendant wildcard attribute selector ([class*=wp-block-]), the resulting score instantly scales to **21 points**.  
+This is where the magic happens. By structuring Track B in your floors loop to match the Card tier weight (0,2,0) and appending the descendant wildcard attribute selector ([class*=wp-block-]), the resulting score instantly scales to **21 points**.  
 * **The Compiled Output Example:**  
     * .wp-block-media-text.has-background:where(:not(.alignfull)) [class*=wp-block-] → **21 points**  
-Because **21 points** cleanly defeats a child ship's independent **20 points**, the parent container effortlessly commands its nested groups to freeze, eliminating the double-lift naturally!  
+Because **21 points** cleanly defeats a child dard's independent **20 points**, the parent container effortlessly commands its nested groups to freeze, eliminating the double-lift naturally!  
   
-**Tier 30: Sovereigns (Score: 0,3,0 — 30 Points)**  
-Sovereigns are high-intent interactive buttons or icons. They stand completely outside of protective wrappers to assert total authority over the page cascade.  
+**Tier 30: Buttons (Score: 0,3,0 — 30 Points)**  
+Buttons are high-intent interactive buttons or icons. They stand completely outside of protective wrappers to assert total authority over the page cascade.  
 * **The Compiled Output Example:**  
     * .wp-block-button__link → **30 points**  
   
 
 | Role Entry | Compiled Selector Target Example | Rest Spec | Hover Spec | Tier Level & Authority |
 | ----------------- | ---------------------------------------------------------- | --------- | ---------- | ------------------------------------------------------------------------------------------ |
-| Passenger | .wp-block-paragraph
+| Object | .wp-block-paragraph
 
 .wp-block-image | 10 | 11 | Tier 10 (Baseline)
 
@@ -83,14 +83,14 @@ Standard internal content assets; easily tamed. |
 
 a:has(.wp-block-image):hover | 11 / 12 | 21 / 22 | Tier 11-12 (Elevated)
 
-Interactive content links engineered to beat standard passengers. |
-| Ship-by-Attribute | .wp-block-group:is(.has-background) | 20 | 21 | Tier 20 (Kinetic Containers)
+Interactive content links engineered to beat standard objects. |
+| Card-by-Attribute | .wp-block-group:is(.has-background) | 20 | 21 | Tier 20 (Kinetic Containers)
 
 Global block wrappers carrying structural color traits. |
-| Ship-by-Class | .wp-block-group.is-style-rounded-border | 20 | 21 | Tier 20 (Kinetic Containers)
+| Card-by-Class | .wp-block-group.is-style-rounded-border | 20 | 21 | Tier 20 (Kinetic Containers)
 
-Custom block styles engineered to match attribute ships. |
-| Sovereign Link | .wp-site-blocks ... .wp-element-button | 30 | 40 | Tier 30+ (Fast-Pass Authority)
+Custom block styles engineered to match attribute cards. |
+| Button Link | .wp-site-blocks ... .wp-element-button | 30 | 40 | Tier 30+ (Fast-Pass Authority)
 
 Absolute freedom layout-blind; shatters all floor freezes. |
   
@@ -99,10 +99,10 @@ Absolute freedom layout-blind; shatters all floor freezes. |
   
   
 ## Most Interesting things to animate  
-- [ ] Always Sovereign  
+- [ ] Always Button  
     - [ ] Buttons => Grow  
     - [ ] Social Links => Grow  
-- [ ] Conditional Sovereign  
+- [ ] Conditional Button  
     - [ ] Images w/Links => Zoom (overflow:hidden)  
     - [ ] Images w/Lightbox => Zoom (overflow:hidden)  
     - [ ] [Tag-cloud-link.is](http://Tag-cloud-link.is)-outline? => Grow  
@@ -111,12 +111,12 @@ Absolute freedom layout-blind; shatters all floor freezes. |
     - [ ] Wp-block-avatar:has(a) => Grow  
     - [ ] .wp-block-latest-comments__comment:has(a)  
     - [ ] .wp-block-post-author__avatar:has(a)  
-- [ ] Always Ships  
+- [ ] Always Cards  
     - [ ] Is-style-rounded-border  
     - [ ] Is-style-rounded-corners  
     - [ ] Is-style-object-passive  
     - [ ] Is-style-thick-rounded-border  
-- [ ] Conditional Ships  
+- [ ] Conditional Cards  
     - [ ] Wp-block-group.has-background  
     - [ ] wp-block-columns.has-background  
     - [ ] Wp-block-column.has-background  
@@ -126,18 +126,18 @@ Absolute freedom layout-blind; shatters all floor freezes. |
     - [ ] Is-style-object-plain  
   
 ## Physics Engine Rules  
-1. Ships are detected first based on classes that are always ships or containers with background color but we don’t treat them as ships if full-width. So,   
+1. Cards are detected first based on classes that are always cards or containers with background color but we don’t treat them as cards if full-width. So,   
     1. We ignore full-width containers (.alignfull) and is-style-object-plain.  
-    2. We don’t add padding or rounded corners to the always ship classes so that the user can style these.  
-    3. For the ones being promoted to ships We lightly style them with padding and rounded corners.  
-2. Sovereigns (buttons and button-like blocks) are *always* 100% of the time activated. Even if full-width (and we won’t add a custom class of is-style-object-plain for them)  
-3. Images are tagged as “passenger” in the physics map (wp-block-image, wp-block-gallery wp-block-image, featured post images, etc.). They are complex and should have their own logic in the engine that is similar in principle to ships, but based on different “promotion” criteria. They will behave one of two ways:  
-    1. If they are links, then they are promoted to Sovereign, meaning always active regardless of parent.   
-    2. If thy are not links, then they animate when not in a ship only. If in a ship, they “stand down”. If we were to leave them static, then a user scrolling through page content is going to get “bored” in colored edge-to-edge sections that aren’t ships. In Lumina, our block patterns should be designed specifically to “train” the user on how to build patterns that work *with* the engine as opposed to against it (i.e. most patterns *not* full-width so the containers are ships), but we can’t force this on users that want to have static colored sections.   
-    3. We do need some way to make sure the user isn’t confused on what images are decoration and just slightly reacting to touch versus ready to leap into action. We can’t rely on resting shadow because images on dark backgrounds, they won’t be visible. We can’t just add a border to the linked ones because images could have borders already. Unless we handle images similar to ships but we use .has-border instead of has-background. We could also have always-bordered css classes for images in the map. We could potentially remove the border on images that aren’t links but that may irritate users. We are currently growing linked images, but it would be much better if could have them “zoom-in in place” (set overflow hidden on the figure wp-block-image and zoom the image itself). With Grow, we have to deal with the caption within the wp-block-image too. With zoom in place, we should be able to handle the caption somehow.  
-4. Non-Image passengers (e.g. wp-block-column, wp-block-table rows/columns/cells) are “passenger” in the physics map. These won’t have links so the logic is simpler.  
-    1. If in a ship, they stand down.  
-    2. If not in a ship, they are allowed to animate.  
+    2. We don’t add padding or rounded corners to the always dard classes so that the user can style these.  
+    3. For the ones being promoted to cards We lightly style them with padding and rounded corners.  
+2. Buttons (buttons and button-like blocks) are *always* 100% of the time activated. Even if full-width (and we won’t add a custom class of is-style-object-plain for them)  
+3. Images are tagged as “object” in the physics map (wp-block-image, wp-block-gallery wp-block-image, featured post images, etc.). They are complex and should have their own logic in the engine that is similar in principle to cards, but based on different “promotion” criteria. They will behave one of two ways:  
+    1. If they are links, then they are promoted to Button, meaning always active regardless of parent.   
+    2. If thy are not links, then they animate when not in a dard only. If in a dard, they “stand down”. If we were to leave them static, then a user scrolling through page content is going to get “bored” in colored edge-to-edge sections that aren’t cards. In Lumina, our block patterns should be designed specifically to “train” the user on how to build patterns that work *with* the engine as opposed to against it (i.e. most patterns *not* full-width so the containers are cards), but we can’t force this on users that want to have static colored sections.   
+    3. We do need some way to make sure the user isn’t confused on what images are decoration and just slightly reacting to touch versus ready to leap into action. We can’t rely on resting shadow because images on dark backgrounds, they won’t be visible. We can’t just add a border to the linked ones because images could have borders already. Unless we handle images similar to cards but we use .has-border instead of has-background. We could also have always-bordered css classes for images in the map. We could potentially remove the border on images that aren’t links but that may irritate users. We are currently growing linked images, but it would be much better if could have them “zoom-in in place” (set overflow hidden on the figure wp-block-image and zoom the image itself). With Grow, we have to deal with the caption within the wp-block-image too. With zoom in place, we should be able to handle the caption somehow.  
+4. Non-Image objects (e.g. wp-block-column, wp-block-table rows/columns/cells) are “object” in the physics map. These won’t have links so the logic is simpler.  
+    1. If in a dard, they stand down.  
+    2. If not in a dard, they are allowed to animate.  
   
 ## Physics Engine Components  
 5. The registry (almos-engine.css)  
@@ -145,7 +145,7 @@ Absolute freedom layout-blind; shatters all floor freezes. |
 6. The animation (atoms-interactions.css)  
     1. :hover will be applied to the *exact same* selectors above so there are always fluid animations.  
 7. The veto  
-    1. When there are complex rules around conditional promotion of sovereigns or images or passengers, we will use just slightly higher specificity to “stand down” the ones we aren’t promoting. This keeps the hornets nests of css selectors down. We will avoid using !important if it all possible. We should focus on leveraging how CSS cascades.   
+    1. When there are complex rules around conditional promotion of buttons or images or objects, we will use just slightly higher specificity to “stand down” the ones we aren’t promoting. This keeps the hornets nests of css selectors down. We will avoid using !important if it all possible. We should focus on leveraging how CSS cascades.   
   
 ## Lumina Charter: Section 5 - Coding Rules & Protocols  
   

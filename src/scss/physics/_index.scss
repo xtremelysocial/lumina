@@ -16,11 +16,11 @@
 
 // 4. REGISTRY LAYER: Expose traffic managers and data registry streams
 @forward '04-registry' show 
-	register-ship, 
-	register-passenger, 
+	register-card, 
+	register-object, 
 	register-image, 
-	get-ships, 
-	get-passengers,
+	get-cards, 
+	get-objects,
 	get-images,
 	apply-wrapper-resting-state, 
 	apply-resting-state, 

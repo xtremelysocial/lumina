@@ -1,6 +1,6 @@
 //* ==========================================================================
-//   20 PASSENGERS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 25 Rename to Lumina
+//   20 OBJECTS: Container Contents (e.g. Images, Columns)
+//	    v0.9.9 Build 26 Rename Ships/Objects/Buttons
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -10,22 +10,22 @@
 @use '00-config' as config;
 @use '../physics' as phys;
 
-@mixin apply-passenger-logic($interactive: false) {
+@mixin apply-object-logic($interactive: false) {
 
 	@if config.$lumina-dev-mode {
 	/* ==========================================================================
-	   20 PASSENGERS: Container Contents (e.g. Images, Columns)
+	   20 OBJECTS: Container Contents (e.g. Images, Columns)
 	   ========================================================================== */
 	}
 
-	// LOOP THROUGH PASSENGERS IN OUR BLOCK REGISTRY
+	// LOOP THROUGH OBJECTS IN OUR BLOCK REGISTRY
 	@each $entry in config.$lumina-block-registry {
 
 		// MERGE REGISTRY ENTRY WITH DEFAULTS
 		$config: map.merge(config.$registry-defaults, $entry);
 		$role:   map.get($config, role);
 	
-		@if string.index($role, 'passenger') != null {
+		@if string.index($role, 'object') != null {
 
 			// EXTRACT INDIVIDIAL FIELDS
 			$block:   map.get($config, block);
@@ -51,14 +51,14 @@
 				$role
 			);
 
-			// ADD PASSENGERS AND IMAGES TO THE VETO LISTS
+			// ADD OBJECTS AND IMAGES TO THE VETO LISTS
 // 			$sel-to-register: if($target != 'self', $wrapper-sel, $target-sel);
 			$sel-to-register: if(sass($target != "self"): $wrapper-sel; else: $target-sel);	
-			@if $role == 'passenger' {
-				@if not list.index(phys.get-passengers(), $sel-to-register) {
-					@include phys.register-passenger($sel-to-register);
+			@if $role == 'object' {
+				@if not list.index(phys.get-objects(), $sel-to-register) {
+					@include phys.register-object($sel-to-register);
 				}
-			} @else if $role == 'passenger-zoom' or $role == 'passenger-grow' {
+			} @else if $role == 'image-zoom' or $role == 'image-grow' {
 				@if not list.index(phys.get-images(), $sel-to-register) {
 					@include phys.register-image($sel-to-register);
 				}

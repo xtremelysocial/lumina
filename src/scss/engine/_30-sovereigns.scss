@@ -1,6 +1,6 @@
 //* ==========================================================================
-//   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    v0.9.9 Build 25 Rename to Lumina
+//   30 BUTTONS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+// 	    v0.9.9 Build 26 Rename Ships/Objects/Buttons
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -9,22 +9,22 @@
 @use '00-config' as config;
 @use '../physics' as phys;
 
-@mixin apply-sovereign-logic($interactive: false) {
+@mixin apply-button-logic($interactive: false) {
 
 	@if config.$lumina-dev-mode {
 	/* ==========================================================================
-	   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+	   30 BUTTONS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
 	   ========================================================================== */
 	}
 
-	// LOOP THROUGH SOVEREIGNS IN OUR PHYSICS MAP
+	// LOOP THROUGH BUTTONS IN OUR PHYSICS MAP
 	@each $entry in config.$lumina-block-registry {
 
 		// 1. MERGE REGISTRY ENTRY WITH DEFAULTS
 		$config: map.merge(config.$registry-defaults, $entry);
 		$role:   map.get($config, role);
 
-		@if $role == 'sovereign' {
+		@if $role == 'button' {
 
 			// 2. EXTRACT INDIVIDIAL FIELDS
 			$block:   map.get($config, block);
