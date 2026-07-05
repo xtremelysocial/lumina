@@ -6,7 +6,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 	v0.9.9 Build 24 Colors
+//	 	v0.9.9 Build 25 Rename to Lumina
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -23,15 +23,15 @@
 
 	// Setup transition timing
     transition: 
-        transform config.$atmos-timing, 
-        box-shadow config.$atmos-timing, 
-        outline config.$atmos-timing;
+        transform config.$lumina-timing, 
+        box-shadow config.$lumina-timing, 
+        outline config.$lumina-timing;
 
 	// Start in place
     transform: translateY(0) scale(1);
     	
 	// Handle debug
-	@include atmos-debug('registry');
+	@include lumina-debug('registry');
 }
 
 %physics-resting-state {
@@ -81,7 +81,7 @@
 	overflow: hidden;
 
 	// Handle Debug
-	@include atmos-debug('wrapper');				
+	@include lumina-debug('wrapper');				
 }
 
 // /* ==========================================================================
@@ -92,7 +92,7 @@
 }
 
 @mixin apply-wrapper-clipped {
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 		@include __blueprint-wrapper-clipped;
 	} @else {
 		@extend %physics-wrapper-clipped;
@@ -123,7 +123,7 @@
 //    ========================================================================== */
 @mixin apply-resting-state {
 
-    @if config.$atmos-dev-mode {
+    @if config.$lumina-dev-mode {
         @include __blueprint-resting-state;
     } @else {
         @extend %physics-resting-state;
@@ -244,7 +244,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	background-color: #{config.$overlay-background};
 										
 	// Use a longer timing function
-	transition: config.$atmos-timing-medium;
+	transition: config.$lumina-timing-medium;
 
 	// Set resting opacity		
 	opacity: #{config.$overlay-opacity};
@@ -265,7 +265,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	// Only apply overlay if configured
 	@if config.$overlay-background != '' {
 
-		@if config.$atmos-dev-mode {
+		@if config.$lumina-dev-mode {
 			@include __blueprint-resting-overlay;
 		} @else {
 			@extend %physics-resting-overlay;
@@ -292,7 +292,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	pointer-events: none; 
 
 	// Use a longer timing function
-	transition: config.$atmos-timing-medium;
+	transition: config.$lumina-timing-medium;
 
 	// Force veil graphic on top of the tint (which is in turn on top of the img)
 	z-index: 2;
@@ -346,7 +346,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	// Only apply veil graphic if configured
 	@if config.$veil-type != '' {
 
-		@if config.$atmos-dev-mode {
+		@if config.$lumina-dev-mode {
 			@include __blueprint-resting-veil;
 		} @else {
 			@extend %physics-resting-veil;
@@ -373,7 +373,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	// Only apply image filter if configured
 	@if config.$image-filter != '' {
 
-		@if config.$atmos-dev-mode {
+		@if config.$lumina-dev-mode {
 			@include __blueprint-resting-image-filter;
 		} @else {
 			@extend %physics-resting-image-filter;
@@ -422,7 +422,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 		&:not(#{config.$blocks-layout-brakes}) {
 		
 			// Apply border and radius
-			@if config.$atmos-dev-mode {	
+			@if config.$lumina-dev-mode {	
 				@include __blueprint-image-wrapper-visuals;		
 			} @else {
 				@extend %physics-image-wrapper-visuals;
@@ -454,10 +454,10 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 
 	// Setup transition timing (Medium)
     transition: 
-        transform config.$atmos-timing-medium, // for grow/lift
-//         box-shadow config.$atmos-timing, 
-        filter config.$atmos-timing-medium, // for brighten
-        outline config.$atmos-timing-medium; // for debug
+        transform config.$lumina-timing-medium, // for grow/lift
+//         box-shadow config.$lumina-timing, 
+        filter config.$lumina-timing-medium, // for brighten
+        outline config.$lumina-timing-medium; // for debug
 
 	// Start in place
     transform: translateY(0) scale(1);
@@ -466,7 +466,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	vertical-align: middle;
 	
 	// Handle Debug
-	@include atmos-debug('registry');
+	@include lumina-debug('registry');
 }
 
 %physics-asset-resting-state {
@@ -477,7 +477,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 }
 
 @mixin apply-asset-resting-state {
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 		@include __blueprint-asset-resting-state;
 	} @else {
 		@extend %physics-asset-resting-state;
@@ -536,7 +536,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 		&:not(#{config.$blocks-layout-brakes}) {
 	
 			// APPLY VISUALS (Brakes in selector)
-			@if config.$atmos-dev-mode {	
+			@if config.$lumina-dev-mode {	
 				@include __blueprint-zoom-wrapper-visuals;
 
 				@if has-custom-borders($block) {
@@ -599,7 +599,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 @mixin apply-zoom-wrapper-clipped {
 
 	> a {
-		@if config.$atmos-dev-mode {
+		@if config.$lumina-dev-mode {
 			@include __blueprint-zoom-wrapper-clipped;
 		} @else {
 			@extend %physics-zoom-wrapper-clipped;
@@ -756,7 +756,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 }
 
 @mixin apply-button-spacing {
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 		@include __blueprint-button-spacing;
 	} @else {
 		@extend %physics-button-spacing;
@@ -770,9 +770,9 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 
 	// Setup transition timing
     transition: 
-        transform config.$atmos-timing, 
-        box-shadow config.$atmos-timing, 
-        outline config.$atmos-timing;
+        transform config.$lumina-timing, 
+        box-shadow config.$lumina-timing, 
+        outline config.$lumina-timing;
 
 	// Start in place
     transform: translateY(0) scale(1);
@@ -783,7 +783,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 				0 6px 12px rgba(0, 0, 0, 0.13)));
 
 	// Handle debug
-	@include atmos-debug('registry');
+	@include lumina-debug('registry');
 }
 
 %physics-sovereign-resting-state {
@@ -794,7 +794,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 }
 
 @mixin apply-sovereign-resting-state {
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 		@include __blueprint-sovereign-resting-state;
 	} @else {
 		@extend %physics-sovereign-resting-state;
@@ -811,7 +811,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	transform: none;
 	
 	// Handle debug
-	@include atmos-debug('silence');
+	@include lumina-debug('silence');
 }
 
 %physics-resting-silence {
@@ -822,7 +822,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 }
 
 @mixin apply-resting-silence {
-	@if config.$atmos-dev-mode {	
+	@if config.$lumina-dev-mode {	
 		@include __blueprint-resting-silence;
 	} @else {
 		@extend %physics-resting-silence;
@@ -839,7 +839,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 // 	transform: none;
 	
 	// Handle debug
-	@include atmos-debug('silence-shadow');
+	@include lumina-debug('silence-shadow');
 }
 
 %physics-resting-silence-shadow {
@@ -850,7 +850,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 }
 
 @mixin apply-resting-silence-shadow {
-	@if config.$atmos-dev-mode {	
+	@if config.$lumina-dev-mode {	
 		@include __blueprint-resting-silence-shadow;
 	} @else {
 		@extend %physics-resting-silence-shadow;

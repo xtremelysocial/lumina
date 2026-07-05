@@ -1,14 +1,14 @@
 <?php
 /**
  * File:        category-colors.php
- * Theme:       Atmos Blocks
+ * Theme:       Lumina Blocks
  *
  * Fluid Theme Variation Architecture for Categories. Intercepts hex strings
  * from legacy admin pickers, compiles them down into active theme.json slugs,
  * and resolves them dynamically at runtime. Allows term styling to transition
  * flawlessly when a user loads an alternate color palette or style variation.
  *
- * @package     atmos-blocks
+ * @package     lumina
  */
 
 /**
@@ -16,7 +16,7 @@
  * Queries theme.json at runtime to assemble bidirectional mapping arrays
  * between active semantic design slugs and physical layout hex strings.
  */
-function atmos_get_theme_palette_mapping() {
+function lumina_get_theme_palette_mapping() {
 	$target_slugs = [
 		'primary',
 		'primary-alt',
@@ -110,8 +110,8 @@ function atmos_get_theme_palette_mapping() {
 /**
  * Calculates a fallback token slug deterministically using Term ID modulus layout paths.
  */
-function atmos_get_category_default_slug( $term_id ) {
-	$mapping = atmos_get_theme_palette_mapping();
+function lumina_get_category_default_slug( $term_id ) {
+	$mapping = lumina_get_theme_palette_mapping();
 	$slugs   = $mapping['ordered_slugs'];
 	$index   = abs( intval( $term_id ) ) % count( $slugs );
 	return $slugs[ $index ];
@@ -120,26 +120,26 @@ function atmos_get_category_default_slug( $term_id ) {
 /**
  * Calculates a fallback hex color deterministically using Term ID modulus layout paths.
  */
-function atmos_get_category_default_color( $term_id ) {
-	$mapping      = atmos_get_theme_palette_mapping();
-	$default_slug = atmos_get_category_default_slug( $term_id );
+function lumina_get_category_default_color( $term_id ) {
+	$mapping      = lumina_get_theme_palette_mapping();
+	$default_slug = lumina_get_category_default_slug( $term_id );
 	return isset( $mapping['slug_to_hex'][ $default_slug ] ) ? $mapping['slug_to_hex'][ $default_slug ] : '#ffffff';
 }
 
 /**
  * Resolves any category down to its true active Hex Color string.
  */
-function atmos_get_category_color( $term_id ) {
+function lumina_get_category_color( $term_id ) {
 	if ( ! $term_id ) {
 		return '#ffffff';
 	}
 	
-	$raw_meta = get_term_meta( $term_id, 'atmos_category_color', true );
-	$mapping  = atmos_get_theme_palette_mapping();
+	$raw_meta = get_term_meta( $term_id, 'lumina_category_color', true );
+	$mapping  = lumina_get_theme_palette_mapping();
 
 	// Case A: No design choice recorded yet -> fall back to dynamic default slug hex
 	if ( ! $raw_meta ) {
-		return atmos_get_category_default_color( $term_id );
+		return lumina_get_category_default_color( $term_id );
 	}
 
 	// Case B: Metadata contains a raw hex code -> returned directly (User chose a non-palette color)
@@ -158,14 +158,14 @@ function atmos_get_category_color( $term_id ) {
 /**
  * Resolves any category down to its abstract design slug token identifier string.
  */
-function atmos_get_category_slug( $term_id ) {
+function lumina_get_category_slug( $term_id ) {
 	if ( ! $term_id ) {
 		return 'white';
 	}
 	
-	$raw_meta = get_term_meta( $term_id, 'atmos_category_color', true );
+	$raw_meta = get_term_meta( $term_id, 'lumina_category_color', true );
 	if ( ! $raw_meta ) {
-		return atmos_get_category_default_slug( $term_id );
+		return lumina_get_category_default_slug( $term_id );
 	}
 
 	if ( preg_match( '/^#[a-f0-9]{6}$/i', $raw_meta ) ) {
@@ -178,19 +178,19 @@ function atmos_get_category_slug( $term_id ) {
 /**
  * 3. ADMIN INTERFACE & ENQUEUES
  */
-add_action( 'admin_enqueue_scripts', 'atmos_enqueue_category_color_picker' );
-function atmos_enqueue_category_color_picker( $hook ) {
+add_action( 'admin_enqueue_scripts', 'lumina_enqueue_category_color_picker' );
+function lumina_enqueue_category_color_picker( $hook ) {
 	$screen = get_current_screen();
 	
 	if ( isset( $screen->taxonomy ) && 'category' === $screen->taxonomy ) {
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
 		
-		$mapping = atmos_get_theme_palette_mapping();
+		$mapping = lumina_get_theme_palette_mapping();
 		
 		$inline_js = sprintf(
 			"jQuery(document).ready(function($){
-				$('.atmos-color-field').wpColorPicker({
+				$('.lumina-color-field').wpColorPicker({
 					palettes: %s
 				});
 			});",
@@ -208,15 +208,15 @@ function atmos_enqueue_category_color_picker( $hook ) {
 /**
  * Renders input field on the "Add New Category" layout panel.
  */
-add_action( 'category_add_form_fields', 'atmos_add_category_color_field', 10, 1 );
-function atmos_add_category_color_field( $taxonomy ) {
-	$mapping = atmos_get_theme_palette_mapping();
+add_action( 'category_add_form_fields', 'lumina_add_category_color_field', 10, 1 );
+function lumina_add_category_color_field( $taxonomy ) {
+	$mapping = lumina_get_theme_palette_mapping();
 	$default_hex = ! empty( $mapping['ordered_hexes'] ) ? $mapping['ordered_hexes'][0] : '#ffffff';
 	?>
 	<div class="form-field term-color-wrap">
-		<label for="atmos_category_color"><?php _e( 'Category Color Accent', 'atmos-blocks' ); ?></label>
-		<input type="text" name="atmos_category_color" id="atmos_category_color" class="atmos-color-field" value="" data-default-color="<?php echo esc_attr( $default_hex ); ?>" />
-		<p class="description"><?php _e( 'Choose a signature accent color for this category label. Leave blank to use automated palette distribution.', 'atmos-blocks' ); ?></p>
+		<label for="lumina_category_color"><?php _e( 'Category Color Accent', 'lumina' ); ?></label>
+		<input type="text" name="lumina_category_color" id="lumina_category_color" class="lumina-color-field" value="" data-default-color="<?php echo esc_attr( $default_hex ); ?>" />
+		<p class="description"><?php _e( 'Choose a signature accent color for this category label. Leave blank to use automated palette distribution.', 'lumina' ); ?></p>
 	</div>
 	<?php
 }
@@ -224,16 +224,16 @@ function atmos_add_category_color_field( $taxonomy ) {
 /**
  * Renders input row on the "Edit Category" management dashboard table.
  */
-add_action( 'category_edit_form_fields', 'atmos_edit_category_color_field', 10, 2 );
-function atmos_edit_category_color_field( $term, $taxonomy ) {
-	$resolved_hex     = atmos_get_category_color( $term->term_id );
-	$true_default_hex = atmos_get_category_default_color( $term->term_id );
+add_action( 'category_edit_form_fields', 'lumina_edit_category_color_field', 10, 2 );
+function lumina_edit_category_color_field( $term, $taxonomy ) {
+	$resolved_hex     = lumina_get_category_color( $term->term_id );
+	$true_default_hex = lumina_get_category_default_color( $term->term_id );
 	?>
 	<tr class="form-field term-color-wrap">
-		<th scope="row"><label for="atmos_category_color"><?php _e( 'Category Color Accent', 'atmos-blocks' ); ?></label></th>
+		<th scope="row"><label for="lumina_category_color"><?php _e( 'Category Color Accent', 'lumina' ); ?></label></th>
 		<td>
-			<input type="text" name="atmos_category_color" id="atmos_category_color" class="atmos-color-field" value="<?php echo esc_attr( $resolved_hex ); ?>" data-default-color="<?php echo esc_attr( $true_default_hex ); ?>" />
-			<p class="description"><?php _e( 'Choose a signature accent color from your theme palette. Hitting "Clear" or "Default" restores your theme\'s automated ID calculation.', 'atmos-blocks' ); ?></p>
+			<input type="text" name="lumina_category_color" id="lumina_category_color" class="lumina-color-field" value="<?php echo esc_attr( $resolved_hex ); ?>" data-default-color="<?php echo esc_attr( $true_default_hex ); ?>" />
+			<p class="description"><?php _e( 'Choose a signature accent color from your theme palette. Hitting "Clear" or "Default" restores your theme\'s automated ID calculation.', 'lumina' ); ?></p>
 		</td>
 	</tr>
 	<?php
@@ -242,24 +242,24 @@ function atmos_edit_category_color_field( $term, $taxonomy ) {
 /**
  * 5. DATABASE INTERCEPT (THE REVERSE TRANSLATOR)
  */
-add_action( 'created_category', 'atmos_save_category_color', 10, 1 );
-add_action( 'edited_category', 'atmos_save_category_color', 10, 1 );
-function atmos_save_category_color( $term_id ) {
-	if ( isset( $_POST['atmos_category_color'] ) ) {
-		$raw_input = sanitize_text_field( $_POST['atmos_category_color'] );
+add_action( 'created_category', 'lumina_save_category_color', 10, 1 );
+add_action( 'edited_category', 'lumina_save_category_color', 10, 1 );
+function lumina_save_category_color( $term_id ) {
+	if ( isset( $_POST['lumina_category_color'] ) ) {
+		$raw_input = sanitize_text_field( $_POST['lumina_category_color'] );
 		
 		if ( 0 === strpos( $raw_input, '#' ) ) {
-			$mapping   = atmos_get_theme_palette_mapping();
+			$mapping   = lumina_get_theme_palette_mapping();
 			$clean_hex = strtolower( $raw_input );
 			
 			if ( isset( $mapping['hex_to_slug'][ $clean_hex ] ) ) {
-				update_term_meta( $term_id, 'atmos_category_color', sanitize_key( $mapping['hex_to_slug'][ $clean_hex ] ) );
+				update_term_meta( $term_id, 'lumina_category_color', sanitize_key( $mapping['hex_to_slug'][ $clean_hex ] ) );
 				return;
 			}
 			
-			update_term_meta( $term_id, 'atmos_category_color', sanitize_hex_color( $raw_input ) );
+			update_term_meta( $term_id, 'lumina_category_color', sanitize_hex_color( $raw_input ) );
 		} else {
-			update_term_meta( $term_id, 'atmos_category_color', sanitize_key( $raw_input ) );
+			update_term_meta( $term_id, 'lumina_category_color', sanitize_key( $raw_input ) );
 		}
 	}
 }
@@ -267,7 +267,7 @@ function atmos_save_category_color( $term_id ) {
 /**
  * 6. FRONT-END LOOP INTEGRATION HELPERS
  */
-function atmos_get_post_primary_category_id( $post_id = null ) {
+function lumina_get_post_primary_category_id( $post_id = null ) {
 	$pid = $post_id ? $post_id : get_the_ID();
 	if ( ! $pid ) {
 		return null;
@@ -291,14 +291,14 @@ function atmos_get_post_primary_category_id( $post_id = null ) {
 	return null;
 }
 
-function atmos_get_post_primary_category_color( $post_id = null ) {
-	$category_id = atmos_get_post_primary_category_id( $post_id );
-	return $category_id ? atmos_get_category_color( $category_id ) : '#ffffff';
+function lumina_get_post_primary_category_color( $post_id = null ) {
+	$category_id = lumina_get_post_primary_category_id( $post_id );
+	return $category_id ? lumina_get_category_color( $category_id ) : '#ffffff';
 }
 
-function atmos_get_post_primary_category_slug( $post_id = null ) {
-	$category_id = atmos_get_post_primary_category_id( $post_id );
-	return $category_id ? atmos_get_category_slug( $category_id ) : 'white';
+function lumina_get_post_primary_category_slug( $post_id = null ) {
+	$category_id = lumina_get_post_primary_category_id( $post_id );
+	return $category_id ? lumina_get_category_slug( $category_id ) : 'white';
 }
 
 /**
@@ -307,32 +307,32 @@ function atmos_get_post_primary_category_slug( $post_id = null ) {
  */
 
 // Hook A: Register the custom column header label
-add_filter( 'manage_edit-category_columns', 'atmos_register_category_color_column' );
-function atmos_register_category_color_column( $columns ) {
+add_filter( 'manage_edit-category_columns', 'lumina_register_category_color_column' );
+function lumina_register_category_color_column( $columns ) {
 	// Insert the column right after the description or name column
 	$new_columns = [];
 	foreach ( $columns as $key => $title ) {
 		$new_columns[$key] = $title;
 		if ( 'name' === $key ) {
-			$new_columns['atmos_color'] = __( 'Color', 'atmos' );
+			$new_columns['lumina_color'] = __( 'Color', 'lumina' );
 		}
 	}
 	return $new_columns;
 }
 
 // Hook B: Populate the column row frames with your dynamic color dot markup
-add_filter( 'manage_category_custom_column', 'atmos_populate_category_color_column', 10, 3 );
-function atmos_populate_category_color_column( $content, $column_name, $term_id ) {
-	if ( 'atmos_color' === $column_name && function_exists( 'atmos_get_category_color' ) ) {
-		$color = atmos_get_category_color( $term_id );
-		$slug  = function_exists( 'atmos_get_category_slug' ) ? atmos_get_category_slug( $term_id ) : '';
+add_filter( 'manage_category_custom_column', 'lumina_populate_category_color_column', 10, 3 );
+function lumina_populate_category_color_column( $content, $column_name, $term_id ) {
+	if ( 'lumina_color' === $column_name && function_exists( 'lumina_get_category_color' ) ) {
+		$color = lumina_get_category_color( $term_id );
+		$slug  = function_exists( 'lumina_get_category_slug' ) ? lumina_get_category_slug( $term_id ) : '';
 		
 		// Build descriptive title hover state data for debug tracking
 		$hover_label = ( $slug && 'custom' !== $slug ) ? sprintf( 'Slug Token: %s (%s)', $slug, $color ) : 'Custom Hex: ' . $color;
 
 		// Output an inline flex container with a round canvas dot element
 		return sprintf(
-			'<span class="atmos-admin-color-dot" style="display:inline-block; width:14px; height:14px; border-radius:50%%; background-color:%1$s; border:1px solid rgba(0,0,0,0.15); vertical-align:middle;" title="%2$s"></span>',
+			'<span class="lumina-admin-color-dot" style="display:inline-block; width:14px; height:14px; border-radius:50%%; background-color:%1$s; border:1px solid rgba(0,0,0,0.15); vertical-align:middle;" title="%2$s"></span>',
 			esc_attr( $color ),
 			esc_attr( $hover_label )
 		);
@@ -341,13 +341,13 @@ function atmos_populate_category_color_column( $content, $column_name, $term_id 
 }
 
 // Hook C: Inject a small CSS snippet into the dashboard head to lock down column alignment
-add_action( 'admin_head', 'atmos_category_color_column_styles' );
-function atmos_category_color_column_styles() {
+add_action( 'admin_head', 'lumina_category_color_column_styles' );
+function lumina_category_color_column_styles() {
 	$screen = get_current_screen();
 	if ( isset( $screen->taxonomy ) && 'category' === $screen->taxonomy ) {
 		echo '<style>
-			.wp-list-table .column-atmos_color { width: 65px; text-align: center; }
-			.wp-list-table .column-atmos_color .atmos-admin-color-dot { margin: 0 auto; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+			.wp-list-table .column-lumina_color { width: 65px; text-align: center; }
+			.wp-list-table .column-lumina_color .lumina-admin-color-dot { margin: 0 auto; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
 		</style>';
 	}
 }

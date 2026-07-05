@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Atmos Dusk (The Blue Hour: Modern, moody evening tones)",
+	"title": "Lumina Dusk (The Blue Hour: Modern, moody evening tones)",
 	"settings": {
 		"custom": {
 			"color": {
@@ -61,7 +61,7 @@
 				{ "slug": "highlight", "color": "hsl(150, 65%, 68%)", "name": "Highlight (Pastel Emerald Hover)" },
 				{ "slug": "highlight-alt", "color": "hsl(151, 55%, 30%)", "name": "Highlight Alt (Alpine Emerald Link Anchor)" },
 				
-				{ "slug": "dark", "color": "hsl(214, 18%, 11%)", "name": "Dark (Deep Atmos Blue Floor 11%)" },
+				{ "slug": "dark", "color": "hsl(214, 18%, 11%)", "name": "Dark (Deep Lumina Blue Floor 11%)" },
 				{ "slug": "dark-alt", "color": "hsl(214, 19%, 7%)", "name": "Dark Alt (Abyssal Nightfall Floor 7%)" },							
 				{ "slug": "dark-tertiary", "color": "hsl(12, 14%, 14%)", "name": "Dark Secondary (Twilight Shadow Floor 14%)" },
 				{ "slug": "dark-tertiary-alt", "color": "hsl(12, 12%, 10%)", "name": "Dark Secondary Alt (Twilight Shadow Base 10%)" },
@@ -79,7 +79,7 @@
 			],		
 			"duotone": [
 				{ "colors": ["hsl(214, 18%, 19%)", "hsl(43, 27%, 97%)"], "slug": "primary", "name": "Primary (Dark Midnight Blue)" },
-				{ "colors": ["hsl(214, 18%, 15%)", "hsl(43, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Deep Atmos)" },
+				{ "colors": ["hsl(214, 18%, 15%)", "hsl(43, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Deep Lumina)" },
 				{ "colors": ["hsl(206, 20%, 30%)", "hsl(43, 27%, 97%)"], "slug": "secondary", "name": "Secondary (Midnight Blue)" },
 				{ "colors": ["hsl(206, 24%, 24%)", "hsl(43, 27%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Dark Midnight)" },
 				{ "colors": ["hsl(12, 32%, 48%)", "hsl(43, 27%, 97%)"], "slug": "tertiary", "name": "Tertiary (Twilight Orange)" },

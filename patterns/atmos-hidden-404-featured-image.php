@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: 404 Hero Banner
- * Slug: atmos-blocks/atmos-hidden-404-featured-image
+ * Slug: lumina/lumina-hidden-404-featured-image
  * Categories: text
  * Inserter: false
  * Description: 404 Slim Featured Image

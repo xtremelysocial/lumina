@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Atmos Atmospheric Feature Stack
- * Slug: atmos-blocks/atmos-feature-stack
- * Categories: atmos
+ * Title: Lumina Luminapheric Feature Stack
+ * Slug: lumina/lumina-feature-stack
+ * Categories: lumina
  */
 ?>
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->

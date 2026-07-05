@@ -1,18 +1,18 @@
 <?php
 /**
  * File:        add-body-classes.php
- * Theme:       Atmos Blocks
+ * Theme:       Lumina Blocks
  *
  * Centralized Document Layout Engine (High-Performance Refactored Edition).
  * Caches heavy global style array tracking via transients and standardizes runtime context execution loops.
  *
- * @package    atmos-blocks
+ * @package    lumina
  */
 
 // -------------------------------------------------------------------------
 // STATIC HELPER: RUN CONTEXT QUERIES EXACTLY ONCE PER PAGE LOAD
 // -------------------------------------------------------------------------
-// function atmos_get_layout_context_data() {
+// function lumina_get_layout_context_data() {
 // 
 // 	static $context = null;
 // 
@@ -23,13 +23,13 @@
 // 	$slug  = null;
 // 	$color = '#ffffff';
 // 
-// 	if ( is_singular() && function_exists( 'atmos_get_post_primary_category_slug' ) ) {
-// 		$slug  = atmos_get_post_primary_category_slug();
-// 		$color = function_exists( 'atmos_get_post_primary_category_color' ) ? atmos_get_post_primary_category_color() : '#ffffff';
+// 	if ( is_singular() && function_exists( 'lumina_get_post_primary_category_slug' ) ) {
+// 		$slug  = lumina_get_post_primary_category_slug();
+// 		$color = function_exists( 'lumina_get_post_primary_category_color' ) ? lumina_get_post_primary_category_color() : '#ffffff';
 // 	} elseif ( is_category() ) {
 // 		$cat_id = get_queried_object_id();
-// 		$slug   = function_exists( 'atmos_get_category_slug' ) ? atmos_get_category_slug( $cat_id ) : null;
-// 		$color  = function_exists( 'atmos_get_category_color' ) ? atmos_get_category_color( $cat_id ) : '#ffffff';
+// 		$slug   = function_exists( 'lumina_get_category_slug' ) ? lumina_get_category_slug( $cat_id ) : null;
+// 		$color  = function_exists( 'lumina_get_category_color' ) ? lumina_get_category_color( $cat_id ) : '#ffffff';
 // 	}
 // 
 // 	$context = array( 'slug' => $slug, 'color' => $color );
@@ -37,15 +37,15 @@
 // }
 
 // Hook 1: Document Class Append Matrix
-add_filter( 'body_class', 'atmos_add_body_classes', 10, 1 );
+add_filter( 'body_class', 'lumina_add_body_classes', 10, 1 );
 
-if ( ! function_exists('atmos_add_body_classes') ) :
+if ( ! function_exists('lumina_add_body_classes') ) :
  
-	function atmos_add_body_classes( $classes ) {
+	function lumina_add_body_classes( $classes ) {
 		// -------------------------------------------------------------------------
 		// 1. TRANSIENT CONTROLLED LUMINANCE IDENTIFICATION
 		// -------------------------------------------------------------------------
-		$theme_mode = get_transient( 'atmos_layout_luminance_mode' );
+		$theme_mode = get_transient( 'lumina_layout_luminance_mode' );
 
 		if ( false === $theme_mode ) {
 			// This heavy loop now executes ONLY when the transient cache expires or is cleared
@@ -90,7 +90,7 @@ if ( ! function_exists('atmos_add_body_classes') ) :
 			$theme_mode = ( $luminance < 0.5 ) ? 'is-dark-theme' : 'is-light-theme';
 			
 			// Cache the value for 12 hours to take the strain off page generation loops
-			set_transient( 'atmos_layout_luminance_mode', $theme_mode, 12 * HOUR_IN_SECONDS );
+			set_transient( 'lumina_layout_luminance_mode', $theme_mode, 12 * HOUR_IN_SECONDS );
 		}
 
 		$classes[] = $theme_mode;
@@ -98,7 +98,7 @@ if ( ! function_exists('atmos_add_body_classes') ) :
 		// -------------------------------------------------------------------------
 		// 2. ACCENT CLASS MAPPING VIA RUNTIME STATIC CACHE
 		// -------------------------------------------------------------------------
-// 		$context = atmos_get_layout_context_data();
+// 		$context = lumina_get_layout_context_data();
 // 		$slug    = $context['slug'];
 // 
 // 		if ( $slug && 'white' !== $slug ) {
@@ -112,11 +112,11 @@ if ( ! function_exists('atmos_add_body_classes') ) :
 endif;
 
 // Hook 2: Document Context Custom Property Injection
-// add_action( 'wp_head', 'atmos_inject_category_css_properties', 100 );
-// if ( ! function_exists( 'atmos_inject_category_css_properties' ) ) :
+// add_action( 'wp_head', 'lumina_inject_category_css_properties', 100 );
+// if ( ! function_exists( 'lumina_inject_category_css_properties' ) ) :
 // 	
-// 	function atmos_inject_category_css_properties() {
-// 		$context      = atmos_get_layout_context_data();
+// 	function lumina_inject_category_css_properties() {
+// 		$context      = lumina_get_layout_context_data();
 // 		$slug         = $context['slug'];
 // 		$custom_color = $context['color'];
 // 		
@@ -124,7 +124,7 @@ endif;
 // 			return;
 // 		}
 // 		
-// 		echo '<style id="atmos-category-accent-cascade">';
+// 		echo '<style id="lumina-category-accent-cascade">';
 // 		if ( 'custom' !== $slug ) {
 // 			printf( ':root { --current-category-color: var(--wp--preset--color--%s); }', esc_attr( $slug ) );
 // 		} else {
@@ -136,8 +136,8 @@ endif;
 // endif;
 
 // FLUSH CACHE WHEN GLOBAL THEME STYLES ARE SAVED OR MODIFIED
-add_action( 'after_switch_theme', 'atmos_clear_luminance_transient' );
-add_action( 'clean_theme_cache', 'atmos_clear_luminance_transient' );
-function atmos_clear_luminance_transient() {
-	delete_transient( 'atmos_layout_luminance_mode' );
+add_action( 'after_switch_theme', 'lumina_clear_luminance_transient' );
+add_action( 'clean_theme_cache', 'lumina_clear_luminance_transient' );
+function lumina_clear_luminance_transient() {
+	delete_transient( 'lumina_layout_luminance_mode' );
 }

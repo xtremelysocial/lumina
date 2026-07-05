@@ -1,10 +1,10 @@
 /**
- * File:        atmos-physics.js
- * Theme:       Atmos Blocks
+ * File:        lumina-physics.js
+ * Theme:       Lumina Blocks
  *
  * Javascript for turning cards with a single link or button into a click target.
  *
- * @package atmos-blocks
+ * @package lumina
  * @since   1.0
  */
  

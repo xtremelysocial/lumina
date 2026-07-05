@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Atmos Fixed Header
+ * Title: Lumina Fixed Header
  * Description: Header fixed to the top of the site
- * Slug: atmos-blocks/atmos-header-fixed
+ * Slug: lumina/lumina-header-fixed
  * Categories: header
  * Block Types: core/template-part/header 
  */

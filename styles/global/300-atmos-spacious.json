@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Atmos Spacious",
+	"title": "Lumina Spacious",
 	"description": "An ultra-modern, fluid mood. Organic 30px 'pebble' corners, elastic spring physics.",
 	"settings": {
 		"custom": {

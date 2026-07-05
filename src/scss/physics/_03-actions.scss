@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 24 Colors
+//	 v0.9.9 Build 25 Rename to Lumina
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -123,21 +123,21 @@
 @mixin apply-ship {
 
     // Apply physics
-    @if config.$atmos-dev-mode {
+    @if config.$lumina-dev-mode {
         @include __blueprint-lift-subtle;
     } @else {
         @extend %physics-lift-subtle;
     }
 
     // Apply Deep Shadow
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 		@include __blueprint-shadow-deep;
 	} @else {
 		@extend %physics-shadow-deep;
 	}
 
 	// Handle debug
-	@include atmos-debug('ship');
+	@include lumina-debug('ship');
 }
 
 // /* ==========================================================================
@@ -149,21 +149,21 @@
 // 	> a {
 
 		// Apply Physics
-		@if config.$atmos-dev-mode {
+		@if config.$lumina-dev-mode {
 			@include __blueprint-lift-standard;
 		} @else {
 			@extend %physics-lift-standard;
 		}
 	
 		// Apply Deep Shadow
-		@if config.$atmos-dev-mode {
+		@if config.$lumina-dev-mode {
 			@include __blueprint-shadow-deep;
 		} @else {
 			@extend %physics-shadow-deep;
 		}
 		
 		// Handle debug
-		@include atmos-debug('passenger');
+		@include lumina-debug('passenger');
 // 	}
 }
 
@@ -173,21 +173,21 @@
 @mixin apply-passenger-grow {
 
     // Apply Physics
-    @if config.$atmos-dev-mode {
+    @if config.$lumina-dev-mode {
         @include __blueprint-grow-small;
     } @else {
         @extend %physics-grow-small;
     }
 
     // Apply Deep Shadow
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 		@include __blueprint-shadow-deep;
 	} @else {
 		@extend %physics-shadow-deep;
 	}
 
 	// Handle debug
-	@include atmos-debug('passenger');
+	@include lumina-debug('passenger');
 }
 
 // ==========================================================================
@@ -212,7 +212,7 @@
 		> a {
 			&::before {
 	
-				@if config.$atmos-dev-mode {
+				@if config.$lumina-dev-mode {
 					@include __blueprint-remove-overlay;
 				} @else {
 					@extend %physics-remove-overlay;
@@ -242,7 +242,7 @@
 	@if config.$image-filter != '' {
 	
 		img {
-			@if config.$atmos-dev-mode {
+			@if config.$lumina-dev-mode {
 				@include __blueprint-filter-image;
 			} @else {
 				@extend %physics-filter-image;
@@ -272,7 +272,7 @@
 
 		> a {
 			&::after {
-				@if config.$atmos-dev-mode {
+				@if config.$lumina-dev-mode {
 					@include __blueprint-veil-reveal;
 				} @else {
 					@extend %physics-veil-reveal;
@@ -290,7 +290,7 @@
 	// Don't apply shadow if braked
 	&:not(#{config.$blocks-layout-brakes}) {	
 	
-		@if config.$atmos-dev-mode {
+		@if config.$lumina-dev-mode {
 			@include __blueprint-shadow-deep;
 		} @else {
 			@extend %physics-shadow-deep;
@@ -307,7 +307,7 @@
 	@include apply-veil-reveal;
 
 	// Handle debug
-	@include atmos-debug('wrapper-active');	
+	@include lumina-debug('wrapper-active');	
 }
 
 // ==========================================================================
@@ -321,7 +321,7 @@
 	
 		// Apply shadow directly to the image
 		img {
-			@if config.$atmos-dev-mode {
+			@if config.$lumina-dev-mode {
 				@include __blueprint-shadow-deep;
 			} @else {
 				@extend %physics-shadow-deep;
@@ -339,14 +339,14 @@
 	@include apply-veil-reveal;
 	
 	// Handle debug
-	@include atmos-debug('wrapper-active');	
+	@include lumina-debug('wrapper-active');	
 }
 
 // ==========================================================================
 // 03.26 PASSENGER ZOOM (ASSET): Dynamically scales the internal graphic
 // ==========================================================================
 @mixin apply-passenger-zoom-asset {
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 // 		@include __blueprint-grow-standard;
 		@include __blueprint-grow-large;
 	} @else {
@@ -355,7 +355,7 @@
 	}
 
 	// Handle debug
-	@include atmos-debug('passenger');	
+	@include lumina-debug('passenger');	
 }
 
 // ==========================================================================
@@ -375,7 +375,7 @@
 	opacity: 1; 
 	
 	// Debug mode
-	@include atmos-debug('sovereign');
+	@include lumina-debug('sovereign');
 }
 
 %physics-sovereign {
@@ -386,7 +386,7 @@
 }
 
 @mixin apply-sovereign {
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 		@include __blueprint-sovereign;
 	} @else {
 		@extend %physics-sovereign;
@@ -403,7 +403,7 @@
 	transform: none;
 
 	// Debug mode    
-	@include atmos-debug('silence-active');
+	@include lumina-debug('silence-active');
 }
 
 %physics-silence {
@@ -414,7 +414,7 @@
 }
 
 @mixin apply-silence {
-	@if config.$atmos-dev-mode {	
+	@if config.$lumina-dev-mode {	
 		@include __blueprint-silence;
 	} @else {
 		@extend %physics-silence;
@@ -431,7 +431,7 @@
 // 	transform: none;
 
 	// Debug mode    
-	@include atmos-debug('silence-shadow');
+	@include lumina-debug('silence-shadow');
 }
 
 %physics-silence {
@@ -442,7 +442,7 @@
 }
 
 @mixin apply-silence-shadow {
-	@if config.$atmos-dev-mode {	
+	@if config.$lumina-dev-mode {	
 		@include __blueprint-silence-shadow;
 	} @else {
 		@extend %physics-silence-shadow;

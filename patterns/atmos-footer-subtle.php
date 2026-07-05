@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Atmos Subtle Footer
+ * Title: Lumina Subtle Footer
  * Description: Footer with subtle primary colors
- * Slug: atmos-blocks/atmos-footer-subtle
+ * Slug: lumina/lumina-footer-subtle
  * Categories: footer
  * Block Types: core/template-part/footer 
  */

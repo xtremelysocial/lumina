@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Atmos Features 3 Columns (Light)
- * Slug: atmos-blocks/features-3-columns-light
- * Categories: atmos
+ * Title: Lumina Features 3 Columns (Light)
+ * Slug: lumina/features-3-columns-light
+ * Categories: lumina
  */
 ?>
 <!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->

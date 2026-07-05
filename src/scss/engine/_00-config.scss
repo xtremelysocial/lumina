@@ -1,10 +1,10 @@
 //* ==========================================================================
-//   00 ATMOS CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 24 Colors
+//   00 LUMINA CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
+//	 	v0.9.9 Build 25 Rename to Lumina
 //   ========================================================================== */
 
 // ==========================================================================
-// ATMOS BLOCK REGISTRY: Declare each block and how the engine handles it
+// LUMINA BLOCK REGISTRY: Declare each block and how the engine handles it
 // Schema: (Block, Is, Has, Trigger, Target, Spacing, Role)
 // ==========================================================================
 
@@ -21,7 +21,7 @@ $registry-defaults: (
 );
 
 // PUT WILDCARDS AND/OR SPECIFIC BLOCKS INTO THE REGISTRY
-$atmos-block-registry: (
+$lumina-block-registry: (
 
 	// --------------------------------------------------------------------------
 	// SHIPS (Wildcard works great here, but you can override for specific blocks)
@@ -202,8 +202,8 @@ $html-button-spacing: var(--wp--preset--spacing--30);
 // * 00.3 PHYSICS VARIABLES: Animation for grow and shift up
 // */
 // Animation for grow and shift up
-$atmos-timing: 			var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
-$atmos-timing-medium: 	var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+$lumina-timing: 			var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+$lumina-timing-medium: 	var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 
 // Growth
 $grow-small: 			var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
@@ -232,8 +232,8 @@ $veil-hover-opacity: 	1; //var(--wp--custom--color--veil--hover-opacity, 0.85);
 //**
 // * 00.5 DEBUGGING: Outline colors for visual debugging
 // */
-$atmos-debug: 			false; // Turns on debug outlines
-$atmos-dev-mode: 		true; // Separates selectors (larger file size)
+$lumina-debug: 			false; // Turns on debug outlines
+$lumina-dev-mode: 		true; // Separates selectors (larger file size)
 
 $debug-registry:   		1px dashed #ff8c00; // Orange
 $debug-wrapper:   		1px dashed #ff8c00; //#ff00ff; // Purple

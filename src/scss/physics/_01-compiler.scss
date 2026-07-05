@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 24 Colors
+//	 v0.9.9 Build 25 Rename to Lumina
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -112,9 +112,9 @@
 // ==========================================================================
 // 01.04 VISUAL DEBUG: Set outline colors and styles based on engine logic
 // ==========================================================================
-@mixin atmos-debug($role) {
+@mixin lumina-debug($role) {
 
-    @if config.$atmos-debug {
+    @if config.$lumina-debug {
 
 		// GET THE DEBUG OUTLINE
         $debug-val: map.get((

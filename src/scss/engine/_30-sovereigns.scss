@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
-// 	    v0.9.9 Build 24 Colors
+// 	    v0.9.9 Build 25 Rename to Lumina
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -11,14 +11,14 @@
 
 @mixin apply-sovereign-logic($interactive: false) {
 
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 	/* ==========================================================================
 	   30 SOVEREIGNS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
 	   ========================================================================== */
 	}
 
 	// LOOP THROUGH SOVEREIGNS IN OUR PHYSICS MAP
-	@each $entry in config.$atmos-block-registry {
+	@each $entry in config.$lumina-block-registry {
 
 		// 1. MERGE REGISTRY ENTRY WITH DEFAULTS
 		$config: map.merge(config.$registry-defaults, $entry);
@@ -37,7 +37,7 @@
 			$spacing: map.get($config, spacing);
 
 			// ----------------------------------------------------------------------
-			// PHASE 1: RESTING STATE (Rendered to atmos-engine.css)
+			// PHASE 1: RESTING STATE (Rendered to lumina-engine.css)
 			// ----------------------------------------------------------------------
 			@if not $interactive {
 
@@ -64,7 +64,7 @@
 				}
 
 			// ----------------------------------------------------------------------
-			// PHASE 2: INTERACTION STATE (Rendered to atmos-interactions.css)
+			// PHASE 2: INTERACTION STATE (Rendered to lumina-interactions.css)
 			// ----------------------------------------------------------------------
 			} @else {
 			

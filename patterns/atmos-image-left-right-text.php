@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Atmos Image with Left and Right Text
- * Slug: atmos-blocks/atmos-image-left-right-text
- * Categories: atmos
+ * Title: Lumina Image with Left and Right Text
+ * Slug: lumina/lumina-image-left-right-text
+ * Categories: lumina
  */
 ?>
 <!-- wp:group {"align":"wide","className":"is-style-rounded-border","backgroundColor":"primary","layout":{"type":"constrained"}} -->

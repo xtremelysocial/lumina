@@ -1,5 +1,5 @@
 // /* ==========================================================================
-//    ATMOS INTERACTIONS: Handles all :hover and active state physics
+//    LUMINA INTERACTIONS: Handles all :hover and active state physics
 //    ========================================================================== */
 
 // Load all needed mixins
@@ -11,10 +11,10 @@
 @use 'engine/30-sovereigns' as sovereigns;
 @use 'engine/40-vetos' as vetos;
 
-@if config.$atmos-dev-mode {
+@if config.$lumina-dev-mode {
 /* ==========================================================================
-   ATMOS INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 24 Colors
+   LUMINA INTERACTIONS: Handles all :hover and active state physics
+   v0.9.9 Build 25 Rename to Lumina
    ========================================================================== */
 }
 

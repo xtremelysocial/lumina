@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Atmos Dashboard Feature Grid (Light)
- * Slug: atmos-blocks/dashboard-feature-grid-light
- * Categories: atmos
+ * Title: Lumina Dashboard Feature Grid (Light)
+ * Slug: lumina/dashboard-feature-grid-light
+ * Categories: lumina
  */
 ?>
 <!-- wp:group {"align":"wide","layout":{"type":"constrained"} -->

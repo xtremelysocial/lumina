@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Atmos Features 3 Columns (Shadowed & Rounded)
- * Slug: atmos-blocks/atmos-features-3-columns
- * Categories: atmos
+ * Title: Lumina Features 3 Columns (Shadowed & Rounded)
+ * Slug: lumina/lumina-features-3-columns
+ * Categories: lumina
  */
 ?>
 <!-- wp:group {"align":"wide","backgroundColor":"secondary","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->

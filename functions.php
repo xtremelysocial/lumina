@@ -1,13 +1,13 @@
 <?php
 /**
  * File:	functions.php
- * Theme:	Atmos Blocks 
+ * Theme:	Lumina 
  * 
- * Atmos Blocks functions and definitions
+ * Lumina functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package atmos-blocks
+ * @package lumina
  * @since	1.0
  */
 
@@ -24,7 +24,7 @@ $includes = array (
 );
 
 // Allow child themes to override the list of PHP files to load
-$includes = apply_filters( 'atmos_load_includes', $includes );
+$includes = apply_filters( 'lumina_load_includes', $includes );
 
 // Load each of the include files
 foreach ( $includes as $include ) {
@@ -37,11 +37,11 @@ foreach ( $includes as $include ) {
 /**
  * Sets up theme defaults and registers support for various WordPress features
  */
-add_action( 'after_setup_theme', 'atmos_theme_support' );
+add_action( 'after_setup_theme', 'lumina_theme_support' );
 
-if ( ! function_exists( 'atmos_theme_support' ) ) :
+if ( ! function_exists( 'lumina_theme_support' ) ) :
 
-	function atmos_theme_support() {
+	function lumina_theme_support() {
 
 		// Set the standard post thumbnail image size for the blog (Center Cropped)
 // 		set_post_thumbnail_size( 1100, 619, true );
@@ -58,8 +58,8 @@ if ( ! function_exists( 'atmos_theme_support' ) ) :
 		// Enqueue the styles needed for the editor. Do this here to 
 		// avoid interfering with the Editor UI. 
 // 		$editor_styles = array(
-// 			'/assets/css/atmos-theme.css',
-// 			'/assets/css/atmos-engine.css',
+// 			'/assets/css/lumina-theme.css',
+// 			'/assets/css/lumina-engine.css',
 // // 			'/assets/css/editor-styles.css',
 // 		);
 // 
@@ -73,32 +73,32 @@ endif;
  * Note: Medium Large is standard WordPress 768px but isn't exposed to the 
  * user by default.
  */
-add_filter( 'image_size_names_choose', 'atmos_image_sizes' );
+add_filter( 'image_size_names_choose', 'lumina_image_sizes' );
 
-if ( ! function_exists( 'atmos_image_sizes' ) ) :
-	function atmos_image_sizes( $sizes ) {
+if ( ! function_exists( 'lumina_image_sizes' ) ) :
+	function lumina_image_sizes( $sizes ) {
 		return array_merge( $sizes, array(
-// 			'cropped-thumbnail' => __( 'Atmos Column Feature (760px cropped)', 'atmos-blocks' ),
-// 			'medium-large' 		=> __( 'Medium Large (768px)', 'atmos-blocks' ),
-// 			'cropped-large' 	=> __( 'Atmos Page Hero (1100px cropped)', 'atmos-blocks' ),		
-			'cropped-slim' 		=> __( 'Atmos Slim Banner 16:4.5 (1100px cropped)', 'atmos-blocks' ),
+// 			'cropped-thumbnail' => __( 'Lumina Column Feature (760px cropped)', 'lumina' ),
+// 			'medium-large' 		=> __( 'Medium Large (768px)', 'lumina' ),
+// 			'cropped-large' 	=> __( 'Lumina Page Hero (1100px cropped)', 'lumina' ),		
+			'cropped-slim' 		=> __( 'Lumina Slim Banner 16:4.5 (1100px cropped)', 'lumina' ),
 		) );
 	}
 endif;
 
 /**
- * ATMOS THEME CSS
+ * LUMINA THEME CSS
  */
-function atmos_load_styles() {
+function lumina_load_styles() {
 
 	// Get the theme version
 	$version = wp_get_theme()->get( 'Version' ) ?? false;
 
 	// Set the CSS path and URI
-    $css_uri = get_stylesheet_directory_uri() . '/assets/css/atmos-theme.css';
-    $css_path = get_stylesheet_directory() . '/assets/css/atmos-theme.css';
+    $css_uri = get_stylesheet_directory_uri() . '/assets/css/lumina-theme.css';
+    $css_path = get_stylesheet_directory() . '/assets/css/lumina-theme.css';
 
-    // Atmos Engine Resting State CSS
+    // Lumina Engine Resting State CSS
 	if ( file_exists( $css_path ) ) {
 
 		// Use specific asset version if there is one
@@ -109,38 +109,38 @@ function atmos_load_styles() {
 		}
 
         wp_register_style(
-            'atmos-theme',
+            'lumina-theme',
             $css_uri,
 			array(),            
 			$asset_version ?? $version
         );
         
-		wp_enqueue_style( 'atmos-theme' );
+		wp_enqueue_style( 'lumina-theme' );
     }
 }
 
-// add_action( 'wp_enqueue_scripts', 'atmos_load_styles' );
-add_action( 'enqueue_block_assets', 'atmos_load_styles' );
+// add_action( 'wp_enqueue_scripts', 'lumina_load_styles' );
+add_action( 'enqueue_block_assets', 'lumina_load_styles' );
 
 /**
- * ATMOS PHYSICS CSS: Load core engine on front-end and backend. Load 
+ * LUMINA PHYSICS CSS: Load core engine on front-end and backend. Load 
  * animation only on the front-end.
  */
-function atmos_load_physics_styles() {
+function lumina_load_physics_styles() {
 
 	// Get the theme version
 	$version = wp_get_theme()->get( 'Version' ) ?? false;
     
-    // Get the Atmos Engine css
-    $engine_uri = get_stylesheet_directory_uri() . '/assets/css/atmos-engine.css';
-    $engine_path = get_stylesheet_directory() . '/assets/css/atmos-engine.css';
+    // Get the Lumina Engine css
+    $engine_uri = get_stylesheet_directory_uri() . '/assets/css/lumina-engine.css';
+    $engine_path = get_stylesheet_directory() . '/assets/css/lumina-engine.css';
     
-    $interaction_uri = get_stylesheet_directory_uri() . '/assets/css/atmos-interactions.css';
-    $interaction_path = get_stylesheet_directory() . '/assets/css/atmos-interactions.css';
+    $interaction_uri = get_stylesheet_directory_uri() . '/assets/css/lumina-interactions.css';
+    $interaction_path = get_stylesheet_directory() . '/assets/css/lumina-interactions.css';
 
     // 1. REGISTER handles for CSS first to establish the "library"
     
-    // Atmos Engine Resting State CSS
+    // Lumina Engine Resting State CSS
 // 	if ( ! is_admin()	
 //     	AND file_exists( $engine_path ) ) {
 	if ( file_exists( $engine_path ) ) {
@@ -153,14 +153,14 @@ function atmos_load_physics_styles() {
 		}
 
         wp_register_style(
-            'atmos-engine',
+            'lumina-engine',
             $engine_uri,
-            array('atmos-theme'),
+            array('lumina-theme'),
 			$asset_version ?? $version
         );
     }
 
-	// Atmos Engine Interactive State CSS
+	// Lumina Engine Interactive State CSS
 	if ( ! is_admin()	
     	AND file_exists( $interaction_path ) ) {
 
@@ -172,42 +172,42 @@ function atmos_load_physics_styles() {
 		}
 
         wp_register_style(
-            'atmos-interactions',
+            'lumina-interactions',
             $interaction_uri,
-            array('atmos-engine'), 
+            array('lumina-engine'), 
 			$asset_version ?? $version
         );
     }
 
     // 2. ENQUEUE CSS - This actually puts them on the page
 // 	if ( ! is_admin() ) {
-	    wp_enqueue_style( 'atmos-engine' );
+	    wp_enqueue_style( 'lumina-engine' );
 
 	if ( ! is_admin() ) {
-    	wp_enqueue_style( 'atmos-interactions' );
+    	wp_enqueue_style( 'lumina-interactions' );
     }    
 }
 
-// add_action( 'wp_enqueue_scripts', 'atmos_load_physics_styles' );
+// add_action( 'wp_enqueue_scripts', 'lumina_load_physics_styles' );
 
 // if ( ! is_admin() ) {
-	add_action( 'enqueue_block_assets', 'atmos_load_physics_styles' );
+	add_action( 'enqueue_block_assets', 'lumina_load_physics_styles' );
 // }
 
 /**
- * ATMOS GRAVITY ENGINE JS: Only on Front-end.
+ * LUMINA GRAVITY ENGINE JS: Only on Front-end.
  */
-function atmos_load_scripts() {
+function lumina_load_scripts() {
 
-    $js_uri = get_stylesheet_directory_uri() . '/assets/js/atmos-physics.js';
-    $js_path = get_stylesheet_directory() . '/assets/js/atmos-physics.js';
+    $js_uri = get_stylesheet_directory_uri() . '/assets/js/lumina-physics.js';
+    $js_path = get_stylesheet_directory() . '/assets/js/lumina-physics.js';
 
 	if ( ! is_admin()	
     	AND file_exists( $js_path ) ) {
 
 		$theme_version = wp_get_theme()->get( 'Version' ) ?? false;			
 		wp_enqueue_script( 
-			'atmos-physics', 
+			'lumina-physics', 
 			$js_uri,
 			array('jquery'), 
 			$theme_version, 
@@ -217,23 +217,23 @@ function atmos_load_scripts() {
 }
 
 // Conditionally load javascript that turns cards into links
-if ( apply_filters( 'atmos_card_link_js', true ) ) {
-	add_action( 'wp_enqueue_scripts', 'atmos_load_scripts' );
+if ( apply_filters( 'lumina_card_link_js', true ) ) {
+	add_action( 'wp_enqueue_scripts', 'lumina_load_scripts' );
 }
 
 /**
  * Register Featured Image Block Binding for the Core Image Block
- * Built for Atmos Design Engine
+ * Built for Lumina Design Engine
  */
-// add_action( 'init', 'record_atmos_featured_image_binding' );
-// function record_atmos_featured_image_binding() {
-// 	register_block_bindings_source( 'atmos/featured-image', array(
-// 		'label'              => __( 'Featured Image (Atmos)', 'atmos' ),
-// 		'get_value_callback' => 'atmos_featured_image_binding_callback',
+// add_action( 'init', 'record_lumina_featured_image_binding' );
+// function record_lumina_featured_image_binding() {
+// 	register_block_bindings_source( 'lumina/featured-image', array(
+// 		'label'              => __( 'Featured Image (Lumina)', 'lumina' ),
+// 		'get_value_callback' => 'lumina_featured_image_binding_callback',
 // 	) );
 // }
 // 
-// function atmos_featured_image_binding_callback( $source_args, $block_instance, $attribute_name ) {
+// function lumina_featured_image_binding_callback( $source_args, $block_instance, $attribute_name ) {
 // 	// Don't render anything if the post lacks a featured image asset
 // 	if ( ! has_post_thumbnail() ) {
 // 		return null;

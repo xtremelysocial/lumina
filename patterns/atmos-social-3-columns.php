@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Atmos Social 3 Columns
- * Slug: atmos-blocks/atmos-social-3-columns
- * Categories: atmos
+ * Title: Lumina Social 3 Columns
+ * Slug: lumina/lumina-social-3-columns
+ * Categories: lumina
  */
 ?>
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} -->

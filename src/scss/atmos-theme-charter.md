@@ -1,15 +1,15 @@
-# Atmos Theme Project Charter  
+# Lumina Theme Project Charter  
   
-## Atmos Charter: Section 1 - Project Vision & Objectives  
+## Lumina Charter: Section 1 - Project Vision & Objectives  
 ***v0.9.8 NEEDS UPDATES FOR v09.9***  
   
 ### 1.1 The "Modern Post-Flat Era" (Flat 3.0)  
   
-Atmos defines the next evolution of web aesthetics by moving past the sterile, functional constraints of the early flat design era. It introduces **Flat 3.0**, a highly disciplined visual system where structural minimalism meets realistic ambient lighting, depth, and kinetic responsiveness. Atmos does not rely on heavy skeuomorphic textures; instead, it establishes an intentional digital physics engine that leverages the natural properties of light, transparency, and motion to create a premium, tactile, and highly interactive user experience.  
+Lumina defines the next evolution of web aesthetics by moving past the sterile, functional constraints of the early flat design era. It introduces **Flat 3.0**, a highly disciplined visual system where structural minimalism meets realistic ambient lighting, depth, and kinetic responsiveness. Lumina does not rely on heavy skeuomorphic textures; instead, it establishes an intentional digital physics engine that leverages the natural properties of light, transparency, and motion to create a premium, tactile, and highly interactive user experience.  
   
 ### 1.2 Mood-Based Global Theme Styles  
   
-Rather than enforcing static, rigid design patterns, Atmos is architected around the concept of **Mood-Based Global Styles**. Every aesthetic element—including subtle monochromatic variations, targeted font pairings, and sophisticated visual effects like glassmorphism and liquid glass—adapts contextually to evoke specific user emotions. Color palettes shift through highly intentional variations, anchoring complex box-shadow layering and structural depth to perfectly complement the emotional and functional tone of the content.  
+Rather than enforcing static, rigid design patterns, Lumina is architected around the concept of **Mood-Based Global Styles**. Every aesthetic element—including subtle monochromatic variations, targeted font pairings, and sophisticated visual effects like glassmorphism and liquid glass—adapts contextually to evoke specific user emotions. Color palettes shift through highly intentional variations, anchoring complex box-shadow layering and structural depth to perfectly complement the emotional and functional tone of the content.  
   
 ### 1.3 Objectives & Technical Philosophy  
   
@@ -19,7 +19,7 @@ Rather than enforcing static, rigid design patterns, Atmos is architected around
   
 • **Cascade Isolation:** Ensure complete separation between functional layouts and advanced interactive design tokens through clean specificity ceiling rules.  
   
-## Atmos Charter: Section 2 - Atmos Theme Guidelines  
+## Lumina Charter: Section 2 - Lumina Theme Guidelines  
   
 To preserve the visual integrity of the "Modern Post-Flat Era" (Flat 3.0), the theme adheres to strict design and structural constraints:  
   
@@ -35,7 +35,7 @@ Font pairings must balance high-contrast weight distributions. Large headings ar
 ### 2.4. **The Kinetic Continuity Guardrail:**   
 No movement, scaling, or interactive translation offset can occur instantly. Every hover, focus, and exit animation must follow unified timing functions and duration tokens defined in the config.  
   
-## Atmos Charter: Section 3 - Atmos Physics Engine Guidelines  
+## Lumina Charter: Section 3 - Lumina Physics Engine Guidelines  
   
 **Hard Line Stance on Specificity by Role**. Returning to this foundational logic is exactly how we solve the nested ship lift without breaking the system or escalating weights arbitrarily.  
 The entire principle rests on giving every single role in the engine an immutable, programmatic **Specificity Tier**. We do this by controlling exactly how many raw class tokens sit *outside* of the flattening :where() wrapper.  
@@ -94,7 +94,7 @@ Custom block styles engineered to match attribute ships. |
 
 Absolute freedom layout-blind; shatters all floor freezes. |
   
-## Atmos Charter: Section 4: WordPress Core Governing Map  
+## Lumina Charter: Section 4: WordPress Core Governing Map  
   
   
   
@@ -121,7 +121,7 @@ Absolute freedom layout-blind; shatters all floor freezes. |
     - [ ] wp-block-columns.has-background  
     - [ ] Wp-block-column.has-background  
     - [ ] Table Cells (or whatever is colored: rows or columns?).has-background  
-- [ ] Never Animate ($atmos-static-floors)  
+- [ ] Never Animate ($lumina-static-floors)  
     - [ ] Alignfull  
     - [ ] Is-style-object-plain  
   
@@ -133,7 +133,7 @@ Absolute freedom layout-blind; shatters all floor freezes. |
 2. Sovereigns (buttons and button-like blocks) are *always* 100% of the time activated. Even if full-width (and we won’t add a custom class of is-style-object-plain for them)  
 3. Images are tagged as “passenger” in the physics map (wp-block-image, wp-block-gallery wp-block-image, featured post images, etc.). They are complex and should have their own logic in the engine that is similar in principle to ships, but based on different “promotion” criteria. They will behave one of two ways:  
     1. If they are links, then they are promoted to Sovereign, meaning always active regardless of parent.   
-    2. If thy are not links, then they animate when not in a ship only. If in a ship, they “stand down”. If we were to leave them static, then a user scrolling through page content is going to get “bored” in colored edge-to-edge sections that aren’t ships. In Atmos, our block patterns should be designed specifically to “train” the user on how to build patterns that work *with* the engine as opposed to against it (i.e. most patterns *not* full-width so the containers are ships), but we can’t force this on users that want to have static colored sections.   
+    2. If thy are not links, then they animate when not in a ship only. If in a ship, they “stand down”. If we were to leave them static, then a user scrolling through page content is going to get “bored” in colored edge-to-edge sections that aren’t ships. In Lumina, our block patterns should be designed specifically to “train” the user on how to build patterns that work *with* the engine as opposed to against it (i.e. most patterns *not* full-width so the containers are ships), but we can’t force this on users that want to have static colored sections.   
     3. We do need some way to make sure the user isn’t confused on what images are decoration and just slightly reacting to touch versus ready to leap into action. We can’t rely on resting shadow because images on dark backgrounds, they won’t be visible. We can’t just add a border to the linked ones because images could have borders already. Unless we handle images similar to ships but we use .has-border instead of has-background. We could also have always-bordered css classes for images in the map. We could potentially remove the border on images that aren’t links but that may irritate users. We are currently growing linked images, but it would be much better if could have them “zoom-in in place” (set overflow hidden on the figure wp-block-image and zoom the image itself). With Grow, we have to deal with the caption within the wp-block-image too. With zoom in place, we should be able to handle the caption somehow.  
 4. Non-Image passengers (e.g. wp-block-column, wp-block-table rows/columns/cells) are “passenger” in the physics map. These won’t have links so the logic is simpler.  
     1. If in a ship, they stand down.  
@@ -147,7 +147,7 @@ Absolute freedom layout-blind; shatters all floor freezes. |
 7. The veto  
     1. When there are complex rules around conditional promotion of sovereigns or images or passengers, we will use just slightly higher specificity to “stand down” the ones we aren’t promoting. This keeps the hornets nests of css selectors down. We will avoid using !important if it all possible. We should focus on leveraging how CSS cascades.   
   
-## Atmos Charter: Section 5 - Coding Rules & Protocols  
+## Lumina Charter: Section 5 - Coding Rules & Protocols  
   
 ### 5.1. Rule of the Ceiling  
 No selector written in any layer below Layer 6 may ever exceed **31 points** of specificity unless using explicit opt-in overrides.  

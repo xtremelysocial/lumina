@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Atmos Dark Fixed Header
+ * Title: Lumina Dark Fixed Header
  * Description: Dark header fixed to the top of the site
- * Slug: atmos-blocks/atmos-header-fixed-dark
+ * Slug: lumina/lumina-header-fixed-dark
  * Categories: header
  * Block Types: core/template-part/header 
  */

@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   40 VETOS: Centralized Nesting Boundary Controller
-//	    v0.9.9 Build 24 Colors
+//	    v0.9.9 Build 25 Rename to Lumina
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -10,7 +10,7 @@
 
 @mixin apply-veto-logic($interactive: false) {
 
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 	/* ==========================================================================
 	   40 VETOS: Veto embedded Ships and Passengers
 	  ========================================================================== */

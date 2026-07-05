@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Atmos CTA 2 Columns (Shadowed & Rounded)
- * Slug: atmos-blocks/atmos-cta-2-columns
+ * Title: Lumina CTA 2 Columns (Shadowed & Rounded)
+ * Slug: lumina/lumina-cta-2-columns
  * Categories: call-to-action
  * Block Types: core/group
  */

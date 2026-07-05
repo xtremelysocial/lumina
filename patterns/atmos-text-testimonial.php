@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Atmos Text Testimonial
- * Slug: atmos-blocks/atmos-text-testimonial
- * Categories: atmos
+ * Title: Lumina Text Testimonial
+ * Slug: lumina/lumina-text-testimonial
+ * Categories: lumina
  */
 ?>
 <!-- wp:group {"align":"wide","backgroundColor":"secondary-subtle","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->

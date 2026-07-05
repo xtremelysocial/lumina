@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Atmos Subscription Tables 3 Columns
- * Slug: atmos-blocks/atmos-sub-tables-3-columns
+ * Title: Lumina Subscription Tables 3 Columns
+ * Slug: lumina/lumina-sub-tables-3-columns
  * Categories: column, featured
  * Block Types: core/group
  */

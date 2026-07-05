@@ -1,19 +1,19 @@
 <?php
 /**
  * File:        default-image.php
- * Theme:       Atmos Blocks
+ * Theme:       Lumina Blocks
  *
- * Unified Media Architecture for Atmos. Handles native image blocks,
+ * Unified Media Architecture for Lumina. Handles native image blocks,
  * block bindings, cover toggles, lightboxes, and legacy post loops.
  *
- * @package     atmos-blocks
+ * @package     lumina
  */
 
 /**
  * 1. THE ENGINE CORE
  * Generates a consistent, pseudo-random layout asset based on Post ID.
  */
-function atmos_get_featured_image_fallback_data( $post_id = null ) {
+function lumina_get_featured_image_fallback_data( $post_id = null ) {
 	$pid  = $post_id ? $post_id : get_the_ID();
 	$path = 'assets/images/';
 	
@@ -48,16 +48,16 @@ function atmos_get_featured_image_fallback_data( $post_id = null ) {
 /**
  * 2. THE MODERN INTERCEPT: Block Bindings API
  */
-// add_action( 'init', 'register_atmos_featured_image_binding' );
-// function register_atmos_featured_image_binding() {
-// 	register_block_bindings_source( 'atmos/featured-image', [
-// 		'label'              => __( 'Featured Image (Atmos)', 'atmos' ),
+// add_action( 'init', 'register_lumina_featured_image_binding' );
+// function register_lumina_featured_image_binding() {
+// 	register_block_bindings_source( 'lumina/featured-image', [
+// 		'label'              => __( 'Featured Image (Lumina)', 'lumina' ),
 // 		'uses_context'       => [ 'postId' ],
-// 		'get_value_callback' => 'atmos_featured_image_binding_callback',
+// 		'get_value_callback' => 'lumina_featured_image_binding_callback',
 // 	] );
 // }
 
-// function atmos_featured_image_binding_callback( $source_args, $block_instance, $attribute_name ) {
+// function lumina_featured_image_binding_callback( $source_args, $block_instance, $attribute_name ) {
 // 	$post_id = isset( $block_instance->context['postId'] ) ? $block_instance->context['postId'] : get_the_ID();
 // 	if ( ! $post_id ) {
 // 		return null;
@@ -75,24 +75,24 @@ function atmos_get_featured_image_fallback_data( $post_id = null ) {
 // 		}
 // 	}
 // 
-// 	$fallback = atmos_get_featured_image_fallback_data( $post_id );
+// 	$fallback = lumina_get_featured_image_fallback_data( $post_id );
 // 	return isset( $fallback[ $attribute_name ] ) ? $fallback[ $attribute_name ] : null;
 // }
 
 /**
  * JS BRIDGE: Registers the binding source properly in Gutenberg.
  */
-// add_action( 'enqueue_block_editor_assets', 'atmos_register_editor_block_bindings_bridge' );
-// function atmos_register_editor_block_bindings_bridge() {
+// add_action( 'enqueue_block_editor_assets', 'lumina_register_editor_block_bindings_bridge' );
+// function lumina_register_editor_block_bindings_bridge() {
 // 	$js_code = "
 // 		window.addEventListener('DOMContentLoaded', function() {
 // 			if ( window.wp && window.wp.blocks && window.wp.blocks.registerBlockBindingsSource ) {
 // 				window.wp.blocks.registerBlockBindingsSource({
-// 					name: 'atmos/featured-image',
-// 					label: 'Featured Image (Atmos)',
+// 					name: 'lumina/featured-image',
+// 					label: 'Featured Image (Lumina)',
 // 					getValues: function() {
 // 						return {
-// 							url: 'data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"40\" viewBox=\"0 0 100 40\"><rect width=\"100%\" height=\"100%\" fill=\"%232c3539\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"%23fff\" font-family=\"sans-serif\" font-size=\"6\">Atmos Binding Preview</text></svg>',
+// 							url: 'data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"40\" viewBox=\"0 0 100 40\"><rect width=\"100%\" height=\"100%\" fill=\"%232c3539\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"%23fff\" font-family=\"sans-serif\" font-size=\"6\">Lumina Binding Preview</text></svg>',
 // 							alt: 'Featured Image'
 // 						};
 // 					}
@@ -107,10 +107,10 @@ function atmos_get_featured_image_fallback_data( $post_id = null ) {
  * 3. THE NATIVE LIGHTBOX ENABLER
  * Dynamically injects the real attachment ID into bound image blocks before rendering.
  */
-// add_filter( 'render_block_data', 'atmos_inject_featured_image_id_to_block', 10, 2 );
-// function atmos_inject_featured_image_id_to_block( $block, $parsed_block ) {
+// add_filter( 'render_block_data', 'lumina_inject_featured_image_id_to_block', 10, 2 );
+// function lumina_inject_featured_image_id_to_block( $block, $parsed_block ) {
 // 	if ( isset( $block['blockName'] ) && 'core/image' === $block['blockName'] ) {
-// 		if ( isset( $block['attrs']['metadata']['bindings']['url']['source'] ) && $block['attrs']['metadata']['bindings']['url']['source'] === 'atmos/featured-image' ) {
+// 		if ( isset( $block['attrs']['metadata']['bindings']['url']['source'] ) && $block['attrs']['metadata']['bindings']['url']['source'] === 'lumina/featured-image' ) {
 // 			$post_id = get_the_ID();
 // 			if ( $post_id ) {
 // 				$thumb_id = get_post_thumbnail_id( $post_id );
@@ -127,9 +127,9 @@ function atmos_get_featured_image_fallback_data( $post_id = null ) {
  * 4. THE LAYOUT CLASS INJECTION
  * Inject a custom style hook class into bound images so we can crop them safely via CSS.
  */
-// add_filter( 'render_block_core/image', 'atmos_force_dimensions_on_bound_image', 20, 2 );
-// function atmos_force_dimensions_on_bound_image( $block_content, $block ) {
-// 	if ( isset( $block['attrs']['metadata']['bindings']['url']['source'] ) && $block['attrs']['metadata']['bindings']['url']['source'] === 'atmos/featured-image' ) {
+// add_filter( 'render_block_core/image', 'lumina_force_dimensions_on_bound_image', 20, 2 );
+// function lumina_force_dimensions_on_bound_image( $block_content, $block ) {
+// 	if ( isset( $block['attrs']['metadata']['bindings']['url']['source'] ) && $block['attrs']['metadata']['bindings']['url']['source'] === 'lumina/featured-image' ) {
 // 		
 // 		// Injects our target selector class onto the opening block element
 // 		$block_content = preg_replace( '/class=["\']/', '$0is-pano-banner ', $block_content, 1 );
@@ -140,10 +140,10 @@ function atmos_get_featured_image_fallback_data( $post_id = null ) {
 /**
  * 5. THE COVER TOGGLE INTERCEPT
  */
-add_filter( 'render_block_core/cover', 'atmos_filter_cover_block_fallback', 10, 2 );
-function atmos_filter_cover_block_fallback( $block_content, $block ) {
+add_filter( 'render_block_core/cover', 'lumina_filter_cover_block_fallback', 10, 2 );
+function lumina_filter_cover_block_fallback( $block_content, $block ) {
 	if ( ! empty( $block['attrs']['useFeaturedImage'] ) && ! has_post_thumbnail( get_the_ID() ) ) {
-		$fallback = atmos_get_featured_image_fallback_data( get_the_ID() );
+		$fallback = lumina_get_featured_image_fallback_data( get_the_ID() );
 		
 		if ( preg_match( '/src=["\']([^"\']*)["\']/i', $block_content ) ) {
 			$block_content = preg_replace( '/src=["\']([^"\']*)["\']/', 'src="' . esc_url( $fallback['url'] ) . '"', $block_content );
@@ -158,17 +158,17 @@ function atmos_filter_cover_block_fallback( $block_content, $block ) {
  * Intercepts missing post thumbnails and injects uniform theme placeholders 
  * leveraging dynamic regex dimension matching and utility helper mapping.
  */
-add_filter( 'post_thumbnail_html', 'atmos_filter_legacy_post_thumbnail_html', 10, 5 );
+add_filter( 'post_thumbnail_html', 'lumina_filter_legacy_post_thumbnail_html', 10, 5 );
 
-if ( ! function_exists( 'atmos_filter_legacy_post_thumbnail_html' ) ) :
+if ( ! function_exists( 'lumina_filter_legacy_post_thumbnail_html' ) ) :
 
-	function atmos_filter_legacy_post_thumbnail_html( $html, $pid, $post_thumbnail_id, $size, $attr ) {
+	function lumina_filter_legacy_post_thumbnail_html( $html, $pid, $post_thumbnail_id, $size, $attr ) {
 
 		/* If no post featured image, but there is a post, then set the default image */
 		if ( ! $html && $pid ) {
 			
 			// Pull path and alt data out of our unified fallback data engine
-			$fallback = atmos_get_featured_image_fallback_data( $pid );
+			$fallback = lumina_get_featured_image_fallback_data( $pid );
 			
 			$image_class = $size ? "attachment-{$size} size-{$size} wp-post-image" : 'wp-post-image';
 			
@@ -201,9 +201,9 @@ endif;
  * This ensures blocks (like Latest Posts and Query Loops) write the image wrappers
  * for posts that don't have user-uploaded media.
  */
-add_filter( 'has_post_thumbnail', 'atmos_has_post_thumbnail_fallback', 10, 3 );
-if ( ! function_exists( 'atmos_has_post_thumbnail_fallback' ) ) :
-	function atmos_has_post_thumbnail_fallback( $has_thumbnail, $post, $thumbnail_id ) {
+add_filter( 'has_post_thumbnail', 'lumina_has_post_thumbnail_fallback', 10, 3 );
+if ( ! function_exists( 'lumina_has_post_thumbnail_fallback' ) ) :
+	function lumina_has_post_thumbnail_fallback( $has_thumbnail, $post, $thumbnail_id ) {
 		return true;
 	}
 endif;
@@ -213,11 +213,11 @@ endif;
  * Intercepts missing post thumbnails and injects uniform theme placeholders 
  * with correct architectural dimensions and lazy-loading support.
  */
-// add_filter( 'post_thumbnail_html', 'atmos_filter_legacy_post_thumbnail_html', 10, 5 );
+// add_filter( 'post_thumbnail_html', 'lumina_filter_legacy_post_thumbnail_html', 10, 5 );
 // 
-// function atmos_filter_legacy_post_thumbnail_html( $html, $pid, $post_thumbnail_id, $size, $attr ) {
+// function lumina_filter_legacy_post_thumbnail_html( $html, $pid, $post_thumbnail_id, $size, $attr ) {
 // 	if ( ! $html && $pid ) {
-// 		$fallback = atmos_get_featured_image_fallback_data( $pid );
+// 		$fallback = lumina_get_featured_image_fallback_data( $pid );
 // 		
 // 		$image_class = $size ? "attachment-{$size} size-{$size} wp-post-image" : 'wp-post-image';
 // 		$image_style = isset( $attr['style'] ) ? esc_attr( $attr['style'] ) : '';
@@ -271,10 +271,10 @@ endif;
 /**
  * 6. THE LEGACY INTERCEPT
  */
-// add_filter( 'post_thumbnail_html', 'atmos_filter_legacy_post_thumbnail_html', 10, 5 );
-// function atmos_filter_legacy_post_thumbnail_html( $html, $pid, $post_thumbnail_id, $size, $attr ) {
+// add_filter( 'post_thumbnail_html', 'lumina_filter_legacy_post_thumbnail_html', 10, 5 );
+// function lumina_filter_legacy_post_thumbnail_html( $html, $pid, $post_thumbnail_id, $size, $attr ) {
 // 	if ( ! $html && $pid ) {
-// 		$fallback = atmos_get_featured_image_fallback_data( $pid );
+// 		$fallback = lumina_get_featured_image_fallback_data( $pid );
 // 		
 // 		$image_class = $size ? "attachment-{$size} size-{$size} wp-post-image" : 'wp-post-image';
 // 		$image_style = isset( $attr['style'] ) ? esc_attr( $attr['style'] ) : '';
@@ -303,7 +303,7 @@ endif;
  * Requires this as CSS too
  */
  /*
- // Atmos Panoramic Banner Crop Rules
+ // Lumina Panoramic Banner Crop Rules
 figure.is-pano-banner {
     height: 309px !important;
     overflow: hidden !important;

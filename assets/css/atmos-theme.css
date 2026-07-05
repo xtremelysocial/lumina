@@ -2,20 +2,20 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/scss/atmos-theme.scss ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************/
 /**
- * File:	atmos-theme.css
- * Theme:	Atmos Blocks
+ * File:	lumina-theme.css
+ * Theme:	Lumina
  * 
- * The stylesheet for the Atmos Blocks theme
+ * The stylesheet for the Lumina theme
  *
  * NOTE: This file is AUTO-GENERATED from the SASS source files 
- * in /src/sass/pro-custom-styles.scss. Do not make updates here.
+ * in /src/scss/lumina-theme.scss. Do not make updates here.
  * 
- * @package atmos-blocks
+ * @package lumina
  * @since 	1.0
  */
 /* ==========================================================================
-   ATMOS THEME: CSS styles
-   v0.9.9 Build 24 Colors
+   LUMINA THEME: CSS styles
+   v0.9.9 Build 25 Rename to Lumina
    ========================================================================== */
 /*--------------------------------------------------------------
 # Base Styles
@@ -126,7 +126,7 @@ main > :last-child.wp-block-template-part:empty {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center center;
-     object-position: center center; /* Corrected to Center-Center for Atmos Editorial alignment */
+     object-position: center center; /* Corrected to Center-Center for Lumina Editorial alignment */
 }
 
 img.size-cropped-large,
@@ -193,7 +193,7 @@ img.size-cropped-slim {
   }
 }
 /* =========================================================================
-   Atmos Content Layout Structural Stabilization (No !important)
+   Lumina Content Layout Structural Stabilization (No !important)
    ========================================================================= */
 .is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column.content-column,
 body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column,
@@ -240,7 +240,7 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 }
 
 /*-----------------------------------------------------------------------------
-# Atmos Post Category Colors
+# Lumina Post Category Colors
 -----------------------------------------------------------------------------*/
 /* Force the heading separator variable to inherit the active category token */
 /* Add a smooth accent bar on top of your slim banner layouts */
@@ -276,7 +276,7 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 }
 
 /*--------------------------------------------------------------
-## Map TwentyTwentyFive and TwentyTwentyFour colors to Atmos
+## Map TwentyTwentyFive and TwentyTwentyFour colors to Lumina
 --------------------------------------------------------------*/
 body,
 .editor-styles-wrapper {

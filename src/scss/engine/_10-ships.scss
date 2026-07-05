@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 SHIPS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 24 Colors
+//      v0.9.9 Build 25 Rename to Lumina
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -11,14 +11,14 @@
 
 @mixin apply-ship-logic($interactive: false) {
 
-	@if config.$atmos-dev-mode {
+	@if config.$lumina-dev-mode {
 	/* ==========================================================================
 	   10 SHIPS: Containers (e.g. Groups, Columns)
 	   ========================================================================== */
 	}
 
 	// LOOP THROUGH SHIPS IN OUR BLOCK REGISTRY
-	@each $entry in config.$atmos-block-registry {
+	@each $entry in config.$lumina-block-registry {
 
 		// MERGE REGISTRY ENTRY WITH DEFAULTS
 		$config: map.merge(config.$registry-defaults, $entry);
@@ -48,7 +48,7 @@
 			}			
 
 			// ----------------------------------------------------------------------
-			// PHASE 1: RESTING STATE (atmos-engine.css)
+			// PHASE 1: RESTING STATE (lumina-engine.css)
 			// ----------------------------------------------------------------------
 			@if not $interactive {
 
@@ -94,7 +94,7 @@
 				}
 
 			// ----------------------------------------------------------------------
-			// PHASE 2: INTERACTION STATE (atmos-interactions.css)
+			// PHASE 2: INTERACTION STATE (lumina-interactions.css)
 			// ----------------------------------------------------------------------
 			} @else {
 			

@@ -135,18 +135,18 @@ main > :last-child.wp-block-template-part:empty {
 		width: 100%;
 		height: auto; /* Suppresses legacy HTML height constraints */
 		object-fit: cover;
-		object-position: center center; /* Corrected to Center-Center for Atmos Editorial alignment */
+		object-position: center center; /* Corrected to Center-Center for Lumina Editorial alignment */
 	}
 }
 
-// 2. The Atmos 16:9 Cinematic Framework
+// 2. The Lumina 16:9 Cinematic Framework
 img.size-cropped-large,
 img.size-cropped-thumbnail,
 img.size-large {
 	aspect-ratio: 16 / 9;
 }
 
-// 3. The Atmos 16:4.5 Ultra-Wide Panorama
+// 3. The Lumina 16:4.5 Ultra-Wide Panorama
 img.size-cropped-slim {
 	aspect-ratio: 16 / 4.5;
 }
@@ -242,7 +242,7 @@ img.size-cropped-slim {
 }
 
 /* =========================================================================
-   Atmos Content Layout Structural Stabilization (No !important)
+   Lumina Content Layout Structural Stabilization (No !important)
    ========================================================================= */
 
 // 1. RIGHT SIDEBAR TEMPLATES
@@ -323,7 +323,7 @@ body[class*="-single-sidebar-left"] {
 }
 
 /*-----------------------------------------------------------------------------
-# Atmos Post Category Colors
+# Lumina Post Category Colors
 -----------------------------------------------------------------------------*/
 
 /* Force the heading separator variable to inherit the active category token */
