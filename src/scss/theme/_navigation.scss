@@ -22,6 +22,11 @@
     border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, #00000026);
 }
 
+/* Set default drop-down menu text color to match the context */
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation__submenu-container {
+    color: var(--wp--preset--color--contrast);
+}
+
 .wp-block-navigation__responsive-container:not(.is-menu-open) {
 	.wp-block-navigation__submenu-container {
 		border-radius: var(--wp--custom--border--radius, 8px);

@@ -15,6 +15,7 @@
 				},
 				"button": {
 					"background": "var(--wp--preset--color--primary)",
+					"hover": "var(--wp--preset--color--primary-alt)",
 					"hoverOpacity": "0.8" 
 				},
 				"link": {
@@ -435,12 +436,12 @@
 				},
 				":hover": {
 					"color": {
-						"background": "var:preset|color|primary-alt"
+						"background": "var(--wp--custom--color--button--hover)"
 					}
 				},
 				":focus": {
 					"color": {
-						"background": "var:preset|color|primary-alt"
+						"background": "var(--wp--custom--color--button--hover)"
 					}
 				}						
 			} 

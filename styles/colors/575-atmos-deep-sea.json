@@ -13,17 +13,21 @@
 					"tertiary-subtle": "var(--wp--preset--color--foreground-alt)",
 					"tertiary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
 					"neutral": "var(--wp--preset--color--foreground-alt)",
-					"neutral-alt": "var(--wp--preset--color--foreground-alt)"
+					"neutral-alt": "var(--wp--preset--color--foreground-alt)",
+					"very-light-gray": "var(--wp--preset--color--foreground-alt)",
+					"light-gray": "var(--wp--preset--color--foreground-alt)"
 				},
 				"heading": {
 					"text": "hsl(169, 56%, 83%)",
 					"separator": "var(--wp--preset--color--primary)"
 				},
 				"button": {
-					"background": "var:preset|color|primary"
+					"background": "var(--wp--preset--color--primary)",
+					"hover": "var(--wp--preset--color--primary-alt)",
+					"hoverOpacity": "0.80"
 				},
 				"shadow": {
-					"natural": "0 2px 8px rgba(10, 15, 20, 0.55), 0 1px 3px rgba(0, 0, 0, 0.35)",
+					"natural": "0 2px 8 rgba(10, 15, 20, 0.55), 0 1px 3px rgba(0, 0, 0, 0.35)",
 					"deep": "0 6px 16px rgba(6, 10, 14, 0.65), 0 3px 6px rgba(0, 0, 0, 0.45)",
 					"sharp": "0 14px 30px rgba(6, 10, 14, 0.75), 0 6px 12px rgba(0, 0, 0, 0.50)",
 					"crisp": "0 24px 50px rgba(6, 10, 14, 0.85), 0 10px 20px rgba(0, 0, 0, 0.60)",				
@@ -53,18 +57,23 @@
 				{ "slug": "neutral-alt", "color": "hsl(212, 28%, 20%)", "name": "Neutral Alt (Maritime Border)" },
 				{ "slug": "foreground-alt", "color": "hsl(43, 27%, 97%)", "name": "Foreground Alt (Off White)" },
 
-				{ "slug": "highlight", "color": "hsl(202, 75%, 70%)", "name": "Highlight (Luminous Sky Blue Link)" },
-				{ "slug": "highlight-alt", "color": "hsl(202, 82%, 80%)", "name": "Highlight Alt (Glacial Ice Hover)" },
-				{ "slug": "dark", "color": "hsl(212, 35%, 4%)", "name": "Dark (Abyssal Midnight)" },
-				{ "slug": "dark-alt", "color": "hsl(0, 0%, 0%)", "name": "Dark Alt (True Black)" },							
-
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(43, 27%, 97%)", "name": "Off White" },
-				{ "slug": "very-light-gray", "color": "hsl(43, 15%, 91%)", "name": "Very Light Gray" },
-				{ "slug": "light-gray", "color": "hsl(43, 10%, 88%)", "name": "Light Gray" },
-				{ "slug": "gray", "color": "hsl(43, 4%, 68%)", "name": "Gray" },
-				{ "slug": "dark-gray", "color": "hsl(43, 3%, 43%)", "name": "Dark Gray" },
-				{ "slug": "very-dark-gray", "color": "hsl(60, 2%, 23%)", "name": "Very Dark Gray" },
+
+				{ "slug": "very-light-gray", "color": "hsl(212, 20%, 12%)", "name": "Very Light Gray (Inverted Deep Footer Floor 12%)" },
+				{ "slug": "light-gray", "color": "hsl(212, 16%, 22%)", "name": "Light Gray (Inverted Structural Card Well 22%)" },
+				{ "slug": "gray", "color": "hsl(212, 12%, 35%)", "name": "Gray (Inverted Technical Border Seam 35%)" },
+				{ "slug": "dark-gray", "color": "hsl(212, 10%, 65%)", "name": "Dark Gray (Inverted Muted Typography 65%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(212, 12%, 85%)", "name": "Very Dark Gray (Inverted Tech Pop Typography 85%)" },
+
+				{ "slug": "highlight", "color": "hsl(202, 75%, 70%)", "name": "Highlight (Luminous Sky Blue Link)" },
+				{ "slug": "highlight-alt", "color": "hsl(202, 82%, 80%)", "name": "Highlight Alt (Glacial Ice Hover)" },
+				
+				{ "slug": "dark", "color": "hsl(212, 35%, 6%)", "name": "Dark (Abyssal Midnight Floor 6%)" },
+				{ "slug": "dark-alt", "color": "hsl(212, 35%, 3%)", "name": "Dark Alt (Abyssal Midnight Void 3%)" },							
+				{ "slug": "dark-tertiary", "color": "hsl(212, 30%, 8%)", "name": "Dark Tertiary (Deep Maritime Trench Floor 8%)" },
+				{ "slug": "dark-tertiary-alt", "color": "hsl(212, 30%, 4%)", "name": "Dark Tertiary Alt (Deep Maritime Trench Void 4%)" },
+
 				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
 				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black" },

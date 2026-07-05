@@ -15,7 +15,7 @@
  */
 /* ==========================================================================
    ATMOS THEME: CSS styles
-   v0.9.9 Build 23 Colors
+   v0.9.9 Build 24 Colors
    ========================================================================== */
 /*--------------------------------------------------------------
 # Base Styles
@@ -493,6 +493,11 @@ body,
 .wp-block-navigation:not(.has-background) .wp-block-navigation__submenu-container {
   background-color: var(--wp--preset--color--base);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(0, 0, 0, 0.1490196078));
+}
+
+/* Set default drop-down menu text color to match the context */
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation__submenu-container {
+  color: var(--wp--preset--color--contrast);
 }
 
 .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {

@@ -6,6 +6,8 @@
 		"custom": {
 			"color": {			
 				"contrast": {
+					"tertiary": "var(--wp--preset--color--base)",
+					"tertiary-alt": "var(--wp--preset--color--base)",
 					"primary-subtle": "var(--wp--preset--color--foreground-alt)",
 					"primary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
 					"secondary-subtle": "var(--wp--preset--color--foreground-alt)",
@@ -13,11 +15,18 @@
 					"tertiary-subtle": "var(--wp--preset--color--foreground-alt)",
 					"tertiary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
 					"neutral": "var(--wp--preset--color--foreground-alt)",
-					"neutral-alt": "var(--wp--preset--color--foreground-alt)"
+					"neutral-alt": "var(--wp--preset--color--foreground-alt)",
+					"very-light-gray": "var(--wp--preset--color--foreground-alt)",
+					"light-gray": "var(--wp--preset--color--foreground-alt)"
 				},
 				"heading": {
 					"text": "hsl(204, 29%, 94%)",
 					"separator": "var(--wp--preset--color--highlight-alt)"
+				},
+				"button": {
+					"background": "var(--wp--preset--color--primary)",
+					"hover": "var(--wp--preset--color--primary-alt)",
+					"hoverOpacity": "0.80"
 				},
 				"shadow": {
 					"natural": "0 2px 8px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.25)",
@@ -50,18 +59,23 @@
 				{ "slug": "neutral-alt", "color": "hsl(50, 4%, 14%)", "name": "Neutral Alt (Technical Structural Border)" },
 				{ "slug": "foreground-alt", "color": "hsl(45, 29%, 97%)", "name": "Foreground Alt (Off White)" },
 
-				{ "slug": "highlight", "color": "hsl(189, 64%, 53%)", "name": "Highlight (Technical Aqua Link)" },
-				{ "slug": "highlight-alt", "color": "hsl(189, 87%, 69%)", "name": "Highlight Alt (Glow Aqua Hover)" },
-				{ "slug": "dark", "color": "hsl(0, 0%, 7%)", "name": "Dark (Abyssal Carbon)" },
-				{ "slug": "dark-alt", "color": "hsl(0, 0%, 0%)", "name": "Dark Alt (True True Black)" },							
-
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
-				{ "slug": "off-white", "color": "hsl(45, 29%, 97%)", "name": "Off White (Gallery Bone)" },
-				{ "slug": "very-light-gray", "color": "hsl(45, 15%, 91%)", "name": "Very Light Gray" },
-				{ "slug": "light-gray", "color": "hsl(45, 10%, 88%)", "name": "Light Gray" },
-				{ "slug": "gray", "color": "hsl(50, 4%, 68%)", "name": "Gray (Pebble)" },
-				{ "slug": "dark-gray", "color": "hsl(50, 4%, 44%)", "name": "Dark Gray (Stone)" },
-				{ "slug": "very-dark-gray", "color": "hsl(60, 2%, 23%)", "name": "Very Dark Gray" },
+				{ "slug": "off-white", "color": "hsl(45, 29%, 97%)", "name": "Off White" },
+
+				{ "slug": "very-light-gray", "color": "hsl(50, 4%, 12%)", "name": "Very Light Gray (Inverted Deep Zinc Floor 12%)" },
+				{ "slug": "light-gray", "color": "hsl(50, 4%, 20%)", "name": "Light Gray (Inverted Zinc Plate Well 20%)" },
+				{ "slug": "gray", "color": "hsl(50, 4%, 35%)", "name": "Gray (Inverted Machined Border Seam 35%)" },
+				{ "slug": "dark-gray", "color": "hsl(50, 4%, 65%)", "name": "Dark Gray (Inverted Muted Zinc Typography 65%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(50, 4%, 85%)", "name": "Very Dark Gray (Inverted Specular Pop Typography 85%)" },
+
+				{ "slug": "highlight", "color": "hsl(189, 64%, 53%)", "name": "Highlight (Technical Aqua Link)" },
+				{ "slug": "highlight-alt", "color": "hsl(189, 85%, 78%)", "name": "Highlight Alt (Glow Aqua Hover)" },
+				
+				{ "slug": "dark", "color": "hsl(0, 0%, 6%)", "name": "Dark (Abyssal Carbon Floor 6%)" },
+				{ "slug": "dark-alt", "color": "hsl(0, 0%, 3%)", "name": "Dark Alt (Absolute Dark Void 3%)" },							
+				{ "slug": "dark-tertiary", "color": "hsl(210, 15%, 12%)", "name": "Dark Tertiary (Deep Industrial Slate Floor 12%)" },
+				{ "slug": "dark-tertiary-alt", "color": "hsl(210, 15%, 6%)", "name": "Dark Tertiary Alt (Abyssal Industrial Slate Void 6%)" },
+
 				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
 				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black" },

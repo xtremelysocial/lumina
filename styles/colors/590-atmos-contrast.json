@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Lumina: Lumina (Precision White: Minimalist, clean-room clarity)",
+	"title": "Lumina: Contrast (Light and Dark colors come together in stunning beauty)",
 	"settings": {
 		"custom": {
 			"color": {
@@ -14,12 +14,14 @@
 					"tertiary-alt": "var(--wp--preset--color--foreground-alt)",
 					"highlight": "var(--wp--preset--color--foreground-alt)",
 					"highlight-alt": "var(--wp--preset--color--foreground-alt)",
-					"dark": "var(--wp--preset--color--contrast)",
-					"dark-alt": "var(--wp--preset--color--contrast)"
+					"dark": "var(--wp--preset--color--base)",
+					"dark-alt": "var(--wp--preset--color--base)",
+					"dark-tertiary": "var(--wp--preset--color--base)",
+					"dark-tertiary-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
-					"text": "hsl(206, 30%, 12%)",
-					"separator": "var(--wp--preset--color--primary)"
+					"text": "var(--wp--preset--color--contrast)",
+					"separator": "var(--wp--preset--color--tertiary)"
 				},
 				"shadow": {
 					"natural": "0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03)",
@@ -45,47 +47,44 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 16%, 91%)", "name": "Secondary Subtle Alt (91% Slate Border)" },
 				{ "slug": "tertiary-subtle", "color": "hsl(34, 25%, 96%)", "name": "Tertiary Subtle (96% Gold Veil)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 20%, 91%)", "name": "Tertiary Subtle Alt (91% Gold Border)" },
-				
-				{ "slug": "base", "color": "hsl(0, 0%, 100%)", "name": "Base (Pure White)" },
+
+				{ "slug": "base", "color": "hsl(0, 0%, 100%)", "name": "Base (Pure White Canvas)" },
 				{ "slug": "contrast", "color": "hsl(206, 15%, 12%)", "name": "Contrast (Slate Infused Technical Ink)" },
-				{ "slug": "neutral", "color": "hsl(206, 10%, 98%)", "name": "Neutral (Cupertino Clean Fill)" },
-				{ "slug": "neutral-alt", "color": "hsl(206, 12%, 93%)", "name": "Neutral Alt (Cupertino Structural Border)" },
-				{ "slug": "foreground-alt", "color": "hsl(0, 0%, 100%)", "name": "Foreground Alt (White)" },
+				{ "slug": "neutral", "color": "hsl(206, 2%, 98%)", "name": "Neutral (Cupertino Clean Fill 98%)" },
+				{ "slug": "neutral-alt", "color": "hsl(206, 4%, 93%)", "name": "Neutral Alt (Cupertino Structural Border 93%)" },
+				{ "slug": "foreground-alt", "color": "hsl(0, 0%, 100%)", "name": "Foreground Alt (Pure White)" },
 				
+				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
+				{ "slug": "off-white", "color": "hsl(206, 4%, 97%)", "name": "Off White (Ice Alabaster)" },
+
+				{ "slug": "very-light-gray", "color": "hsl(206, 4%, 96%)", "name": "Very Light Gray (Crisp Slate Gray Footer Floor 96%)" },
+				{ "slug": "light-gray", "color": "hsl(206, 2%, 91%)", "name": "Light Gray (Crisp Slate Gray Inner Well 91%)" },
+				{ "slug": "gray", "color": "hsl(206, 4%, 71%)", "name": "Gray (Clean Border Seam 71%)" },
+				{ "slug": "dark-gray", "color": "hsl(206, 3%, 44%)", "name": "Dark Gray (Muted Typography 44%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(206, 2%, 25%)", "name": "Very Dark Gray (Tech Shadow 25%)" },
+								
 				{ "slug": "highlight", "color": "hsl(206, 65%, 48%)", "name": "Highlight (Clean Slate Link)" },
 				{ "slug": "highlight-alt", "color": "hsl(206, 70%, 38%)", "name": "Highlight Alt (Deep Slate Hover)" },
-				
-				{ "slug": "dark", "color": "hsl(34, 25%, 96%)", "name": "Dark (Warm Gold Footer Floor 96%)" },
-				{ "slug": "dark-alt", "color": "hsl(34, 20%, 91%)", "name": "Dark Alt (Gold Footer Base 91%)" },			
-				{ "slug": "dark-tertiary", "color": "hsl(206, 20%, 96%)", "name": "Dark Tertiary (Slate Footer Floor 96%)" },
-				{ "slug": "dark-tertiary-alt", "color": "hsl(206, 16%, 91%)", "name": "Dark Tertiary Alt (Slate Footer Base 91%)" },
 
-				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
-				{ "slug": "off-white", "color": "hsl(45, 27%, 97%)", "name": "Off White" },
-				{ "slug": "very-light-gray", "color": "hsl(206, 12%, 91%)", "name": "Very Light Gray (Clean Surface 91%)" },
-				{ "slug": "light-gray", "color": "hsl(206, 8%, 83%)", "name": "Light Gray (Clean Card Well 83%)" },
-				{ "slug": "gray", "color": "hsl(206, 4%, 71%)", "name": "Gray (Clean Border Seam 71%)" },
-				{ "slug": "dark-gray", "color": "hsl(206, 3%, 44%)", "name": "Dark Gray" },
-				{ "slug": "very-dark-gray", "color": "hsl(206, 2%, 25%)", "name": "Very Dark Gray" },
+				{ "slug": "dark", "color": "hsl(206, 20%, 12%)", "name": "Dark (Obsidian Core Tech Floor 12%)" },
+				{ "slug": "dark-alt", "color": "hsl(206, 25%, 8%)", "name": "Dark Alt (Abyssal Core Tech Deep 8%)" },				
+				{ "slug": "dark-tertiary", "color": "hsl(34, 20%, 12%)", "name": "Dark Tertiary (Espresso Gold Floor 12%)" },
+				{ "slug": "dark-tertiary-alt", "color": "hsl(34, 25%, 8%)", "name": "Dark Tertiary Alt (Abyssal Gold Deep 8%)" },
+
 				{ "slug": "almost-black", "color": "hsl(206, 30%, 12%)", "name": "Almost Black (Deep Slate Ink)" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
 				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black" }
 			],
 			"duotone": [
 				{ "colors": ["hsl(154, 26%, 32%)", "hsl(0, 0%, 100%)"], "slug": "primary", "name": "Primary (Luminous Sage)" },
-				{ "colors": ["hsl(154, 16%, 91%)", "hsl(0, 0%, 100%)"], "slug": "primary-alt", "name": "Primary Alt" },
+				{ "colors": ["hsl(154, 16%, 91%)", "hsl(0, 0%, 100%)"], "slug": "primary-alt", "name": "Primary Alt (Muted Sage)" },
 				{ "colors": ["hsl(206, 26%, 32%)", "hsl(0, 0%, 100%)"], "slug": "secondary", "name": "Secondary (Slate Blue)" },
-				{ "colors": ["hsl(206, 16%, 91%)", "hsl(0, 0%, 100%)"], "slug": "secondary-alt", "name": "Secondary Alt" },
+				{ "colors": ["hsl(206, 16%, 91%)", "hsl(0, 0%, 100%)"], "slug": "secondary-alt", "name": "Secondary Alt (Steel Slate)" },
 				{ "colors": ["hsl(34, 30%, 32%)", "hsl(0, 0%, 100%)"], "slug": "tertiary", "name": "Tertiary (Muted Gold)" },
-				{ "colors": ["hsl(34, 20%, 91%)", "hsl(0, 0%, 100%)"], "slug": "tertiary-alt", "name": "Tertiary Alt" },
-				{ "colors": ["hsl(327, 5%, 40%)", "hsl(33, 30%, 51%)"], "slug": "purple-yellow", "name": "Purple and Yellow" },
-				{ "colors": ["hsl(207, 22%, 19%)", "hsl(0, 18%, 36%)"], "slug": "blue-red", "name": "Blue and Red" },
-				{ "colors": ["hsl(0, 0%, 18%)", "hsl(207, 22%, 19%)"], "slug": "midnight", "name": "Midnight Blue" },
-				{ "colors": ["hsl(0, 18%, 36%)", "hsl(33, 30%, 51%)"], "slug": "magenta-yellow", "name": "Red and Yellow" },
-				{ "colors": ["hsl(327, 5%, 40%)", "hsl(155, 16%, 46%)"], "slug": "purple-green", "name": "Purple and Green" },
-				{ "colors": ["hsl(207, 22%, 19%)", "hsl(12, 31%, 49%)"], "slug": "blue-orange", "name": "Blue and Orange" },
-				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale" },
-				{ "colors": ["hsl(0, 0%, 0%)", "hsl(206, 3%, 45%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
+				{ "colors": ["hsl(34, 20%, 91%)", "hsl(0, 0%, 100%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Warm Sand)" },
+				{ "colors": ["hsl(206, 25%, 8%)", "hsl(206, 24%, 43%)"], "slug": "midnight", "name": "Midnight (Tech Blueprint)" },
+				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale (Absolute Contrast)" },
+				{ "colors": ["hsl(0, 0%, 0%)", "hsl(206, 3%, 44%)"], "slug": "dark-grayscale", "name": "Dark Grayscale (Muted Slate Carbon)" }
 			]
 		}
 	},

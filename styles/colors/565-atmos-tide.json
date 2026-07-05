@@ -13,17 +13,24 @@
 					"tertiary-subtle": "var(--wp--preset--color--foreground-alt)",
 					"tertiary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
 					"neutral": "var(--wp--preset--color--foreground-alt)",
-					"neutral-alt": "var(--wp--preset--color--foreground-alt)"
+					"neutral-alt": "var(--wp--preset--color--foreground-alt)",
+					"very-light-gray": "var(--wp--preset--color--foreground-alt)",
+					"light-gray": "var(--wp--preset--color--foreground-alt)"
 				},
 				"heading": {
 					"text": "hsl(211, 14%, 95%)",
 					"separator": "var(--wp--preset--color--primary)"
 				},
+				"button": {
+					"background": "var(--wp--preset--color--primary)",
+					"hover": "var(--wp--preset--color--primary-alt)",
+					"hoverOpacity": "0.85"
+				},
 				"shadow": {
-					"natural": "0 2px 8px rgba(27, 37, 48, 0.45), 0 1px 3px rgba(0, 0, 0, 0.25)",
-					"deep":    "0 6px 16px rgba(18, 25, 32, 0.55), 0 3px 6px rgba(0, 0, 0, 0.35)",
-					"sharp":   "0 14px 30px rgba(18, 25, 32, 0.65), 0 6px 12px rgba(0, 0, 0, 0.40)",
-					"crisp":   "0 24px 50px rgba(18, 25, 32, 0.75), 0 10px 20px rgba(0, 0, 0, 0.50)",				
+					"natural": "0 2px 8px rgba(0, 0, 0, 0.60), 0 1px 3px rgba(0, 0, 0, 0.45)",
+					"deep":    "0 6px 16px rgba(0, 0, 0, 0.70), 0 3px 6px rgba(0, 0, 0, 0.55)",
+					"sharp":   "0 14px 30px rgba(0, 0, 0, 0.80), 0 6px 12px rgba(0, 0, 0, 0.65)",
+					"crisp":   "0 24px 50px rgba(0, 0, 0, 0.90), 0 10px 20px rgba(0, 0, 0, 0.75)",				
 					"outline": "0 0 0 2px var(--wp--preset--color--base), 0 0 0 4px var(--wp--preset--color--primary)"
 				}
 			}
@@ -50,35 +57,35 @@
 				{ "slug": "neutral-alt", "color": "hsl(211, 28%, 27%)", "name": "Neutral Alt (Technical Maritime Blue Border)" },
 				{ "slug": "foreground-alt", "color": "hsl(211, 14%, 95%)", "name": "Foreground Alt (Off White)" },
 
-				{ "slug": "highlight", "color": "hsl(14, 72%, 63%)", "name": "Highlight (Terracotta Link)" },
-				{ "slug": "highlight-alt", "color": "hsl(14, 76%, 76%)", "name": "Highlight Alt (Sun-Bleached Clay)" },
-				{ "slug": "dark", "color": "hsl(0, 0%, 7%)", "name": "Dark (Abyssal Carbon)" },
-				{ "slug": "dark-alt", "color": "hsl(0, 0%, 0%)", "name": "Dark Alt (True True Black)" },							
-
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(43, 27%, 97%)", "name": "Off White (Gallery Bone)" },
-				{ "slug": "very-light-gray", "color": "hsl(45, 15%, 91%)", "name": "Very Light Gray" },
-				{ "slug": "light-gray", "color": "hsl(45, 10%, 88%)", "name": "Light Gray" },
-				{ "slug": "gray", "color": "hsl(43, 4%, 68%)", "name": "Gray (Pebble)" },
-				{ "slug": "dark-gray", "color": "hsl(50, 4%, 44%)", "name": "Dark Gray (Stone)" },
-				{ "slug": "very-dark-gray", "color": "hsl(60, 2%, 23%)", "name": "Very Dark Gray" },
+
+				{ "slug": "very-light-gray", "color": "hsl(211, 15%, 12%)", "name": "Very Light Gray (Inverted Deep Footer Floor 12%)" },
+				{ "slug": "light-gray", "color": "hsl(211, 12%, 22%)", "name": "Light Gray (Inverted Structural Card Well 22%)" },
+				{ "slug": "gray", "color": "hsl(211, 10%, 35%)", "name": "Gray (Inverted Technical Border Seam 35%)" },
+				{ "slug": "dark-gray", "color": "hsl(211, 10%, 65%)", "name": "Dark Gray (Inverted Muted Typography 65%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(211, 12%, 85%)", "name": "Very Dark Gray (Inverted Tech Pop Typography 85%)" },
+
+				{ "slug": "highlight", "color": "hsl(14, 82%, 68%)", "name": "Highlight (Luminous Terracotta Link)" },
+				{ "slug": "highlight-alt", "color": "hsl(14, 85%, 78%)", "name": "Highlight Alt (Glow Terracotta Hover)" },
+				
+				{ "slug": "dark", "color": "hsl(211, 20%, 10%)", "name": "Dark (Abyssal Marine Floor 10%)" },
+				{ "slug": "dark-alt", "color": "hsl(211, 25%, 6%)", "name": "Dark Alt (Abyssal Marine Void 6%)" },							
+				{ "slug": "dark-tertiary", "color": "hsl(37, 14%, 12%)", "name": "Dark Tertiary (Deep Wet Bronze Floor 12%)" },
+				{ "slug": "dark-tertiary-alt", "color": "hsl(37, 14%, 8%)", "name": "Dark Tertiary Alt (Abyssal Bronze Void 8%)" },
+
 				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
 				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black" }
 			],
 			"duotone": [
-				{ "colors": ["hsl(207, 23%, 29%)", "hsl(43, 27%, 97%)"], "slug": "primary", "name": "Primary" },
-				{ "colors": ["hsl(209, 22%, 21%)", "hsl(43, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt" },
-				{ "colors": ["hsl(50, 4%, 44%)", "hsl(43, 27%, 97%)"], "slug": "secondary", "name": "Secondary" },
-				{ "colors": ["hsl(50, 4%, 34%)", "hsl(43, 27%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt" },
-				{ "colors": ["hsl(37, 14%, 34%)", "hsl(43, 27%, 97%)"], "slug": "tertiary", "name": "Tertiary" },
-				{ "colors": ["hsl(37, 14%, 24%)", "hsl(43, 27%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt" },
-				{ "colors": ["hsl(327, 5%, 40%)", "hsl(33, 30%, 51%)"], "slug": "purple-yellow", "name": "Purple and Yellow" },
-				{ "colors": ["hsl(207, 18%, 32%)", "hsl(0, 18%, 36%)"], "slug": "blue-red", "name": "Blue and Red" },
-				{ "colors": ["hsl(0, 0%, 18%)", "hsl(207, 18%, 32%)"], "slug": "midnight", "name": "Midnight" },
-				{ "colors": ["hsl(0, 18%, 36%)", "hsl(33, 30%, 51%)"], "slug": "magenta-yellow", "name": "Red and Yellow" },
-				{ "colors": ["hsl(327, 5%, 40%)", "hsl(155, 16%, 46%)"], "slug": "purple-green", "name": "Purple and Green" },
-				{ "colors": ["hsl(207, 18%, 32%)", "hsl(12, 32%, 50%)"], "slug": "blue-orange", "name": "Blue and Orange" },
+				{ "colors": ["hsl(12, 32%, 50%)", "hsl(211, 14%, 95%)"], "slug": "primary", "name": "Primary (Terracotta)" },
+				{ "colors": ["hsl(12, 32%, 58%)", "hsl(211, 14%, 95%)"], "slug": "primary-alt", "name": "Primary Alt" },
+				{ "colors": ["hsl(50, 4%, 44%)", "hsl(211, 14%, 95%)"], "slug": "secondary", "name": "Secondary (Stone Gray)" },
+				{ "colors": ["hsl(50, 4%, 34%)", "hsl(211, 14%, 95%)"], "slug": "secondary-alt", "name": "Secondary Alt" },
+				{ "colors": ["hsl(37, 14%, 34%)", "hsl(211, 14%, 95%)"], "slug": "tertiary", "name": "Tertiary (Muted Bronze)" },
+				{ "colors": ["hsl(37, 14%, 24%)", "hsl(211, 14%, 95%)"], "slug": "tertiary-alt", "name": "Tertiary Alt" },
+				{ "colors": ["hsl(0, 0%, 6%)", "hsl(211, 28%, 18%)"], "slug": "midnight", "name": "Abyssal Tide Void" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(50, 4%, 44%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			]
