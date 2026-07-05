@@ -2,17 +2,17 @@
 /**
  * Title: Lumina Dark Fixed Header
  * Description: Dark header fixed to the top of the site
- * Slug: lumina/lumina-header-fixed-dark
+ * Slug: lumina/header-dark-fixed
  * Categories: header
- * Block Types: core/template-part/header 
  */
 ?>
+
 <!-- wp:group {"tagName":"header","metadata":{"name":"Header"},"align":"full","className":"site-header is-position-sticky","style":{"position":{"type":"sticky","top":"0px"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}},"border":{"bottom":{"color":"var:preset|color|dark-alt","width":"1px"},"top":{},"right":{},"left":{}}},"backgroundColor":"dark","layout":{"type":"constrained"}} -->
 <header class="wp-block-group alignfull site-header is-position-sticky has-dark-background-color has-background" style="border-bottom-color:var(--wp--preset--color--dark-alt);border-bottom-width:1px;padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)"><!-- wp:group {"align":"wide","className":"is-style-default","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap"}} -->
 <div class="wp-block-group alignwide is-style-default">
-<!-- wp:group {"className":"is-style-default","layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group is-style-default">
-<!-- wp:site-logo {"width":64} /-->
+<!-- wp:group {"className":"site-logo-title","layout":{"type":"flex","allowOrientation":false,"justifyContent":"center"}} -->
+<div class="wp-block-group site-logo-title">
+<!-- wp:site-logo {"width":64,"className":"is-style-default"} /-->
 
 <!-- wp:site-title /--></div>
 <!-- /wp:group -->
