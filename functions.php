@@ -221,6 +221,111 @@ if ( apply_filters( 'lumina_card_link_js', true ) ) {
 	add_action( 'wp_enqueue_scripts', 'lumina_load_scripts' );
 }
 
+
+/**
+ * Register additional block pattern categories
+ * 
+ * WordPress already has categories for featured, header, query, text, buttons,
+ * gallery, banner, footer, call-to-action, team, testimonials, services,
+ * contract, about, portfolio, and media.
+ */
+if ( ! function_exists( 'lumina_register_pattern_categories' ) ) :
+
+	function lumina_register_pattern_categories() {
+
+		// Add our own block pattern categories
+		$block_pattern_categories = array(
+			'lumina'	=> array( 'label' => __( 'All Lumina', 'lumina' ) ),
+// 			'column'   		=> array( 'label' => __( 'Columns', 'lumina' ) ),				
+// 			'page'    		=> array( 'label' => __( 'Pages', 'lumina' ) ),
+		);
+		
+		/**
+		 * Filters the theme block pattern categories.
+		 *
+		 * @param array[] $block_pattern_categories {
+		 *     An associative array of block pattern categories, keyed by category name.
+		 *
+		 *     @type array[] $properties {
+		 *         An array of block category properties.
+		 *
+		 *         @type string $label A human-readable label for the pattern category.
+		 *     }
+		 * }
+		 */
+		$block_pattern_categories = apply_filters( 'lumina_block_pattern_categories', $block_pattern_categories );
+
+		foreach ( $block_pattern_categories as $name => $properties ) {
+			if ( ! WP_Block_Pattern_Categories_Registry::get_instance()->is_registered( $name ) ) {
+				register_block_pattern_category( $name, $properties );
+			}
+		}	
+	}
+endif;
+
+/**
+ * Lumina Engine Extensions
+ */
+
+add_filter( 'get_block_templates', 'lumina_unload_parent_template_parts', 10, 3 );
+/**
+ * Intercepts the block editor template discovery engine and unloads legacy file-based
+ * template parts inherited from the parent theme by validating local file existence.
+ */
+function lumina_unload_parent_template_parts( $query_result, $query, $template_type ) {
+	// Only apply the filter when WordPress is gathering Template Parts
+	if ( 'wp_template_part' !== $template_type ) {
+		return $query_result;
+	}
+
+	// Anchor to Lumina's local template parts path
+	$child_parts_dir = get_stylesheet_directory() . '/parts/';
+
+	$filtered_parts = array_filter( $query_result, function( $template_part ) use ( $child_parts_dir ) {
+		// Identify if the template part is a raw file-based theme asset
+		if ( isset( $template_part->source ) && 'theme' === $template_part->source ) {
+			// Construct the exact filename layout WordPress looks for
+			$local_file = $child_parts_dir . $template_part->slug . '.html';
+
+			// If the file does not exist inside Lumina, it's an inherited parent file—drop it!
+			if ( ! file_exists( $local_file ) ) {
+				return false;
+			}
+		}
+		return true;
+	});
+
+	// Re-index the array values cleanly to protect the REST API collection loop
+	return array_values( $filtered_parts );
+}
+
+// add_filter( 'get_block_templates', 'lumina_unload_parent_template_parts', 10, 3 );
+/**
+ * Intercepts the block editor template discovery engine and safely unloads
+ * all legacy file-based template parts inherited from the parent theme.
+ */
+// function lumina_unload_parent_template_parts( $query_result, $query, $template_type ) {
+// 	// Only apply the filter when WordPress is gathering Template Parts
+// 	if ( 'wp_template_part' !== $template_type ) {
+// 		return $query_result;
+// 	}
+// 
+// 	// Filter out any template parts originating from the 'flat-blocks' folder namespace
+// 	return array_filter( $query_result, function( $template_part ) {
+// 		return 'flat-blocks' !== $template_part->theme;
+// 	});
+// }
+
+/* Remove the parent's theme HTML patterns (no way to remove the PHP ones) */
+add_filter('flatblocks_block_patterns', 'flatblocks_pro_block_patterns' );
+
+function flatblocks_pro_block_patterns( $block_patterns ) {
+
+	$pro_patterns = array();
+	
+	return  $pro_patterns;	
+}
+
 /**
  * Register Featured Image Block Binding for the Core Image Block
  * Built for Lumina Design Engine

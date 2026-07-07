@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Lumina Luminapheric Feature Stack
- * Slug: lumina/lumina-feature-stack
- * Categories: lumina
+ * Title: Lumina Feature Stack (Light)
+ * Slug: lumina/feature-stack-light
+ * Categories: lumina, featured
  */
 ?>
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->

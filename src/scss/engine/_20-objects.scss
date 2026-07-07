@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   20 OBJECTS: Container Contents (e.g. Images, Columns)
-//	    v0.9.9 Build 27 Parts->Patterns
+//	    v0.9.9 Build 28 Parts & Patterns
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -58,7 +58,7 @@
 				@if not list.index(phys.get-objects(), $sel-to-register) {
 					@include phys.register-object($sel-to-register);
 				}
-			} @else if $role == 'image-zoom' or $role == 'image-grow' {
+			} @else if $role == 'object-zoom' or $role == 'object-grow' {
 				@if not list.index(phys.get-images(), $sel-to-register) {
 					@include phys.register-image($sel-to-register);
 				}

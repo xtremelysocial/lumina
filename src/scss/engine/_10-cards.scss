@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   10 CARDS: Containers (e.g. Groups, Columns)
-//      v0.9.9 Build 27 Parts->Patterns
+//      v0.9.9 Build 28 Parts & Patterns
 //   ========================================================================== */
 
 @use 'sass:list';
@@ -25,7 +25,7 @@
 		$role:   map.get($config, role);
 
 		@if $role == 'card' {
-
+		
 			// EXTRACT INDIVIDIAL FIELDS
 			$block:   map.get($config, block);
 			$is:      map.get($config, is);

@@ -2,7 +2,7 @@
 /**
  * Title: Lumina Features 3 Columns (Light)
  * Slug: lumina/features-3-columns-light
- * Categories: lumina
+ * Categories: lumina, column
  */
 ?>
 <!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->

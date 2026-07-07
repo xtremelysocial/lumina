@@ -2,7 +2,7 @@
 /**
  * Title: Lumina Dashboard Feature Grid (Light)
  * Slug: lumina/dashboard-feature-grid-light
- * Categories: lumina
+ * Categories: lumina, featured
  */
 ?>
 <!-- wp:group {"align":"wide","layout":{"type":"constrained"} -->

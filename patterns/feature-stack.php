@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Lumina Luminapheric Feature Stack
- * Slug: lumina/lumina-feature-stack
+ * Title: Lumina Feature Stack
+ * Slug: lumina/feature-stack
  * Categories: lumina
  */
 ?>

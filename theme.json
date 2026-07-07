@@ -489,18 +489,6 @@
 					"radius": "var(--wp--custom--border--radius)"
 				}
 			},
-			"core/post-title": {
-				"typography": {
-					"fontWeight": "var(--wp--custom--typography--font-weight--normal)",
-					"letterSpacing": "-0.01em"
-				}
-			},
-			"core/query-title": {
-				"typography": {
-					"fontWeight": "var(--wp--custom--typography--font-weight--normal)",
-					"letterSpacing": "-0.01em"
-				}
-			},
 			"core/post-featured-image": {
 				"border": {
 					"style": "none",
@@ -580,8 +568,18 @@
 	},
 	"templateParts": [
 		{
+		  "name": "header",
+		  "title": "Header Slot",
+		  "area": "header"
+		},
+		{
+		  "name": "footer",
+		  "title": "Footer Slot",
+		  "area": "footer"
+		},
+		{
 			"name": "header-home",
-			"title": "Home Page Header",
+			"title": "Lumina Home Page Header",
 			"description": "Header for the Home page",
 			"area": "header"
 		},
@@ -605,25 +603,25 @@
 		},
 		{
 			"name": "footer-default",
-			"title": "Default Light Footer",
+			"title": "Lumina Default Light Footer",
 			"description": "Clean, lightly tinted footer",
 			"area": "footer"
 		},
 		{
 			"name": "footer-dark",
-			"title": "Default Dark Footer",
+			"title": "Lumina Default Dark Footer",
 			"description": "A deep, dark footer with secondary colors",
 			"area": "footer"
 		},
 		{
 			"name": "footer-colored",
-			"title": "Alternate Dark Footer",
+			"title": "Lumina Alternate Dark Footer",
 			"description": "A dark footer alternative with tertiary colors",
 			"area": "footer"
 		},
 		{
 			"name": "footer-test",
-			"title": "Test Footer as Pattern",
+			"title": "Lumina Test Footer as Pattern",
 			"description": "A test of using a PHP pattern as a footer",
 			"area": "footer"
 		}

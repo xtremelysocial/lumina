@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 LUMINA CONFIGURATION: Physics Maps (Roles, Constants, Debug Variables
-//	 	v0.9.9 Build 27 Parts->Patterns
+//	 	v0.9.9 Build 28 Parts & Patterns
 //   ========================================================================== */
 
 // ==========================================================================
@@ -17,7 +17,7 @@ $registry-defaults: (
 	trigger: 'self',    	// Default hover trigger to the block
 	target:  'self',    	// Default traget class to receive animation to the block
 	spacing: false,			// Add margin only to html buttons
-	role:    'object' 	// Default role to Object
+	role:    'object' 		// Default role to Object
 );
 
 // PUT WILDCARDS AND/OR SPECIFIC BLOCKS INTO THE REGISTRY
@@ -54,8 +54,8 @@ $lumina-block-registry: (
 		trigger: 'self',                
 		target:  'img',
 		role:    'object'
-// 		role:    'image-grow'
-// 		role:    'image-zoom'
+// 		role:    'object-grow'
+// 		role:    'object-zoom'
 	),
 
 	// Column Image: Image as direct descendent of a column should zoom
@@ -66,8 +66,8 @@ $lumina-block-registry: (
 		trigger: 'self',
 		target:  'img',
 // 		role:    'object'
-// 		role:    'image-grow'
-		role:    'image-zoom'
+// 		role:    'object-grow'
+		role:    'object-zoom'
 	),
     
 	// Gallery Image: Only needed if wp-block-image isn't zoom
@@ -77,8 +77,8 @@ $lumina-block-registry: (
 // 		has:     'a:not(figcaption a)', 	
 // 		trigger: 'self',
 // 		target:  'img',
-// // 		role:    'image-grow'
-// 		role:    'image-zoom'
+// // 		role:    'object-grow'
+// 		role:    'object-zoom'
 // 	),
 
 	// Post Featured Image: Requires link
@@ -89,8 +89,8 @@ $lumina-block-registry: (
 		trigger: 'self',                 
 		target:  'img',
 		role:    'object'
-// 		role:    'image-grow'
-// 		role:    'image-zoom'
+// 		role:    'object-grow'
+// 		role:    'object-zoom'
 	),
 
 	// Latest Posts Featured Image: Requires link
@@ -101,8 +101,8 @@ $lumina-block-registry: (
 		trigger: 'self',                 
 		target:  'img',
 		role:    'object'
-// 		role:    'image-grow'
-// 		role:    'image-zoom'
+// 		role:    'object-grow'
+// 		role:    'object-zoom'
 	),
     
 	// Media & Text: Needed because it's not a standard wp-block-image
@@ -112,7 +112,7 @@ $lumina-block-registry: (
 		has:     'a:not(figcaption a)', 
 		trigger: 'self',
 		target:  'img',
-		role:    'image-zoom'
+		role:    'object-zoom'
 	),
 
 	// --------------------------------------------------------------------------
@@ -202,7 +202,7 @@ $html-button-spacing: var(--wp--preset--spacing--30);
 // * 00.3 PHYSICS VARIABLES: Animation for grow and shift up
 // */
 // Animation for grow and shift up
-$lumina-timing: 			var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+$lumina-timing: 		var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 $lumina-timing-medium: 	var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 
 // Growth
@@ -233,7 +233,7 @@ $veil-hover-opacity: 	1; //var(--wp--custom--color--veil--hover-opacity, 0.85);
 // * 00.5 DEBUGGING: Outline colors for visual debugging
 // */
 $lumina-debug: 			false; // Turns on debug outlines
-$lumina-dev-mode: 		true; // Separates selectors (larger file size)
+$lumina-dev-mode: 		true;  // Separates selectors (larger file size)
 
 $debug-registry:   		1px dashed #ff8c00; // Orange
 $debug-wrapper:   		1px dashed #ff8c00; //#ff00ff; // Purple

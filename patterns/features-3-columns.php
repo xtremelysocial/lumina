@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Lumina Features 3 Columns (Shadowed & Rounded)
+ * Title: Lumina Features 3 Columns
  * Slug: lumina/lumina-features-3-columns
- * Categories: lumina
+ * Categories: lumina, column
  */
 ?>
 <!-- wp:group {"align":"wide","backgroundColor":"secondary","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->

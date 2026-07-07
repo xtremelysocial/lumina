@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Lumina Image with Left and Right Text
- * Slug: lumina/lumina-image-left-right-text
- * Categories: lumina
+ * Slug: lumina/image-left-and-right-text
+ * Categories: lumina, image
  */
 ?>
 <!-- wp:group {"align":"wide","className":"is-style-rounded-border","backgroundColor":"primary","layout":{"type":"constrained"}} -->

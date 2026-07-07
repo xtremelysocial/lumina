@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 27 Parts->Patterns
+//	 v0.9.9 Build 28 Parts & Patterns
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -137,7 +137,7 @@
 	}
 
 	// Handle debug
-	@include lumina-debug('dard');
+	@include lumina-debug('card');
 }
 
 // /* ==========================================================================
@@ -170,7 +170,7 @@
 // /* ==========================================================================
 //    03.21 APPLY OBJECT GROW: Image grow 
 //    ========================================================================== */
-@mixin apply-image-grow {
+@mixin apply-object-grow {
 
     // Apply Physics
     @if config.$lumina-dev-mode {
@@ -285,7 +285,7 @@
 // ==========================================================================
 // 03.25 OBJECT ZOOM (WRAPPER): Apply deep shadow
 // ==========================================================================
-@mixin apply-image-zoom-wrapper {
+@mixin apply-object-zoom-wrapper {
 
 	// Don't apply shadow if braked
 	&:not(#{config.$blocks-layout-brakes}) {	
@@ -345,7 +345,7 @@
 // ==========================================================================
 // 03.26 OBJECT ZOOM (ASSET): Dynamically scales the internal graphic
 // ==========================================================================
-@mixin apply-image-zoom-asset {
+@mixin apply-object-zoom-asset {
 	@if config.$lumina-dev-mode {
 // 		@include __blueprint-grow-standard;
 		@include __blueprint-grow-large;

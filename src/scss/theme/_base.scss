@@ -32,10 +32,29 @@ a:not(
 }
 
 /* Use button hover opacity on linked images */
-a:hover:has(> img),
-a:active:has(> img) {
-	opacity: var(--wp--custom--color--button--hover-opacity, 0.8);	
+// a:hover:has(> img),
+// a:active:has(> img) {
+figure {
+
+	& > a:not(
+	.wp-element-button, 
+// 	.wp-block-social-link, 
+	.wp-block-social-link-anchor, 
+	.wp-block-navigation-item, 
+	.wp-block-navigation-item__content
+	) {
+		&:hover,
+		&:active {
+			opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+		}		
+	}
 }
+
+// 
+// figure > a:hover,
+// figure > a:active {
+// 	opacity: var(--wp--custom--color--button--hover-opacity, 0.8);	
+// }
 
 /*--------------------------------------------------------------
 # Padding and Margin Styles

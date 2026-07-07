@@ -5,7 +5,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 27 Parts->Patterns
+//	 v0.9.9 Build 28 Parts & Patterns
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -121,9 +121,9 @@
             'registry':      	config.$debug-registry,
             'wrapper':      	config.$debug-wrapper,
             'wrapper-active':   config.$debug-wrapper-active,
-            'dard':          	config.$debug-card,
-            'object':     	config.$debug-object,
-            'button':     	config.$debug-button,
+            'card':          	config.$debug-card,
+            'object':     		config.$debug-object,
+            'button':     		config.$debug-button,
             'silence':       	config.$debug-silence,
             'silence-active':	config.$debug-silence-active
         ), $role);
@@ -133,7 +133,7 @@
             'registry':     	-2px,
             'wrapper':     		-4px,
             'wrapper-active':   -6px,
-            'dard':         	-2px,
+            'card':         	-2px,
             'object':    	-2px,
             'button':    	-2px,
             'silence':      	-2px,
