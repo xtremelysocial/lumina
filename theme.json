@@ -568,16 +568,6 @@
 	},
 	"templateParts": [
 		{
-		  "name": "header",
-		  "title": "Header Slot",
-		  "area": "header"
-		},
-		{
-		  "name": "footer",
-		  "title": "Footer Slot",
-		  "area": "footer"
-		},
-		{
 			"name": "header-home",
 			"title": "Lumina Home Page Header",
 			"description": "Header for the Home page",

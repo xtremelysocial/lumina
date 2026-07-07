@@ -82,7 +82,7 @@ main > :first-child.wp-block-template-part:empty {
 }
 
 /* Add bottom margin to main unless its the post content, then add it to that */
-main > :last-child:not(.wp-block-post-content),
+main > :last-child:not(.wp-block-post-content):not(:empty),
 :root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
 :root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {
   margin-block-end: var(--wp--preset--spacing--50);
@@ -391,6 +391,7 @@ body,
 .wp-block-heading a:hover::after, .wp-block-heading a:active::after, .wp-block-heading a:focus::after {
   /* Animate out cleanly from left to right */
   width: 100%;
+  opacity: 1;
 }
 
 .wp-block-site-title a {
@@ -414,6 +415,7 @@ body,
 .wp-block-site-title a:hover::after, .wp-block-site-title a:active::after, .wp-block-site-title a:focus::after {
   /* Animate out cleanly from left to right */
   width: 100%;
+  opacity: 1;
 }
 
 .wp-block-post-title a {
@@ -437,6 +439,7 @@ body,
 .wp-block-post-title a:hover::after, .wp-block-post-title a:active::after, .wp-block-post-title a:focus::after {
   /* Animate out cleanly from left to right */
   width: 100%;
+  opacity: 1;
 }
 
 .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title {
@@ -460,6 +463,7 @@ body,
 .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover::after, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active::after, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:focus::after {
   /* Animate out cleanly from left to right */
   width: 100%;
+  opacity: 1;
 }
 
 /*--------------------------------------------------------------

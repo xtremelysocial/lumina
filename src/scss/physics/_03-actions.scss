@@ -34,6 +34,7 @@
 // ==========================================================================
 @mixin __blueprint-lift-standard {
     transform: #{config.$shift-standard}; 
+//     opacity: 1; //ADD 2026-07-06
 }
 
 %physics-lift-standard {

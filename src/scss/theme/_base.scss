@@ -82,7 +82,6 @@ main > :first-child.wp-block-template-part:empty {
 	margin-block-start: 0 !important; 
 }
 
-
 /* 
  * Remove top margin on page/post title when placed into the content side of 
  * Templates that have a sidebar. 
@@ -93,8 +92,8 @@ main > :first-child.wp-block-template-part:empty {
 } 
 
 /* Add bottom margin to main unless its the post content, then add it to that */
-main > :last-child:not(.wp-block-post-content),
-// main > :last-child:not(.wp-block-post-content):not(:empty),
+// main > :last-child:not(.wp-block-post-content),
+main > :last-child:not(.wp-block-post-content):not(:empty),
 :root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
 :root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {	
 	margin-block-end: var(--wp--preset--spacing--50);

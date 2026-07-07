@@ -1,9 +1,9 @@
 <?php
 /**
  * Title: Lumina CTA 2 Columns (Shadowed & Rounded)
- * Slug: lumina/cta-2-columns
+ * Slug: lumina/columns-cta-2-columns
  * Categories: lumina, call-to-action
- * Block Types: core/group
+ * Block Types: core/columns
  */
 ?>
 <!-- wp:group {,"align":"wide","backgroundColor":"primary","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->
