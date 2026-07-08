@@ -13,7 +13,7 @@ $home_url  = esc_url( home_url( '/' ) );
 
 // Output as a clean block editor paragraph with the home link inside
 echo sprintf( 
-	'<!-- wp:paragraph --><p class="has-small-font-size"><a href="%s" rel="home">%s</a></p><!-- /wp:paragraph -->',
+	'<!-- wp:paragraph --><p><a href="%s" rel="home">%s</a></p><!-- /wp:paragraph -->',
 	$home_url,
 	$site_name
 );

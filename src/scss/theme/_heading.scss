@@ -9,7 +9,7 @@
 // List of selectors to add a separator
 $separators: (
     '.is-style-separator',
-    '.entry-header .entry-subtitle'
+//     '.entry-header .entry-subtitle'
 );
 $sep-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
 $sep-height: 3px;

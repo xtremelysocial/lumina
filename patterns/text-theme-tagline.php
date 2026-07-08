@@ -7,8 +7,8 @@
  * Block Types: 
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Theme Tagline"},"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"fontSize":"small","layout":{"type":"flex","flexWrap":"wrap"}} -->
-<div class="wp-block-group has-small-font-size">
+<!-- wp:group {"metadata":{"name":"Theme Tagline"},"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+<div class="wp-block-group">
 <!-- wp:pattern {"slug":"lumina/text-theme-name"} /-->
 
 <!-- wp:paragraph -->

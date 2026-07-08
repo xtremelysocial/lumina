@@ -1,0 +1,1275 @@
+/*--------------------------------------------------------------
+# Custom: Gutter Dividers (Columns)
+--------------------------------------------------------------*/
+@use '@wordpress/base-styles/breakpoints';
+@use '@wordpress/base-styles/mixins';
+
+.wp-block-columns.is-style-gutter-dividers {
+    position: relative;
+    
+    /* 1. YOUR SPACING UTILITY: Base gap set to 2x the preset spacer */
+    --lumina-forced-gap: calc(var(--wp--style--block-gap, 2rem) * 2);
+    gap: var(--lumina-forced-gap) !important;
+
+    /* 2. YOUR CLASS: Wide variant set to 3x the preset spacer */
+    &.is-style-wide-gap {
+        --lumina-forced-gap: calc(var(--wp--style--block-gap, 2rem) * 3);
+    }
+
+    /*--------------------------------------------------------------
+    ## 📱 MOBILE VIEWPORTS BY DEFAULT (< 782px)
+    --------------------------------------------------------------*/
+    /* Full-width horizontal shelf lines between collapsed columns */
+    & > .wp-block-column:not(:first-child) {
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            left: 0;
+            top: calc(var(--lumina-forced-gap) / -2);
+            background-color: color-mix(in srgb, currentColor 20%, transparent);
+            z-index: 2;
+            pointer-events: none;
+        }
+    }
+
+    /* Full-width horizontal row divider between separate stacked block groups */
+    & + & {
+        position: relative;
+        margin-top: var(--lumina-forced-gap) !important;
+        
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            left: 0;
+            height: 1px;
+            top: calc(var(--lumina-forced-gap) / -2);
+            background-color: color-mix(in srgb, currentColor 20%, transparent);
+            z-index: 2;
+            pointer-events: none;
+        }
+    }
+
+    /*--------------------------------------------------------------
+    ## 🖥️ DESKTOP & TABLET VIEWPORTS (>= 782px)
+    ## Hooks natively into WordPress Core's layout engine thresholds
+    --------------------------------------------------------------*/
+    @include mixins.break-medium() {
+        
+        /* THE DESKTOP FLIP: Pivot mobile shelf lines into vertical gutter tracks */
+        & > .wp-block-column:not(:first-child) {
+            &::before {
+                height: 100%;
+                width: 1px;
+                top: 0; 
+                left: calc(var(--lumina-forced-gap) / -2);
+            }
+        }
+
+        /* Continuous Row Stacking Engine */
+        & + & {
+            /* The Reach-Up: Seamlessly extends the vertical lines backward 
+               through your custom 2x/3x margin gaps to seal the grid crosshairs */
+            & > .wp-block-column:not(:first-child)::before {
+                height: calc(100% + var(--lumina-forced-gap));
+                top: calc(var(--lumina-forced-gap) * -1);
+            }
+        }
+    }
+}
+
+/*--------------------------------------------------------------
+## 1. THE COLUMNS ENGINE (Supports Continuous Row Stacking)
+--------------------------------------------------------------*/
+/* 🖥️ DESKTOP VIEWPORTS (>= 782px) */
+// @media (min-width: 782px) {
+//     .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+//         --lumina-forced-gap: calc(var(--wp--style--block-gap, 24px) * 2);
+//         gap: var(--lumina-forced-gap) !important;
+// 
+//         &.is-style-thick-gap {
+//             --lumina-forced-gap: calc(var(--wp--style--block-gap, 24px) * 3);
+//         }
+// 
+//         /* Base vertical lines for a standard single row */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 height: 100%;
+//                 top: 0; 
+//                 width: 1px;
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//                 left: calc(var(--lumina-forced-gap) / -2);
+//             }
+//         }
+// 
+//         /* Stacked Row Combinator (Row 2, Row 3, etc.) */
+//         & + & {
+//             position: relative;
+//             margin-top: var(--lumina-forced-gap) !important;
+//             
+//             /* Continuous edge-to-edge horizontal divider line */
+//             &::after {
+//                 content: "";
+//                 position: absolute;
+//                 top: calc(var(--lumina-forced-gap) / -2);
+//                 left: 0;
+//                 width: 100%;
+//                 height: 1px;
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//             }
+// 
+//             /* 🌟 THE REACH-UP MATH: Extends the vertical hairlines backward 
+//                through the margin gap space to lock perfectly onto the row above */
+//             & > .wp-block-column:not(:first-child)::before {
+//                 height: calc(100% + var(--lumina-forced-gap));
+//                 top: calc(var(--lumina-forced-gap) * -1);
+//             }
+//         }
+//     }
+// }
+// 
+// /* 📱 MOBILE VIEWPORTS (< 782px) */
+// @media (max-width: 781px) {
+//     .wp-block-columns.is-style-gutter-dividers {
+//         --lumina-forced-gap: calc(var(--wp--style--block-gap, 24px) * 2);
+//         gap: var(--lumina-forced-gap) !important;
+// 
+//         &.is-style-thick-gap {
+// 			--lumina-forced-gap: calc(var(--wp--style--block-gap, 24px) * 3);
+//         }
+// 
+//         /* Full-width horizontal dividers between collapsed columns */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 height: 1px;
+//                 width: 100%;
+//                 left: 0;
+//                 top: calc(var(--lumina-forced-gap) / -2);
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//             }
+//         }
+// 
+//         /* Full-width horizontal line between separate stacked column blocks */
+//         & + & {
+//             position: relative;
+//             margin-top: var(--lumina-forced-gap) !important;
+//             
+//             &::after {
+//                 content: "";
+//                 position: absolute;
+//                 width: 100%;
+//                 left: 0;
+//                 height: 1px;
+//                 top: calc(var(--lumina-forced-gap) / -2);
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//             }
+//         }
+//     }
+// }
+
+/*--------------------------------------------------------------
+## Custom: Lumina Architectural Continuous Grid Dividers
+--------------------------------------------------------------*/
+// .wp-block-group.is-layout-grid.is-style-gutter-dividers {
+//     position: relative;
+//     overflow: hidden !important; /* Pristine outer clipping mask */
+//     
+//     --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//     gap: var(--lumina-forced-gap) !important;
+// 
+//     &.is-style-thick-gap {
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//     }
+// 
+//     & > * {
+//         position: relative;
+// 
+//         /* 📐 UNBROKEN VERTICAL GRID LINES */
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             height: calc(100% + var(--lumina-forced-gap));
+//             /* Starts half-gap above and runs all the way through to cross the bottom line */
+//             top: calc(var(--lumina-forced-gap) / -2);
+//             width: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             left: calc(var(--lumina-forced-gap) / -2);
+//         }
+// 
+//         /* 📐 UNBROKEN HORIZONTAL GRID LINES */
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             width: calc(100% + var(--lumina-forced-gap));
+//             left: calc(var(--lumina-forced-gap) / -2);
+//             height: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             
+//             /* 🌟 THE RESCUE FLIP: Anchor to the bottom instead of the top.
+//                Since upper rows are always 100% full, Row 1 projects a 
+//                perfectly continuous line across all 4 columns into the gap! */
+//             bottom: calc(var(--lumina-forced-gap) / -2);
+//         }
+//     }
+// 
+//     & + & {
+//         margin-top: var(--lumina-forced-gap) !important;
+//     }
+// }
+
+/*--------------------------------------------------------------
+## 2. THE GRID ENGINE (Handles Infinite Responsive Matrix Wrapping)
+--------------------------------------------------------------*/
+// .wp-block-group.is-layout-grid.is-style-gutter-dividers {
+//     position: relative;
+//     overflow: hidden !important; /* Perfect outer clipping boundary for fluid grids */
+//     
+// 	--lumina-forced-gap: calc(var(--wp--style--block-gap, 24px) * 2);
+//     gap: var(--lumina-forced-gap) !important;
+// 
+//     &.is-style-thick-gap {
+//         --lumina-forced-gap: calc(var(--wp--style--block-gap, 24px) * 3);
+//     }
+// 
+//     & > * {
+//         position: relative;
+// 
+//         /* Unbroken vertical matrix tracks */
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             height: calc(100% + var(--lumina-forced-gap));
+//             top: calc(var(--lumina-forced-gap) / -2);
+//             width: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             left: calc(var(--lumina-forced-gap) / -2);
+//         }
+// 
+//         /* Unbroken horizontal matrix tracks */
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             width: calc(100% + var(--lumina-forced-gap));
+//             left: calc(var(--lumina-forced-gap) / -2);
+//             height: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             top: calc(var(--lumina-forced-gap) / -2);
+//         }
+//     }
+// 
+//     /* Standard block-to-block margin stack consistency */
+//     & + & {
+//         margin-top: var(--lumina-forced-gap) !important;
+//     }
+// }
+
+/*--------------------------------------------------------------
+## Lumina Universal Calculated Matrix Engine
+--------------------------------------------------------------*/
+// .wp-block-group.is-layout-grid.is-style-gutter-dividers {
+//     position: relative;
+//     overflow: hidden !important; /* Continuous crosshair clipping boundary */
+//     
+//     --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//     gap: var(--lumina-forced-gap) !important;
+// 
+//     /* 🌟 THE MATHEMATICAL TRACK RESCUE:
+//        Instead of a hardcoded pixel floor, we calculate a dynamic track floor.
+//        We pull your theme's wide-width token (defaulting to 1100px if missing),
+//        and calculate a fluid threshold that fits 6 columns perfectly on desktop
+//        but automatically wraps symmetrically as screen space tightens. */
+//     --wide-bounds: var(--wp--style--global--wide-size, 1100px);
+//     
+//     /* On large desktop displays, let WordPress's editor layout selection run native.
+//        As the screen scales down, this fluid property takes over defense. */
+//     grid-template-columns: repeat(auto-fit, minmax(
+//         clamp(160px, calc((100vw - var(--wide-bounds)) * 999), 280px), 
+//         1fr
+//     )) !important;
+// 
+//     &.is-style-thick-gap {
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//     }
+// 
+//     /* 📐 CONTINUOUS LINE TRACK MATRICES (Looking downward) */
+//     & > * {
+//         position: relative;
+// 
+//         /* Vertical Continuous Dividers */
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             height: calc(100% + var(--lumina-forced-gap));
+//             top: calc(var(--lumina-forced-gap) / -2);
+//             width: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             left: calc(var(--lumina-forced-gap) / -2);
+//         }
+// 
+//         /* Horizontal Continuous Dividers */
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             width: calc(100% + var(--lumina-forced-gap));
+//             left: calc(var(--lumina-forced-gap) / -2);
+//             height: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             bottom: calc(var(--lumina-forced-gap) / -2);
+//         }
+//     }
+// 
+//     /* Block Stacking Buffer Stability */
+//     & + & {
+//         margin-top: var(--lumina-forced-gap) !important;
+//     }
+// }
+
+/*--------------------------------------------------------------
+## Custom: Lumina Defensive Grid Track Protection
+--------------------------------------------------------------*/
+// .wp-block-group.is-layout-grid {
+//     /* Safe responsive fallback track floor */
+//     grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)) !important;
+// }
+
+/*--------------------------------------------------------------
+## Custom: Lumina Symmetric 4-Column Grid Variant
+--------------------------------------------------------------*/
+// .wp-block-group.is-layout-grid.is-style-gutter-dividers {
+//     
+//     /* 📱 MOBILE VIEWPORTS BY DEFAULT (< 600px)
+//        Stacks columns into a clean 100% width vertical tier list */
+//     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+// 
+//     /* 📐 SMALL TO MEDIUM VIEWPORTS (>= 600px)
+//        Hooks natively into WordPress's $break-small threshold.
+//        Perfectly balances 4 items into a stable 2x2 grid matrix on tablets. */
+//     @include mixins.break-small() {
+//         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+//     }
+// 
+//     /* 🖥️ LARGE / WIDE VIEWPORTS (>= 960px)
+//        Hooks natively into WordPress's $break-large threshold.
+//        Snaps cleanly to 4 columns *before* hitting your 1100px wide-width limit,
+//        completely vaporizing that awkward 4+2 cramped text distortion! */
+//     @include mixins.break-large() {
+//         grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+//     }
+// }
+
+/*--------------------------------------------------------------
+## Custom: Lumina Defensive Grid Track Protection
+--------------------------------------------------------------*/
+// .wp-block-group.is-layout-grid {
+//     
+//     /* 🌟 THE RESCUE: Overrides WordPress's rigid inline minmax(0) tracking.
+//        This tells the browser: 'Never shrink a column track smaller than 250px.
+//        If space runs out, smoothly wrap the column blocks to a new row instead!' */
+//     grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)) !important;
+// }
+
+/*--------------------------------------------------------------
+## Custom: Lumina Symmetric 4-Column Grid Variant
+--------------------------------------------------------------*/
+// .wp-block-group.is-layout-grid.is-style-gutter-dividers {
+//     
+//     /* 🖥️ LARGE SCREENS: Perfect 4-across horizontal baseline */
+//     @media (min-width: 1200px) {
+//         grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+//     }
+// 
+//     /* 9 TABLET VIEWPORTS: Force a pristine 2x2 grid matrix.
+//        This completely vaporizes the 3-and-1 oddball look! */
+//     @media (min-width: 782px) and (max-width: 1199px) {
+//         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+//         
+//         /* Because it's a perfect 2x2 box, your continuous vertical 
+//            and horizontal lines cross cleanly over the empty tracks */
+//     }
+// 
+//     /* 📱 MOBILE VIEWPORTS: Single column tiers */
+//     @media (max-width: 781px) {
+//         grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+//     }
+// }
+
+/*--------------------------------------------------------------
+## 1. THE COLUMNS ENGINE (Supports Infinite Row Stacking)
+--------------------------------------------------------------*/
+// @media (min-width: 782px) {
+//     .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//         gap: var(--lumina-forced-gap) !important;
+// 
+//         &.is-style-thick-gap {
+//             --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//         }
+// 
+//         /* Full-height vertical lines between horizontal columns */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 height: 100%;
+//                 top: 0; 
+//                 width: 1px;
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//                 left: calc(var(--lumina-forced-gap) / -2);
+//             }
+//         }
+// 
+//         /* 🌟 THE RETURN OF THE STACKED ROW SEPARATOR: 
+//            Because there is no overflow:hidden here, this line renders perfectly! */
+//         & + & {
+//             position: relative;
+//             margin-top: var(--lumina-forced-gap) !important;
+//             
+//             &::after {
+//                 content: "";
+//                 position: absolute;
+//                 top: calc(var(--lumina-forced-gap) / -2);
+//                 left: 0;
+//                 width: 100%;
+//                 height: 1px;
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//             }
+//         }
+//     }
+// }
+
+/* Mobile full-width lines between stacked columns */
+// @media (max-width: 781px) {
+//     .wp-block-columns.is-style-gutter-dividers {
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//         gap: var(--lumina-forced-gap) !important;
+// 
+//         &.is-style-thick-gap {
+//             --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//         }
+// 
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 height: 1px;
+//                 width: 100%;
+//                 left: 0;
+//                 top: calc(var(--lumina-forced-gap) / -2);
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//             }
+//         }
+// 
+//         & + & {
+//             position: relative;
+//             margin-top: var(--lumina-forced-gap) !important;
+//             
+//             &::after {
+//                 content: "";
+//                 position: absolute;
+//                 width: 100%;
+//                 left: 0;
+//                 height: 1px;
+//                 top: calc(var(--lumina-forced-gap) / -2);
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//             }
+//         }
+//     }
+// }
+
+/*--------------------------------------------------------------
+## Custom: Lumina Architectural Continuous Grid Dividers
+--------------------------------------------------------------*/
+// .wp-block-group.is-layout-grid.is-style-gutter-dividers {
+//     position: relative;
+//     
+//     /* 1. PERIMETER SHIELD: Cleanly chops off the line extensions 
+//        where they try to bleed past the outer boundary edges */
+//     overflow: hidden !important; 
+//     
+//     /* Direct gap override for predictable layout spacing */
+//     --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//     gap: var(--lumina-forced-gap) !important;
+// 
+//     &.is-style-thick-gap {
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//     }
+// 
+//     & > * {
+//         position: relative;
+// 
+//         /* 📐 UNBROKEN VERTICAL GRID LINES */
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             
+//             /* 🌟 THE LINK: Expand the height to cover the cell PLUS the gap space */
+//             height: calc(100% + var(--lumina-forced-gap));
+//             /* Shift up by half the gap to meet the row flowing above it */
+//             top: calc(var(--lumina-forced-gap) / -2);
+//             
+//             width: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             
+//             /* Position precisely in the center of the left gutter track */
+//             left: calc(var(--lumina-forced-gap) / -2);
+//         }
+// 
+//         /* 📐 UNBROKEN HORIZONTAL GRID LINES */
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             
+//             /* 🌟 THE LINK: Expand the width to cover the cell PLUS the gap space */
+//             width: calc(100% + var(--lumina-forced-gap));
+//             /* Shift left by half the gap to meet the column flowing beside it */
+//             left: calc(var(--lumina-forced-gap) / -2);
+//             
+//             height: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             
+//             /* Position precisely in the center of the top gutter track */
+//             top: calc(var(--lumina-forced-gap) / -2);
+//         }
+//     }
+// 
+//     /* Consistent spacing if multiple grid blocks are stacked */
+//     & + & {
+//         margin-top: var(--lumina-forced-gap) !important;
+//     }
+// }
+
+/*--------------------------------------------------------------
+## 2. THE GRID ENGINE (Handles Infinite Responsive Matrix Wrapping)
+--------------------------------------------------------------*/
+// .wp-block-group.is-layout-grid.is-style-gutter-dividers {
+//     position: relative;
+//     overflow: hidden !important; /* Perfect perimeter clipping mask for wrapping */
+//     
+//     --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//     gap: var(--lumina-forced-gap) !important;
+// 
+//     &.is-style-thick-gap {
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//     }
+// 
+//     & > * {
+//         position: relative;
+// 
+//         /* Vertical lines (automatically hidden on cell wrap outer-left boundaries) */
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             height: 100%;
+//             top: 0;
+//             width: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             left: calc(var(--lumina-forced-gap) / -2);
+//         }
+// 
+//         /* Horizontal lines (automatically hidden on cell wrap outer-top boundaries) */
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             width: 100%;
+//             left: 0;
+//             height: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             top: calc(var(--lumina-forced-gap) / -2);
+//         }
+//     }
+// 
+//     /* Standard block stacking buffer */
+//     & + & {
+//         margin-top: var(--lumina-forced-gap) !important;
+//     }
+// }
+
+/*--------------------------------------------------------------
+## Custom: Lumina Universal Matrix Dividers 
+## (Handles Columns, Wrapping, Grids, and Mobile natively)
+--------------------------------------------------------------*/
+// .wp-block-columns.is-style-gutter-dividers,
+// .wp-block-group.is-layout-grid.is-style-gutter-dividers {
+//     
+//     position: relative;
+// 
+//     /* 1. THE MAGIC MASK: Slices off any lines that touch the outer edges.
+//        This is what makes tablet wrapping and mobile stacking work automatically! */
+//     overflow: hidden !important;
+// 
+//     /* 2. DIRECT GAP OVERRIDE: Force your expanded layout gutters */
+//     --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//     gap: var(--lumina-forced-gap) !important;
+// 
+//     &.is-style-thick-gap {
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//     }
+// 
+//     /* 3. TARGET EVERY CHILD CELL (Columns or Grid Items) */
+//     & > * {
+//         position: relative;
+// 
+//         /* 📐 VERTICAL LINES (Pushed out of bounds on the left edge) */
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             height: 100%;
+//             top: 0;
+//             width: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             left: calc(var(--lumina-forced-gap) / -2);
+//         }
+// 
+//         /* 📐 HORIZONTAL LINES (Pushed out of bounds on the top edge) */
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             width: 100%;
+//             left: 0;
+//             height: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             top: calc(var(--lumina-forced-gap) / -2);
+//         }
+//     }
+// }
+// 
+// /* Optional: Keep the vertical margin if a user stacks two separate blocks 
+//    on top of each other, keeping the grid spacing consistent */
+// .wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers,
+// .wp-block-group.is-layout-grid.is-style-gutter-dividers + .wp-block-group.is-layout-grid.is-style-gutter-dividers {
+//     margin-top: var(--lumina-forced-gap) !important;
+// }
+
+// --------------------------------------------------------------
+// ## Custom: Lumina Adaptive Grid & Gutter System
+// --------------------------------------------------------------*/
+// .wp-block-columns.is-style-gutter-dividers {
+//     1. GLOBAL GAP CONTROL: Handles mobile vertical stacking 
+//        and desktop horizontal columns using the exact same spacing unit */
+//     --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//     gap: var(--lumina-forced-gap) !important;
+// 
+//     &.is-style-thick-gap {
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//     }
+// 
+//     Universal Stacked Row Buffer */
+//     & + & {
+//         position: relative;
+//         margin-top: var(--lumina-forced-gap) !important;
+//     }
+// }
+// 
+// --------------------------------------------------------------
+// ## 📱 MOBILE VIEWPORTS (< 782px)
+// --------------------------------------------------------------*/
+// @media (max-width: 781px) {
+//     .wp-block-columns.is-style-gutter-dividers {
+//         
+//         Partial horizontal dividers between stacked columns */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+// 
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 
+//                 🌟 THE MOBILE SWAP: Flat 1px line centered horizontally */
+//                 height: 1px;
+//                 width: 100%; //60%;
+//                 left: 0; //20%;
+//                 
+//                 Center the line perfectly within the vertical gap */
+//                 top: calc(var(--lumina-forced-gap) / -2);
+//                 
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//             }
+//         }
+// 
+//         Partial horizontal divider between separate stacked rows */
+//         & + &::after {
+//             content: "";
+//             position: absolute;
+//             width: 100%; //60%;
+//             left: 0; //20%;
+//             height: 1px;
+//             top: calc(var(--lumina-forced-gap) / -2);
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//         }
+//     }
+// }
+// 
+// --------------------------------------------------------------
+// ## 🖥️ DESKTOP VIEWPORTS (>= 782px)
+// --------------------------------------------------------------*/
+// @media (min-width: 782px) {
+//     .wp-block-columns.is-style-gutter-dividers {
+//         
+//         Full-inner vertical lines */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+// 
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 height: 100%;
+//                 top: 0;
+//                 width: 1px;
+//                 left: calc(var(--lumina-forced-gap) / -2);
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//             }
+//         }
+// 
+//         Full-inner horizontal rows (forming the crosshairs) */
+//         & + &::after {
+//             content: "";
+//             position: absolute;
+//             top: calc(var(--lumina-forced-gap) / -2);
+//             left: 0;
+//             width: 100%;
+//             height: 1px;
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//         }
+//     }
+// }
+// 
+// --------------------------------------------------------------
+// ## Custom: Lumina Universal Grid Matrix Dividers
+// --------------------------------------------------------------*/
+// .wp-block-group.is-layout-grid.is-style-gutter-dividers {
+//     position: relative;
+// 
+//     1. SEIZE THE FRAMEWORK BOUNDARY: Act as an ironclad mask 
+//        that cleanly slices away the overlapping perimeter lines */
+//     overflow: hidden !important;
+// 
+//     2. DIRECT GAP OVERRIDE: Force your expanded layout gutters.
+//        This directly knocks out the user's manual block gap slider,
+//        keeping layout margins and block paddings 100% untouched. */
+//     --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//     gap: var(--lumina-forced-gap) !important;
+// 
+//     Thick Gap Variant Intersection */
+//     &.is-style-thick-gap {
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//     }
+// 
+//     3. TARGET EVERY GRID CELL: Apply the lines globally to all children */
+//     & > * {
+//         position: relative;
+// 
+//         📐 VERTICAL GRID LINES (Columns) */
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             
+//             Run the full height of the grid track row */
+//             height: 100%;
+//             top: 0;
+//             width: 1px;
+//             
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             
+//             Look backward into the gap space to find the absolute center */
+//             left: calc(var(--lumina-forced-gap) / -2);
+//         }
+// 
+//         📐 HORIZONTAL GRID LINES (Rows) */
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             
+//             Run the full width of the grid cell track */
+//             width: 100%;
+//             left: 0;
+//             height: 1px;
+//             
+//             background-color: color-mix(in srgb, currentColor 20%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//             
+//             Look upward into the gap space to find the absolute center */
+//             top: calc(var(--lumina-forced-gap) / -2);
+//         }
+//     }
+// }
+
+/*--------------------------------------------------------------
+## Custom: Lumina Architectural Inner Grid System
+--------------------------------------------------------------*/
+// @media (min-width: 782px) {
+//     
+//     .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+// 
+//         /* Force the expanded gap layout */
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//         gap: var(--lumina-forced-gap) !important;
+// 
+//         &.is-style-thick-gap {
+//             --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//         }
+// 
+//         /* Target columns to draw the vertical lines */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+// 
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 
+//                 /* 🌟 GO FULL HEIGHT: Spans 100% of the row container */
+//                 height: 100%;
+//                 top: 0; 
+//                 width: 1px;
+//                 
+//                 /* Softened to 20% so the long lines don't overwhelm the text */
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//                 
+//                 /* Stays perfectly centered in the gutter */
+//                 left: calc(var(--lumina-forced-gap) / -2);
+//             }
+//         }
+// 
+//         /* Row Stacking Engine */
+//         & + & {
+//             position: relative;
+//             margin-top: var(--lumina-forced-gap) !important;
+//             
+//             &::after {
+//                 content: "";
+//                 position: absolute;
+//                 top: calc(var(--lumina-forced-gap) / -2);
+//                 
+//                 /* 🌟 GO FULL WIDTH: Connects edge-to-edge with the vertical lines
+//                    to create flawless inner grid crosshairs */
+//                 left: 0;
+//                 width: 100%;
+//                 height: 1px;
+//                 
+//                 background-color: color-mix(in srgb, currentColor 20%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//             }
+//         }
+//     }
+// }
+/*--------------------------------------------------------------
+## Custom: Lumina Gutter Dividers (Direct Gap Control)
+--------------------------------------------------------------*/
+// @media (min-width: 782px) {
+//     
+//     .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+// 
+//         /* 1. HORIZONTAL BUFFER: Force the expanded layout gutter */
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//         gap: var(--lumina-forced-gap) !important;
+// 
+//         /* Thick Gap Variant Handling */
+//         &.is-style-thick-gap {
+//             --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//         }
+// 
+//         /* Draw the vertical lines for multi-column configurations */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+// 
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 height: 60%;
+//                 top: 20%; 
+//                 width: 1px;
+//                 background-color: color-mix(in srgb, currentColor 25%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//                 
+//                 /* Locked to the exact horizontal center of the forced gap */
+//                 left: calc(var(--lumina-forced-gap) / -2);
+//             }
+//         }
+// 
+//         /*--------------------------------------------------------------
+//         ## Row Stacking Engine (The Vertical Fix)
+//         --------------------------------------------------------------*/
+//         /* 🌟 TRIGGER: Runs when a divider row sits immediately below another divider row */
+//         & + & {
+//             position: relative;
+//             
+//             /* 2. VERTICAL BUFFER: Forces a matching layout gap between the rows.
+//                This instantly clears the text from the top columns and creates the 
+//                necessary open space for the horizontal divider line. */
+//             margin-top: var(--lumina-forced-gap) !important;
+//             
+//             &::after {
+//                 content: "";
+//                 position: absolute;
+//                 
+//                 /* 🎯 CENTERED ROW BREAK: Places the hairline trace precisely in 
+//                    the mathematical center of the new vertical margin space */
+//                 top: calc(var(--lumina-forced-gap) / -2);
+//                 
+//                 /* Magazine editorial look: keeps the line floating inside the boundaries */
+//                 left: 10%;
+//                 width: 80%;
+//                 height: 1px;
+//                 
+//                 background-color: color-mix(in srgb, currentColor 25%, transparent);
+//                 z-index: 2;
+//                 pointer-events: none;
+//             }
+//         }
+//     }
+// }
+
+/*--------------------------------------------------------------
+## Custom: Lumina Gutter Dividers (Direct Gap Control)
+--------------------------------------------------------------*/
+// @media (min-width: 782px) {
+//     
+//     .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+// 
+//         /* 1. OVERRIDE THE GAP DIRECTLY: We force an elegant 1.5x expanded gap.
+//            This immediately handles the spacing buffer for the divider line,
+//            leaving user padding and margins completely untouched. */
+//         --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//         gap: var(--lumina-forced-gap) !important;
+// 
+//         /* 2. THICK GAP MODIFIER: Scale the forced gap further if both styles are active */
+//         &.is-style-thick-gap {
+//             --lumina-forced-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//         }
+// 
+//         /* Target columns 2 and 3 to draw the vertical dividers */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+// 
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 
+//                 /* Elegant partial-height look centered vertically */
+//                 height: 60%;
+//                 top: 20%; 
+//                 width: 1px;
+//                 
+//                 /* Adaptive 25% text-color blend for flawless light/dark mode support */
+//                 background-color: color-mix(in srgb, currentColor 25%, transparent);
+//                 
+//                 /* Punch through any overlapping block elements or background layers */
+//                 z-index: 2;
+//                 pointer-events: none;
+//                 
+//                 /* 🎯 PERFECTLY CENTERED: Always calculates the absolute center of 
+//                    our forced gap, completely independent of core WordPress math */
+//                 left: calc(var(--lumina-forced-gap) / -2);
+//             }
+//         }
+//     }
+// 
+//     /* Row Stacking Engine (Triggers if rows are stacked directly underneath each other) */
+//     .wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+//         
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             top: calc(var(--lumina-forced-gap) / -2);
+//             left: 10%;
+//             width: 80%;
+//             height: 1px;
+//             background-color: color-mix(in srgb, currentColor 25%, transparent);
+//             z-index: 2;
+//             pointer-events: none;
+//         }
+//     }
+// }
+
+/*--------------------------------------------------------------
+## Custom: Pixelarity-Inspired Internal Only Grid Dividers
+--------------------------------------------------------------*/
+// .wp-block-group.is-style-gutter-dividers,
+// .wp-block-columns.is-style-gutter-dividers,
+// .wp-block-query-loop.is-style-gutter-dividers {
+//     
+//     /* 1. SEIZE CONTAINER BOUNDARIES: Slices off the outer overlapping lines */
+//     overflow: hidden !important;
+//     
+//     /* 2. FLUSH INTERSECTION: Force cells edge-to-edge so lines overlap perfectly */
+//     gap: 0 !important;
+// 
+//     /* Target the direct child layout cells (columns, grid blocks, sections) */
+//     & > * {
+//         /* 3. ADAPTIVE CHROMATIC LINE: Whisper-thin internal dividers */
+//         border-top: 1px solid color-mix(in srgb, currentColor 10%, transparent) !important;
+//         border-left: 1px solid color-mix(in srgb, currentColor 10%, transparent) !important;
+// 
+//         /* 4. THE OVERLAP SHIFT: Pulls the top/left perimeter lines out of view */
+//         margin-top: -1px !important;
+//         margin-left: -1px !important;
+//         
+//         /* 🌟 THE PROTECTIVE BUFFER: Generates the mandatory internal negative space.
+//            This keeps your paragraphs from hitting the borders, matching the airy Pixelarity look. */
+//         padding: var(--wp--preset--spacing--50, 2.5rem) !important;
+//         
+//         /* 5. DEFENSIVE LAYOUT SHIELD: Forces the padding to compress inward
+//            so your text widths remain beautifully proportioned on the grid canvas */
+//         box-sizing: border-box !important;
+//     }
+// }
+
+/*--------------------------------------------------------------
+## Custom: Pixelarity-Inspired Internal Only Grid Dividers
+--------------------------------------------------------------*/
+// .wp-block-group.is-style-gutter-dividers,
+// .wp-block-columns.is-style-gutter-dividers,
+// .wp-block-query-loop.is-style-gutter-dividers {
+//     
+//     /* 1. SEIZE CONTAINER BOUNDARIES: Force the wrapper to act as an 
+//        ironclad frame that cleanly slices off any overlapping lines */
+//     overflow: hidden !important;
+//     
+//     /* 2. GAP LOCKdown: Force the blocks flush against each other so the 
+//        borders line up perfectly to form unified internal divider rules */
+//     gap: 0 !important;
+// 
+//     /* Target the direct child layout elements (columns, grid cells, sections) */
+//     & > * {
+//         /* 3. THE FRAMEWORK PAIRING: Give every cell a top and left layout line.
+//            Uses your adaptive color-mix token to look gorgeous on any background color. */
+//         border-top: 1px solid color-mix(in srgb, currentColor 10%, transparent) !important;
+//         border-left: 1px solid color-mix(in srgb, currentColor 10%, transparent) !important;
+// 
+//         /* 4. THE COLLAPSE SHIFT: Pull every element up and left by exactly 1px.
+//            - On internal tracks, this forces the double borders to perfectly overlap into a single line.
+//            - On the top and left outer edges, this pushes the borders outside the hidden parent frame,
+//              instantly vaporizing them from the screen. */
+//         margin-top: -1px !important;
+//         margin-left: -1px !important;
+//         
+//         /* Ensure layout settings don't warp cell proportions during the shift */
+//         box-sizing: border-box;
+//     }
+// }
+
+// --------------------------------------------------------------
+// ## Custom: Lumina Fluid Grid & Gutter System
+// --------------------------------------------------------------*/
+// @media (min-width: 782px) {
+//     
+//     .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+// 
+//         🌟 THE FIX: Anchor the block's physical spacing to a theme-controlled variable.
+//            Using !important gracefully overrides Gutenberg's inline style or hashed container 
+//            rules, guaranteeing your math remains flawlessly aligned on the canvas. */
+//         --lumina-gutter-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+//         gap: var(--lumina-gutter-gap) !important;
+// 
+//         2. THICK GAP INTERSECTION: Automatically scale the tracking variable 
+//            if the user stacks both framework utility styles on the same block container */
+//         &.is-style-thick-gap {
+//             --lumina-gutter-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//         }
+// 
+//         Draw the vertical lines for multi-column layouts */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+// 
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 height: 60%;
+//                 top: 20%; 
+//                 width: 1px;
+//                 background-color: color-mix(in srgb, currentColor 10%, transparent);
+//                 pointer-events: none;
+//                 
+//                 🎯 PERFECTLY CENTERED: Calculates coordinates cleanly off your locked token */
+//                 left: calc(var(--lumina-gutter-gap) / -2);
+//             }
+//         }
+//     }
+// 
+//     --------------------------------------------------------------
+//     ## Row Stacking Engine (Adjacent Sibling Tracking)
+//     --------------------------------------------------------------*/
+//     .wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+//         
+//         Draw an elegant horizontal separator exactly halfway between matching rows */
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             
+//             Pulls down the exact margin gap variable to center the row break */
+//             top: calc(var(--lumina-gutter-gap) / -2);
+//             
+//             left: 10%;
+//             width: 80%;
+//             height: 1px;
+//             
+//             background-color: color-mix(in srgb, currentColor 10%, transparent);
+//             pointer-events: none;
+//         }
+//     }
+// }
+
+// @media (min-width: 782px) {
+//     
+//     .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+// 
+//         /* 1. AUTOMATIC GAP SCALING: Increase the native gap by 50% right out of the box
+//            This ensures the text columns always have plenty of room to breathe around the line */
+//         --wp--style--block-gap: calc(var(--wp--preset--spacing--40, 2rem) * 1.5);
+// 
+//         /* 2. THICK GAP INTERSECTION: If a user pairs both styles on the same block,
+//            scale the spacing to an elegant 2.5x total width instead of compounding exponentially */
+//         &.is-style-thick-gap {
+//             --wp--style--block-gap: calc(var(--wp--preset--spacing--40, 2rem) * 2.5);
+//         }
+// 
+//         /* Draw the vertical lines for multi-column layouts */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+// 
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 height: 60%;
+//                 top: 20%; 
+//                 width: 1px;
+//                 background-color: color-mix(in srgb, currentColor 10%, transparent);
+//                 pointer-events: none;
+//                 
+//                 /* 🌟 SELF-CORRECTING CENTER: Pushes out automatically based on the dynamic gap math above */
+//                 left: calc(var(--wp--style--block-gap) / -2);
+//             }
+//         }
+//     }
+
+//    /*--------------------------------------------------------------
+//     ## Row Stacking Engine (3-over-3, 2-over-2, etc.)
+//     --------------------------------------------------------------*/
+//    /* 3. ADJACENT SIBLING TARGET: Triggers automatically ONLY when one divider-style column 
+//       block is placed directly underneath another divider-style column block */
+//     .wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+//         
+//         /* Draw an elegant horizontal separator exactly halfway between the two rows */
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             
+//             /* Float the line precisely halfway up into the vertical flow margin space */
+//             top: calc(var(--wp--style--block-gap, 2rem) / -2);
+//             
+//             /* Keep it partial-width (80% centered) to match the elegant aesthetic of the vertical lines */
+//             left: 10%;
+//             width: 80%;
+//             height: 1px;
+//             
+//             background-color: color-mix(in srgb, currentColor 10%, transparent);
+//             pointer-events: none;
+//         }
+//     }
+// }
+
+// @media (min-width: 782px) {
+//     
+//     .wp-block-columns.is-style-gutter-dividers {
+//         position: relative;
+// 
+//         /* 🌟 THE UNIVERSAL SELECTOR: Targets every column except the first one */
+//         & > .wp-block-column:not(:first-child) {
+//             position: relative;
+// 
+//             /* Drop a single line looking backward into its left gutter */
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 
+//                 /* Set the precise height percentage and center it vertically */
+//                 height: 60%;
+//                 top: 20%; 
+//                 
+//                 width: 1px;
+//                 
+//                 /* Adaptive color-mix remains intact for light/dark canvas modes */
+//                 background-color: color-mix(in srgb, currentColor 10%, transparent);
+//                 pointer-events: none;
+//                 
+//                 /* Position the line exactly halfway back inside the block-gap space */
+//                 left: calc(var(--wp--style--block-gap, var(--wp--preset--spacing--40, 2rem)) / -2);
+//             }
+//         }
+//     }
+// }

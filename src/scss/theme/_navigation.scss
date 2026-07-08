@@ -167,7 +167,9 @@
 
 		// Add border to the nav item (li) other than the last one
 		& .wp-block-navigation-item:not(:last-child) { //,
-			border-bottom: 1px solid rgba(128, 128, 128, 0.2);		
+// 			border-bottom: 1px solid rgba(128, 128, 128, 0.2);		
+		// 🌟 DYNAMIC ADAPTIVE NESTED LINK TOGGLE DIVIDER
+			border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);		
 		}
 
 		// Add padding to the nav item link (a)
@@ -179,7 +181,9 @@
 		// Top-level nav items need their own bottom border and padding as well
 		& .wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
 			width: 100%;
-			border-bottom: 1px solid rgba(128, 128, 128, 0.2);		
+// 			border-bottom: 1px solid rgba(128, 128, 128, 0.2);		
+		// 🌟 DYNAMIC ADAPTIVE NESTED LINK TOGGLE DIVIDER
+			border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
 		}
 
 		// Since now full-width, align the items
