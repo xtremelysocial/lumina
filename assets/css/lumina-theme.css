@@ -16,40 +16,281 @@
  */
 /* ==========================================================================
    LUMINA THEME: CSS styles
-   v0.9.9 Build 28 Parts & Patterns
+   v0.9.9 Build 29 Colors & Templates
    ========================================================================== */
+/*-----------------------------------------------------------------------------
+# SET CONTRAST LOGIC: Lightweight Extend-Based Core Engine
+-----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+# BUILD SELECTOR LIST: Build a compiled comma-separated CSS selector string
+-----------------------------------------------------------------------------*/
+/*
+ * Default contrast (text) based on background color.
+ * To override, set these in theme.json:
+ *		--wp--custom--color--contrast--{color}
+ */
+/* ==========================================================================
+   THE CORE ENGINE (100% IDENTICAL ACROSS PARENT AND CHILD)
+   ========================================================================== */
+.has-dark-yellow-background-color .wp-block-heading, .has-yellow-background-color .wp-block-heading, .has-dark-green-background-color .wp-block-heading, .has-tertiary-dark-alt-background-color .wp-block-heading, .has-tertiary-dark-background-color .wp-block-heading, .has-primary-dark-alt-background-color .wp-block-heading, .has-primary-dark-background-color .wp-block-heading,
+.has-dark-yellow-background-color .wp-block-post-title,
+.has-yellow-background-color .wp-block-post-title,
+.has-dark-green-background-color .wp-block-post-title,
+.has-tertiary-dark-alt-background-color .wp-block-post-title,
+.has-tertiary-dark-background-color .wp-block-post-title,
+.has-primary-dark-alt-background-color .wp-block-post-title,
+.has-primary-dark-background-color .wp-block-post-title,
+.has-dark-yellow-background-color .wp-block-query-title,
+.has-yellow-background-color .wp-block-query-title,
+.has-dark-green-background-color .wp-block-query-title,
+.has-tertiary-dark-alt-background-color .wp-block-query-title,
+.has-tertiary-dark-background-color .wp-block-query-title,
+.has-primary-dark-alt-background-color .wp-block-query-title,
+.has-primary-dark-background-color .wp-block-query-title,
+.has-dark-yellow-background-color .wp-block-site-title,
+.has-yellow-background-color .wp-block-site-title,
+.has-dark-green-background-color .wp-block-site-title,
+.has-tertiary-dark-alt-background-color .wp-block-site-title,
+.has-tertiary-dark-background-color .wp-block-site-title,
+.has-primary-dark-alt-background-color .wp-block-site-title,
+.has-primary-dark-background-color .wp-block-site-title,
+.has-dark-yellow-background-color .wp-block-site-tagline,
+.has-yellow-background-color .wp-block-site-tagline,
+.has-dark-green-background-color .wp-block-site-tagline,
+.has-tertiary-dark-alt-background-color .wp-block-site-tagline,
+.has-tertiary-dark-background-color .wp-block-site-tagline,
+.has-primary-dark-alt-background-color .wp-block-site-tagline,
+.has-primary-dark-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+body:not(.is-dark-theme) .has-dark-yellow-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .has-yellow-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .has-dark-green-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-very-light-red-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-very-light-purple-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-very-light-blue-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-very-light-orange-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-very-light-yellow-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-very-light-green-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .has-tertiary-subtle-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .has-secondary-subtle-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .has-primary-subtle-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)) {
+  color: inherit;
+}
+
+body:not(.is-dark-theme) .wp-block-post-content .has-dark-yellow-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .wp-block-post-content .has-yellow-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .wp-block-post-content .has-dark-green-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .wp-block-post-content .has-very-light-red-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .wp-block-post-content .has-very-light-purple-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .wp-block-post-content .has-very-light-blue-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .wp-block-post-content .has-very-light-orange-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .wp-block-post-content .has-very-light-yellow-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .wp-block-post-content .has-very-light-green-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .wp-block-post-content .has-tertiary-subtle-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .wp-block-post-content .has-secondary-subtle-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .wp-block-post-content .has-primary-subtle-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)) {
+  text-decoration-line: underline;
+}
+
+body:not(.is-dark-theme) .has-tertiary-dark-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .has-tertiary-dark-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .has-primary-dark-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), body:not(.is-dark-theme) .has-primary-dark-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-tertiary-subtle-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-secondary-subtle-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-primary-subtle-alt-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-tertiary-subtle-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-secondary-subtle-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)), .is-dark-theme .has-primary-subtle-background-color a:where(:not(.wp-element-button, .wp-block-social-link-anchor)) {
+  color: var(--wp--preset--color--highlight);
+}
+
+.is-dark-theme .has-neutral-alt-background-color .wp-block-heading, .is-dark-theme .has-neutral-alt-background-color .wp-block-post-title, .is-dark-theme .has-neutral-alt-background-color .wp-block-query-title, .is-dark-theme .has-neutral-alt-background-color .wp-block-site-title, .is-dark-theme .has-neutral-alt-background-color .wp-block-site-tagline, .is-dark-theme .has-neutral-background-color .wp-block-heading, .is-dark-theme .has-neutral-background-color .wp-block-post-title, .is-dark-theme .has-neutral-background-color .wp-block-query-title, .is-dark-theme .has-neutral-background-color .wp-block-site-title, .is-dark-theme .has-neutral-background-color .wp-block-site-tagline, .is-dark-theme .has-tertiary-subtle-alt-background-color .wp-block-heading, .is-dark-theme .has-tertiary-subtle-alt-background-color .wp-block-post-title, .is-dark-theme .has-tertiary-subtle-alt-background-color .wp-block-query-title, .is-dark-theme .has-tertiary-subtle-alt-background-color .wp-block-site-title, .is-dark-theme .has-tertiary-subtle-alt-background-color .wp-block-site-tagline, .is-dark-theme .has-secondary-subtle-alt-background-color .wp-block-heading, .is-dark-theme .has-secondary-subtle-alt-background-color .wp-block-post-title, .is-dark-theme .has-secondary-subtle-alt-background-color .wp-block-query-title, .is-dark-theme .has-secondary-subtle-alt-background-color .wp-block-site-title, .is-dark-theme .has-secondary-subtle-alt-background-color .wp-block-site-tagline, .is-dark-theme .has-primary-subtle-alt-background-color .wp-block-heading, .is-dark-theme .has-primary-subtle-alt-background-color .wp-block-post-title, .is-dark-theme .has-primary-subtle-alt-background-color .wp-block-query-title, .is-dark-theme .has-primary-subtle-alt-background-color .wp-block-site-title, .is-dark-theme .has-primary-subtle-alt-background-color .wp-block-site-tagline, .is-dark-theme .has-tertiary-subtle-background-color .wp-block-heading, .is-dark-theme .has-tertiary-subtle-background-color .wp-block-post-title, .is-dark-theme .has-tertiary-subtle-background-color .wp-block-query-title, .is-dark-theme .has-tertiary-subtle-background-color .wp-block-site-title, .is-dark-theme .has-tertiary-subtle-background-color .wp-block-site-tagline, .is-dark-theme .has-secondary-subtle-background-color .wp-block-heading, .is-dark-theme .has-secondary-subtle-background-color .wp-block-post-title, .is-dark-theme .has-secondary-subtle-background-color .wp-block-query-title, .is-dark-theme .has-secondary-subtle-background-color .wp-block-site-title, .is-dark-theme .has-secondary-subtle-background-color .wp-block-site-tagline, .is-dark-theme .has-primary-subtle-background-color .wp-block-heading, .is-dark-theme .has-primary-subtle-background-color .wp-block-post-title, .is-dark-theme .has-primary-subtle-background-color .wp-block-query-title, .is-dark-theme .has-primary-subtle-background-color .wp-block-site-title, .is-dark-theme .has-primary-subtle-background-color .wp-block-site-tagline {
+  color: var(--wp--custom--color--heading--text, var(--wp--preset--color--primary-alt)) !important;
+}
+
+.site-footer .wp-block-navigation .wp-block-navigation-item__content:hover, .footer-info .wp-block-navigation .wp-block-navigation-item__content:hover {
+  color: var(--wp--preset--color--highlight-alt) !important;
+}
+
+body:not(.is-dark-theme) .has-dark-yellow-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-dark-yellow-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-yellow-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-yellow-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-dark-green-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-dark-green-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-red-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-red-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-purple-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-purple-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-blue-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-blue-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-orange-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-orange-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-yellow-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-yellow-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-green-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), .is-dark-theme .has-very-light-green-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-tertiary-subtle-alt-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-tertiary-subtle-alt-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-secondary-subtle-alt-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-secondary-subtle-alt-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-primary-subtle-alt-background-color.site-footer a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)), body:not(.is-dark-theme) .has-primary-subtle-alt-background-color.footer-info a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)) {
+  text-decoration-line: underline;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted);
+}
+
+.has-primary-subtle-background-color {
+  color: var(--wp--custom--color--contrast--primary-subtle);
+}
+
+.has-secondary-subtle-background-color {
+  color: var(--wp--custom--color--contrast--secondary-subtle);
+}
+
+.has-tertiary-subtle-background-color {
+  color: var(--wp--custom--color--contrast--tertiary-subtle);
+}
+
+.has-primary-subtle-alt-background-color {
+  color: var(--wp--custom--color--contrast--primary-subtle-alt, var(--wp--preset--color--almost-black)) !important;
+}
+
+body:not(.is-dark-theme) .has-primary-subtle-alt-background-color.site-footer .wp-block-navigation-item__content:hover, body:not(.is-dark-theme) .has-primary-subtle-alt-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-secondary-subtle-alt-background-color {
+  color: var(--wp--custom--color--contrast--secondary-subtle-alt, var(--wp--preset--color--almost-black)) !important;
+}
+
+body:not(.is-dark-theme) .has-secondary-subtle-alt-background-color.site-footer .wp-block-navigation-item__content:hover, body:not(.is-dark-theme) .has-secondary-subtle-alt-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-tertiary-subtle-alt-background-color {
+  color: var(--wp--custom--color--contrast--tertiary-subtle-alt, var(--wp--preset--color--almost-black)) !important;
+}
+
+body:not(.is-dark-theme) .has-tertiary-subtle-alt-background-color.site-footer .wp-block-navigation-item__content:hover, body:not(.is-dark-theme) .has-tertiary-subtle-alt-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-primary-dark-background-color {
+  color: var(--wp--custom--color--contrast--primary-dark, var(--wp--preset--color--foreground-alt)) !important;
+}
+
+.has-primary-dark-background-color .wp-block-heading, .has-primary-dark-background-color .wp-block-post-title, .has-primary-dark-background-color .wp-block-query-title, .has-primary-dark-background-color .wp-block-site-title, .has-primary-dark-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-primary-dark-alt-background-color {
+  color: var(--wp--custom--color--contrast--primary-dark-alt, var(--wp--preset--color--foreground-alt)) !important;
+}
+
+.has-primary-dark-alt-background-color .wp-block-heading, .has-primary-dark-alt-background-color .wp-block-post-title, .has-primary-dark-alt-background-color .wp-block-query-title, .has-primary-dark-alt-background-color .wp-block-site-title, .has-primary-dark-alt-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-tertiary-dark-background-color {
+  color: var(--wp--custom--color--contrast--tertiary-dark, var(--wp--preset--color--foreground-alt)) !important;
+}
+
+.has-tertiary-dark-background-color .wp-block-heading, .has-tertiary-dark-background-color .wp-block-post-title, .has-tertiary-dark-background-color .wp-block-query-title, .has-tertiary-dark-background-color .wp-block-site-title, .has-tertiary-dark-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-tertiary-dark-alt-background-color {
+  color: var(--wp--custom--color--contrast--tertiary-dark-alt, var(--wp--preset--color--foreground-alt)) !important;
+}
+
+.has-tertiary-dark-alt-background-color .wp-block-heading, .has-tertiary-dark-alt-background-color .wp-block-post-title, .has-tertiary-dark-alt-background-color .wp-block-query-title, .has-tertiary-dark-alt-background-color .wp-block-site-title, .has-tertiary-dark-alt-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-neutral-background-color {
+  color: var(--wp--custom--color--contrast--neutral);
+}
+
+.has-neutral-alt-background-color {
+  color: var(--wp--custom--color--contrast--neutral-alt);
+}
+
+.has-very-light-green-background-color {
+  color: var(--wp--custom--color--contrast--very-light-green, var(--wp--preset--color--almost-black)) !important;
+}
+
+.is-dark-theme .has-very-light-green-background-color.site-footer .wp-block-navigation-item__content:hover, .is-dark-theme .has-very-light-green-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-very-light-yellow-background-color {
+  color: var(--wp--custom--color--contrast--very-light-yellow, var(--wp--preset--color--almost-black)) !important;
+}
+
+.is-dark-theme .has-very-light-yellow-background-color.site-footer .wp-block-navigation-item__content:hover, .is-dark-theme .has-very-light-yellow-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-very-light-orange-background-color {
+  color: var(--wp--custom--color--contrast--very-light-orange, var(--wp--preset--color--almost-black)) !important;
+}
+
+.is-dark-theme .has-very-light-orange-background-color.site-footer .wp-block-navigation-item__content:hover, .is-dark-theme .has-very-light-orange-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-very-light-blue-background-color {
+  color: var(--wp--custom--color--contrast--very-light-blue, var(--wp--preset--color--almost-black)) !important;
+}
+
+.is-dark-theme .has-very-light-blue-background-color.site-footer .wp-block-navigation-item__content:hover, .is-dark-theme .has-very-light-blue-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-very-light-purple-background-color {
+  color: var(--wp--custom--color--contrast--very-light-purple, var(--wp--preset--color--almost-black)) !important;
+}
+
+.is-dark-theme .has-very-light-purple-background-color.site-footer .wp-block-navigation-item__content:hover, .is-dark-theme .has-very-light-purple-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-very-light-red-background-color {
+  color: var(--wp--custom--color--contrast--very-light-red, var(--wp--preset--color--almost-black)) !important;
+}
+
+.is-dark-theme .has-very-light-red-background-color.site-footer .wp-block-navigation-item__content:hover, .is-dark-theme .has-very-light-red-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-dark-green-background-color {
+  color: var(--wp--custom--color--contrast--dark-green, var(--wp--preset--color--foreground-alt)) !important;
+}
+
+.has-dark-green-background-color .wp-block-heading, .has-dark-green-background-color .wp-block-post-title, .has-dark-green-background-color .wp-block-query-title, .has-dark-green-background-color .wp-block-site-title, .has-dark-green-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+body:not(.is-dark-theme) .has-dark-green-background-color.site-footer .wp-block-navigation-item__content:hover, body:not(.is-dark-theme) .has-dark-green-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-yellow-background-color {
+  color: var(--wp--custom--color--contrast--yellow, var(--wp--preset--color--foreground-alt)) !important;
+}
+
+.has-yellow-background-color .wp-block-heading, .has-yellow-background-color .wp-block-post-title, .has-yellow-background-color .wp-block-query-title, .has-yellow-background-color .wp-block-site-title, .has-yellow-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+body:not(.is-dark-theme) .has-yellow-background-color.site-footer .wp-block-navigation-item__content:hover, body:not(.is-dark-theme) .has-yellow-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
+.has-dark-yellow-background-color {
+  color: var(--wp--custom--color--contrast--dark-yellow, var(--wp--preset--color--foreground-alt)) !important;
+}
+
+.has-dark-yellow-background-color .wp-block-heading, .has-dark-yellow-background-color .wp-block-post-title, .has-dark-yellow-background-color .wp-block-query-title, .has-dark-yellow-background-color .wp-block-site-title, .has-dark-yellow-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+body:not(.is-dark-theme) .has-dark-yellow-background-color.site-footer .wp-block-navigation-item__content:hover, body:not(.is-dark-theme) .has-dark-yellow-background-color.footer-info .wp-block-navigation-item__content:hover {
+  color: inherit !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+}
+
 /*--------------------------------------------------------------
 # Base Styles
 --------------------------------------------------------------*/
 /**
  * Breakpoints & Media Queries
  */
-/* Inherit site title color on colored backgrounds */
-/*--------------------------------------------------------------
-# Link hover styles
---------------------------------------------------------------*/
-/* Default to opacity on hover */
-a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item,
-.wp-block-navigation-item__content):hover, a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item,
-.wp-block-navigation-item__content):active {
-  opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
-}
-
-/* Use button hover opacity on linked images */
-figure > a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item,
-.wp-block-navigation-item__content):hover, figure > a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item,
-.wp-block-navigation-item__content):active {
-  opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
-}
-
 /*--------------------------------------------------------------
 # Padding and Margin Styles
 --------------------------------------------------------------*/
@@ -76,6 +317,15 @@ a > .avatar {
 
 /* Add bottom margin to main unless its the post content, then add it to that */
 /* But don't add it to empty template parts */
+/*-----------------------------------------------------------------------------
+# Column styles
+-----------------------------------------------------------------------------*/
+/* Columns thick gap */
+.wp-block-columns.is-style-thick-gap,
+.wp-block-columns.is-style-thick-gap.has-background {
+  gap: calc(1.5 * var(--wp--style--block-gap));
+}
+
 /*-----------------------------------------------------------------------------
 # Image styles
 -----------------------------------------------------------------------------*/
@@ -269,6 +519,13 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 }
 
 /*--------------------------------------------------------------
+## Style raw HTML quotes like the block quotes
+--------------------------------------------------------------*/
+:where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
+  border-left: 6px solid var(--wp--preset--color--primary);
+}
+
+/*--------------------------------------------------------------
 ## Custom Block Style: Lumina Editorial Justification
 --------------------------------------------------------------*/
 /* Can be applied directly to a single Paragraph block, a Column, or a Grid Group */
@@ -284,6 +541,9 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 -----------------------------------------------------------------------------*/
 /* Force the heading separator variable to inherit the active category token */
 /* Add a smooth accent bar on top of your slim banner layouts */
+/*--------------------------------------------------------------
+# Base Styles
+--------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Custom: Gutter Dividers (Columns)
 --------------------------------------------------------------*/
@@ -342,6 +602,9 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
  * Don't add to this sheet unless you're pretty sure the value will be reused in many places.
  * For example, don't add rules to this sheet that affect block visuals. It's purely for UI.
  */
+/*--------------------------------------------------------------
+# Base Styles
+--------------------------------------------------------------*/
 /**
 *  Converts a hex value into the rgb equivalent.
 *
@@ -542,18 +805,118 @@ ol.is-style-list-dividers,
   display: none !important;
 }
 
+/*------------------------------------------------------------------------------
+# Separator - Pure Alignment & Width Matrix
+------------------------------------------------------------------------------*/
+.wp-block-separator {
+  margin-block-end: 0;
+}
+.has-background .wp-block-separator:not(.is-style-dots) {
+  color: color-mix(in srgb, currentColor 30%, transparent);
+}
+.wp-block-separator.is-style-dots {
+  color: inherit;
+}
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots):not(.is-style-thick-wide) {
+  width: calc(6 * var(--wp--style--block-gap));
+}
+.wp-block-separator.is-style-wide, .wp-block-separator.is-style-dots, .wp-block-separator.is-style-thick-wide {
+  width: 100%;
+}
+.is-layout-constrained > .wp-block-separator:not(.aligncenter):not(.alignwide):not(.alignfull):not(.is-style-wide):not(.is-style-thick-wide):not(.is-style-dots) {
+  margin-left: max(0px, (100% - var(--wp--style--global--content-size, 760px)) / 2) !important;
+  margin-right: auto !important;
+}
+.is-layout-constrained > .wp-block-separator.alignwide:not(.aligncenter):not(.is-style-wide):not(.is-style-thick-wide):not(.is-style-dots) {
+  margin-left: max(0px, (100% - var(--wp--style--global--wide-size, 1100px)) / 2) !important;
+  margin-right: auto !important;
+}
+.is-layout-constrained > .wp-block-separator.alignfull:not(.aligncenter):not(.is-style-wide):not(.is-style-thick-wide):not(.is-style-dots) {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+.is-layout-constrained > .wp-block-separator.alignfull:is(.is-style-wide, .is-style-thick-wide, .is-style-dots) {
+  width: 100%;
+  max-width: var(--wp--style--global--wide-size, 1100px);
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 /*--------------------------------------------------------------
-## Map TwentyTwentyFive and TwentyTwentyFour colors to Lumina
+## Map TwentyTwentyFour, TwentyTwentyFive, and Flat Blocks colors
 --------------------------------------------------------------*/
-body,
-.editor-styles-wrapper {
-  --wp--preset--color--accent: var(--wp--preset--color--primary);
-  --wp--preset--color--accent-1: var(--wp--preset--color--primary);
-  --wp--preset--color--accent-2: var(--wp--preset--color--secondary);
-  --wp--preset--color--accent-3: var(--wp--preset--color--tertiary);
-  --wp--preset--color--accent-4: var(--wp--preset--color--dark-gray);
-  --wp--preset--color--accent-5: var(--wp--preset--color--neutral-alt);
-  --wp--preset--color--accent-6: var(--wp--preset--color--very-dark-alt);
+.has-accent-background-color,
+.has-accent-1-background-color,
+.has-bright-green-background-color {
+  background-color: var(--wp--preset--color--primary);
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--foreground-alt));
+}
+.has-accent-background-color .wp-block-heading, .has-accent-background-color .wp-block-post-title, .has-accent-background-color .wp-block-query-title, .has-accent-background-color .wp-block-site-title, .has-accent-background-color .wp-block-site-tagline,
+.has-accent-1-background-color .wp-block-heading,
+.has-accent-1-background-color .wp-block-post-title,
+.has-accent-1-background-color .wp-block-query-title,
+.has-accent-1-background-color .wp-block-site-title,
+.has-accent-1-background-color .wp-block-site-tagline,
+.has-bright-green-background-color .wp-block-heading,
+.has-bright-green-background-color .wp-block-post-title,
+.has-bright-green-background-color .wp-block-query-title,
+.has-bright-green-background-color .wp-block-site-title,
+.has-bright-green-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-dark-bright-green-background-color {
+  background-color: var(--wp--preset--color--primary-alt);
+  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--foreground-alt));
+}
+.has-dark-bright-green-background-color .wp-block-heading, .has-dark-bright-green-background-color .wp-block-post-title, .has-dark-bright-green-background-color .wp-block-query-title, .has-dark-bright-green-background-color .wp-block-site-title, .has-dark-bright-green-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-base-2-background-color,
+.has-accent-2-background-color {
+  background-color: var(--wp--preset--color--secondary);
+  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--foreground-alt));
+}
+.has-base-2-background-color .wp-block-heading, .has-base-2-background-color .wp-block-post-title, .has-base-2-background-color .wp-block-query-title, .has-base-2-background-color .wp-block-site-title, .has-base-2-background-color .wp-block-site-tagline,
+.has-accent-2-background-color .wp-block-heading,
+.has-accent-2-background-color .wp-block-post-title,
+.has-accent-2-background-color .wp-block-query-title,
+.has-accent-2-background-color .wp-block-site-title,
+.has-accent-2-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-3-background-color {
+  background-color: var(--wp--preset--color--tertiary);
+  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--foreground-alt));
+}
+.has-accent-3-background-color .wp-block-heading, .has-accent-3-background-color .wp-block-post-title, .has-accent-3-background-color .wp-block-query-title, .has-accent-3-background-color .wp-block-site-title, .has-accent-3-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-4-background-color {
+  background-color: var(--wp--preset--color--dark-gray);
+  color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--foreground-alt));
+}
+.has-accent-4-background-color .wp-block-heading, .has-accent-4-background-color .wp-block-post-title, .has-accent-4-background-color .wp-block-query-title, .has-accent-4-background-color .wp-block-site-title, .has-accent-4-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-5-background-color {
+  background-color: var(--wp--preset--color--neutral-alt);
+  color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--contrast));
+}
+.has-accent-5-background-color .wp-block-heading, .has-accent-5-background-color .wp-block-post-title, .has-accent-5-background-color .wp-block-query-title, .has-accent-5-background-color .wp-block-site-title, .has-accent-5-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-6-background-color {
+  background-color: var(--wp--preset--color--dark-alt);
+  color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--foreground-alt));
+}
+.has-accent-6-background-color .wp-block-heading, .has-accent-6-background-color .wp-block-post-title, .has-accent-6-background-color .wp-block-query-title, .has-accent-6-background-color .wp-block-site-title, .has-accent-6-background-color .wp-block-site-tagline {
+  color: inherit;
 }
 
 /*--------------------------------------------------------------
@@ -570,7 +933,7 @@ body,
   position: absolute;
   left: 0;
   top: 100%;
-  margin-top: 10px;
+  margin-top: var(--wp--preset--spacing--30);
   width: calc(6 * var(--wp--style--block-gap));
   height: 3px;
   background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
@@ -584,7 +947,7 @@ body,
   right: 0;
 }
 .is-style-separator + * {
-  margin-top: calc(var(--wp--style--block-gap, 1.5rem) + 10px + 3px) !important;
+  margin-top: calc(var(--wp--style--block-gap, 1.5rem) + var(--wp--preset--spacing--30) + 3px) !important;
 }
 .has-background .is-style-separator::after, .is-style-separator.has-background::after {
   background-color: currentcolor;
@@ -601,7 +964,7 @@ body,
 --------------------------------------------------------------*/
 .wp-block-heading a {
   position: relative;
-  display: inline; /* Keeps text perfectly locked on the baseline */
+  display: inline;
   text-decoration: none !important;
 }
 .wp-block-heading a::after {
@@ -609,23 +972,23 @@ body,
   position: absolute;
   top: calc(100% + var(--wp--custom--link--offset, 0.1em));
   left: 0;
-  /* Set your explicit thickness */
   height: 2px;
   background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
-  /* The Animation Setup: Start at zero width */
   width: 0;
   transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   pointer-events: none;
 }
+.wp-block-heading a:hover, .wp-block-heading a:active {
+  opacity: 1;
+}
 .wp-block-heading a:hover::after, .wp-block-heading a:active::after, .wp-block-heading a:focus::after {
-  /* Animate out cleanly from left to right */
   width: 100%;
   opacity: 1;
 }
 
 .wp-block-site-title a {
   position: relative;
-  display: inline; /* Keeps text perfectly locked on the baseline */
+  display: inline;
   text-decoration: none !important;
 }
 .wp-block-site-title a::after {
@@ -633,23 +996,23 @@ body,
   position: absolute;
   top: calc(100% + var(--wp--custom--link--offset, 0.1em));
   left: 0;
-  /* Set your explicit thickness */
   height: 2px;
   background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
-  /* The Animation Setup: Start at zero width */
   width: 0;
   transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   pointer-events: none;
 }
+.wp-block-site-title a:hover, .wp-block-site-title a:active {
+  opacity: 1;
+}
 .wp-block-site-title a:hover::after, .wp-block-site-title a:active::after, .wp-block-site-title a:focus::after {
-  /* Animate out cleanly from left to right */
   width: 100%;
   opacity: 1;
 }
 
 .wp-block-post-title a {
   position: relative;
-  display: inline; /* Keeps text perfectly locked on the baseline */
+  display: inline;
   text-decoration: none !important;
 }
 .wp-block-post-title a::after {
@@ -657,23 +1020,23 @@ body,
   position: absolute;
   top: calc(100% + var(--wp--custom--link--offset, 0.1em));
   left: 0;
-  /* Set your explicit thickness */
   height: 2px;
   background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
-  /* The Animation Setup: Start at zero width */
   width: 0;
   transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   pointer-events: none;
 }
+.wp-block-post-title a:hover, .wp-block-post-title a:active {
+  opacity: 1;
+}
 .wp-block-post-title a:hover::after, .wp-block-post-title a:active::after, .wp-block-post-title a:focus::after {
-  /* Animate out cleanly from left to right */
   width: 100%;
   opacity: 1;
 }
 
 .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title {
   position: relative;
-  display: inline; /* Keeps text perfectly locked on the baseline */
+  display: inline;
   text-decoration: none !important;
 }
 .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title::after {
@@ -681,16 +1044,16 @@ body,
   position: absolute;
   top: calc(100% + var(--wp--custom--link--offset, 0.1em));
   left: 0;
-  /* Set your explicit thickness */
   height: 2px;
   background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
-  /* The Animation Setup: Start at zero width */
   width: 0;
   transition: width var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   pointer-events: none;
 }
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active {
+  opacity: 1;
+}
 .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover::after, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active::after, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:focus::after {
-  /* Animate out cleanly from left to right */
   width: 100%;
   opacity: 1;
 }

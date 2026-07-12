@@ -3,7 +3,7 @@
  * Title: Query Loop 2 Columns
  * Description: Query Loop 2 Columns
  * Slug: lumina/query-loop-2-columns
- * Categories: general
+ * Categories: query
  * Block Types: core/query
  */
 ?>

@@ -46,10 +46,6 @@
 	</div>
 	<!-- /wp:columns -->
 
-	<!-- wp:spacer {"height":"var:preset|spacing|40"} -->
-	<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer"></div>
-	<!-- /wp:spacer -->
-
 	<!-- wp:group {"align":"wide","className":"is-style-rounded-border","backgroundColor":"secondary","layout":{"type":"constrained"}} -->
 	<div class="wp-block-group alignwide is-style-rounded-border has-secondary-background-color has-background">
 		<!-- wp:columns {"align":"wide","verticalAlignment":"center"} -->

@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Lumina CTA 2 Columns (Shadowed & Rounded)
+ * Title: Lumina CTA 2 Columns
  * Slug: lumina/columns-cta-2-columns
  * Categories: lumina, call-to-action
  * Block Types: core/columns

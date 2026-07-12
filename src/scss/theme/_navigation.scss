@@ -73,12 +73,16 @@
 	}
 }
 
-// In site footer and footer info, underline on hover by default
+// // In site footer and footer info, underline on hover by default
 // .site-footer .wp-block-navigation,
 // .footer-info .wp-block-navigation {
+// // 	& .wp-block-navigation-item:not(:hover) a:not(.wp-element-button) {
+// // 	}
+// 
 // 	& .wp-block-navigation-item:hover a:not(.wp-element-button) {
-// 		text-decoration-line: underline;
-// 		opacity: 1; 
+// // 		text-decoration-line: underline;
+// // 		opacity: 1; 
+// 		color: var(--wp--preset--color--highlight-alt);
 // 	}
 // }
 

@@ -16,8 +16,8 @@
 					"highlight-alt": "var(--wp--preset--color--foreground-alt)",
 					"dark": "var(--wp--preset--color--base)",
 					"dark-alt": "var(--wp--preset--color--base)",
-					"dark-tertiary": "var(--wp--preset--color--base)",
-					"dark-tertiary-alt": "var(--wp--preset--color--base)"
+					"tertiary-dark": "var(--wp--preset--color--base)",
+					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
 					"text": "hsl(154, 20%, 14%)",
@@ -56,12 +56,14 @@
 				
 				{ "slug": "highlight", "color": "hsl(154, 45%, 68%)", "name": "Highlight (Soft Matte Sage Pop)" },
 				{ "slug": "highlight-alt", "color": "hsl(154, 40%, 32%)", "name": "Highlight Alt (Misty Pine Link Anchor)" },
-				
-				{ "slug": "dark", "color": "hsl(45, 12%, 16%)", "name": "Dark (Soft Obsidian Floor 16%)" },
-				{ "slug": "dark-alt", "color": "hsl(45, 14%, 10%)", "name": "Dark Alt (Soft Obsidian Deep 10%)" },			
-				{ "slug": "dark-tertiary", "color": "hsl(154, 12%, 16%)", "name": "Dark Secondary (Muted Sage Floor 16%)" },
-				{ "slug": "dark-tertiary-alt", "color": "hsl(154, 14%, 10%)", "name": "Dark Secondary Alt (Muted Sage Deep 10%)" },						
-				
+
+				{ "slug": "primary-dark", "color": "hsl(154, 20%, 22%)", "name": "Primary Dark (Muted Sage Deep 22%)" },
+				{ "slug": "primary-dark-alt", "color": "hsl(154, 22%, 14%)", "name": "Primary Dark Alt (Muted Sage Abyssal 14%)" },
+				{ "slug": "dark", "color": "hsl(206, 20%, 22%)", "name": "Dark (Secondary Slate Footer pair 22%)" },
+				{ "slug": "dark-alt", "color": "hsl(206, 22%, 14%)", "name": "Dark Alt (Secondary Slate Footer Deep 14%)" },				
+				{ "slug": "tertiary-dark", "color": "hsl(34, 24%, 22%)", "name": "Dark Tertiary (Muted Gold Deep 22%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(34, 26%, 14%)", "name": "Dark Tertiary Alt (Muted Gold Abyssal 14%)" },				
+
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(45, 20%, 97%)", "name": "Off White" },
 				{ "slug": "very-light-gray", "color": "hsl(45, 12%, 95%)", "name": "Very Light Gray (Ethereal Footer Floor 95%)" },

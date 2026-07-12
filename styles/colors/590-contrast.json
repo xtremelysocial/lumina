@@ -16,8 +16,8 @@
 					"highlight-alt": "var(--wp--preset--color--foreground-alt)",
 					"dark": "var(--wp--preset--color--base)",
 					"dark-alt": "var(--wp--preset--color--base)",
-					"dark-tertiary": "var(--wp--preset--color--base)",
-					"dark-tertiary-alt": "var(--wp--preset--color--base)"
+					"tertiary-dark": "var(--wp--preset--color--base)",
+					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
 					"text": "var(--wp--preset--color--contrast)",
@@ -68,8 +68,8 @@
 
 				{ "slug": "dark", "color": "hsl(206, 20%, 12%)", "name": "Dark (Obsidian Core Tech Floor 12%)" },
 				{ "slug": "dark-alt", "color": "hsl(206, 25%, 8%)", "name": "Dark Alt (Abyssal Core Tech Deep 8%)" },				
-				{ "slug": "dark-tertiary", "color": "hsl(34, 20%, 12%)", "name": "Dark Tertiary (Espresso Gold Floor 12%)" },
-				{ "slug": "dark-tertiary-alt", "color": "hsl(34, 25%, 8%)", "name": "Dark Tertiary Alt (Abyssal Gold Deep 8%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(34, 20%, 12%)", "name": "Dark Tertiary (Espresso Gold Floor 12%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(34, 25%, 8%)", "name": "Dark Tertiary Alt (Abyssal Gold Deep 8%)" },
 
 				{ "slug": "almost-black", "color": "hsl(206, 30%, 12%)", "name": "Almost Black (Deep Slate Ink)" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },

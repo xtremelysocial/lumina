@@ -16,8 +16,8 @@
 					"highlight-alt": "var(--wp--preset--color--foreground-alt)",
 					"dark": "var(--wp--preset--color--base)",
 					"dark-alt": "var(--wp--preset--color--base)",
-					"dark-tertiary": "var(--wp--preset--color--base)",
-					"dark-tertiary-alt": "var(--wp--preset--color--base)"
+					"tertiary-dark": "var(--wp--preset--color--base)",
+					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
 					"text": "var(--wp--preset--color--contrast)",
@@ -57,10 +57,12 @@
 				{ "slug": "highlight", "color": "hsl(152, 65%, 68%)", "name": "Highlight (Soft Sage Hover)" },
 				{ "slug": "highlight-alt", "color": "hsl(149, 55%, 30%)", "name": "Highlight Alt (Clear Moss Anchor)" },
 				
-				{ "slug": "dark", "color": "hsl(24, 16%, 16%)", "name": "Dark (Baked Earth Heading 16%)" },
-				{ "slug": "dark-alt", "color": "hsl(24, 16%, 10%)", "name": "Dark Alt (Classic Baked Earth Floor 10%)" },							
-				{ "slug": "dark-tertiary", "color": "hsl(209, 20%, 16%)", "name": "Dark Secondary (Deep Midnight Heading 16%)" },
-				{ "slug": "dark-tertiary-alt", "color": "hsl(207, 24%, 10%)", "name": "Dark Secondary Alt (Midnight Footer Floor 10%)" },						
+				{ "slug": "primary-dark", "color": "hsl(34, 32%, 22%)", "name": "Primary Dark (Antique Gold Deep 22%)" },
+				{ "slug": "primary-dark-alt", "color": "hsl(34, 34%, 14%)", "name": "Primary Dark Alt (Antique Gold Abyssal 14%)" },
+				{ "slug": "dark", "color": "hsl(207, 20%, 22%)", "name": "Dark (Secondary Midnight Footer Pair 22%)" },
+				{ "slug": "dark-alt", "color": "hsl(215, 19%, 14%)", "name": "Dark Alt (Secondary Midnight Footer Deep 14%)" },				
+				{ "slug": "tertiary-dark", "color": "hsl(152, 20%, 22%)", "name": "Dark Tertiary (Deep Alpine Sage Deep 22%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(152, 20%, 14%)", "name": "Dark Tertiary Alt (Deep Alpine Sage Abyssal 14%)" },
 				
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(45, 27%, 97%)", "name": "Off White (Gallery Bone)" },

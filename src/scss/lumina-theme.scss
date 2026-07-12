@@ -13,17 +13,18 @@
 
 /* ==========================================================================
    LUMINA THEME: CSS styles
-   v0.9.9 Build 28 Parts & Patterns
+   v0.9.9 Build 29 Colors & Templates
    ========================================================================== */
 
 // /*--------------------------------------------------------------
 //   BASE STYLES
 // --------------------------------------------------------------*/
+@use "base/lumina-colors";
 @use "theme/base";
 @use "theme/gutter-dividers";
 @use "theme/list-dividers";
+@use "theme/separator";
 @use "theme/other-themes";
-// @use "base/lumina-colors";
 
 // /*--------------------------------------------------------------
 //   BLOCK STYLES

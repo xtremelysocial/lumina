@@ -12,15 +12,11 @@
 	<h2 class="wp-block-heading has-text-align-center has-x-large-font-size">Refined Aesthetics</h2>
 	<!-- /wp:heading -->
 
-	<!-- wp:spacer {"height":"var:preset|spacing|40"} -->
-	<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer"></div>
-	<!-- /wp:spacer -->
-
 	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|50"}}} -->
 	<div class="wp-block-columns alignwide">
 		
-		<!-- wp:column {"width":"40%","className":"is-style-rounded-border","backgroundColor":"primary"} -->
-		<div class="wp-block-column is-style-rounded-border has-primary-background-color has-background" style="flex-basis:40%">
+		<!-- wp:column {"width":"40%","className":"is-style-rounded-border","backgroundColor":"primary-subtle"} -->
+		<div class="wp-block-column is-style-rounded-border has-primary-subtle-background-color has-background" style="flex-basis:40%">
 			<!-- wp:heading {"level":3} -->
 			<h3 class="wp-block-heading">Tactile Depth</h3>
 			<!-- /wp:heading -->
@@ -30,8 +26,8 @@
 		</div>
 		<!-- /wp:column -->
 
-		<!-- wp:column {"width":"60%","className":"is-style-rounded-border","backgroundColor":"secondary"} -->
-		<div class="wp-block-column is-style-rounded-border has-secondary-background-color has-background" style="flex-basis:60%">
+		<!-- wp:column {"width":"60%","className":"is-style-rounded-border","backgroundColor":"secondary-subtle"} -->
+		<div class="wp-block-column is-style-rounded-border has-secondary-subtle-background-color has-background" style="flex-basis:60%">
 			<!-- wp:heading {"level":3} -->
 			<h3 class="wp-block-heading">Modern Industrialism</h3>
 			<!-- /wp:heading -->

@@ -12,10 +12,6 @@
 	<h2 class="wp-block-heading has-text-align-center has-x-large-font-size">Refined Aesthetics</h2>
 	<!-- /wp:heading -->
 
-	<!-- wp:spacer {"height":"var:preset|spacing|40"} -->
-	<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer"></div>
-	<!-- /wp:spacer -->
-
 	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|50"}}} -->
 	<div class="wp-block-columns alignwide">
 		

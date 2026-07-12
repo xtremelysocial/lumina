@@ -71,8 +71,8 @@
 				
 				{ "slug": "dark", "color": "hsl(211, 20%, 10%)", "name": "Dark (Abyssal Marine Floor 10%)" },
 				{ "slug": "dark-alt", "color": "hsl(211, 25%, 6%)", "name": "Dark Alt (Abyssal Marine Void 6%)" },							
-				{ "slug": "dark-tertiary", "color": "hsl(37, 14%, 12%)", "name": "Dark Tertiary (Deep Wet Bronze Floor 12%)" },
-				{ "slug": "dark-tertiary-alt", "color": "hsl(37, 14%, 8%)", "name": "Dark Tertiary Alt (Abyssal Bronze Void 8%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(37, 14%, 12%)", "name": "Dark Tertiary (Deep Wet Bronze Floor 12%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(37, 14%, 8%)", "name": "Dark Tertiary Alt (Abyssal Bronze Void 8%)" },
 
 				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },

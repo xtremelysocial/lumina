@@ -1,0 +1,314 @@
+//* ==========================================================================
+//   COLORS ENGINE: The foundational logic engine for colors
+//   ========================================================================== */
+
+//* ==========================================================================
+//	 v0.9.9 Build 29 Colors & Templates
+//   ========================================================================== */
+
+//------------------------------------------------------------------------------
+// File: _lumina-colors.scss
+// Colors Engine: Master Dictionary and Selector Processor
+//------------------------------------------------------------------------------
+
+//*-----------------------------------------------------------------------------
+// 0.0  SETUP: FUNCTIONS AND MIXINS
+// -----------------------------------------------------------------------------*/
+
+@use "sass:list";
+@use "sass:string";
+@use 'sass:map';
+@use "colors-logic" as logic;
+
+/*
+ * Default contrast (text) based on background color.
+ * To override, set these in theme.json:
+ *		--wp--custom--color--contrast--{color}
+ */
+
+//*-----------------------------------------------------------------------------
+// 0.1  SETUP: COLOR REGISTRY ENTRY DEFAULTS
+// -----------------------------------------------------------------------------*/
+
+// SETUP DEFAULTS SO WE DON'T HAVE TO INCLUDE ALL FIELDS IN THE REGISTRY
+$color-defaults: (
+    color:          null, 
+    text:           null, 
+    heading-dark:   null, 
+    link:           null, 
+    link-dark:      null, 
+    footer:         null  
+);
+
+//*-----------------------------------------------------------------------------
+// 0.2  SETUP: LUMINA COLOR REGISTRY
+// -----------------------------------------------------------------------------*/
+
+// MAP OF ALL COLORS IN THE PALETTE (THAT AREN'T IN PARENT THEME)
+$color-registry: (
+
+    // --- SUBTLE SEMANTIC COLORS ---
+    ( color: 'primary-subtle',     heading-dark: true, link-dark: 'lighten' ),
+    ( color: 'secondary-subtle',   heading-dark: true, link-dark: 'lighten' ),
+    ( color: 'tertiary-subtle',    heading-dark: true, link-dark: 'lighten' ),
+    
+    // --- SUBTLE ALT SEMANTIC COLORS ---
+    ( color: 'primary-subtle-alt',   text: 'fixed-light', heading-dark: true, 
+    		 link: 'inherit', link-dark: 'lighten', footer: 'hover-highlight-alt' 
+    ),
+    ( color: 'secondary-subtle-alt', text: 'fixed-light', heading-dark: true, 
+    		 link: 'inherit', link-dark: 'lighten', footer: 'hover-highlight-alt' 
+    ),
+    ( color: 'tertiary-subtle-alt',  text: 'fixed-light', heading-dark: true, 
+    		 link: 'inherit', link-dark: 'lighten', footer: 'hover-highlight-alt' 
+    ),
+
+	// --- DARK SEMANTIC COLORS ---
+	( color: 'primary-dark',     text: 'fixed-dark', link: 'lighten' ),
+	( color: 'primary-dark-alt', text: 'fixed-dark', link: 'lighten' ),
+	( color: 'tertiary-dark',     text: 'fixed-dark', link: 'lighten' ),
+	( color: 'tertiary-dark-alt', text: 'fixed-dark', link: 'lighten' ),
+	
+    // --- NEUTRALS (E.G. SIDEBAR, BORDERS, DEFAULT CARD COLORS ) ---
+    ( color: 'neutral',     heading-dark: true ),
+    ( color: 'neutral-alt', heading-dark: true ),
+    
+    // --- VERY LIGHT NAMED COLORS ---
+    ( color: 'very-light-green',  text: 'fixed-light' ),
+    ( color: 'very-light-yellow', text: 'fixed-light' ),
+    ( color: 'very-light-orange', text: 'fixed-light' ),
+    ( color: 'very-light-blue',   text: 'fixed-light' ),
+    ( color: 'very-light-purple', text: 'fixed-light' ),
+    ( color: 'very-light-red',    text: 'fixed-light' ),
+
+	// --- CORE GREENS ---
+    ( color: 'dark-green',       text: 'fixed-dark', link: 'inherit' ),    
+
+	// --- CORE YELLOWS ---
+	( color: 'yellow', 			  text: 'fixed-dark', link: 'inherit' ),
+    ( color: 'dark-yellow',       text: 'fixed-dark', link: 'inherit' ),    
+);
+
+//*-----------------------------------------------------------------------------
+// 0.2  SETUP: FLAT-BLOCKS COLOR REGISTRY
+// -----------------------------------------------------------------------------*/
+
+// MAP OF ALL COLORS IN THE PALETTE
+// $color-registry: (
+//     // --- MAIN COLORS (DARK) ---
+//     ( color: 'primary',           text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'primary-alt',       text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'secondary',         text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'secondary-alt',     text: 'fixed-dark',  link: 'lighten' ), 
+//     ( color: 'tertiary',          text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'tertiary-alt',      text: 'fixed-dark',  link: 'inherit' ),
+// 
+//     // --- CORE CANVAS CONTRASTS ---
+//     ( color: 'base',              text: 'fixed-light' ),      
+//     ( color: 'foreground-alt',    text: 'fixed-light' ),
+//     ( color: 'contrast',          text: 'fixed-dark' ),
+//     
+//     // --- NEUTRALS (E.G. SIDEBAR, BORDERS ) ---
+//     ( color: 'neutral',           text: 'fixed-light' ),
+//     ( color: 'neutral-alt',       text: 'fixed-light' ),
+//     
+//     // --- SPECIAL HIGHLIGHT SLOTS ---
+//     ( color: 'highlight',     	  text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'highlight-alt', 	  text: 'fixed-light', link: 'inherit' ),
+//     
+//     // --- WHITE & GRAY NAMED COLORS ---
+//     ( color: 'white',             text: 'fixed-light' ),
+//     ( color: 'off-white',         text: 'fixed-light' ),
+//     ( color: 'very-light-gray',   text: 'fixed-light' ),
+//     ( color: 'light-gray',        text: 'fixed-light' ),
+//     ( color: 'gray',              text: 'fixed-light' ),
+//     ( color: 'dark-gray',         text: 'fixed-dark', link: 'inherit' ),
+// 
+//     // --- GREEN NAMED COLORS ---
+//     ( color: 'light-green',       text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'green',             text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'bright-green',      text: 'fixed-light', link: 'inherit' ),
+//     ( color: 'dark-bright-green', text: 'fixed-dark',  link: 'inherit' ),
+// 
+//     // --- YELLOW & ORANGE NAMED COLORS ---
+//     ( color: 'light-yellow',      text: 'fixed-light', link: 'inherit' ),
+//     ( color: 'yellow',            text: 'fixed-light', link: 'inherit' ),
+//     ( color: 'light-orange',      text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'orange',            text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'dark-orange',       text: 'fixed-dark',  link: 'inherit' ),
+// 
+//     // --- BLUE NAMED COLORS ---
+//     ( color: 'light-blue',        text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'blue',              text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'dark-blue',         text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'midnight-blue',     text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'dark-midnight-blue',text: 'fixed-dark',  link: 'lighten' ),
+// 
+//     // --- PURPLE NAMED COLORS ---
+//     ( color: 'light-purple',      text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'purple',            text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'dark-purple',       text: 'fixed-dark',  link: 'inherit' ),
+// 
+//     // --- RED NAMED COLORS ---
+//     ( color: 'light-red',         text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'red',               text: 'fixed-dark',  link: 'inherit' ),
+//     ( color: 'dark-red',          text: 'fixed-dark',  link: 'inherit' ),
+// 
+//     // --- VERY DARK NAMED COLORS ---
+//     ( color: 'dark',              text: 'fixed-dark',  link: 'lighten' ),
+//     ( color: 'dark-alt',          text: 'fixed-dark',  link: 'lighten' ),
+//     ( color: 'very-dark-gray',    text: 'fixed-dark',  link: 'lighten' ),
+//     ( color: 'black',             text: 'fixed-dark',  link: 'lighten' ),
+//     ( color: 'not-quite-black',   text: 'fixed-dark',  link: 'lighten' ),
+//     ( color: 'almost-black',      text: 'fixed-dark',  link: 'lighten' )
+// );
+
+/* ==========================================================================
+   THE CORE ENGINE (100% IDENTICAL ACROSS PARENT AND CHILD)
+   ========================================================================== */
+
+%global-heading-inherit {
+// 	h1, h2, h3, h4, h5, h6,
+    .wp-block-heading, 
+    .wp-block-post-title, 
+    .wp-block-query-title, 
+    .wp-block-site-title, 
+    .wp-block-site-tagline {
+        color: inherit;
+    }
+}
+
+%engine-link-inherit { 
+	color: inherit; 
+}
+
+%engine-link-underline { 
+	text-decoration-line: underline; 
+}
+
+%engine-link-lighten { 
+	color: var(--wp--preset--color--highlight); 
+}
+
+%engine-heading-dark { 
+	color: var(--wp--custom--color--heading--text, var(--wp--preset--color--primary-alt)) !important; 
+}
+
+%engine-footer-nav-hover { 
+	color: var(--wp--preset--color--highlight) !important; 
+}
+
+%engine-footer-nav-hover-alt { 
+	color: var(--wp--preset--color--highlight-alt) !important; 
+}
+
+%engine-link-underline-special {
+    text-decoration-line: underline;
+    text-decoration-style: var(--wp--custom--link--special-style, dotted);
+}
+
+.site-footer, .footer-info {
+    .wp-block-navigation .wp-block-navigation-item__content:hover {
+        @extend %engine-footer-nav-hover-alt;
+    }
+}
+
+@mixin apply-link-action($selectors, $action) {
+    @if $action == 'inherit' {
+        #{$selectors} {
+            a:where(:not(.wp-element-button, .wp-block-social-link-anchor)) {
+                @extend %engine-link-inherit;
+            }              
+        }
+        .wp-block-post-content {
+            #{$selectors} {
+                a:where(:not(.wp-element-button, .wp-block-social-link-anchor)) {
+                    @extend %engine-link-underline;
+                }
+            }
+        }
+        #{$selectors} {
+            &.site-footer, &.footer-info {
+                a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)) {
+                    @extend %engine-link-underline-special;
+                }           
+                .wp-block-navigation-item__content:hover {
+                    color: inherit !important;
+                    opacity: 1 !important;
+                    text-decoration-line: underline !important;
+                    text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
+                }
+            }
+        }       
+    } @else if $action == 'lighten' {
+        #{$selectors} {
+            a:where(:not(.wp-element-button, .wp-block-social-link-anchor)) {
+                @extend %engine-link-lighten;
+            }
+        }
+    }
+}
+
+@each $entry in $color-registry {
+    $config:       map.merge($color-defaults, $entry);
+    $color:        map.get($config, color);
+    $text:         map.get($config, text);
+    $heading-dark: map.get($config, heading-dark);
+    $link:         map.get($config, link);         
+    $link-dark:    map.get($config, link-dark);            
+    $footer:       map.get($config, footer);
+
+    $selectors:    logic.build-selector-list($color);
+
+    @if $text {
+        @include logic.set-contrast-logic($color, $text);
+        @if $text == 'fixed-dark' {
+            #{$selectors} {
+                .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
+                    color: inherit;
+                }
+            }
+        } @else if $text == 'fixed-light' {
+            .is-dark-theme {
+                @if not $link-dark {
+                    @include apply-link-action($selectors, 'inherit');
+                }
+            }
+        }
+    } @else {
+        #{$selectors} {
+            color: var(--wp--custom--color--contrast--#{$color});
+        }
+    }
+
+    @if $link {
+        body:not(.is-dark-theme) {
+            @include apply-link-action($selectors, $link);
+        }
+    }
+    
+    .is-dark-theme {
+        @if $heading-dark and $heading-dark != 'inherit' {
+            #{$selectors} {
+                .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
+                    @extend %engine-heading-dark;
+                }
+            }
+        }
+        @if $link-dark {
+            @include apply-link-action($selectors, $link-dark);
+        }
+    }
+
+    @if $footer == 'hover-highlight' {
+        #{$selectors} {
+            &.site-footer, &.footer-info {
+                .wp-block-navigation .wp-block-navigation-item__content:hover {
+                    @extend %engine-footer-nav-hover;
+                }
+            }
+        }
+    }
+}
+
+

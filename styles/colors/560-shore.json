@@ -48,10 +48,12 @@
 				{ "slug": "highlight", "color": "hsl(206, 45%, 44%)", "name": "Highlight (Crisp Coastal Blue Link)" },
 				{ "slug": "highlight-alt", "color": "hsl(206, 42%, 32%)", "name": "Highlight Alt (Deep Atlantic Hover 32%)" },
 
-				{ "slug": "dark", "color": "hsl(206, 16%, 14%)", "name": "Dark (Abyss Floor)" },
-				{ "slug": "dark-alt", "color": "hsl(206, 22%, 10%)", "name": "Dark Alt (Abyss Base)" },
-				{ "slug": "dark-tertiary", "color": "hsl(43, 14%, 14%)", "name": "Dark Tertiary (Trench Sand Floor)" },
-				{ "slug": "dark-tertiary-alt", "color": "hsl(43, 12%, 10%)", "name": "Dark Tertiary Alt (Trench Sand Base)" },
+				{ "slug": "primary-dark", "color": "hsl(206, 22%, 22%)", "name": "Primary Dark (Steel Slate Deep 22%)" },
+				{ "slug": "primary-dark-alt", "color": "hsl(206, 24%, 14%)", "name": "Primary Dark Alt (Steel Slate Abyssal 14%)" },
+				{ "slug": "dark", "color": "hsl(206, 22%, 16%)", "name": "Dark (Secondary Midnight Footer Pair 16%)" },
+				{ "slug": "dark-alt", "color": "hsl(206, 24%, 10%)", "name": "Dark Alt (Secondary Midnight Footer Deep 10%)" },				
+				{ "slug": "tertiary-dark", "color": "hsl(43, 14%, 22%)", "name": "Dark Tertiary (Warm Driftwood Deep 22%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(43, 14%, 14%)", "name": "Dark Tertiary Alt (Warm Driftwood Abyssal 14%)" },
 
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(43, 27%, 97%)", "name": "Off White (Gallery Bone)" },

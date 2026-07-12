@@ -16,8 +16,8 @@
 					"highlight-alt": "var(--wp--preset--color--foreground-alt)",
 					"dark": "var(--wp--preset--color--base)",
 					"dark-alt": "var(--wp--preset--color--base)",
-					"dark-tertiary": "var(--wp--preset--color--base)",
-					"dark-tertiary-alt": "var(--wp--preset--color--base)"
+					"tertiary-dark": "var(--wp--preset--color--base)",
+					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
 					"text": "var(--wp--preset--color--contrast)",
@@ -61,10 +61,12 @@
 				{ "slug": "highlight", "color": "hsl(150, 65%, 68%)", "name": "Highlight (Pastel Emerald Hover)" },
 				{ "slug": "highlight-alt", "color": "hsl(151, 55%, 30%)", "name": "Highlight Alt (Alpine Emerald Link Anchor)" },
 				
-				{ "slug": "dark", "color": "hsl(214, 18%, 11%)", "name": "Dark (Deep Lumina Blue Floor 11%)" },
-				{ "slug": "dark-alt", "color": "hsl(214, 19%, 7%)", "name": "Dark Alt (Abyssal Nightfall Floor 7%)" },							
-				{ "slug": "dark-tertiary", "color": "hsl(12, 14%, 14%)", "name": "Dark Secondary (Twilight Shadow Floor 14%)" },
-				{ "slug": "dark-tertiary-alt", "color": "hsl(12, 12%, 10%)", "name": "Dark Secondary Alt (Twilight Shadow Base 10%)" },
+				{ "slug": "primary-dark", "color": "hsl(214, 18%, 14%)", "name": "Primary Dark (Midnight Slate Deep 14%)" },
+				{ "slug": "primary-dark-alt", "color": "hsl(214, 20%, 9%)", "name": "Primary Dark Alt (Midnight Slate Abyssal 9%)" },
+				{ "slug": "dark", "color": "hsl(206, 20%, 20%)", "name": "Dark (Secondary Maritime Footer Pair 20%)" },
+				{ "slug": "dark-alt", "color": "hsl(206, 24%, 14%)", "name": "Dark Alt (Secondary Maritime Footer Deep 14%)" },				
+				{ "slug": "tertiary-dark", "color": "hsl(12, 32%, 22%)", "name": "Dark Tertiary (Twilight Terracotta Deep 22%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(12, 32%, 14%)", "name": "Dark Tertiary Alt (Twilight Terracotta Abyssal 14%)" },
 
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(43, 27%, 97%)", "name": "Off White (Gallery Bone)" },

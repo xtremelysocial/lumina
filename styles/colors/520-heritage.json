@@ -16,8 +16,8 @@
 					"highlight-alt": "var(--wp--preset--color--foreground-alt)",
 					"dark": "var(--wp--preset--color--base)",
 					"dark-alt": "var(--wp--preset--color--base)",
-					"dark-tertiary": "var(--wp--preset--color--base)",
-					"dark-tertiary-alt": "var(--wp--preset--color--base)"
+					"tertiary-dark": "var(--wp--preset--color--base)",
+					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
 					"text": "var(--wp--preset--color--contrast)",
@@ -45,8 +45,8 @@
 				{ "slug": "primary-subtle-alt", "color": "hsl(151, 16%, 83%)", "name": "Primary Subtle Alt (Sage Seam 83%)" },
 				{ "slug": "secondary-subtle", "color": "hsl(208, 20%, 91%)", "name": "Secondary Subtle (Whisper Sapphire Fill 91%)" },
 				{ "slug": "secondary-subtle-alt", "color": "hsl(208, 16%, 83%)", "name": "Secondary Subtle Alt (Tailored Slate 83%)" },
-				{ "slug": "tertiary-subtle", "color": "hsl(0, 16%, 91%)", "name": "Tertiary Subtle (Whisper Rose Fill 91%)" },
-				{ "slug": "tertiary-subtle-alt", "color": "hsl(0, 12%, 83%)", "name": "Tertiary Subtle Alt (Rose Concrete 83%)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(6, 18%, 91%)", "name": "Tertiary Subtle (Whisper Rose Fill 91%)" },
+				{ "slug": "tertiary-subtle-alt", "color": "hsl(6, 14%, 83%)", "name": "Tertiary Subtle Alt (Rose Concrete 83%)" },
 				
 				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White Canvas)" },
 				{ "slug": "contrast", "color": "hsl(0, 15%, 11%)", "name": "Contrast (Mahogany Infused Typographic Ink)" },
@@ -57,11 +57,13 @@
 				{ "slug": "highlight", "color": "hsl(0, 44%, 71%)", "name": "Highlight (Vibrant Rose Hover 71%)" },
 				{ "slug": "highlight-alt", "color": "hsl(356, 62%, 32%)", "name": "Highlight Alt (Rich Crimson Anchor 32%)" },
 				
-				{ "slug": "dark", "color": "hsl(0, 15%, 16%)", "name": "Dark (Deep Mahogany Heading 16%)" },
-				{ "slug": "dark-alt", "color": "hsl(0, 15%, 10%)", "name": "Dark Alt (Classic Mahogany Ink Floor 10%)" },	
-				{ "slug": "dark-tertiary", "color": "hsl(209, 20%, 16%)", "name": "Dark Secondary (Deep Midnight Heading 16%)" },
-				{ "slug": "dark-tertiary-alt", "color": "hsl(207, 24%, 10%)", "name": "Dark Secondary Alt (Classic Midnight Ink Floor 10%)" },						
-				
+				{ "slug": "primary-dark", "color": "hsl(151, 24%, 22%)", "name": "Primary Dark (Deep Alpine Sage Deep 22%)" },
+				{ "slug": "primary-dark-alt", "color": "hsl(151, 26%, 14%)", "name": "Primary Dark Alt (Deep Alpine Sage Abyssal 14%)" },
+				{ "slug": "dark", "color": "hsl(208, 20%, 22%)", "name": "Dark (Secondary Midnight Footer Pair 22%)" },
+				{ "slug": "dark-alt", "color": "hsl(215, 19%, 14%)", "name": "Dark Alt (Secondary Midnight Footer Deep 14%)" },				
+				{ "slug": "tertiary-dark", "color": "hsl(0, 23%, 22%)", "name": "Dark Tertiary (Luxury Crimson Deep 22%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(0, 23%, 14%)", "name": "Dark Tertiary Alt (Luxury Crimson Abyssal 14%)" },
+								
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(45, 27%, 97%)", "name": "Off White (Gallery Bone)" },
 				{ "slug": "very-light-gray", "color": "hsl(45, 14%, 91%)", "name": "Very Light Gray (Warm Linen Paper 91%)" },

@@ -3,59 +3,6 @@
 --------------------------------------------------------------*/
 @use "@wordpress/base-styles/breakpoints";
 
-/* Inherit site title color on colored backgrounds */
-// .site-header.has-background .wp-block-site-title a {
-// 	color: inherit; 
-// }
-
-
-/*--------------------------------------------------------------
-# Link hover styles
---------------------------------------------------------------*/
-/* Default to opacity on hover */
-// a:not(figure > a, .wp-element-button, wp-block-social-link, .wp-block-navigation-item, .wp-block-navigation-item__content) { //,
-// .wp-block-navigation a,
-// .wp-block-navigation-submenu__toggle {
-// 	font-weight: var(--wp--custom--typography--font-weight--medium);
-a:not(
-	.wp-element-button, 
-// 	.wp-block-social-link, 
-	.wp-block-social-link-anchor, 
-	.wp-block-navigation-item, 
-	.wp-block-navigation-item__content
-) {
-	
-	&:hover,
-	&:active {
-		opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
-	}	
-}
-
-/* Use button hover opacity on linked images */
-// a:hover:has(> img),
-// a:active:has(> img) {
-figure {
-
-	& > a:not(
-	.wp-element-button, 
-// 	.wp-block-social-link, 
-	.wp-block-social-link-anchor, 
-	.wp-block-navigation-item, 
-	.wp-block-navigation-item__content
-	) {
-		&:hover,
-		&:active {
-			opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
-		}		
-	}
-}
-
-// 
-// figure > a:hover,
-// figure > a:active {
-// 	opacity: var(--wp--custom--color--button--hover-opacity, 0.8);	
-// }
-
 /*--------------------------------------------------------------
 # Padding and Margin Styles
 --------------------------------------------------------------*/
@@ -108,6 +55,17 @@ a > .avatar {
 // main > :last-child.wp-block-template-part:empty {
 // 	margin-block-end: 0 !important; 	
 // }
+
+/*-----------------------------------------------------------------------------
+# Column styles
+-----------------------------------------------------------------------------*/
+
+/* Columns thick gap */
+.wp-block-columns.is-style-thick-gap,
+.wp-block-columns.is-style-thick-gap.has-background {
+    gap: calc(1.5 * var(--wp--style--block-gap));
+
+}
 
 /*-----------------------------------------------------------------------------
 # Image styles
@@ -388,6 +346,16 @@ body[class*="-single-sidebar-left"] {
         text-align: left !important; /* Or center, depending on your button style */
         hyphens: none !important;
     }
+}
+
+/*--------------------------------------------------------------
+## Style raw HTML quotes like the block quotes
+--------------------------------------------------------------*/
+:where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
+//     border-left: 6px solid var(--wp--custom--color--heading--separator);
+    border-left: 6px solid var(--wp--preset--color--primary);
+//     font-size: var(--wp--preset--font-size--medium);
+//     padding-left: var(--wp--preset--spacing--40);
 }
 
 /*--------------------------------------------------------------

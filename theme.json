@@ -7,7 +7,12 @@
 		"custom": {
 			"color": {
 				"contrast": {
-					"yellow": "var(--wp--preset--color--foreground-alt)"
+					"yellow": "var(--wp--preset--color--foreground-alt)",
+					"light-green": "var(--wp--preset--color--contrast)",
+					"light-orange": "var(--wp--preset--color--contrast)",
+					"light-blue": "var(--wp--preset--color--contrast)",
+					"light-purple": "var(--wp--preset--color--contrast)",
+					"light-red": "var(--wp--preset--color--contrast)"
 				},
 				"border": "var(--wp--preset--color--neutral-alt)",				
 				"field": { 
@@ -15,11 +20,12 @@
 				},
 				"button": {
 					"background": "var(--wp--preset--color--primary)",
+					"text": "var(--wp--preset--color--foreground-alt)",
 					"hover": "var(--wp--preset--color--primary-alt)",
 					"hoverOpacity": "0.8" 
 				},
 				"link": {
-					"hoverOpacity": "0.7" 
+					"hoverOpacity": "0.6" 
 				},
 				"heading": {
 					"text": "var(--wp--preset--color--contrast)",
@@ -36,13 +42,13 @@
 				"decorationSpecialColor": "rgba(27, 27, 27, 0.4)"
 			},			
 			"border": {
-				"radius": "var(--wp--preset--border-radius--xl, 18px)"
+				"radius": "18px"
 			},
 			"button": {
 				"radius": "9999px"
 			},
 			"spacing": {
-				"gap": "24px"
+				"gap": "28px"
 			},
 			"sidebar": {
 				"width": "360px"
@@ -203,17 +209,17 @@
 				},
 				{
 					"slug": "40",
-					"size": "clamp(1.25rem, 1.18rem + 0.35vw, 1.5rem)",
+					"size": "clamp(calc(0.5 * var(--wp--custom--spacing--gap)), 4vw, calc(1 * var(--wp--custom--spacing--gap)))",
 					"name": "Small (Block Gap)"
 				},
 				{
 					"slug": "50",
-					"size": "clamp(1.75rem, 1.61rem + 0.7vw, 2.25rem)",
+					"size": "clamp(calc(0.65 * var(--wp--custom--spacing--gap)), 5vw, calc(1.3 * var(--wp--custom--spacing--gap)))",
 					"name": "Medium"
 				},
 				{
 					"slug": "60",
-					"size": "clamp(calc(1.5 * var(--wp--custom--spacing--gap)), 4.5svh, calc(2 * var(--wp--custom--spacing--gap)))",
+					"size": "clamp(calc(0.85 * var(--wp--custom--spacing--gap)), 6vw, calc(1.75 * var(--wp--custom--spacing--gap)))",
 					"name": "Large"
 				},
 				{
@@ -261,8 +267,10 @@
 
 				{ "slug": "dark", "color": "hsl(208, 21%, 22%)", "name": "Dark (Lumina Midnight Balanced 22%)" },
 				{ "slug": "dark-alt", "color": "hsl(209, 24%, 16%)", "name": "Dark Alt (Lumina Midnight Balanced 16%)" },				
-				{ "slug": "dark-tertiary", "color": "hsl(34, 34%, 22%)", "name": "Dark Tertiary (Antique Gold Deep 22%)" },
-				{ "slug": "dark-tertiary-alt", "color": "hsl(34, 34%, 14%)", "name": "Dark Tertiary Alt (Antique Gold Abyssal 14%)" },
+				{ "slug": "primary-dark", "color": "hsl(170, 45%, 20%)", "name": "Primary Dark (Deep Forest Sage)"},
+				{ "slug": "primary-dark-alt", "color": "hsl(170, 50%, 15%)", "name": "Primary Dark Alt (Rich Hero Green)"},
+				{ "slug": "tertiary-dark", "color": "hsl(34, 34%, 22%)", "name": "Dark Tertiary (Antique Gold Deep 22%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(34, 34%, 14%)", "name": "Dark Tertiary Alt (Antique Gold Abyssal 14%)" },
 
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(32, 20%, 97%)", "name": "Off White (Desert Alabaster)" },
@@ -279,9 +287,9 @@
 				{ "slug": "light-yellow", "color": "hsl(34, 16%, 83%)", "name": "Light Yellow (Ochre Subtle Alt 83%)" },
 				{ "slug": "yellow", "color": "hsl(34, 32%, 48%)", "name": "Yellow (Ochre Primary 48%)" },
 				{ "slug": "dark-yellow", "color": "hsl(34, 34%, 38%)", "name": "Dark Yellow (Ochre Alt Anchor 38%)" },
-				
-				{ "slug": "very-light-orange", "color": "hsl(12, 22%, 91%)", "name": "Very Light Orange (Flame Subtle 91%)" },
-				{ "slug": "light-orange", "color": "hsl(12, 16%, 83%)", "name": "Light Orange (Flame Subtle Alt 83%)" },
+
+				{ "slug": "very-light-orange", "color": "hsl(22, 26%, 91%)", "name": "Very Light Orange (Flame Subtle 91%)" },
+				{ "slug": "light-orange", "color": "hsl(22, 22%, 83%)", "name": "Light Orange (Flame Subtle Alt 83%)" },
 				{ "slug": "orange", "color": "hsl(12, 32%, 48%)", "name": "Orange (Flame Primary 48%)" },
 				{ "slug": "dark-orange", "color": "hsl(12, 32%, 38%)", "name": "Dark Orange (Flame Alt Anchor 38%)" },
 				
@@ -296,9 +304,9 @@
 				{ "slug": "light-purple", "color": "hsl(320, 12%, 83%)", "name": "Light Purple (Velvet Subtle Alt 83%)" },
 				{ "slug": "purple", "color": "hsl(327, 8%, 32%)", "name": "Purple (Velvet Primary 32%)" },
 				{ "slug": "dark-purple", "color": "hsl(327, 8%, 22%)", "name": "Dark Purple (Velvet Alt Anchor 22%)" },
-				
-				{ "slug": "very-light-red", "color": "hsl(0, 16%, 91%)", "name": "Very Light Red (Ember Subtle 91%)" },
-				{ "slug": "light-red", "color": "hsl(0, 12%, 83%)", "name": "Light Red (Ember Subtle Alt 83%)" },
+
+				{ "slug": "very-light-red", "color": "hsl(6, 22%, 91%)", "name": "Very Light Red (Ember Subtle 91%)" },
+				{ "slug": "light-red", "color": "hsl(6, 18%, 83%)", "name": "Light Red (Ember Subtle Alt 83%)" },
 				{ "slug": "red", "color": "hsl(0, 23%, 32%)", "name": "Red (Ember Primary 32%)" },
 				{ "slug": "dark-red", "color": "hsl(0, 23%, 22%)", "name": "Dark Red (Ember Alt Anchor 22%)" }
 			],
@@ -339,15 +347,15 @@
 			]
 		},
 		"border": {
-			"customRadius": true,
+			"customRadius": false,
 			"radiusSizes": [			
-				{ "name": "Extra Small", "slug": "xs", "size": "3px" },
-				{ "name": "Small", "slug": "sm", "size": "6px" },
-				{ "name": "Medium", "slug": "md", "size": "9px" },
-				{ "name": "Large", "slug": "lg", "size": "12px" },
-				{ "name": "Extra Large", "slug": "xl", "size": "18px" },
-				{ "name": "2X-Large", "slug": "2-xl", "size": "24px" },
-				{ "name": "3X-Large", "slug": "3-xl", "size": "30px" }
+				{ "name": "Extra Small", "slug": "xs", "size": "calc(0.25 * var(--wp--custom--border--radius))" },
+				{ "name": "Small", "slug": "sm", "size": "calc(0.5 * var(--wp--custom--border--radius))" },
+				{ "name": "Medium", "slug": "md", "size": "var(--wp--custom--border--radius)" },
+				{ "name": "Large", "slug": "lg", "size": "calc(1.25 * var(--wp--custom--border--radius))" },
+				{ "name": "Extra Large", "slug": "xl", "size": "calc(1.5 * var(--wp--custom--border--radius))" },
+				{ "name": "2X-Large", "slug": "2-xl", "size": "calc(2 * var(--wp--custom--border--radius))" },
+				{ "name": "3X-Large", "slug": "3-xl", "size": "calc(2.5 * var(--wp--custom--border--radius))" }
 			]			
 		}
 	},
@@ -361,6 +369,9 @@
 				"left": "var:preset|spacing|50"
 			}
 		},	
+		"border": {
+			"radius": "var(--wp--custom--border--radius)"
+		},		
 		"typography": {
 			"fontSize": "var:preset|font-size|normal",		
 			"fontWeight": "var(--wp--custom--typography--font-weight--normal)",
@@ -417,7 +428,7 @@
 			"button": {
 				"color": {
 					"background": "var(--wp--custom--color--button--background)",
-					"text": "var:preset|color|foreground-alt"
+					"text": "var(--wp--custom--color--button--text)"
 				},
 				"spacing": {
 					"padding": {
@@ -520,6 +531,35 @@
 					}
 				}
     		},
+			"core/quote": {
+				"border": {
+					"left": {
+						"style": "solid",
+						"color": "var:preset|color|primary",
+						"width": "6px"
+					}
+				}
+			},
+			"core/pullquote": {
+				"border": {
+					"bottom": {
+						"width": "2px",
+						"style": "solid",
+						"color": "var:preset|color|primary"
+					},
+					"left": {
+						"style": "none"
+					},
+					"right": {
+						"style": "none"
+					},
+					"top": {
+						"width": "2px",
+						"style": "solid",
+						"color": "var:preset|color|primary"
+					}
+				}
+			},
 			"core/separator": {
                 "color": {
                     "background": "var(--wp--custom--color--border)"
@@ -529,7 +569,19 @@
                 		"left": 0,
                 		"right": 0
                 	}
-                }
+                },
+                "variations": {
+					"thick": {
+						"color": {
+							"background": "var:preset|color|tertiary"
+						}
+					},
+					"thick-wide": {
+						"color": {
+							"background": "var:preset|color|tertiary"
+						}
+					}					
+				}
             },
 			"core/query-pagination": {
 				"shadow": "none"

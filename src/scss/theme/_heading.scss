@@ -14,7 +14,7 @@ $separators: (
 $sep-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
 $sep-height: 3px;
 $sep-width: calc(6 * var(--wp--style--block-gap));
-$sep-clearance: 10px; // Fixed breathing room to clear text descenders (g, j, p, q, y)
+$sep-clearance: var(--wp--preset--spacing--30); //10px; // Fixed breathing room to clear text descenders (g, j, p, q, y)
 
 @each $separator in $separators {
     #{$separator} {
@@ -90,7 +90,7 @@ $link-color: var(--wp--custom--color--heading--separator, var(--wp--preset--colo
 @each $link in $heading-links {
     #{$link} {
         position: relative;
-        display: inline; /* Keeps text perfectly locked on the baseline */
+        display: inline; // Keeps text perfectly locked on the baseline
         text-decoration: none !important;
 
         &::after {
@@ -100,11 +100,11 @@ $link-color: var(--wp--custom--color--heading--separator, var(--wp--preset--colo
 			top: calc(100% + #{$link-offset});
             left: 0;
             
-            /* Set your explicit thickness */
+            // Set your explicit thickness
             height: #{$link-height}; //2px; 
             background-color: #{$link-color}; //currentColor;
             
-            /* The Animation Setup: Start at zero width */
+            // The Animation Setup: Start at zero width
             width: 0;
             transition: width 
                 var(--wp--custom--animation--duration--medium, 500ms) 
@@ -112,11 +112,17 @@ $link-color: var(--wp--custom--color--heading--separator, var(--wp--preset--colo
             
             pointer-events: none;
         }
+        
+        // Don't set opacity on hover since we are underlining instead
+        &:hover,
+        &:active {
+        	opacity: 1; 
+        }
 
+		// Animate the underline cleanly from left to right
         &:hover::after,
         &:active::after,
         &:focus::after {
-            /* Animate out cleanly from left to right */
             width: 100%;
             opacity: 1; 
         }

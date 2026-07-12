@@ -3,7 +3,7 @@
  * Title: Query Loop Sidebar Right
  * Description: Query Loop Sidebar Right
  * Slug: lumina/query-loop-sidebar-right
- * Categories: general
+ * Categories: query
  * Block Types: core/query
  */
 ?>

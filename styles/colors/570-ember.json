@@ -46,8 +46,8 @@
 				
 				{ "slug": "dark", "color": "hsl(11, 28%, 16%)", "name": "Dark (Deep Obsidian Heading 16%)" },
 				{ "slug": "dark-alt", "color": "hsl(11, 28%, 10%)", "name": "Dark Alt (Classic Volcanic Ink Floor 10%)" },							
-				{ "slug": "dark-tertiary", "color": "hsl(33, 30%, 16%)", "name": "Dark Tertiary (Bronze Clay Heading 16%)" },
-				{ "slug": "dark-tertiary-alt", "color": "hsl(33, 30%, 10%)", "name": "Dark Tertiary Alt (Bronze Clay Footer 10%)" },						
+				{ "slug": "tertiary-dark", "color": "hsl(33, 30%, 16%)", "name": "Dark Tertiary (Bronze Clay Heading 16%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(33, 30%, 10%)", "name": "Dark Tertiary Alt (Bronze Clay Footer 10%)" },						
 				
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(45, 27%, 97%)", "name": "Off White (Gallery Bone)" },

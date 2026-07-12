@@ -1,0 +1,61 @@
+/*------------------------------------------------------------------------------
+# Separator - Pure Alignment & Width Matrix
+------------------------------------------------------------------------------*/
+
+.wp-block-separator {
+
+    // 1. NEUTRALIZE LEGACY SPACING
+    margin-block-end: 0; // Wipes out the flat-blocks bottom stack
+
+    // 2. DYNAMIC COLOR HOOKS & CONTRAST FIXES
+    .has-background &:not(.is-style-dots) {
+        color: color-mix(in srgb, currentColor 30%, transparent);
+    }
+
+    // Use the body text color so dots are cleanly visible 
+    &.is-style-dots {
+        color: inherit; 
+    }
+
+    // 3. INHERENT WIDTH TRACKS
+    // Short accent lines (Default, Thick)
+    &:not(.is-style-wide):not(.is-style-dots):not(.is-style-thick-wide) {
+        width: calc(6 * var(--wp--style--block-gap));
+    }
+
+    // Typographic wide lines (Spans full available container text-width)
+    &.is-style-wide,
+    &.is-style-dots,
+    &.is-style-thick-wide {
+        width: 100%;
+    }
+    
+    // 4. STANDARD CONTENT ALIGNMENT (No Toolbar Selection Chosen)
+    // Snaps short unaligned separators flush left with standard text paragraphs.
+    .is-layout-constrained > &:not(.aligncenter):not(.alignwide):not(.alignfull):not(.is-style-wide):not(.is-style-thick-wide):not(.is-style-dots) {
+        margin-left: max(0px, calc((100% - var(--wp--style--global--content-size, 760px)) / 2)) !important;
+        margin-right: auto !important;
+    }
+
+    // 5. WIDE LAYOUT ALIGNMENT (User Selects "Align Wide" in Toolbar)
+    // Snaps short lines flush left with your WIDE grid boundary lines.
+    .is-layout-constrained > &.alignwide:not(.aligncenter):not(.is-style-wide):not(.is-style-thick-wide):not(.is-style-dots) {
+        margin-left: max(0px, calc((100% - var(--wp--style--global--wide-size, 1100px)) / 2)) !important;
+        margin-right: auto !important;
+    }
+    
+    // 6. FULL LAYOUT ALIGNMENT (User Selects "Align Full" in Toolbar)
+    // TRACK A: Short accent lines stay narrow and snap flush left to the absolute container edge.
+    .is-layout-constrained > &.alignfull:not(.aligncenter):not(.is-style-wide):not(.is-style-thick-wide):not(.is-style-dots) {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+
+    // TRACK B: Typographic wide styles scale out and center within your bounded alignment ceiling.
+    .is-layout-constrained > &.alignfull:is(.is-style-wide, .is-style-thick-wide, .is-style-dots) {
+        width: 100%;
+        max-width: var(--wp--style--global--wide-size, 1100px);
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}

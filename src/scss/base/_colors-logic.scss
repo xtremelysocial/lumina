@@ -1,0 +1,50 @@
+//------------------------------------------------------------------------------
+// File: _colors-logic.scss
+// Colors Logic Mixins & Structural Helpers
+//------------------------------------------------------------------------------
+
+@use "sass:list";
+@use "sass:string";
+
+/*-----------------------------------------------------------------------------
+# SET CONTRAST LOGIC: Lightweight Extend-Based Core Engine
+-----------------------------------------------------------------------------*/
+@mixin set-contrast-logic(
+	$colors, 
+	$default
+) {
+	$resolved-fallback: $default;
+	
+	@if $default == 'fixed-light' {
+		$resolved-fallback: var(--wp--preset--color--almost-black);
+	} @else if $default == 'fixed-dark' {
+		$resolved-fallback: var(--wp--preset--color--foreground-alt);
+	}
+
+	@each $color in $colors {		
+		.has-#{$color}-background-color { 
+			// 1. Try theme.json custom color override, fallback to structural default
+			color: var(--wp--custom--color--contrast--#{$color}, #{$resolved-fallback}) !important;
+			
+			// 2. Safely extend heading rules in dark contexts if the placeholder exists
+			@if $default == 'fixed-dark' {
+				@extend %global-heading-inherit !optional;
+			}
+		}
+	}
+}
+
+/*-----------------------------------------------------------------------------
+# BUILD SELECTOR LIST: Build a compiled comma-separated CSS selector string
+-----------------------------------------------------------------------------*/
+@function build-selector-list(
+	$colors, 
+	$prefix: ".has-", 
+	$suffix: "-background-color"
+) {
+    $selectors: "";
+    @each $color in $colors {
+        $selectors: $selectors + "#{$prefix}#{$color}#{$suffix},";
+    }
+    @return string.slice($selectors, 1, string.length($selectors) - 1);
+}

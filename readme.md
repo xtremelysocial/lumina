@@ -1,6 +1,8 @@
 === Lumina ===
 
 == Description ==
+Natural colors, light, depth, motion. Lumina is a modern theme inspired by the colors, ambient light and natural depth of the environment around us, featuring subtle animation on actionable elements.
+
 Lumina is a high-end evolution of the flat design aesthetic to a modern "Post Flat" era. Moving beyond the limitations of "flat" layouts, Lumina introduces a philosophy centered on Atmospheric depth, light and interactive physics. 
 
 Built on a foundation of earthy notes and ambient lighting, the theme utilizes sophisticated color-scheme variations to provide a rich set of color palettes to create a focused, high-contrast environment. With a signature 'card-like' layout, Lumina containerizes content within high-radius surfaces—evoking the premium feel of modern tech—while maintaining sharp, immersive horizon lines for cinematic hero sections.
