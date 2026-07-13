@@ -164,9 +164,12 @@ $color-registry: (
 // );
 
 /* ==========================================================================
-   THE CORE ENGINE (100% IDENTICAL ACROSS PARENT AND CHILD)
+   GLOBAL 3-PASS COLORS ENGINE
    ========================================================================== */
 
+/*-----------------------------------------------------------------------------
+# PASS 1: GLOBAL TEXT CONTRAST
+-----------------------------------------------------------------------------*/
 %global-heading-inherit {
 // 	h1, h2, h3, h4, h5, h6,
     .wp-block-heading, 
@@ -178,137 +181,211 @@ $color-registry: (
     }
 }
 
-%engine-link-inherit { 
-	color: inherit; 
-}
-
-%engine-link-underline { 
-	text-decoration-line: underline; 
-}
-
-%engine-link-lighten { 
-	color: var(--wp--preset--color--highlight); 
-}
-
-%engine-heading-dark { 
-	color: var(--wp--custom--color--heading--text, var(--wp--preset--color--primary-alt)) !important; 
-}
-
-%engine-footer-nav-hover { 
-	color: var(--wp--preset--color--highlight) !important; 
-}
-
-%engine-footer-nav-hover-alt { 
-	color: var(--wp--preset--color--highlight-alt) !important; 
-}
-
-%engine-link-underline-special {
-    text-decoration-line: underline;
-    text-decoration-style: var(--wp--custom--link--special-style, dotted);
-}
-
-.site-footer, .footer-info {
-    .wp-block-navigation .wp-block-navigation-item__content:hover {
-        @extend %engine-footer-nav-hover-alt;
-    }
-}
-
-@mixin apply-link-action($selectors, $action) {
-    @if $action == 'inherit' {
-        #{$selectors} {
-            a:where(:not(.wp-element-button, .wp-block-social-link-anchor)) {
-                @extend %engine-link-inherit;
-            }              
-        }
-        .wp-block-post-content {
-            #{$selectors} {
-                a:where(:not(.wp-element-button, .wp-block-social-link-anchor)) {
-                    @extend %engine-link-underline;
-                }
-            }
-        }
-        #{$selectors} {
-            &.site-footer, &.footer-info {
-                a:where(:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content)) {
-                    @extend %engine-link-underline-special;
-                }           
-                .wp-block-navigation-item__content:hover {
-                    color: inherit !important;
-                    opacity: 1 !important;
-                    text-decoration-line: underline !important;
-                    text-decoration-style: var(--wp--custom--link--special-style, dotted) !important;
-                }
-            }
-        }       
-    } @else if $action == 'lighten' {
-        #{$selectors} {
-            a:where(:not(.wp-element-button, .wp-block-social-link-anchor)) {
-                @extend %engine-link-lighten;
-            }
-        }
-    }
-}
-
 @each $entry in $color-registry {
-    $config:       map.merge($color-defaults, $entry);
-    $color:        map.get($config, color);
-    $text:         map.get($config, text);
-    $heading-dark: map.get($config, heading-dark);
-    $link:         map.get($config, link);         
-    $link-dark:    map.get($config, link-dark);            
-    $footer:       map.get($config, footer);
+    $config: map.merge($color-defaults, $entry);
+    $color:  map.get($config, color);
+    $text:   map.get($config, text);
 
-    $selectors:    logic.build-selector-list($color);
-
-    @if $text {
+	@if $text {
         @include logic.set-contrast-logic($color, $text);
-        @if $text == 'fixed-dark' {
-            #{$selectors} {
-                .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
-                    color: inherit;
-                }
-            }
-        } @else if $text == 'fixed-light' {
-            .is-dark-theme {
-                @if not $link-dark {
-                    @include apply-link-action($selectors, 'inherit');
-                }
-            }
-        }
-    } @else {
-        #{$selectors} {
-            color: var(--wp--custom--color--contrast--#{$color});
-        }
     }
+}
 
-    @if $link {
-        body:not(.is-dark-theme) {
-            @include apply-link-action($selectors, $link);
+/*-----------------------------------------------------------------------------
+# PASS 2: LIGHT THEME CONTEXT
+-----------------------------------------------------------------------------*/
+body:not(.is-dark-theme) {
+    
+    %light-link-inherit { 
+        color: inherit; 
+        &:hover, &:active {
+            color: inherit;
+            opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
         }
     }
     
-    .is-dark-theme {
-        @if $heading-dark and $heading-dark != 'inherit' {
-            #{$selectors} {
-                .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
-                    @extend %engine-heading-dark;
-                }
-            }
-        }
-        @if $link-dark {
-            @include apply-link-action($selectors, $link-dark);
+    %light-link-lighten { 
+        color: var(--wp--preset--color--highlight); 
+        &:hover, &:active {
+            opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
         }
     }
 
-    @if $footer == 'hover-highlight' {
-        #{$selectors} {
-            &.site-footer, &.footer-info {
-                .wp-block-navigation .wp-block-navigation-item__content:hover {
-                    @extend %engine-footer-nav-hover;
-                }
+    %light-link-underline {
+        text-decoration-line: underline;
+    }
+
+    %light-footer-nav-hover {
+        color: inherit;
+        opacity: 1;
+        text-decoration-line: underline;
+        text-decoration-style: var(--wp--custom--link--special-style, dotted);
+    }
+    
+    %light-footer-nav-hover-alt {
+        color: var(--wp--preset--color--highlight-alt); 
+        opacity: 1;
+        text-decoration-line: underline;
+        text-decoration-style: var(--wp--custom--link--special-style, dotted);
+    }
+    
+    %light-link-underline-special {
+		text-decoration-line: underline;
+		text-decoration-style: var(--wp--custom--link--special-style, dotted);
+	}
+
+    @each $entry in $color-registry {
+        $config: map.merge($color-defaults, $entry);
+        $color:  map.get($config, color);
+        $link:   map.get($config, link);
+        $footer: map.get($config, footer);
+        
+        $selectors: logic.build-selector-list($color);
+
+        // --- 1. Light Theme Link Handling ---
+        @if $link == 'inherit' {
+            #{$selectors} a:where(:not(
+            	.wp-element-button, 
+            	.wp-block-social-link-anchor, 
+            	.wp-block-navigation-item__content
+            )) {
+                @extend %light-link-inherit;
             }
+            .wp-block-post-content #{$selectors} a:not(
+            	.wp-element-button, 
+            	.wp-block-social-link-anchor, 
+            	.wp-block-navigation-item__content
+            ) {
+                @extend %light-link-underline;
+            }
+            
+        } @else if $link == 'lighten' {
+            #{$selectors} a:not(
+            	.wp-element-button, 
+            	.wp-block-social-link-anchor, 
+            	.wp-block-navigation-item__content
+            ) {
+                @extend %light-link-lighten;
+            }
+        }
+
+        // --- 2. Footer Handling (Only compiles if explicitly set) ---
+        @if $footer == 'hover-highlight' {
+            #{$selectors} {
+            	&.site-footer,
+            	&.footer-info {
+            		.wp-block-navigation-item__content:hover {
+		                @extend %light-footer-nav-hover;
+            		}
+            		
+            		a:where(:not(
+            			.wp-element-button, 
+            			.wp-block-social-link-anchor, 
+            			.wp-block-navigation-item__content
+            		)) {
+						@extend %light-link-underline-special;
+					}
+            	}            	
+            }
+
+		} @else if $footer == 'hover-highlight-alt' {
+            #{$selectors} {
+            	&.site-footer,
+            	&.footer-info {
+            		.wp-block-navigation-item__content:hover {
+		                @extend %light-footer-nav-hover-alt;
+            		}
+            		
+            		a:where(:not(
+            			.wp-element-button, 
+            			.wp-block-social-link-anchor, 
+            			.wp-block-navigation-item__content
+            		)) {
+						@extend %light-link-underline-special;
+					}
+            	}
+        	}
         }
     }
 }
 
+/*-----------------------------------------------------------------------------
+# PASS 3: DARK THEME CONTEXT
+-----------------------------------------------------------------------------*/
+.is-dark-theme {
 
+	// Define dark link placeholders
+	%dark-heading-override {
+		color: var(--wp--custom--color--heading--text, var(--wp--preset--color--primary-alt)) !important;
+	}
+    
+    %dark-link-inherit { 
+        color: inherit; 
+        
+        &:hover, &:active {
+            color: inherit;
+            opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
+        }
+    }
+    
+    %dark-link-lighten { 
+        color: var(--wp--preset--color--highlight); 
+        &:hover, &:active {
+            opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
+        }
+    }
+
+    %dark-link-underline {
+        text-decoration-line: underline;
+    }
+
+    @each $entry in $color-registry {
+        $config:       map.merge($color-defaults, $entry);
+        $color:        map.get($config, color);
+        $link-dark:    map.get($config, link-dark);
+        $heading-dark: map.get($config, heading-dark);
+
+        $selectors: logic.build-selector-list($color);
+
+        // --- 1. Dark Heading Overrides (Only compiles if heading-dark key is set) ---
+        @if $heading-dark {
+            #{$selectors} {
+                .wp-block-heading, 
+                .wp-block-post-title, 
+                .wp-block-query-title, 
+                .wp-block-site-title {
+//                     color: var(--wp--custom--color--heading--text, var(--wp--preset--color--primary-alt)) !important;
+					@extend %dark-heading-override;
+                }
+            }
+        }
+
+        // --- 2. Dark Link Conversions (Only compiles if link-dark key is set) ---
+        @if $link-dark == 'inherit' {
+            #{$selectors} a:where(:not(
+            	.wp-element-button, 
+            	.wp-block-social-link-anchor, 
+            	.wp-block-navigation-item__content
+            )) {
+                @extend %dark-link-inherit;
+            }
+            
+            .wp-block-post-content #{$selectors} a:not(
+            	.wp-element-button, 
+            	.wp-block-social-link-anchor, 
+            	.wp-block-navigation-item__content
+            ) {
+                @extend %dark-link-underline;
+            }
+            
+        } @else if $link-dark == 'lighten' {
+            #{$selectors} a:not(
+            	.wp-element-button, 
+            	.wp-block-social-link-anchor, 
+            	.wp-block-navigation-item__content
+            ) {
+                @extend %dark-link-lighten;
+            }
+        }
+    }
+}
