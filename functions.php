@@ -19,8 +19,9 @@
 $includes = array (
 	'/inc/default-image.php',
 	'/inc/add-body-classes.php',
-// 	'/inc/category-colors.php',
-// 	'/inc/ image-move-border.php',	
+	'/inc/category-colors.php',
+// 	'/inc/ image-move-border.php',
+	'/inc/inline-excerpt.php',
 );
 
 // Allow child themes to override the list of PHP files to load
@@ -267,37 +268,37 @@ endif;
  * Lumina Engine Extensions
  */
 
-add_filter( 'get_block_templates', 'lumina_unload_parent_template_parts', 10, 3 );
+// add_filter( 'get_block_templates', 'lumina_unload_parent_template_parts', 10, 3 );
 /**
  * Intercepts the block editor template discovery engine and unloads legacy file-based
  * template parts inherited from the parent theme by validating local file existence.
  */
-function lumina_unload_parent_template_parts( $query_result, $query, $template_type ) {
-	// Only apply the filter when WordPress is gathering Template Parts
-	if ( 'wp_template_part' !== $template_type ) {
-		return $query_result;
-	}
-
-	// Anchor to Lumina's local template parts path
-	$child_parts_dir = get_stylesheet_directory() . '/parts/';
-
-	$filtered_parts = array_filter( $query_result, function( $template_part ) use ( $child_parts_dir ) {
-		// Identify if the template part is a raw file-based theme asset
-		if ( isset( $template_part->source ) && 'theme' === $template_part->source ) {
-			// Construct the exact filename layout WordPress looks for
-			$local_file = $child_parts_dir . $template_part->slug . '.html';
-
-			// If the file does not exist inside Lumina, it's an inherited parent file—drop it!
-			if ( ! file_exists( $local_file ) ) {
-				return false;
-			}
-		}
-		return true;
-	});
-
-	// Re-index the array values cleanly to protect the REST API collection loop
-	return array_values( $filtered_parts );
-}
+// function lumina_unload_parent_template_parts( $query_result, $query, $template_type ) {
+// 	// Only apply the filter when WordPress is gathering Template Parts
+// 	if ( 'wp_template_part' !== $template_type ) {
+// 		return $query_result;
+// 	}
+// 
+// 	// Anchor to Lumina's local template parts path
+// 	$child_parts_dir = get_stylesheet_directory() . '/parts/';
+// 
+// 	$filtered_parts = array_filter( $query_result, function( $template_part ) use ( $child_parts_dir ) {
+// 		// Identify if the template part is a raw file-based theme asset
+// 		if ( isset( $template_part->source ) && 'theme' === $template_part->source ) {
+// 			// Construct the exact filename layout WordPress looks for
+// 			$local_file = $child_parts_dir . $template_part->slug . '.html';
+// 
+// 			// If the file does not exist inside Lumina, it's an inherited parent file—drop it!
+// 			if ( ! file_exists( $local_file ) ) {
+// 				return false;
+// 			}
+// 		}
+// 		return true;
+// 	});
+// 
+// 	// Re-index the array values cleanly to protect the REST API collection loop
+// 	return array_values( $filtered_parts );
+// }
 
 // add_filter( 'get_block_templates', 'lumina_unload_parent_template_parts', 10, 3 );
 /**

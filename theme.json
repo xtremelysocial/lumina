@@ -48,7 +48,7 @@
 				"radius": "9999px"
 			},
 			"spacing": {
-				"gap": "28px"
+				"gap": "24px"
 			},
 			"sidebar": {
 				"width": "360px"
@@ -250,11 +250,11 @@
 				{ "slug": "tertiary-subtle", "color": "hsl(34, 22%, 91%)", "name": "Tertiary Subtle (Whisper Parchment Fill 91%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 16%, 83%)", "name": "Tertiary Subtle Alt (Parchment Border Seam 83%)" },
 				
-				{ "slug": "base", "color": "hsl(32, 20%, 97%)", "name": "Base (Warm Cream Canvas)" },
+				{ "slug": "base", "color": "hsl(32, 20%, 97%)", "name": "Base (Almond White)" },
 				{ "slug": "contrast", "color": "hsl(214, 12%, 11%)", "name": "Contrast (Midnight Indigo Typographic Ink)" },
 				{ "slug": "neutral", "color": "hsl(32, 16%, 96%)", "name": "Neutral (Crisp Sand Well 96%)" },
 				{ "slug": "neutral-alt", "color": "hsl(32, 12%, 88%)", "name": "Neutral Alt (Sand Border Seam 88%)" },
-				{ "slug": "foreground-alt", "color": "hsl(32, 20%, 97%)", "name": "Foreground Alt (Almond White)" },
+				{ "slug": "foreground-alt", "color": "hsl(32, 20%, 98%)", "name": "Foreground Alt (Light Almond White)" },
 				
 				{ "slug": "very-light-gray", "color": "hsl(32, 14%, 91%)", "name": "Very Light Gray (Warm Sand Footer Floor 91%)" },
 				{ "slug": "light-gray", "color": "hsl(32, 10%, 83%)", "name": "Light Gray (Warm Sand Inner Well 83%)" },
@@ -620,6 +620,18 @@
 	},
 	"templateParts": [
 		{
+			"name": "header",
+			"title": "Header Wrapper",
+			"description": "Site Header Wrapper",
+			"area": "header"
+		},
+		{
+			"name": "header-fixed",
+			"title": "Lumina Header Fixed to Top",
+			"description": "Fixed header",
+			"area": "header"
+		},
+		{
 			"name": "header-home",
 			"title": "Lumina Home Page Header",
 			"description": "Header for the Home page",
@@ -627,14 +639,14 @@
 		},
 		{
 			"name": "featured-image",
-			"title": "Featured Image",
-			"description": "Featured image",
+			"title": "Lumina Featured Image",
+			"description": "Lumina Featured image",
 			"area": "content"
 		},
 		{
 			"name": "featured-image-slim",
-			"title": "Slim Featured Image",
-			"description": "Slim 16:4.5 ratio featured image",
+			"title": "Lumina Slim Featured Image",
+			"description": "Lumina Slim 16:4.5 ratio featured image",
 			"area": "content"
 		},
 		{
@@ -642,6 +654,12 @@
 			"title": "Author Bio",
 			"description": "Author avatar, name, and bio",
 			"area": "content"
+		},
+		{
+			"name": "footer",
+			"title": "Footer Wrapper",
+			"description": "Footer Wrapper",
+			"area": "footer"
 		},
 		{
 			"name": "footer-default",

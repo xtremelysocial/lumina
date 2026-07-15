@@ -12,6 +12,83 @@
 	
 	$(document).ready(function() {
 
+//		/* 
+//		 * HEADLINE UNDERLINES: Add class to continue after click
+//		 */
+		 
+// 		// Define the heading link selectors
+// 		const headingLinks = '.wp-block-heading a, .wp-block-site-title a, .wp-block-post-title a, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title';
+// 		
+// 		// Slap the loading state class on the clicked link right before page unload
+// 		$(headingLinks).on('click', function() {
+// 			$(this).addClass('is-loading');
+// 		});
+
+		/*
+		 * DETAIL OPEN / CLOSE: Retains user setting
+		 */
+
+		// Retain open/closed state of HTML details blocks using localStorage
+		$( 'details' ).each( function( index ) {
+			const $details = $( this );
+			
+			// 1. Resolve a unique identifier for this element
+			const elementIdentifier = $details.attr( 'id' ) || $details.closest( '[id]' ).attr( 'id' ) || 'global';
+			
+			// 2. Scope the storage key to the current page path so states don't bleed
+			const pagePath   = window.location.pathname.replace( /[^a-zA-Z0-9]/g, '_' );
+			const storageKey = 'details_state_' + pagePath + '_' + elementIdentifier + '_' + index;
+		
+			// 3. RESTORE STATE: Check if a saved preference exists on page load
+			const savedState = localStorage.getItem( storageKey );
+			if ( savedState !== null ) {
+				$details.prop( 'open', savedState === 'open' );
+			}
+		
+			// 🚀 HASH DETECTOR OVERRIDE: 
+			// If the URL has a hash (e.g., #respond) and that target element is inside this details block, force it open!
+			if ( window.location.hash ) {
+				try {
+					const $targetElement = $details.find( window.location.hash );
+					if ( $targetElement.length > 0 ) {
+						$details.prop( 'open', true );
+					}
+				} catch (e) {
+					// Defensive catch in case the hash contains invalid selector characters
+					console.warn("Invalid URL hash selector skipped", e);
+				}
+			}
+		
+			// 4. SAVE STATE: Listen for the native HTML toggle event
+			$details.on( 'toggle', function() {
+				localStorage.setItem( storageKey, this.open ? 'open' : 'closed' );
+			} );
+		} );
+
+		// Retain open/closed state of HTML details blocks using localStorage
+// 		$( 'details' ).each( function( index ) {
+// 			const $details = $( this );
+// 			
+// 			// 1. Resolve a unique identifier for this element
+// 			// Looks for details ID first, then falls back to the closest parent ID, then a default string
+// 			const elementIdentifier = $details.attr( 'id' ) || $details.closest( '[id]' ).attr( 'id' ) || 'global';
+// 			
+// 			// 2. Scope the storage key to the current page path so states don't bleed across different posts/pages
+// 			const pagePath   = window.location.pathname.replace( /[^a-zA-Z0-9]/g, '_' );
+// 			const storageKey = 'details_state_' + pagePath + '_' + elementIdentifier + '_' + index;
+// 		
+// 			// 3. RESTORE STATE: Check if a saved preference exists on page load
+// 			const savedState = localStorage.getItem( storageKey );
+// 			if ( savedState !== null ) {
+// 				$details.prop( 'open', savedState === 'open' );
+// 			}
+// 		
+// 			// 4. SAVE STATE: Listen for the native HTML toggle event
+// 			$details.on( 'toggle', function() {
+// 				localStorage.setItem( storageKey, this.open ? 'open' : 'closed' );
+// 			} );
+// 		} );
+
 		/*
 		 * If an animated card only has one link or one button, then link the 
 		 * entire card.

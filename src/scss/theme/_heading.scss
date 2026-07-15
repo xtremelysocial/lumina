@@ -69,10 +69,9 @@ $sep-clearance: var(--wp--preset--spacing--30); //10px; // Fixed breathing room 
 }
 
 /*--------------------------------------------------------------
-## Custom Heading Link Animation
+## Custom Heading Link Animation (Responsive & Mobile-Locked)
 --------------------------------------------------------------*/
 
-// Define the array of selectors
 $heading-links: (
     '.wp-block-heading a',
     '.wp-block-site-title a',
@@ -81,50 +80,100 @@ $heading-links: (
 );
 
 $link-height: 2px;
-// $link-offset: 0.1em; 
 $link-offset: var(--wp--custom--link--offset, 0.1em);
-// $link-color: var(--wp--preset--color--highlight);
 $link-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
 
-// Iterate through the list
 @each $link in $heading-links {
     #{$link} {
-        position: relative;
-        display: inline; // Keeps text perfectly locked on the baseline
+        display: inline;
         text-decoration: none !important;
-
-        &::after {
-            content: "";
-            position: absolute;
-            
-			top: calc(100% + #{$link-offset});
-            left: 0;
-            
-            // Set your explicit thickness
-            height: #{$link-height}; //2px; 
-            background-color: #{$link-color}; //currentColor;
-            
-            // The Animation Setup: Start at zero width
-            width: 0;
-            transition: width 
-                var(--wp--custom--animation--duration--medium, 500ms) 
-                var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
-            
-            pointer-events: none;
-        }
+        padding-bottom: #{$link-offset};
         
-        // Don't set opacity on hover since we are underlining instead
+        background-image: linear-gradient(#{$link-color}, #{$link-color});
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        background-size: 0% #{$link-height};
+
+        // Desktop Default: Elegant, fluid forward and backward sweeps
+        transition: background-size 
+            var(--wp--custom--animation--duration--medium, 500ms) 
+            var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+        
+        // Mobile Override Block
+        @media (max-width: 768px) {
+            // EXIT PHASE: When the finger lifts, hold the line at 100% for 10 seconds 
+            // before letting it snap back. This blocks the ugly mid-way freeze loop.
+            transition: background-size 0s 10s;
+        }
+
         &:hover,
         &:active {
-        	opacity: 1; 
+            opacity: 1; 
         }
 
-		// Animate the underline cleanly from left to right
-        &:hover::after,
-        &:active::after,
-        &:focus::after {
-            width: 100%;
-            opacity: 1; 
+        // ENTRY PHASE: When actively touched/focused
+        &:hover,
+        &:active,
+        &:focus {
+            background-size: 100% #{$link-height};
+
+            @media (max-width: 768px) {
+                // Shoot the line out cleanly in 150ms with zero delay the moment the glass is touched
+                transition: background-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            }
         }
     }
 }
+
+/*--------------------------------------------------------------
+## Custom Heading Link Animation (Multi-line Safe)
+--------------------------------------------------------------*/
+// 
+// // Define the array of selectors
+// $heading-links: (
+//     '.wp-block-heading a',
+//     '.wp-block-site-title a',
+//     '.wp-block-post-title a',
+//     '.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title'
+// );
+// 
+// $link-height: 2px;
+// $link-offset: var(--wp--custom--link--offset, 0.1em);
+// $link-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
+// 
+// // Iterate through the list
+// @each $link in $heading-links {
+//     #{$link} {
+//         display: inline; // Crucial: Keeps text wrapping inline so background maps to each line box
+//         text-decoration: none !important;
+// 
+//         // Use padding-bottom to safely push the background line down without messing up text baseline
+//         padding-bottom: #{$link-offset};
+// 
+//         // The Multi-Line Magic: Create the line out of a solid-color CSS gradient
+//         background-image: linear-gradient(#{$link-color}, #{$link-color});
+//         background-repeat: no-repeat;
+//         background-position: 0 100%; // Lock line to bottom left of the inline padding space
+// 
+//         // Start line at 0% width, set explicit line thickness height
+//         background-size: 0% #{$link-height};
+// 
+//         // The Animation Setup: Smoothly scale the background width property
+//         transition: background-size 
+//             var(--wp--custom--animation--duration--medium, 500ms) 
+//             var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+//         
+//         // Don't set opacity on hover since we are underlining instead
+//         &:hover,
+//         &:active {
+//             opacity: 1; 
+//         }
+// 
+//         // Expand the background line across 100% of EVERY line box segment on hover
+//         &:hover,
+//         &:active,
+//         &:focus {
+//             background-size: 100% #{$link-height};
+//         }
+//     }
+// }

@@ -72,6 +72,15 @@ $color-registry: (
     // --- NEUTRALS (E.G. SIDEBAR, BORDERS, DEFAULT CARD COLORS ) ---
     ( color: 'neutral',     heading-dark: true ),
     ( color: 'neutral-alt', heading-dark: true ),
+
+	//     // --- WHITE & GRAY NAMED COLORS ---
+	// Parent theme handles text color, here we override footer nav links only
+//     ( color: 'white',             text: 'fixed-light', footer: 'hover-highlight-alt' ),
+//     ( color: 'off-white',         text: 'fixed-light', footer: 'hover-highlight-alt' ),
+    ( color: 'very-light-gray',	  footer: 'hover-highlight-alt' ),
+    ( color: 'light-gray',        footer: 'hover-highlight-alt' ),
+    ( color: 'gray',              footer: 'hover-highlight-alt' ),
+//     ( color: 'dark-gray',         text: 'fixed-dark', link: 'inherit' ),
     
     // --- VERY LIGHT NAMED COLORS ---
     ( color: 'very-light-green',  text: 'fixed-light' ),
@@ -168,7 +177,7 @@ $color-registry: (
    ========================================================================== */
 
 /*-----------------------------------------------------------------------------
-# PASS 1: GLOBAL TEXT CONTRAST
+# PASS 1: GLOBAL TEXT & HEADING CONTRAST
 -----------------------------------------------------------------------------*/
 %global-heading-inherit {
 // 	h1, h2, h3, h4, h5, h6,
@@ -194,10 +203,11 @@ $color-registry: (
 /*-----------------------------------------------------------------------------
 # PASS 2: LIGHT THEME CONTEXT
 -----------------------------------------------------------------------------*/
-body:not(.is-dark-theme) {
+:where(body:not(.is-dark-theme)) {
     
     %light-link-inherit { 
         color: inherit; 
+        
         &:hover, &:active {
             color: inherit;
             opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
@@ -216,17 +226,19 @@ body:not(.is-dark-theme) {
     }
 
     %light-footer-nav-hover {
-        color: inherit;
-        opacity: 1;
-        text-decoration-line: underline;
-        text-decoration-style: var(--wp--custom--link--special-style, dotted);
+//         color: inherit;
+//         opacity: 1;
+//         text-decoration-line: underline;
+//         text-decoration-style: var(--wp--custom--link--special-style, dotted);
+//         color: var(--wp--preset--color--highlight-alt); 	
+        color: var(--wp--preset--color--highlight); 	
     }
     
     %light-footer-nav-hover-alt {
         color: var(--wp--preset--color--highlight-alt); 
-        opacity: 1;
-        text-decoration-line: underline;
-        text-decoration-style: var(--wp--custom--link--special-style, dotted);
+//         opacity: 1;
+//         text-decoration-line: underline;
+//         text-decoration-style: var(--wp--custom--link--special-style, dotted);
     }
     
     %light-link-underline-special {
@@ -244,6 +256,8 @@ body:not(.is-dark-theme) {
 
         // --- 1. Light Theme Link Handling ---
         @if $link == 'inherit' {
+        
+        	// Inherit link color
             #{$selectors} a:where(:not(
             	.wp-element-button, 
             	.wp-block-social-link-anchor, 
@@ -251,6 +265,8 @@ body:not(.is-dark-theme) {
             )) {
                 @extend %light-link-inherit;
             }
+            
+            // In Post Content, also underline link
             .wp-block-post-content #{$selectors} a:not(
             	.wp-element-button, 
             	.wp-block-social-link-anchor, 
@@ -258,6 +274,33 @@ body:not(.is-dark-theme) {
             ) {
                 @extend %light-link-underline;
             }
+            
+            // In Footers, only underline text links (e.g. <p>)
+			#{$selectors} {
+            	&.site-footer,
+            	&.footer-info {
+            		p a:where(:not(
+					.wp-element-button, 
+					.wp-block-social-link-anchor, 
+					.wp-block-navigation-item__content
+				)) {
+						@extend %light-link-underline-special;
+					}
+				}
+            }
+            
+//             p, 
+// 			blockquote, 
+// 			figcaption,
+// 			ul:not([class]) li { // Targets standard text lists, but ignores block-based UI lists
+// 				a:where(:not(
+// 					.wp-element-button, 
+// 					.wp-block-social-link-anchor, 
+// 					.wp-block-navigation-item__content
+// 				)) {
+// 					@extend %light-link-underline-special;
+// 				}
+// 			}
             
         } @else if $link == 'lighten' {
             #{$selectors} a:not(
@@ -269,7 +312,7 @@ body:not(.is-dark-theme) {
             }
         }
 
-        // --- 2. Footer Handling (Only compiles if explicitly set) ---
+        // --- 2. Footer Handling ---
         @if $footer == 'hover-highlight' {
             #{$selectors} {
             	&.site-footer,
@@ -278,13 +321,13 @@ body:not(.is-dark-theme) {
 		                @extend %light-footer-nav-hover;
             		}
             		
-            		a:where(:not(
-            			.wp-element-button, 
-            			.wp-block-social-link-anchor, 
-            			.wp-block-navigation-item__content
-            		)) {
-						@extend %light-link-underline-special;
-					}
+//             		a:where(:not(
+//             			.wp-element-button, 
+//             			.wp-block-social-link-anchor, 
+//             			.wp-block-navigation-item__content
+//             		)) {
+// 						@extend %light-link-underline-special;
+// 					}
             	}            	
             }
 
@@ -296,13 +339,13 @@ body:not(.is-dark-theme) {
 		                @extend %light-footer-nav-hover-alt;
             		}
             		
-            		a:where(:not(
-            			.wp-element-button, 
-            			.wp-block-social-link-anchor, 
-            			.wp-block-navigation-item__content
-            		)) {
-						@extend %light-link-underline-special;
-					}
+//             		a:where(:not(
+//             			.wp-element-button, 
+//             			.wp-block-social-link-anchor, 
+//             			.wp-block-navigation-item__content
+//             		)) {
+// 						@extend %light-link-underline-special;
+// 					}
             	}
         	}
         }
@@ -312,7 +355,7 @@ body:not(.is-dark-theme) {
 /*-----------------------------------------------------------------------------
 # PASS 3: DARK THEME CONTEXT
 -----------------------------------------------------------------------------*/
-.is-dark-theme {
+:where(.is-dark-theme) {
 
 	// Define dark link placeholders
 	%dark-heading-override {
@@ -362,6 +405,8 @@ body:not(.is-dark-theme) {
 
         // --- 2. Dark Link Conversions (Only compiles if link-dark key is set) ---
         @if $link-dark == 'inherit' {
+        
+        	// Inherit link color
             #{$selectors} a:where(:not(
             	.wp-element-button, 
             	.wp-block-social-link-anchor, 
@@ -370,12 +415,27 @@ body:not(.is-dark-theme) {
                 @extend %dark-link-inherit;
             }
             
+            // In Post Content, also underline links
             .wp-block-post-content #{$selectors} a:not(
             	.wp-element-button, 
             	.wp-block-social-link-anchor, 
             	.wp-block-navigation-item__content
             ) {
                 @extend %dark-link-underline;
+            }
+            
+			// In Footers, only underline text links (e.g. <p>)
+            #{$selectors} {
+            	&.site-footer,
+            	&.footer-info {
+            		p a:where(:not(
+					.wp-element-button, 
+					.wp-block-social-link-anchor, 
+					.wp-block-navigation-item__content
+				)) {
+						@extend %light-link-underline-special;
+					}
+				}
             }
             
         } @else if $link-dark == 'lighten' {

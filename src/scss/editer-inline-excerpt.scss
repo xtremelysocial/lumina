@@ -1,0 +1,43 @@
+/*-----------------------------------------------------------------------------
+# Lumina Theme - Smooth Inline Excerpt Editor Cleanups
+-----------------------------------------------------------------------------*/
+
+/* 1. Strip the standard Gutenberg block focus outlines and hover boxes */
+.wp-block[data-type="lumina/inline-excerpt"]::after {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 2. Hide the side drag handles and alignment block controls on hover */
+.wp-block[data-type="lumina/inline-excerpt"] .block-editor-block-list__block-edit::before {
+    display: none !important;
+}
+
+/* 3. Drop block margins to let it sit tight against the native title field */
+.wp-block[data-type="lumina/inline-excerpt"] {
+    margin-top: 0 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* 4. Style the input control to look like an organic, borderless subtitle deck */
+.lumina-inline-excerpt-editor textarea {
+    font-size: 1.2rem !important;
+    line-height: 1.5 !important;
+    font-family: inherit !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    color: var(--wp--preset--color--contrast-accent, #666) !important;
+    resize: none !important;
+}
+
+/* 5. Clean up the label so it acts like a subtle editorial indicator */
+.lumina-inline-excerpt-editor label {
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    opacity: 0.5;
+    margin-bottom: 0.25rem !important;
+    display: block !important;
+}

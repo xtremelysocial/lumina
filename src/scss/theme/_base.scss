@@ -359,6 +359,56 @@ body[class*="-single-sidebar-left"] {
 }
 
 /*--------------------------------------------------------------
+## Bring details closer to the summary so they look connected
+--------------------------------------------------------------*/
+.wp-block-details > summary + * {
+	margin-top: calc(0.5 * var(--wp--style--block-gap));
+}
+
+.wp-block-details > summary::-webkit-details-marker {
+    display: none;
+}
+
+/*-----------------------------------------------------------------------------
+# Lumina Custom Accordion Styling
+-----------------------------------------------------------------------------*/
+
+/* 1. Force flex layout to instantly break 'list-item' status & kill native arrow */
+.wp-block-details > summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none; /* Modern standard arrow strip */
+    cursor: pointer;
+    font-weight: var(--wp--custom--typography--font-weight--normal);
+}
+
+/* 2. Overkill fallback to ensure Safari behaves */
+.wp-block-details > summary::-webkit-details-marker {
+    display: none !important;
+}
+.wp-block-details > summary::marker {
+    content: "";
+    display: none;
+}
+
+/* 3. Inject a sleek, right-aligned custom indicator that doesn't scale crazily */
+.wp-block-details > summary::after {
+    content: "+";
+    font-size: 1em; //1.1rem; /* Hardcoded size so it stays clean even with large text */
+    font-weight: var(--wp--custom--typography--font-weight--medium);
+    font-family: monospace, sans-serif; /* Keeps plus/minus structurally aligned */
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+}
+
+/* 4. Swap to a clean Unicode minus sign when the accordion is open */
+.wp-block-details[open] > summary::after {
+    content: "−"; /* Unicode minus sign looks much cleaner than a hyphen */
+    opacity: 0.9;
+}
+
+/*--------------------------------------------------------------
 ## Custom Block Style: Lumina Editorial Justification
 --------------------------------------------------------------*/
 /* Can be applied directly to a single Paragraph block, a Column, or a Grid Group */
@@ -393,11 +443,11 @@ body[class*="-single-sidebar-left"] {
 -----------------------------------------------------------------------------*/
 
 /* Force the heading separator variable to inherit the active category token */
-// .has-category-accent {
-//     --wp--custom--color--heading--separator: var(--current-category-color);
-// }
+.has-category-accent {
+    --wp--custom--color--heading--separator: var(--current-category-color);
+}
 
 /* Add a smooth accent bar on top of your slim banner layouts */
-// .has-category-accent .wp-block-template-part .wp-block-cover {
-//     border-top: 3px solid var(--current-category-color);
-// }
+.has-category-accent .wp-block-template-part .wp-block-cover {
+    border-top: 3px solid var(--current-category-color);
+}

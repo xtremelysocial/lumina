@@ -1,86 +1,126 @@
 <?php
 /**
  * File:        add-body-classes.php
- * Theme:       Lumina Blocks
+ * Theme:       Shared Media Engine
  *
- * Centralized Document Layout Engine (High-Performance Refactored Edition).
- * Caches heavy global style array tracking via transients and standardizes runtime context execution loops.
+ * Centralized Document Layout Engine (Pure Luminance Universal Format Edition).
+ * Directly queries the global styles engine for the active background color
+ * and calculates human-eye relative luminance to apply theme classes.
+ * Supports Hex, RGB/RGBA, and HSL/HSLA color strings.
  *
- * @package    lumina
+ * @package    XtremelySocial
  */
 
+namespace XtremelySocial;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // -------------------------------------------------------------------------
-// STATIC HELPER: RUN CONTEXT QUERIES EXACTLY ONCE PER PAGE LOAD
+// CACHE ENGINE CONFIGURATION MATRIX
 // -------------------------------------------------------------------------
-// function lumina_get_layout_context_data() {
-// 
-// 	static $context = null;
-// 
-// 	if ( null !== $context ) {
-// 		return $context;
-// 	}
-// 
-// 	$slug  = null;
-// 	$color = '#ffffff';
-// 
-// 	if ( is_singular() && function_exists( 'lumina_get_post_primary_category_slug' ) ) {
-// 		$slug  = lumina_get_post_primary_category_slug();
-// 		$color = function_exists( 'lumina_get_post_primary_category_color' ) ? lumina_get_post_primary_category_color() : '#ffffff';
-// 	} elseif ( is_category() ) {
-// 		$cat_id = get_queried_object_id();
-// 		$slug   = function_exists( 'lumina_get_category_slug' ) ? lumina_get_category_slug( $cat_id ) : null;
-// 		$color  = function_exists( 'lumina_get_category_color' ) ? lumina_get_category_color( $cat_id ) : '#ffffff';
-// 	}
-// 
-// 	$context = array( 'slug' => $slug, 'color' => $color );
-// 	return $context;
-// }
+// Change this slug per theme/child theme deployment to prevent cross-theme 
+// cache bleeding.
+const LUMINANCE_TRANSIENT = 'lumina_dark_or_light_theme';
+
 
 // Hook 1: Document Class Append Matrix
-add_filter( 'body_class', 'lumina_add_body_classes', 10, 1 );
+add_filter( 'body_class', __NAMESPACE__ . '\add_body_classes', 10, 1 );
 
-if ( ! function_exists('lumina_add_body_classes') ) :
+/**
+ * HELPER: Converts HSL/HSLA color channels down to baseline RGB values.
+ */
+function hsl_to_rgb( $h, $s, $l ) {
+	$h /= 360;
+	$s /= 100;
+	$l /= 100;
+
+	if ( 0 == $s ) {
+		$r = $g = $b = $l; // Achromatic (gray)
+	} else {
+		$q = $l < 0.5 ? $l * ( 1 + $s ) : $l + $s - $l * $s;
+		$p = 2 * $l - $q;
+
+		$r = hue_to_rgb( $p, $q, $h + 1/3 );
+		$g = hue_to_rgb( $p, $q, $h );
+		$b = hue_to_rgb( $p, $q, $h - 1/3 );
+	}
+
+	return array(
+		round( $r * 255 ),
+		round( $g * 255 ),
+		round( $b * 255 )
+	);
+}
+
+/**
+ * Helper helper for HSL conversion steps.
+ */
+function hue_to_rgb( $p, $q, $t ) {
+	if ( $t < 0 ) { $t += 1; }
+	if ( $t > 1 ) { $t -= 1; }
+	if ( $t < 1/6 ) { return $p + ( $q - $p ) * 6 * $t; }
+	if ( $t < 1/2 ) { return $q; }
+	if ( $t < 2/3 ) { return $p + ( $q - $p ) * ( 2/3 - $t ) * 6; }
+	return $p;
+}
+
+if ( ! function_exists( __NAMESPACE__ . '\add_body_classes' ) ) :
  
-	function lumina_add_body_classes( $classes ) {
-		// -------------------------------------------------------------------------
-		// 1. TRANSIENT CONTROLLED LUMINANCE IDENTIFICATION
-		// -------------------------------------------------------------------------
-		$theme_mode = get_transient( 'lumina_layout_luminance_mode' );
+	function add_body_classes( $classes ) {
+		// DEVELOPER SWITCH: Set to true during active styling tests to bypass transient cache
+		$bypass_cache = false; 
+
+		$theme_mode = $bypass_cache ? false : get_transient( LUMINANCE_TRANSIENT );
 
 		if ( false === $theme_mode ) {
-			// This heavy loop now executes ONLY when the transient cache expires or is cleared
-			$bg_color = wp_get_global_styles( array( 'color', 'background' ) );
-			if ( empty( $bg_color ) ) { $bg_color = '#ffffff'; }
+			// 1. QUERY THE ENGINE: Tell WordPress to completely resolve the background color value
+			$bg_color = wp_get_global_styles( 
+				array( 'color', 'background' ), 
+				array( 'transforms' => array( 'resolve-variables' ) ) 
+			);
 		
-			if ( is_string( $bg_color ) && strpos( $bg_color, 'var(--wp--preset--color--' ) !== false ) {
-				preg_match( '/--wp--preset--color--([a-zA-Z0-9_-]+)/', $bg_color, $matches );
-				if ( ! empty( $matches[1] ) ) {
-					$bg_slug = $matches[1]; 
-					$palette = wp_get_global_settings( array( 'color', 'palette', 'theme' ) );
-					if ( is_array( $palette ) ) {
-						foreach ( $palette as $color_obj ) {
-							if ( isset( $color_obj['slug'] ) && $color_obj['slug'] === $bg_slug ) {
-								$bg_color = $color_obj['color'];
-								break;
-							}
-						}
-					}
-				}
+			// Default to white if styles are completely unassigned
+			if ( empty( $bg_color ) || ! is_string( $bg_color ) ) {
+				$bg_color = '#ffffff';
 			}
 
-			$hex = str_replace( '#', '', $bg_color );
-			if ( strlen( $hex ) === 3 ) {
-				$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
-				$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
-				$b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
-			} elseif ( strlen( $hex ) === 6 ) {
-				$r = hexdec( substr( $hex, 0, 2 ) );
-				$g = hexdec( substr( $hex, 2, 2 ) );
-				$b = hexdec( substr( $hex, 4, 2 ) );
-			} else {
-				$r = 255; $g = 255; $b = 255;
+			$r = 255; $g = 255; $b = 255;
+			$bg_color = trim( $bg_color );
+
+			// 2. PARSE THE COLOR: Extract RGB values regardless of format syntax
+			
+			// Case A: Hex Format (#ffffff or #fff)
+			if ( 0 === strpos( $bg_color, '#' ) ) {
+				$hex = str_replace( '#', '', $bg_color );
+				if ( strlen( $hex ) === 3 ) {
+					$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
+					$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
+					$b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
+				} elseif ( strlen( $hex ) === 6 ) {
+					$r = hexdec( substr( $hex, 0, 2 ) );
+					$g = hexdec( substr( $hex, 2, 2 ) );
+					$b = hexdec( substr( $hex, 4, 2 ) );
+				}
+			} 
+			// Case B: RGB / RGBA Format
+			elseif ( preg_match( '/rgba?\(\s*([\d.]+)\s*[\s,]\s*([\d.]+)\s*[\s,]\s*([\d.]+)/i', $bg_color, $matches ) ) {
+				$r = intval( $matches[1] );
+				$g = intval( $matches[2] );
+				$b = intval( $matches[3] );
+			}
+			// Case C: HSL / HSLA Format
+			elseif ( preg_match( '/hsla?\(\s*([\d.]+)\s*[\s,]\s*([\d.]+)%\s*[\s,]\s*([\d.]+)%/i', $bg_color, $matches ) ) {
+				$hsl_h = floatval( $matches[1] );
+				$hsl_s = floatval( $matches[2] );
+				$hsl_l = floatval( $matches[3] );
+
+				// Run conversion helper to populate standard RGB targets
+				list( $r, $g, $b ) = hsl_to_rgb( $hsl_h, $hsl_s, $hsl_l );
 			}
 		
+			// 3. RUN LUMINOSITY FORMULA: Standard human eye relative luminance algorithm
 			$rc = $r / 255; $gc = $g / 255; $bc = $b / 255;
 			$rc = ( $rc <= 0.03928 ) ? $rc / 12.92 : pow( ( $rc + 0.055 ) / 1.055, 2.4 );
 			$gc = ( $gc <= 0.03928 ) ? $gc / 12.92 : pow( ( $gc + 0.055 ) / 1.055, 2.4 );
@@ -89,55 +129,42 @@ if ( ! function_exists('lumina_add_body_classes') ) :
 		
 			$theme_mode = ( $luminance < 0.5 ) ? 'is-dark-theme' : 'is-light-theme';
 			
-			// Cache the value for 12 hours to take the strain off page generation loops
-			set_transient( 'lumina_layout_luminance_mode', $theme_mode, 12 * HOUR_IN_SECONDS );
+			// -------------------------------------------------------------------------
+			// LIVE URL DIAGNOSTIC INTERCEPT
+			// -------------------------------------------------------------------------
+// 			if ( isset( $_GET['debug'] ) ) {
+// 				echo '<div style="background:#000; color:#0f0; padding:30px; font-family:monospace; font-size:16px; line-height:1.5; z-index:999999; position:relative; border-bottom:5px solid #0f0;">';
+// 				echo '<h2>--- XTREAMLYSOCIAL THEME ENGINE DIAGNOSTICS ---</h2>';
+// 				echo '<strong>Active Cache Slug Constant:</strong> <span style="color:#ff0;">' . esc_html( LUMINANCE_TRANSIENT ) . '</span><br>';
+// 				echo '<strong>Raw Value Returned by WordPress:</strong> <span style="color:#fff; background:#222; padding:2px 6px; border-radius:3px;">' . esc_html( $bg_color ) . '</span><br>';
+// 				echo '<strong>Parsed RGB Conversion Array:</strong> R: ' . $r . ' | G: ' . $g . ' | B: ' . $b . '<br>';
+// 				echo '<strong>Calculated Eye Luminance:</strong> ' . round( $luminance, 4 ) . ' (Threshold: < 0.5 is Dark)<br>';
+// 				echo '<strong>ASSIGNED THEME CLASS:</strong> <span style="color:#0f0; font-weight:bold;">' . $theme_mode . '</span><br>';
+// 				echo '</div>';
+// 				exit;
+// 			}
+
+			if ( ! $bypass_cache ) {
+				set_transient( LUMINANCE_TRANSIENT, $theme_mode, 12 * HOUR_IN_SECONDS );
+			}
 		}
 
 		$classes[] = $theme_mode;
-		
-		// -------------------------------------------------------------------------
-		// 2. ACCENT CLASS MAPPING VIA RUNTIME STATIC CACHE
-		// -------------------------------------------------------------------------
-// 		$context = lumina_get_layout_context_data();
-// 		$slug    = $context['slug'];
-// 
-// 		if ( $slug && 'white' !== $slug ) {
-// 			$classes[] = 'has-category-accent';
-// 			$classes[] = 'category-accent-' . sanitize_html_class( $slug );
-// 		}
 	
 		return $classes;
 	}
 	
 endif;
 
-// Hook 2: Document Context Custom Property Injection
-// add_action( 'wp_head', 'lumina_inject_category_css_properties', 100 );
-// if ( ! function_exists( 'lumina_inject_category_css_properties' ) ) :
-// 	
-// 	function lumina_inject_category_css_properties() {
-// 		$context      = lumina_get_layout_context_data();
-// 		$slug         = $context['slug'];
-// 		$custom_color = $context['color'];
-// 		
-// 		if ( ! $slug || 'white' === $slug ) {
-// 			return;
-// 		}
-// 		
-// 		echo '<style id="lumina-category-accent-cascade">';
-// 		if ( 'custom' !== $slug ) {
-// 			printf( ':root { --current-category-color: var(--wp--preset--color--%s); }', esc_attr( $slug ) );
-// 		} else {
-// 			printf( ':root { --current-category-color: %s; }', esc_attr( $custom_color ) );
-// 		}
-// 		echo '</style>';
-// 	}
-// 
-// endif;
+// -------------------------------------------------------------------------
+// 2. AUTOMATED TRANSIENT CACHE FLUSHING REGISTRY
+// -------------------------------------------------------------------------
+add_action( 'after_switch_theme', __NAMESPACE__ . '\clear_luminance_transient' );
+add_action( 'clean_theme_cache', __NAMESPACE__ . '\clear_luminance_transient' );
+add_action( 'save_post_wp_global_styles', __NAMESPACE__ . '\clear_luminance_transient' );
 
-// FLUSH CACHE WHEN GLOBAL THEME STYLES ARE SAVED OR MODIFIED
-add_action( 'after_switch_theme', 'lumina_clear_luminance_transient' );
-add_action( 'clean_theme_cache', 'lumina_clear_luminance_transient' );
-function lumina_clear_luminance_transient() {
-	delete_transient( 'lumina_layout_luminance_mode' );
-}
+if ( ! function_exists( __NAMESPACE__ . '\clear_luminance_transient' ) ) :
+	function clear_luminance_transient() {
+		delete_transient( LUMINANCE_TRANSIENT );
+	}
+endif;
