@@ -6,13 +6,14 @@
 	"settings": {
 		"custom": {
 			"color": {
+				"bodyClasses": "is-light-theme",
 				"contrast": {
 					"yellow": "var(--wp--preset--color--foreground-alt)",
-					"light-green": "var(--wp--preset--color--contrast)",
-					"light-orange": "var(--wp--preset--color--contrast)",
-					"light-blue": "var(--wp--preset--color--contrast)",
-					"light-purple": "var(--wp--preset--color--contrast)",
-					"light-red": "var(--wp--preset--color--contrast)"
+					"lightGreen": "var(--wp--preset--color--contrast)",
+					"lightOrange": "var(--wp--preset--color--contrast)",
+					"lightBlue": "var(--wp--preset--color--contrast)",
+					"lightPurple": "var(--wp--preset--color--contrast)",
+					"lightRed": "var(--wp--preset--color--contrast)"
 				},
 				"border": "var(--wp--preset--color--neutral-alt)",				
 				"field": { 
@@ -237,23 +238,26 @@
 		"color": {
 			"palette": [
 				{ "slug": "primary", "color": "hsl(154, 24%, 48%)", "name": "Primary (Crisp Sage 48%)" },
-				{ "slug": "primary-alt", "color": "hsl(154, 26%, 38%)", "name": "Primary Alt (Deep Alpine Sage 38%)" },
 				{ "slug": "secondary", "color": "hsl(206, 24%, 44%)", "name": "Secondary (Ocean Blue 44%)" },
-				{ "slug": "secondary-alt", "color": "hsl(206, 26%, 34%)", "name": "Secondary Alt (Storm Navy 34%)" },
 				{ "slug": "tertiary", "color": "hsl(34, 32%, 48%)", "name": "Tertiary (Antique Gold 48%)" },
+
+				{ "slug": "primary-alt", "color": "hsl(154, 26%, 38%)", "name": "Primary Alt (Deep Alpine Sage 38%)" },
+				{ "slug": "secondary-alt", "color": "hsl(206, 26%, 34%)", "name": "Secondary Alt (Storm Navy 34%)" },
 				{ "slug": "tertiary-alt", "color": "hsl(34, 34%, 38%)", "name": "Tertiary Alt (Burnished Ochre 38%)" },
 
 				{ "slug": "primary-subtle", "color": "hsl(154, 20%, 91%)", "name": "Primary Subtle (Whisper Sage Fill 91%)" },
-				{ "slug": "primary-subtle-alt", "color": "hsl(154, 16%, 83%)", "name": "Primary Subtle Alt (Sage Border Seam 83%)" },
 				{ "slug": "secondary-subtle", "color": "hsl(206, 24%, 91%)", "name": "Secondary Subtle (Whisper Sky Fill 91%)" },
-				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 18%, 83%)", "name": "Secondary Subtle Alt (Sky Border Seam 83%)" },
 				{ "slug": "tertiary-subtle", "color": "hsl(34, 22%, 91%)", "name": "Tertiary Subtle (Whisper Parchment Fill 91%)" },
+
+				{ "slug": "primary-subtle-alt", "color": "hsl(154, 16%, 83%)", "name": "Primary Subtle Alt (Sage Border Seam 83%)" },
+				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 18%, 83%)", "name": "Secondary Subtle Alt (Sky Border Seam 83%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 16%, 83%)", "name": "Tertiary Subtle Alt (Parchment Border Seam 83%)" },
+
+				{ "slug": "neutral", "color": "hsl(32, 16%, 96%)", "name": "Neutral (Crisp Sand Well 96%)" },
+				{ "slug": "neutral-alt", "color": "hsl(32, 12%, 88%)", "name": "Neutral Alt (Sand Border Seam 88%)" },
 				
 				{ "slug": "base", "color": "hsl(32, 20%, 97%)", "name": "Base (Almond White)" },
 				{ "slug": "contrast", "color": "hsl(214, 12%, 11%)", "name": "Contrast (Midnight Indigo Typographic Ink)" },
-				{ "slug": "neutral", "color": "hsl(32, 16%, 96%)", "name": "Neutral (Crisp Sand Well 96%)" },
-				{ "slug": "neutral-alt", "color": "hsl(32, 12%, 88%)", "name": "Neutral Alt (Sand Border Seam 88%)" },
 				{ "slug": "foreground-alt", "color": "hsl(32, 20%, 98%)", "name": "Foreground Alt (Light Almond White)" },
 				
 				{ "slug": "very-light-gray", "color": "hsl(32, 14%, 91%)", "name": "Very Light Gray (Warm Sand Footer Floor 91%)" },
@@ -262,15 +266,16 @@
 				{ "slug": "dark-gray", "color": "hsl(32, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(32, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
 								
-				{ "slug": "highlight", "color": "hsl(154, 65%, 68%)", "name": "Highlight (Electric Sage for Dark BG)" },
-				{ "slug": "highlight-alt", "color": "hsl(154, 55%, 30%)", "name": "Highlight Alt (Premium Pine Link Ink)" },
-
-				{ "slug": "dark", "color": "hsl(208, 21%, 22%)", "name": "Dark (Lumina Midnight Balanced 22%)" },
-				{ "slug": "dark-alt", "color": "hsl(209, 24%, 16%)", "name": "Dark Alt (Lumina Midnight Balanced 16%)" },				
 				{ "slug": "primary-dark", "color": "hsl(170, 45%, 20%)", "name": "Primary Dark (Deep Forest Sage)"},
-				{ "slug": "primary-dark-alt", "color": "hsl(170, 50%, 15%)", "name": "Primary Dark Alt (Rich Hero Green)"},
+				{ "slug": "dark", "color": "hsl(208, 21%, 22%)", "name": "Dark (Lumina Midnight Balanced 22%)" },
 				{ "slug": "tertiary-dark", "color": "hsl(34, 34%, 22%)", "name": "Dark Tertiary (Antique Gold Deep 22%)" },
+
+				{ "slug": "primary-dark-alt", "color": "hsl(170, 50%, 15%)", "name": "Primary Dark Alt (Rich Hero Green)"},
+				{ "slug": "dark-alt", "color": "hsl(209, 24%, 16%)", "name": "Dark Alt (Lumina Midnight Balanced 16%)" },				
 				{ "slug": "tertiary-dark-alt", "color": "hsl(34, 34%, 14%)", "name": "Dark Tertiary Alt (Antique Gold Abyssal 14%)" },
+
+				{ "slug": "highlight", "color": "hsl(154, 65%, 68%)", "name": "Highlight (Electric Sage for Dark BG)" },
+				{ "slug": "highlight-alt", "color": "hsl(154, 75%, 28%)", "name": "Highlight Alt (Vivid Pine Link Ink)" },
 
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(32, 20%, 97%)", "name": "Off White (Desert Alabaster)" },

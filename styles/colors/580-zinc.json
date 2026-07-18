@@ -17,7 +17,8 @@
 					"neutral": "var(--wp--preset--color--foreground-alt)",
 					"neutral-alt": "var(--wp--preset--color--foreground-alt)",
 					"very-light-gray": "var(--wp--preset--color--foreground-alt)",
-					"light-gray": "var(--wp--preset--color--foreground-alt)"
+					"light-gray": "var(--wp--preset--color--foreground-alt)",
+					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
 				"heading": {
 					"text": "hsl(204, 29%, 94%)",
@@ -71,6 +72,8 @@
 				{ "slug": "highlight", "color": "hsl(189, 64%, 53%)", "name": "Highlight (Technical Aqua Link)" },
 				{ "slug": "highlight-alt", "color": "hsl(189, 85%, 78%)", "name": "Highlight Alt (Glow Aqua Hover)" },
 				
+				{ "slug": "primary-dark", "color": "hsl(50, 4%, 12%)", "name": "Primary Dark (Deep Oiled Gunmetal Floor 12%)" },
+				{ "slug": "primary-dark-alt", "color": "hsl(50, 4%, 6%)", "name": "Primary Dark Alt (Abyssal Oiled Gunmetal Void 6%)" },
 				{ "slug": "dark", "color": "hsl(0, 0%, 6%)", "name": "Dark (Abyssal Carbon Floor 6%)" },
 				{ "slug": "dark-alt", "color": "hsl(0, 0%, 3%)", "name": "Dark Alt (Absolute Dark Void 3%)" },							
 				{ "slug": "tertiary-dark", "color": "hsl(210, 15%, 12%)", "name": "Dark Tertiary (Deep Industrial Slate Floor 12%)" },

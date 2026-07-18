@@ -15,7 +15,8 @@
 					"neutral": "var(--wp--preset--color--foreground-alt)",
 					"neutral-alt": "var(--wp--preset--color--foreground-alt)",
 					"very-light-gray": "var(--wp--preset--color--foreground-alt)",
-					"light-gray": "var(--wp--preset--color--foreground-alt)"
+					"light-gray": "var(--wp--preset--color--foreground-alt)",
+					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
 				"heading": {
 					"text": "hsl(169, 56%, 83%)",
@@ -68,7 +69,9 @@
 
 				{ "slug": "highlight", "color": "hsl(202, 75%, 70%)", "name": "Highlight (Luminous Sky Blue Link)" },
 				{ "slug": "highlight-alt", "color": "hsl(202, 82%, 80%)", "name": "Highlight Alt (Glacial Ice Hover)" },
-				
+
+				{ "slug": "primary-dark", "color": "hsl(202, 32%, 8%)", "name": "Primary Dark (Deep Oceanic Cyan Trench 8%)" },
+				{ "slug": "primary-dark-alt", "color": "hsl(202, 35%, 4%)", "name": "Primary Dark Alt (Abyssal Glacial Void 4%)" },				
 				{ "slug": "dark", "color": "hsl(212, 35%, 6%)", "name": "Dark (Abyssal Midnight Floor 6%)" },
 				{ "slug": "dark-alt", "color": "hsl(212, 35%, 3%)", "name": "Dark Alt (Abyssal Midnight Void 3%)" },							
 				{ "slug": "tertiary-dark", "color": "hsl(212, 30%, 8%)", "name": "Dark Tertiary (Deep Maritime Trench Floor 8%)" },

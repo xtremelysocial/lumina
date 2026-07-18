@@ -6,37 +6,9 @@
 @use "sass:list";
 @use "sass:string";
 
-/*-----------------------------------------------------------------------------
-# SET CONTRAST LOGIC: Lightweight Extend-Based Core Engine
------------------------------------------------------------------------------*/
-@mixin set-contrast-logic(
-	$colors, 
-	$default
-) {
-	$resolved-fallback: $default;
-	
-	@if $default == 'fixed-light' {
-		$resolved-fallback: var(--wp--preset--color--almost-black);
-	} @else if $default == 'fixed-dark' {
-		$resolved-fallback: var(--wp--preset--color--foreground-alt);
-	}
-
-	@each $color in $colors {		
-		.has-#{$color}-background-color { 
-			// 1. Try theme.json custom color override, fallback to structural default
-			color: var(--wp--custom--color--contrast--#{$color}, #{$resolved-fallback}) !important;
-			
-			// 2. Safely extend heading rules in dark contexts if the placeholder exists
-			@if $default == 'fixed-dark' {
-				@extend %global-heading-inherit !optional;
-			}
-		}
-	}
-}
-
-/*-----------------------------------------------------------------------------
-# BUILD SELECTOR LIST: Build a compiled comma-separated CSS selector string
------------------------------------------------------------------------------*/
+//*-----------------------------------------------------------------------------
+// # BUILD SELECTOR LIST: Build a compiled comma-separated CSS selector string
+// -----------------------------------------------------------------------------*/
 @function build-selector-list(
 	$colors, 
 	$prefix: ".has-", 
@@ -48,3 +20,247 @@
     }
     @return string.slice($selectors, 1, string.length($selectors) - 1);
 }
+
+//*-----------------------------------------------------------------------------
+// # SETUP %EXTENDS FOR SELECTOR GROUPING
+// -----------------------------------------------------------------------------*/
+
+%engine-heading-inherit {
+    :is(.wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline) {
+		/* Inherit heading color */
+        color: inherit;
+    }
+}
+
+%engine-heading-dark-text {
+    :is(.wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline) {
+        /* Force explicit dark headings on persistent light surfaces in dark mode */
+        color: var(--wp--preset--color--almost-black);
+    }
+}
+
+%engine-heading-dark {
+    :is(.wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline) {
+		/* Set heading color to theme.json var or primary-alt */
+        color: var(--wp--custom--color--heading--text, var(--wp--preset--color--primary-alt));
+    }
+}
+
+%engine-link-inherit {
+	/* Inherit link color */
+    color: inherit;
+
+	&:hover, &:active {
+		/* Set opacity on hover on inherited links */
+		color: inherit;
+		opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
+	}
+}
+
+%engine-link-dark-text {
+    /* Set links to high-contrast dark text */
+    color: var(--wp--preset--color--almost-black);
+
+    &:hover, &:active {
+		/* Set opacity on hover on dark links */
+        color: var(--wp--preset--color--almost-black);
+        opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
+    }
+}
+
+%engine-link-light-text {
+    /* Set links to high-contrast light text */
+    color: var(--wp--preset--color--foreground-alt);
+
+    &:hover, &:active {
+		/* Set opacity on hover on light links */
+        color: var(--wp--preset--color--foreground-alt);
+        opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
+    }
+}
+
+%engine-link-underline {
+	/* Underline links */
+    text-decoration-line: underline;
+}
+
+%engine-link-underline-special {
+	/* Special underline links in footers */
+    text-decoration-line: underline;
+    text-decoration-style: var(--wp--custom--link--special-style, dotted);
+}
+
+%engine-link-lighten {
+	/* Lighten link color on dark backgrounds */
+    color: var(--wp--preset--color--highlight);
+
+	&:hover, &:active {
+		/* Set opacity on hover */
+		opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
+	}
+}
+
+%engine-footer-nav-hover {
+	/* Use highlight color on dark backgrounds */
+    color: var(--wp--preset--color--highlight); // !important;
+}
+
+%engine-footer-nav-hover-alt {
+	/* Use highlight-alt color on light backgrounds */
+    color: var(--wp--preset--color--highlight-alt); // !important;
+}
+
+//*-----------------------------------------------------------------------------
+// # Core Color Engine - Default Text Color
+// -----------------------------------------------------------------------------*/
+@mixin apply-contrast-color($color, $text-style) {
+	
+	// Pure variable hook: If undefined in theme.json, the browser 
+	// treats it as unset/inherit, leaving your global layout pure!
+	.has-#{$color}-background-color {
+		@if $text-style == 'no-fallback' {
+			color: var(--wp--custom--color--contrast--#{$color}) !important;
+
+		// Default to light text
+		} @else {
+			$fallback: var(--wp--preset--color--foreground-alt);
+			
+			// But override to dark text if on light background
+			@if $text-style == 'dark-text' {
+				$fallback: var(--wp--preset--color--almost-black);
+			}
+
+			color: var(--wp--custom--color--contrast--#{$color}, #{$fallback}) !important;
+		}
+	}
+}
+
+// @mixin apply-contrast-color($color, $text) {
+// 
+// 	// Default to light text
+// 	$fallback: var(--wp--preset--color--foreground-alt);
+// 	
+// 	// But override to dark text if on light background
+// 	@if $text == 'fixed-light' {
+// 		$fallback: var(--wp--preset--color--almost-black);		
+// 	}
+// 	
+// 	// Set contrast color first to custom theme.json var and then to the fallback
+// 	.has-#{$color}-background-color {
+// 		color: var(--wp--custom--color--contrast--#{$color}, #{$fallback}) !important;
+// 	}
+// }
+
+//*-----------------------------------------------------------------------------
+// # Core Color Engine - Headings
+// -----------------------------------------------------------------------------*/
+@mixin apply-heading-action($selectors, $text) {
+
+	// Dark backgrounds inherit heading colors
+	@if $text == 'fixed-dark' {
+		#{$selectors} {
+			@extend %engine-heading-inherit;
+		}
+
+	// Apply dark heading color if specified in color registry entry
+	} @else if $text == 'heading-dark' {
+		#{$selectors} {
+			@extend %engine-heading-dark;
+		}		
+
+	// Light backgrounds, set dark heading color
+	} @else if $text == 'fixed-light' {
+		#{$selectors} {
+			@extend %engine-heading-dark-text;
+		}
+	}
+
+// 	// Colors loops will pass 'fixed-dark' when headings need to inherit
+// 	@if $text == 'fixed-dark' {
+// // 	@if $text != 'fixed-light' and $text != null {
+// 		#{$selectors} {
+// 			@extend %engine-heading-inherit;
+// 		}
+// 		
+// // 	} @else if $text == 'heading-dark' {
+// // 		#{$selectors} {
+// // 			@extend %engine-heading-dark;
+// // 		}		
+// 	}
+}
+
+//*-----------------------------------------------------------------------------
+// # Core Color Engine - Link Handling
+// -----------------------------------------------------------------------------*/
+@mixin apply-link-action($selectors, $link) {
+
+	// Inherit link color, apply underlines in post content, and special
+	// underlines in the footers
+	@if $link == 'dark-text' or $link == 'light-text' or $link == 'inherit' {
+	
+		// Inherit link color
+		#{$selectors} a:where(:not(
+			.wp-element-button, 
+			.wp-block-social-link-anchor, 
+			.wp-block-navigation-item__content
+		)) {
+			@if $link == 'dark-text' { 
+				@extend %engine-link-dark-text; 
+			} @else if $link == 'light-text' { 
+				@extend %engine-link-light-text; 
+			} @else {
+				@extend %engine-link-inherit;
+			}		
+		}
+		
+		// In Post Content, also underline link
+		.wp-block-post-content #{$selectors} a:not(
+			.wp-element-button, 
+			.wp-block-social-link-anchor, 
+			.wp-block-navigation-item__content
+		) {
+			@extend %engine-link-underline;
+		}
+		
+		// In Footers, only underline text links (e.g. <p>)
+		#{$selectors}:is(.site-footer, .footer-info) p a:where(:not(
+			.wp-element-button, 
+			.wp-block-social-link-anchor, 
+			.wp-block-navigation-item__content
+		)) {
+			@extend %engine-link-underline-special;
+		}
+	
+	// Swap default dark link color, for light one on dark bg's	
+	} @else if $link == 'lighten' {
+		#{$selectors} a:not(
+			.wp-element-button, 
+			.wp-block-social-link-anchor, 
+			.wp-block-navigation-item__content
+		) {
+			@extend %engine-link-lighten;
+		}
+	}
+}
+
+//*-----------------------------------------------------------------------------
+// # Core Color Engine - Footer Nav Hover
+// -----------------------------------------------------------------------------*/
+@mixin apply-footer-action($selectors, $footer) {
+
+	@if $footer == 'hover-highlight' {
+		#{$selectors}:is(.site-footer, .footer-info) {
+			.wp-block-navigation-item__content:hover {
+				@extend %engine-footer-nav-hover;
+			}				
+		}
+
+	} @else if $footer == 'hover-highlight-alt' {
+		#{$selectors}:is(.site-footer, .footer-info) {
+			.wp-block-navigation-item__content:hover {
+				@extend %engine-footer-nav-hover-alt;
+			}
+		}
+	}
+}
+

@@ -44,6 +44,8 @@
 				{ "slug": "highlight", "color": "hsl(12, 88%, 62%)", "name": "Highlight (Blazing Ember Hover/Pop 62%)" },
 				{ "slug": "highlight-alt", "color": "hsl(12, 76%, 38%)", "name": "Highlight Alt (Deep Volcanic Link Anchor 38%)" },
 				
+				{ "slug": "primary-dark", "color": "hsl(12, 32%, 16%)", "name": "Primary Dark (Deep Charcoal Terra Cotta 16%)" },
+				{ "slug": "primary-dark-alt", "color": "hsl(12, 30%, 10%)", "name": "Primary Dark Alt (Obsidian Terra Cotta Void 10%)" },
 				{ "slug": "dark", "color": "hsl(11, 28%, 16%)", "name": "Dark (Deep Obsidian Heading 16%)" },
 				{ "slug": "dark-alt", "color": "hsl(11, 28%, 10%)", "name": "Dark Alt (Classic Volcanic Ink Floor 10%)" },							
 				{ "slug": "tertiary-dark", "color": "hsl(33, 30%, 16%)", "name": "Dark Tertiary (Bronze Clay Heading 16%)" },
