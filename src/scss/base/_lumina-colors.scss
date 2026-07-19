@@ -61,13 +61,13 @@ $color-registry: (
     
     // --- SUBTLE ALT SEMANTIC COLORS ---
     ( color: 'primary-subtle-alt',   text: 'variable-light', heading-dark: true, 
-    		link: 'inherit', link-dark: 'lighten', footer: 'hover-highlight-alt' 
+    		link: 'dark-text', link-dark: 'lighten', footer: 'hover-highlight-alt' 
     ),
     ( color: 'secondary-subtle-alt', text: 'variable-light', heading-dark: true, 
-    		link: 'inherit', link-dark: 'lighten', footer: 'hover-highlight-alt' 
+    		link: 'dark-text', link-dark: 'lighten', footer: 'hover-highlight-alt' 
     ),
     ( color: 'tertiary-subtle-alt',  text: 'variable-light', heading-dark: true, 
-    		link: 'inherit', link-dark: 'lighten', footer: 'hover-highlight-alt' 
+    		link: 'dark-text', link-dark: 'lighten', footer: 'hover-highlight-alt' 
     ),
 
     // --- DARK SEMANTIC COLORS ---
@@ -130,11 +130,11 @@ $color-registry: (
 //     ( color: 'very-light-red',       text: 'no-fallback' ),
 
     // --- CORE GREENS ---
-    ( color: 'dark-green',           text: 'fixed-dark', link: 'inherit' ),    
+    ( color: 'dark-green',           text: 'fixed-dark', link: 'light-text' ),    
 
     // --- CORE YELLOWS ---
-    ( color: 'yellow',               text: 'fixed-dark', link: 'inherit' ),
-    ( color: 'dark-yellow',          text: 'fixed-dark', link: 'inherit' )    
+    ( color: 'yellow',               text: 'fixed-dark', link: 'light-text' ),
+    ( color: 'dark-yellow',          text: 'fixed-dark', link: 'light-text' )    
 );
 
 // MAP OF ALL COLORS IN THE PALETTE (THAT AREN'T IN PARENT THEME)
