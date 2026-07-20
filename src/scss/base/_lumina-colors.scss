@@ -32,13 +32,16 @@
 
 // SETUP DEFAULTS SO WE DON'T HAVE TO INCLUDE ALL FIELDS IN THE REGISTRY
 $color-defaults: (
-    color:          null, 
-    text:           null, 
-//     heading:		null,
-    heading-dark:   null, 
-    link:           null, 
-    link-dark:      null, 
-    footer:         null  
+    color:           null, 	// color slug (e.g. white, black, etc.)
+    text:            null,	// dark, light, dark-light, light-dark, no-fallback
+//     heading:		 null,
+    heading-dark:    null, 	// true or false
+    link:            null,	// dark, light, inherit, highlight, highlight-alt
+    link-dark:       null, 	// highlight, highlight-alt
+    footer:          null,    // hover-highlight, hover-highlight-alt
+//     footer-nav:      null,    // hover-highlight, hover-highlight-alt
+    footer-dark:     null,    // hover-highlight, hover-highlight-alt
+//     footer-nav-dark: null,    // hover-highlight, hover-highlight-alt
 );
 
 //*-----------------------------------------------------------------------------
@@ -47,149 +50,118 @@ $color-defaults: (
 // MAP OF ALL COLORS IN THE PALETTE (THAT AREN'T IN PARENT THEME)
 $color-registry: (
 
-    // --- SUBTLE SEMANTIC COLORS ---
+    // --- SUBTLE SEMANTIC COLORS (LUMINA ONLY) ---
     // Fluid: Light backgrounds in light mode, invert to dark in dark mode
-    ( color: 'primary-subtle',       text: 'variable-light', heading-dark: true, 
-    		link-dark: 'lighten' 
+    ( color: 'primary-subtle',       text: 'dark-light', heading-dark: true, 
+    		link-dark: 'highlight' 
     ),							
-    ( color: 'secondary-subtle',     text: 'variable-light', heading-dark: true, 
-    		link-dark: 'lighten' 
+    ( color: 'secondary-subtle',     text: 'dark-light', heading-dark: true, 
+    		link-dark: 'highlight' 
     ),						
-    ( color: 'tertiary-subtle',      text: 'variable-light', heading-dark: true, 
-    		link-dark: 'lighten' 
+    ( color: 'tertiary-subtle',      text: 'dark-light', heading-dark: true, 
+    		link-dark: 'highlight' 
     ),
     
-    // --- SUBTLE ALT SEMANTIC COLORS ---
-    ( color: 'primary-subtle-alt',   text: 'variable-light', heading-dark: true, 
-    		link: 'dark-text', link-dark: 'lighten', footer: 'hover-highlight-alt' 
+    // --- SUBTLE ALT SEMANTIC COLORS (LUMINA ONLY) ---
+    ( color: 'primary-subtle-alt',   text: 'dark-light', heading-dark: true, 
+    		link: 'dark', link-dark: 'highlight', footer: 'hover-highlight-alt' 
     ),
-    ( color: 'secondary-subtle-alt', text: 'variable-light', heading-dark: true, 
-    		link: 'dark-text', link-dark: 'lighten', footer: 'hover-highlight-alt' 
+    ( color: 'secondary-subtle-alt', text: 'dark-light', heading-dark: true, 
+    		link: 'dark', link-dark: 'highlight', footer: 'hover-highlight-alt' 
     ),
-    ( color: 'tertiary-subtle-alt',  text: 'variable-light', heading-dark: true, 
-    		link: 'dark-text', link-dark: 'lighten', footer: 'hover-highlight-alt' 
+    ( color: 'tertiary-subtle-alt',  text: 'dark-light', heading-dark: true, 
+    		link: 'dark', link-dark: 'highlight', footer: 'hover-highlight-alt' 
     ),
 
-    // --- DARK SEMANTIC COLORS ---
+    // --- DARK SEMANTIC COLORS (LUMINA ONLY) ---
     // Static dark zones that enforce high-contrast light text across both viewports
-    ( color: 'primary-dark',         text: 'fixed-dark', link: 'lighten' ),
-    ( color: 'primary-dark-alt',     text: 'fixed-dark', link: 'lighten' ),
-    ( color: 'tertiary-dark',        text: 'fixed-dark', link: 'lighten' ),
-    ( color: 'tertiary-dark-alt',    text: 'fixed-dark', link: 'lighten' ),
+    ( color: 'primary-dark',         text: 'light', link: 'highlight' ),
+    ( color: 'primary-dark-alt',     text: 'light', link: 'highlight' ),
+    ( color: 'tertiary-dark',        text: 'light', link: 'highlight' ),
+    ( color: 'tertiary-dark-alt',    text: 'light', link: 'highlight' ),
     
     // --- NEUTRALS (E.G. SIDEBAR, BORDERS, DEFAULT CARD COLORS) ---
-    ( color: 'neutral',              text: 'variable-light', heading-dark: true ),
-    ( color: 'neutral-alt',          text: 'variable-light', heading-dark: true ),
+    ( color: 'neutral',              text: 'dark-light', heading-dark: true ),
+    ( color: 'neutral-alt',          text: 'dark-light', heading-dark: true ),
 
     // --- CORE CANVAS CONTRASTS ---
-	( color: 'contrast',          	 text: 'variable-dark' ),
+	( color: 'contrast',          	 text: 'light-dark', link: 'highlight', 
+			link-dark: 'highlight-alt' ),
 
     // --- WHITE & GRAY NAMED COLORS ---
-    ( color: 'white',      text: 'fixed-light',
+    ( color: 'white',      text: 'dark',
     		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'off-white',      text: 'fixed-light',
+    ( color: 'off-white',      text: 'dark',
     		footer: 'hover-highlight-alt' 
     ),
-//     ( color: 'white',      text: 'fixed-light', heading: 'inherit',
+//     ( color: 'white',      text: 'dark', heading: 'inherit',
 //     		footer: 'hover-highlight-alt' 
 //     ),
-//     ( color: 'off-white',      text: 'fixed-light',  heading: 'inherit',
+//     ( color: 'off-white',      text: 'dark',  heading: 'inherit',
 //     		footer: 'hover-highlight-alt' 
 //     ),
 
-    ( color: 'very-light-gray',      text: 'variable-light', 
+    ( color: 'very-light-gray',      text: 'dark-light', 
     		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'light-gray',           text: 'variable-light', 
+    ( color: 'light-gray',           text: 'dark-light', 
     		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'gray',                 text: 'variable-light', 
+    ( color: 'gray',                 text: 'dark-light', 
     		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'dark-gray',                 text: 'variable-dark', 
+    ( color: 'dark-gray',            text: 'light-dark', 
+    		footer: 'hover-highlight-alt' 
+    ),
+    ( color: 'very-dark-gray',       link-dark: 'highlight-alt', 
     		footer: 'hover-highlight-alt' 
     ),
     
-    // --- VERY LIGHT NAMED COLORS ---
+    // --- VERY LIGHT NAMED COLORS (LUMINA ONLY) ---
     // Generates the hook for theme.json customizations without default property 
     // constraints
     // TO-DO: These need to be 'no-fallback' if including them in all color
     // schemes. If not, they will become dark and need light text.
-    ( color: 'very-light-green',     text: 'variable-light' ),
-    ( color: 'very-light-yellow',    text: 'variable-light' ),
-    ( color: 'very-light-orange',    text: 'variable-light' ),
-    ( color: 'very-light-blue',      text: 'variable-light' ),
-    ( color: 'very-light-purple',    text: 'variable-light' ),
-    ( color: 'very-light-red',       text: 'variable-light' ),
+//     ( color: 'very-light-green',     text: 'dark-light' ),
+//     ( color: 'very-light-yellow',    text: 'dark-light' ),
+//     ( color: 'very-light-orange',    text: 'dark-light' ),
+//     ( color: 'very-light-blue',      text: 'dark-light' ),
+//     ( color: 'very-light-purple',    text: 'dark-light' ),
+//     ( color: 'very-light-red',       text: 'dark-light' ),
 //     ( color: 'very-light-green',     text: 'no-fallback' ),
 //     ( color: 'very-light-yellow',    text: 'no-fallback' ),
 //     ( color: 'very-light-orange',    text: 'no-fallback' ),
 //     ( color: 'very-light-blue',      text: 'no-fallback' ),
 //     ( color: 'very-light-purple',    text: 'no-fallback' ),
 //     ( color: 'very-light-red',       text: 'no-fallback' ),
+    ( color: 'very-light-green',     text: 'dark' ),
+    ( color: 'very-light-yellow',    text: 'dark' ),
+    ( color: 'very-light-orange',    text: 'dark' ),
+    ( color: 'very-light-blue',      text: 'dark' ),
+    ( color: 'very-light-purple',    text: 'dark' ),
+    ( color: 'very-light-red',       text: 'dark' ),
 
-    // --- CORE GREENS ---
-    ( color: 'dark-green',           text: 'fixed-dark', link: 'light-text' ),    
+    // --- GREEN NAMED COLORS ---
+    ( color: 'light-green',          text: 'dark', link: 'inherit' ), // OVERRIDE PARENT    
+    ( color: 'dark-green',           text: 'light', link: 'inherit' ), // LUMINA ONLY
 
-    // --- CORE YELLOWS ---
-    ( color: 'yellow',               text: 'fixed-dark', link: 'light-text' ),
-    ( color: 'dark-yellow',          text: 'fixed-dark', link: 'light-text' )    
+    // --- YELLOW & ORANGE NAMED COLORS ---
+    ( color: 'light-yellow',         text: 'dark', link: 'inherit' ), // OVERRIDE PARENT
+    ( color: 'yellow',               text: 'light', link: 'light' ), // OVERRIDE PARENT
+    ( color: 'dark-yellow',          text: 'light', link: 'light' ), // LUMINA ONLY
+    ( color: 'light-orange',      	 text: 'dark',  link: 'inherit' ), // OVERRIDE PARENT
+    
+	// --- BLUE NAMED COLORS ---
+    ( color: 'light-blue',        	 text: 'dark',  link: 'inherit' ), // OVERRIDE PARENT
+
+	// --- PURPLE NAMED COLORS ---
+    ( color: 'light-purple',      	 text: 'dark',  link: 'inherit' ), // OVERRIDE PARENT
+
+    // --- RED NAMED COLORS ---
+    ( color: 'light-red',         	 text: 'dark',  link: 'inherit' ), // OVERRIDE PARENT
+    
 );
-
-// MAP OF ALL COLORS IN THE PALETTE (THAT AREN'T IN PARENT THEME)
-// $color-registry: (
-// 
-//     // --- SUBTLE SEMANTIC COLORS ---
-//     ( color: 'primary-subtle',     heading-dark: true, link-dark: 'lighten' ),
-//     ( color: 'secondary-subtle',   heading-dark: true, link-dark: 'lighten' ),
-//     ( color: 'tertiary-subtle',    heading-dark: true, link-dark: 'lighten' ),
-//     
-//     // --- SUBTLE ALT SEMANTIC COLORS ---
-//     ( color: 'primary-subtle-alt',   text: 'fixed-light', heading-dark: true, 
-//     		 link: 'inherit', link-dark: 'lighten', footer: 'hover-highlight-alt' 
-//     ),
-//     ( color: 'secondary-subtle-alt', text: 'fixed-light', heading-dark: true, 
-//     		 link: 'inherit', link-dark: 'lighten', footer: 'hover-highlight-alt' 
-//     ),
-//     ( color: 'tertiary-subtle-alt',  text: 'fixed-light', heading-dark: true, 
-//     		 link: 'inherit', link-dark: 'lighten', footer: 'hover-highlight-alt' 
-//     ),
-// 
-// 	// --- DARK SEMANTIC COLORS ---
-// 	( color: 'primary-dark',     text: 'fixed-dark', link: 'lighten' ),
-// 	( color: 'primary-dark-alt', text: 'fixed-dark', link: 'lighten' ),
-// 	( color: 'tertiary-dark',     text: 'fixed-dark', link: 'lighten' ),
-// 	( color: 'tertiary-dark-alt', text: 'fixed-dark', link: 'lighten' ),
-// 	
-//     // --- NEUTRALS (E.G. SIDEBAR, BORDERS, DEFAULT CARD COLORS ) ---
-//     ( color: 'neutral',     heading-dark: true ),
-//     ( color: 'neutral-alt', heading-dark: true ),
-// 
-// 	//     // --- WHITE & GRAY NAMED COLORS ---
-// 	// Parent theme handles text color, here we override footer nav links only
-// //     ( color: 'white',             text: 'fixed-light', footer: 'hover-highlight-alt' ),
-// //     ( color: 'off-white',         text: 'fixed-light', footer: 'hover-highlight-alt' ),
-//     ( color: 'very-light-gray',	  footer: 'hover-highlight-alt' ),
-//     ( color: 'light-gray',        footer: 'hover-highlight-alt' ),
-//     ( color: 'gray',              footer: 'hover-highlight-alt' ),
-// //     ( color: 'dark-gray',         text: 'fixed-dark', link: 'inherit' ),
-//     
-//     // --- VERY LIGHT NAMED COLORS ---
-//     ( color: 'very-light-green',  text: 'fixed-light' ),
-//     ( color: 'very-light-yellow', text: 'fixed-light' ),
-//     ( color: 'very-light-orange', text: 'fixed-light' ),
-//     ( color: 'very-light-blue',   text: 'fixed-light' ),
-//     ( color: 'very-light-purple', text: 'fixed-light' ),
-//     ( color: 'very-light-red',    text: 'fixed-light' ),
-// 
-// 	// --- CORE GREENS ---
-//     ( color: 'dark-green',       text: 'fixed-dark', link: 'inherit' ),    
-// 
-// 	// --- CORE YELLOWS ---
-// 	( color: 'yellow', 			  text: 'fixed-dark', link: 'inherit' ),
-//     ( color: 'dark-yellow',       text: 'fixed-dark', link: 'inherit' ),    
-// );
 
 //*-----------------------------------------------------------------------------
 // # GLOBAL 3-PASS COLORS ENGINE
@@ -197,40 +169,49 @@ $color-registry: (
 
 //*-----------------------------------------------------------------------------
 // # PASS 1: GLOBAL TEXT, HEADING, LINK COLORS
+// # Text, headings, and links default to dark in the main theme palette
 //*-----------------------------------------------------------------------------
 @each $entry in $color-registry {
     $config: 	map.merge($color-defaults, $entry);
     $color:  	map.get($config, color);
     $text:   	map.get($config, text);
+	$link:   	map.get($config, link);
+
+	$selectors: logic.build-selector-list($color);
 
 	// Always-light backgrounds, text gets hook for theme.json contrast overrides, 
 	// but no fallback because the fallback should simply be the body text color
 	@if $text == 'no-fallback' {
         @include logic.apply-contrast-color($color, 'no-fallback');
     
-    // Always-dark backgrounds, default to light text in body AND headings
-    } @else if $text == 'fixed-dark' {
-        @include logic.apply-contrast-color($color, 'light-text');
+    // Always-dark backgrounds, apply light text, headings and links
+    } @else if $text == 'light' {
+        @include logic.apply-contrast-color($color, 'light');
         
-        $selectors: logic.build-selector-list($color);
-        @include logic.apply-heading-action($selectors, 'fixed-dark');    	
-    }
+//         $selectors: logic.build-selector-list($color);
+        @include logic.apply-heading-action($selectors, 'light');  
+        
+// 		@include logic.apply-link-action($selectors, 'highlight');  	
 
-// 	// If default text color specified, then apply it
-// 	@if $text {
-// //         @include logic.set-contrast-logic($color, $text);
-// 		@include logic.apply-contrast-color($color, $text);
-//     }
-// 
-// 	// Headings in always-dark backgrounds inherit text color set above
-//     @if $text == 'fixed-dark' {
-// 	    $selectors: logic.build-selector-list($color);
-// 		@include logic.apply-heading-action($selectors, $text);    	
-//     }
+    // Always-light backgrounds, apply dark text, headings and links
+    } @else if $text == 'dark' {
+        @include logic.apply-contrast-color($color, 'dark');
+        
+//         $selectors: logic.build-selector-list($color);
+        @include logic.apply-heading-action($selectors, 'dark');  
+        
+// 		@include logic.apply-link-action($selectors, 'highlight');  	
+    }
+    
+	// If link color, then apply it. TO-DO: Move this above??
+	@if $link {
+		@include logic.apply-link-action($selectors, $link);
+	}
 }
 
 //*-----------------------------------------------------------------------------
 // # PASS 2: LIGHT THEME CONTEXT
+// # Text, headings, and links default to dark in light mode
 // -----------------------------------------------------------------------------*/
 :where(body:not(.is-dark-theme)) {
     
@@ -243,25 +224,27 @@ $color-registry: (
         
         $selectors: logic.build-selector-list($color);
 
-		// If variable lightness, then apply the proper text color for the 
-		// light background themes. 
-        @if $text == 'variable-light' {
-            @include logic.apply-contrast-color($color, 'dark-text');
+		// Text is already dark in light mode
+        @if $text == 'dark-light' {
+            @include logic.apply-contrast-color($color, 'dark');
 
-		// If variable dark, then apply link color AND heading color
-        } @else if $text == 'variable-dark' {
-            @include logic.apply-contrast-color($color, 'light-text');
+		// If text should be light in light mode, then apply to text, headings,
+		// and links
+        } @else if $text == 'light-dark' {
+            @include logic.apply-contrast-color($color, 'light');
             
 			$selectors: logic.build-selector-list($color);
-	        @include logic.apply-heading-action($selectors, 'fixed-dark');    	
+	        @include logic.apply-heading-action($selectors, 'light');    	
+
+// 			@include logic.apply-link-action($selectors, 'highlight');
         }
         
-        // If link color, then apply it
-        @if $link {
-			@include logic.apply-link-action($selectors, $link);
-        }
+        // If link color, then apply it. TO-DO: Move this above??
+//         @if $link {
+// 			@include logic.apply-link-action($selectors, $link);
+//         }
         
-        // If footer nav, then apply it
+        // If footer nav highlight on hover, then apply it
         @if $footer {
 			@include logic.apply-footer-action($selectors, $footer);
         }
@@ -270,35 +253,50 @@ $color-registry: (
 
 //*-----------------------------------------------------------------------------
 // # PASS 3: DARK THEME CONTEXT
+// # Text, headings, and links default to light in dark mode
 // -----------------------------------------------------------------------------*/
 :where(.is-dark-theme) {
 
     @each $entry in $color-registry {
-        $config:       	map.merge($color-defaults, $entry);
-        $color:        	map.get($config, color);
-	    $text:   		map.get($config, text);    
-        $link-dark:    	map.get($config, link-dark);
-        $heading-dark: 	map.get($config, heading-dark);
+        $config:       		map.merge($color-defaults, $entry);
+        $color:        		map.get($config, color);
+	    $text:   			map.get($config, text);    
+        $link-dark:    		map.get($config, link-dark);
+        $heading-dark: 		map.get($config, heading-dark);
+        $footer-dark: 	map.get($config, footer-dark);
 
         $selectors: logic.build-selector-list($color);
 
-		// Variable light background flips to dark in dark mode
-        @if $text == 'variable-light' {
-            @include logic.apply-contrast-color($color, 'light-text');
+		
+		// Dark-light colors need light text in dark mode. Headings are already
+		// light. 
+        @if $text == 'dark-light' {
+            @include logic.apply-contrast-color($color, 'light');
             
-		// Variable dark background flips to light in dark mode
-        } @else if $text == 'variable-dark' {
-            @include logic.apply-contrast-color($color, 'dark-text');
+//             @include logic.apply-heading-action($selectors, 'light');
+
+//             @include logic.apply-link-action($selectors, 'highlight');
+            
+		// If dark text is needed in dark mode, then apply it to text AND links
+        } @else if $text == 'light-dark' {
+            @include logic.apply-contrast-color($color, 'dark');
+
+			@include logic.apply-heading-action($selectors, 'dark'); 
+            
+//             @include logic.apply-link-action($selectors, 'highlight');
         }
         
-        // For headings, variable-dark is light in dark mode and needs headings 
+        // For headings, dark-light is light in dark mode and needs headings 
         // to inherit
-		@if $text == 'variable-dark' {
-			@include logic.apply-heading-action($selectors, 'fixed-dark'); 
+		@if $text == 'light-dark' {
+// 			@include logic.apply-heading-action($selectors, 'light'); 
+
+// 			@include logic.apply-link-action($selectors, 'highlight-alt');
+
 
 		// Lightness-locked backgrounds need to inherit heading colors as well
-		} @else if $text == 'no-fallback' or $text == 'fixed-light' {
-			@include logic.apply-heading-action($selectors, 'fixed-light');
+		} @else if $text == 'no-fallback' or $text == 'dark' {
+			@include logic.apply-heading-action($selectors, 'dark');
 		}        
 
 		// Apply link color in dark mode, if specified
@@ -307,8 +305,8 @@ $color-registry: (
         }
         
         // Apply footer effects in dark mode
-//         @if $footer {
-// 			@include logic.apply-footer-action($selectors, $footer-dark);
-//         }
+        @if $footer-dark {
+			@include logic.apply-footer-action($selectors, $footer-dark);
+        }
     }
 }
