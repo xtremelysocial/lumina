@@ -1,0 +1,48 @@
+/*-----------------------------------------------------------------------------
+# Core Scroll Reveal Animation Mechanics
+-----------------------------------------------------------------------------*/
+
+/* Initial Hidden Prep State */
+.is-style-large-numbers li,
+.animate-fadein {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1),
+                transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
+    will-change: opacity, transform;
+}
+
+/* Activated State applied via JS Intersector */
+.is-style-large-numbers li.in-view,
+.animate-fadein.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Elegant CSS Auto-Staggering for list blocks */
+.is-style-large-numbers li:nth-child(1) { transition-delay: 0.05s; }
+.is-style-large-numbers li:nth-child(2) { transition-delay: 0.15s; }
+.is-style-large-numbers li:nth-child(3) { transition-delay: 0.25s; }
+.is-style-large-numbers li:nth-child(4) { transition-delay: 0.35s; }
+.is-style-large-numbers li:nth-child(5) { transition-delay: 0.45s; }
+
+/*-----------------------------------------------------------------------------
+# Premium Fixed Header Layout States
+-----------------------------------------------------------------------------*/
+.site-header, 
+.wp-block-template-part-header {
+    transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Fired instantly when sentinel leaves the top frame boundary */
+.is-fixed-compact {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    background-color: var(--wp--preset--color--base, #ffffff) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
