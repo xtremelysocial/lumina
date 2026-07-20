@@ -1,0 +1,83 @@
+//* ==========================================================================
+//   04 DARK-MODE COLORS: Set colors for dark-mode color schemes
+//	    v0.9.9 Build 29 Colors & Templates
+//   ========================================================================== */
+
+// @use 'sass:list';
+@use 'sass:map';
+
+// @use '00-config' as config;
+// @use '01-logic' as logic;
+@use "index" as logic;
+
+//*-----------------------------------------------------------------------------
+// # GLOBAL 3-PASS COLORS ENGINE
+//*-----------------------------------------------------------------------------
+
+//*-----------------------------------------------------------------------------
+// # PASS 3: DARK THEME CONTEXT
+// # Text, headings, and links default to light in dark mode
+// -----------------------------------------------------------------------------*/
+
+@mixin apply-colors-dark-mode {
+
+	/* ==========================================================================
+	   03 DARK-MODE COLORS: Apply text, heading, and link colors for dark-mode
+	   	  color schemes.
+	========================================================================== */
+
+	:where(.is-dark-theme) {
+
+		@each $entry in logic.$color-registry {
+			$config:       		map.merge(logic.$color-defaults, $entry);
+			$color:        		map.get($config, color);
+			$text:   			map.get($config, text);    
+			$link-dark:    		map.get($config, link-dark);
+			$heading-dark: 		map.get($config, heading-dark);
+			$footer-dark: 		map.get($config, footer-dark);
+	
+			$selectors: logic.build-selector-list($color);
+	
+			// Dark-light colors need light text in dark mode. Headings are already
+			// light. 
+			@if $text == 'dark-light' {
+				@include logic.apply-contrast-color($color, 'light');
+				
+	//             @include logic.apply-heading-action($selectors, 'light');
+	
+	//             @include logic.apply-link-action($selectors, 'highlight');
+				
+			// If dark text is needed in dark mode, then apply it to text AND links
+			} @else if $text == 'light-dark' {
+				@include logic.apply-contrast-color($color, 'dark');
+	
+				@include logic.apply-heading-action($selectors, 'dark'); 
+				
+	//             @include logic.apply-link-action($selectors, 'highlight');
+			}
+			
+			// For headings, dark-light is light in dark mode and needs headings 
+			// to inherit
+			@if $text == 'light-dark' {
+	// 			@include logic.apply-heading-action($selectors, 'light'); 
+	
+	// 			@include logic.apply-link-action($selectors, 'highlight-alt');
+	
+	
+			// Lightness-locked backgrounds need to inherit heading colors as well
+			} @else if $text == 'no-fallback' or $text == 'dark' {
+				@include logic.apply-heading-action($selectors, 'dark');
+			}        
+	
+			// Apply link color in dark mode, if specified
+			@if $link-dark {
+				@include logic.apply-link-action($selectors, $link-dark);
+			}
+			
+			// Apply footer effects in dark mode
+			@if $footer-dark {
+				@include logic.apply-footer-action($selectors, $footer-dark);
+			}
+		}
+	}
+}

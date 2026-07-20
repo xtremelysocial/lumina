@@ -1,14 +1,23 @@
-//------------------------------------------------------------------------------
-// File: _colors-logic.scss
-// Colors Logic Mixins & Structural Helpers
-//------------------------------------------------------------------------------
+//* ==========================================================================
+//   01 COLOR LOGIC: The foundational colors engine. This file contains 
+//		the helper utilities and %extends for handling colors.
+//   ========================================================================== */
 
-@use "sass:list";
-@use "sass:string";
+//* ==========================================================================
+//	 v0.9.9 Build 29 Colors & Templates
+//   ========================================================================== */
 
-//*-----------------------------------------------------------------------------
-// # BUILD SELECTOR LIST: Build a compiled comma-separated CSS selector string
-// -----------------------------------------------------------------------------*/
+@use 'sass:string';
+// @use 'sass:list';
+// @use 'sass:map';
+
+// @use '00-config' as config;
+
+// ==========================================================================
+// 01.01 BUILD SELECTOR LIST: Build a compiled comma-separated CSS selector 
+//		 string
+// ==========================================================================
+
 @function build-selector-list(
 	$colors, 
 	$prefix: ".has-", 
@@ -21,9 +30,10 @@
     @return string.slice($selectors, 1, string.length($selectors) - 1);
 }
 
-//*-----------------------------------------------------------------------------
-// # SETUP %EXTENDS FOR SELECTOR GROUPING
-// -----------------------------------------------------------------------------*/
+// ==========================================================================
+// 01.02 %EXTENDS FOR SELECTOR GROUPING: Combine selectors for reducing CSS
+//		 file size
+// ==========================================================================
 
 %engine-heading-inherit {
     :is(.wp-block-heading, 
@@ -132,9 +142,9 @@
 //     color: var(--wp--preset--color--highlight-alt); // !important;
 // }
 
-//*-----------------------------------------------------------------------------
-// # Core Color Engine - Default Text Color
-// -----------------------------------------------------------------------------*/
+// ==========================================================================
+// 01.03 CONTRAST (TEXT) COLOR: Set light or dark text color
+// ==========================================================================
 @mixin apply-contrast-color(
 	$color, 		// color slug (e.g. primary-alt)
 	$text-style		// light-text, dark-text, no-fallback
@@ -161,9 +171,9 @@
 	}
 }
 
-//*-----------------------------------------------------------------------------
-// # Core Color Engine - Headings
-// -----------------------------------------------------------------------------*/
+// ==========================================================================
+// 01.03 HEADING COLOR: Set light, dark, or inherit heading color
+// ==========================================================================
 @mixin apply-heading-action($selectors, $text) {
 
 	// Dark backgrounds inherit heading colors
@@ -186,9 +196,9 @@
 	}
 }
 
-//*-----------------------------------------------------------------------------
-// # Core Color Engine - Link Handling
-// -----------------------------------------------------------------------------*/
+// ==========================================================================
+// 01.04 LINK COLOR: Set light, dark, or inherit link color
+// ==========================================================================
 @mixin apply-link-action($selectors, $link) {
 
 	// Inherit link color, apply underlines in post content, and special
@@ -250,9 +260,9 @@
 	}
 }
 
-//*-----------------------------------------------------------------------------
-// # Core Color Engine - Footer Link Hover
-// -----------------------------------------------------------------------------*/
+// ==========================================================================
+// 01.05 FOOTER HOVER COLOR: Set hover-highlight or hover-highlight-alt
+// ==========================================================================
 @mixin apply-footer-action($selectors, $footer) {
 
 	@if $footer == 'hover-highlight' {
@@ -272,25 +282,3 @@
 		}
 	}
 }
-
-//*-----------------------------------------------------------------------------
-// # Core Color Engine - Footer Nav Hover
-// -----------------------------------------------------------------------------*/
-// @mixin apply-footer-nav-action($selectors, $footer-nav) {
-// 
-// 	@if $footer-nav == 'hover-highlight' {
-// 		#{$selectors}:is(.site-footer, .footer-info) {
-// 			.wp-block-navigation-item__content:hover {
-// 				@extend %engine-link-highlight;
-// 			}				
-// 		}
-// 
-// 	} @else if $footer-nav == 'hover-highlight-alt' {
-// 		#{$selectors}:is(.site-footer, .footer-info) {
-// 			.wp-block-navigation-item__content:hover {
-// 				@extend %engine-link-highlight-alt;
-// 			}
-// 		}
-// 	}
-// }
-// 

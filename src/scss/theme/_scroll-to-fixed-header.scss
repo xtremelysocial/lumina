@@ -1,0 +1,47 @@
+/*--------------------------------------------------------------
+## Custom: Scroll Header Navigation
+--------------------------------------------------------------*/
+/* Line up menu close button with menu open button */
+.wp-block-group.is-style-scroll-header .wp-block-navigation__responsive-container.is-menu-open {
+  padding-top: var(--wp--preset--spacing--50);
+}
+
+/* OVERRIDE bold or highlight active top-level menu items, depending on whether text color or not */
+.is-style-scroll-header:not(.header-active) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container:not(.has-modal-open) {
+
+	& .wp-block-navigation-item.current-menu-item:not(.has-child) > a,
+	& .wp-block-navigation-item:has(.current-menu-ancestor),
+	& .wp-block-navigation-item:has(.current-menu-ancestor) > a,
+	& .wp-block-pages-list__item.current-menu-item > a,
+	& .wp-block-navigation-item.wp-block-home-link > a[aria-current='page'] {
+		color: var(--wp--preset--color--foreground-alt);
+		font-weight: inherit;
+	}
+}
+
+.is-style-scroll-header:not(.header-active) .wp-block-navigation.has-background .wp-block-navigation__responsive-container:not(.has-modal-open) {
+
+	& .wp-block-navigation-item.current-menu-item:not(.has-child) > a,
+	& .wp-block-navigation-item:has(.current-menu-ancestor),
+	& .wp-block-navigation-item:has(.current-menu-ancestor) > a,
+	& .wp-block-pages-list__item.current-menu-item > a,
+	& .wp-block-navigation-item.wp-block-home-link > a[aria-current='page'] {
+		font-weight: var(--wp--custom--typography--font-weight--medium);
+	}
+}
+
+/* Navigation hover style for site title */
+.is-style-scroll-header:not(.header-active) .wp-block-site-title > a:hover {
+    opacity: 0.8;
+}
+
+/* Navigation hover styles for top-level menu items */
+.is-style-scroll-header:not(.header-active) .wp-block-navigation__responsive-container:not(.has-modal-open) .wp-block-navigation.wp-block-navigation__container {
+	& > .wp-block-navigation-item:hover > .wp-block-navigation-item__content,
+	& > .wp-block-navigation-item:hover > .wp-block-navigation__submenu-icon,
+	& > .wp-block-navigation-item:not(.has-child) > .wp-block-navigation-item__content:hover {
+		color: var(--wp--preset--color--foreground-alt) !important;
+		font-weight: inherit;
+		opacity: 0.8;
+	}
+}

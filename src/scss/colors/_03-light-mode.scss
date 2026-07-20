@@ -1,0 +1,66 @@
+//* ==========================================================================
+//   03 LIGHT-MODE COLORS: Set colors for light-mode color schemes
+//	    v0.9.9 Build 29 Colors & Templates
+//   ========================================================================== */
+
+// @use 'sass:list';
+@use 'sass:map';
+
+// @use '00-config' as config;
+// @use '01-logic' as logic;
+@use "index" as logic;
+
+//*-----------------------------------------------------------------------------
+// # GLOBAL 3-PASS COLORS ENGINE
+//*-----------------------------------------------------------------------------
+
+//*-----------------------------------------------------------------------------
+// # PASS 2: LIGHT THEME CONTEXT
+// # Text, headings, and links default to dark in light mode
+// -----------------------------------------------------------------------------*/
+
+@mixin apply-colors-light-mode {
+
+	/* ==========================================================================
+	   02 LIGHT-MODE COLORS: Apply text, heading, and link colors for light-mode
+	   	  color schemes.
+	========================================================================== */
+
+	:where(body:not(.is-dark-theme)) {
+    
+		@each $entry in logic.$color-registry {
+			$config: 	map.merge(logic.$color-defaults, $entry);
+			$color:  	map.get($config, color);
+			$text:   	map.get($config, text);    
+			$link:   	map.get($config, link);
+			$footer: 	map.get($config, footer);
+			
+			$selectors: logic.build-selector-list($color);
+	
+			// Text is already dark in light mode
+			@if $text == 'dark-light' {
+				@include logic.apply-contrast-color($color, 'dark');
+	
+			// If text should be light in light mode, then apply to text, headings,
+			// and links
+			} @else if $text == 'light-dark' {
+				@include logic.apply-contrast-color($color, 'light');
+				
+				$selectors: logic.build-selector-list($color);
+				@include logic.apply-heading-action($selectors, 'light');    	
+	
+	// 			@include logic.apply-link-action($selectors, 'highlight');
+			}
+			
+			// If link color, then apply it. TO-DO: Move this above??
+	//         @if $link {
+	// 			@include logic.apply-link-action($selectors, $link);
+	//         }
+			
+			// If footer nav highlight on hover, then apply it
+			@if $footer {
+				@include logic.apply-footer-action($selectors, $footer);
+			}
+		}
+	}
+}

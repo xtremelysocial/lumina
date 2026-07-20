@@ -1,24 +1,23 @@
 //* ==========================================================================
-//   COLORS ENGINE: The foundational logic engine for colors
+//   00 LUMINA CONFIGURATION: Colors Engine (Text, heading, link colors)
+//	 	v0.9.9 Build 29 Colors & Templates
 //   ========================================================================== */
 
-//* ==========================================================================
-//	 v0.9.9 Build 29 Colors & Templates
-//   ========================================================================== */
+// ==========================================================================
+// LUMINA COLOR REGISTRY: Declare each color and how the engine handles it
+// Schema: (Color, Text, Heading, Link, Footer)
+// ==========================================================================
 
-//------------------------------------------------------------------------------
-// File: _lumina-colors.scss
-// Colors Engine: Master Dictionary and Selector Processor
-//------------------------------------------------------------------------------
+// SETUP DEFAULTS SO WE DON'T HAVE TO INCLUDE ALL FIELDS IN THE REGISTRY
 
 //*-----------------------------------------------------------------------------
 // 0.0  SETUP: FUNCTIONS AND MIXINS
 // -----------------------------------------------------------------------------*/
 
-@use "sass:list";
-@use "sass:string";
-@use 'sass:map';
-@use "colors-logic" as logic;
+// @use "sass:list";
+// @use "sass:string";
+// @use 'sass:map';
+// @use "colors-logic" as logic;
 
 /*
  * Default contrast (text) based on background color.
@@ -162,151 +161,3 @@ $color-registry: (
     ( color: 'light-red',         	 text: 'dark',  link: 'inherit' ), // OVERRIDE PARENT
     
 );
-
-//*-----------------------------------------------------------------------------
-// # GLOBAL 3-PASS COLORS ENGINE
-//*-----------------------------------------------------------------------------
-
-//*-----------------------------------------------------------------------------
-// # PASS 1: GLOBAL TEXT, HEADING, LINK COLORS
-// # Text, headings, and links default to dark in the main theme palette
-//*-----------------------------------------------------------------------------
-@each $entry in $color-registry {
-    $config: 	map.merge($color-defaults, $entry);
-    $color:  	map.get($config, color);
-    $text:   	map.get($config, text);
-	$link:   	map.get($config, link);
-
-	$selectors: logic.build-selector-list($color);
-
-	// Always-light backgrounds, text gets hook for theme.json contrast overrides, 
-	// but no fallback because the fallback should simply be the body text color
-	@if $text == 'no-fallback' {
-        @include logic.apply-contrast-color($color, 'no-fallback');
-    
-    // Always-dark backgrounds, apply light text, headings and links
-    } @else if $text == 'light' {
-        @include logic.apply-contrast-color($color, 'light');
-        
-//         $selectors: logic.build-selector-list($color);
-        @include logic.apply-heading-action($selectors, 'light');  
-        
-// 		@include logic.apply-link-action($selectors, 'highlight');  	
-
-    // Always-light backgrounds, apply dark text, headings and links
-    } @else if $text == 'dark' {
-        @include logic.apply-contrast-color($color, 'dark');
-        
-//         $selectors: logic.build-selector-list($color);
-        @include logic.apply-heading-action($selectors, 'dark');  
-        
-// 		@include logic.apply-link-action($selectors, 'highlight');  	
-    }
-    
-	// If link color, then apply it. TO-DO: Move this above??
-	@if $link {
-		@include logic.apply-link-action($selectors, $link);
-	}
-}
-
-//*-----------------------------------------------------------------------------
-// # PASS 2: LIGHT THEME CONTEXT
-// # Text, headings, and links default to dark in light mode
-// -----------------------------------------------------------------------------*/
-:where(body:not(.is-dark-theme)) {
-    
-    @each $entry in $color-registry {
-        $config: 	map.merge($color-defaults, $entry);
-        $color:  	map.get($config, color);
-	    $text:   	map.get($config, text);    
-        $link:   	map.get($config, link);
-        $footer: 	map.get($config, footer);
-        
-        $selectors: logic.build-selector-list($color);
-
-		// Text is already dark in light mode
-        @if $text == 'dark-light' {
-            @include logic.apply-contrast-color($color, 'dark');
-
-		// If text should be light in light mode, then apply to text, headings,
-		// and links
-        } @else if $text == 'light-dark' {
-            @include logic.apply-contrast-color($color, 'light');
-            
-			$selectors: logic.build-selector-list($color);
-	        @include logic.apply-heading-action($selectors, 'light');    	
-
-// 			@include logic.apply-link-action($selectors, 'highlight');
-        }
-        
-        // If link color, then apply it. TO-DO: Move this above??
-//         @if $link {
-// 			@include logic.apply-link-action($selectors, $link);
-//         }
-        
-        // If footer nav highlight on hover, then apply it
-        @if $footer {
-			@include logic.apply-footer-action($selectors, $footer);
-        }
-    }
-}
-
-//*-----------------------------------------------------------------------------
-// # PASS 3: DARK THEME CONTEXT
-// # Text, headings, and links default to light in dark mode
-// -----------------------------------------------------------------------------*/
-:where(.is-dark-theme) {
-
-    @each $entry in $color-registry {
-        $config:       		map.merge($color-defaults, $entry);
-        $color:        		map.get($config, color);
-	    $text:   			map.get($config, text);    
-        $link-dark:    		map.get($config, link-dark);
-        $heading-dark: 		map.get($config, heading-dark);
-        $footer-dark: 	map.get($config, footer-dark);
-
-        $selectors: logic.build-selector-list($color);
-
-		
-		// Dark-light colors need light text in dark mode. Headings are already
-		// light. 
-        @if $text == 'dark-light' {
-            @include logic.apply-contrast-color($color, 'light');
-            
-//             @include logic.apply-heading-action($selectors, 'light');
-
-//             @include logic.apply-link-action($selectors, 'highlight');
-            
-		// If dark text is needed in dark mode, then apply it to text AND links
-        } @else if $text == 'light-dark' {
-            @include logic.apply-contrast-color($color, 'dark');
-
-			@include logic.apply-heading-action($selectors, 'dark'); 
-            
-//             @include logic.apply-link-action($selectors, 'highlight');
-        }
-        
-        // For headings, dark-light is light in dark mode and needs headings 
-        // to inherit
-		@if $text == 'light-dark' {
-// 			@include logic.apply-heading-action($selectors, 'light'); 
-
-// 			@include logic.apply-link-action($selectors, 'highlight-alt');
-
-
-		// Lightness-locked backgrounds need to inherit heading colors as well
-		} @else if $text == 'no-fallback' or $text == 'dark' {
-			@include logic.apply-heading-action($selectors, 'dark');
-		}        
-
-		// Apply link color in dark mode, if specified
-        @if $link-dark {
-			@include logic.apply-link-action($selectors, $link-dark);
-        }
-        
-        // Apply footer effects in dark mode
-        @if $footer-dark {
-			@include logic.apply-footer-action($selectors, $footer-dark);
-        }
-    }
-}
