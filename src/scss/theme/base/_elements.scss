@@ -1,0 +1,9 @@
+/*--------------------------------------------------------------
+## Style raw HTML quotes like the block quotes
+--------------------------------------------------------------*/
+:where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
+//     border-left: 6px solid var(--wp--custom--color--heading--separator);
+    border-left: 6px solid var(--wp--preset--color--primary);
+//     font-size: var(--wp--preset--font-size--medium);
+//     padding-left: var(--wp--preset--spacing--40);
+}

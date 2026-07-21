@@ -1,0 +1,64 @@
+@use "@wordpress/base-styles/breakpoints";
+
+/* =========================================================================
+   Lumina Content Layout Structural Stabilization (No !important)
+   ========================================================================= */
+
+// 1. RIGHT SIDEBAR TEMPLATES
+// Works globally: Content stays left on desktop / stacks on top on mobile
+// body[class*="-page-sidebar-right"],
+// body[class*="-single-sidebar-right"] {
+.is-style-sidebar-right,
+body[class*="-sidebar-right"],
+body[class*="-sidebar-right"] {
+
+	& .wp-block-columns.main-content {
+
+		// Target the direct child column blocks natively
+		& > .wp-block-column {
+			
+			// The Content Column (2nd in the DOM) gets pulled to the left
+// 			&:last-child,
+// 			&:first-child:not(.content-column),
+			&.content-column {
+				order: 1;
+			}
+
+			// The Sidebar Column (1st in the DOM) gets pushed to the right
+// 			&:first-child,
+// 			&:last-child:not(.content-column),
+			&:not(.content-column) {
+				order: 2;
+			}
+		}
+	}
+}
+
+// 2. LEFT SIDEBAR TEMPLATES
+// Desktop uses natural DOM flow (Sidebar first), Mobile forces Sidebar to the bottom
+.is-style-sidebar-left,
+body[class*="-page-sidebar-left"],
+body[class*="-single-sidebar-left"] {
+
+	@media only screen and (max-width: #{ (breakpoints.$break-medium) }) {
+		
+		& .wp-block-columns.main-content {
+			// Ensure flex layout is active for order rendering
+			display: flex;
+			flex-direction: column; 
+
+			& > .wp-block-column {
+
+				// Push content to the top slot of the column stack
+				&.content-column {
+					order: 1;
+				}
+
+				// Drops the left sidebar down to the bottom slot below content
+				&:not(.content-column) {
+					order: 2;
+				}
+			}
+		}
+	}
+}

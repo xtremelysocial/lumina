@@ -6,7 +6,7 @@
 //   ========================================================================== */
 
 //* ==========================================================================
-//	 v0.9.9 Build 29 Colors & Templates
+//	 v0.9.9 Build 30 MVP
 //   ========================================================================== */
 
 @use 'sass:string';
@@ -45,7 +45,7 @@
 // 02.11 NATURAL SHADOW: Apply resting (natural) shadow
 // ==========================================================================
 @mixin __blueprint-shadow-natural {
-	box-shadow: var(--wp--custom--shadow--default, 
+	box-shadow: var(--wp--custom--color--shadow--default, 
 				var(--wp--preset--shadow--natural, 
 				0 3px 10px rgba(0, 0, 0, 0.14)));
 }
@@ -490,7 +490,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 @mixin __blueprint-zoom-wrapper-visuals {
 
 	// Resting shadow (e.g. natural)
-// 	box-shadow: var(--wp--custom--shadow--default, 
+// 	box-shadow: var(--wp--custom--color--shadow--default, 
 // 				var(--wp--preset--shadow--natural, 
 // 				0 3px 10px rgba(0, 0, 0, 0.14)));
 	@include __blueprint-shadow-natural;
@@ -778,7 +778,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
     transform: translateY(0) scale(1);
     
     // Hover default shadow (e.g. Deep)
-    box-shadow: var(--wp--custom--shadow--hover, 
+    box-shadow: var(--wp--custom--color--shadow--hover, 
                 var(--wp--preset--shadow--deep, 
 				0 6px 12px rgba(0, 0, 0, 0.13)));
 

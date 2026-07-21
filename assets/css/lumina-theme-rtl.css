@@ -16,69 +16,26 @@
  */
 /* ==========================================================================
    LUMINA THEME: CSS styles
-   v0.9.9 Build 29 Colors & Templates
+   v0.9.9 Build 30 MVP
    ========================================================================== */
-/*--------------------------------------------------------------
-# Base Styles
---------------------------------------------------------------*/
-/**
- * Breakpoints & Media Queries
- */
-/*--------------------------------------------------------------
-# Padding and Margin Styles
---------------------------------------------------------------*/
-/* Override parent theme's padding on colored blocks */
-.wp-block-group.has-background:not(.alignfull) {
-  padding-right: var(--wp--preset--spacing--60);
-  padding-left: var(--wp--preset--spacing--60);
-}
-
-/* Set avatars to look like images with border */
-a > .avatar {
-  border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--border--color);
-  border-radius: var(--wp--custom--button--radius);
-}
-
-/* Add top margin to main unless its the post content or a featured image */
-/* 
- * Remove top margin on page/post title when placed into the content side of 
- * Templates that have a sidebar. 
- */
-.main-content.wp-block-columns .entry-header.wp-block-group {
-  padding-top: 0 !important;
-}
-
-/* Add bottom margin to main unless its the post content, then add it to that */
-/* But don't add it to empty template parts */
 /*-----------------------------------------------------------------------------
-# Column styles
+# Lumina Post Category Colors
 -----------------------------------------------------------------------------*/
-/* Columns thick gap */
-.wp-block-columns.is-style-thick-gap,
-.wp-block-columns.is-style-thick-gap.has-background {
-  gap: calc(1.5 * var(--wp--style--block-gap));
+/* Force the heading separator variable to inherit the active category token */
+.has-category-accent {
+  --wp--custom--color--heading--separator: var(--current-category-color);
 }
 
-/*-----------------------------------------------------------------------------
-# Image styles
------------------------------------------------------------------------------*/
-/* Remove parent theme's featured image padding and shadow */
-.wp-block-post-featured-image img {
-  padding: 0;
-  box-shadow: none;
+/* Add a smooth accent bar on top of your slim banner layouts */
+.has-category-accent .wp-block-template-part .wp-block-cover {
+  border-top: 3px solid var(--current-category-color);
 }
 
-/* Protect layout columns from manual oversized featured images */
-.wp-block-post-featured-image {
-  max-width: 100%;
-  height: auto;
-}
-.wp-block-post-featured-image.alignfull {
-  max-width: calc(100% + var(--wp--style--root--padding-left) + var(--wp--style--root--padding-right));
-  border-radius: 0;
-}
-.wp-block-post-featured-image.alignfull img {
-  border-radius: 0;
+/*--------------------------------------------------------------
+## Style raw HTML quotes like the block quotes
+--------------------------------------------------------------*/
+:where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
+  border-right: 6px solid var(--wp--preset--color--primary);
 }
 
 /*--------------------------------------------------------------
@@ -114,12 +71,214 @@ img.size-cropped-slim {
   aspect-ratio: 16/4.5;
 }
 
+/*--------------------------------------------------------------
+## Custom: Lumina Parent-Aware Text Justification
+--------------------------------------------------------------*/
+/* Works when applied to individual paragraphs OR entire parent Groups/Columns */
+.is-style-text-justify {
+  /* 1. Target text blocks inside the container */
+}
+.is-style-text-justify, .is-style-text-justify p, .is-style-text-justify h1, .is-style-text-justify h2, .is-style-text-justify h3, .is-style-text-justify h4, .is-style-text-justify h5, .is-style-text-justify h6, .is-style-text-justify li {
+  text-align: justify !important;
+  text-justify: inter-word;
+  hyphens: auto;
+  letter-spacing: -0.01em;
+}
+.is-style-text-justify {
+  /* 2. 🌟 THE UI RESCUE: Forcefully protect buttons, badges, and 
+     meta descriptions from stretching awkwardly across the grid */
+}
+.is-style-text-justify .wp-block-buttons,
+.is-style-text-justify .wp-block-button__link,
+.is-style-text-justify .wp-element-button,
+.is-style-text-justify .has-small-font-size:not(p) {
+  text-align: right !important; /* Or center, depending on your button style */
+  hyphens: none !important;
+}
+
+/*--------------------------------------------------------------
+## Custom Block Style: Lumina Editorial Justification
+--------------------------------------------------------------*/
+/* Can be applied directly to a single Paragraph block, a Column, or a Grid Group */
+/**
+ * Breakpoints & Media Queries
+ */
+/* =========================================================================
+   Lumina Content Layout Structural Stabilization (No !important)
+   ========================================================================= */
+.is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column.content-column,
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column,
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column {
+  order: 1;
+}
+.is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
+  order: 2;
+}
+
+@media only screen and (max-width: 782px) {
+  .is-style-sidebar-left .wp-block-columns.main-content,
+  body[class*=-page-sidebar-left] .wp-block-columns.main-content,
+  body[class*=-single-sidebar-left] .wp-block-columns.main-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column.content-column,
+  body[class*=-page-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column,
+  body[class*=-single-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column {
+    order: 1;
+  }
+  .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+  body[class*=-page-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+  body[class*=-single-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
+    order: 2;
+  }
+}
+
+/*--------------------------------------------------------------
+# Custom: List Dividers (Lists, Latest Posts, Latest Comments)
+--------------------------------------------------------------*/
+ul.is-style-list-dividers,
+ol.is-style-list-dividers,
+.is-style-list-dividers ul,
+.is-style-list-dividers ol,
+.wp-block-list.is-style-list-dividers {
+  list-style: none;
+  padding-right: 0;
+}
+
+.is-style-list-dividers:not(.wp-block-latest-posts__list.is-grid) li:not(:first-child),
+.is-style-list-dividers:not(.wp-block-latest-posts__list.is-grid) li > ul {
+  list-style: none;
+  border-top: solid 1px color-mix(in srgb, currentColor 20%, transparent);
+  padding-top: var(--wp--preset--spacing--30);
+  margin-top: var(--wp--preset--spacing--30);
+}
+
+.is-style-list-dividers:not(.has-background) li ul li {
+  padding-right: var(--wp--preset--spacing--40);
+}
+
+/*--------------------------------------------------------------
+## Page List Custom Style: Top Level Truncation
+--------------------------------------------------------------*/
+.wp-block-page-list.is-style-top-level .wp-block-pages-list__item.has-child ul {
+  display: none !important;
+}
+
+/*--------------------------------------------------------------
+# Base Styles
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Padding and Margin Styles
+--------------------------------------------------------------*/
+/* Override parent theme's padding on colored blocks */
+.wp-block-group.has-background:not(.alignfull) {
+  padding-right: var(--wp--preset--spacing--60);
+  padding-left: var(--wp--preset--spacing--60);
+}
+
+/* Set avatars to look like images with border */
+a > .avatar {
+  border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--border--color);
+  border-radius: var(--wp--custom--button--radius);
+}
+
+/* Add top margin to main unless its the post content or a featured image */
+/* 
+ * Remove top margin on page/post title when placed into the content side of 
+ * Templates that have a sidebar. 
+ */
+.main-content.wp-block-columns .entry-header.wp-block-group {
+  padding-top: 0 !important;
+}
+
+/* Add bottom margin to main unless its the post content, then add it to that */
+/* But don't add it to empty template parts */
 /*-----------------------------------------------------------------------------
 # Collapsing Ghost Blocks (Bypassing WordPress Whitespace Outtakes)
 -----------------------------------------------------------------------------*/
 .wp-block-template-part:empty {
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+/*--------------------------------------------------------------
+## Map TwentyTwentyFour, TwentyTwentyFive, and Flat Blocks colors
+--------------------------------------------------------------*/
+.has-accent-background-color,
+.has-accent-1-background-color,
+.has-bright-green-background-color {
+  background-color: var(--wp--preset--color--primary);
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--foreground-alt)) !important;
+}
+.has-accent-background-color .wp-block-heading, .has-accent-background-color .wp-block-post-title, .has-accent-background-color .wp-block-query-title, .has-accent-background-color .wp-block-site-title, .has-accent-background-color .wp-block-site-tagline,
+.has-accent-1-background-color .wp-block-heading,
+.has-accent-1-background-color .wp-block-post-title,
+.has-accent-1-background-color .wp-block-query-title,
+.has-accent-1-background-color .wp-block-site-title,
+.has-accent-1-background-color .wp-block-site-tagline,
+.has-bright-green-background-color .wp-block-heading,
+.has-bright-green-background-color .wp-block-post-title,
+.has-bright-green-background-color .wp-block-query-title,
+.has-bright-green-background-color .wp-block-site-title,
+.has-bright-green-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-dark-bright-green-background-color {
+  background-color: var(--wp--preset--color--primary-alt);
+  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--foreground-alt)) !important;
+}
+.has-dark-bright-green-background-color .wp-block-heading, .has-dark-bright-green-background-color .wp-block-post-title, .has-dark-bright-green-background-color .wp-block-query-title, .has-dark-bright-green-background-color .wp-block-site-title, .has-dark-bright-green-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-base-2-background-color,
+.has-accent-2-background-color {
+  background-color: var(--wp--preset--color--secondary);
+  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--foreground-alt)) !important;
+}
+.has-base-2-background-color .wp-block-heading, .has-base-2-background-color .wp-block-post-title, .has-base-2-background-color .wp-block-query-title, .has-base-2-background-color .wp-block-site-title, .has-base-2-background-color .wp-block-site-tagline,
+.has-accent-2-background-color .wp-block-heading,
+.has-accent-2-background-color .wp-block-post-title,
+.has-accent-2-background-color .wp-block-query-title,
+.has-accent-2-background-color .wp-block-site-title,
+.has-accent-2-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-3-background-color {
+  background-color: var(--wp--preset--color--tertiary);
+  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--foreground-alt)) !important;
+}
+.has-accent-3-background-color .wp-block-heading, .has-accent-3-background-color .wp-block-post-title, .has-accent-3-background-color .wp-block-query-title, .has-accent-3-background-color .wp-block-site-title, .has-accent-3-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-4-background-color {
+  background-color: var(--wp--preset--color--dark-gray);
+  color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--foreground-alt)) !important;
+}
+.has-accent-4-background-color .wp-block-heading, .has-accent-4-background-color .wp-block-post-title, .has-accent-4-background-color .wp-block-query-title, .has-accent-4-background-color .wp-block-site-title, .has-accent-4-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-5-background-color {
+  background-color: var(--wp--preset--color--neutral-alt);
+  color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--contrast)) !important;
+}
+.has-accent-5-background-color .wp-block-heading, .has-accent-5-background-color .wp-block-post-title, .has-accent-5-background-color .wp-block-query-title, .has-accent-5-background-color .wp-block-site-title, .has-accent-5-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-6-background-color {
+  background-color: var(--wp--preset--color--dark-alt);
+  color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--foreground-alt)) !important;
+}
+.has-accent-6-background-color .wp-block-heading, .has-accent-6-background-color .wp-block-post-title, .has-accent-6-background-color .wp-block-query-title, .has-accent-6-background-color .wp-block-site-title, .has-accent-6-background-color .wp-block-site-tagline {
+  color: inherit;
 }
 
 /*-----------------------------------------------------------------------------
@@ -167,95 +326,13 @@ img.size-cropped-slim {
     width: 100%;
   }
 }
-/* =========================================================================
-   Lumina Content Layout Structural Stabilization (No !important)
-   ========================================================================= */
-.is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column.content-column,
-body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column,
-body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column {
-  order: 1;
-}
-.is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column:not(.content-column),
-body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
-body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
-  order: 2;
-}
-
-@media only screen and (max-width: 782px) {
-  .is-style-sidebar-left .wp-block-columns.main-content,
-  body[class*=-page-sidebar-left] .wp-block-columns.main-content,
-  body[class*=-single-sidebar-left] .wp-block-columns.main-content {
-    display: flex;
-    flex-direction: column;
-  }
-  .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column.content-column,
-  body[class*=-page-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column,
-  body[class*=-single-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column {
-    order: 1;
-  }
-  .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column:not(.content-column),
-  body[class*=-page-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
-  body[class*=-single-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
-    order: 2;
-  }
-}
-
-/*--------------------------------------------------------------
-## Core Override: Calibrated Gallery Gutter Matrix
---------------------------------------------------------------*/
-.wp-block-gallery {
-  --wp--style--gallery-gap-default: var(--wp--preset--spacing--30, calc(var(--wp--style--block-gap, 24px) / 2));
-}
-
-/*--------------------------------------------------------------
-## Defensive Grid Responsive Engine
---------------------------------------------------------------*/
-@media (max-width: 781px) {
-  /* 🌟 THE RESCUE: Overrides the rigid editor column settings on mobile devices */
-  .wp-block-group.is-layout-grid {
-    /* Force the tracks to use fluid auto-fit math instead of a squeezed hardcoded number.
-       '120px' sets a safe protective floor: cells will never compress smaller than 120px.
-       If they try to, the grid automatically wraps them down to a new row! */
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr)) !important;
-  }
-  /* Inside your color palette text cells, ensure text scales down elegantly */
-  .wp-block-group.is-layout-grid .wp-block-column,
-  .wp-block-group.is-layout-grid > * {
-    /* Ensure text strings wrap or break cleanly if a color name is unusually long */
-    word-break: break-word;
-    hyphens: auto;
-  }
-}
-/*--------------------------------------------------------------
-## Custom: Lumina Parent-Aware Text Justification
---------------------------------------------------------------*/
-/* Works when applied to individual paragraphs OR entire parent Groups/Columns */
-.is-style-text-justify {
-  /* 1. Target text blocks inside the container */
-}
-.is-style-text-justify, .is-style-text-justify p, .is-style-text-justify h1, .is-style-text-justify h2, .is-style-text-justify h3, .is-style-text-justify h4, .is-style-text-justify h5, .is-style-text-justify h6, .is-style-text-justify li {
-  text-align: justify !important;
-  text-justify: inter-word;
-  hyphens: auto;
-  letter-spacing: -0.01em;
-}
-.is-style-text-justify {
-  /* 2. 🌟 THE UI RESCUE: Forcefully protect buttons, badges, and 
-     meta descriptions from stretching awkwardly across the grid */
-}
-.is-style-text-justify .wp-block-buttons,
-.is-style-text-justify .wp-block-button__link,
-.is-style-text-justify .wp-element-button,
-.is-style-text-justify .has-small-font-size:not(p) {
-  text-align: right !important; /* Or center, depending on your button style */
-  hyphens: none !important;
-}
-
-/*--------------------------------------------------------------
-## Style raw HTML quotes like the block quotes
---------------------------------------------------------------*/
-:where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
-  border-right: 6px solid var(--wp--preset--color--primary);
+/*-----------------------------------------------------------------------------
+# Column styles
+-----------------------------------------------------------------------------*/
+/* Columns thick gap */
+.wp-block-columns.is-style-thick-gap,
+.wp-block-columns.is-style-thick-gap.has-background {
+  gap: calc(1.5 * var(--wp--style--block-gap));
 }
 
 /*--------------------------------------------------------------
@@ -309,29 +386,31 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 }
 
 /*--------------------------------------------------------------
-## Custom Block Style: Lumina Editorial Justification
+## Core Override: Calibrated Gallery Gutter Matrix
 --------------------------------------------------------------*/
-/* Can be applied directly to a single Paragraph block, a Column, or a Grid Group */
-/*-----------------------------------------------------------------------------
-# Style Jetpack Contact Form buttons to match ours
------------------------------------------------------------------------------*/
-.wp-block-jetpack-contact-form :is(.wp-block-button, .wp-block-jetpack-button) .wp-block-button__link {
-  padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
+.wp-block-gallery {
+  --wp--style--gallery-gap-default: var(--wp--preset--spacing--30, calc(var(--wp--style--block-gap, 24px) / 2));
 }
 
-/*-----------------------------------------------------------------------------
-# Lumina Post Category Colors
------------------------------------------------------------------------------*/
-/* Force the heading separator variable to inherit the active category token */
-.has-category-accent {
-  --wp--custom--color--heading--separator: var(--current-category-color);
+/*--------------------------------------------------------------
+## Defensive Grid Responsive Engine
+--------------------------------------------------------------*/
+@media (max-width: 781px) {
+  /* 🌟 THE RESCUE: Overrides the rigid editor column settings on mobile devices */
+  .wp-block-group.is-layout-grid {
+    /* Force the tracks to use fluid auto-fit math instead of a squeezed hardcoded number.
+       '120px' sets a safe protective floor: cells will never compress smaller than 120px.
+       If they try to, the grid automatically wraps them down to a new row! */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr)) !important;
+  }
+  /* Inside your color palette text cells, ensure text scales down elegantly */
+  .wp-block-group.is-layout-grid .wp-block-column,
+  .wp-block-group.is-layout-grid > * {
+    /* Ensure text strings wrap or break cleanly if a color name is unusually long */
+    word-break: break-word;
+    hyphens: auto;
+  }
 }
-
-/* Add a smooth accent bar on top of your slim banner layouts */
-.has-category-accent .wp-block-template-part .wp-block-cover {
-  border-top: 3px solid var(--current-category-color);
-}
-
 /*--------------------------------------------------------------
 # Custom: Gutter Dividers (Columns)
 --------------------------------------------------------------*/
@@ -440,7 +519,7 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 }
 .wp-block-columns.is-style-gutter-dividers {
   /*--------------------------------------------------------------
-  ## 📱 MOBILE VIEWPORTS BY DEFAULT (< 782px)
+  ## MOBILE VIEWPORTS BY DEFAULT (< 782px)
   --------------------------------------------------------------*/
   /* Full-width horizontal shelf lines between collapsed columns */
 }
@@ -478,7 +557,7 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 }
 .wp-block-columns.is-style-gutter-dividers {
   /*--------------------------------------------------------------
-  ## 🖥️ DESKTOP & TABLET VIEWPORTS (>= 782px)
+  ## DESKTOP & TABLET VIEWPORTS (>= 782px)
   ## Hooks natively into WordPress Core's layout engine thresholds
   --------------------------------------------------------------*/
 }
@@ -503,168 +582,6 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
     height: calc(100% + var(--lumina-forced-gap));
     top: calc(var(--lumina-forced-gap) * -1);
   }
-}
-
-/*--------------------------------------------------------------
-## 1. THE COLUMNS ENGINE (Supports Continuous Row Stacking)
---------------------------------------------------------------*/
-/* 🖥️ DESKTOP VIEWPORTS (>= 782px) */
-/*--------------------------------------------------------------
-## Custom: Lumina Architectural Continuous Grid Dividers
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## 2. THE GRID ENGINE (Handles Infinite Responsive Matrix Wrapping)
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Lumina Universal Calculated Matrix Engine
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Custom: Lumina Defensive Grid Track Protection
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Custom: Lumina Symmetric 4-Column Grid Variant
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Custom: Lumina Defensive Grid Track Protection
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Custom: Lumina Symmetric 4-Column Grid Variant
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## 1. THE COLUMNS ENGINE (Supports Infinite Row Stacking)
---------------------------------------------------------------*/
-/* Mobile full-width lines between stacked columns */
-/*--------------------------------------------------------------
-## Custom: Lumina Architectural Continuous Grid Dividers
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## 2. THE GRID ENGINE (Handles Infinite Responsive Matrix Wrapping)
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Custom: Lumina Universal Matrix Dividers 
-## (Handles Columns, Wrapping, Grids, and Mobile natively)
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Custom: Lumina Architectural Inner Grid System
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Custom: Lumina Gutter Dividers (Direct Gap Control)
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Custom: Lumina Gutter Dividers (Direct Gap Control)
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Custom: Pixelarity-Inspired Internal Only Grid Dividers
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Custom: Pixelarity-Inspired Internal Only Grid Dividers
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Custom: List Dividers (Lists, Latest Posts, Latest Comments)
---------------------------------------------------------------*/
-ul.is-style-list-dividers,
-ol.is-style-list-dividers,
-.is-style-list-dividers ul,
-.is-style-list-dividers ol,
-.wp-block-list.is-style-list-dividers {
-  list-style: none;
-  padding-right: 0;
-}
-
-.is-style-list-dividers:not(.wp-block-latest-posts__list.is-grid) li:not(:first-child),
-.is-style-list-dividers:not(.wp-block-latest-posts__list.is-grid) li > ul {
-  list-style: none;
-  border-top: solid 1px color-mix(in srgb, currentColor 20%, transparent);
-  padding-top: var(--wp--preset--spacing--30);
-  margin-top: var(--wp--preset--spacing--30);
-}
-
-.is-style-list-dividers:not(.has-background) li ul li {
-  padding-right: var(--wp--preset--spacing--40);
-}
-
-/*--------------------------------------------------------------
-## Page List Custom Style: Top Level Truncation
---------------------------------------------------------------*/
-.wp-block-page-list.is-style-top-level .wp-block-pages-list__item.has-child ul {
-  display: none !important;
-}
-
-/*--------------------------------------------------------------
-## Map TwentyTwentyFour, TwentyTwentyFive, and Flat Blocks colors
---------------------------------------------------------------*/
-.has-accent-background-color,
-.has-accent-1-background-color,
-.has-bright-green-background-color {
-  background-color: var(--wp--preset--color--primary);
-  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--foreground-alt)) !important;
-}
-.has-accent-background-color .wp-block-heading, .has-accent-background-color .wp-block-post-title, .has-accent-background-color .wp-block-query-title, .has-accent-background-color .wp-block-site-title, .has-accent-background-color .wp-block-site-tagline,
-.has-accent-1-background-color .wp-block-heading,
-.has-accent-1-background-color .wp-block-post-title,
-.has-accent-1-background-color .wp-block-query-title,
-.has-accent-1-background-color .wp-block-site-title,
-.has-accent-1-background-color .wp-block-site-tagline,
-.has-bright-green-background-color .wp-block-heading,
-.has-bright-green-background-color .wp-block-post-title,
-.has-bright-green-background-color .wp-block-query-title,
-.has-bright-green-background-color .wp-block-site-title,
-.has-bright-green-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-dark-bright-green-background-color {
-  background-color: var(--wp--preset--color--primary-alt);
-  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--foreground-alt)) !important;
-}
-.has-dark-bright-green-background-color .wp-block-heading, .has-dark-bright-green-background-color .wp-block-post-title, .has-dark-bright-green-background-color .wp-block-query-title, .has-dark-bright-green-background-color .wp-block-site-title, .has-dark-bright-green-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-base-2-background-color,
-.has-accent-2-background-color {
-  background-color: var(--wp--preset--color--secondary);
-  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--foreground-alt)) !important;
-}
-.has-base-2-background-color .wp-block-heading, .has-base-2-background-color .wp-block-post-title, .has-base-2-background-color .wp-block-query-title, .has-base-2-background-color .wp-block-site-title, .has-base-2-background-color .wp-block-site-tagline,
-.has-accent-2-background-color .wp-block-heading,
-.has-accent-2-background-color .wp-block-post-title,
-.has-accent-2-background-color .wp-block-query-title,
-.has-accent-2-background-color .wp-block-site-title,
-.has-accent-2-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-3-background-color {
-  background-color: var(--wp--preset--color--tertiary);
-  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--foreground-alt)) !important;
-}
-.has-accent-3-background-color .wp-block-heading, .has-accent-3-background-color .wp-block-post-title, .has-accent-3-background-color .wp-block-query-title, .has-accent-3-background-color .wp-block-site-title, .has-accent-3-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-4-background-color {
-  background-color: var(--wp--preset--color--dark-gray);
-  color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--foreground-alt)) !important;
-}
-.has-accent-4-background-color .wp-block-heading, .has-accent-4-background-color .wp-block-post-title, .has-accent-4-background-color .wp-block-query-title, .has-accent-4-background-color .wp-block-site-title, .has-accent-4-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-5-background-color {
-  background-color: var(--wp--preset--color--neutral-alt);
-  color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--contrast)) !important;
-}
-.has-accent-5-background-color .wp-block-heading, .has-accent-5-background-color .wp-block-post-title, .has-accent-5-background-color .wp-block-query-title, .has-accent-5-background-color .wp-block-site-title, .has-accent-5-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-6-background-color {
-  background-color: var(--wp--preset--color--dark-alt);
-  color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--foreground-alt)) !important;
-}
-.has-accent-6-background-color .wp-block-heading, .has-accent-6-background-color .wp-block-post-title, .has-accent-6-background-color .wp-block-query-title, .has-accent-6-background-color .wp-block-site-title, .has-accent-6-background-color .wp-block-site-tagline {
-  color: inherit;
 }
 
 /*--------------------------------------------------------------
@@ -819,9 +736,6 @@ ol.is-style-list-dividers,
 }
 
 /*--------------------------------------------------------------
-## Custom Heading Link Animation (Multi-line Safe)
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
 # Latest Posts Block Styles
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -899,8 +813,6 @@ ol.is-style-list-dividers,
 /* Desktop Submenu Dividers */
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
   width: 100%;
-  /* 2. Round the top corners of the absolute first link item */
-  /* 3. Round the bottom corners of the absolute last link item */
 }
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-navigation-item:not(:last-child), .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-pages-list__item:not(:last-child) {
   position: relative;
@@ -960,6 +872,28 @@ ol.is-style-list-dividers,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-center .wp-block-navigation-item__content {
   text-align: center;
   justify-content: flex-center;
+}
+
+/*-----------------------------------------------------------------------------
+# Post Featured Image styles
+-----------------------------------------------------------------------------*/
+/* Remove parent theme's featured image padding and shadow */
+.wp-block-post-featured-image img {
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Protect layout columns from manual oversized featured images */
+.wp-block-post-featured-image {
+  max-width: 100%;
+  height: auto;
+}
+.wp-block-post-featured-image.alignfull {
+  max-width: calc(100% + var(--wp--style--root--padding-left) + var(--wp--style--root--padding-right));
+  border-radius: 0;
+}
+.wp-block-post-featured-image.alignfull img {
+  border-radius: 0;
 }
 
 /*------------------------------------------------------------------------------
@@ -1082,6 +1016,13 @@ ol.is-style-list-dividers,
 .wp-block-table.is-style-table-alternate th:nth-child(6n+6),
 .wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+6) {
   background-color: var(--wp--preset--color--tertiary-subtle-alt);
+}
+
+/*-----------------------------------------------------------------------------
+# Style Jetpack Contact Form buttons to match ours
+-----------------------------------------------------------------------------*/
+.wp-block-jetpack-contact-form :is(.wp-block-button, .wp-block-jetpack-button) .wp-block-button__link {
+  padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
 }
 
 /*

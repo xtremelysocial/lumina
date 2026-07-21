@@ -1,0 +1,13 @@
+/*-----------------------------------------------------------------------------
+# Lumina Post Category Colors
+-----------------------------------------------------------------------------*/
+
+/* Force the heading separator variable to inherit the active category token */
+.has-category-accent {
+    --wp--custom--color--heading--separator: var(--current-category-color);
+}
+
+/* Add a smooth accent bar on top of your slim banner layouts */
+.has-category-accent .wp-block-template-part .wp-block-cover {
+    border-top: 3px solid var(--current-category-color);
+}

@@ -5,6 +5,10 @@
 	"settings": {
 		"custom": {
 			"color": {
+				"theme": {
+					"mode": "is-light-theme",
+					"scheme": "sol"
+				},
 				"contrast": {
 					"primary": "var(--wp--preset--color--foreground-alt)",
 					"primary-alt": "var(--wp--preset--color--foreground-alt)",

@@ -1,0 +1,65 @@
+@use "@wordpress/base-styles/breakpoints";
+
+/*-----------------------------------------------------------------------------
+## Custom: Intrinsic Equal-Width Grid Buttons (Mobile-Hugging Upgrades)
+-----------------------------------------------------------------------------*/
+.wp-block-buttons:not(.is-vertical) {
+	display: grid;
+	
+	// 1. Every button added generates a new column automatically
+	grid-auto-flow: column;
+	
+	// 2. Force every single column to be an identical, uniform fraction
+	grid-auto-columns: 1fr;
+	
+	// 3. Wrap parent tightly around buttons to match widest sibling asset
+	width: fit-content;
+	max-width: 100%;
+	gap: var(--wp--style--block-gap, 1.5rem);
+
+	// 4. Standardize auto-margins so full-width breakouts stay centered by default
+	margin-left: auto;
+	margin-right: auto;
+
+	// Respect explicit block alignment toolbar commands natively
+	&.is-content-justification-left {
+		margin-left: 0;
+		margin-right: auto;
+	}
+	&.is-content-justification-right {
+		margin-left: auto;
+		margin-right: 0;
+	}
+	&.is-content-justification-center {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.wp-block-button {
+		width: 100%; 
+
+		.wp-block-button__link {
+			display: block;
+			width: 100%;
+			text-align: center;
+			white-space: nowrap; /* Ensure padding is respected and text stays single-line */
+		}
+	}
+}
+
+// Mobile Responsive Transition Block
+@media only screen and (max-width: #{ (breakpoints.$break-small) }) {
+	.wp-block-buttons:not(.is-vertical) {
+		// 1. Flip the grid track configuration to rows
+		grid-auto-flow: row;
+		grid-auto-rows: auto;
+		
+		// 2. REMOVED: width: 100% and margin clearing.
+		// By leaving width: fit-content active, the grid block shrinks to match 
+		// its contents and honors your active toolbar justification flags perfectly on mobile.
+		
+		.wp-block-button {
+			width: 100%; // Ensures sibling vertical stacks stay uniformly equalized
+		}
+	}
+}

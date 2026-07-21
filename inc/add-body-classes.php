@@ -3,10 +3,13 @@
  * File:        add-body-classes.php
  * Theme:       Shared Media Engine
  *
- * Centralized Document Layout Engine (Pure Luminance Universal Format Edition).
- * Directly queries the global styles engine for the active background color
- * and calculates human-eye relative luminance to apply theme classes.
- * Supports Hex, RGB/RGBA, and HSL/HSLA color strings.
+ * Centralized Document Layout Engine.
+ * Directly queries global styles background color and custom theme settings to apply:
+ *   1. Canvas Luminance:   is-dark-background | is-light-background
+ *   2. Theme Engine Mode:  is-dark-theme | is-light-theme
+ *   3. Color Scheme Variant: color-scheme-{$slug}
+ *
+ * Transient keys are dynamically scoped per active theme/child-theme slug.
  *
  * @package    XtremelySocial
  */
@@ -20,10 +23,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 // -------------------------------------------------------------------------
 // CACHE ENGINE CONFIGURATION MATRIX
 // -------------------------------------------------------------------------
-// Change this slug per theme/child theme deployment to prevent cross-theme 
-// cache bleeding.
-const LUMINANCE_TRANSIENT = 'lumina_dark_or_light_theme';
+const TRANSIENT_PREFIX = 'xs_theme_meta_';
 
+/**
+ * Returns a transient key dynamically scoped to the current theme/child-theme slug.
+ */
+function get_transient_key() {
+	return TRANSIENT_PREFIX . get_stylesheet();
+}
 
 // Hook 1: Document Class Append Matrix
 add_filter( 'body_class', __NAMESPACE__ . '\add_body_classes', 10, 1 );
@@ -55,7 +62,7 @@ function hsl_to_rgb( $h, $s, $l ) {
 }
 
 /**
- * Helper helper for HSL conversion steps.
+ * Helper for HSL conversion steps.
  */
 function hue_to_rgb( $p, $q, $t ) {
 	if ( $t < 0 ) { $t += 1; }
@@ -72,10 +79,14 @@ if ( ! function_exists( __NAMESPACE__ . '\add_body_classes' ) ) :
 		// DEVELOPER SWITCH: Set to true during active styling tests to bypass transient cache
 		$bypass_cache = false; 
 
-		$theme_mode = $bypass_cache ? false : get_transient( LUMINANCE_TRANSIENT );
+		$transient_key = get_transient_key();
+		$theme_meta    = $bypass_cache ? false : get_transient( $transient_key );
 
-		if ( false === $theme_mode ) {
-			// 1. QUERY THE ENGINE: Tell WordPress to completely resolve the background color value
+		if ( false === $theme_meta || ! is_array( $theme_meta ) ) {
+
+			// -----------------------------------------------------------------
+			// 1. QUERY BACKGROUND CANVAS & CALCULATE LUMINANCE
+			// -----------------------------------------------------------------
 			$bg_color = wp_get_global_styles( 
 				array( 'color', 'background' ), 
 				array( 'transforms' => array( 'resolve-variables' ) ) 
@@ -89,9 +100,7 @@ if ( ! function_exists( __NAMESPACE__ . '\add_body_classes' ) ) :
 			$r = 255; $g = 255; $b = 255;
 			$bg_color = trim( $bg_color );
 
-			// 2. PARSE THE COLOR: Extract RGB values regardless of format syntax
-			
-			// Case A: Hex Format (#ffffff or #fff)
+			// PARSE COLOR FORMATS (Hex, RGB, HSL)
 			if ( 0 === strpos( $bg_color, '#' ) ) {
 				$hex = str_replace( '#', '', $bg_color );
 				if ( strlen( $hex ) === 3 ) {
@@ -103,53 +112,55 @@ if ( ! function_exists( __NAMESPACE__ . '\add_body_classes' ) ) :
 					$g = hexdec( substr( $hex, 2, 2 ) );
 					$b = hexdec( substr( $hex, 4, 2 ) );
 				}
-			} 
-			// Case B: RGB / RGBA Format
-			elseif ( preg_match( '/rgba?\(\s*([\d.]+)\s*[\s,]\s*([\d.]+)\s*[\s,]\s*([\d.]+)/i', $bg_color, $matches ) ) {
+			} elseif ( preg_match( '/rgba?\(\s*([\d.]+)\s*[\s,]\s*([\d.]+)\s*[\s,]\s*([\d.]+)/i', $bg_color, $matches ) ) {
 				$r = intval( $matches[1] );
 				$g = intval( $matches[2] );
 				$b = intval( $matches[3] );
-			}
-			// Case C: HSL / HSLA Format
-			elseif ( preg_match( '/hsla?\(\s*([\d.]+)\s*[\s,]\s*([\d.]+)%\s*[\s,]\s*([\d.]+)%/i', $bg_color, $matches ) ) {
-				$hsl_h = floatval( $matches[1] );
-				$hsl_s = floatval( $matches[2] );
-				$hsl_l = floatval( $matches[3] );
-
-				// Run conversion helper to populate standard RGB targets
-				list( $r, $g, $b ) = hsl_to_rgb( $hsl_h, $hsl_s, $hsl_l );
+			} elseif ( preg_match( '/hsla?\(\s*([\d.]+)\s*[\s,]\s*([\d.]+)%\s*[\s,]\s*([\d.]+)%/i', $bg_color, $matches ) ) {
+				list( $r, $g, $b ) = hsl_to_rgb( floatval( $matches[1] ), floatval( $matches[2] ), floatval( $matches[3] ) );
 			}
 		
-			// 3. RUN LUMINOSITY FORMULA: Standard human eye relative luminance algorithm
+			// LUMINANCE CALCULATOR
 			$rc = $r / 255; $gc = $g / 255; $bc = $b / 255;
 			$rc = ( $rc <= 0.03928 ) ? $rc / 12.92 : pow( ( $rc + 0.055 ) / 1.055, 2.4 );
 			$gc = ( $gc <= 0.03928 ) ? $gc / 12.92 : pow( ( $gc + 0.055 ) / 1.055, 2.4 );
 			$bc = ( $bc <= 0.03928 ) ? $bc / 12.92 : pow( ( $bc + 0.055 ) / 1.055, 2.4 );
 			$luminance = 0.2126 * $rc + 0.7152 * $gc + 0.0722 * $bc;
 		
-			$theme_mode = ( $luminance < 0.5 ) ? 'is-dark-theme' : 'is-light-theme';
+			$bg_class = ( $luminance < 0.5 ) ? 'is-dark-background' : 'is-light-background';
+
+			// -----------------------------------------------------------------
+			// 2. QUERY THEME ENGINE MODE & SCHEME VARIANT
+			// -----------------------------------------------------------------
+			$mode_setting = wp_get_global_settings( array( 'custom', 'color', 'theme', 'mode' ) );
+			$mode_class   = ( ! empty( $mode_setting ) && is_string( $mode_setting ) ) ? $mode_setting : 'is-light-theme';
 			
-			// -------------------------------------------------------------------------
-			// LIVE URL DIAGNOSTIC INTERCEPT
-			// -------------------------------------------------------------------------
-// 			if ( isset( $_GET['debug'] ) ) {
-// 				echo '<div style="background:#000; color:#0f0; padding:30px; font-family:monospace; font-size:16px; line-height:1.5; z-index:999999; position:relative; border-bottom:5px solid #0f0;">';
-// 				echo '<h2>--- XTREAMLYSOCIAL THEME ENGINE DIAGNOSTICS ---</h2>';
-// 				echo '<strong>Active Cache Slug Constant:</strong> <span style="color:#ff0;">' . esc_html( LUMINANCE_TRANSIENT ) . '</span><br>';
-// 				echo '<strong>Raw Value Returned by WordPress:</strong> <span style="color:#fff; background:#222; padding:2px 6px; border-radius:3px;">' . esc_html( $bg_color ) . '</span><br>';
-// 				echo '<strong>Parsed RGB Conversion Array:</strong> R: ' . $r . ' | G: ' . $g . ' | B: ' . $b . '<br>';
-// 				echo '<strong>Calculated Eye Luminance:</strong> ' . round( $luminance, 4 ) . ' (Threshold: < 0.5 is Dark)<br>';
-// 				echo '<strong>ASSIGNED THEME CLASS:</strong> <span style="color:#0f0; font-weight:bold;">' . $theme_mode . '</span><br>';
-// 				echo '</div>';
-// 				exit;
-// 			}
+			$scheme_setting = wp_get_global_settings( array( 'custom', 'color', 'theme', 'scheme' ) );
+			$scheme_slug    = ( ! empty( $scheme_setting ) && is_string( $scheme_setting ) ) ? sanitize_html_class( $scheme_setting ) : 'default';
+			$scheme_class   = 'color-scheme-' . $scheme_slug;
+
+			// PACK METADATA MATRIX
+			$theme_meta = array(
+				'bg_class'     => $bg_class,
+				'mode_class'   => $mode_class,
+				'scheme_class' => $scheme_class,
+			);
 
 			if ( ! $bypass_cache ) {
-				set_transient( LUMINANCE_TRANSIENT, $theme_mode, 12 * HOUR_IN_SECONDS );
+				set_transient( $transient_key, $theme_meta, 12 * HOUR_IN_SECONDS );
 			}
 		}
 
-		$classes[] = $theme_mode;
+		// APPEND CLASSES TO BODY ARRAY
+		if ( ! empty( $theme_meta['bg_class'] ) ) {
+			$classes[] = $theme_meta['bg_class'];
+		}
+		if ( ! empty( $theme_meta['mode_class'] ) ) {
+			$classes[] = $theme_meta['mode_class'];
+		}
+		if ( ! empty( $theme_meta['scheme_class'] ) ) {
+			$classes[] = $theme_meta['scheme_class'];
+		}
 	
 		return $classes;
 	}
@@ -165,6 +176,6 @@ add_action( 'save_post_wp_global_styles', __NAMESPACE__ . '\clear_luminance_tran
 
 if ( ! function_exists( __NAMESPACE__ . '\clear_luminance_transient' ) ) :
 	function clear_luminance_transient() {
-		delete_transient( LUMINANCE_TRANSIENT );
+		delete_transient( get_transient_key() );
 	}
 endif;

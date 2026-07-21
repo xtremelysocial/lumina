@@ -13,28 +13,48 @@
 
 /* ==========================================================================
    LUMINA THEME: CSS styles
-   v0.9.9 Build 29 Colors & Templates
+   v0.9.9 Build 30 MVP
    ========================================================================== */
 
 // /*--------------------------------------------------------------
 //   BASE STYLES
 // --------------------------------------------------------------*/
 // @use "base/lumina-colors";
-@use "theme/base";
-@use "theme/gutter-dividers";
-@use "theme/list-dividers";
-@use "theme/other-themes";
+@use "theme/base/category-colors";
+@use "theme/base/elements";
+@use "theme/base/images";
+@use "theme/base/justify";
+@use "theme/base/sidebars";
+@use "theme/base/list-dividers";
+@use "theme/base/margins-padding";
+@use "theme/base/other-themes";
 // @use "theme/large-numbers";
 // @use "theme/scroll-engine";
 
 // /*--------------------------------------------------------------
 //   BLOCK STYLES
 // --------------------------------------------------------------*/
-@use "theme/heading";
-@use "theme/latest-posts";
-@use "theme/navigation";
-@use "theme/separator";
-@use "theme/table";
+@use "theme/blocks/buttons";
+@use "theme/blocks/columns";
+@use "theme/blocks/details";
+@use "theme/blocks/gallery";
+@use "theme/blocks/group";
+@use "theme/blocks/gutter-dividers";
+@use "theme/blocks/heading";
+@use "theme/blocks/latest-posts";
+@use "theme/blocks/navigation";
+@use "theme/blocks/post-featured-image";
+@use "theme/blocks/separator";
+@use "theme/blocks/table";
+
+// /*--------------------------------------------------------------
+//   POPULAR PLUGIN STYLES
+// --------------------------------------------------------------*/
+@use "theme/plugins/jetpack";
+
+// /*--------------------------------------------------------------
+//   COLOR STYLES
+// --------------------------------------------------------------*/
 
 // LOAD COLORS LOGIC
 @use "colors/02-global" as colors;

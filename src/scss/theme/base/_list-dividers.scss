@@ -1,0 +1,38 @@
+/*--------------------------------------------------------------
+# Custom: List Dividers (Lists, Latest Posts, Latest Comments)
+--------------------------------------------------------------*/
+
+ul.is-style-list-dividers,
+ol.is-style-list-dividers,
+.is-style-list-dividers ul,
+.is-style-list-dividers ol,
+.wp-block-list.is-style-list-dividers {
+	list-style: none;
+	padding-left: 0;
+}
+
+.is-style-list-dividers:not(.wp-block-latest-posts__list.is-grid) li:not(:first-child),
+.is-style-list-dividers:not(.wp-block-latest-posts__list.is-grid) li > ul {
+	list-style: none;
+	
+	// Blends text color at 20% weight with transparency 
+	border-top: solid 1px color-mix(in srgb, currentColor 20%, transparent);
+	
+	padding-top: var(--wp--preset--spacing--30);
+	margin-top: var(--wp--preset--spacing--30);
+}
+
+.is-style-list-dividers:not(.has-background) li ul li {
+	padding-left: var(--wp--preset--spacing--40);
+}
+
+/*--------------------------------------------------------------
+## Page List Custom Style: Top Level Truncation
+--------------------------------------------------------------*/
+.wp-block-page-list.is-style-top-level {
+	
+	// Safely hide any nested sub-lists rendered by the recursive engine
+	.wp-block-pages-list__item.has-child ul {
+		display: none !important;
+	}
+}

@@ -1,0 +1,66 @@
+/*--------------------------------------------------------------
+# Base Styles
+--------------------------------------------------------------*/
+@use "@wordpress/base-styles/breakpoints";
+
+/*--------------------------------------------------------------
+# Padding and Margin Styles
+--------------------------------------------------------------*/
+
+/* Override parent theme's padding on colored blocks */
+.wp-block-group.has-background:not(.alignfull) {
+	padding-left: var(--wp--preset--spacing--60);
+	padding-right: var(--wp--preset--spacing--60);
+}
+
+/* Set avatars to look like images with border */
+a > .avatar {
+	border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--border--color);
+	border-radius: var(--wp--custom--button--radius);
+}
+
+/* Add top margin to main unless its the post content or a featured image */
+// main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-image):not(.wp-block-cover):not(.wp-block-template-part):not(.wp-block-image) {
+// main > :first-child:not(.alignfull),
+// .wp-block-entry-content > :first-child:not(.alignfull) {
+// main > :first-child:not(.wp-block-post-content):not(.alignfull),
+// :root :where(.is-layout-flow).wp-block-post-content > :first-child:not(.alignfull),
+// :root :where(.is-layout-constrained).wp-block-post-content > :first-child:not(.alignfull) {	
+// 	margin-block-start: var(--wp--preset--spacing--50);
+// }
+
+// /* But don't add it to empty template parts */
+// main > :first-child.wp-block-template-part:empty {
+// 	margin-block-start: 0 !important; 
+// }
+
+/* 
+ * Remove top margin on page/post title when placed into the content side of 
+ * Templates that have a sidebar. 
+ */
+.main-content.wp-block-columns .entry-header.wp-block-group {
+    padding-top: 0 !important;
+//     padding-bottom: 0 !important;
+} 
+
+/* Add bottom margin to main unless its the post content, then add it to that */
+// main > :last-child:not(.wp-block-post-content),
+// main > :last-child:not(.wp-block-post-content):not(:empty),
+// :root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
+// :root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {	
+// 	margin-block-end: var(--wp--preset--spacing--50);
+// }
+
+/* But don't add it to empty template parts */
+// main > :last-child.wp-block-template-part:empty {
+// 	margin-block-end: 0 !important; 	
+// }
+
+/*-----------------------------------------------------------------------------
+# Collapsing Ghost Blocks (Bypassing WordPress Whitespace Outtakes)
+-----------------------------------------------------------------------------*/
+// Target the template part if the comments container has no visible HTML child elements
+.wp-block-template-part:empty {
+	margin-block-start: 0; 
+	margin-block-end: 0; 
+}

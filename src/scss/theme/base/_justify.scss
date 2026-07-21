@@ -1,0 +1,44 @@
+/*--------------------------------------------------------------
+## Custom: Lumina Parent-Aware Text Justification
+--------------------------------------------------------------*/
+/* Works when applied to individual paragraphs OR entire parent Groups/Columns */
+.is-style-text-justify {
+    
+    /* 1. Target text blocks inside the container */
+    &, p, h1, h2, h3, h4, h5, h6, li {
+        text-align: justify !important;
+        text-justify: inter-word;
+        hyphens: auto;
+        letter-spacing: -0.01em;
+    }
+
+    /* 2. 🌟 THE UI RESCUE: Forcefully protect buttons, badges, and 
+       meta descriptions from stretching awkwardly across the grid */
+    .wp-block-buttons,
+    .wp-block-button__link,
+    .wp-element-button,
+    .has-small-font-size:not(p) {
+        text-align: left !important; /* Or center, depending on your button style */
+        hyphens: none !important;
+    }
+}
+
+/*--------------------------------------------------------------
+## Custom Block Style: Lumina Editorial Justification
+--------------------------------------------------------------*/
+/* Can be applied directly to a single Paragraph block, a Column, or a Grid Group */
+// .is-style-text-justify,
+// .wp-block-paragraph.is-style-text-justify {
+//     
+//     text-align: justify !important;
+//     
+//     /* 1. Standardize word distribution */
+//     text-justify: inter-word;
+//     
+//     /* 2. 🌟 THE PRINT SECRET: Natively breaks words with hyphens so 
+//        tight grid tracks scale smoothly without text-stretching "rivers" */
+//     hyphens: auto;
+//     
+//     /* 3. Subtle micro-letter tracking adjustment for high-end editorial rhythm */
+//     letter-spacing: -0.01em;
+// }

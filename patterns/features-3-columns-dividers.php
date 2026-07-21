@@ -6,7 +6,7 @@
  */
 ?>
     <!-- wp:group {"align":"wide","layout":{"type":"flow"}} -->
-    <div class="wp-block-group alignwide is-layout-flow">
+    <div class="wp-block-group alignwide is-layout-flow" id="features-3-columns-dividers">
         <!-- wp:heading {"className":"is-style-separator"} -->
         <h2 class="wp-block-heading is-style-separator">Easy to Use and Infinitely Customizable</h2>
         <!-- /wp:heading -->

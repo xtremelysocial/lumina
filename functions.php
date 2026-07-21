@@ -17,11 +17,12 @@
  
 // Build array of include files relative to theme root
 $includes = array (
-	'/inc/default-image.php',
 	'/inc/add-body-classes.php',
-	'/inc/category-colors.php',
+	'/inc/default-image.php',
+	'/inc/parent-theme.php',
+// 	'/inc/category-colors.php',
 // 	'/inc/ image-move-border.php',
-	'/inc/inline-excerpt.php',
+// 	'/inc/inline-excerpt.php',
 );
 
 // Allow child themes to override the list of PHP files to load
@@ -124,6 +125,54 @@ function lumina_load_styles() {
 add_action( 'enqueue_block_assets', 'lumina_load_styles' );
 
 /**
+ * LUMINA BLOCK CSS: Load individual block styles.
+ */
+
+// if ( ! function_exists( 'lumina_load_block_styles' ) ) :
+// 
+// 	function lumina_load_block_styles() {
+// 
+// 		// Setup block styles path
+// 		$block_path = '/assets/css/blocks/';
+// 
+// 		// Get Block CSS build version from the combined block style asset
+// // 		if ( file_exists ( get_template_directory() . $block_path. 'block-styles.asset.php' ) ) {
+// // 			$asset_file = include( get_template_directory() . $block_path . 'block-styles.asset.php' );
+// // 			$block_css_version = $asset_file['version'] ?? false;
+// // 		} else {
+// 			$block_css_version = wp_get_theme()->get( 'Version' ) ?? false;
+// // 		}
+// 
+// 		// Load the styles for the individual blocks
+// 		$block_styles = glob( get_theme_file_path($block_path) . '*.css' ); 
+// 		foreach ( $block_styles as $block_name ) {
+// 
+// 			// Remove the path and .css extension from the name
+// 			$block_name = str_replace( array(get_theme_file_path($block_path), '.css'), '', $block_name );
+// 
+// 			// Skip the combined block file since loading individual block styles and
+// 			// skip the RTL versions because we will add them as a replacement
+// 			if ( strpos( $block_name, 'block-styles' ) === false
+// 				&& strpos( $block_name, '-rtl' ) === false ) {
+// 
+// 				// Load the block style. WordPress will decide whether to enqueue or 
+// 				// inline the style. Add RTL language support too.
+// 				wp_enqueue_block_style( "core/$block_name", array(
+// 					'handle' => "lumina-block-$block_name",
+// 					'src'    => get_theme_file_uri( $block_path . "$block_name.css" ),
+// 					'path'   => get_theme_file_path( $block_path . "$block_name.css" ),
+// 					'deps'	 => array( 'lumina-theme' ), 
+// 					'ver'	 => $block_css_version
+// 				) );
+// 				wp_style_add_data( "lumina-block-$block_name", 'rtl', 'replace' );
+// 			}			
+// 		}
+// 	}
+// endif;
+// 
+// add_action( 'init', 'lumina_load_block_styles' ); 
+
+/**
  * LUMINA PHYSICS CSS: Load core engine on front-end and backend. Load 
  * animation only on the front-end.
  */
@@ -222,7 +271,6 @@ if ( apply_filters( 'lumina_card_link_js', true ) ) {
 	add_action( 'wp_enqueue_scripts', 'lumina_load_scripts' );
 }
 
-
 /**
  * Register additional block pattern categories
  * 
@@ -263,96 +311,3 @@ if ( ! function_exists( 'lumina_register_pattern_categories' ) ) :
 		}	
 	}
 endif;
-
-/**
- * Lumina Engine Extensions
- */
-
-// add_filter( 'get_block_templates', 'lumina_unload_parent_template_parts', 10, 3 );
-/**
- * Intercepts the block editor template discovery engine and unloads legacy file-based
- * template parts inherited from the parent theme by validating local file existence.
- */
-// function lumina_unload_parent_template_parts( $query_result, $query, $template_type ) {
-// 	// Only apply the filter when WordPress is gathering Template Parts
-// 	if ( 'wp_template_part' !== $template_type ) {
-// 		return $query_result;
-// 	}
-// 
-// 	// Anchor to Lumina's local template parts path
-// 	$child_parts_dir = get_stylesheet_directory() . '/parts/';
-// 
-// 	$filtered_parts = array_filter( $query_result, function( $template_part ) use ( $child_parts_dir ) {
-// 		// Identify if the template part is a raw file-based theme asset
-// 		if ( isset( $template_part->source ) && 'theme' === $template_part->source ) {
-// 			// Construct the exact filename layout WordPress looks for
-// 			$local_file = $child_parts_dir . $template_part->slug . '.html';
-// 
-// 			// If the file does not exist inside Lumina, it's an inherited parent file—drop it!
-// 			if ( ! file_exists( $local_file ) ) {
-// 				return false;
-// 			}
-// 		}
-// 		return true;
-// 	});
-// 
-// 	// Re-index the array values cleanly to protect the REST API collection loop
-// 	return array_values( $filtered_parts );
-// }
-
-// add_filter( 'get_block_templates', 'lumina_unload_parent_template_parts', 10, 3 );
-/**
- * Intercepts the block editor template discovery engine and safely unloads
- * all legacy file-based template parts inherited from the parent theme.
- */
-// function lumina_unload_parent_template_parts( $query_result, $query, $template_type ) {
-// 	// Only apply the filter when WordPress is gathering Template Parts
-// 	if ( 'wp_template_part' !== $template_type ) {
-// 		return $query_result;
-// 	}
-// 
-// 	// Filter out any template parts originating from the 'flat-blocks' folder namespace
-// 	return array_filter( $query_result, function( $template_part ) {
-// 		return 'flat-blocks' !== $template_part->theme;
-// 	});
-// }
-
-/* Remove the parent's theme HTML patterns (no way to remove the PHP ones) */
-add_filter('flatblocks_block_patterns', 'flatblocks_pro_block_patterns' );
-
-function flatblocks_pro_block_patterns( $block_patterns ) {
-
-	$pro_patterns = array();
-	
-	return  $pro_patterns;	
-}
-
-/**
- * Register Featured Image Block Binding for the Core Image Block
- * Built for Lumina Design Engine
- */
-// add_action( 'init', 'record_lumina_featured_image_binding' );
-// function record_lumina_featured_image_binding() {
-// 	register_block_bindings_source( 'lumina/featured-image', array(
-// 		'label'              => __( 'Featured Image (Lumina)', 'lumina' ),
-// 		'get_value_callback' => 'lumina_featured_image_binding_callback',
-// 	) );
-// }
-// 
-// function lumina_featured_image_binding_callback( $source_args, $block_instance, $attribute_name ) {
-// 	// Don't render anything if the post lacks a featured image asset
-// 	if ( ! has_post_thumbnail() ) {
-// 		return null;
-// 	}
-// 	
-// 	$thumb_id = get_post_thumbnail_id();
-// 	
-// 	switch ( $attribute_name ) {
-// 		case 'url':
-// 			return get_the_post_thumbnail_url( null, 'full' );
-// 		case 'alt':
-// 			return get_post_meta( $thumb_id, '_wp_attachment_image_alt', true );
-// 		default:
-// 			return null;
-// 		}
-// }

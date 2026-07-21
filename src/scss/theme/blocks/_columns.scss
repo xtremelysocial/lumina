@@ -1,0 +1,10 @@
+/*-----------------------------------------------------------------------------
+# Column styles
+-----------------------------------------------------------------------------*/
+
+/* Columns thick gap */
+.wp-block-columns.is-style-thick-gap,
+.wp-block-columns.is-style-thick-gap.has-background {
+    gap: calc(1.5 * var(--wp--style--block-gap));
+
+}

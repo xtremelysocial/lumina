@@ -1,0 +1,9 @@
+/*-----------------------------------------------------------------------------
+# Style Jetpack Contact Form buttons to match ours
+-----------------------------------------------------------------------------*/
+.wp-block-jetpack-contact-form :is(.wp-block-button, .wp-block-jetpack-button) .wp-block-button__link {
+//     min-height: var(--jetpack--contact-form--input-height, auto);
+//     padding-bottom: var(--jetpack--contact-form--input-padding-top);
+//     padding-top:var(--jetpack--contact-form--input-padding-top)
+	padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40); 
+}

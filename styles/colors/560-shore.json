@@ -5,6 +5,10 @@
 	"settings": {
 		"custom": {
 			"color": {
+				"theme": {
+					"mode": "is-light-theme",
+					"scheme": "shore"
+				},
 				"heading": {
 					"text": "hsl(206, 28%, 8%)",
 					"separator": "var(--wp--preset--color--primary)"

@@ -5,6 +5,10 @@
 	"settings": {
 		"custom": {
 			"color": {
+				"theme": {
+					"mode": "is-light-theme",
+					"scheme": "ember"
+				},
 				"button": {
 					"background": "var(--wp--preset--color--primary)",
 					"hover": "var(--wp--preset--color--primary-alt)",

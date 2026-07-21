@@ -3,7 +3,7 @@
   \******************************************************************************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    LUMINA INTERACTIONS: Handles all :hover and active state physics
-   v0.9.9 Build 29 Colors & Templates
+   v0.9.9 Build 30 MVP
    ========================================================================== */
 /* ==========================================================================
    02 THEME CSS: Reduce motion, adjust menus and icons, etc. 
@@ -25,7 +25,7 @@
 [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover,
 [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):has(:focus-visible) {
   transform: var(--wp--custom--animation--default--object-small-transform, translateY(-3px));
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
 /* ==========================================================================
@@ -33,18 +33,18 @@
    ========================================================================== */
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover img,
 .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible) img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
 .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *),
 .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
 .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):hover img,
@@ -54,29 +54,29 @@
 
 .wp-block-post-featured-image:not(.alignfull):has(a):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
 .wp-block-post-featured-image:not(.alignfull):has(a):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
 .wp-block-post-featured-image:not(.alignfull):has(a):hover img,
 .wp-block-post-featured-image:not(.alignfull):has(a):has(:focus-visible) img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img,
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a):hover img,
 .wp-block-latest-posts__featured-image:not(.alignfull):has(a):has(:focus-visible) img {
   transform: var(--wp--custom--animation--default--object-transform, translateY(-4px));
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
 .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *),
 .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):has(:focus-visible):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
-  box-shadow: var(--wp--custom--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 0 6px 12px rgba(0, 0, 0, 0.13)));
 }
 
 .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover img,
@@ -90,56 +90,56 @@
 [class*=wp-block-] .wp-element-button:hover,
 [class*=wp-block-] .wp-element-button:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
 [class*=wp-block-] a > .avatar:hover,
 [class*=wp-block-] a > .avatar:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
 .wp-block-social-links .wp-block-social-link:hover,
 .wp-block-social-links .wp-block-social-link:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
 .wp-block-tag-cloud:is(.is-style-outline) a:hover,
 .wp-block-tag-cloud:is(.is-style-outline) a:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
 [class*=wp-block-] input[type=submit]:not(.wp-element-button):hover,
 [class*=wp-block-] input[type=submit]:not(.wp-element-button):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
 [class*=wp-block-] input[type=button]:not(.wp-element-button):hover,
 [class*=wp-block-] input[type=button]:not(.wp-element-button):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
 [class*=wp-block-] input[type=reset]:not(.wp-element-button):hover,
 [class*=wp-block-] input[type=reset]:not(.wp-element-button):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
 [class*=wp-block-] input[type=file]::file-selector-button:hover,
 [class*=wp-block-] input[type=file]::file-selector-button:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 0 8px 16px rgba(0, 0, 0, 0.15)));
   opacity: 1;
 }
 
