@@ -11,7 +11,7 @@
 // @use 'sass:list';
 // @use 'sass:map';
 
-// @use '00-config' as config;
+@use '00-config' as config;
 
 // ==========================================================================
 // 01.01 BUILD SELECTOR LIST: Build a compiled comma-separated CSS selector 
@@ -146,14 +146,24 @@
 // 01.03 CONTRAST (TEXT) COLOR: Set light or dark text color
 // ==========================================================================
 @mixin apply-contrast-color(
-	$color, 		// color slug (e.g. primary-alt)
-	$text-style		// light-text, dark-text, no-fallback
+	$color, 			// color slug (e.g. primary-alt)
+	$text-style,		// light-text, dark-text, no-fallback
+	$buttons: false, 	// true also adds color to buttons. Not needed for Lumina
 ) {
-	
-	// Pure variable hook: If undefined in theme.json, the browser 
-	// treats it as unset/inherit, leaving your global layout pure!
-	.has-#{$color}-background-color { //,
-// 	.has-#{$color}-background-color :where(.wp-element-button, .wp-block-button__link)  {
+
+	// Build .has-$color-background-color	
+	$selectors: build-selector-list($color);
+
+	// If buttons, also add button selector	
+	@if $buttons or config.$explicit-button-text-color  {
+		$selectors: '#{$selectors}, a:where(.wp-element-button, .wp-block-button__link)#{$selectors}'; 
+	}
+
+	// Apply the selectors
+	#{$selectors} {
+
+		// Pure variable hook: If undefined in theme.json, the browser 
+		// treats it as unset/inherit, leaving your global layout pure!
 		@if $text-style == 'no-fallback' {
 			color: var(--wp--custom--color--contrast--#{$color}); // !important;
 
@@ -164,6 +174,12 @@
 			// But override to dark text if on light background
 			@if $text-style == 'dark' {
 				$fallback: var(--wp--preset--color--almost-black);
+			
+			// And swap base and contrast colors
+			} @else if $text-style == 'base' {
+				$fallback: var(--wp--preset--color--contrast);			
+			} @else if $text-style == 'contrast' {
+				$fallback: var(--wp--preset--color--base);			
 			}
 
 			color: var(--wp--custom--color--contrast--#{$color}, #{$fallback}); // !important;

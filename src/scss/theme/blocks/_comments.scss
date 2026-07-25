@@ -1,0 +1,10 @@
+/*-----------------------------------------------------------------------------
+# Comments styles
+-----------------------------------------------------------------------------*/
+
+/* Match details summary title to our sidebar */
+#comments-details summary {
+	color: inherit;
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: var(--wp--custom--typography--font-weight--normal); 
+}

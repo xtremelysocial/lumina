@@ -1,5 +1,5 @@
 //* ==========================================================================
-//   00 LUMINA CONFIGURATION: Colors Engine (Text, heading, link colors)
+//   00 COLOR CONFIGURATION: Colors Engine (Text, heading, link colors)
 //	 	v0.9.9 Build 30 MVP
 //   ========================================================================== */
 
@@ -33,6 +33,7 @@
 $color-defaults: (
     color:           null, 	// color slug (e.g. white, black, etc.)
     text:            null,	// dark, light, dark-light, light-dark, no-fallback
+    buttons:		 null,	// true or false for explicit button text colors
 //     heading:		 null,
     heading-dark:    null, 	// true or false
     link:            null,	// dark, light, inherit, highlight, highlight-alt
@@ -88,32 +89,32 @@ $color-registry: (
 			link-dark: 'highlight-alt' ),
 
     // --- WHITE & GRAY NAMED COLORS ---
-    ( color: 'white',      text: 'dark',
+    ( color: 'white',      			text: 'dark',
     		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'off-white',      text: 'dark',
+    ( color: 'off-white',      		text: 'dark',
     		footer: 'hover-highlight-alt' 
     ),
-//     ( color: 'white',      text: 'dark', heading: 'inherit',
+//     ( color: 'white',      		text: 'dark', heading: 'inherit',
 //     		footer: 'hover-highlight-alt' 
 //     ),
-//     ( color: 'off-white',      text: 'dark',  heading: 'inherit',
+//     ( color: 'off-white',      	text: 'dark',  heading: 'inherit',
 //     		footer: 'hover-highlight-alt' 
 //     ),
 
-    ( color: 'very-light-gray',      text: 'dark-light', 
+    ( color: 'very-light-gray',     text: 'dark-light', 
     		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'light-gray',           text: 'dark-light', 
+    ( color: 'light-gray',          text: 'dark-light', 
     		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'gray',                 text: 'dark-light', 
+    ( color: 'gray',                text: 'dark-light', 
     		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'dark-gray',            text: 'light-dark', 
+    ( color: 'dark-gray',           text: 'light-dark', 
     		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'very-dark-gray',       link-dark: 'highlight-alt', 
+    ( color: 'very-dark-gray',      link-dark: 'highlight-alt', 
     		footer: 'hover-highlight-alt' 
     ),
     
@@ -142,22 +143,24 @@ $color-registry: (
     ( color: 'very-light-red',       text: 'dark' ),
 
     // --- GREEN NAMED COLORS ---
-    ( color: 'light-green',          text: 'dark', link: 'inherit' ), // OVERRIDE PARENT    
+    ( color: 'light-green',          text: 'dark', buttons: true, 	link: 'inherit' ), // OVERRIDE PARENT    
     ( color: 'dark-green',           text: 'light', link: 'inherit' ), // LUMINA ONLY
 
     // --- YELLOW & ORANGE NAMED COLORS ---
-    ( color: 'light-yellow',         text: 'dark', link: 'inherit' ), // OVERRIDE PARENT
-    ( color: 'yellow',               text: 'light', link: 'light' ), // OVERRIDE PARENT
-    ( color: 'dark-yellow',          text: 'light', link: 'light' ), // LUMINA ONLY
-    ( color: 'light-orange',      	 text: 'dark',  link: 'inherit' ), // OVERRIDE PARENT
+    ( color: 'light-yellow',         text: 'dark', 	buttons: true, 	link: 'inherit' ), // OVERRIDE PARENT
+    ( color: 'yellow',               text: 'light', buttons: true, 	link: 'light' ), // OVERRIDE PARENT
+    ( color: 'dark-yellow',          text: 'light', 				link: 'light' ), // LUMINA ONLY
+    ( color: 'light-orange',      	 text: 'dark', 	buttons: true,  link: 'inherit' ), // OVERRIDE PARENT
     
 	// --- BLUE NAMED COLORS ---
-    ( color: 'light-blue',        	 text: 'dark',  link: 'inherit' ), // OVERRIDE PARENT
+    ( color: 'light-blue',        	 text: 'dark', buttons: true,  	link: 'inherit' ), // OVERRIDE PARENT
 
 	// --- PURPLE NAMED COLORS ---
-    ( color: 'light-purple',      	 text: 'dark',  link: 'inherit' ), // OVERRIDE PARENT
+    ( color: 'light-purple',      	 text: 'dark', buttons: true,  	link: 'inherit' ), // OVERRIDE PARENT
 
     // --- RED NAMED COLORS ---
-    ( color: 'light-red',         	 text: 'dark',  link: 'inherit' ), // OVERRIDE PARENT
-    
+    ( color: 'light-red',         	 text: 'dark', buttons: true,  	link: 'inherit' ), // OVERRIDE PARENT  
 );
+
+// When setting text colors also set button text colors explicitly
+$explicit-button-text-color: false; 

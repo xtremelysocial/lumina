@@ -28,67 +28,75 @@ if ( ! function_exists( 'get_featured_image_fallback_data' ) ) {
 		// ---------------------------------------------------------
 		// CONFIGURATION VARIABLES
 		// ---------------------------------------------------------
-		$path         = 'assets/images/';               // Target folder (relative to theme root)
-		$keyword      = 'cover-';                       // Match filenames starting with this string
-		$true_default = 'assets/images/cover-bokeh.jpg'; // The absolute fallback relative path
+// 		$path         = 'assets/images/abstract/';  // Added trailing slash
+// 		$keyword      = 'abstract-';                // Match filenames
+ 		$path         = 'assets/images/';           // Added trailing slash
+		$keyword      = ''; //'ocean-';					// Match filenames
+		$true_default = 'assets/images/abstract/abstract-01.svg';
 		
 		$images = [];
 
 		// Build safe physical system paths for both parent and child theme directories
 		$scan_directories = array_unique([
-			get_template_directory() . '/' . $path,  // Parent Theme Directory
+// 			get_template_directory() . '/' . $path,  // Parent Theme Directory
 			get_stylesheet_directory() . '/' . $path  // Child Theme Directory
 		]);
 
 		// Scan both folders for matching assets
 		foreach ( $scan_directories as $dir ) {
 			if ( is_dir( $dir ) ) {
-				// Glob files matching the directory structure + keyword prefix
-				$matched_files = glob( $dir . $keyword . '*' );
+				// Normalize directory path with trailing slash before appending keyword
+				$search_pattern = trailingslashit( $dir ) . $keyword . '*';
+				$matched_files  = glob( $search_pattern );
+
 				if ( ! empty( $matched_files ) && is_array( $matched_files ) ) {
 					foreach ( $matched_files as $file ) {
-						// Extract just the filename (e.g., 'cover-bokeh.jpg')
+						// Extract just the filename (e.g., 'abstract-01.svg')
 						$images[] = basename( $file );
 					}
 				}
 			}
 		}
 
-		// Deduplicate the list in case the same file name exists in both parent and child folders
+		// Deduplicate the list in case the same file exists in both parent and child folders
 		$images = array_unique( $images );
-
-// 		$images = [
-// 			'cover-bokeh.jpg', 
-// 			'cover-book.jpg', 
-// 			'cover-building.jpg', 
-// 			'cover-camera.jpg', 
-// 			'cover-city-night.jpg', 
-// 			'cover-colored-blocks.jpg', 
-// 			'cover-colored-chalk.jpg', 
-// 			'cover-desk-light.jpg', 
-// 			'cover-desk-dark.jpg', 
-// 			'cover-desk-meeting.jpg'
-// 		];
 
 		// ---------------------------------------------------------
 		// RESOLVE TARGET FILE PATH
 		// ---------------------------------------------------------
 		if ( ! empty( $images ) ) {
-			// Reset the array index keys cleanly so the modulo lookup doesn't break
+			// Reset array keys cleanly so modulo lookup is 100% reliable
 			$images     = array_values( $images );
-			$last_digit = $pid % count( $images );
-			$chosen_pic = $images[ $last_digit ];
 			
+// 			$last_digit = $pid % count( $images );
+
+			// Hash the PID to scramble sequential/clustered post IDs
+   			// abs() prevents negative integer returns on 32-bit systems
+			$hash_seed  = 'lumina_' . $pid;
+			$hashed_val = abs( crc32( $hash_seed ) );
+			
+			$last_digit = $hashed_val % count( $images );
+			$chosen_pic = $images[ $last_digit ];
+    
+			// Temporary debug check
+// 			echo '<pre style="background: #222; color: #00ff00; padding: 15px; z-index: 99999; position: relative;">';
+// 			echo "POST TITLE: " . get_the_title( $pid ) . "\n";
+// 			echo "POST ID: " . var_export( $pid, true ) . "\n";
+// 			echo "CHOSEN IMAGE: " . var_export( $chosen_pic, true ) . "\n";
+// 			echo "AVAILABLE IMAGES COUNT: " . count( $images ) . "\n";
+			// Uncomment the line below if you want to see the entire array of image filenames
+			// print_r( $images ); 
+// 			echo '</pre>';
+			
+			// Combines to 'assets/images/abstract/abstract-XX.svg'
 			$target_relative_path = $path . $chosen_pic;
 		} else {
-			// Having a bulletproof hardcoded default here is not odd at all—it's smart defensive coding!
 			$target_relative_path = $true_default;
 		}
 
 		// ---------------------------------------------------------
 		// GENERATE FINAL WRAPPER DATA
 		// ---------------------------------------------------------
-		// Checks the child theme first, gracefully falling back to parent directory
 		$default_url = get_theme_file_uri( $target_relative_path );
 		$default_url = apply_filters( 'flatblocks_default_image_url', $default_url, $pid );
 
@@ -161,7 +169,7 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_cover_block_fallback' ) ) {
 if ( ! function_exists( __NAMESPACE__ . '\filter_legacy_post_thumbnail_html' ) ) {
 	function filter_legacy_post_thumbnail_html( $html, $pid, $post_thumbnail_id, $size, $attr ) {
 
-		if ( ! $html && $pid ) {
+// 		if ( ! $html && $pid ) {
 			$fallback    = get_featured_image_fallback_data( $pid );
 			$image_class = $size ? "attachment-{$size} size-{$size} wp-post-image" : 'wp-post-image';
 			$image_style = ( is_array( $attr ) && ! empty( $attr['style'] ) ) ? $attr['style'] : '';
@@ -179,7 +187,7 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_legacy_post_thumbnail_html' ) )
 				esc_attr( $image_style ),
 				$image_dimensions
 			);
-		}
+// 		}
 
 		return $html;
 	}

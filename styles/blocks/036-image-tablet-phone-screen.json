@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "image-tablet-phone-screen",
+	"title": "Tablet/Phone Screen",
+	"blockTypes": [ "core/image" ],
+	"styles": {
+		 "border": {
+			"color": "var:preset|color|almost-black",
+			"style": "solid",
+			"width": "var:preset|spacing|30",
+			"radius": "var:preset|radius|md"
+		}
+	}
+}

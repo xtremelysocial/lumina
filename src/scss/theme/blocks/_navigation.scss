@@ -47,6 +47,15 @@
 	}
 }
 
+/* Set mobile menu to use base and contrast instead of WordPress' hard-coded colors */
+.wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open {
+    background-color: var(--wp--preset--color--base);
+}
+
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open {
+    color: var(--wp--preset--color--contrast);
+}
+
 /* On menu's with background color, remove the extra padding and rely on gap */
 // .wp-block-navigation.has-background .wp-block-navigation-item.has-child .wp-block-navigation-item__content {
 // 	padding-right: 0;
@@ -110,6 +119,12 @@
 }
 
 /* Mobile menu dividers */
+
+/* Remove padding on drop-down menus when expanded on the mobile nav */
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
+    padding: 0;
+}
+
 .wp-block-navigation.is-vertical.is-style-nav-dividers,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open {
 

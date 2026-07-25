@@ -25,6 +25,7 @@
 @use "theme/base/images";
 @use "theme/base/justify";
 @use "theme/base/sidebars";
+// @use "theme/base/link-icons";
 @use "theme/base/list-dividers";
 @use "theme/base/margins-padding";
 @use "theme/base/other-themes";
@@ -36,12 +37,14 @@
 // --------------------------------------------------------------*/
 @use "theme/blocks/buttons";
 @use "theme/blocks/columns";
+@use "theme/blocks/comments";
 @use "theme/blocks/details";
 @use "theme/blocks/gallery";
 @use "theme/blocks/group";
 @use "theme/blocks/gutter-dividers";
 @use "theme/blocks/heading";
 @use "theme/blocks/latest-posts";
+@use "theme/blocks/media-text";
 @use "theme/blocks/navigation";
 @use "theme/blocks/post-featured-image";
 @use "theme/blocks/separator";
@@ -57,12 +60,16 @@
 // --------------------------------------------------------------*/
 
 // LOAD COLORS LOGIC
+// @use "colors/02b-gradients" as gradients;
 @use "colors/02-global" as colors;
 @use "colors/03-light-mode" as light-mode;
 @use "colors/04-dark-mode" as dark-mode;
 
 // LOAD GLOBAL COLORS CSS
 @include colors.apply-colors-global;
+
+// LOAD GLOBAL GRADIENT COLORS CSS
+// @include gradients.apply-colors-gradients;
 
 // LOAD LIGHT-MODE COLORS CSS
 @include light-mode.apply-colors-light-mode;

@@ -1,0 +1,13 @@
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/scss/editor-styles-ui.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/* Hide specific font weights in Gutenberg's custom Appearance popover */
+.components-popover .components-custom-select-control__item[aria-label*=Thin],
+.components-popover .components-custom-select-control__item[aria-label*="Extra Light"],
+.components-popover .components-custom-select-control__item[aria-label*="Semi Bold"],
+.components-popover .components-custom-select-control__item[aria-label*="Extra Bold"],
+.components-popover .components-custom-select-control__item[aria-label*=Black] {
+  display: none !important;
+}
+
+/*# sourceMappingURL=editor-styles-ui.css.map*/

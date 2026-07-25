@@ -22,14 +22,14 @@
 @mixin apply-colors-global {
 
 	/* ==========================================================================
-	   01 COLORS: Apply text, heading, and link colors for always-dark and
-	   	  always-light background colors.
+	   02 GLOBAL COLORS: Set colors regardless of light or dark mode
 	========================================================================== */
 
 	@each $entry in logic.$color-registry {
 		$config: 	map.merge(logic.$color-defaults, $entry);
 		$color:  	map.get($config, color);
 		$text:   	map.get($config, text);
+		$buttons:   map.get($config, buttons);
 		$link:   	map.get($config, link);
 	
 		$selectors: logic.build-selector-list($color);
@@ -37,11 +37,11 @@
 		// Always-light backgrounds, text gets hook for theme.json contrast overrides, 
 		// but no fallback because the fallback should simply be the body text color
 		@if $text == 'no-fallback' {
-			@include logic.apply-contrast-color($color, 'no-fallback');
+			@include logic.apply-contrast-color($color, 'no-fallback', $buttons);
 		
 		// Always-dark backgrounds, apply light text, headings and links
 		} @else if $text == 'light' {
-			@include logic.apply-contrast-color($color, 'light');
+			@include logic.apply-contrast-color($color, 'light', $buttons);
 			
 	//         $selectors: logic.build-selector-list($color);
 			@include logic.apply-heading-action($selectors, 'light');  
@@ -50,7 +50,7 @@
 	
 		// Always-light backgrounds, apply dark text, headings and links
 		} @else if $text == 'dark' {
-			@include logic.apply-contrast-color($color, 'dark');
+			@include logic.apply-contrast-color($color, 'dark', $buttons);
 			
 	//         $selectors: logic.build-selector-list($color);
 			@include logic.apply-heading-action($selectors, 'dark');  

@@ -1,0 +1,54 @@
+//* ==========================================================================
+//   02b GRADIENT COLORS: Set colors on gradient backgrounds
+//	    v0.9.9 Build 30 MVP
+//   ========================================================================== */
+
+// @use 'sass:list';
+@use 'sass:map';
+
+// @use '00-config' as config;
+// @use '01-logic' as logic;
+@use "index" as logic;
+
+//*-----------------------------------------------------------------------------
+// # GLOBAL 3-PASS COLORS ENGINE
+//*-----------------------------------------------------------------------------
+
+//*-----------------------------------------------------------------------------
+// # PASS 1: GRADIENT COLORS
+// # Text, heading, and link defaults on gradient backgrounds
+//*-----------------------------------------------------------------------------
+
+@mixin apply-colors-gradients {
+
+	/* ==========================================================================
+	   02b GRADIENT COLORS: Set colors on gradient backgrounds
+	========================================================================== */
+
+	$gradient-preserve-colors: ('gray-gradient', 'yellow-gradient');
+	
+	:root :where([class*="-gradient-background"]:not(#{logic.build-selector-list($gradient-preserve-colors, ".has-", "")})) {
+		color: var(--wp--preset--color--foreground-alt);
+	}
+	
+	// Pass clean color track tokens directly to the list generator
+	$gradient-tracks: (
+		'primary':   ('primary-gradient', 'primary-to-secondary-gradient', 'secondary-to-primary-gradient', 'primary-to-tertiary-gradient', 'tertiary-to-primary-gradient'),
+		'secondary': ('secondary-gradient', 'secondary-to-tertiary-gradient', 'tertiary-to-secondary-gradient'),
+		'tertiary':  ('tertiary-gradient')
+	);
+	
+	@each $track, $slugs in $gradient-tracks {
+		:root :where(#{logic.build-selector-list($slugs, ".has-", "")}) {
+			color: var(--wp--custom--color--contrast--#{$track}, var(--wp--preset--color--foreground-alt));
+		}
+	}
+	
+	:root :where([class*="-gradient-background"]) :where(a:not(.wp-element-button)) {
+		color: inherit;
+	
+	// 	&:hover, &:active {
+	// 		opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
+	// 	}		
+	}
+}

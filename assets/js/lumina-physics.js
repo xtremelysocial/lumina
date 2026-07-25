@@ -94,7 +94,7 @@
 		 * entire card.
 		 */
 	
-		// 1. INITIALIZATION: Set the cursor for everything that qualifies
+		// 1. INITIALIZATION: Target selector for interactive cards
 		const $interactiveCards = $('[class*="wp-block-"]:is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):not(.alignfull)');
 
 		// 2. GET TARGET: Returns the target link/button if the card is "valid"
@@ -112,54 +112,114 @@
 			return null;
 		}
 
-		// 3. CURSOR: Set only if the helper finds a valid target
+		// 3. CURSOR & BADGE INJECTION: Tag card & mount overlay directly on outer card
 		$interactiveCards.each(function() {
-			if (getValidTarget($(this)) !== null) {
-				$(this).css('cursor', 'pointer');
+			var $card = $(this);
+			var $target = getValidTarget($card);
+
+			if ($target !== null) {
+				// Mark as an interactive card to scope CSS hover
+				$card.addClass('is-interactive-card');
+				$card.css('cursor', 'pointer');
+
+				// Append arrow overlay badge to the outer card if not present
+				if ($card.find('> .lumina-card-arrow-overlay').length === 0) {
+					var href = $target.attr('href') || '';
+					var isAnchor = href.indexOf('#') === 0 || (href.indexOf('#') > -1 && href.split('#')[0] === window.location.href.split('#')[0]);
+
+					// \u2192\uFE0E = →︎ (Neutral Right Arrow for Anchor Jump) | \u2197\uFE0E = ↗︎ (Up-Right for Links)
+					var arrowSymbol = isAnchor ? '\u2192\uFE0E' : '\u2197\uFE0E';
+					var $overlay = $('<span class="lumina-card-arrow-overlay" aria-hidden="true">' + arrowSymbol + '</span>');
+
+					// Ensure position context on the outer card
+					if ($card.css('position') === 'static') {
+						$card.css('position', 'relative');
+					}
+
+					$card.append($overlay);
+				}
+			}
+		});
+
+		// 4. MOBILE TOUCH HANDLER: Tap 1 activates card & shows arrow; Tap 2 follows link
+		$(document).on('touchstart', '.is-interactive-card', function(e) {
+			var $card = $(this);
+			var $target = getValidTarget($card);
+			if (!$target) return;
+
+			if (!$card.hasClass('is-active')) {
+				// Deactivate any other open cards on the page
+				$('.is-interactive-card').not($card).removeClass('is-active');
+				
+				// Activate this card (reveals arrow overlay via CSS)
+				$card.addClass('is-active');
+				$card.data('just-activated', true);
+			} else {
+				$card.data('just-activated', false);
+			}
+		});
+
+		// Cancel tap-state if the user was actually swiping to scroll
+		$(document).on('touchmove', function() {
+			$('.is-interactive-card').data('just-activated', false);
+		});
+
+		// Reset active cards when user taps anywhere outside
+		$(document).on('touchstart click', function(e) {
+			if (!$(e.target).closest('.is-interactive-card').length) {
+				$('.is-interactive-card').removeClass('is-active');
 			}
 		});
 	
-		// 4. ACTION: Clean click/navigation listener
-		$interactiveCards.on('click', function(e) {
-			
-			// If the user clicked a real interactive element inside, let it go natively
-			if ($(e.target).closest('button, a, .wp-element-button, input, select').length) {
-				return;
-			}
-	
-			var $target = getValidTarget($(this));
-	
-			if ($target !== null) {
-				
-				// Kill the parent card highlight state immediately
+		// 5. ACTION: Clean click/navigation listener
+		$(document).on('click', '.is-interactive-card', function(e) {
+			var $card = $(this);
+			var $target = getValidTarget($card);
+
+			if ($target === null) return;
+
+			// Intercept first touch-tap click on mobile
+			if ($card.data('just-activated')) {
 				e.preventDefault();
 				e.stopPropagation();
-	
-				if ($target.is('a')) {
-					var href = $target.attr('href');
-					var targetAttr = $target.attr('target');
+				$card.data('just-activated', false);
+				return;
+			}
 
-					if (href) {
-						var isAnchor = href.indexOf('#') === 0 || (href.indexOf('#') > -1 && href.split('#')[0] === window.location.href.split('#')[0]);
+			// SAFETY VALVE: If click originated on inner button/link (or from trigger),
+			// let native link / smoothscroll handle it naturally without looping!
+			if ($(e.target).closest('button, a, .wp-element-button, input, select').length) {
+				$card.removeClass('is-active');
+				return;
+			}
 
-						if (isAnchor) {
-							// Pass control over to smoothscroll.js exactly like a native link click
-							$target.trigger('click');
+			e.preventDefault();
+			e.stopPropagation();
+			$card.removeClass('is-active');
 
-							// SAFETY VALVE: If the user moves their wheel or touches the screen mid-scroll,
-							// instantly kill the running animation so it never fights their manual input.
-							$('html, body').one('wheel mousewheel touchmove DOMMouseScroll mousedown', function() {
-								$('html, body').stop();
-							});
-						} else if (targetAttr === '_blank') {
-							window.open(href, '_blank');
-						} else {
-							window.location.href = href;
-						}
+			if ($target.is('a')) {
+				var href = $target.attr('href');
+				var targetAttr = $target.attr('target');
+
+				if (href) {
+					var isAnchor = href.indexOf('#') === 0 || (href.indexOf('#') > -1 && href.split('#')[0] === window.location.href.split('#')[0]);
+
+					if (isAnchor) {
+						// Pass control over to smoothscroll.js
+						$target.trigger('click');
+
+						// Allow user scroll to interrupt smooth animation
+						$('html, body').one('wheel mousewheel touchmove DOMMouseScroll mousedown', function() {
+							$('html, body').stop();
+						});
+					} else if (targetAttr === '_blank') {
+						window.open(href, '_blank');
+					} else {
+						window.location.href = href;
 					}
-				} else {
-					$target[0].click();
 				}
+			} else {
+				$target[0].click();
 			}
 		});
 	});

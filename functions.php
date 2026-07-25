@@ -20,6 +20,7 @@ $includes = array (
 	'/inc/add-body-classes.php',
 	'/inc/default-image.php',
 	'/inc/parent-theme.php',
+	'/inc/remove-core-patterns.php',
 // 	'/inc/category-colors.php',
 // 	'/inc/ image-move-border.php',
 // 	'/inc/inline-excerpt.php',
@@ -60,9 +61,9 @@ if ( ! function_exists( 'lumina_theme_support' ) ) :
 		// Enqueue the styles needed for the editor. Do this here to 
 		// avoid interfering with the Editor UI. 
 // 		$editor_styles = array(
-// 			'/assets/css/lumina-theme.css',
-// 			'/assets/css/lumina-engine.css',
-// // 			'/assets/css/editor-styles.css',
+// 			'/assets/css/editor-styles.css',
+// // 			'/assets/css/lumina-theme.css',
+// // 			'/assets/css/lumina-engine.css',
 // 		);
 // 
 // 		// Load the editor styles
@@ -123,6 +124,19 @@ function lumina_load_styles() {
 
 // add_action( 'wp_enqueue_scripts', 'lumina_load_styles' );
 add_action( 'enqueue_block_assets', 'lumina_load_styles' );
+
+/**
+ * LUMINA EDITOR UI CSS: Load editor UI style overrides
+ */
+add_action('enqueue_block_editor_assets', function() {
+    wp_enqueue_style(
+        'editor-styles-ui',
+//         get_template_directory_uri() . '/assets/css/editor-styles-ui.css',
+        get_stylesheet_directory_uri() . '/assets/css/editor-styles-ui.css',
+        array(),
+        '1.0.0'
+    );
+});
 
 /**
  * LUMINA BLOCK CSS: Load individual block styles.

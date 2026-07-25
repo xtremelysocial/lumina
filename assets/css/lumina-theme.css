@@ -335,6 +335,16 @@ a > .avatar {
   gap: calc(1.5 * var(--wp--style--block-gap));
 }
 
+/*-----------------------------------------------------------------------------
+# Comments styles
+-----------------------------------------------------------------------------*/
+/* Match details summary title to our sidebar */
+#comments-details summary {
+  color: inherit;
+  font-size: var(--wp--preset--font-size--medium);
+  font-weight: var(--wp--custom--typography--font-weight--normal);
+}
+
 /*--------------------------------------------------------------
 ## Bring details closer to the summary so they look connected
 --------------------------------------------------------------*/
@@ -611,6 +621,9 @@ a > .avatar {
   left: auto;
   right: 0;
 }
+.is-style-separator {
+  margin-bottom: calc(var(--wp--style--block-gap, 1.5rem) + var(--wp--preset--spacing--30) + 3px) !important;
+}
 .is-style-separator + * {
   margin-top: calc(var(--wp--style--block-gap, 1.5rem) + var(--wp--preset--spacing--30) + 3px) !important;
 }
@@ -751,6 +764,43 @@ a > .avatar {
     padding-right: 1.25em;
   }
 }
+/*-----------------------------------------------------------------------------
+# Lumina Theme: Media & Text Custom Style (.is-style-image-border)
+-----------------------------------------------------------------------------*/
+.wp-block-media-text.is-style-image-border .wp-block-media-text__media {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+}
+.wp-block-media-text.is-style-image-border .wp-block-media-text__media > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.wp-block-media-text.is-style-image-border .wp-block-media-text__media img {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: auto;
+  border: var(--wp--custom--border--style, solid) var(--wp--custom--border--width, 1px) var(--wp--custom--color--border, currentColor);
+  border-radius: var(--wp--custom--border--radius, 0px);
+  padding: var(--wp--preset--spacing--20);
+}
+.wp-block-media-text.is-style-image-border.is-image-fill-element .wp-block-media-text__media, .wp-block-media-text.is-style-image-border.is-image-fill .wp-block-media-text__media {
+  height: 100%;
+  min-height: 250px;
+}
+.wp-block-media-text.is-style-image-border.is-image-fill-element .wp-block-media-text__media img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 /*--------------------------------------------------------------
 # Navigation Block Styles
 --------------------------------------------------------------*/
@@ -788,6 +838,15 @@ a > .avatar {
 .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child, .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child > a {
   border-bottom-left-radius: var(--wp--custom--border--radius, 8px);
   border-bottom-right-radius: var(--wp--custom--border--radius, 8px);
+}
+
+/* Set mobile menu to use base and contrast instead of WordPress' hard-coded colors */
+.wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open {
+  background-color: var(--wp--preset--color--base);
+}
+
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open {
+  color: var(--wp--preset--color--contrast);
 }
 
 /* On menu's with background color, remove the extra padding and rely on gap */
@@ -829,6 +888,11 @@ a > .avatar {
 }
 
 /* Mobile menu dividers */
+/* Remove padding on drop-down menus when expanded on the mobile nav */
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
+  padding: 0;
+}
+
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container, .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__submenu-container, .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-page-list,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container,
@@ -1341,8 +1405,7 @@ a > .avatar {
 }
 
 /* ==========================================================================
-   01 COLORS: Apply text, heading, and link colors for always-dark and
-   	  always-light background colors.
+   02 GLOBAL COLORS: Set colors regardless of light or dark mode
 ========================================================================== */
 .has-primary-dark-background-color {
   color: var(--wp--custom--color--contrast--primary-dark, var(--wp--preset--color--foreground-alt));
@@ -1392,7 +1455,7 @@ a > .avatar {
   color: var(--wp--custom--color--contrast--very-light-red, var(--wp--preset--color--almost-black));
 }
 
-.has-light-green-background-color {
+.has-light-green-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-green-background-color {
   color: var(--wp--custom--color--contrast--light-green, var(--wp--preset--color--almost-black));
 }
 
@@ -1400,11 +1463,11 @@ a > .avatar {
   color: var(--wp--custom--color--contrast--dark-green, var(--wp--preset--color--foreground-alt));
 }
 
-.has-light-yellow-background-color {
+.has-light-yellow-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-yellow-background-color {
   color: var(--wp--custom--color--contrast--light-yellow, var(--wp--preset--color--almost-black));
 }
 
-.has-yellow-background-color {
+.has-yellow-background-color, a:where(.wp-element-button, .wp-block-button__link).has-yellow-background-color {
   color: var(--wp--custom--color--contrast--yellow, var(--wp--preset--color--foreground-alt));
 }
 
@@ -1412,19 +1475,19 @@ a > .avatar {
   color: var(--wp--custom--color--contrast--dark-yellow, var(--wp--preset--color--foreground-alt));
 }
 
-.has-light-orange-background-color {
+.has-light-orange-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-orange-background-color {
   color: var(--wp--custom--color--contrast--light-orange, var(--wp--preset--color--almost-black));
 }
 
-.has-light-blue-background-color {
+.has-light-blue-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-blue-background-color {
   color: var(--wp--custom--color--contrast--light-blue, var(--wp--preset--color--almost-black));
 }
 
-.has-light-purple-background-color {
+.has-light-purple-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-purple-background-color {
   color: var(--wp--custom--color--contrast--light-purple, var(--wp--preset--color--almost-black));
 }
 
-.has-light-red-background-color {
+.has-light-red-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-red-background-color {
   color: var(--wp--custom--color--contrast--light-red, var(--wp--preset--color--almost-black));
 }
 

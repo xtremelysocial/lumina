@@ -32,6 +32,7 @@
 			$config:       		map.merge(logic.$color-defaults, $entry);
 			$color:        		map.get($config, color);
 			$text:   			map.get($config, text);    
+			$buttons:   		map.get($config, buttons);
 			$link-dark:    		map.get($config, link-dark);
 			$heading-dark: 		map.get($config, heading-dark);
 			$footer-dark: 		map.get($config, footer-dark);
@@ -41,7 +42,7 @@
 			// Dark-light colors need light text in dark mode. Headings are already
 			// light. 
 			@if $text == 'dark-light' {
-				@include logic.apply-contrast-color($color, 'light');
+				@include logic.apply-contrast-color($color, 'light', $buttons);
 				
 	//             @include logic.apply-heading-action($selectors, 'light');
 	
@@ -49,7 +50,7 @@
 				
 			// If dark text is needed in dark mode, then apply it to text AND links
 			} @else if $text == 'light-dark' {
-				@include logic.apply-contrast-color($color, 'dark');
+				@include logic.apply-contrast-color($color, 'dark', $buttons);
 	
 				@include logic.apply-heading-action($selectors, 'dark'); 
 				

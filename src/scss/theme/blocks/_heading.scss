@@ -46,7 +46,11 @@ $sep-clearance: var(--wp--preset--spacing--30); //10px; // Fixed breathing room 
             right: 0;
         }
 
-        // 2. THE MAGIC BULLET: Override the next block's margin-top 
+// 		&.wp-block-group {
+			margin-bottom: calc(var(--wp--style--block-gap, 1.5rem) + #{$sep-clearance} + #{$sep-height}) !important;
+// 		}
+
+        // 3. THE MAGIC BULLET: Override the next block's margin-top 
         // ONLY if it is a direct sibling inside the same container.
         & + * {
             margin-top: calc(var(--wp--style--block-gap, 1.5rem) + #{$sep-clearance} + #{$sep-height}) !important;

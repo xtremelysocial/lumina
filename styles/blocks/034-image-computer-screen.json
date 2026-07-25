@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "image-computer-screen",
+	"title": "Computer Screen",
+	"blockTypes": [ "core/image" ],
+	"styles": {
+		 "border": {
+			"color": "var:preset|color|almost-black",
+			"style": "solid",
+			"width": "var:preset|spacing|40",
+			"top": {
+				"style": "solid",
+				"width": "var:preset|spacing|40",
+				"color": "var:preset|color|almost-black"
+			},
+			"right": {
+				"style": "solid",
+				"width": "var:preset|spacing|40",
+				"color": "var:preset|color|almost-black"
+			},
+			"bottom": {
+				"style": "solid",
+				"width": "var:preset|spacing|20",
+				"color": "var:preset|color|almost-black"
+			},
+			"left": {
+				"style": "solid",
+				"width": "var:preset|spacing|40",
+				"color": "var:preset|color|almost-black"
+			},
+			"radius": {
+				"topLeft": "var:preset|border-radius|md",
+				"topRight": "var:preset|border-radius|md",
+				"bottomLeft": "0px",
+				"bottomRight": "0px"
+			}
+		}
+	}
+}

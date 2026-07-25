@@ -615,7 +615,12 @@
 						}
 					}
 				}
-			}			
+			},
+			"core/comments-title": {
+                "typography": {
+                    "fontSize": "var(--wp--preset--font-size--large)"
+                }
+            }
 		}
 	},
 	"templateParts": [
@@ -647,6 +652,12 @@
 			"name": "featured-image-slim",
 			"title": "Lumina Slim Featured Image",
 			"description": "Lumina Slim 16:4.5 ratio featured image",
+			"area": "content"
+		},
+		{
+			"name": "content-article-img-slim",
+			"title": "Lumina Article Content w/Slim Featured Image",
+			"description": "Lumina Article Content with Slim Featured image",
 			"area": "content"
 		},
 		{
