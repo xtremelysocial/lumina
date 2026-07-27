@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Query Loop 2 Columns
+ * Title: Lumina Query Loop 2 Columns
  * Description: Query Loop 2 Columns
  * Slug: lumina/query-loop-2-columns
- * Categories: query
+ * Categories: lumina, query
  * Block Types: core/query
  */
 ?>

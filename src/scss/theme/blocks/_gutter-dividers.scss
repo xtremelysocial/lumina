@@ -8,12 +8,12 @@
     position: relative;
     
     /* 1. YOUR SPACING UTILITY: Base gap set to 2x the preset spacer */
-    --lumina-forced-gap: calc(var(--wp--style--block-gap, 2rem) * 2);
-    gap: var(--lumina-forced-gap) !important;
+    --gutter-divider-gap: calc(var(--wp--style--block-gap, 2rem) * 2);
+    gap: var(--gutter-divider-gap) !important;
 
     /* 2. YOUR CLASS: Wide variant set to 3x the preset spacer */
     &.is-style-wide-gap {
-        --lumina-forced-gap: calc(var(--wp--style--block-gap, 2rem) * 3);
+        --gutter-divider-gap: calc(var(--wp--style--block-gap, 2rem) * 3);
     }
 
     /*--------------------------------------------------------------
@@ -28,7 +28,7 @@
             height: 1px;
             width: 100%;
             left: 0;
-            top: calc(var(--lumina-forced-gap) / -2);
+            top: calc(var(--gutter-divider-gap) / -2);
             background-color: color-mix(in srgb, currentColor 20%, transparent);
             z-index: 2;
             pointer-events: none;
@@ -38,7 +38,7 @@
     /* Full-width horizontal row divider between separate stacked block groups */
     & + & {
         position: relative;
-        margin-top: var(--lumina-forced-gap) !important;
+        margin-top: var(--gutter-divider-gap) !important;
         
         &::after {
             content: "";
@@ -46,7 +46,7 @@
             width: 100%;
             left: 0;
             height: 1px;
-            top: calc(var(--lumina-forced-gap) / -2);
+            top: calc(var(--gutter-divider-gap) / -2);
             background-color: color-mix(in srgb, currentColor 20%, transparent);
             z-index: 2;
             pointer-events: none;
@@ -65,7 +65,7 @@
                 height: 100%;
                 width: 1px;
                 top: 0; 
-                left: calc(var(--lumina-forced-gap) / -2);
+                left: calc(var(--gutter-divider-gap) / -2);
             }
         }
 
@@ -74,8 +74,8 @@
             /* The Reach-Up: Seamlessly extends the vertical lines backward 
                through your custom 2x/3x margin gaps to seal the grid crosshairs */
             & > .wp-block-column:not(:first-child)::before {
-                height: calc(100% + var(--lumina-forced-gap));
-                top: calc(var(--lumina-forced-gap) * -1);
+                height: calc(100% + var(--gutter-divider-gap));
+                top: calc(var(--gutter-divider-gap) * -1);
             }
         }
     }

@@ -215,7 +215,43 @@ CSS
 } 
 
 ```
+## 2.8 Design System Standards: Shadows, Borders & Elevation  
+This section defines the structural and visual standards for borders, box-shadows, and surface depth across all theme styles, color variations, and block variations. The objective is to maintain tactile depth, crisp spatial hierarchy, and visual clarity without relying on heavy graphic embellishments.  
+  
+### 2.8.1 Architectural Principles  
+* **Semantic Tokenization:** All borders and shadows must strictly reference theme.json preset tokens and CSS custom properties (e.g., var(--wp--preset--shadow--), var(--wp--custom--color--border)). Direct hex values or hardcoded rgba() values in block styles are prohibited.  
+* **Layered Elevation Physics:** Depth is created through a dual-shadow approach combining a broad, diffuse ambient shadow with a tighter, sharper key shadow. Because CSS box shadows stack additively, semi-transparent top layers reveal underlying shadow layers. Shadow stacks must be calibrated so ambient and directional opacity values compound naturally rather than muddying the surface below.  
+* **Surface Separation over Skew:** Elevation must complement border definition, not replace it. Borders define object bounds; shadows define z-index elevation.  
 ##   
+### 2.8.2 Light Mode Standards  
+In light modes, light surfaces rely primarily on soft, diffuse shadows for spatial elevation, paired with low-contrast structural borders to bound components against light backgrounds.  
+
+| Element | Light Mode Rule | Token / Value Standard |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| Borders | Low-contrast neutral framing to separate adjacent components without drawing focal weight away from content. | 1px solid var(--wp--custom--color--border)
+
+(Targeting ~8%–12% opacity neutral or base contrast) |
+| Ambient Shadows | Wide blur radius, low opacity. Simulates natural ambient room light. | rgba(0, 0, 0, 0.04) to rgba(0, 0, 0, 0.08) |
+| Key / Directional Shadows | Tighter offset, slightly higher opacity. Indicates discrete elevation steps (cards, popovers, modals). | rgba(0, 0, 0, 0.06) to rgba(0, 0, 0, 0.12) |
+| Hover / Focus States | Subtle vertical displacement paired with a moderate shadow expansion rather than abrupt color changes. | transform: translateY(-2px) + next elevation step token |
+  
+##   
+### 2.8.3 Dark Mode Standards  
+Dark background surfaces absorb shadow depth, making traditional drop-shadows ineffective on their own. Dark mode relies heavily on **surface lightness progression** and **luminance borders** to achieve structural clarity.  
+
+| Element | Light Mode vs Dark Mode Adaptation | Dark Mode Rule |
+| ---------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Borders | Higher Contrast Requirement | Increase border opacity (12%–20% white/contrast tint) to prevent component bounds from bleeding into dark background canvas. |
+| Shadows | High Opacity / Tight Radius | Shadows are denser (rgba(0, 0, 0, 0.40) to rgba(0, 0, 0, 0.65)). They serve to block background bleed rather than create soft atmospheric distance. |
+| Edge Highlights | Inverted Surface Rim | Top or outer borders act as simulated light highlights (1px solid rgba(255, 255, 255, 0.08)), defining top edges where overhead ambient light would naturally strike the surface. |
+| Elevation by Lightness | Z-Index Lightness Step | Higher elevation components (e.g., modals over cards) use progressively lighter surface tokens (--wp--preset--color--neutral-alt) rather than relying solely on deeper drop shadows. |
+  
+### 2.8.4 Implementation & Component Guidelines  
+* **Cards & Enclosed Layouts:** Must combine a 1px subtle border with --wp--preset--shadow--natural or --wp--preset--shadow--deep depending on surface contrast mode.  
+* **Interactive Controls (Buttons/Fields):** Inputs and form fields must use dedicated focus ring tokens (var(--wp--custom--color--highlight)) rather than modifying structural border widths to prevent layout shift (reflow) on interaction.  
+* **Section Block Variations:** Preset section variations (e.g., rounded borders, outline boxes, or shadow cards) must map cleanly to both light and dark variations without needing custom CSS overrides per color palette.  
+##   
+  
 # Lumina Charter: Section 3 - Digital Physics & Kinetic Effects Engine  
 ##   
 ## 3.1 Architecture Overview & Block Registry Schema  

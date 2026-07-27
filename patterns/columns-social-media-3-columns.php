@@ -3,7 +3,7 @@
  * Title: Lumina Columns Social Media 3 Columns
  * Description: Columns Social Media 3 Columns
  * Slug: lumina/columns-social-media-3-columns
- * Categories: column, image
+ * Categories: lumina, column
  */
 ?>
 <!-- wp:columns {"align":"full","style":{"spacing":{"blockGap":"0px"}},"className":"alignfull is-style-no-gap"} -->

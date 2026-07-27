@@ -15,89 +15,146 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
- /**
+/**
  * 1. THE ENGINE CORE
- * Dynamically scans the asset directory for keyword-matched images.
- * Falls back to a true hardcoded default asset if the directory is empty.
+ * Dynamically scans Lumina's asset directory for fallback images.
  */
-if ( ! function_exists( 'get_featured_image_fallback_data' ) ) {
+if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) {
 	function get_featured_image_fallback_data( $post_id = null ) {
 
 		$pid = $post_id ? $post_id : get_the_ID();
 		
 		// ---------------------------------------------------------
-		// CONFIGURATION VARIABLES
+		// CONFIGURATION & THEME.JSON DYNAMIC RESOLUTION
 		// ---------------------------------------------------------
-// 		$path         = 'assets/images/abstract/';  // Added trailing slash
-// 		$keyword      = 'abstract-';                // Match filenames
- 		$path         = 'assets/images/';           // Added trailing slash
-		$keyword      = ''; //'ocean-';					// Match filenames
-		$true_default = 'assets/images/abstract/abstract-01.svg';
-		
-		$images = [];
+		$base_path        = 'assets/images/';
+		$keyword          = '';                     // Optional filename prefix (e.g., 'sage-' or '')
+		$exclude_dirs     = [ 'thumbnails' ];       // Subfolder names to skip
+		$exclude_prefixes = [                       // Filename prefixes to skip
+			'thumbnail-',
+			'person-',
+			'image-static-',
+			'image-computer-screen'
+		]; 
+		$allowed_extensions = [ 'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg' ];
 
-		// Build safe physical system paths for both parent and child theme directories
-		$scan_directories = array_unique([
-// 			get_template_directory() . '/' . $path,  // Parent Theme Directory
-			get_stylesheet_directory() . '/' . $path  // Child Theme Directory
-		]);
+		// Set a true default image path that actually exists in Lumina
+		$true_default       = 'assets/images/paper/paper-01.jpg';
 
-		// Scan both folders for matching assets
-		foreach ( $scan_directories as $dir ) {
-			if ( is_dir( $dir ) ) {
-				// Normalize directory path with trailing slash before appending keyword
-				$search_pattern = trailingslashit( $dir ) . $keyword . '*';
-				$matched_files  = glob( $search_pattern );
+		// 1. Fetch Global Settings from theme.json
+		$global_settings = function_exists( 'wp_get_global_settings' ) ? wp_get_global_settings() : [];
+		$theme_custom    = $global_settings['custom']['color']['theme'] ?? [];
 
-				if ( ! empty( $matched_files ) && is_array( $matched_files ) ) {
-					foreach ( $matched_files as $file ) {
-						// Extract just the filename (e.g., 'abstract-01.svg')
-						$images[] = basename( $file );
+		$target_folders = [];
+
+		// Check for Array / String keys: 'image-folders', 'image-folder', 'images'
+		foreach ( [ 'image-folders', 'image-folder', 'images' ] as $key ) {
+			if ( ! empty( $theme_custom[ $key ] ) ) {
+				$val = $theme_custom[ $key ];
+				if ( is_array( $val ) ) {
+					$target_folders = array_merge( $target_folders, $val );
+				} elseif ( is_string( $val ) ) {
+					$target_folders[] = $val;
+				}
+			}
+		}
+
+		// Check for Numbered Keys: 'image-folder-01', 'image-folder-02', etc.
+		foreach ( $theme_custom as $key => $val ) {
+			if ( preg_match( '/^image[-_]folder[-_]?\d+$/i', $key ) && ! empty( $val ) ) {
+				if ( is_array( $val ) ) {
+					$target_folders = array_merge( $target_folders, $val );
+				} elseif ( is_string( $val ) ) {
+					$target_folders[] = $val;
+				}
+			}
+		}
+
+		$target_folders = array_filter( array_unique( $target_folders ) );
+
+		// Fallback to 'scheme' if no explicit image folders were configured
+		if ( empty( $target_folders ) && ! empty( $theme_custom['scheme'] ) ) {
+			$target_folders[] = $theme_custom['scheme'];
+		}
+
+		// ---------------------------------------------------------
+		// DIRECTORY SCANNING ENGINE (STRICTLY LUMINA / CHILD THEME)
+		// ---------------------------------------------------------
+		$child_theme_root = wp_normalize_path( get_stylesheet_directory() );
+		$full_base_path   = trailingslashit( $child_theme_root ) . $base_path;
+		$paths_to_scan    = [];
+
+		// 1. Scan specified target folders
+		if ( ! empty( $target_folders ) ) {
+			foreach ( $target_folders as $folder ) {
+				$folder_path = trailingslashit( $full_base_path ) . trim( $folder, '/' ) . '/';
+				if ( is_dir( $folder_path ) ) {
+					$paths_to_scan[] = $folder_path;
+				}
+			}
+		}
+
+		// 2. Auto-Discovery Fallback: If no target folders matched, scan ALL subfolders in Lumina assets/images/
+		// (Root /assets/images/ is excluded so pattern/static assets are never used as featured fallbacks)
+		if ( empty( $paths_to_scan ) && is_dir( $full_base_path ) ) {
+			$subdirs = glob( trailingslashit( $full_base_path ) . '*', GLOB_ONLYDIR );
+			if ( ! empty( $subdirs ) ) {
+				foreach ( $subdirs as $subdir ) {
+					$folder_name = basename( $subdir );
+					if ( ! in_array( $folder_name, $exclude_dirs, true ) ) {
+						$paths_to_scan[] = trailingslashit( $subdir );
 					}
 				}
 			}
 		}
 
-		// Deduplicate the list in case the same file exists in both parent and child folders
-		$images = array_unique( $images );
+		$images = [];
+
+		// Perform scan across resolved subdirectories
+		foreach ( $paths_to_scan as $scan_path ) {
+			$search_pattern = trailingslashit( $scan_path ) . $keyword . '*.{jpg,jpeg,png,gif,webp,svg}';
+			$matched_files  = glob( $search_pattern, GLOB_BRACE );
+
+			if ( ! empty( $matched_files ) && is_array( $matched_files ) ) {
+				foreach ( $matched_files as $file ) {
+					if ( is_file( $file ) ) {
+						$filename       = basename( $file );
+						$should_exclude = false;
+
+						foreach ( $exclude_prefixes as $prefix ) {
+							if ( ! empty( $prefix ) && strpos( $filename, $prefix ) === 0 ) {
+								$should_exclude = true;
+								break;
+							}
+						}
+
+						if ( ! $should_exclude ) {
+							$normalized_file = wp_normalize_path( $file );
+							$images[]        = ltrim( str_replace( $child_theme_root, '', $normalized_file ), '/' );
+						}
+					}
+				}
+			}
+		}
+
+		$images = array_values( array_unique( $images ) );
 
 		// ---------------------------------------------------------
 		// RESOLVE TARGET FILE PATH
 		// ---------------------------------------------------------
 		if ( ! empty( $images ) ) {
-			// Reset array keys cleanly so modulo lookup is 100% reliable
-			$images     = array_values( $images );
-			
-// 			$last_digit = $pid % count( $images );
-
-			// Hash the PID to scramble sequential/clustered post IDs
-   			// abs() prevents negative integer returns on 32-bit systems
-			$hash_seed  = 'lumina_' . $pid;
-			$hashed_val = abs( crc32( $hash_seed ) );
-			
-			$last_digit = $hashed_val % count( $images );
-			$chosen_pic = $images[ $last_digit ];
-    
-			// Temporary debug check
-// 			echo '<pre style="background: #222; color: #00ff00; padding: 15px; z-index: 99999; position: relative;">';
-// 			echo "POST TITLE: " . get_the_title( $pid ) . "\n";
-// 			echo "POST ID: " . var_export( $pid, true ) . "\n";
-// 			echo "CHOSEN IMAGE: " . var_export( $chosen_pic, true ) . "\n";
-// 			echo "AVAILABLE IMAGES COUNT: " . count( $images ) . "\n";
-			// Uncomment the line below if you want to see the entire array of image filenames
-			// print_r( $images ); 
-// 			echo '</pre>';
-			
-			// Combines to 'assets/images/abstract/abstract-XX.svg'
-			$target_relative_path = $path . $chosen_pic;
+			$hash_seed            = 'lumina_' . $pid;
+			$hashed_val           = abs( crc32( $hash_seed ) );
+			$last_digit           = $hashed_val % count( $images );
+			$target_relative_path = $images[ $last_digit ];
 		} else {
 			$target_relative_path = $true_default;
 		}
 
 		// ---------------------------------------------------------
-		// GENERATE FINAL WRAPPER DATA
+		// GENERATE FINAL WRAPPER DATA (FORCED TO CHILD THEME URI)
 		// ---------------------------------------------------------
-		$default_url = get_theme_file_uri( $target_relative_path );
+		$default_url = get_stylesheet_directory_uri() . '/' . $target_relative_path;
 		$default_url = apply_filters( 'flatblocks_default_image_url', $default_url, $pid );
 
 		$image_alt = esc_attr( get_the_title( $pid ) );
@@ -110,46 +167,11 @@ if ( ! function_exists( 'get_featured_image_fallback_data' ) ) {
 	}
 }
 
-// if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) {
-// 	function get_featured_image_fallback_data( $post_id = null ) {
-// 		$pid  = $post_id ? $post_id : get_the_ID();
-// 		$path = 'assets/images/'; 
-// 		
-// 		$images = [
-// 			'cover-bokeh.jpg', 
-// 			'cover-book.jpg', 
-// 			'cover-building.jpg', 
-// 			'cover-camera.jpg', 
-// 			'cover-city-night.jpg', 
-// 			'cover-colored-blocks.jpg', 
-// 			'cover-colored-chalk.jpg', 
-// 			'cover-desk-light.jpg', 
-// 			'cover-desk-dark.jpg', 
-// 			'cover-desk-meeting.jpg'
-// 		];
-// 
-// 		$last_digit = $pid % count( $images );
-// 		$image      = $images[ $last_digit ];
-// 
-// 		$default_url = get_theme_file_uri( $path . $image );
-// 		$default_url = apply_filters( 'flatblocks_default_image_url', $default_url, $pid );
-// 
-// 		$image_alt = esc_attr( get_the_title( $pid ) );
-// 		$image_alt = apply_filters( 'flatblocks_default_image_alt', $image_alt, $pid );
-// 
-// 		return [
-// 			'url' => $default_url,
-// 			'alt' => $image_alt
-// 		];
-// 	}
-// }
-
 /**
  * 2. THE COVER TOGGLE INTERCEPT
  */
 if ( ! function_exists( __NAMESPACE__ . '\filter_cover_block_fallback' ) ) {
 	function filter_cover_block_fallback( $block_content, $block ) {
-		// Using meta truth check to completely evade the Section 4 filter paradox
 		if ( ! empty( $block['attrs']['useFeaturedImage'] ) && ! get_post_thumbnail_id( get_the_ID() ) ) {
 			$fallback = get_featured_image_fallback_data( get_the_ID() );
 			
@@ -169,9 +191,16 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_cover_block_fallback' ) ) {
 if ( ! function_exists( __NAMESPACE__ . '\filter_legacy_post_thumbnail_html' ) ) {
 	function filter_legacy_post_thumbnail_html( $html, $pid, $post_thumbnail_id, $size, $attr ) {
 
+		// Only intercept and inject a fallback image if no real thumbnail exists
 // 		if ( ! $html && $pid ) {
 			$fallback    = get_featured_image_fallback_data( $pid );
 			$image_class = $size ? "attachment-{$size} size-{$size} wp-post-image" : 'wp-post-image';
+			
+			// Preserve block classes passed by WordPress (e.g. has-highlight-border-color)
+			if ( is_array( $attr ) && ! empty( $attr['class'] ) ) {
+				$image_class .= ' ' . $attr['class'];
+			}
+
 			$image_style = ( is_array( $attr ) && ! empty( $attr['style'] ) ) ? $attr['style'] : '';
 			
 			preg_match( "/max-width:(\\d+).*max-height:(\\d+)/", $image_style, $dimensions );
@@ -183,7 +212,7 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_legacy_post_thumbnail_html' ) )
 				'<img loading="lazy" decoding="async" src="%s" alt="%s" class="%s" style="%s" %s />',
 				esc_url( $fallback['url'] ),
 				esc_attr( $fallback['alt'] ),
-				esc_attr( $image_class ),
+				esc_attr( trim( $image_class ) ),
 				esc_attr( $image_style ),
 				$image_dimensions
 			);

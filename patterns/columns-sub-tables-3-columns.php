@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Lumina Subscription Tables 3 Columns
- * Slug: lumina/sub-tables-3-columns
- * Categories: column, featured
+ * Slug: lumina/columns-sub-tables-3-columns
+ * Categories: lumina, column, featured
  * Block Types: core/group
  */
 ?>

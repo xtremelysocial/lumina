@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Lumina Home Page Hero Banner w/Image
- * Slug: lumina/hero-banner-home-with-image
+ * Slug: lumina/banner-home-with-image
  * Categories: lumina, banner, image, featured
  * Block Types: core/group
  */
@@ -15,8 +15,6 @@
         
         <!-- wp:column {"width":"55%"} -->
         <div class="wp-block-column" style="flex-basis:55%">
-
-            <!-- wp:site-logo {"width":64} /-->
 
             <!-- wp:site-title {"level":1,"isLink":false,"style":{"typography":{"lineHeight":"1.1"}},"fontSize":"xx-large"} /-->
 
@@ -43,7 +41,8 @@
         <!-- wp:column {"width":"45%"} -->
         <div class="wp-block-column" style="flex-basis:45%">
 
-			<!-- wp:post-featured-image {"aspectRatio":"16/9","lock":{"move":true,"remove":true},"metadata":{"name":"Featured Image"},"style":{"border":{"width":"1px","color":"var:preset|color|neutral-alt","radius":{"topLeft":"var:preset|border-radius|sm","topRight":"var:preset|border-radius|sm","bottomLeft":"var:preset|border-radius|sm","bottomRight":"var:preset|border-radius|sm"}}}} /-->        
+			<!-- wp:template-part {"slug":"featured-image-wide","align":"wide","lock":{"move":true,"remove":true}} /-->
+
         </div>
         <!-- /wp:column -->
 

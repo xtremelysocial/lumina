@@ -3,7 +3,7 @@
  * Title: Lumina Text Site Title And Tagline
  * Description: Text Site Title And Tagline
  * Slug: lumina/text-site-title-and-tagline
- * Categories: text
+ * Categories: lumina, text
  */
 ?>
 <!-- wp:group {"align":"full","metadata":{"name":"Site Title and Tagline"},"style":{"spacing":{"margin":{"top":"0"}}},"backgroundColor":"secondary","className":"is-style-default","layout":{"type":"constrained"}} -->

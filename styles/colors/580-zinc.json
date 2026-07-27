@@ -24,6 +24,7 @@
 					"light-gray": "var(--wp--preset--color--foreground-alt)",
 					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
+				"border": "color-mix(in srgb, var(--wp--preset--color--foreground-alt) 8%, transparent)",
 				"heading": {
 					"text": "hsl(204, 29%, 94%)",
 					"separator": "var(--wp--preset--color--highlight-alt)"
@@ -34,10 +35,10 @@
 					"hoverOpacity": "0.80"
 				},
 				"shadow": {
-					"natural": "0 0 0 1px rgba(100, 225, 235, 0.12), 0 2px 8px rgba(0, 0, 0, 0.45)",
-					"deep":    "0 0 0 1px rgba(100, 225, 235, 0.16), 0 8px 20px rgba(0, 0, 0, 0.55)",
-					"sharp":   "0 0 0 1px rgba(100, 225, 235, 0.20), 0 16px 32px rgba(0, 0, 0, 0.65)",
-					"crisp":   "0 0 0 1px rgba(100, 225, 235, 0.25), 0 24px 48px rgba(0, 0, 0, 0.75)",
+					"natural": "0 2px 4px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.30)",
+					"deep":    "0 3px 6px rgba(0, 0, 0, 0.30), 0 8px 18px rgba(0, 0, 0, 0.40)",
+					"sharp":   "0 4px 10px rgba(0, 0, 0, 0.35), 0 12px 26px rgba(0, 0, 0, 0.48)",
+					"crisp":   "0 6px 14px rgba(0, 0, 0, 0.40), 0 16px 34px rgba(0, 0, 0, 0.55)",
 					"outline": "0 0 0 2px var(--wp--preset--color--base), 0 0 0 4px var(--wp--preset--color--primary)"
 				}
 			}

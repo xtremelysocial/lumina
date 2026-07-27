@@ -2,7 +2,7 @@
 /**
  * Title: Lumina 404 Hero Banner
  * Slug: lumina/hidden-404-featured-image
- * Categories: text
+ * Categories: lumina, image
  * Inserter: false
  * Description: 404 Slim Featured Image
  */

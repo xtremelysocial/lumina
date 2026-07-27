@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Lumina Social 4 Columns
- * Slug: lumina/lumina-social-4-columns
- * Categories: lumina
+ * Slug: lumina/columns-social-media-4-columns
+ * Categories: lumina, column
  */
 ?>
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|30"}}} -->

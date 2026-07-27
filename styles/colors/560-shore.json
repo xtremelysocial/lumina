@@ -17,13 +17,6 @@
 					"background": "var(--wp--preset--color--primary)",
 					"hover": "var(--wp--preset--color--primary-alt)",
 					"hoverOpacity": "0.85"
-				},
-				"shadow": {
-					"natural": "0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03)",
-					"deep":    "0 6px 16px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.04)",
-					"sharp":   "0 14px 30px rgba(0, 0, 0, 0.10), 0 6px 12px rgba(0, 0, 0, 0.06)",
-					"crisp":   "0 24px 50px rgba(0, 0, 0, 0.12), 0 10px 20px rgba(0, 0, 0, 0.08)",
-					"outline": "0 0 0 2px var(--wp--preset--color--base), 0 0 0 4px var(--wp--preset--color--primary)"
 				}
 			}
 		},

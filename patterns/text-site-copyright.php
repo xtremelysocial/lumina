@@ -3,7 +3,7 @@
  * Title: Lumina Text Site Copyright
  * Description: Text Site Copyright
  * Slug: lumina/text-site-copyright
- * Categories: text
+ * Categories: lumina, text
  */
 ?>
 

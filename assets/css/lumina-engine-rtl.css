@@ -32,7 +32,7 @@
 .wp-site-blocks > header:has(.is-position-sticky),
 .wp-site-blocks > header:has(.is-style-fixed-header) {
   box-shadow: none;
-  border: var(--wp--custom--color--border--width, 1px) solid var(--wp--custom--color--border);
+  border: var(--wp--custom--color--border--width, 1px) var(--wp--custom--color--border--style, solid) var(--wp--custom--color--border);
   z-index: 101;
 }
 
@@ -56,8 +56,8 @@
   margin: 0 !important;
   margin-block-start: 0 !important;
   /* 2. Precise placement from top-right corner of card box */
-  top: var(--wp--preset--spacing--40, 1.5rem);
-  left: var(--wp--preset--spacing--40, 1.5rem);
+  top: var(--wp--preset--spacing--30);
+  left: var(--wp--preset--spacing--30);
   z-index: 10;
   display: inline-flex;
   align-items: center;
@@ -65,8 +65,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--wp--preset--color--foreground, #000000);
-  color: var(--wp--preset--color--background, #ffffff);
+  background: var(--wp--preset--color--contrast, #000000);
+  color: var(--wp--preset--color--base, #ffffff);
   font-size: 14px;
   line-height: 1;
   /* Hidden & Non-blocking at rest */

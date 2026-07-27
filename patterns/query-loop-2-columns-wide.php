@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Query Loop 2 Columns
- * Description: Query Loop 2 Columns Slim Image
- * Slug: lumina/query-loop-2-columns-img-slim
- * Categories: query
+ * Title: Lumina Query Loop 2 Columns Wide Image
+ * Description: Query Loop 2 Columns Wide Image
+ * Slug: lumina/query-loop-2-columns-wide
+ * Categories: lumina, query
  * Block Types: core/query
  */
 ?>
@@ -11,7 +11,7 @@
 <div class="wp-block-query alignwide">
 
 	<!-- wp:post-template {"align":"wide","lock":{"move":true,"remove":true}} -->
-		<!-- wp:template-part {"slug":"content-article-img-slim","theme":"lumina"} /-->
+		<!-- wp:template-part {"slug":"content-article-wide","theme":"lumina"} /-->
 	<!-- /wp:post-template -->
 
 <!-- wp:group {"lock":{"move":true,"remove":true},"metadata":{"name":"Query Pagination"},"className":"is-style-no-padding","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->

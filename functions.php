@@ -126,19 +126,6 @@ function lumina_load_styles() {
 add_action( 'enqueue_block_assets', 'lumina_load_styles' );
 
 /**
- * LUMINA EDITOR UI CSS: Load editor UI style overrides
- */
-add_action('enqueue_block_editor_assets', function() {
-    wp_enqueue_style(
-        'editor-styles-ui',
-//         get_template_directory_uri() . '/assets/css/editor-styles-ui.css',
-        get_stylesheet_directory_uri() . '/assets/css/editor-styles-ui.css',
-        array(),
-        '1.0.0'
-    );
-});
-
-/**
  * LUMINA BLOCK CSS: Load individual block styles.
  */
 
@@ -147,7 +134,7 @@ add_action('enqueue_block_editor_assets', function() {
 // 	function lumina_load_block_styles() {
 // 
 // 		// Setup block styles path
-// 		$block_path = '/assets/css/blocks/';
+// 		$block_path = '/assets/css/theme/blocks/';
 // 
 // 		// Get Block CSS build version from the combined block style asset
 // // 		if ( file_exists ( get_template_directory() . $block_path. 'block-styles.asset.php' ) ) {
@@ -292,6 +279,8 @@ if ( apply_filters( 'lumina_card_link_js', true ) ) {
  * gallery, banner, footer, call-to-action, team, testimonials, services,
  * contract, about, portfolio, and media.
  */
+add_action( 'init', 'lumina_register_pattern_categories' );
+
 if ( ! function_exists( 'lumina_register_pattern_categories' ) ) :
 
 	function lumina_register_pattern_categories() {

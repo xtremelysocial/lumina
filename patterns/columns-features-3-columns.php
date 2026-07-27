@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Lumina Features 3 Columns
- * Slug: lumina/lumina-features-3-columns
+ * Slug: lumina/columns-lumina-features-3-columns
  * Categories: lumina, column
  */
 ?>

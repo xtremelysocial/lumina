@@ -44,7 +44,8 @@
 			@if $text == 'dark-light' {
 				@include logic.apply-contrast-color($color, 'light', $buttons);
 				
-	//             @include logic.apply-heading-action($selectors, 'light');
+				// This should only be needed to override the parent theme
+	            @include logic.apply-heading-action($selectors, 'light');
 	
 	//             @include logic.apply-link-action($selectors, 'highlight');
 				
@@ -55,11 +56,11 @@
 				@include logic.apply-heading-action($selectors, 'dark'); 
 				
 	//             @include logic.apply-link-action($selectors, 'highlight');
-			}
+// 			}
 			
 			// For headings, dark-light is light in dark mode and needs headings 
 			// to inherit
-			@if $text == 'light-dark' {
+// 			@if $text == 'light-dark' {
 	// 			@include logic.apply-heading-action($selectors, 'light'); 
 	
 	// 			@include logic.apply-link-action($selectors, 'highlight-alt');

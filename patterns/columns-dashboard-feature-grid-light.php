@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Lumina Dashboard Feature Grid (Light)
- * Slug: lumina/dashboard-feature-grid-light
- * Categories: lumina, featured
+ * Slug: lumina/columns-dashboard-feature-grid-light
+ * Categories: lumina, column, featured
  */
 ?>
 <!-- wp:group {"align":"wide","layout":{"type":"constrained"} -->

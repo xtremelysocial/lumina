@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Lumina Hero Banner Dark w/Image
- * Slug: lumina/hero-banner-dark-with-image
+ * Slug: lumina/banner-dark-with-image
  * Categories: lumina, banner, image, featured
  * Block Types: core/group
  */

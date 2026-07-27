@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Query Loop 1 Column Img Left
+ * Title: Lumina Query Loop 1 Column Img Left
  * Description: Query Loop 1 Column Img Left
  * Slug: lumina/query-loop-1-column-img-left
- * Categories: query
+ * Categories: lumina, query
  * Block Types: core/query
  */
 ?>

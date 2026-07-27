@@ -3,7 +3,7 @@
  * Title: Site Copyright
  * Description: Site Copyright
  * Slug: lumina/site-copyright
- * Categories: general
+ * Categories: lumina, text
  * Block Types: 
  */
 ?>

@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Query Loop Sidebar Right
+ * Title: Lumina Query Loop Sidebar Right
  * Description: Query Loop Sidebar Right
  * Slug: lumina/query-loop-sidebar-right
- * Categories: query
+ * Categories: lumina, query
  * Block Types: core/query
  */
 ?>

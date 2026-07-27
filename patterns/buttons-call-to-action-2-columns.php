@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Lumina CTA 2 Columns
- * Slug: lumina/columns-cta-2-columns
- * Categories: lumina, call-to-action
+ * Slug: lumina/buttons-columns-cta-2-columns
+ * Categories: lumina, call-to-action, featured
  * Block Types: core/columns
  */
 ?>

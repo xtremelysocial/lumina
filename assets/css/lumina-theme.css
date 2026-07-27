@@ -18,19 +18,6 @@
    LUMINA THEME: CSS styles
    v0.9.9 Build 30 MVP
    ========================================================================== */
-/*-----------------------------------------------------------------------------
-# Lumina Post Category Colors
------------------------------------------------------------------------------*/
-/* Force the heading separator variable to inherit the active category token */
-.has-category-accent {
-  --wp--custom--color--heading--separator: var(--current-category-color);
-}
-
-/* Add a smooth accent bar on top of your slim banner layouts */
-.has-category-accent .wp-block-template-part .wp-block-cover {
-  border-top: 3px solid var(--current-category-color);
-}
-
 /*--------------------------------------------------------------
 ## Style raw HTML quotes like the block quotes
 --------------------------------------------------------------*/
@@ -72,71 +59,6 @@ img.size-cropped-slim {
 }
 
 /*--------------------------------------------------------------
-## Custom: Lumina Parent-Aware Text Justification
---------------------------------------------------------------*/
-/* Works when applied to individual paragraphs OR entire parent Groups/Columns */
-.is-style-text-justify {
-  /* 1. Target text blocks inside the container */
-}
-.is-style-text-justify, .is-style-text-justify p, .is-style-text-justify h1, .is-style-text-justify h2, .is-style-text-justify h3, .is-style-text-justify h4, .is-style-text-justify h5, .is-style-text-justify h6, .is-style-text-justify li {
-  text-align: justify !important;
-  text-justify: inter-word;
-  hyphens: auto;
-  letter-spacing: -0.01em;
-}
-.is-style-text-justify {
-  /* 2. 🌟 THE UI RESCUE: Forcefully protect buttons, badges, and 
-     meta descriptions from stretching awkwardly across the grid */
-}
-.is-style-text-justify .wp-block-buttons,
-.is-style-text-justify .wp-block-button__link,
-.is-style-text-justify .wp-element-button,
-.is-style-text-justify .has-small-font-size:not(p) {
-  text-align: left !important; /* Or center, depending on your button style */
-  hyphens: none !important;
-}
-
-/*--------------------------------------------------------------
-## Custom Block Style: Lumina Editorial Justification
---------------------------------------------------------------*/
-/* Can be applied directly to a single Paragraph block, a Column, or a Grid Group */
-/**
- * Breakpoints & Media Queries
- */
-/* =========================================================================
-   Lumina Content Layout Structural Stabilization (No !important)
-   ========================================================================= */
-.is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column.content-column,
-body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column,
-body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column {
-  order: 1;
-}
-.is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column:not(.content-column),
-body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
-body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
-  order: 2;
-}
-
-@media only screen and (max-width: 782px) {
-  .is-style-sidebar-left .wp-block-columns.main-content,
-  body[class*=-page-sidebar-left] .wp-block-columns.main-content,
-  body[class*=-single-sidebar-left] .wp-block-columns.main-content {
-    display: flex;
-    flex-direction: column;
-  }
-  .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column.content-column,
-  body[class*=-page-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column,
-  body[class*=-single-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column {
-    order: 1;
-  }
-  .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column:not(.content-column),
-  body[class*=-page-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
-  body[class*=-single-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
-    order: 2;
-  }
-}
-
-/*--------------------------------------------------------------
 # Custom: List Dividers (Lists, Latest Posts, Latest Comments)
 --------------------------------------------------------------*/
 ul.is-style-list-dividers,
@@ -170,6 +92,9 @@ ol.is-style-list-dividers,
 /*--------------------------------------------------------------
 # Base Styles
 --------------------------------------------------------------*/
+/**
+ * Breakpoints & Media Queries
+ */
 /*--------------------------------------------------------------
 # Padding and Margin Styles
 --------------------------------------------------------------*/
@@ -281,51 +206,42 @@ a > .avatar {
   color: inherit;
 }
 
-/*-----------------------------------------------------------------------------
-## Custom: Intrinsic Equal-Width Grid Buttons (Mobile-Hugging Upgrades)
------------------------------------------------------------------------------*/
-.wp-block-buttons:not(.is-vertical) {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  width: -moz-fit-content;
-  width: fit-content;
-  max-width: 100%;
-  gap: var(--wp--style--block-gap, 1.5rem);
-  margin-left: auto;
-  margin-right: auto;
+/*--------------------------------------------------------------
+# Base Styles
+--------------------------------------------------------------*/
+/* =========================================================================
+   Lumina Content Layout Structural Stabilization (No !important)
+   ========================================================================= */
+.is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column.content-column,
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column,
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column {
+  order: 1;
 }
-.wp-block-buttons:not(.is-vertical).is-content-justification-left {
-  margin-left: 0;
-  margin-right: auto;
-}
-.wp-block-buttons:not(.is-vertical).is-content-justification-right {
-  margin-left: auto;
-  margin-right: 0;
-}
-.wp-block-buttons:not(.is-vertical).is-content-justification-center {
-  margin-left: auto;
-  margin-right: auto;
-}
-.wp-block-buttons:not(.is-vertical) .wp-block-button {
-  width: 100%;
-}
-.wp-block-buttons:not(.is-vertical) .wp-block-button .wp-block-button__link {
-  display: block;
-  width: 100%;
-  text-align: center;
-  white-space: nowrap; /* Ensure padding is respected and text stays single-line */
+.is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
+  order: 2;
 }
 
-@media only screen and (max-width: 600px) {
-  .wp-block-buttons:not(.is-vertical) {
-    grid-auto-flow: row;
-    grid-auto-rows: auto;
+@media only screen and (max-width: 782px) {
+  .is-style-sidebar-left .wp-block-columns.main-content,
+  body[class*=-page-sidebar-left] .wp-block-columns.main-content,
+  body[class*=-single-sidebar-left] .wp-block-columns.main-content {
+    display: flex;
+    flex-direction: column;
   }
-  .wp-block-buttons:not(.is-vertical) .wp-block-button {
-    width: 100%;
+  .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column.content-column,
+  body[class*=-page-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column,
+  body[class*=-single-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column {
+    order: 1;
+  }
+  .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+  body[class*=-page-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+  body[class*=-single-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
+    order: 2;
   }
 }
+
 /*-----------------------------------------------------------------------------
 # Column styles
 -----------------------------------------------------------------------------*/
@@ -403,24 +319,8 @@ a > .avatar {
 }
 
 /*--------------------------------------------------------------
-## Defensive Grid Responsive Engine
+# Base Styles
 --------------------------------------------------------------*/
-@media (max-width: 781px) {
-  /* 🌟 THE RESCUE: Overrides the rigid editor column settings on mobile devices */
-  .wp-block-group.is-layout-grid {
-    /* Force the tracks to use fluid auto-fit math instead of a squeezed hardcoded number.
-       '120px' sets a safe protective floor: cells will never compress smaller than 120px.
-       If they try to, the grid automatically wraps them down to a new row! */
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr)) !important;
-  }
-  /* Inside your color palette text cells, ensure text scales down elegantly */
-  .wp-block-group.is-layout-grid .wp-block-column,
-  .wp-block-group.is-layout-grid > * {
-    /* Ensure text strings wrap or break cleanly if a color name is unusually long */
-    word-break: break-word;
-    hyphens: auto;
-  }
-}
 /*--------------------------------------------------------------
 # Custom: Gutter Dividers (Columns)
 --------------------------------------------------------------*/
@@ -479,6 +379,9 @@ a > .avatar {
  * Don't add to this sheet unless you're pretty sure the value will be reused in many places.
  * For example, don't add rules to this sheet that affect block visuals. It's purely for UI.
  */
+/*--------------------------------------------------------------
+# Base Styles
+--------------------------------------------------------------*/
 /**
 *  Converts a hex value into the rgb equivalent.
 *
@@ -520,12 +423,12 @@ a > .avatar {
 .wp-block-columns.is-style-gutter-dividers {
   position: relative;
   /* 1. YOUR SPACING UTILITY: Base gap set to 2x the preset spacer */
-  --lumina-forced-gap: calc(var(--wp--style--block-gap, 2rem) * 2);
-  gap: var(--lumina-forced-gap) !important;
+  --gutter-divider-gap: calc(var(--wp--style--block-gap, 2rem) * 2);
+  gap: var(--gutter-divider-gap) !important;
   /* 2. YOUR CLASS: Wide variant set to 3x the preset spacer */
 }
 .wp-block-columns.is-style-gutter-dividers.is-style-wide-gap {
-  --lumina-forced-gap: calc(var(--wp--style--block-gap, 2rem) * 3);
+  --gutter-divider-gap: calc(var(--wp--style--block-gap, 2rem) * 3);
 }
 .wp-block-columns.is-style-gutter-dividers {
   /*--------------------------------------------------------------
@@ -542,7 +445,7 @@ a > .avatar {
   height: 1px;
   width: 100%;
   left: 0;
-  top: calc(var(--lumina-forced-gap) / -2);
+  top: calc(var(--gutter-divider-gap) / -2);
   background-color: color-mix(in srgb, currentColor 20%, transparent);
   z-index: 2;
   pointer-events: none;
@@ -552,7 +455,7 @@ a > .avatar {
 }
 .wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers {
   position: relative;
-  margin-top: var(--lumina-forced-gap) !important;
+  margin-top: var(--gutter-divider-gap) !important;
 }
 .wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers::after {
   content: "";
@@ -560,7 +463,7 @@ a > .avatar {
   width: 100%;
   left: 0;
   height: 1px;
-  top: calc(var(--lumina-forced-gap) / -2);
+  top: calc(var(--gutter-divider-gap) / -2);
   background-color: color-mix(in srgb, currentColor 20%, transparent);
   z-index: 2;
   pointer-events: none;
@@ -579,7 +482,7 @@ a > .avatar {
     height: 100%;
     width: 1px;
     top: 0;
-    left: calc(var(--lumina-forced-gap) / -2);
+    left: calc(var(--gutter-divider-gap) / -2);
   }
   .wp-block-columns.is-style-gutter-dividers {
     /* Continuous Row Stacking Engine */
@@ -589,8 +492,8 @@ a > .avatar {
        through your custom 2x/3x margin gaps to seal the grid crosshairs */
   }
   .wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers > .wp-block-column:not(:first-child)::before {
-    height: calc(100% + var(--lumina-forced-gap));
-    top: calc(var(--lumina-forced-gap) * -1);
+    height: calc(100% + var(--gutter-divider-gap));
+    top: calc(var(--gutter-divider-gap) * -1);
   }
 }
 
@@ -1130,6 +1033,50 @@ a > .avatar {
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-primary-subtle-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-secondary-subtle-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-tertiary-subtle-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-primary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-secondary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-tertiary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-neutral-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-neutral-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-very-light-gray-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-light-gray-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline), :where(.is-dark-theme) .has-gray-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
 .wp-block-site-tagline) {
   /* Inherit heading color */
   color: inherit;
@@ -1195,63 +1142,7 @@ a > .avatar {
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-white-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-off-white-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
 .wp-block-site-tagline), :where(.is-dark-theme) .has-dark-gray-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-very-light-green-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-very-light-yellow-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-very-light-orange-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-very-light-blue-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-very-light-purple-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-very-light-red-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-light-green-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-light-yellow-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-light-orange-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-light-blue-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-light-purple-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-light-red-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
