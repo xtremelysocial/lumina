@@ -47,8 +47,10 @@
 
 				{ "slug": "base", "color": "hsl(0, 0%, 100%)", "name": "Base (Pure White Canvas)" },
 				{ "slug": "contrast", "color": "hsl(206, 15%, 12%)", "name": "Contrast (Slate Infused Technical Ink)" },
-				{ "slug": "neutral", "color": "hsl(206, 2%, 98%)", "name": "Neutral (Cupertino Clean Fill 98%)" },
-				{ "slug": "neutral-alt", "color": "hsl(206, 4%, 93%)", "name": "Neutral Alt (Cupertino Structural Border 93%)" },
+
+				{ "slug": "neutral", "color": "hsl(206, 2%, 96%)", "name": "Neutral (Cupertino Clean Fill 96%)" },
+				{ "slug": "neutral-alt", "color": "hsl(206, 4%, 89%)", "name": "Neutral Alt (Cupertino Structural Border 89%)" },
+
 				{ "slug": "foreground-alt", "color": "hsl(0, 0%, 100%)", "name": "Foreground Alt (Pure White)" },
 				
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },

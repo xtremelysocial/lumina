@@ -22,7 +22,6 @@
 					"light-gray": "var(--wp--preset--color--foreground-alt)",
 					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
-				"border": "color-mix(in srgb, var(--wp--preset--color--foreground-alt) 8%, transparent)",
 				"heading": {
 					"text": "hsl(37, 10%, 93%)",
 					"separator": "var(--wp--preset--color--primary)"
@@ -59,8 +58,10 @@
 
 				{ "slug": "base", "color": "hsl(211, 28%, 18%)", "name": "Base (Deep Sea Slate Canvas)" },
 				{ "slug": "contrast", "color": "hsl(211, 14%, 90%)", "name": "Contrast (Slate-Tinted Bone Typography)" },
+
 				{ "slug": "neutral", "color": "hsl(211, 25%, 21%)", "name": "Neutral (Industrial Marine Slate)" },
 				{ "slug": "neutral-alt", "color": "hsl(211, 28%, 27%)", "name": "Neutral Alt (Technical Maritime Blue Border)" },
+
 				{ "slug": "foreground-alt", "color": "hsl(211, 14%, 95%)", "name": "Foreground Alt (Off White)" },
 
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },

@@ -3,7 +3,7 @@
  * Title: Lumina CTA 2 Columns
  * Slug: lumina/buttons-columns-cta-2-columns
  * Categories: lumina, call-to-action, featured
- * Block Types: core/columns
+ * Block Types: core/columns, core/buttons
  */
 ?>
 <!-- wp:group {,"align":"wide","backgroundColor":"primary","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->

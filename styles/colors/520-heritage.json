@@ -47,8 +47,10 @@
 				
 				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White Canvas)" },
 				{ "slug": "contrast", "color": "hsl(0, 15%, 11%)", "name": "Contrast (Mahogany Infused Typographic Ink)" },
-				{ "slug": "neutral", "color": "hsl(45, 14%, 96%)", "name": "Neutral (Custom Muted Off-White Component Well 96%)" },
-				{ "slug": "neutral-alt", "color": "hsl(45, 10%, 88%)", "name": "Neutral Alt (Component Border Seam 88%)" },
+
+				{ "slug": "neutral", "color": "hsl(45, 14%, 94%)", "name": "Neutral (Custom Muted Off-White Component Well 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(45, 10%, 87%)", "name": "Neutral Alt (Component Border Seam 87%)" },
+
 				{ "slug": "foreground-alt", "color": "hsl(45, 27%, 97%)", "name": "Foreground Alt (Bone White)" },
 				
 				{ "slug": "highlight", "color": "hsl(0, 44%, 71%)", "name": "Highlight (Vibrant Rose Hover 71%)" },

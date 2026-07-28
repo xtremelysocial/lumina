@@ -3,7 +3,7 @@
 	"version": 3,
 	"slug": "image-border",
 	"title": "Border",
-	"blockTypes": [ "core/image", "core/media-text" ],
+	"blockTypes": [ "core/media-text" ],
 	"styles": {
 		"css": ""
 	}

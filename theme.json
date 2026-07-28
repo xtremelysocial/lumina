@@ -16,9 +16,9 @@
 						"gold"
 					]
 				},
-				"border": "color-mix(in srgb, var(--wp--preset--color--neutral-alt) 30%, transparent)",
+				"border": "color-mix(in srgb, currentColor 12%, transparent)",
 				"field": { 
-					"outline": "rgba(0, 0, 0, 0.25)" 
+					"outline": "color-mix(in srgb, currentColor 20%, transparent)" 
 				},
 				"button": {
 					"background": 	"var(--wp--preset--color--primary)",
@@ -251,8 +251,8 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 18%, 83%)", "name": "Secondary Subtle Alt (Sky Border Seam 83%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 16%, 83%)", "name": "Tertiary Subtle Alt (Parchment Border Seam 83%)" },
 
-				{ "slug": "neutral", "color": "hsl(32, 16%, 96%)", "name": "Neutral (Crisp Sand Well 96%)" },
-				{ "slug": "neutral-alt", "color": "hsl(32, 12%, 88%)", "name": "Neutral Alt (Sand Border Seam 88%)" },
+				{ "slug": "neutral", "color": "hsl(32, 16%, 94%)", "name": "Neutral (Crisp Sand Well 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(32, 12%, 87%)", "name": "Neutral Alt (Sand Border Seam 87%)" },
 				
 				{ "slug": "base", "color": "hsl(32, 20%, 97%)", "name": "Base (Almond White)" },
 				{ "slug": "contrast", "color": "hsl(214, 12%, 11%)", "name": "Contrast (Midnight Indigo Typographic Ink)" },

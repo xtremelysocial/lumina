@@ -24,7 +24,6 @@
 					"light-gray": "var(--wp--preset--color--foreground-alt)",
 					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
-				"border": "color-mix(in srgb, var(--wp--preset--color--foreground-alt) 8%, transparent)",
 				"heading": {
 					"text": "hsl(204, 29%, 94%)",
 					"separator": "var(--wp--preset--color--highlight-alt)"
@@ -61,8 +60,10 @@
 
 				{ "slug": "base", "color": "hsl(0, 0%, 10%)", "name": "Base (Rich Carbon Dark Canvas)" },
 				{ "slug": "contrast", "color": "hsl(45, 29%, 97%)", "name": "Contrast (Off White Paper Typography)" },
+
 				{ "slug": "neutral", "color": "hsl(0, 0%, 18%)", "name": "Neutral (Industrial Grid Fill)" },
 				{ "slug": "neutral-alt", "color": "hsl(50, 4%, 14%)", "name": "Neutral Alt (Technical Structural Border)" },
+
 				{ "slug": "foreground-alt", "color": "hsl(45, 29%, 97%)", "name": "Foreground Alt (Off White)" },
 
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },

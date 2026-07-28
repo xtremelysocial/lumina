@@ -59,7 +59,8 @@ $sep-clearance: var(--wp--preset--spacing--30); //10px; // Fixed breathing room 
         // Override separator color when parent or block has a background 
         @at-root .has-background #{&}::after,
         &.has-background::after {
-            background-color: currentcolor;
+//             background-color: currentcolor;
+			background-color: color-mix(in srgb, $sep-color 85%, currentColor);
         }
     }
 }

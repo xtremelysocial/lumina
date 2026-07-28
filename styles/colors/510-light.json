@@ -47,8 +47,10 @@
 				
 				{ "slug": "base", "color": "hsl(45, 20%, 97%)", "name": "Base (Clean Linen Canvas)" },
 				{ "slug": "contrast", "color": "hsl(154, 14%, 13%)", "name": "Contrast (Muted Sage Carbon Ink)" },
-				{ "slug": "neutral", "color": "hsl(45, 12%, 96%)", "name": "Neutral (High-Key Component Well 96%)" },
-				{ "slug": "neutral-alt", "color": "hsl(45, 8%, 91%)", "name": "Neutral Alt (High-Key Structural Border 91%)" },
+
+				{ "slug": "neutral", "color": "hsl(45, 12%, 93.5%)", "name": "Neutral (High-Key Component Well 93.5%)" },
+				{ "slug": "neutral-alt", "color": "hsl(45, 8%, 87%)", "name": "Neutral Alt (High-Key Structural Border 87%)" },
+
 				{ "slug": "foreground-alt", "color": "hsl(45, 20%, 97%)", "name": "Foreground Alt (Clean Linen)" },
 				
 				{ "slug": "highlight", "color": "hsl(154, 45%, 68%)", "name": "Highlight (Soft Matte Sage Pop)" },

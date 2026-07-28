@@ -51,8 +51,10 @@
 
 				{ "slug": "base", "color": "hsl(43, 27%, 97%)", "name": "Base (Light Evening Haze Canvas)" },
 				{ "slug": "contrast", "color": "hsl(214, 12%, 11%)", "name": "Contrast (Midnight Indigo Typographic Ink)" },
-				{ "slug": "neutral", "color": "hsl(45, 14%, 96%)", "name": "Neutral (Custom Muted Off-White Component Well 96%)" },
-				{ "slug": "neutral-alt", "color": "hsl(45, 10%, 88%)", "name": "Neutral Alt (Component Border Seam 88%)" },
+
+				{ "slug": "neutral", "color": "hsl(45, 14%, 94%)", "name": "Neutral (Custom Muted Off-White Component Well 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(45, 10%, 87%)", "name": "Neutral Alt (Component Border Seam 87%)" },
+
 				{ "slug": "foreground-alt", "color": "hsl(43, 27%, 97%)", "name": "Foreground Alt (Off White)" },
 
 				{ "slug": "highlight", "color": "hsl(150, 65%, 68%)", "name": "Highlight (Pastel Emerald Hover)" },
