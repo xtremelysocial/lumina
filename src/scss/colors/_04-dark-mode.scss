@@ -26,7 +26,7 @@
 	   	  color schemes.
 	========================================================================== */
 
-	:where(.is-dark-theme) {
+	:root :where(.is-dark-theme) {
 
 		@each $entry in logic.$color-registry {
 			$config:       		map.merge(logic.$color-defaults, $entry);
@@ -38,38 +38,57 @@
 			$footer-dark: 		map.get($config, footer-dark);
 	
 			$selectors: logic.build-selector-list($color);
+
+			// Add :root in dark mode to override parent them
+// 			$root: true; 
 	
 			// Dark-light colors need light text in dark mode. Headings are already
 			// light. 
 			@if $text == 'dark-light' {
-				@include logic.apply-contrast-color($color, 'light', $buttons);
+				@include logic.apply-contrast-color(
+					$color, 
+					'light', 
+					$buttons, 
+// 					$root
+				);
 				
 				// This should only be needed to override the parent theme
-	            @include logic.apply-heading-action($selectors, 'light');
+/////	            @include logic.apply-heading-action($selectors, 'light');
+// 				@include logic.apply-heading-action($selectors, 'heading-dark');
 	
 	//             @include logic.apply-link-action($selectors, 'highlight');
 				
-			// If dark text is needed in dark mode, then apply it to text AND links
+			// If dark text is needed in dark mode, then apply it to text AND headings
 			} @else if $text == 'light-dark' {
 				@include logic.apply-contrast-color($color, 'dark', $buttons);
 	
-				@include logic.apply-heading-action($selectors, 'dark'); 
-				
-	//             @include logic.apply-link-action($selectors, 'highlight');
+				@include logic.apply-heading-action($selectors, 'dark'); /////				
 // 			}
-			
-			// For headings, dark-light is light in dark mode and needs headings 
-			// to inherit
-// 			@if $text == 'light-dark' {
-	// 			@include logic.apply-heading-action($selectors, 'light'); 
-	
-	// 			@include logic.apply-link-action($selectors, 'highlight-alt');
-	
-	
+				
 			// Lightness-locked backgrounds need to inherit heading colors as well
-			} @else if $text == 'no-fallback' or $text == 'dark' {
-				@include logic.apply-heading-action($selectors, 'dark');
+/////			} @else if $text == 'no-fallback' or $text == 'dark' {
+/////				@include logic.apply-heading-action($selectors, 'dark');
 			}        
+
+			// Heading Action Evaluation Stack in Dark Mode
+			// Priority 1: Explicit $heading-dark directive from registry
+			@if $heading-dark == 'darken' {
+				@include logic.apply-heading-action($selectors, 'darken');
+		
+			} @else if $heading-dark == 'dark' {
+				@include logic.apply-heading-action($selectors, 'dark');
+		
+			} @else if $heading-dark == 'heading-dark' {
+				@include logic.apply-heading-action($selectors, 'heading-dark');
+
+			} @else if $heading-dark == 'light' {
+				@include logic.apply-heading-action($selectors, 'light');
+			
+			// Priority 2: Fallback only if $heading-dark is null AND text demands 
+			// explicit dark text
+			} @else if $text == 'light-dark' {
+				@include logic.apply-heading-action($selectors, 'dark');
+			}
 	
 			// Apply link color in dark mode, if specified
 			@if $link-dark {

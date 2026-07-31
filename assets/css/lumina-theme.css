@@ -1016,166 +1016,284 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
 }
 
+/*-----------------------------------------------------------------------------
+  COLORS: DEFAULT TEXT, HEADING, AND LINK COLORS
+ -----------------------------------------------------------------------------*/
 /*
  * Default contrast (text) based on background color.
  * To override, set these in theme.json:
  *		--wp--custom--color--contrast--{color}
  */
-.has-primary-dark-background-color :is(.wp-block-heading,
+.has-primary-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-primary-dark-alt-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-primary-alt-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-tertiary-dark-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-secondary-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-tertiary-dark-alt-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-secondary-alt-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-dark-green-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-tertiary-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-yellow-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-tertiary-alt-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-dark-yellow-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-very-dark-gray-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(body:not(.is-dark-theme)) .has-contrast-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-primary-dark-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(body:not(.is-dark-theme)) .has-dark-gray-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-primary-dark-alt-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-primary-subtle-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-tertiary-dark-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-secondary-subtle-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-tertiary-dark-alt-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-tertiary-subtle-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-green-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-primary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-dark-green-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-secondary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-yellow-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-tertiary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-dark-yellow-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-neutral-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-orange-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-neutral-alt-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-dark-orange-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-very-light-gray-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-blue-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-light-gray-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-dark-blue-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-gray-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-midnight-blue-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline) {
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-dark-midnight-blue-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-purple-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-dark-purple-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-red-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), .has-dark-red-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(body:not(.is-dark-theme)) .has-contrast-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(body:not(.is-dark-theme)) .has-dark-gray-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(body:not(.is-dark-theme)) .has-dark-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(body:not(.is-dark-theme)) .has-dark-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(body:not(.is-dark-theme)) .has-not-quite-black-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(body:not(.is-dark-theme)) .has-almost-black-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(body:not(.is-dark-theme)) .has-black-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6) {
   /* Inherit heading color */
   color: inherit;
 }
 
-.has-white-background-color :is(.wp-block-heading,
+:root :where(.is-dark-theme) .has-contrast-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-off-white-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-dark-gray-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-very-light-green-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-very-light-green-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-very-light-yellow-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-very-light-yellow-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-very-light-orange-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-very-light-orange-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-very-light-blue-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-very-light-blue-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-very-light-purple-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-very-light-purple-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-very-light-red-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-very-light-red-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-light-green-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-light-green-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-light-yellow-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-light-yellow-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-light-orange-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-light-orange-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-light-blue-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-light-blue-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-light-purple-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-light-purple-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), .has-light-red-background-color :is(.wp-block-heading,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-light-red-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-contrast-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline), :where(.is-dark-theme) .has-dark-gray-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline) {
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6) {
   /* Force explicit dark headings on persistent light surfaces in dark mode */
   color: var(--wp--preset--color--almost-black);
 }
 
-.has-light-green-background-color a:where(:not(.wp-element-button,
+:root :where(.is-dark-theme) .has-white-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-off-white-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6) {
+  /* In dark mode, darken headings on light backgrounds */
+  filter: brightness(0.52) saturate(1.6);
+}
+
+.has-primary-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-primary-alt-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-secondary-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-tertiary-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-tertiary-alt-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-gray-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-light-green-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-green-background-color a:where(:not(.wp-element-button,
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content)), .has-dark-green-background-color a:where(:not(.wp-element-button,
 .wp-block-social-link-anchor,
@@ -1183,15 +1301,85 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content)), .has-light-orange-background-color a:where(:not(.wp-element-button,
 .wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-orange-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-orange-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
 .wp-block-navigation-item__content)), .has-light-blue-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-blue-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-blue-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-midnight-blue-background-color a:where(:not(.wp-element-button,
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content)), .has-light-purple-background-color a:where(:not(.wp-element-button,
 .wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-purple-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-purple-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
 .wp-block-navigation-item__content)), .has-light-red-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-red-background-color a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-red-background-color a:where(:not(.wp-element-button,
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content)) {
   /* Inherit link color */
   color: inherit;
+}
+
+.has-secondary-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-contrast-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-very-dark-gray-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-primary-dark-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-primary-dark-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-tertiary-dark-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-tertiary-dark-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-dark-midnight-blue-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-dark-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-dark-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-not-quite-black-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-almost-black-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .has-black-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-primary-subtle-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-secondary-subtle-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-tertiary-subtle-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-primary-subtle-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-secondary-subtle-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-tertiary-subtle-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content) {
+  color: var(--wp--preset--color--highlight);
+}
+
+:root :where(.is-dark-theme) .has-contrast-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-white-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-off-white-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content) {
+  color: var(--wp--preset--color--highlight-alt);
 }
 
 .has-primary-subtle-alt-background-color a:where(:not(.wp-element-button,
@@ -1214,88 +1402,8 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   color: var(--wp--preset--color--foreground-alt);
 }
 
-.wp-block-post-content .has-primary-subtle-alt-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-secondary-subtle-alt-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-tertiary-subtle-alt-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-light-green-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-dark-green-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-light-yellow-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-yellow-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-dark-yellow-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-light-orange-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-light-blue-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-light-purple-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .wp-block-post-content .has-light-red-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content) {
-  /* Underline links */
-  text-decoration-line: underline;
-}
-
-.has-primary-subtle-alt-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-secondary-subtle-alt-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-tertiary-subtle-alt-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-light-green-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-dark-green-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-light-yellow-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-yellow-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-dark-yellow-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-light-orange-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-light-blue-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-light-purple-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)), .has-light-red-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content)) {
-  /* Special underline links in footers */
-  text-decoration-style: var(--wp--custom--link--special-style, dotted);
-  text-decoration-line: underline;
-}
-
-.has-primary-dark-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .has-primary-dark-alt-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .has-tertiary-dark-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .has-tertiary-dark-alt-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), .has-contrast-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), :where(.is-dark-theme) .has-primary-subtle-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), :where(.is-dark-theme) .has-secondary-subtle-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), :where(.is-dark-theme) .has-tertiary-subtle-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), :where(.is-dark-theme) .has-primary-subtle-alt-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), :where(.is-dark-theme) .has-secondary-subtle-alt-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), :where(.is-dark-theme) .has-tertiary-subtle-alt-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content) {
+:root :where(.is-dark-theme) .has-very-light-gray-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-very-light-gray-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover {
   /* Lighten link color on dark backgrounds */
   color: var(--wp--preset--color--highlight);
 }
@@ -1310,100 +1418,324 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 :where(body:not(.is-dark-theme)) .has-light-gray-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :where(body:not(.is-dark-theme)) .has-gray-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
 :where(body:not(.is-dark-theme)) .has-gray-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :where(body:not(.is-dark-theme)) .has-dark-gray-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
 :where(body:not(.is-dark-theme)) .has-dark-gray-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :where(body:not(.is-dark-theme)) .has-very-dark-gray-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
-:where(body:not(.is-dark-theme)) .has-very-dark-gray-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :where(.is-dark-theme) .has-contrast-background-color a:not(.wp-element-button,
-.wp-block-social-link-anchor,
-.wp-block-navigation-item__content), :where(.is-dark-theme) .has-very-dark-gray-background-color a:not(.wp-element-button,
+:where(body:not(.is-dark-theme)) .has-very-dark-gray-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-very-dark-gray-background-color a:not(.wp-element-button,
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content) {
   /* Darken link color on light backgrounds */
   color: var(--wp--preset--color--highlight-alt);
 }
 
+.wp-block-post-content .has-primary-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-primary-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-secondary-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-tertiary-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-tertiary-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-primary-subtle-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-secondary-subtle-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-tertiary-subtle-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-dark-gray-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-light-green-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-green-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-dark-green-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-light-yellow-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-yellow-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-dark-yellow-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-light-orange-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-orange-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-dark-orange-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-light-blue-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-blue-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-dark-blue-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-midnight-blue-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-light-purple-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-purple-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-dark-purple-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-light-red-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-red-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-dark-red-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content) {
+  /* Underline links */
+  text-decoration-line: underline;
+}
+
+.has-primary-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-primary-alt-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-secondary-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-tertiary-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-tertiary-alt-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-primary-subtle-alt-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-secondary-subtle-alt-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-tertiary-subtle-alt-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-gray-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-light-green-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-green-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-green-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-light-yellow-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-yellow-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-yellow-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-light-orange-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-orange-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-orange-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-light-blue-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-blue-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-blue-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-midnight-blue-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-light-purple-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-purple-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-purple-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-light-red-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-red-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)), .has-dark-red-background-color:is(.site-footer, .footer-info) p a:where(:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content)) {
+  /* Special underline links in footers */
+  text-decoration-style: var(--wp--custom--link--special-style, dotted);
+  text-decoration-line: underline;
+}
+
+.wp-block-post-content .has-secondary-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-contrast-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-very-dark-gray-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-primary-dark-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-primary-dark-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-tertiary-dark-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-tertiary-dark-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-dark-midnight-blue-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-dark-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-dark-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-not-quite-black-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-almost-black-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), .wp-block-post-content .has-black-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content) {
+  /* Underline links */
+  text-decoration-line: none;
+}
+
 /* ==========================================================================
    02 GLOBAL COLORS: Set colors regardless of light or dark mode
 ========================================================================== */
-.has-primary-dark-background-color {
-  color: var(--wp--custom--color--contrast--primary-dark, var(--wp--preset--color--foreground-alt));
+:root .has-primary-background-color {
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--foreground-alt));
 }
 
-.has-primary-dark-alt-background-color {
-  color: var(--wp--custom--color--contrast--primary-dark-alt, var(--wp--preset--color--foreground-alt));
+:root .has-primary-alt-background-color {
+  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--foreground-alt));
 }
 
-.has-tertiary-dark-background-color {
-  color: var(--wp--custom--color--contrast--tertiary-dark, var(--wp--preset--color--foreground-alt));
+:root .has-secondary-background-color {
+  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--foreground-alt));
 }
 
-.has-tertiary-dark-alt-background-color {
-  color: var(--wp--custom--color--contrast--tertiary-dark-alt, var(--wp--preset--color--foreground-alt));
+:root .has-secondary-alt-background-color {
+  color: var(--wp--custom--color--contrast--secondary-alt, var(--wp--preset--color--foreground-alt));
 }
 
-.has-white-background-color {
+:root .has-tertiary-background-color {
+  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-tertiary-alt-background-color {
+  color: var(--wp--custom--color--contrast--tertiary-alt, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-white-background-color {
   color: var(--wp--custom--color--contrast--white, var(--wp--preset--color--almost-black));
 }
 
-.has-off-white-background-color {
+:root .has-off-white-background-color {
   color: var(--wp--custom--color--contrast--off-white, var(--wp--preset--color--almost-black));
 }
 
-.has-very-light-green-background-color {
+:root .has-very-dark-gray-background-color {
+  color: var(--wp--custom--color--contrast--very-dark-gray, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-primary-dark-background-color {
+  color: var(--wp--custom--color--contrast--primary-dark, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-primary-dark-alt-background-color {
+  color: var(--wp--custom--color--contrast--primary-dark-alt, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-tertiary-dark-background-color {
+  color: var(--wp--custom--color--contrast--tertiary-dark, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-tertiary-dark-alt-background-color {
+  color: var(--wp--custom--color--contrast--tertiary-dark-alt, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-very-light-green-background-color {
   color: var(--wp--custom--color--contrast--very-light-green, var(--wp--preset--color--almost-black));
 }
 
-.has-very-light-yellow-background-color {
+:root .has-very-light-yellow-background-color {
   color: var(--wp--custom--color--contrast--very-light-yellow, var(--wp--preset--color--almost-black));
 }
 
-.has-very-light-orange-background-color {
+:root .has-very-light-orange-background-color {
   color: var(--wp--custom--color--contrast--very-light-orange, var(--wp--preset--color--almost-black));
 }
 
-.has-very-light-blue-background-color {
+:root .has-very-light-blue-background-color {
   color: var(--wp--custom--color--contrast--very-light-blue, var(--wp--preset--color--almost-black));
 }
 
-.has-very-light-purple-background-color {
+:root .has-very-light-purple-background-color {
   color: var(--wp--custom--color--contrast--very-light-purple, var(--wp--preset--color--almost-black));
 }
 
-.has-very-light-red-background-color {
+:root .has-very-light-red-background-color {
   color: var(--wp--custom--color--contrast--very-light-red, var(--wp--preset--color--almost-black));
 }
 
-.has-light-green-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-green-background-color {
+:root .has-light-green-background-color {
   color: var(--wp--custom--color--contrast--light-green, var(--wp--preset--color--almost-black));
 }
 
-.has-dark-green-background-color {
+:root .has-green-background-color {
+  color: var(--wp--custom--color--contrast--green, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-dark-green-background-color {
   color: var(--wp--custom--color--contrast--dark-green, var(--wp--preset--color--foreground-alt));
 }
 
-.has-light-yellow-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-yellow-background-color {
+:root .has-light-yellow-background-color {
   color: var(--wp--custom--color--contrast--light-yellow, var(--wp--preset--color--almost-black));
 }
 
-.has-yellow-background-color, a:where(.wp-element-button, .wp-block-button__link).has-yellow-background-color {
+:root .has-yellow-background-color {
   color: var(--wp--custom--color--contrast--yellow, var(--wp--preset--color--foreground-alt));
 }
 
-.has-dark-yellow-background-color {
+:root .has-dark-yellow-background-color {
   color: var(--wp--custom--color--contrast--dark-yellow, var(--wp--preset--color--foreground-alt));
 }
 
-.has-light-orange-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-orange-background-color {
+:root .has-light-orange-background-color {
   color: var(--wp--custom--color--contrast--light-orange, var(--wp--preset--color--almost-black));
 }
 
-.has-light-blue-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-blue-background-color {
+:root .has-orange-background-color {
+  color: var(--wp--custom--color--contrast--orange, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-dark-orange-background-color {
+  color: var(--wp--custom--color--contrast--dark-orange, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-light-blue-background-color {
   color: var(--wp--custom--color--contrast--light-blue, var(--wp--preset--color--almost-black));
 }
 
-.has-light-purple-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-purple-background-color {
+:root .has-blue-background-color {
+  color: var(--wp--custom--color--contrast--blue, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-dark-blue-background-color {
+  color: var(--wp--custom--color--contrast--dark-blue, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-midnight-blue-background-color {
+  color: var(--wp--custom--color--contrast--midnight-blue, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-dark-midnight-blue-background-color {
+  color: var(--wp--custom--color--contrast--dark-midnight-blue, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-light-purple-background-color {
   color: var(--wp--custom--color--contrast--light-purple, var(--wp--preset--color--almost-black));
 }
 
-.has-light-red-background-color, a:where(.wp-element-button, .wp-block-button__link).has-light-red-background-color {
+:root .has-purple-background-color {
+  color: var(--wp--custom--color--contrast--purple, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-dark-purple-background-color {
+  color: var(--wp--custom--color--contrast--dark-purple, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-light-red-background-color {
   color: var(--wp--custom--color--contrast--light-red, var(--wp--preset--color--almost-black));
+}
+
+:root .has-red-background-color {
+  color: var(--wp--custom--color--contrast--red, var(--wp--preset--color--foreground-alt));
+}
+
+:root .has-dark-red-background-color {
+  color: var(--wp--custom--color--contrast--dark-red, var(--wp--preset--color--foreground-alt));
 }
 
 /* ==========================================================================
@@ -1428,14 +1760,14 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 :where(body:not(.is-dark-theme)) .has-tertiary-subtle-alt-background-color {
   color: var(--wp--custom--color--contrast--tertiary-subtle-alt, var(--wp--preset--color--almost-black));
 }
+:where(body:not(.is-dark-theme)) .has-contrast-background-color {
+  color: var(--wp--custom--color--contrast--contrast, var(--wp--preset--color--foreground-alt));
+}
 :where(body:not(.is-dark-theme)) .has-neutral-background-color {
   color: var(--wp--custom--color--contrast--neutral, var(--wp--preset--color--almost-black));
 }
 :where(body:not(.is-dark-theme)) .has-neutral-alt-background-color {
   color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--almost-black));
-}
-:where(body:not(.is-dark-theme)) .has-contrast-background-color {
-  color: var(--wp--custom--color--contrast--contrast, var(--wp--preset--color--foreground-alt));
 }
 :where(body:not(.is-dark-theme)) .has-very-light-gray-background-color {
   color: var(--wp--custom--color--contrast--very-light-gray, var(--wp--preset--color--almost-black));
@@ -1453,43 +1785,43 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
    03 DARK-MODE COLORS: Apply text, heading, and link colors for dark-mode
    	  color schemes.
 ========================================================================== */
-:where(.is-dark-theme) .has-primary-subtle-background-color {
+:root :where(.is-dark-theme) .has-primary-subtle-background-color {
   color: var(--wp--custom--color--contrast--primary-subtle, var(--wp--preset--color--foreground-alt));
 }
-:where(.is-dark-theme) .has-secondary-subtle-background-color {
+:root :where(.is-dark-theme) .has-secondary-subtle-background-color {
   color: var(--wp--custom--color--contrast--secondary-subtle, var(--wp--preset--color--foreground-alt));
 }
-:where(.is-dark-theme) .has-tertiary-subtle-background-color {
+:root :where(.is-dark-theme) .has-tertiary-subtle-background-color {
   color: var(--wp--custom--color--contrast--tertiary-subtle, var(--wp--preset--color--foreground-alt));
 }
-:where(.is-dark-theme) .has-primary-subtle-alt-background-color {
+:root :where(.is-dark-theme) .has-primary-subtle-alt-background-color {
   color: var(--wp--custom--color--contrast--primary-subtle-alt, var(--wp--preset--color--foreground-alt));
 }
-:where(.is-dark-theme) .has-secondary-subtle-alt-background-color {
+:root :where(.is-dark-theme) .has-secondary-subtle-alt-background-color {
   color: var(--wp--custom--color--contrast--secondary-subtle-alt, var(--wp--preset--color--foreground-alt));
 }
-:where(.is-dark-theme) .has-tertiary-subtle-alt-background-color {
+:root :where(.is-dark-theme) .has-tertiary-subtle-alt-background-color {
   color: var(--wp--custom--color--contrast--tertiary-subtle-alt, var(--wp--preset--color--foreground-alt));
 }
-:where(.is-dark-theme) .has-neutral-background-color {
-  color: var(--wp--custom--color--contrast--neutral, var(--wp--preset--color--foreground-alt));
-}
-:where(.is-dark-theme) .has-neutral-alt-background-color {
-  color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--foreground-alt));
-}
-:where(.is-dark-theme) .has-contrast-background-color {
+:root :where(.is-dark-theme) .has-contrast-background-color {
   color: var(--wp--custom--color--contrast--contrast, var(--wp--preset--color--almost-black));
 }
-:where(.is-dark-theme) .has-very-light-gray-background-color {
+:root :where(.is-dark-theme) .has-neutral-background-color {
+  color: var(--wp--custom--color--contrast--neutral, var(--wp--preset--color--foreground-alt));
+}
+:root :where(.is-dark-theme) .has-neutral-alt-background-color {
+  color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--foreground-alt));
+}
+:root :where(.is-dark-theme) .has-very-light-gray-background-color {
   color: var(--wp--custom--color--contrast--very-light-gray, var(--wp--preset--color--foreground-alt));
 }
-:where(.is-dark-theme) .has-light-gray-background-color {
+:root :where(.is-dark-theme) .has-light-gray-background-color {
   color: var(--wp--custom--color--contrast--light-gray, var(--wp--preset--color--foreground-alt));
 }
-:where(.is-dark-theme) .has-gray-background-color {
+:root :where(.is-dark-theme) .has-gray-background-color {
   color: var(--wp--custom--color--contrast--gray, var(--wp--preset--color--foreground-alt));
 }
-:where(.is-dark-theme) .has-dark-gray-background-color {
+:root :where(.is-dark-theme) .has-dark-gray-background-color {
   color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--almost-black));
 }
 

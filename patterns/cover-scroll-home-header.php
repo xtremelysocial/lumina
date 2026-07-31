@@ -6,8 +6,8 @@
  * Block Types: core/cover
  */
 ?>
-<!-- wp:cover {"url":"/assets/images/cover-colored-blocks.jpg","dimRatio":40,"overlayColor":"primary","minHeight":480,"isDark":true,"align":"full","style":{"spacing":{"margin":{"top":"0"}}}} -->
-<div class="wp-block-cover alignfull is-dark" style="min-height:480px;margin-top:0;" id="cover-scroll-home-header"><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-40 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="/assets/images/cover-colored-blocks.jpg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":"36px"} -->
+<!-- wp:cover {"url":"/assets/images/samples/image-city-night.webp","dimRatio":40,"overlayColor":"primary","minHeight":480,"isDark":true,"align":"full","style":{"spacing":{"margin":{"top":"0"}}}} -->
+<div class="wp-block-cover alignfull is-dark" style="min-height:480px;margin-top:0;" id="cover-scroll-home-header"><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-40 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="/assets/images/samples/image-city-night.webp" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":"36px"} -->
 <div style="height:36px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 <!-- wp:site-title {"textAlign":"center","isLink":false,"fontSize":"huge"} /-->

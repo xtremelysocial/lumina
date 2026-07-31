@@ -25,42 +25,62 @@
 	   02 GLOBAL COLORS: Set colors regardless of light or dark mode
 	========================================================================== */
 
+	// Flat Blocks does this, but... we want to preserve headings colors
+// 	:where(.has-background:not(.has-text-color)) {
+// 		color: var(--wp--preset--color--off-white);
+// 		
+// 		& .wp-block-heading,
+// 		& h1, h2, h3, h4, h5, h6 {
+// 			color: var(--wp--preset--color--off-white);
+// 		}
+// 	}
+
+	// Loop through the colors and output CSS
 	@each $entry in logic.$color-registry {
 		$config: 	map.merge(logic.$color-defaults, $entry);
 		$color:  	map.get($config, color);
 		$text:   	map.get($config, text);
+		$heading:   map.get($config, heading);
 		$buttons:   map.get($config, buttons);
 		$link:   	map.get($config, link);
 	
+		// Build the .has-$color-background-color selector
 		$selectors: logic.build-selector-list($color);
+		
+		// Always need to add :root in the global space to override parent them
+		$root: true; 
 	
 		// Always-light backgrounds, text gets hook for theme.json contrast overrides, 
 		// but no fallback because the fallback should simply be the body text color
 		@if $text == 'no-fallback' {
-			@include logic.apply-contrast-color($color, 'no-fallback', $buttons);
+			@include logic.apply-contrast-color($color, 'no-fallback', $buttons, $root);
 		
-		// Always-dark backgrounds, apply light text, headings and links
+		// Always-dark backgrounds, apply light text AND headings
 		} @else if $text == 'light' {
-			@include logic.apply-contrast-color($color, 'light', $buttons);
+			@include logic.apply-contrast-color($color, 'light', $buttons, $root);
 			
-	//         $selectors: logic.build-selector-list($color);
-			@include logic.apply-heading-action($selectors, 'light');  
-			
-	// 		@include logic.apply-link-action($selectors, 'highlight');  	
+			@include logic.apply-heading-action($selectors, 'light'); //////
 	
-		// Always-light backgrounds, apply dark text, headings and links
+		// Always-light backgrounds, apply dark text AND headings
 		} @else if $text == 'dark' {
-			@include logic.apply-contrast-color($color, 'dark', $buttons);
+			@include logic.apply-contrast-color($color, 'dark', $buttons, $root);
 			
-	//         $selectors: logic.build-selector-list($color);
-			@include logic.apply-heading-action($selectors, 'dark');  
-			
-	// 		@include logic.apply-link-action($selectors, 'highlight');  	
+//////			@include logic.apply-heading-action($selectors, 'dark');  			
+		}
+
+		// Handle heading override
+		@if $heading {
+			@include logic.apply-heading-action($selectors, $heading); //////
 		}
 		
-		// If link color, then apply it. TO-DO: Move this above??
+		// If link color, then apply it in the global space
 		@if $link {
-			@include logic.apply-link-action($selectors, $link);
+// 			@include logic.apply-link-action($selectors, $link);
+			@include logic.apply-link-action(
+				$selectors, 
+				$link, 
+				$remove-underline: true
+			);
 		}
 	}
 }

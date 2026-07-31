@@ -10,11 +10,13 @@
 					"mode": "is-light-theme",
 					"scheme": "lumina",
 					"image-folders": [
+						"classic",
 						"paper",
 						"sage",
 						"ocean",
 						"gold"
-					]
+					],
+					"image-default": "/assets/images/paper/paper-01.webp"
 				},
 				"border": "color-mix(in srgb, currentColor 12%, transparent)",
 				"field": { 
@@ -275,6 +277,11 @@
 				{ "slug": "highlight", "color": "hsl(154, 65%, 68%)", "name": "Highlight (Electric Sage for Dark BG)" },
 				{ "slug": "highlight-alt", "color": "hsl(154, 75%, 28%)", "name": "Highlight Alt (Vivid Pine Link Ink)" },
 
+				{ "slug": "highlight-secondary", "color": "hsl(206, 80%, 72%)", "name": "Highlight Secondary (Luminescent Sky)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(206, 65%, 36%)", "name": "Highlight Secondary Alt (Deep Sky Link)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(34, 80%, 72%)", "name": "Highlight Tertiary (Luminescent Ochre)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(34, 65%, 36%)", "name": "Highlight Tertiary Alt (Deep Ochre Link)" },
+				
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(32, 20%, 97%)", "name": "Off White (Desert Alabaster)" },
 				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black (Pure Carbon Floor)" },

@@ -8,8 +8,6 @@
 // Schema: (Color, Text, Heading, Link, Footer)
 // ==========================================================================
 
-// SETUP DEFAULTS SO WE DON'T HAVE TO INCLUDE ALL FIELDS IN THE REGISTRY
-
 //*-----------------------------------------------------------------------------
 // 0.0  SETUP: FUNCTIONS AND MIXINS
 // -----------------------------------------------------------------------------*/
@@ -19,6 +17,9 @@
 // @use 'sass:map';
 // @use "colors-logic" as logic;
 
+/*-----------------------------------------------------------------------------
+  COLORS: DEFAULT TEXT, HEADING, AND LINK COLORS
+ -----------------------------------------------------------------------------*/
 /*
  * Default contrast (text) based on background color.
  * To override, set these in theme.json:
@@ -34,7 +35,8 @@ $color-defaults: (
     color:           null, 	// color slug (e.g. white, black, etc.)
     text:            null,	// dark, light, dark-light, light-dark, no-fallback
     buttons:		 null,	// true or false for explicit button text colors
-//     heading:		 null,
+    heading:		 null,	// dark or light
+    heading-light:	 null,	// dark or light or inherit
     heading-dark:    null, 	// true or false
     link:            null,	// dark, light, inherit, highlight, highlight-alt
     link-dark:       null, 	// highlight, highlight-alt
@@ -50,117 +52,151 @@ $color-defaults: (
 // MAP OF ALL COLORS IN THE PALETTE (THAT AREN'T IN PARENT THEME)
 $color-registry: (
 
+	// --- MAIN COLORS (DARK) (FLAT BLOCKS) ---
+    ( color: 'primary',          text: 'light',  	link: 'inherit' ),
+    ( color: 'primary-alt',      text: 'light',  	link: 'inherit' ),
+    ( color: 'secondary',        text: 'light',  	link: 'inherit' ),
+    ( color: 'secondary-alt',    text: 'light',  	link: 'lighten' ), 
+    ( color: 'tertiary',         text: 'light',  	link: 'inherit' ),
+    ( color: 'tertiary-alt',     text: 'light',  	link: 'inherit' ),
+
     // --- SUBTLE SEMANTIC COLORS (LUMINA ONLY) ---
     // Fluid: Light backgrounds in light mode, invert to dark in dark mode
-    ( color: 'primary-subtle',       text: 'dark-light', heading-dark: true, 
-    		link-dark: 'highlight' 
+    ( color: 'primary-subtle',		text: 'dark-light', heading-dark: true, 
+    		link-dark: 'lighten' 
     ),							
-    ( color: 'secondary-subtle',     text: 'dark-light', heading-dark: true, 
-    		link-dark: 'highlight' 
+    ( color: 'secondary-subtle',    text: 'dark-light', heading-dark: true, 
+    		link-dark: 'lighten' 
     ),						
-    ( color: 'tertiary-subtle',      text: 'dark-light', heading-dark: true, 
-    		link-dark: 'highlight' 
+    ( color: 'tertiary-subtle',     text: 'dark-light', heading-dark: true, 
+    		link-dark: 'lighten' 
     ),
     
     // --- SUBTLE ALT SEMANTIC COLORS (LUMINA ONLY) ---
-    ( color: 'primary-subtle-alt',   text: 'dark-light', heading-dark: true, 
-    		link: 'dark', link-dark: 'highlight', footer: 'hover-highlight-alt' 
+    ( color: 'primary-subtle-alt',  text: 'dark-light', heading-dark: true, 
+    		link: 'dark', link-dark: 'lighten', footer: 'hover-highlight-alt' 
     ),
     ( color: 'secondary-subtle-alt', text: 'dark-light', heading-dark: true, 
-    		link: 'dark', link-dark: 'highlight', footer: 'hover-highlight-alt' 
+    		link: 'dark', link-dark: 'lighten', footer: 'hover-highlight-alt' 
     ),
-    ( color: 'tertiary-subtle-alt',  text: 'dark-light', heading-dark: true, 
-    		link: 'dark', link-dark: 'highlight', footer: 'hover-highlight-alt' 
+    ( color: 'tertiary-subtle-alt', text: 'dark-light', heading-dark: true, 
+    		link: 'dark', link-dark: 'lighten', footer: 'hover-highlight-alt' 
     ),
-
-    // --- DARK SEMANTIC COLORS (LUMINA ONLY) ---
-    // Static dark zones that enforce high-contrast light text across both viewports
-    ( color: 'primary-dark',         text: 'light', link: 'highlight' ),
-    ( color: 'primary-dark-alt',     text: 'light', link: 'highlight' ),
-    ( color: 'tertiary-dark',        text: 'light', link: 'highlight' ),
-    ( color: 'tertiary-dark-alt',    text: 'light', link: 'highlight' ),
-    
-    // --- NEUTRALS (E.G. SIDEBAR, BORDERS, DEFAULT CARD COLORS) ---
-    ( color: 'neutral',              text: 'dark-light', heading-dark: true ),
-    ( color: 'neutral-alt',          text: 'dark-light', heading-dark: true ),
 
     // --- CORE CANVAS CONTRASTS ---
-	( color: 'contrast',          	 text: 'light-dark', link: 'highlight', 
-			link-dark: 'highlight-alt' ),
+////     ( color: 'base',              text: 'no-fallback' ),      
+//     ( color: 'foreground-alt',   text: 'dark' ),
+	( color: 'contrast',          	text: 'light-dark', link: 'lighten', 
+			link-dark: 'darken' ), //'inherit'
 
-    // --- WHITE & GRAY NAMED COLORS ---
-    ( color: 'white',      			text: 'dark',
-    		footer: 'hover-highlight-alt' 
-    ),
-    ( color: 'off-white',      		text: 'dark',
-    		footer: 'hover-highlight-alt' 
-    ),
-//     ( color: 'white',      		text: 'dark', heading: 'inherit',
-//     		footer: 'hover-highlight-alt' 
-//     ),
-//     ( color: 'off-white',      	text: 'dark',  heading: 'inherit',
-//     		footer: 'hover-highlight-alt' 
-//     ),
+    // --- NEUTRALS (E.G. SIDEBAR, BORDERS, DEFAULT CARD COLORS) ---
+    ( color: 'neutral',             text: 'dark-light', heading-dark: true ),
+    ( color: 'neutral-alt',         text: 'dark-light', heading-dark: true ),
 
-    ( color: 'very-light-gray',     text: 'dark-light', 
-    		footer: 'hover-highlight-alt' 
+    // --- SPECIAL HIGHLIGHT SLOTS ---
+//     ( color: 'highlight',     	  text: 'dark',  	link: 'inherit' ),
+//     ( color: 'highlight-alt', 	  text: 'light', 	link: 'inherit' ),
+
+    // --- WHITE & GRAY NAMED COLORS (OVERRIDE PARENT THEME)---
+    ( color: 'white',      			text: 'dark', 		heading-dark: 'darken',
+    		link-dark: 'darken',	footer: 'hover-highlight-alt' 
     ),
-    ( color: 'light-gray',          text: 'dark-light', 
-    		footer: 'hover-highlight-alt' 
+    ( color: 'off-white',      		text: 'dark', 		heading-dark: 'darken',
+    		link-dark: 'darken',	footer: 'hover-highlight-alt' 
     ),
-    ( color: 'gray',                text: 'dark-light', 
-    		footer: 'hover-highlight-alt' 
+    ( color: 'very-light-gray',     text: 'dark-light', footer: 'hover-highlight-alt',
+    	footer-dark: 'hover-highlight' ),
+    ( color: 'light-gray',          text: 'dark-light', footer: 'hover-highlight-alt' ),
+    ( color: 'gray',                text: 'dark-light', footer: 'hover-highlight-alt' ),
+//     ( color: 'gray', heading: 'dark', text: 'dark-light', footer: 'hover-highlight-alt' ),
+
+    ( color: 'dark-gray',           text: 'light-dark', link: 'inherit', 
+    	footer: 'hover-highlight-alt' 
     ),
-    ( color: 'dark-gray',           text: 'light-dark', 
-    		footer: 'hover-highlight-alt' 
-    ),
-    ( color: 'very-dark-gray',      link-dark: 'highlight-alt', 
-    		footer: 'hover-highlight-alt' 
-    ),
+    ( color: 'very-dark-gray',    	text: 'light', 		link: 'lighten',
+     	link-dark: 'highlight-alt', footer: 'hover-highlight-alt'
+     ),
+    
+    // --- DARK SEMANTIC COLORS (LUMINA ONLY) ---
+    // Static dark zones that enforce high-contrast light text across both viewports
+    ( color: 'primary-dark',        text: 'light', 		link: 'lighten' ),
+    ( color: 'primary-dark-alt',    text: 'light', 		link: 'lighten' ),
+    ( color: 'tertiary-dark',       text: 'light', 		link: 'lighten' ),
+    ( color: 'tertiary-dark-alt',   text: 'light', 		link: 'lighten' ),
     
     // --- VERY LIGHT NAMED COLORS (LUMINA ONLY) ---
-    // Generates the hook for theme.json customizations without default property 
-    // constraints
-    // TO-DO: These need to be 'no-fallback' if including them in all color
-    // schemes. If not, they will become dark and need light text.
-//     ( color: 'very-light-green',     text: 'dark-light' ),
-//     ( color: 'very-light-yellow',    text: 'dark-light' ),
-//     ( color: 'very-light-orange',    text: 'dark-light' ),
-//     ( color: 'very-light-blue',      text: 'dark-light' ),
-//     ( color: 'very-light-purple',    text: 'dark-light' ),
-//     ( color: 'very-light-red',       text: 'dark-light' ),
-//     ( color: 'very-light-green',     text: 'no-fallback' ),
-//     ( color: 'very-light-yellow',    text: 'no-fallback' ),
-//     ( color: 'very-light-orange',    text: 'no-fallback' ),
-//     ( color: 'very-light-blue',      text: 'no-fallback' ),
-//     ( color: 'very-light-purple',    text: 'no-fallback' ),
-//     ( color: 'very-light-red',       text: 'no-fallback' ),
-    ( color: 'very-light-green',     text: 'dark' ),
-    ( color: 'very-light-yellow',    text: 'dark' ),
-    ( color: 'very-light-orange',    text: 'dark' ),
-    ( color: 'very-light-blue',      text: 'dark' ),
-    ( color: 'very-light-purple',    text: 'dark' ),
-    ( color: 'very-light-red',       text: 'dark' ),
+    ( color: 'very-light-green',    text: 'dark', 	heading-dark: 'dark' ),
+    ( color: 'very-light-yellow',   text: 'dark', 	heading-dark: 'dark' ),
+    ( color: 'very-light-orange',   text: 'dark', 	heading-dark: 'dark' ),
+    ( color: 'very-light-blue',     text: 'dark', 	heading-dark: 'dark' ),
+    ( color: 'very-light-purple',   text: 'dark', 	heading-dark: 'dark' ),
+    ( color: 'very-light-red',      text: 'dark', 	heading-dark: 'dark' ),
 
     // --- GREEN NAMED COLORS ---
-    ( color: 'light-green',          text: 'dark', buttons: true, 	link: 'inherit' ), // OVERRIDE PARENT    
+    ( color: 'light-green',          text: 'dark', buttons: true, 	heading-dark: 'dark',
+    	link: 'inherit' ), // OVERRIDE PARENT 
+    ( color: 'green',             	 text: 'light',  	link: 'inherit' ),    	   
     ( color: 'dark-green',           text: 'light', link: 'inherit' ), // LUMINA ONLY
 
     // --- YELLOW & ORANGE NAMED COLORS ---
-    ( color: 'light-yellow',         text: 'dark', 	buttons: true, 	link: 'inherit' ), // OVERRIDE PARENT
-    ( color: 'yellow',               text: 'light', buttons: true, 	link: 'light' ), // OVERRIDE PARENT
-    ( color: 'dark-yellow',          text: 'light', 				link: 'light' ), // LUMINA ONLY
-    ( color: 'light-orange',      	 text: 'dark', 	buttons: true,  link: 'inherit' ), // OVERRIDE PARENT
-    
+    ( color: 'light-yellow',      text: 'dark', 	buttons: true, 	heading-dark: 'dark',
+     	link: 'inherit' ), // OVERRIDE PARENT
+    ( color: 'yellow',            text: 'light', 	buttons: true, 	link: 'light' ), // OVERRIDE PARENT
+    ( color: 'dark-yellow',       text: 'light', 					link: 'light' ), // LUMINA ONLY
+    ( color: 'light-orange',      text: 'dark', 	buttons: true,  heading-dark: 'dark',
+    	link: 'inherit' ), // OVERRIDE PARENT
+    ( color: 'orange',            text: 'light',  	link: 'inherit' ),
+    ( color: 'dark-orange',       text: 'light',  	link: 'inherit' ),
+        
 	// --- BLUE NAMED COLORS ---
-    ( color: 'light-blue',        	 text: 'dark', buttons: true,  	link: 'inherit' ), // OVERRIDE PARENT
+    ( color: 'light-blue',        text: 'dark', 	buttons: true, 	heading-dark: 'dark',
+      	link: 'inherit' ), // OVERRIDE PARENT
+    ( color: 'blue',            text: 'light',  	link: 'inherit' ),
+    ( color: 'dark-blue',       text: 'light',  	link: 'inherit' ),
+    ( color: 'midnight-blue',   text: 'light',  	link: 'inherit' ),
+//     ( color: 'dark-midnight-blue',text: 'light',  	link: 'highlight' ),
+    ( color: 'dark-midnight-blue',text: 'light',  	link: 'lighten' ),
 
 	// --- PURPLE NAMED COLORS ---
-    ( color: 'light-purple',      	 text: 'dark', buttons: true,  	link: 'inherit' ), // OVERRIDE PARENT
+    ( color: 'light-purple',    text: 'dark', 	heading-dark: 'dark',
+      	link: 'inherit',  		buttons: true,
+    ), // OVERRIDE PARENT
+    ( color: 'purple',          text: 'light',  	link: 'inherit' ),
+    ( color: 'dark-purple',     text: 'light',  	link: 'inherit' ),
 
     // --- RED NAMED COLORS ---
-    ( color: 'light-red',         	 text: 'dark', buttons: true,  	link: 'inherit' ), // OVERRIDE PARENT  
+    ( color: 'light-red',		text: 'dark', 	heading-dark: 'dark',
+      	link: 'inherit',		buttons: true  
+    ), // OVERRIDE PARENT  
+    ( color: 'red',				text: 'light',  	link: 'inherit' ),
+    ( color: 'dark-red',		text: 'light',  	link: 'inherit' ),
+    
+    // --- VERY DARK NAMED COLORS (OVERRIDE PARENT THEME - MUST UPDATE LATER)---
+//     ( color: 'dark',			text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
+//     ( color: 'dark-alt',		text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
+//     ( color: 'not-quite-black',	text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
+//     ( color: 'almost-black',	text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
+//     ( color: 'black',			text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
+//     ( color: 'dark',			text: 'light', 	link: 'lighten', heading-dark: 'heading-dark' ),
+//     ( color: 'dark-alt',		text: 'light', 	link: 'lighten', heading-dark: 'heading-dark' ),
+//     ( color: 'not-quite-black',	text: 'light', 	link: 'lighten', heading-dark: 'heading-dark' ),
+//     ( color: 'almost-black',	text: 'light', 	link: 'lighten', heading-dark: 'heading-dark' ),
+//     ( color: 'black',			text: 'light', 	link: 'lighten', heading-dark: 'heading-dark' ),
+//     ( color: 'dark',			text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
+//     ( color: 'dark-alt',		text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
+//     ( color: 'not-quite-black',	text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
+//     ( color: 'almost-black',	text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
+//     ( color: 'black',			text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
+    ( color: 'dark',			link: 'lighten', heading-light: 'inherit' ),
+    ( color: 'dark-alt',		link: 'lighten', heading-light: 'inherit' ),
+    ( color: 'not-quite-black',	link: 'lighten', heading-light: 'inherit' ),
+    ( color: 'almost-black',	link: 'lighten', heading-light: 'inherit' ),
+    ( color: 'black',			link: 'lighten', heading-light: 'inherit' ),
 );
+
+// Optimize link lighten and darken for Lumina specifically
+$filter-link-lighten: brightness(2.05) saturate(0.87) !default;
+$filter-link-darken:  brightness(0.52) saturate(1.6) !default;
 
 // When setting text colors also set button text colors explicitly
 $explicit-button-text-color: false; 

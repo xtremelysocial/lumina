@@ -75,6 +75,12 @@
 
 				{ "slug": "highlight", "color": "hsl(202, 82%, 80%)", "name": "Highlight (Glacial Ice)" },
 				{ "slug": "highlight-alt", "color": "hsl(202, 75%, 53%)", "name": "Highlight Alt (Luminous Sky Blue)" },
+				
+				{ "slug": "highlight-secondary", "color": "hsl(162, 85%, 76%)", "name": "Highlight Secondary (Bioluminescent Emerald)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(162, 70%, 45%)", "name": "Highlight Secondary Alt (Deep Emerald Anchor)" },
+				
+				{ "slug": "highlight-tertiary", "color": "hsl(38, 85%, 75%)", "name": "Highlight Tertiary (Bioluminescent Amber)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(38, 75%, 50%)", "name": "Highlight Tertiary Alt (Deep Amber Anchor)" },
 
 				{ "slug": "primary-dark", "color": "hsl(202, 32%, 8%)", "name": "Primary Dark (Deep Oceanic Cyan Trench 8%)" },
 				{ "slug": "primary-dark-alt", "color": "hsl(202, 35%, 4%)", "name": "Primary Dark Alt (Abyssal Glacial Void 4%)" },				

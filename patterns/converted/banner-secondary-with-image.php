@@ -1,0 +1,27 @@
+<?php
+/**
+ * Title: Banner Secondary With Image
+ * Description: Banner Secondary With Image
+ * Slug: lumina/banner-secondary-with-image
+ * Categories: lumina,banner,media
+ */
+?>
+<!-- wp:media-text {"align":"full","mediaPosition":"right","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"full","imageFill":false,"metadata":{"name":"Hero Banner"},"className":"is-style-image-border","backgroundColor":"secondary-alt"} -->
+<div class="wp-block-media-text alignfull has-media-on-the-right is-stacked-on-mobile is-style-image-border has-secondary-alt-background-color has-background" style="grid-template-columns:auto 45%"><div class="wp-block-media-text__content"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading"><?php esc_html_e("Lumina WordPress Theme", "lumina"); ?></h1>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":2} -->
+<h2 class="wp-block-heading"><?php esc_html_e("A modern evolution of Full-Site Editing. Engineered with colors drawn from nature, tactile visual depth, and responsive interactive cards.", "lumina"); ?></h2>
+<!-- /wp:heading -->
+
+<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"flex","justifyContent":"left"}} -->
+<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#content-start"><?php esc_html_e("Explore Lumina", "lumina"); ?></a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/image-computer-screen.webp' ) ); ?>" alt="Lumina Theme Screenshot" class="size-full"/></figure></div>
+<!-- /wp:media-text -->
+
+<!-- wp:group {"lock":{"move":true,"remove":true},"metadata":{"name":"Content Start"},"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
+<div id="content-start" class="wp-block-group" style="margin-top:0;margin-bottom:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"></div>
+<!-- /wp:group -->

@@ -29,31 +29,35 @@
 	:where(body:not(.is-dark-theme)) {
     
 		@each $entry in logic.$color-registry {
-			$config: 	map.merge(logic.$color-defaults, $entry);
-			$color:  	map.get($config, color);
-			$text:   	map.get($config, text);    
-			$buttons:   map.get($config, buttons);
-			$link:   	map.get($config, link);
-			$footer: 	map.get($config, footer);
+			$config: 		map.merge(logic.$color-defaults, $entry);
+			$color:  		map.get($config, color);
+			$text:   		map.get($config, text);    
+// 			$heading:   	map.get($config, heading);    
+			$heading-light: map.get($config, heading-light);    
+			$buttons:   	map.get($config, buttons);
+			$link:   		map.get($config, link);
+			$footer: 		map.get($config, footer);
 			
 			$selectors: logic.build-selector-list($color);
 	
 			// Text is already dark in light mode
 			@if $text == 'dark-light' {
 				@include logic.apply-contrast-color($color, 'dark', $buttons);
+
+//////				@include logic.apply-heading-action($selectors, 'dark');    	
 	
-			// If text should be light in light mode, then apply to text, headings,
-			// and links
+			// If text should be light in light mode, then apply to text AND headings
 			} @else if $text == 'light-dark' {
 				@include logic.apply-contrast-color($color, 'light', $buttons);
 				
-				$selectors: logic.build-selector-list($color);
-				@include logic.apply-heading-action($selectors, 'light');    	
-	
-	// 			@include logic.apply-link-action($selectors, 'highlight');
+				@include logic.apply-heading-action($selectors, 'light'); /////
 			}
 			
-			// If link color, then apply it. TO-DO: Move this above??
+			@if $heading-light {
+				@include logic.apply-heading-action($selectors, $heading-light); /////
+			}
+			
+			// Not currently used. 
 	//         @if $link {
 	// 			@include logic.apply-link-action($selectors, $link);
 	//         }

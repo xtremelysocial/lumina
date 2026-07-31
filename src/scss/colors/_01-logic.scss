@@ -21,6 +21,7 @@
 @function build-selector-list(
 	$colors, 
 	$prefix: ".has-", 
+// 	$prefix: ":root .has-", 
 	$suffix: "-background-color"
 ) {
     $selectors: "";
@@ -36,69 +37,109 @@
 // ==========================================================================
 
 %engine-heading-inherit {
-    :is(.wp-block-heading, 
-    .wp-block-post-title, 
-    .wp-block-query-title, 
-    .wp-block-site-title, 
-    .wp-block-site-tagline) {
+//     :is(.wp-block-heading, 
+//     .wp-block-post-title, 
+//     .wp-block-query-title, 
+//     .wp-block-site-title, 
+//     .wp-block-site-tagline,
+//     h1, h2, h3, h4, h5, h6
+// 	) {
 		/* Inherit heading color */
         color: inherit;
-    }
+//     }
 }
 
 %engine-heading-dark-text {
-    :is(.wp-block-heading, 
-    .wp-block-post-title, 
-    .wp-block-query-title, 
-    .wp-block-site-title, 
-    .wp-block-site-tagline) {
+//     :is(.wp-block-heading, 
+//     .wp-block-post-title, 
+//     .wp-block-query-title, 
+//     .wp-block-site-title, 
+//     .wp-block-site-tagline,
+//     h1, h2, h3, h4, h5, h6
+// 	) {
         /* Force explicit dark headings on persistent light surfaces in dark mode */
         color: var(--wp--preset--color--almost-black);
-    }
+//     }
 }
 
 %engine-heading-dark {
-    :is(.wp-block-heading, 
-    .wp-block-post-title, 
-    .wp-block-query-title, 
-    .wp-block-site-title, 
-    .wp-block-site-tagline) {
+//     :is(.wp-block-heading, 
+//     .wp-block-post-title, 
+//     .wp-block-query-title, 
+//     .wp-block-site-title, 
+//     .wp-block-site-tagline,
+//     h1, h2, h3, h4, h5, h6
+// 	) {
 		/* Set heading color to theme.json var or secondary-alt */
         color: var(--wp--custom--color--heading--text, var(--wp--preset--color--secondary-alt));
-    }
+//     }
+}
+
+%engine-heading-darken {
+//     :is(.wp-block-heading, 
+//     .wp-block-post-title, 
+//     .wp-block-query-title, 
+//     .wp-block-site-title, 
+//     .wp-block-site-tagline,
+//     h1, h2, h3, h4, h5, h6
+// 	) {
+		/* In dark mode, darken headings on light backgrounds */
+		filter: brightness(0.52) saturate(1.6);
+// 	}
 }
 
 %engine-link-inherit {
 	/* Inherit link color */
     color: inherit;
-
-// 	&:hover, &:active {
-// 		/* Set opacity on hover on inherited links */
-// // 		color: inherit;
-// 		opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
-// 	}
 }
+
+%engine-link-lighten {
+//     filter: config.$filter-link-lighten;
+	color: var(--wp--preset--color--highlight);
+// 	text-decoration-line: none;
+}
+
+%engine-link-darken {
+//     filter: config.$filter-link-darken;
+	color: var(--wp--preset--color--highlight-alt);
+// 	text-decoration-line: none;
+}
+
+// %engine-link-lighten {
+// 	/* Lighten link color on dark backgrounds */
+// 	filter: brightness(2.05) saturate(0.87);
+// }
+// 
+// %engine-link-darken {
+// 	/* Darken link color on light backgrounds */
+// // 	filter: brightness(0.41) saturate(1.15);
+// // 	filter: brightness(0.8) saturate(1.15);
+// 	filter: brightness(0.52) saturate(1.6);
+// }
 
 %engine-link-dark-text {
     /* Set links to high-contrast dark text */
     color: var(--wp--preset--color--almost-black); // !important;
-
-//     &:hover, &:active {
-// 		/* Set opacity on hover on dark links */
-// //         color: var(--wp--preset--color--almost-black);
-//         opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
-//     }
 }
 
 %engine-link-light-text {
     /* Set links to high-contrast light text */
     color: var(--wp--preset--color--foreground-alt); // !important;
+}
 
-//     &:hover, &:active {
-// 		/* Set opacity on hover on light links */
-// //         color: var(--wp--preset--color--foreground-alt);
-//         opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
-//     }
+%engine-link-highlight {
+	/* Lighten link color on dark backgrounds */
+    color: var(--wp--preset--color--highlight);
+// 	filter: brightness(2.05) saturate(0.87);
+// 	text-decoration-line: none;
+}
+
+%engine-link-highlight-alt {
+	/* Darken link color on light backgrounds */
+    color: var(--wp--preset--color--highlight-alt);
+// 	filter: brightness(0.41) saturate(1.15);
+// 	filter: none; // Needed only for overriding parent
+// 	text-decoration-line: none;
 }
 
 %engine-link-underline {
@@ -112,35 +153,10 @@
     text-decoration-line: underline;
 }
 
-%engine-link-highlight {
-	/* Lighten link color on dark backgrounds */
-    color: var(--wp--preset--color--highlight);
-
-// 	&:hover, &:active {
-// 		/* Set opacity on hover */
-// 		opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
-// 	}
+%engine-link-remove-underline {
+	/* Underline links */
+    text-decoration-line: none;
 }
-
-%engine-link-highlight-alt {
-	/* Darken link color on light backgrounds */
-    color: var(--wp--preset--color--highlight-alt);
-
-// 	&:hover, &:active {
-// 		/* Set opacity on hover */
-// 		opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
-// 	}
-}
-
-// %engine-footer-nav-hover {
-// 	/* Use highlight color on dark backgrounds */
-//     color: var(--wp--preset--color--highlight); // !important;
-// }
-// 
-// %engine-footer-nav-hover-alt {
-// 	/* Use highlight-alt color on light backgrounds */
-//     color: var(--wp--preset--color--highlight-alt); // !important;
-// }
 
 // ==========================================================================
 // 01.03 CONTRAST (TEXT) COLOR: Set light or dark text color
@@ -148,16 +164,23 @@
 @mixin apply-contrast-color(
 	$color, 			// color slug (e.g. primary-alt)
 	$text-style,		// light-text, dark-text, no-fallback
-	$buttons: false, 	// true also adds color to buttons. Not needed for Lumina
+	$buttons: false, 	// true also adds color to buttons. Not needed for Lumina.
+	$root: null,		// Add :root to text color assignment
 ) {
 
 	// Build .has-$color-background-color	
 	$selectors: build-selector-list($color);
+	@if $root {
+		$selectors: build-selector-list(
+			$color,
+			$prefix: ':root .has-'
+		);	
+	}
 
 	// If buttons, also add button selector	
-	@if $buttons or config.$explicit-button-text-color  {
-		$selectors: '#{$selectors}, a:where(.wp-element-button, .wp-block-button__link)#{$selectors}'; 
-	}
+// 	@if $buttons or config.$explicit-button-text-color  {
+// 		$selectors: '#{$selectors}, a:where(.wp-element-button, .wp-block-button__link)#{$selectors}'; 
+// 	}
 
 	// Apply the selectors
 	#{$selectors} {
@@ -178,6 +201,7 @@
 			// And swap base and contrast colors
 			} @else if $text-style == 'base' {
 				$fallback: var(--wp--preset--color--contrast);			
+
 			} @else if $text-style == 'contrast' {
 				$fallback: var(--wp--preset--color--base);			
 			}
@@ -190,32 +214,72 @@
 // ==========================================================================
 // 01.03 HEADING COLOR: Set light, dark, or inherit heading color
 // ==========================================================================
-@mixin apply-heading-action($selectors, $text) {
+@mixin apply-heading-action($selectors, $heading) {
 
-	// Dark backgrounds inherit heading colors
-	@if $text == 'light' {
-		#{$selectors} {
-			@extend %engine-heading-inherit;
-		}
+	#{$selectors} {
+		:is(.wp-block-heading, 
+		.wp-block-post-title, 
+		.wp-block-query-title, 
+		.wp-block-site-title, 
+		.wp-block-site-tagline,
+		h1, h2, h3, h4, h5, h6
+		) {
+			@if $heading == 'light' or $heading == 'inherit' {
+				@extend %engine-heading-inherit;
 
-	// Apply dark heading color if specified in color registry entry
-	} @else if $text == 'heading-dark' {
-		#{$selectors} {
-			@extend %engine-heading-dark;
-		}		
+			// Apply dark heading color if specified in color registry entry
+			} @else if $heading == 'heading-dark' {
+				@extend %engine-heading-dark;
+		
+			} @else if $heading == 'darken' {
+				@extend %engine-heading-darken;
 
-	// Light backgrounds, set dark heading color
-	} @else if $text == 'dark' {
-		#{$selectors} {
-			@extend %engine-heading-dark-text;
+			// Light backgrounds, set dark heading color
+			} @else if $heading == 'dark' {
+				@extend %engine-heading-dark-text;
+			}
 		}
 	}
 }
 
+	// Dark backgrounds inherit heading colors
+// 	@if $text == 'light' {
+// 		#{$selectors} {
+// 			@extend %engine-heading-inherit;
+// 		}
+// 
+// 	// Apply dark heading color if specified in color registry entry
+// 	} @else if $text == 'heading-dark' {
+// 		#{$selectors} {
+// 			@extend %engine-heading-dark;
+// 		}		
+// 
+// 	} @else if $text == 'darken' {
+// 		#{$selectors} {
+// 			@extend %engine-heading-darken;
+// 		}		
+// 
+// 	// Light backgrounds, set dark heading color
+// 	} @else if $text == 'dark' {
+// 		#{$selectors} {
+// 			@extend %engine-heading-dark-text;
+// 		}
+// 	}
+// }
+
 // ==========================================================================
 // 01.04 LINK COLOR: Set light, dark, or inherit link color
 // ==========================================================================
-@mixin apply-link-action($selectors, $link) {
+@mixin apply-link-action(
+	$selectors, 
+	$link,
+// 	$root: null,
+	$remove-underline: null,
+) {
+
+// 	@if $root {
+// 		$Selectors: ':root #{$selectors}';
+// 	}
 
 	// Inherit link color, apply underlines in post content, and special
 	// underlines in the footers
@@ -229,8 +293,10 @@
 		)) {
 			@if $link == 'dark' { 
 				@extend %engine-link-dark-text; 
+
 			} @else if $link == 'light' { 
 				@extend %engine-link-light-text; 
+
 			} @else if $link == 'inherit'{
 				@extend %engine-link-inherit;
 			}		
@@ -255,23 +321,38 @@
 		}
 	
 	// Swap default dark link color for light one on dark bg's	
-	} @else if $link == 'highlight' {
+	} @else if $link == 'highlight' or $link == 'lighten' 
+			or $link == 'highlight-alt' or $link == 'darken' 
+	{
 		#{$selectors} a:not(
 			.wp-element-button, 
 			.wp-block-social-link-anchor, 
 			.wp-block-navigation-item__content
 		) {
-			@extend %engine-link-highlight;
-		}
 
-	// Swap light link color, for dark one on light bg's	
-	} @else if $link == 'highlight-alt' {
-		#{$selectors} a:not(
-			.wp-element-button, 
-			.wp-block-social-link-anchor, 
-			.wp-block-navigation-item__content
-		) {
-			@extend %engine-link-highlight-alt;
+			@if $link == 'highlight' { 
+				@extend %engine-link-highlight;
+
+			} @else if $link == 'lighten' { 
+				@extend %engine-link-lighten;
+
+			} @else if $link == 'highlight-alt'{
+				@extend %engine-link-highlight-alt;
+
+			} @else if $link == 'darken'{
+				@extend %engine-link-darken;
+			}	
+		}
+		
+		// Remove link underline this way to override parent theme
+		@if $remove-underline {
+			.wp-block-post-content #{$selectors} a:not(
+				.wp-element-button, 
+				.wp-block-social-link-anchor, 
+				.wp-block-navigation-item__content
+			) {
+				@extend %engine-link-remove-underline;
+			}
 		}
 	}
 }
@@ -286,6 +367,7 @@
 			a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
 			.wp-block-navigation-item__content:hover {
 				@extend %engine-link-highlight;
+// 				opacity: 1;
 			}				
 		}
 
@@ -294,6 +376,7 @@
 			a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
 			.wp-block-navigation-item__content:hover {
 				@extend %engine-link-highlight-alt;
+// 				opacity: 1;
 			}
 		}
 	}

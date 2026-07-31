@@ -28,18 +28,20 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 		// CONFIGURATION & THEME.JSON DYNAMIC RESOLUTION
 		// ---------------------------------------------------------
 		$base_path        = 'assets/images/';
-		$keyword          = '';                     // Optional filename prefix (e.g., 'sage-' or '')
-		$exclude_dirs     = [ 'thumbnails' ];       // Subfolder names to skip
-		$exclude_prefixes = [                       // Filename prefixes to skip
-			'thumbnail-',
-			'person-',
-			'image-static-',
-			'image-computer-screen'
+
+		$keyword          = ''; // Optional filename prefix (e.g., 'sage-' or '')
+
+		$exclude_dirs     = [ 	// Subfolder names to skip
+			'samples'
 		]; 
+
+		$exclude_prefixes = [   // Filename prefixes to skip
+		]; 
+		
 		$allowed_extensions = [ 'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg' ];
 
 		// Set a true default image path that actually exists in Lumina
-		$true_default       = 'assets/images/paper/paper-01.jpg';
+		$true_default       = 'assets/images/paper/paper-01.webp';
 
 		// 1. Fetch Global Settings from theme.json
 		$global_settings = function_exists( 'wp_get_global_settings' ) ? wp_get_global_settings() : [];

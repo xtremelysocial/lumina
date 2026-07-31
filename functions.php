@@ -20,7 +20,7 @@ $includes = array (
 	'/inc/add-body-classes.php',
 	'/inc/default-image.php',
 	'/inc/parent-theme.php',
-// 	'/inc/block-variations.php',
+	'/inc/block-variations.php',
 	'/inc/remove-core-patterns.php',
 // 	'/inc/category-colors.php',
 // 	'/inc/ image-move-border.php',

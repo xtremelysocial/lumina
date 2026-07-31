@@ -6,7 +6,7 @@
  * Block Types: core/group
  */
 
-$theme_image_url = esc_url( get_theme_file_uri( 'assets/images/cover-city-night.jpg' ) );
+$theme_image_url = esc_url( get_theme_file_uri( 'assets/images/samples/image-city-night.webp' ) );
 ?>
 <!-- wp:group {"align":"full","backgroundColor":"dark-alt","className":"","id":"lumina-hero-dark","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-dark-alt-background-color has-background" id="lumina-hero-dark">
