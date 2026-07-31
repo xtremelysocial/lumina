@@ -23,7 +23,7 @@
 					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
 				"heading": {
-					"text": "hsl(169, 56%, 83%)",
+					"text": "var(--wp--preset--color--highlight-secondary)",
 					"separator": "var(--wp--preset--color--primary)"
 				},
 				"button": {
@@ -76,9 +76,9 @@
 				{ "slug": "highlight", "color": "hsl(202, 82%, 80%)", "name": "Highlight (Glacial Ice)" },
 				{ "slug": "highlight-alt", "color": "hsl(202, 75%, 53%)", "name": "Highlight Alt (Luminous Sky Blue)" },
 				
-				{ "slug": "highlight-secondary", "color": "hsl(162, 85%, 76%)", "name": "Highlight Secondary (Bioluminescent Emerald)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(162, 70%, 45%)", "name": "Highlight Secondary Alt (Deep Emerald Anchor)" },
-				
+				{ "slug": "highlight-secondary", "color": "hsl(169, 56%, 83%)", "name": "Highlight Secondary (Bioluminescent Seafoam)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(169, 60%, 70%)", "name": "Highlight Secondary Alt (Warm Seafoam Anchor)" },
+
 				{ "slug": "highlight-tertiary", "color": "hsl(38, 85%, 75%)", "name": "Highlight Tertiary (Bioluminescent Amber)" },
 				{ "slug": "highlight-tertiary-alt", "color": "hsl(38, 75%, 50%)", "name": "Highlight Tertiary Alt (Deep Amber Anchor)" },
 
@@ -152,6 +152,21 @@
 			"heading": {
 				"color": {
 					"text": "var(--wp--custom--color--heading--text)"
+				}
+			},
+			"link": {
+				"color": { 
+					"text": "var:preset|color|highlight" 
+				},
+				":hover": { 
+					"color": { 
+						"text": "var:preset|color|highlight" 
+					} 
+				},
+				":active": {
+					"color": { 
+						"text": "var:preset|color|highlight" 
+					}
 				}
 			}
 		}

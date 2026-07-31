@@ -53,12 +53,24 @@ $color-defaults: (
 $color-registry: (
 
 	// --- MAIN COLORS (DARK) (FLAT BLOCKS) ---
+	// TO-DO: INVERT LINK-DARK AS THE DEFAULT IS NOW LIGHT
     ( color: 'primary',          text: 'light',  	link: 'inherit' ),
     ( color: 'primary-alt',      text: 'light',  	link: 'inherit' ),
-    ( color: 'secondary',        text: 'light',  	link: 'inherit' ),
-    ( color: 'secondary-alt',    text: 'light',  	link: 'lighten' ), 
-    ( color: 'tertiary',         text: 'light',  	link: 'inherit' ),
-    ( color: 'tertiary-alt',     text: 'light',  	link: 'inherit' ),
+
+    ( color: 'secondary',        text: 'light',  	link: 'inherit',
+    	link-dark: 'lighten', 	footer-dark: 'hover-highlight'  
+    ),
+    
+    ( color: 'secondary-alt',    text: 'light',  	link: 'lighten',
+    	link-dark: 'lighten', 	footer-dark: 'hover-highlight'  
+    ), 
+
+    ( color: 'tertiary',         text: 'light',  	link: 'inherit',
+    	link-dark: 'lighten', 	footer-dark: 'hover-highlight'  
+    ),
+    ( color: 'tertiary-alt',     text: 'light',  	link: 'inherit',
+    	link-dark: 'lighten', 	footer-dark: 'hover-highlight'  
+    ),
 
     // --- SUBTLE SEMANTIC COLORS (LUMINA ONLY) ---
     // Fluid: Light backgrounds in light mode, invert to dark in dark mode
@@ -90,8 +102,12 @@ $color-registry: (
 			link-dark: 'darken' ), //'inherit'
 
     // --- NEUTRALS (E.G. SIDEBAR, BORDERS, DEFAULT CARD COLORS) ---
-    ( color: 'neutral',             text: 'dark-light', heading-dark: true ),
-    ( color: 'neutral-alt',         text: 'dark-light', heading-dark: true ),
+    ( color: 'neutral',             text: 'dark-light', heading-dark: true,
+    		link-dark: 'lighten', 	footer-dark: 'hover-highlight' 
+    ),
+    ( color: 'neutral-alt',         text: 'dark-light', heading-dark: true,
+    		link-dark: 'lighten', 	footer-dark: 'hover-highlight'  
+    ),
 
     // --- SPECIAL HIGHLIGHT SLOTS ---
 //     ( color: 'highlight',     	  text: 'dark',  	link: 'inherit' ),
@@ -104,10 +120,17 @@ $color-registry: (
     ( color: 'off-white',      		text: 'dark', 		heading-dark: 'darken',
     		link-dark: 'darken',	footer: 'hover-highlight-alt' 
     ),
-    ( color: 'very-light-gray',     text: 'dark-light', footer: 'hover-highlight-alt',
-    	footer-dark: 'hover-highlight' ),
-    ( color: 'light-gray',          text: 'dark-light', footer: 'hover-highlight-alt' ),
-    ( color: 'gray',                text: 'dark-light', footer: 'hover-highlight-alt' ),
+    ( color: 'very-light-gray',     text: 'dark-light', footer: 'hover-highlight-alt', 
+    		link-dark: 'lighten',	footer-dark: 'hover-highlight' 
+    ),
+
+    ( color: 'light-gray',          text: 'dark-light', footer: 'hover-highlight-alt', 
+    		link-dark: 'lighten', 	footer-dark: 'hover-highlight' 
+    ),
+
+    ( color: 'gray',                text: 'dark-light', footer: 'hover-highlight-alt', 
+    		link-dark: 'lighten',	footer-dark: 'hover-highlight' 
+    ),
 //     ( color: 'gray', heading: 'dark', text: 'dark-light', footer: 'hover-highlight-alt' ),
 
     ( color: 'dark-gray',           text: 'light-dark', link: 'inherit', 
@@ -153,9 +176,13 @@ $color-registry: (
       	link: 'inherit' ), // OVERRIDE PARENT
     ( color: 'blue',            text: 'light',  	link: 'inherit' ),
     ( color: 'dark-blue',       text: 'light',  	link: 'inherit' ),
-    ( color: 'midnight-blue',   text: 'light',  	link: 'inherit' ),
+    ( color: 'midnight-blue',   text: 'light',  	link: 'inherit',
+    	link-dark: 'lighten', 	footer-dark: 'hover-highlight' 
+    ),
 //     ( color: 'dark-midnight-blue',text: 'light',  	link: 'highlight' ),
-    ( color: 'dark-midnight-blue',text: 'light',  	link: 'lighten' ),
+    ( color: 'dark-midnight-blue',text: 'light',  	link: 'lighten',
+    	link-dark: 'lighten', 	footer-dark: 'hover-highlight' 
+    ),
 
 	// --- PURPLE NAMED COLORS ---
     ( color: 'light-purple',    text: 'dark', 	heading-dark: 'dark',

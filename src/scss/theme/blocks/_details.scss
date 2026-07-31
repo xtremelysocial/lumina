@@ -1,3 +1,23 @@
+/*-----------------------------------------------------------------------------
+# Details (Override parent theme)
+-----------------------------------------------------------------------------*/
+
+/* Closed Summary will have primary font color */
+.wp-block-details:not(.has-text-color) > summary {
+// 	color: var(--wp--custom--color--highlight, var(--wp--preset--color--highlight));
+// 	font-weight: var(--wp--custom--typography--font-weight--medium);
+// 	transition: color var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, ease-in);
+	color: var(--wp--custom--color--heading--text, var(--wp--preset--color--contrast));
+}
+
+/* Highlight Summary on hover and when open */
+.wp-block-details:not(.has-text-color) > summary:hover,
+.wp-block-details:not(.has-text-color)[open] > summary {
+// 	color: var(--wp--custom--color--highlight, var(--wp--preset--color--highlight-alt));
+	opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+}
+
+
 /*--------------------------------------------------------------
 ## Bring details closer to the summary so they look connected
 --------------------------------------------------------------*/

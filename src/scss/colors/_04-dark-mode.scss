@@ -92,7 +92,12 @@
 	
 			// Apply link color in dark mode, if specified
 			@if $link-dark {
-				@include logic.apply-link-action($selectors, $link-dark);
+// 				@include logic.apply-link-action($selectors, $link-dark);
+				@include logic.apply-link-action(
+					$selectors, 
+					$link-dark, 
+					$remove-underline: true
+				);
 			}
 			
 			// Apply footer effects in dark mode

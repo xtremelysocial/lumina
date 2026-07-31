@@ -242,31 +242,6 @@
 	}
 }
 
-	// Dark backgrounds inherit heading colors
-// 	@if $text == 'light' {
-// 		#{$selectors} {
-// 			@extend %engine-heading-inherit;
-// 		}
-// 
-// 	// Apply dark heading color if specified in color registry entry
-// 	} @else if $text == 'heading-dark' {
-// 		#{$selectors} {
-// 			@extend %engine-heading-dark;
-// 		}		
-// 
-// 	} @else if $text == 'darken' {
-// 		#{$selectors} {
-// 			@extend %engine-heading-darken;
-// 		}		
-// 
-// 	// Light backgrounds, set dark heading color
-// 	} @else if $text == 'dark' {
-// 		#{$selectors} {
-// 			@extend %engine-heading-dark-text;
-// 		}
-// 	}
-// }
-
 // ==========================================================================
 // 01.04 LINK COLOR: Set light, dark, or inherit link color
 // ==========================================================================

@@ -1,0 +1,71 @@
+/*-----------------------------------------------------------------------------
+# Links (Opacity on Hover)
+-----------------------------------------------------------------------------*/
+// TO-DO: Move this to parent theme
+/*
+ * Link and link hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+
+/* Base link underline styles */
+a:not(.wp-element-button, .wp-block-button__link, .wp-block-social-link-anchor),
+.wp-block-accordion-heading__toggle {
+
+	text-decoration-style: var(--wp--custom--link--style, solid);
+	text-decoration-thickness: var(--wp--custom--link--thickness, 1px);
+	text-underline-position: var(--wp--custom--link--position, under);
+	text-underline-offset: var(--wp--custom--link--offset, 0);
+	
+	// Establish the default line color (defaults to text color if not set)
+// 	text-decoration-color: var(--wp--custom--link--decoration-color, currentColor);
+}
+
+/* Link transitions */
+a,
+.wp-block-navigation a,
+.wp-block-navigation-submenu__toggle {
+	cursor: pointer;
+	
+// 	-webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+	will-change: opacity, filter; // Pre-promotes the layer to prevent GPU flash
+	backface-visibility: hidden;  // Enforces stable font rendering
+	
+	transition: 
+		opacity var(--wp--custom--animation--duration--short, 250ms) ease-in-out, 
+		color var(--wp--custom--animation--duration--short, 250ms) ease-in-out,
+// 		filter var(--wp--custom--animation--duration--short, 250ms) ease-in-out
+// 		text-decoration-color var(--wp--custom--animation--duration--short, 250ms) ease-in-out;
+}
+
+/* Link hovers */ 
+a:where(
+    :not(
+        .wp-element-button, 
+        .wp-block-button__link, 
+        .wp-block-social-link-anchor,
+        .wp-block-image a, 
+        figure > a,
+        .wp-block-post-featured-image a,
+        .wp-block-latest-posts__featured-image a,
+        .wp-block-media-text__media a
+    )
+) {
+    &:hover,
+    &:active {
+        opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+    }
+}
+
+/* Use BUTTON hover opacity on images that are links */
+.wp-block-image a,
+figure > a,
+.wp-block-post-featured-image a,
+.wp-block-latest-posts__featured-image a,
+.wp-block-media-text__media a {
+    &:hover,
+    &:active {
+        opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+    }
+}

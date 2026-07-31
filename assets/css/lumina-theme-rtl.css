@@ -58,6 +58,65 @@ img.size-cropped-slim {
   aspect-ratio: 16/4.5;
 }
 
+/*-----------------------------------------------------------------------------
+# Links (Opacity on Hover)
+-----------------------------------------------------------------------------*/
+/*
+ * Link and link hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+/* Base link underline styles */
+a:not(.wp-element-button, .wp-block-button__link, .wp-block-social-link-anchor),
+.wp-block-accordion-heading__toggle {
+  text-decoration-style: var(--wp--custom--link--style, solid);
+  text-decoration-thickness: var(--wp--custom--link--thickness, 1px);
+  text-underline-position: var(--wp--custom--link--position, under);
+  text-underline-offset: var(--wp--custom--link--offset, 0);
+}
+
+/* Link transitions */
+a,
+.wp-block-navigation a,
+.wp-block-navigation-submenu__toggle {
+  cursor: pointer;
+  will-change: opacity, filter;
+  backface-visibility: hidden;
+  transition: opacity var(--wp--custom--animation--duration--short, 250ms) ease-in-out, color var(--wp--custom--animation--duration--short, 250ms) ease-in-out;
+}
+
+/* Link hovers */
+a:where(:not(.wp-element-button,
+.wp-block-button__link,
+.wp-block-social-link-anchor,
+.wp-block-image a,
+figure > a,
+.wp-block-post-featured-image a,
+.wp-block-latest-posts__featured-image a,
+.wp-block-media-text__media a)):hover, a:where(:not(.wp-element-button,
+.wp-block-button__link,
+.wp-block-social-link-anchor,
+.wp-block-image a,
+figure > a,
+.wp-block-post-featured-image a,
+.wp-block-latest-posts__featured-image a,
+.wp-block-media-text__media a)):active {
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+}
+
+/* Use BUTTON hover opacity on images that are links */
+.wp-block-image a:hover, .wp-block-image a:active,
+figure > a:hover,
+figure > a:active,
+.wp-block-post-featured-image a:hover,
+.wp-block-post-featured-image a:active,
+.wp-block-latest-posts__featured-image a:hover,
+.wp-block-latest-posts__featured-image a:active,
+.wp-block-media-text__media a:hover,
+.wp-block-media-text__media a:active {
+  opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+}
+
 /*--------------------------------------------------------------
 # Custom: List Dividers (Lists, Latest Posts, Latest Comments)
 --------------------------------------------------------------*/
@@ -245,7 +304,7 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 /*-----------------------------------------------------------------------------
 # Column styles
 -----------------------------------------------------------------------------*/
-/* Columns thick gap */
+/* Override parent theme's columns thick gap */
 .wp-block-columns.is-style-thick-gap,
 .wp-block-columns.is-style-thick-gap.has-background {
   gap: calc(1.5 * var(--wp--style--block-gap));
@@ -259,6 +318,20 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   color: inherit;
   font-size: var(--wp--preset--font-size--medium);
   font-weight: var(--wp--custom--typography--font-weight--normal);
+}
+
+/*-----------------------------------------------------------------------------
+# Details (Override parent theme)
+-----------------------------------------------------------------------------*/
+/* Closed Summary will have primary font color */
+.wp-block-details:not(.has-text-color) > summary {
+  color: var(--wp--custom--color--heading--text, var(--wp--preset--color--contrast));
+}
+
+/* Highlight Summary on hover and when open */
+.wp-block-details:not(.has-text-color) > summary:hover,
+.wp-block-details:not(.has-text-color)[open] > summary {
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
 }
 
 /*--------------------------------------------------------------
@@ -316,30 +389,6 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 --------------------------------------------------------------*/
 .wp-block-gallery {
   --wp--style--gallery-gap-default: var(--wp--preset--spacing--30, calc(var(--wp--style--block-gap, 24px) / 2));
-}
-
-/*--------------------------------------------------------------
-## Custom Group Style: Split Section (Tag-Agnostic Flow)
---------------------------------------------------------------*/
-.wp-block-group.is-style-split-section {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--wp--style--block-gap, 2rem);
-}
-@media (min-width: 782px) {
-  .wp-block-group.is-style-split-section {
-    grid-template-columns: minmax(260px, 35%) 1fr;
-    align-items: start;
-  }
-  .wp-block-group.is-style-split-section > :first-child {
-    grid-column: 1;
-    grid-row: 1/span 999;
-    position: sticky;
-    top: calc(var(--wp--preset--spacing--50, 2rem) + 32px);
-  }
-  .wp-block-group.is-style-split-section > :not(:first-child) {
-    grid-column: 2;
-  }
 }
 
 /*--------------------------------------------------------------
@@ -691,6 +740,87 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
     padding-left: 1.25em;
   }
 }
+/*--------------------------------------------------------------
+# Base Styles
+--------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+# Media & Text (flat-blocks base layout - Matched to Group + Columns)
+-----------------------------------------------------------------------------*/
+.wp-block-media-text {
+  overflow: hidden;
+  /* Container Background Vertical Padding */
+}
+.wp-block-media-text.has-background {
+  padding-top: var(--wp--preset--spacing--60);
+  padding-bottom: var(--wp--preset--spacing--60);
+}
+.wp-block-media-text.has-background:not(.alignfull) {
+  padding-right: var(--wp--preset--spacing--40);
+  padding-left: var(--wp--preset--spacing--40);
+}
+
+.wp-block-media-text.alignfull {
+  box-sizing: border-box;
+  /* 1. Allows WP negative margins to bleed background edge-to-edge */
+  width: auto !important;
+  /* 2. Nav Formula + Root Padding Offset:
+     Accounts for parent container percentage bounds + negative margin bleed */
+  padding-right: max(var(--wp--style--root--padding-left, 2rem), 0.5 * (100% - var(--wp--style--global--wide-size, 1100px)) + var(--wp--style--root--padding-left, 2rem)) !important;
+  padding-left: max(var(--wp--style--root--padding-right, 2rem), 0.5 * (100% - var(--wp--style--global--wide-size, 1100px)) + var(--wp--style--root--padding-right, 2rem)) !important;
+  /* 3. Inter-column gap */
+  gap: var(--wp--preset--spacing--50, 2rem);
+  justify-content: center;
+}
+
+/* 
+  4. THE FIX: Allows CSS Grid's `auto` track to shrink into the remaining space 
+  without blowing out the 1100px outer grid boundary.
+*/
+.wp-block-media-text .wp-block-media-text__content,
+.wp-block-media-text .wp-block-media-text__media {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  min-width: 0;
+}
+
+/* Reset child margins */
+.wp-block-media-text .wp-block-media-text__content > :first-child {
+  margin-block-start: 0;
+}
+
+.wp-block-media-text .wp-block-media-text__content > :last-child {
+  margin-block-end: 0;
+}
+
+/* 
+  5. Tablet & Mobile Stacking (<782px)
+  Synchronized with Columns block collapse breakpoint
+*/
+@media only screen and (max-width: 781px) {
+  .wp-block-media-text,
+  .wp-block-media-text.alignfull {
+    grid-template-columns: 1fr !important;
+    gap: var(--wp--preset--spacing--40, 1.5rem) !important;
+  }
+  .wp-block-media-text .wp-block-media-text__media,
+  .wp-block-media-text .wp-block-media-text__content {
+    grid-column: 1 !important;
+  }
+  .wp-block-media-text.is-stacked-on-mobile > .wp-block-media-text__media {
+    grid-row: 1 !important;
+  }
+  .wp-block-media-text.is-stacked-on-mobile > .wp-block-media-text__content {
+    grid-row: 2 !important;
+  }
+}
+/*-----------------------------------------------------------------------------
+# Custom: Media & Text
+-----------------------------------------------------------------------------*/
+/* Custom Block Styles */
+.wp-block-media-text.is-style-no-padding .wp-block-media-text__content {
+  padding: 0;
+}
+
 /*-----------------------------------------------------------------------------
 # Lumina Theme: Media & Text Custom Style (.is-style-image-border)
 -----------------------------------------------------------------------------*/
@@ -1356,6 +1486,14 @@ h1, h2, h3, h4, h5, h6) {
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content), .has-black-background-color a:not(.wp-element-button,
 .wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-secondary-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-secondary-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-tertiary-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-tertiary-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
 .wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-primary-subtle-background-color a:not(.wp-element-button,
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-secondary-subtle-background-color a:not(.wp-element-button,
@@ -1367,6 +1505,20 @@ h1, h2, h3, h4, h5, h6) {
 .wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-secondary-subtle-alt-background-color a:not(.wp-element-button,
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-tertiary-subtle-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-neutral-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-neutral-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-very-light-gray-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-light-gray-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-gray-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-midnight-blue-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .has-dark-midnight-blue-background-color a:not(.wp-element-button,
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content) {
   color: var(--wp--preset--color--highlight);
@@ -1402,8 +1554,18 @@ h1, h2, h3, h4, h5, h6) {
   color: var(--wp--preset--color--foreground-alt);
 }
 
-:root :where(.is-dark-theme) .has-very-light-gray-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
-:root :where(.is-dark-theme) .has-very-light-gray-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover {
+:root :where(.is-dark-theme) .has-secondary-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-secondary-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-secondary-alt-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-secondary-alt-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-tertiary-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-tertiary-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-tertiary-alt-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-tertiary-alt-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-neutral-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-neutral-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-neutral-alt-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-neutral-alt-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-very-light-gray-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-very-light-gray-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-light-gray-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-light-gray-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-gray-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-gray-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-midnight-blue-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-midnight-blue-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :root :where(.is-dark-theme) .has-dark-midnight-blue-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:root :where(.is-dark-theme) .has-dark-midnight-blue-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover {
   /* Lighten link color on dark backgrounds */
   color: var(--wp--preset--color--highlight);
 }
@@ -1573,6 +1735,48 @@ h1, h2, h3, h4, h5, h6) {
 .wp-block-navigation-item__content), .wp-block-post-content .has-almost-black-background-color a:not(.wp-element-button,
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content), .wp-block-post-content .has-black-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-secondary-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-secondary-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-tertiary-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-tertiary-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-primary-subtle-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-secondary-subtle-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-tertiary-subtle-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-primary-subtle-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-secondary-subtle-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-tertiary-subtle-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-contrast-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-neutral-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-neutral-alt-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-white-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-off-white-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-very-light-gray-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-light-gray-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-gray-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-very-dark-gray-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-midnight-blue-background-color a:not(.wp-element-button,
+.wp-block-social-link-anchor,
+.wp-block-navigation-item__content), :root :where(.is-dark-theme) .wp-block-post-content .has-dark-midnight-blue-background-color a:not(.wp-element-button,
 .wp-block-social-link-anchor,
 .wp-block-navigation-item__content) {
   /* Underline links */

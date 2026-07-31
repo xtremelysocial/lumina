@@ -1,6 +1,7 @@
 /*--------------------------------------------------------------
 ## Style raw HTML quotes like the block quotes
 --------------------------------------------------------------*/
+// TO-DO: MOVE THIS TO PARENT THEME
 :where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
 //     border-left: 6px solid var(--wp--custom--color--heading--separator);
     border-left: 6px solid var(--wp--preset--color--primary);

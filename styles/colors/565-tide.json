@@ -23,7 +23,7 @@
 					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
 				"heading": {
-					"text": "hsl(37, 10%, 93%)",
+					"text": "var(--wp--preset--color--highlight-secondary)",
 					"separator": "var(--wp--preset--color--primary)"
 				},
 				"button": {
@@ -72,9 +72,15 @@
 				{ "slug": "gray", "color": "hsl(211, 10%, 35%)", "name": "Gray (Inverted Technical Border Seam 35%)" },
 				{ "slug": "dark-gray", "color": "hsl(211, 10%, 65%)", "name": "Dark Gray (Inverted Muted Typography 65%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(211, 12%, 85%)", "name": "Very Dark Gray (Inverted Tech Pop Typography 85%)" },
-
+				
 				{ "slug": "highlight", "color": "hsl(14, 85%, 78%)", "name": "Highlight (Glow Terracotta)" },
 				{ "slug": "highlight-alt", "color": "hsl(14, 82%, 68%)", "name": "Highlight Alt (Luminous Terracotta)" },
+				
+				{ "slug": "highlight-secondary", "color": "hsl(37, 10%, 93%)", "name": "Highlight Secondary (Sun-Bleached Sandstone)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(37, 20%, 80%)", "name": "Highlight Secondary Alt (Warm Sandstone Anchor)" },
+								
+				{ "slug": "highlight-tertiary", "color": "hsl(172, 75%, 76%)", "name": "Highlight Tertiary (Bioluminescent Tidefoam)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(172, 65%, 46%)", "name": "Highlight Tertiary Alt (Deep Tidefoam Teal Anchor)" },
 				
 				{ "slug": "primary-dark", "color": "hsl(12, 32%, 12%)", "name": "Primary Dark (Deep Wet Terracotta Floor 12%)" },
 				{ "slug": "primary-dark-alt", "color": "hsl(12, 32%, 8%)", "name": "Primary Dark Alt (Abyssal Terracotta Void 8%)" },
