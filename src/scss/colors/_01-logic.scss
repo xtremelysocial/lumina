@@ -8,8 +8,6 @@
 //   ========================================================================== */
 
 @use 'sass:string';
-// @use 'sass:list';
-// @use 'sass:map';
 
 @use '00-config' as config;
 
@@ -21,7 +19,6 @@
 @function build-selector-list(
 	$colors, 
 	$prefix: ".has-", 
-// 	$prefix: ":root .has-", 
 	$suffix: "-background-color"
 ) {
     $selectors: "";
@@ -37,55 +34,23 @@
 // ==========================================================================
 
 %engine-heading-inherit {
-//     :is(.wp-block-heading, 
-//     .wp-block-post-title, 
-//     .wp-block-query-title, 
-//     .wp-block-site-title, 
-//     .wp-block-site-tagline,
-//     h1, h2, h3, h4, h5, h6
-// 	) {
-		/* Inherit heading color */
-        color: inherit;
-//     }
+	/* Inherit heading color */
+	color: inherit;
 }
 
 %engine-heading-dark-text {
-//     :is(.wp-block-heading, 
-//     .wp-block-post-title, 
-//     .wp-block-query-title, 
-//     .wp-block-site-title, 
-//     .wp-block-site-tagline,
-//     h1, h2, h3, h4, h5, h6
-// 	) {
-        /* Force explicit dark headings on persistent light surfaces in dark mode */
-        color: var(--wp--preset--color--almost-black);
-//     }
+	/* Set heading to dark text */
+	color: var(--wp--preset--color--almost-black);
 }
 
 %engine-heading-dark {
-//     :is(.wp-block-heading, 
-//     .wp-block-post-title, 
-//     .wp-block-query-title, 
-//     .wp-block-site-title, 
-//     .wp-block-site-tagline,
-//     h1, h2, h3, h4, h5, h6
-// 	) {
-		/* Set heading color to theme.json var or secondary-alt */
-        color: var(--wp--custom--color--heading--text, var(--wp--preset--color--secondary-alt));
-//     }
+	/* Set heading to custom color heading text */
+	color: var(--wp--custom--color--heading--text, var(--wp--preset--color--secondary-alt));
 }
 
 %engine-heading-darken {
-//     :is(.wp-block-heading, 
-//     .wp-block-post-title, 
-//     .wp-block-query-title, 
-//     .wp-block-site-title, 
-//     .wp-block-site-tagline,
-//     h1, h2, h3, h4, h5, h6
-// 	) {
-		/* In dark mode, darken headings on light backgrounds */
-		filter: brightness(0.52) saturate(1.6);
-// 	}
+	/* Darken headings on light backgrounds */
+	filter: brightness(0.52) saturate(1.6);
 }
 
 %engine-link-inherit {
@@ -94,43 +59,34 @@
 }
 
 %engine-link-lighten {
+	/* Lighten link color on dark backgrounds */
 //     filter: config.$filter-link-lighten;
 	color: var(--wp--preset--color--highlight);
 // 	text-decoration-line: none;
 }
 
 %engine-link-darken {
+	/* Darken link color on light backgrounds */
 //     filter: config.$filter-link-darken;
 	color: var(--wp--preset--color--highlight-alt);
 // 	text-decoration-line: none;
 }
 
-// %engine-link-lighten {
-// 	/* Lighten link color on dark backgrounds */
-// 	filter: brightness(2.05) saturate(0.87);
-// }
-// 
-// %engine-link-darken {
-// 	/* Darken link color on light backgrounds */
-// // 	filter: brightness(0.41) saturate(1.15);
-// // 	filter: brightness(0.8) saturate(1.15);
-// 	filter: brightness(0.52) saturate(1.6);
-// }
-
 %engine-link-dark-text {
-    /* Set links to high-contrast dark text */
-    color: var(--wp--preset--color--almost-black); // !important;
+    /* Set links to dark text */
+    color: var(--wp--preset--color--almost-black);
 }
 
 %engine-link-light-text {
-    /* Set links to high-contrast light text */
-    color: var(--wp--preset--color--foreground-alt); // !important;
+    /* Set links to light text */
+    color: var(--wp--preset--color--foreground-alt);
 }
 
 %engine-link-highlight {
 	/* Lighten link color on dark backgrounds */
     color: var(--wp--preset--color--highlight);
 // 	filter: brightness(2.05) saturate(0.87);
+// 	filter: none; // Needed only for overriding parent
 // 	text-decoration-line: none;
 }
 
@@ -164,7 +120,6 @@
 @mixin apply-contrast-color(
 	$color, 			// color slug (e.g. primary-alt)
 	$text-style,		// light-text, dark-text, no-fallback
-	$buttons: false, 	// true also adds color to buttons. Not needed for Lumina.
 	$root: null,		// Add :root to text color assignment
 ) {
 
@@ -177,18 +132,13 @@
 		);	
 	}
 
-	// If buttons, also add button selector	
-// 	@if $buttons or config.$explicit-button-text-color  {
-// 		$selectors: '#{$selectors}, a:where(.wp-element-button, .wp-block-button__link)#{$selectors}'; 
-// 	}
-
 	// Apply the selectors
 	#{$selectors} {
 
 		// Pure variable hook: If undefined in theme.json, the browser 
 		// treats it as unset/inherit, leaving your global layout pure!
 		@if $text-style == 'no-fallback' {
-			color: var(--wp--custom--color--contrast--#{$color}); // !important;
+			color: var(--wp--custom--color--contrast--#{$color});
 
 		// Default to light text
 		} @else {
@@ -200,13 +150,13 @@
 			
 			// And swap base and contrast colors
 			} @else if $text-style == 'base' {
-				$fallback: var(--wp--preset--color--contrast);			
+				$fallback: var(--wp--preset--color--base);			
 
 			} @else if $text-style == 'contrast' {
-				$fallback: var(--wp--preset--color--base);			
+				$fallback: var(--wp--preset--color--contrast);			
 			}
 
-			color: var(--wp--custom--color--contrast--#{$color}, #{$fallback}); // !important;
+			color: var(--wp--custom--color--contrast--#{$color}, #{$fallback});
 		}
 	}
 }
@@ -248,13 +198,8 @@
 @mixin apply-link-action(
 	$selectors, 
 	$link,
-// 	$root: null,
 	$remove-underline: null,
 ) {
-
-// 	@if $root {
-// 		$Selectors: ':root #{$selectors}';
-// 	}
 
 	// Inherit link color, apply underlines in post content, and special
 	// underlines in the footers

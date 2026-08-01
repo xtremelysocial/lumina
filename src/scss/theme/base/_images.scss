@@ -13,9 +13,9 @@
 	img.size-cropped-slim,
 	img.size-large {
 		width: 100%;
-		height: auto; /* Suppresses legacy HTML height constraints */
+		height: auto;
 		object-fit: cover;
-		object-position: center center; /* Corrected to Center-Center for Lumina Editorial alignment */
+		object-position: center center;
 	}
 }
 

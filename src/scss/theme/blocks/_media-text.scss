@@ -22,11 +22,11 @@
 .wp-block-media-text.alignfull {
 	box-sizing: border-box;
 
-	/* 1. Allows WP negative margins to bleed background edge-to-edge */
+	// 1. Allows WP negative margins to bleed background edge-to-edge
 	width: auto !important;
 
-	/* 2. Nav Formula + Root Padding Offset:
-	   Accounts for parent container percentage bounds + negative margin bleed */
+	// 2. Nav Formula + Root Padding Offset:
+	//    Accounts for parent container percentage bounds + negative margin bleed */
 	padding-left: max(
 		var(--wp--style--root--padding-left, 2rem),
 		calc(0.5 * (100% - var(--wp--style--global--wide-size, 1100px)) + var(--wp--style--root--padding-left, 2rem))
@@ -37,13 +37,13 @@
 		calc(0.5 * (100% - var(--wp--style--global--wide-size, 1100px)) + var(--wp--style--root--padding-right, 2rem))
 	) !important;
 
-	/* 3. Inter-column gap */
+	// 3. Inter-column gap
 	gap: var(--wp--preset--spacing--50, 2rem);
 	justify-content: center;
 }
 
 /* 
-  4. THE FIX: Allows CSS Grid's `auto` track to shrink into the remaining space 
+  4. Allows CSS Grid's `auto` track to shrink into the remaining space 
   without blowing out the 1100px outer grid boundary.
 */
 .wp-block-media-text .wp-block-media-text__content,

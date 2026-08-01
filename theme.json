@@ -253,19 +253,14 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 18%, 83%)", "name": "Secondary Subtle Alt (Sky Border Seam 83%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 16%, 83%)", "name": "Tertiary Subtle Alt (Parchment Border Seam 83%)" },
 
-				{ "slug": "neutral", "color": "hsl(32, 16%, 94%)", "name": "Neutral (Crisp Sand Well 94%)" },
-				{ "slug": "neutral-alt", "color": "hsl(32, 12%, 87%)", "name": "Neutral Alt (Sand Border Seam 87%)" },
-				
-				{ "slug": "base", "color": "hsl(32, 20%, 97%)", "name": "Base (Almond White)" },
-				{ "slug": "contrast", "color": "hsl(214, 12%, 11%)", "name": "Contrast (Midnight Indigo Typographic Ink)" },
-				{ "slug": "foreground-alt", "color": "hsl(32, 20%, 98%)", "name": "Foreground Alt (Light Almond White)" },
-				
-				{ "slug": "very-light-gray", "color": "hsl(32, 14%, 91%)", "name": "Very Light Gray (Warm Sand Footer Floor 91%)" },
-				{ "slug": "light-gray", "color": "hsl(32, 10%, 83%)", "name": "Light Gray (Warm Sand Inner Well 83%)" },
-				{ "slug": "gray", "color": "hsl(32, 6%, 71%)", "name": "Gray (Warm Structural Border 71%)" },
-				{ "slug": "dark-gray", "color": "hsl(32, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
-				{ "slug": "very-dark-gray", "color": "hsl(32, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
-								
+				{ "slug": "highlight", "color": "hsl(154, 65%, 68%)", "name": "Highlight (Electric Sage for Dark BG)" },
+				{ "slug": "highlight-secondary", "color": "hsl(206, 80%, 72%)", "name": "Highlight Secondary (Luminescent Sky)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(34, 80%, 72%)", "name": "Highlight Tertiary (Luminescent Ochre)" },
+
+				{ "slug": "highlight-alt", "color": "hsl(154, 75%, 28%)", "name": "Highlight Alt (Vivid Pine Link Ink)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(206, 65%, 36%)", "name": "Highlight Secondary Alt (Deep Sky Link)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(34, 65%, 36%)", "name": "Highlight Tertiary Alt (Deep Ochre Link)" },
+
 				{ "slug": "primary-dark", "color": "hsl(170, 45%, 20%)", "name": "Primary Dark (Deep Forest Sage)"},
 				{ "slug": "dark", "color": "hsl(208, 21%, 22%)", "name": "Dark (Lumina Midnight Balanced 22%)" },
 				{ "slug": "tertiary-dark", "color": "hsl(34, 34%, 22%)", "name": "Dark Tertiary (Antique Gold Deep 22%)" },
@@ -274,16 +269,22 @@
 				{ "slug": "dark-alt", "color": "hsl(209, 24%, 16%)", "name": "Dark Alt (Lumina Midnight Balanced 16%)" },				
 				{ "slug": "tertiary-dark-alt", "color": "hsl(34, 34%, 14%)", "name": "Dark Tertiary Alt (Antique Gold Abyssal 14%)" },
 
-				{ "slug": "highlight", "color": "hsl(154, 65%, 68%)", "name": "Highlight (Electric Sage for Dark BG)" },
-				{ "slug": "highlight-alt", "color": "hsl(154, 75%, 28%)", "name": "Highlight Alt (Vivid Pine Link Ink)" },
+				{ "slug": "base", "color": "hsl(32, 20%, 97%)", "name": "Base (Almond White)" },
+				{ "slug": "contrast", "color": "hsl(214, 12%, 11%)", "name": "Contrast (Midnight Indigo Typographic Ink)" },
+				{ "slug": "foreground-alt", "color": "hsl(32, 20%, 98%)", "name": "Foreground Alt (Light Almond White)" },
 
-				{ "slug": "highlight-secondary", "color": "hsl(206, 80%, 72%)", "name": "Highlight Secondary (Luminescent Sky)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(206, 65%, 36%)", "name": "Highlight Secondary Alt (Deep Sky Link)" },
-				{ "slug": "highlight-tertiary", "color": "hsl(34, 80%, 72%)", "name": "Highlight Tertiary (Luminescent Ochre)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(34, 65%, 36%)", "name": "Highlight Tertiary Alt (Deep Ochre Link)" },
-				
+				{ "slug": "neutral", "color": "hsl(32, 16%, 94%)", "name": "Neutral (Crisp Sand Well 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(32, 12%, 87%)", "name": "Neutral Alt (Sand Border Seam 87%)" },
+								
+				{ "slug": "very-light-gray", "color": "hsl(32, 14%, 91%)", "name": "Very Light Gray (Warm Sand Footer Floor 91%)" },
+				{ "slug": "light-gray", "color": "hsl(32, 10%, 83%)", "name": "Light Gray (Warm Sand Inner Well 83%)" },
+				{ "slug": "gray", "color": "hsl(32, 6%, 71%)", "name": "Gray (Warm Structural Border 71%)" },
+				{ "slug": "dark-gray", "color": "hsl(32, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(32, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
+												
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(32, 20%, 97%)", "name": "Off White (Desert Alabaster)" },
+
 				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black (Pure Carbon Floor)" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black (Rich Carbon Body Copy)" },
 				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black (True Black)" },

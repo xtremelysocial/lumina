@@ -36,44 +36,49 @@
 		"color": {
 			"palette": [
 				{ "slug": "primary", "color": "hsl(214, 18%, 19%)", "name": "Primary (Midnight Slate Core 19%)" },
-				{ "slug": "primary-alt", "color": "hsl(214, 18%, 15%)", "name": "Primary Alt (Deep Nightfall Action 15%)" },
 				{ "slug": "secondary", "color": "hsl(206, 20%, 30%)", "name": "Secondary (Maritime Evening Slate 30%)" },
-				{ "slug": "secondary-alt", "color": "hsl(206, 24%, 24%)", "name": "Secondary Alt (Maritime Panel Base 24%)" },
 				{ "slug": "tertiary", "color": "hsl(12, 32%, 48%)", "name": "Tertiary (Twilight Terracotta 48%)" },
+
+				{ "slug": "primary-alt", "color": "hsl(214, 18%, 15%)", "name": "Primary Alt (Deep Nightfall Action 15%)" },
+				{ "slug": "secondary-alt", "color": "hsl(206, 24%, 24%)", "name": "Secondary Alt (Maritime Panel Base 24%)" },
 				{ "slug": "tertiary-alt", "color": "hsl(12, 32%, 38%)", "name": "Tertiary Alt (Burnt Sienna 38%)" },
 
 				{ "slug": "primary-subtle", "color": "hsl(204, 20%, 91%)", "name": "Primary Subtle (Whisper Sky Slate Fill 91%)" },
-				{ "slug": "primary-subtle-alt", "color": "hsl(204, 16%, 83%)", "name": "Primary Subtle Alt (Sky Slate Border 83%)" },
 				{ "slug": "secondary-subtle", "color": "hsl(146, 20%, 91%)", "name": "Secondary Subtle (Whisper Sage Green Fill 91%)" },
-				{ "slug": "secondary-subtle-alt", "color": "hsl(146, 16%, 83%)", "name": "Secondary Subtle Alt (Sage Green Border 83%)" },
 				{ "slug": "tertiary-subtle", "color": "hsl(24, 22%, 91%)", "name": "Tertiary Subtle (Evening Glow Orange Fill 91%)" },
+
+				{ "slug": "primary-subtle-alt", "color": "hsl(204, 16%, 83%)", "name": "Primary Subtle Alt (Sky Slate Border 83%)" },
+				{ "slug": "secondary-subtle-alt", "color": "hsl(146, 16%, 83%)", "name": "Secondary Subtle Alt (Sage Green Border 83%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(24, 16%, 83%)", "name": "Tertiary Subtle Alt (Evening Glow Orange Border 83%)" },
+
+				{ "slug": "highlight", "color": "hsl(150, 65%, 68%)", "name": "Highlight (Pastel Emerald Hover)" },
+
+				{ "slug": "highlight-alt", "color": "hsl(151, 55%, 30%)", "name": "Highlight Alt (Alpine Emerald Link Anchor)" },
+
+				{ "slug": "primary-dark", "color": "hsl(214, 18%, 14%)", "name": "Primary Dark (Midnight Slate Deep 14%)" },
+				{ "slug": "dark", "color": "hsl(206, 20%, 20%)", "name": "Dark (Secondary Maritime Footer Pair 20%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(12, 32%, 22%)", "name": "Dark Tertiary (Twilight Terracotta Deep 22%)" },
+
+				{ "slug": "primary-dark-alt", "color": "hsl(214, 20%, 9%)", "name": "Primary Dark Alt (Midnight Slate Abyssal 9%)" },
+				{ "slug": "dark-alt", "color": "hsl(206, 24%, 14%)", "name": "Dark Alt (Secondary Maritime Footer Deep 14%)" },				
+				{ "slug": "tertiary-dark-alt", "color": "hsl(12, 32%, 14%)", "name": "Dark Tertiary Alt (Twilight Terracotta Abyssal 14%)" },
 
 				{ "slug": "base", "color": "hsl(43, 27%, 97%)", "name": "Base (Light Evening Haze Canvas)" },
 				{ "slug": "contrast", "color": "hsl(214, 12%, 11%)", "name": "Contrast (Midnight Indigo Typographic Ink)" },
-
-				{ "slug": "neutral", "color": "hsl(45, 14%, 94%)", "name": "Neutral (Custom Muted Off-White Component Well 94%)" },
-				{ "slug": "neutral-alt", "color": "hsl(45, 10%, 87%)", "name": "Neutral Alt (Component Border Seam 87%)" },
-
 				{ "slug": "foreground-alt", "color": "hsl(43, 27%, 97%)", "name": "Foreground Alt (Off White)" },
 
-				{ "slug": "highlight", "color": "hsl(150, 65%, 68%)", "name": "Highlight (Pastel Emerald Hover)" },
-				{ "slug": "highlight-alt", "color": "hsl(151, 55%, 30%)", "name": "Highlight Alt (Alpine Emerald Link Anchor)" },
-				
-				{ "slug": "primary-dark", "color": "hsl(214, 18%, 14%)", "name": "Primary Dark (Midnight Slate Deep 14%)" },
-				{ "slug": "primary-dark-alt", "color": "hsl(214, 20%, 9%)", "name": "Primary Dark Alt (Midnight Slate Abyssal 9%)" },
-				{ "slug": "dark", "color": "hsl(206, 20%, 20%)", "name": "Dark (Secondary Maritime Footer Pair 20%)" },
-				{ "slug": "dark-alt", "color": "hsl(206, 24%, 14%)", "name": "Dark Alt (Secondary Maritime Footer Deep 14%)" },				
-				{ "slug": "tertiary-dark", "color": "hsl(12, 32%, 22%)", "name": "Dark Tertiary (Twilight Terracotta Deep 22%)" },
-				{ "slug": "tertiary-dark-alt", "color": "hsl(12, 32%, 14%)", "name": "Dark Tertiary Alt (Twilight Terracotta Abyssal 14%)" },
+				{ "slug": "neutral", "color": "hsl(45, 14%, 94%)", "name": "Neutral (Custom Muted Off-White Component Well 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(45, 10%, 87%)", "name": "Neutral Alt (Component Border Seam 87%)" },				
 
-				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
-				{ "slug": "off-white", "color": "hsl(43, 27%, 97%)", "name": "Off White (Gallery Bone)" },
 				{ "slug": "very-light-gray", "color": "hsl(45, 14%, 91%)", "name": "Very Light Gray (Warm Linen Paper 91%)" },
 				{ "slug": "light-gray", "color": "hsl(43, 12%, 83%)", "name": "Light Gray (Warm Linen Well 83%)" },
 				{ "slug": "gray", "color": "hsl(45, 8%, 71%)", "name": "Gray (Warm Sand Border Seam 71%)" },
 				{ "slug": "dark-gray", "color": "hsl(45, 4%, 44%)", "name": "Dark Gray (Muted Sand Typography 44%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(45, 2%, 25%)", "name": "Very Dark Gray (Warm Obsidian Shadow 25%)" },
+
+				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
+				{ "slug": "off-white", "color": "hsl(43, 27%, 97%)", "name": "Off White (Gallery Bone)" },
+
 				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black (Carbon)" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
 				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black (True Black)" },

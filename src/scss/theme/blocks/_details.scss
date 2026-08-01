@@ -3,6 +3,12 @@
 -----------------------------------------------------------------------------*/
 
 /* Closed Summary will have primary font color */
+.wp-block-details > summary {
+	transition: 
+		opacity var(--wp--custom--animation--duration--short, 250ms) ease-in-out, 
+		color var(--wp--custom--animation--duration--short, 250ms) ease-in-out;
+}
+
 .wp-block-details:not(.has-text-color) > summary {
 // 	color: var(--wp--custom--color--highlight, var(--wp--preset--color--highlight));
 // 	font-weight: var(--wp--custom--typography--font-weight--medium);
@@ -11,12 +17,14 @@
 }
 
 /* Highlight Summary on hover and when open */
-.wp-block-details:not(.has-text-color) > summary:hover,
-.wp-block-details:not(.has-text-color)[open] > summary {
-// 	color: var(--wp--custom--color--highlight, var(--wp--preset--color--highlight-alt));
+// .wp-block-details[open] > summary,
+.wp-block-details > summary:hover {
 	opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
 }
-
+// .wp-block-details:not(.has-text-color) > summary:hover,
+// .wp-block-details:not(.has-text-color)[open] > summary {
+// 	color: var(--wp--custom--color--highlight, var(--wp--preset--color--highlight-alt));
+// }
 
 /*--------------------------------------------------------------
 ## Bring details closer to the summary so they look connected
@@ -38,7 +46,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    list-style: none; /* Modern standard arrow strip */
+    list-style: none; // Modern standard arrow strip
     cursor: pointer;
     font-weight: var(--wp--custom--typography--font-weight--normal);
 }
@@ -55,15 +63,15 @@
 /* 3. Inject a sleek, right-aligned custom indicator that doesn't scale crazily */
 .wp-block-details > summary::after {
     content: "+";
-    font-size: 1em; //1.1rem; /* Hardcoded size so it stays clean even with large text */
+    font-size: 1em; //1.1rem; // Hardcoded size so it stays clean even with large text
     font-weight: var(--wp--custom--typography--font-weight--medium);
-    font-family: monospace, sans-serif; /* Keeps plus/minus structurally aligned */
+    font-family: monospace, sans-serif; // Keeps plus/minus structurally aligned
     opacity: 0.6;
     transition: transform 0.2s ease;
 }
 
 /* 4. Swap to a clean Unicode minus sign when the accordion is open */
 .wp-block-details[open] > summary::after {
-    content: "−"; /* Unicode minus sign looks much cleaner than a hyphen */
+    content: "−"; // Unicode minus sign looks much cleaner than a hyphen
     opacity: 0.9;
 }

@@ -32,44 +32,49 @@
 		"color": {
 			"palette": [
 				{ "slug": "primary", "color": "hsl(154, 18%, 50%)", "name": "Primary (Misty Sage Core 50%)" },
-				{ "slug": "primary-alt", "color": "hsl(154, 20%, 40%)", "name": "Primary Alt (Misted Pine Action 40%)" },
 				{ "slug": "secondary", "color": "hsl(206, 18%, 50%)", "name": "Secondary (Misty Slate Core 50%)" },
-				{ "slug": "secondary-alt", "color": "hsl(206, 20%, 40%)", "name": "Secondary Alt (Misted Storm Action 40%)" },
 				{ "slug": "tertiary", "color": "hsl(34, 24%, 50%)", "name": "Tertiary (Misty Gold Core 50%)" },
+
+				{ "slug": "primary-alt", "color": "hsl(154, 20%, 40%)", "name": "Primary Alt (Misted Pine Action 40%)" },
+				{ "slug": "secondary-alt", "color": "hsl(206, 20%, 40%)", "name": "Secondary Alt (Misted Storm Action 40%)" },
 				{ "slug": "tertiary-alt", "color": "hsl(34, 26%, 40%)", "name": "Tertiary Alt (Misted Ochre Action 40%)" },
 				
 				{ "slug": "primary-subtle", "color": "hsl(154, 12%, 95%)", "name": "Primary Subtle (Ethereal Sage Veil 95%)" },
-				{ "slug": "primary-subtle-alt", "color": "hsl(154, 10%, 91%)", "name": "Primary Subtle Alt (Sage Hairline 91%)" },
 				{ "slug": "secondary-subtle", "color": "hsl(206, 12%, 95%)", "name": "Secondary Subtle (Ethereal Sky Veil 95%)" },
-				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 10%, 91%)", "name": "Secondary Subtle Alt (Sky Hairline 91%)" },
 				{ "slug": "tertiary-subtle", "color": "hsl(34, 14%, 95%)", "name": "Tertiary Subtle (Ethereal Gold Veil 95%)" },
+				
+				{ "slug": "primary-subtle-alt", "color": "hsl(154, 10%, 91%)", "name": "Primary Subtle Alt (Sage Hairline 91%)" },
+				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 10%, 91%)", "name": "Secondary Subtle Alt (Sky Hairline 91%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 10%, 91%)", "name--": "Tertiary Subtle Alt (Gold Hairline 91%)" },
-				
-				{ "slug": "base", "color": "hsl(45, 20%, 97%)", "name": "Base (Clean Linen Canvas)" },
-				{ "slug": "contrast", "color": "hsl(154, 14%, 13%)", "name": "Contrast (Muted Sage Carbon Ink)" },
 
-				{ "slug": "neutral", "color": "hsl(45, 12%, 93.5%)", "name": "Neutral (High-Key Component Well 93.5%)" },
-				{ "slug": "neutral-alt", "color": "hsl(45, 8%, 87%)", "name": "Neutral Alt (High-Key Structural Border 87%)" },
-
-				{ "slug": "foreground-alt", "color": "hsl(45, 20%, 97%)", "name": "Foreground Alt (Clean Linen)" },
-				
 				{ "slug": "highlight", "color": "hsl(154, 45%, 68%)", "name": "Highlight (Soft Matte Sage Pop)" },
+
 				{ "slug": "highlight-alt", "color": "hsl(154, 40%, 32%)", "name": "Highlight Alt (Misty Pine Link Anchor)" },
 
 				{ "slug": "primary-dark", "color": "hsl(154, 20%, 22%)", "name": "Primary Dark (Muted Sage Deep 22%)" },
-				{ "slug": "primary-dark-alt", "color": "hsl(154, 22%, 14%)", "name": "Primary Dark Alt (Muted Sage Abyssal 14%)" },
 				{ "slug": "dark", "color": "hsl(206, 20%, 22%)", "name": "Dark (Secondary Slate Footer pair 22%)" },
-				{ "slug": "dark-alt", "color": "hsl(206, 22%, 14%)", "name": "Dark Alt (Secondary Slate Footer Deep 14%)" },				
 				{ "slug": "tertiary-dark", "color": "hsl(34, 24%, 22%)", "name": "Dark Tertiary (Muted Gold Deep 22%)" },
+
+				{ "slug": "primary-dark-alt", "color": "hsl(154, 22%, 14%)", "name": "Primary Dark Alt (Muted Sage Abyssal 14%)" },
+				{ "slug": "dark-alt", "color": "hsl(206, 22%, 14%)", "name": "Dark Alt (Secondary Slate Footer Deep 14%)" },				
 				{ "slug": "tertiary-dark-alt", "color": "hsl(34, 26%, 14%)", "name": "Dark Tertiary Alt (Muted Gold Abyssal 14%)" },				
 
-				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
-				{ "slug": "off-white", "color": "hsl(45, 20%, 97%)", "name": "Off White" },
+				{ "slug": "base", "color": "hsl(45, 20%, 97%)", "name": "Base (Clean Linen Canvas)" },
+				{ "slug": "contrast", "color": "hsl(154, 14%, 13%)", "name": "Contrast (Muted Sage Carbon Ink)" },
+				{ "slug": "foreground-alt", "color": "hsl(45, 20%, 97%)", "name": "Foreground Alt (Clean Linen)" },
+				
+				{ "slug": "neutral", "color": "hsl(45, 12%, 93.5%)", "name": "Neutral (High-Key Component Well 93.5%)" },
+				{ "slug": "neutral-alt", "color": "hsl(45, 8%, 87%)", "name": "Neutral Alt (High-Key Structural Border 87%)" },
+
 				{ "slug": "very-light-gray", "color": "hsl(45, 12%, 95%)", "name": "Very Light Gray (Ethereal Footer Floor 95%)" },
 				{ "slug": "light-gray", "color": "hsl(45, 8%, 91%)", "name": "Light Gray (Ethereal Inner Well 91%)" },
 				{ "slug": "gray", "color": "hsl(45, 4%, 71%)", "name": "Gray (Muted Hairline Seam 71%)" },
 				{ "slug": "dark-gray", "color": "hsl(45, 3%, 44%)", "name": "Dark Gray" },
 				{ "slug": "very-dark-gray", "color": "hsl(45, 2%, 25%)", "name": "Very Dark Gray" },
+
+				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
+				{ "slug": "off-white", "color": "hsl(45, 20%, 97%)", "name": "Off White" },
+
 				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
 				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black" },

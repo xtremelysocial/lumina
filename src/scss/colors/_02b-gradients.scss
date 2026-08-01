@@ -45,10 +45,6 @@
 	}
 	
 	:root :where([class*="-gradient-background"]) :where(a:not(.wp-element-button)) {
-		color: inherit;
-	
-	// 	&:hover, &:active {
-	// 		opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
-	// 	}		
+		color: inherit;	
 	}
 }

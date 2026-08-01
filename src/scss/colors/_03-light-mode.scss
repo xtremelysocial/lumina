@@ -3,11 +3,8 @@
 //	    v0.9.9 Build 30 MVP
 //   ========================================================================== */
 
-// @use 'sass:list';
 @use 'sass:map';
 
-// @use '00-config' as config;
-// @use '01-logic' as logic;
 @use "index" as logic;
 
 //*-----------------------------------------------------------------------------
@@ -34,7 +31,6 @@
 			$text:   		map.get($config, text);    
 // 			$heading:   	map.get($config, heading);    
 			$heading-light: map.get($config, heading-light);    
-			$buttons:   	map.get($config, buttons);
 			$link:   		map.get($config, link);
 			$footer: 		map.get($config, footer);
 			
@@ -42,13 +38,11 @@
 	
 			// Text is already dark in light mode
 			@if $text == 'dark-light' {
-				@include logic.apply-contrast-color($color, 'dark', $buttons);
-
-//////				@include logic.apply-heading-action($selectors, 'dark');    	
+				@include logic.apply-contrast-color($color, 'dark');
 	
 			// If text should be light in light mode, then apply to text AND headings
 			} @else if $text == 'light-dark' {
-				@include logic.apply-contrast-color($color, 'light', $buttons);
+				@include logic.apply-contrast-color($color, 'light');
 				
 				@include logic.apply-heading-action($selectors, 'light'); /////
 			}
@@ -56,11 +50,6 @@
 			@if $heading-light {
 				@include logic.apply-heading-action($selectors, $heading-light); /////
 			}
-			
-			// Not currently used. 
-	//         @if $link {
-	// 			@include logic.apply-link-action($selectors, $link);
-	//         }
 			
 			// If footer nav highlight on hover, then apply it
 			@if $footer {

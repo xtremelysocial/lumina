@@ -33,6 +33,9 @@
 					"hover": "var(--wp--preset--color--primary-alt)",
 					"hoverOpacity": "0.80"
 				},
+				"nav": {
+					"highlight": "var(--wp--preset--color--highlight)"
+				},
 				"shadow": {
 					"natural": "0 2px 4px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.30)",
 					"deep":    "0 3px 6px rgba(0, 0, 0, 0.30), 0 8px 18px rgba(0, 0, 0, 0.40)",
@@ -45,29 +48,43 @@
 		"color": {
 			"palette": [
 				{ "slug": "primary", "color": "hsl(50, 4%, 44%)", "name": "Primary (Machine Stone Gray)" },
-				{ "slug": "primary-alt", "color": "hsl(50, 4%, 32%)", "name": "Primary Alt (Oiled Gunmetal Steel)" },
 				{ "slug": "secondary", "color": "hsl(210, 18%, 32%)", "name": "Secondary (Midnight Industrial Blue)" },
-				{ "slug": "secondary-alt", "color": "hsl(210, 18%, 22%)", "name": "Secondary Alt (Dark Midnight Steel)" },
 				{ "slug": "tertiary", "color": "hsl(50, 4%, 68%)", "name": "Tertiary (Machined Silver)" },
+
+				{ "slug": "primary-alt", "color": "hsl(50, 4%, 32%)", "name": "Primary Alt (Oiled Gunmetal Steel)" },
+				{ "slug": "secondary-alt", "color": "hsl(210, 18%, 22%)", "name": "Secondary Alt (Dark Midnight Steel)" },
 				{ "slug": "tertiary-alt", "color": "hsl(50, 4%, 56%)", "name": "Tertiary Alt (Burnished Zinc)" },
 
 				{ "slug": "primary-subtle", "color": "hsl(0, 0%, 14%)", "name": "Primary Subtle (Carbon Plate Fill)" },
-				{ "slug": "primary-subtle-alt", "color": "hsl(0, 0%, 18%)", "name": "Primary Subtle Alt (Light Carbon)" },
 				{ "slug": "secondary-subtle", "color": "hsl(210, 14%, 14%)", "name": "Secondary Subtle (Gunmetal Blue Fill)" },
-				{ "slug": "secondary-subtle-alt", "color": "hsl(210, 14%, 18%)", "name": "Secondary Subtle Alt (Light Gunmetal)" },
 				{ "slug": "tertiary-subtle", "color": "hsl(50, 4%, 14%)", "name": "Tertiary Subtle (Technical Stone Fill)" },
+
+				{ "slug": "primary-subtle-alt", "color": "hsl(0, 0%, 18%)", "name": "Primary Subtle Alt (Light Carbon)" },
+				{ "slug": "secondary-subtle-alt", "color": "hsl(210, 14%, 18%)", "name": "Secondary Subtle Alt (Light Gunmetal)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(50, 4%, 18%)", "name": "Tertiary Subtle Alt (Light Stone)" },
+
+				{ "slug": "highlight", "color": "hsl(189, 85%, 78%)", "name": "Highlight (Glow Aqua)" },
+				{ "slug": "highlight-secondary", "color": "hsl(204, 29%, 94%)", "name": "Highlight Secondary (Specular Titanium Sheen)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(36, 88%, 74%)", "name": "Highlight Tertiary (Industrial Hazard Gold)" },
+
+				{ "slug": "highlight-alt", "color": "hsl(189, 64%, 53%)", "name": "Highlight Alt (Technical Aqua)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(204, 32%, 82%)", "name": "Highlight Secondary Alt (Machined Steel Anchor)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(36, 80%, 62%)", "name": "Highlight Tertiary Alt (Anodized Amber)" },
+
+				{ "slug": "primary-dark", "color": "hsl(50, 4%, 12%)", "name": "Primary Dark (Deep Oiled Gunmetal Floor 12%)" },
+				{ "slug": "dark", "color": "hsl(0, 0%, 6%)", "name": "Dark (Abyssal Carbon Floor 6%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(210, 15%, 12%)", "name": "Dark Tertiary (Deep Industrial Slate Floor 12%)" },
+
+				{ "slug": "primary-dark-alt", "color": "hsl(50, 4%, 6%)", "name": "Primary Dark Alt (Abyssal Oiled Gunmetal Void 6%)" },
+				{ "slug": "dark-alt", "color": "hsl(0, 0%, 3%)", "name": "Dark Alt (Absolute Dark Void 3%)" },							
+				{ "slug": "tertiary-dark-alt", "color": "hsl(210, 15%, 6%)", "name": "Dark Tertiary Alt (Abyssal Industrial Slate Void 6%)" },
 
 				{ "slug": "base", "color": "hsl(0, 0%, 10%)", "name": "Base (Rich Carbon Dark Canvas)" },
 				{ "slug": "contrast", "color": "hsl(45, 29%, 97%)", "name": "Contrast (Off White Paper Typography)" },
+				{ "slug": "foreground-alt", "color": "hsl(45, 29%, 97%)", "name": "Foreground Alt (Off White)" },
 
 				{ "slug": "neutral", "color": "hsl(0, 0%, 18%)", "name": "Neutral (Industrial Grid Fill)" },
 				{ "slug": "neutral-alt", "color": "hsl(50, 4%, 14%)", "name": "Neutral Alt (Technical Structural Border)" },
-
-				{ "slug": "foreground-alt", "color": "hsl(45, 29%, 97%)", "name": "Foreground Alt (Off White)" },
-
-				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
-				{ "slug": "off-white", "color": "hsl(45, 29%, 97%)", "name": "Off White" },
 
 				{ "slug": "very-light-gray", "color": "hsl(50, 4%, 12%)", "name": "Very Light Gray (Inverted Deep Zinc Floor 12%)" },
 				{ "slug": "light-gray", "color": "hsl(50, 4%, 20%)", "name": "Light Gray (Inverted Zinc Plate Well 20%)" },
@@ -75,21 +92,8 @@
 				{ "slug": "dark-gray", "color": "hsl(50, 4%, 65%)", "name": "Dark Gray (Inverted Muted Zinc Typography 65%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(50, 4%, 85%)", "name": "Very Dark Gray (Inverted Specular Pop Typography 85%)" },
 
-				{ "slug": "highlight", "color": "hsl(189, 85%, 78%)", "name": "Highlight (Glow Aqua)" },
-				{ "slug": "highlight-alt", "color": "hsl(189, 64%, 53%)", "name": "Highlight Alt (Technical Aqua)" },
-				
-				{ "slug": "highlight-secondary", "color": "hsl(204, 29%, 94%)", "name": "Highlight Secondary (Specular Titanium Sheen)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(204, 32%, 82%)", "name": "Highlight Secondary Alt (Machined Steel Anchor)" },
-
-				{ "slug": "highlight-tertiary", "color": "hsl(36, 88%, 74%)", "name": "Highlight Tertiary (Industrial Hazard Gold)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(36, 80%, 62%)", "name": "Highlight Tertiary Alt (Anodized Amber)" },
-
-				{ "slug": "primary-dark", "color": "hsl(50, 4%, 12%)", "name": "Primary Dark (Deep Oiled Gunmetal Floor 12%)" },
-				{ "slug": "primary-dark-alt", "color": "hsl(50, 4%, 6%)", "name": "Primary Dark Alt (Abyssal Oiled Gunmetal Void 6%)" },
-				{ "slug": "dark", "color": "hsl(0, 0%, 6%)", "name": "Dark (Abyssal Carbon Floor 6%)" },
-				{ "slug": "dark-alt", "color": "hsl(0, 0%, 3%)", "name": "Dark Alt (Absolute Dark Void 3%)" },							
-				{ "slug": "tertiary-dark", "color": "hsl(210, 15%, 12%)", "name": "Dark Tertiary (Deep Industrial Slate Floor 12%)" },
-				{ "slug": "tertiary-dark-alt", "color": "hsl(210, 15%, 6%)", "name": "Dark Tertiary Alt (Abyssal Industrial Slate Void 6%)" },
+				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
+				{ "slug": "off-white", "color": "hsl(45, 29%, 97%)", "name": "Off White" },
 
 				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black" },
 				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
@@ -155,7 +159,43 @@
 				"color": {
 					"text": "var(--wp--custom--color--heading--text)"
 				}
+			},
+			"link": {
+				"color": { 
+					"text": "var:preset|color|highlight" 
+				},
+				":hover": { 
+					"color": { 
+						"text": "var:preset|color|highlight" 
+					} 
+				},
+				":active": {
+					"color": { 
+						"text": "var:preset|color|highlight" 
+					}
+				}
 			}
-		}
+		},
+		"blocks": {
+			"core/site-title": {
+				"elements": {
+					"link": {
+						"color": {
+							"text": "var:preset|color|highlight"
+						},
+						":hover": {
+							"color": {
+								"text": "var:preset|color|highlight"
+							}
+						},
+						":active": {
+							"color": {
+								"text": "var:preset|color|highlight"
+							}
+						}
+					}
+				}	
+			}
+		}		
 	}
 }
