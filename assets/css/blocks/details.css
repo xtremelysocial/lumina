@@ -1,0 +1,72 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!./scss-use-loader.js!./src/scss/theme/blocks/_details.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/*-----------------------------------------------------------------------------
+# Details (Override parent theme)
+-----------------------------------------------------------------------------*/
+/* Closed Summary will have primary font color */
+.wp-block-details > summary {
+  transition: opacity var(--wp--custom--animation--duration--short, 250ms) ease-in-out, color var(--wp--custom--animation--duration--short, 250ms) ease-in-out;
+}
+
+.wp-block-details:not(.has-text-color) > summary {
+  color: var(--wp--custom--color--heading--text, var(--wp--preset--color--contrast));
+}
+
+/* Highlight Summary on hover and when open */
+.wp-block-details > summary:hover {
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+}
+
+/*--------------------------------------------------------------
+## Bring details closer to the summary so they look connected
+--------------------------------------------------------------*/
+.wp-block-details > summary + * {
+  margin-top: calc(0.5 * var(--wp--style--block-gap));
+}
+
+.wp-block-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/*-----------------------------------------------------------------------------
+# Lumina Custom Accordion Styling
+-----------------------------------------------------------------------------*/
+/* 1. Force flex layout to instantly break 'list-item' status & kill native arrow */
+.wp-block-details > summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+  font-weight: var(--wp--custom--typography--font-weight--normal);
+}
+
+/* 2. Overkill fallback to ensure Safari behaves */
+.wp-block-details > summary::-webkit-details-marker {
+  display: none !important;
+}
+
+.wp-block-details > summary::marker {
+  content: "";
+  display: none;
+}
+
+/* 3. Inject a sleek, right-aligned custom indicator that doesn't scale crazily */
+.wp-block-details > summary::after {
+  content: "+";
+  font-size: 1em;
+  font-weight: var(--wp--custom--typography--font-weight--medium);
+  font-family: monospace, sans-serif;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+/* 4. Swap to a clean Unicode minus sign when the accordion is open */
+.wp-block-details[open] > summary::after {
+  content: "−";
+  opacity: 0.9;
+}
+
+/*# sourceMappingURL=details.css.map*/

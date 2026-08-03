@@ -90,9 +90,10 @@
 // 03.06 DEEP SHADOW: Apply deep shadow
 // ==========================================================================
 @mixin __blueprint-shadow-deep {
-	box-shadow: var(--wp--custom--color--shadow--hover, 
-				var(--wp--preset--shadow--deep, 
-				0 6px 12px rgba(0, 0, 0, 0.13)));	
+// 	box-shadow: var(--wp--custom--color--shadow--hover, 
+// 				var(--wp--preset--shadow--deep, 
+// 				0 6px 12px rgba(0, 0, 0, 0.13)));	
+	box-shadow: config.$shadow-hover;
 }
 
 %physics-shadow-deep {
@@ -106,9 +107,10 @@
 // 03.07 HIGH SHADOW: Apply high (sharp) shadow
 // ==========================================================================
 @mixin __blueprint-shadow-high {
-	box-shadow: var(--wp--custom--color--shadow--hover-high, 
-				var(--wp--preset--shadow--sharp, 
-				0 12px 25px rgba(0, 0, 0, 0.15)));
+// 	box-shadow: var(--wp--custom--color--shadow--hover-high, 
+// 				var(--wp--preset--shadow--sharp, 
+// 				0 12px 25px rgba(0, 0, 0, 0.15)));
+	box-shadow: config.$shadow-high;
 }
 
 %physics-shadow-high {
@@ -368,9 +370,10 @@
     transform: translateY(0) #{config.$grow-large}; 
 
     // Hover high shadow on hover (e.g. Sharp)
-    box-shadow: var(--wp--custom--color--shadow--hover-high, 
-    			var(--wp--preset--shadow--sharp,
-    			0 8px 16px rgba(0, 0, 0, 0.15)));
+//     box-shadow: var(--wp--custom--color--shadow--hover-high, 
+//     			var(--wp--preset--shadow--sharp,
+//     			0 8px 16px rgba(0, 0, 0, 0.15)));
+	box-shadow: config.$shadow-high;
 
 	// Since we are growing, ensure opacity is full
 	opacity: 1; 

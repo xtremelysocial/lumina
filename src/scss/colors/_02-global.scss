@@ -39,11 +39,16 @@
 		// Always need to add :root in the global space to override parent them
 		$root: true; 
 
+		// Only apply static global contrast settings here. Dynamic adaptive 
+		// colors ('dark-light', 'light-dark') are handled by Pass 2 & Pass 3.
 		@if $text == 'light' {
 			@include logic.apply-contrast-color($color, 'light', $root);
+			@include logic.apply-heading-action($selectors, 'light');
+            
+		} @else if $text == 'dark' {
+			@include logic.apply-contrast-color($color, 'dark', $root);
 
-			@include logic.apply-heading-action($selectors, 'light'); //////
-		} @else {
+		} @else if $text == 'no-fallback' or $text == 'base' or $text == 'contrast' {
 			@include logic.apply-contrast-color($color, $text, $root);
 		}
 

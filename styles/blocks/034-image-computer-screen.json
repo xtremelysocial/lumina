@@ -30,8 +30,8 @@
 				"color": "var:preset|color|almost-black"
 			},
 			"radius": {
-				"topLeft": "var:preset|border-radius|md",
-				"topRight": "var:preset|border-radius|md",
+				"topLeft": "18px",
+				"topRight": "18px",
 				"bottomLeft": "0px",
 				"bottomRight": "0px"
 			}

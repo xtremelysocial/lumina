@@ -37,9 +37,9 @@ body[class*="-sidebar-right"] {
 // 2. LEFT SIDEBAR TEMPLATES
 // Desktop uses natural DOM flow (Sidebar first), Mobile forces Sidebar to the bottom
 .is-style-sidebar-left,
-body[class*="-page-sidebar-left"],
-body[class*="-single-sidebar-left"] {
-
+// body[class*="-page-sidebar-left"],
+// body[class*="-single-sidebar-left"] {
+body[class*="-sidebar-left"] {
 	@media only screen and (max-width: #{ (breakpoints.$break-medium) }) {
 		
 		& .wp-block-columns.main-content {

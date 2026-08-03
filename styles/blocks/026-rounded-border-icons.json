@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "Rounded Border",
+  "slug": "rounded-border",
+  "blockTypes": [ "core/icon" ],
+  "styles": {
+    "border": {
+      "radius": "var:preset|border-radius|md",
+      "color": "var(--wp--custom--color--border)",
+      "width": "1px"
+    },
+    "color": {
+      "background": "var:preset|color|subtle-primary"
+    }
+  }
+}

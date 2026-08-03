@@ -45,9 +45,10 @@
 // 02.11 NATURAL SHADOW: Apply resting (natural) shadow
 // ==========================================================================
 @mixin __blueprint-shadow-natural {
-	box-shadow: var(--wp--custom--color--shadow--default, 
-				var(--wp--preset--shadow--natural, 
-				0 3px 10px rgba(0, 0, 0, 0.14)));
+// 	box-shadow: var(--wp--custom--color--shadow--default, 
+// 				var(--wp--preset--shadow--natural, 
+// 				0 3px 10px rgba(0, 0, 0, 0.14)));
+	box-shadow: config.$shadow-default;
 }
 
 %physics-shadow-natural {
@@ -62,7 +63,7 @@
 //    ========================================================================== */
 @mixin __blueprint-border {
 	border-radius: var(--wp--custom--border--radius, 18px);
-	border: 1px solid var(--wp--custom--color--border); 
+	border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border); 
 }
 
 %physics-border {
@@ -635,16 +636,17 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	&.is-style-image-border {
 
 		&:not(#{config.$blocks-layout-brakes}) {	
-			border: 1px solid var(--wp--custom--color--border, rgba(255,255,255,0.15));
+			border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(255,255,255,0.15));
 			padding: var(--wp--preset--spacing--20, 4.5px);
-			border-radius: var(--wp--custom--border--radius, 18px);
+			border-radius: 18px;
 	
 			> a {
 				overflow: hidden;
 				// Inner Radius = Outer Radius (18px) - Padding (4.5px) - Border (1px)
 				border-radius: calc(
-					var(--wp--custom--border--radius, 18px) - 
-					var(--wp--preset--spacing--20, 4.5px) - 1px
+					18px - 
+					var(--wp--preset--spacing--20, 4.5px) - 
+					1px
 				);
 			}
 		}
@@ -657,7 +659,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	&.is-style-image-round-border {
 
 		&:not(#{config.$blocks-layout-brakes}) {	
-			border: 1px solid var(--wp--custom--color--border, rgba(255,255,255,0.15));
+			border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(255,255,255,0.15));
 			padding: var(--wp--preset--spacing--20, 4.5px);
 			border-radius: 9999px;
 	
@@ -678,7 +680,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 			// Maps directly to your 034 JSON specification
 			border-style: solid;
 			border-color: var(--wp--preset--color--almost-black, #111);
-			border-width: 36px 36px 9px 36px; 
+			border-width: var(--wp--preset--spacing--40) var(--wp--preset--spacing--40) var(--wp--preset--spacing--20) var(--wp--preset--spacing--40); 
 			padding: 0;
 			
 			border-top-left-radius: 18px;
@@ -688,7 +690,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	
 			> a {
 				overflow: hidden;
-				// Outer curve (18px) - Padding (0px) - Border thickness (36px) = 
+				// Outer curve (18px) - Padding (0px) - Border thickness (var(--wp--preset--spacing--40)) = 
 				// Square interior
 				border-top-left-radius: 0px;
 				border-top-right-radius: 0px;
@@ -705,7 +707,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 
 		&:not(#{config.$blocks-layout-brakes}) {	
 	
-			border: 27px solid var(--wp--preset--color--almost-black, #111);
+			border: var(--wp--preset--spacing--30, 12px) solid var(--wp--preset--color--almost-black, #111);
 			padding: 0;
 			border-radius: 18px;
 	
@@ -778,9 +780,10 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
     transform: translateY(0) scale(1);
     
     // Hover default shadow (e.g. Deep)
-    box-shadow: var(--wp--custom--color--shadow--hover, 
-                var(--wp--preset--shadow--deep, 
-				0 6px 12px rgba(0, 0, 0, 0.13)));
+//     box-shadow: var(--wp--custom--color--shadow--hover, 
+//                 var(--wp--preset--shadow--deep, 
+// 				0 6px 12px rgba(0, 0, 0, 0.13)));
+	box-shadow: config.$shadow-hover;
 
 	// Handle debug
 	@include lumina-debug('registry');

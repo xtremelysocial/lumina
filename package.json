@@ -8,7 +8,7 @@
     "watch:readme": "onchange \"readme.txt\" -- shx cp readme.txt readme.md",
     "start": "concurrently \"wp-scripts start --webpack-src-dir=src/scss --output-path=assets/css\" \"npm run watch:readme\"",
     "copy:readme": "shx cp readme.txt readme.md",
-	"theme-zip": "npm run build && npm run copy:readme && zip -r lumina-theme.zip . -x \"*.DS_Store\" \"node_modules/*\" \"zz_unused/*\" \".git*\" \"src/*\" \"package*\" \"webpack*\" \"postcss*\" \"readme.md\""
+    "theme-zip": "npm run build && npm run copy:readme && zip -r lumina-theme.zip . -x \"*.DS_Store\" \"node_modules/*\" \"zz_unused/*\" \".git*\" \"src/*\" \"package*\" \"webpack*\" \"postcss*\" \"readme.md\""
   },
   "devDependencies": {
     "@wordpress/scripts": "^32.3.0",

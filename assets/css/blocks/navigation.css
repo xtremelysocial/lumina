@@ -1,0 +1,141 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!./scss-use-loader.js!./src/scss/theme/blocks/_navigation.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*--------------------------------------------------------------
+# Navigation Block Styles
+--------------------------------------------------------------*/
+/* Reduce row-gap on navigation menus */
+.wp-block-navigation {
+  row-gap: var(--wp--preset--spacing--30);
+}
+
+/* Set nav drop-down touch target to 44px */
+.wp-block-navigation .wp-block-navigation__submenu-icon {
+  height: 16px;
+  width: 16px;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+/* Set default drop-down menu background */
+.wp-block-navigation:not(.has-background) .wp-block-navigation__submenu-container {
+  background-color: var(--wp--preset--color--base);
+  border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(0, 0, 0, 0.1490196078));
+}
+
+/* Set default drop-down menu text color to match the context */
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation__submenu-container {
+  color: var(--wp--preset--color--contrast);
+}
+
+.wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
+  border-radius: var(--wp--custom--border--radius, 8px);
+}
+.wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :first-child, .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :first-child > a {
+  border-top-left-radius: var(--wp--custom--border--radius, 8px);
+  border-top-right-radius: var(--wp--custom--border--radius, 8px);
+}
+.wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child, .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child > a {
+  border-bottom-left-radius: var(--wp--custom--border--radius, 8px);
+  border-bottom-right-radius: var(--wp--custom--border--radius, 8px);
+}
+
+/* Set mobile menu to use base and contrast instead of WordPress' hard-coded colors */
+.wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open {
+  background-color: var(--wp--preset--color--base);
+}
+
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open {
+  color: var(--wp--preset--color--contrast);
+}
+
+/* On menu's with background color, remove the extra padding and rely on gap */
+.wp-block-navigation.has-background .wp-block-navigation-item a:not(.wp-element-button),
+.wp-block-navigation.has-background .wp-block-navigation-submenu a:not(.wp-element-button) {
+  padding: 0;
+}
+
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item a:not(.wp-element-button),
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu a:not(.wp-element-button),
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu button.wp-block-navigation-item__content,
+.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-pages-list__item button.wp-block-navigation-item__content {
+  padding: 0;
+}
+
+.wp-block-navigation.is-style-link-underline-hover .wp-block-navigation-item a:not(.wp-element-button) {
+  text-decoration-line: underline;
+}
+
+/*--------------------------------------------------------------
+## Custom: Nav Dividers
+--------------------------------------------------------------*/
+/* Desktop Submenu Dividers */
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
+  width: 100%;
+}
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-navigation-item:not(:last-child), .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-pages-list__item:not(:last-child) {
+  position: relative;
+}
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-navigation-item:not(:last-child)::after, .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-pages-list__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: var(--wp--preset--spacing--30);
+  right: var(--wp--preset--spacing--30);
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.2);
+  pointer-events: none;
+}
+
+/* Mobile menu dividers */
+/* Remove padding on drop-down menus when expanded on the mobile nav */
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
+  padding: 0;
+}
+
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container, .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__submenu-container, .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-page-list,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-page-list {
+  width: 100%;
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item {
+  width: 100%;
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item:not(:last-child),
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item:not(:last-child) {
+  border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item__content,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item__content {
+  padding-bottom: var(--wp--preset--spacing--30);
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
+  width: 100%;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-right .wp-block-navigation-item,
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-right .wp-block-navigation-item__content,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-right .wp-block-navigation-item,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-right .wp-block-navigation-item__content {
+  text-align: right;
+  justify-content: flex-end;
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-left .wp-block-navigation-item,
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-left .wp-block-navigation-item__content,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-left .wp-block-navigation-item,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-left .wp-block-navigation-item__content {
+  text-align: left;
+  justify-content: flex-start;
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-center .wp-block-navigation-item,
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-center .wp-block-navigation-item__content,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-center .wp-block-navigation-item,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-center .wp-block-navigation-item__content {
+  text-align: center;
+  justify-content: flex-center;
+}
+
+/*# sourceMappingURL=navigation.css.map*/

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "Rounded Corners",
+  "slug": "rounded-corners",
+  "blockTypes": [ "core/icon" ],
+  "styles": {
+    "border": {
+      "radius": "var:preset|border-radius|md"
+    },
+    "color": {
+      "background": "var:preset|color|subtle-primary"
+    }
+  }
+}

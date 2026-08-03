@@ -9,7 +9,7 @@
 			"color": "var:preset|color|almost-black",
 			"style": "solid",
 			"width": "var:preset|spacing|30",
-			"radius": "var:preset|radius|md"
+			"radius": "18px"
 		}
 	}
 }

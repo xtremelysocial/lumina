@@ -135,20 +135,21 @@
 	// Apply the selectors
 	#{$selectors} {
 
-		// Pure variable hook: If undefined in theme.json, the browser 
-		// treats it as unset/inherit, leaving your global layout pure!
+		// Pure variable hook for theme.json overrides
 		@if $text-style == 'no-fallback' {
 			color: var(--wp--custom--color--contrast--#{$color});
 
-		// Default to light text
+		// Explicit light or dark contrast colors in the global space
 		} @else {
-			$fallback: var(--wp--preset--color--foreground-alt);
-			
-			// But override to dark text if on light background
-			@if $text-style == 'dark' {
+
+			$fallback: null;
+
+			@if $text-style == 'light' {
+				$fallback: var(--wp--preset--color--foreground-alt);
+
+			} @else if $text-style == 'dark' {
 				$fallback: var(--wp--preset--color--almost-black);
 			
-			// And swap base and contrast colors
 			} @else if $text-style == 'base' {
 				$fallback: var(--wp--preset--color--base);			
 
@@ -156,7 +157,10 @@
 				$fallback: var(--wp--preset--color--contrast);			
 			}
 
-			color: var(--wp--custom--color--contrast--#{$color}, #{$fallback});
+			// Only output CSS if a valid explicit text style was matched
+			@if $fallback {
+				color: var(--wp--custom--color--contrast--#{$color}, #{$fallback});
+			}
 		}
 	}
 }

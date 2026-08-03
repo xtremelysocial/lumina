@@ -19,43 +19,24 @@
 // /*--------------------------------------------------------------
 //   BASE STYLES
 // --------------------------------------------------------------*/
-// @use "theme/base/elements";
-@use "theme/base/images";
-// @use "theme/base/links";
-@use "theme/base/list-dividers";
-@use "theme/base/margins-padding";
-@use "theme/base/other-themes";
-// @use "theme/base/rounded-border";
-@use "theme/base/sidebars";
+@use "theme/base/**/*.scss" as *;
 
 // /*--------------------------------------------------------------
 //   BLOCK STYLES
 // --------------------------------------------------------------*/
-@use "theme/blocks/columns";
-@use "theme/blocks/comments";
-@use "theme/blocks/details";
-@use "theme/blocks/gallery";
-// @use "theme/blocks/group";
-@use "theme/blocks/gutter-dividers";
-@use "theme/blocks/heading";
-@use "theme/blocks/latest-posts";
-@use "theme/blocks/media-text";
-@use "theme/blocks/navigation";
-@use "theme/blocks/post-featured-image";
-@use "theme/blocks/separator";
-@use "theme/blocks/table";
+// @use "theme/blocks/**/*.scss" as *;
 
 // /*--------------------------------------------------------------
 //   POPULAR PLUGIN STYLES
 // --------------------------------------------------------------*/
-@use "theme/plugins/jetpack";
+@use "theme/plugins/**/*.scss" as *;
 
 // /*--------------------------------------------------------------
 //   COLOR STYLES
 // --------------------------------------------------------------*/
 
 // LOAD COLORS LOGIC
-// @use "colors/02b-gradients" as gradients;
+@use "colors/02b-gradients" as gradients;
 @use "colors/02-global" as colors;
 @use "colors/03-light-mode" as light-mode;
 @use "colors/04-dark-mode" as dark-mode;
