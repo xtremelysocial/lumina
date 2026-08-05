@@ -143,29 +143,29 @@
 				},
 				{
 				  "slug": "xx-large",
-				  "size": "40px",
+				  "size": "38px",
 				  "name": "2X Large (h1)",
 				  "fluid": {
 					"min": "32px",
-					"max": "40px"
+					"max": "38px"
 				  }
 				},
 				{
 				  "slug": "huge",
-				  "size": "54px",
+				  "size": "52px",
 				  "name": "Huge",
 				  "fluid": {
 					"min": "42px",
-					"max": "54px"
+					"max": "52px"
 				  }
 				},
 				{
 				  "slug": "gigantic",
-				  "size": "64px",
+				  "size": "62px",
 				  "name": "Gigantic",
 				  "fluid": {
 					"min": "50px",
-					"max": "64px"
+					"max": "62px"
 				  }
 				}
 		  	]
@@ -483,6 +483,19 @@
 					}
 				}
 			},
+			"core/icon": {
+                "dimensions": {
+                    "width": "64px"
+                },
+                "spacing": {
+                    "padding": {
+                        "top": "var:preset|spacing|20",
+                        "bottom": "var:preset|spacing|20",
+                        "left": "var:preset|spacing|20",
+                        "right": "var:preset|spacing|20"
+                    }
+                }
+            },			
 			"core/site-title": {
 				"typography": {
 					"fontSize": "var:preset|font-size|large",
@@ -573,7 +586,7 @@
 			},
 			"core/separator": {
                 "color": {
-                    "background": "var(--wp--custom--color--border)"
+                    "background": "var:preset|color|tertiary"
                 },
                 "spacing": {
                 	"margin": {

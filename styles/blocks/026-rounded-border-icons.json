@@ -1,17 +1,29 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/theme.json",
-  "version": 3,
-  "title": "Rounded Border",
-  "slug": "rounded-border",
-  "blockTypes": [ "core/icon" ],
-  "styles": {
-    "border": {
-      "radius": "var:preset|border-radius|md",
-      "color": "var(--wp--custom--color--border)",
-      "width": "1px"
-    },
-    "color": {
-      "background": "var:preset|color|subtle-primary"
-    }
-  }
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Rounded Border",
+	"slug": "rounded-border",
+	"blockTypes": [ "core/icon" ],
+	"styles": {
+		"border": {
+			"radius": "var:preset|border-radius|md",
+			"color": "var(--wp--custom--color--border)",
+			"style": "solid",
+			"width": "1px"
+		},
+		"color": {
+			"background": "var:preset|color|primary-subtle"
+		},
+		"spacing": {
+			"padding": {
+				"top": "var:preset|spacing|20",
+				"bottom": "var:preset|spacing|20",
+				"left": "var:preset|spacing|20",
+				"right": "var:preset|spacing|20"
+			}
+		},
+		"dimensions": {
+			"width": "64px"
+		}    
+	}
 }

@@ -3,7 +3,7 @@ node_modules/
 **/*.css.map
 
 # Shell scripts and zip files
-*.sh
+#*.sh
 *.zip
 
 # Mac files

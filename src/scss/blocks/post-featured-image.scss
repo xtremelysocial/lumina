@@ -1,0 +1,22 @@
+/*-----------------------------------------------------------------------------
+# LUMINA Post Featured Image styles
+-----------------------------------------------------------------------------*/
+/* Protect layout columns from manual oversized featured images */
+.wp-block-post-featured-image {
+	max-width: 100%;
+	height: auto;
+
+	// Clear the limit ONLY for true edge-to-edge breakouts
+	&.alignfull {
+// 		max-width: none;
+		max-width: calc( 100% 
+					+ var(--wp--style--root--padding-left) 
+					+ var(--wp--style--root--padding-right)
+		);
+		border-radius: 0;
+		
+		& img {
+			border-radius: 0;
+		}
+	}
+}

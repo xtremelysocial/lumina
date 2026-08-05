@@ -1,6 +1,6 @@
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!./scss-use-loader.js!./src/scss/lumina-interactions.scss ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/lumina-interactions.scss ***!
+  \******************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    LUMINA INTERACTIONS: Handles all :hover and active state physics
    v0.9.9 Build 30 MVP
@@ -179,5 +179,3 @@
 [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):hover .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)):hover {
   box-shadow: none;
 }
-
-/*# sourceMappingURL=lumina-interactions.css.map*/

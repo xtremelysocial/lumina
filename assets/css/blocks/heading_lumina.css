@@ -1,0 +1,156 @@
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/heading_lumina.scss ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*--------------------------------------------------------------
+# LUMINA Heading Block Styles
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Custom: Heading w/Separator (Layout-Aware Sibling Edition)
+--------------------------------------------------------------*/
+.is-style-separator {
+  position: relative;
+}
+.is-style-separator::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: var(--wp--preset--spacing--30);
+  width: calc(6 * var(--wp--style--block-gap));
+  height: 3px;
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
+}
+.is-style-separator.has-text-align-center:after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.is-style-separator.has-text-align-right:after {
+  left: auto;
+  right: 0;
+}
+.is-style-separator {
+  margin-bottom: calc(var(--wp--style--block-gap, 1.5rem) + var(--wp--preset--spacing--30) + 3px) !important;
+}
+.is-style-separator + * {
+  margin-top: calc(var(--wp--style--block-gap, 1.5rem) + var(--wp--preset--spacing--30) + 3px) !important;
+}
+.has-background .is-style-separator::after, .is-style-separator.has-background::after {
+  background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)) 85%, currentColor);
+}
+
+/* Editor Stability Mapping */
+.is-root-container .is-style-separator::after {
+  top: 100% !important;
+  bottom: auto !important;
+}
+
+/*--------------------------------------------------------------
+## Custom Heading Link Animation (Responsive & Mobile-Locked)
+--------------------------------------------------------------*/
+.wp-block-heading a {
+  display: inline;
+  text-decoration: none !important;
+  padding-bottom: var(--wp--custom--link--offset, 0.1em);
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+}
+@media (max-width: 768px) {
+  .wp-block-heading a {
+    transition: background-size 0s 10s;
+  }
+}
+.wp-block-heading a:hover, .wp-block-heading a:active {
+  opacity: 1;
+}
+.wp-block-heading a:hover, .wp-block-heading a:active, .wp-block-heading a:focus {
+  background-size: 100% 2px;
+}
+@media (max-width: 768px) {
+  .wp-block-heading a:hover, .wp-block-heading a:active, .wp-block-heading a:focus {
+    transition: background-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  }
+}
+
+.wp-block-site-title a {
+  display: inline;
+  text-decoration: none !important;
+  padding-bottom: var(--wp--custom--link--offset, 0.1em);
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+}
+@media (max-width: 768px) {
+  .wp-block-site-title a {
+    transition: background-size 0s 10s;
+  }
+}
+.wp-block-site-title a:hover, .wp-block-site-title a:active {
+  opacity: 1;
+}
+.wp-block-site-title a:hover, .wp-block-site-title a:active, .wp-block-site-title a:focus {
+  background-size: 100% 2px;
+}
+@media (max-width: 768px) {
+  .wp-block-site-title a:hover, .wp-block-site-title a:active, .wp-block-site-title a:focus {
+    transition: background-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  }
+}
+
+.wp-block-post-title a {
+  display: inline;
+  text-decoration: none !important;
+  padding-bottom: var(--wp--custom--link--offset, 0.1em);
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+}
+@media (max-width: 768px) {
+  .wp-block-post-title a {
+    transition: background-size 0s 10s;
+  }
+}
+.wp-block-post-title a:hover, .wp-block-post-title a:active {
+  opacity: 1;
+}
+.wp-block-post-title a:hover, .wp-block-post-title a:active, .wp-block-post-title a:focus {
+  background-size: 100% 2px;
+}
+@media (max-width: 768px) {
+  .wp-block-post-title a:hover, .wp-block-post-title a:active, .wp-block-post-title a:focus {
+    transition: background-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  }
+}
+
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title {
+  display: inline;
+  text-decoration: none !important;
+  padding-bottom: var(--wp--custom--link--offset, 0.1em);
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+}
+@media (max-width: 768px) {
+  .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title {
+    transition: background-size 0s 10s;
+  }
+}
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active {
+  opacity: 1;
+}
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:focus {
+  background-size: 100% 2px;
+}
+@media (max-width: 768px) {
+  .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:focus {
+    transition: background-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  }
+}

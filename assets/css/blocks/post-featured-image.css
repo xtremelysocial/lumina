@@ -1,15 +1,9 @@
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!./scss-use-loader.js!./src/scss/theme/blocks/_post-featured-image.scss ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/post-featured-image.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /*-----------------------------------------------------------------------------
-# Post Featured Image styles
+# LUMINA Post Featured Image styles
 -----------------------------------------------------------------------------*/
-/* Remove parent theme's featured image padding and shadow */
-.wp-block-post-featured-image img {
-  padding: 0;
-  box-shadow: none;
-}
-
 /* Protect layout columns from manual oversized featured images */
 .wp-block-post-featured-image {
   max-width: 100%;
@@ -22,5 +16,3 @@
 .wp-block-post-featured-image.alignfull img {
   border-radius: 0;
 }
-
-/*# sourceMappingURL=post-featured-image.css.map*/

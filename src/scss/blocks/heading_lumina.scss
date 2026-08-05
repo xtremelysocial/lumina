@@ -1,0 +1,131 @@
+/*--------------------------------------------------------------
+# LUMINA Heading Block Styles
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Custom: Heading w/Separator (Layout-Aware Sibling Edition)
+--------------------------------------------------------------*/
+
+// List of selectors to add a separator
+$separators: (
+    '.is-style-separator',
+//     '.entry-header .entry-subtitle'
+);
+$sep-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
+$sep-height: 3px;
+$sep-width: calc(6 * var(--wp--style--block-gap));
+$sep-clearance: var(--wp--preset--spacing--30); //10px; // Fixed breathing room to clear text descenders (g, j, p, q, y)
+
+@each $separator in $separators {
+    #{$separator} {
+        
+        // Anchor the element natively without touching its padding or margins
+        position: relative; 
+
+        // 1. Position the line exactly below the text box footprint
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 100%;
+            margin-top: #{$sep-clearance};
+
+            width: #{$sep-width};
+            height: #{$sep-height}; 
+            background-color: #{$sep-color};
+        }
+
+        // Handle text alignments cleanly
+        &.has-text-align-center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &.has-text-align-right:after {
+            left: auto;
+            right: 0;
+        }
+
+// 		&.wp-block-group {
+			margin-bottom: calc(var(--wp--style--block-gap, 1.5rem) + #{$sep-clearance} + #{$sep-height}) !important;
+// 		}
+
+        // 3. THE MAGIC BULLET: Override the next block's margin-top 
+        // ONLY if it is a direct sibling inside the same container.
+        & + * {
+            margin-top: calc(var(--wp--style--block-gap, 1.5rem) + #{$sep-clearance} + #{$sep-height}) !important;
+        }
+
+        // Override separator color when parent or block has a background 
+        @at-root .has-background #{&}::after,
+        &.has-background::after {
+//             background-color: currentcolor;
+			background-color: color-mix(in srgb, $sep-color 85%, currentColor);
+        }
+    }
+}
+
+/* Editor Stability Mapping */
+@each $selector in $separators {
+    .is-root-container #{$selector}::after {
+        top: 100% !important;
+        bottom: auto !important; 
+    }
+}
+
+/*--------------------------------------------------------------
+## Custom Heading Link Animation (Responsive & Mobile-Locked)
+--------------------------------------------------------------*/
+
+$heading-links: (
+    '.wp-block-heading a',
+    '.wp-block-site-title a',
+    '.wp-block-post-title a',
+    '.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title'
+);
+
+$link-height: 2px;
+$link-offset: var(--wp--custom--link--offset, 0.1em);
+$link-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary));
+
+@each $link in $heading-links {
+    #{$link} {
+        display: inline;
+        text-decoration: none !important;
+        padding-bottom: #{$link-offset};
+        
+        background-image: linear-gradient(#{$link-color}, #{$link-color});
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        background-size: 0% #{$link-height};
+
+        // Desktop Default: Elegant, fluid forward and backward sweeps
+        transition: background-size 
+            var(--wp--custom--animation--duration--medium, 500ms) 
+            var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+        
+        // Mobile Override Block
+        @media (max-width: 768px) {
+            // EXIT PHASE: When the finger lifts, hold the line at 100% for 10 seconds 
+            // before letting it snap back. This blocks the ugly mid-way freeze loop.
+            transition: background-size 0s 10s;
+        }
+
+        &:hover,
+        &:active {
+            opacity: 1; 
+        }
+
+        // ENTRY PHASE: When actively touched/focused
+        &:hover,
+        &:active,
+        &:focus {
+            background-size: 100% #{$link-height};
+
+            @media (max-width: 768px) {
+                // Shoot the line out cleanly in 150ms with zero delay the moment the glass is touched
+                transition: background-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            }
+        }
+    }
+}

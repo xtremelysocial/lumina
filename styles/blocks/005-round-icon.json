@@ -1,15 +1,26 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/theme.json",
-  "version": 3,
-  "title": "Round",
-  "slug": "round",
-  "blockTypes": [ "core/icon" ],
-  "styles": {
-    "border": {
-      "radius": "50%"
-    },
-    "color": {
-      "background": "var(--wp--preset--color--subtle-primary)"
-    }
-  }
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Round",
+	"slug": "round",
+	"blockTypes": [ "core/icon" ],
+	"styles": {
+		"border": {
+			"radius": "50%"
+		},
+		"color": {
+			"background": "var:preset|color|primary-subtle"
+		},
+		"spacing": {
+			"padding": {
+				"top": "var:preset|spacing|20",
+				"bottom": "var:preset|spacing|20",
+				"left": "var:preset|spacing|20",
+				"right": "var:preset|spacing|20"
+			}
+		},
+		"dimensions": {
+			"width": "64px"
+		}    
+	}
 }

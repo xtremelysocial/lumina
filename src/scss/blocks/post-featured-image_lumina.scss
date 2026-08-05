@@ -1,0 +1,9 @@
+/*-----------------------------------------------------------------------------
+# LUMINA Post Featured Image styles
+-----------------------------------------------------------------------------*/
+
+/* Remove parent theme's featured image padding and shadow */
+.wp-block-post-featured-image img {
+	padding: 0;
+	box-shadow: none;
+}

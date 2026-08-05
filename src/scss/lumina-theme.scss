@@ -2,7 +2,8 @@
  * File:	lumina-theme.css
  * Theme:	Lumina
  * 
- * The stylesheet for the Lumina theme
+ * The stylesheet for the Lumina theme. It has all the non block-specific 
+ * css. The block-specific css is in /blocks folder. 
  *
  * NOTE: This file is AUTO-GENERATED from the SASS source files 
  * in /src/scss/lumina-theme.scss. Do not make updates here.
@@ -17,29 +18,31 @@
    ========================================================================== */
 
 // /*--------------------------------------------------------------
-//   BASE STYLES
+//   LUMINA BASE STYLES
 // --------------------------------------------------------------*/
-@use "theme/base/**/*.scss" as *;
+// @use "theme/base/**/*.scss" as *;
+@use "base";
 
 // /*--------------------------------------------------------------
-//   BLOCK STYLES
+//   LUMINA BLOCK STYLES
 // --------------------------------------------------------------*/
 // @use "theme/blocks/**/*.scss" as *;
 
 // /*--------------------------------------------------------------
-//   POPULAR PLUGIN STYLES
+//   LUMINA POPULAR PLUGIN STYLES
 // --------------------------------------------------------------*/
-@use "theme/plugins/**/*.scss" as *;
+// @use "theme/plugins/**/*.scss" as *;
+@use "plugins";
 
 // /*--------------------------------------------------------------
-//   COLOR STYLES
+//   LUMINA COLOR STYLES
 // --------------------------------------------------------------*/
 
 // LOAD COLORS LOGIC
-@use "colors/02b-gradients" as gradients;
 @use "colors/02-global" as colors;
-@use "colors/03-light-mode" as light-mode;
-@use "colors/04-dark-mode" as dark-mode;
+@use "colors/02b-gradients" as gradients;
+// @use "colors/03-light-mode" as light-mode;
+// @use "colors/04-dark-mode" as dark-mode;
 
 // LOAD GLOBAL COLORS CSS
 @include colors.apply-colors-global;
@@ -48,7 +51,7 @@
 // @include gradients.apply-colors-gradients;
 
 // LOAD LIGHT-MODE COLORS CSS
-@include light-mode.apply-colors-light-mode;
+// @include light-mode.apply-colors-light-mode;
 
 // LOAD DARK-MODE COLORS CSS
-@include dark-mode.apply-colors-dark-mode;
+// @include dark-mode.apply-colors-dark-mode;
