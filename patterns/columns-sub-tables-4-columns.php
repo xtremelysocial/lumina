@@ -75,8 +75,8 @@
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","className":"animate__fadeInRight animate__scroll-fadeInRight","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}},"layout":{"columnSpan":1,"rowSpan":1}},"backgroundColor":"tertiary-subtle","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
-<div class="wp-block-group alignwide animate__fadeInRight animate__scroll-fadeInRight has-tertiary-background-subtle-color has-background" id="patron"><!-- wp:heading {"style":{"typography":{"fontSize":"40px"}}} -->
+<!-- wp:group {"align":"wide","className":"animate__fadeInRight animate__scroll-fadeInRight","backgroundColor":"tertiary-subtle","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
+<div class="wp-block-group alignwide animate__fadeInRight animate__scroll-fadeInRight has-tertiary-subtle-background-color has-background" id="patron"><!-- wp:heading {"style":{"typography":{"fontSize":"40px"}}} -->
 <h2 class="wp-block-heading" id="patron" style="font-size:40px"><strong>Patron</strong></h2>
 <!-- /wp:heading -->
 
@@ -88,9 +88,9 @@
 <hr class="wp-block-separator has-css-opacity is-style-wide"/>
 <!-- /wp:separator -->
 
-<!-- wp:list {"className":"is-style-default","fontSize":"normal"} -->
-<ul class="wp-block-list is-style-default has-normal-font-size"><!-- wp:list-item -->
-<li>General admission and member discounts for three adults</li>
+<!-- wp:list {"fontSize":"normal"} -->
+<ul class="wp-block-list has-normal-font-size"><!-- wp:list-item -->
+<li>General admission and member discounts for two adults</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->

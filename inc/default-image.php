@@ -32,7 +32,9 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 		$keyword          = ''; // Optional filename prefix (e.g., 'sage-' or '')
 
 		$exclude_dirs     = [ 	// Subfolder names to skip
-			'samples'
+			'thumbnails',
+			'samples',
+			'screenshots',
 		]; 
 
 		$exclude_prefixes = [   // Filename prefixes to skip

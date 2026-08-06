@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Features 3 Columns
+ * Title: Lumina Features 3 Columns (Neutral)
  * Slug: lumina/columns-features-3-columns-neutral
  * Categories: lumina, column, featured
  * Description: 3-column feature grid with circular icon badges and subtle background cards.

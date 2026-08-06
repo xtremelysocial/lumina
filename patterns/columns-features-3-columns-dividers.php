@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Lumina Features 3 Columns w/Inset Dividers
+ * Title: Lumina Features 3 Columns (w/Inset Dividers)
  * Slug: lumina/columns-features-3-columns-dividers
  * Categories: lumina, column, featured
  */

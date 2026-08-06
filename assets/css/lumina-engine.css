@@ -94,15 +94,15 @@
 /* ==========================================================================
    10 CARDS: Containers (e.g. Groups, Columns)
    ========================================================================== */
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button) {
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button) {
   transition: transform var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), outline var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   transform: translateY(0) scale(1);
 }
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
   border-radius: var(--wp--custom--border--radius, 18px);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border);
 }
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button) {
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button) {
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
 }
 
@@ -328,30 +328,30 @@
 /* ==========================================================================
    40 VETOS: Veto embedded Cards and Objects
   ========================================================================== */
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button) [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button) {
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button) [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button) .wp-block-image:not(.alignfull):has(a:not(figcaption a)) {
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button) .wp-block-image:not(.alignfull):has(a:not(figcaption a)) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button) .wp-block-post-featured-image:not(.alignfull):has(a) {
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button) .wp-block-post-featured-image:not(.alignfull):has(a) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button) .wp-block-latest-posts__featured-image:not(.alignfull):has(a) {
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button) .wp-block-latest-posts__featured-image:not(.alignfull):has(a) {
   box-shadow: none;
   transform: none;
 }
 
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button) .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)) {
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button) .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)) {
   box-shadow: none;
 }
 
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button, .wp-element-button) .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)) {
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button) .wp-block-media-text__media:not(.alignfull):has(a:not(figcaption a)) {
   box-shadow: none;
 }

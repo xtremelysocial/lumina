@@ -5,8 +5,31 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SOURCE_DIR="${SCRIPT_DIR}/patterns/html"
 OUTPUT_DIR="${SCRIPT_DIR}/patterns/converted"
 
-# Capture optional search filter (e.g., ./convert.sh cover)
-FILTER="${1:-}"
+# Easily extendable Block Type Keyword Mappings
+# Add new "keyword" "core/block-name" pairs here to match anywhere in filenames
+typeset -A BLOCK_MAP
+BLOCK_MAP=(
+    "button"   "core/buttons"
+    "banner"   "core/cover"
+    "columns"  "core/columns"
+    "page"     "core/page"
+    "query"    "core/query"
+    "text"     "core/paragraph"
+    "header"   "core/template-part/header"
+    "footer"   "core/template-part/footer"
+)
+
+# Capture options ($1 can be a filter string or --force / -f)
+FORCE_OVERWRITE=false
+FILTER=""
+
+for arg in "$@"; do
+    if [[ "$arg" == "--force" || "$arg" == "-f" ]]; then
+        FORCE_OVERWRITE=true
+    else
+        FILTER="$arg"
+    fi
+done
 
 if [[ ! -d "$SOURCE_DIR" ]]; then
     echo "❌ Error: Source folder '$SOURCE_DIR' does not exist."
@@ -39,14 +62,9 @@ for file in "$SOURCE_DIR"/*.html(N); do
 
     output_file="$OUTPUT_DIR/$slug_base.php"
 
-    # 2. Safety & Overwrite Protection Checks
-    if [[ "$(realpath "$file" 2>/dev/null)" == "$(realpath "$output_file" 2>/dev/null)" ]]; then
-        echo "❌ Fatal Error: Source ($file) and Output ($output_file) resolve to the same path! Skipping."
-        continue
-    fi
-
-    if [[ -e "$output_file" ]]; then
-        echo "⚠️  Skipping: $slug_base.php (Already exists in patterns/converted, protecting manual changes)"
+    # 2. Overwrite Protection Check
+    if [[ -e "$output_file" && "$FORCE_OVERWRITE" == false ]]; then
+        echo "⚠️  Skipping: $slug_base.php (Already exists. Use --force or -f to overwrite)"
         continue
     fi
 
@@ -66,24 +84,23 @@ for file in "$SOURCE_DIR"/*.html(N); do
     if [[ "$slug_base" == *query* ]]; then categories+=("query"); fi
 
     # Convert array to clean comma-separated string
-	categories_str="${(j:, :)categories}"
+    categories_str="${(j:, :)categories}"
 
-    # 5. Compute Block Type Contextual Mapping Configurations
-    if [[ "$slug_base" == *query* ]]; then
-        block_type="core/query"
-    elif [[ "$slug_base" == *header* ]]; then
-        block_type="core/template-part/header"
-    elif [[ "$slug_base" == *footer* ]]; then
-        block_type="core/template-part/footer"
-    else
-        block_type=""
-    fi
+    # 5. Search for block keywords anywhere in the filename
+    block_type=""
+    for key in ${(k)BLOCK_MAP}; do
+        if [[ "$slug_base" == *"$key"* ]]; then
+            block_type="${BLOCK_MAP[$key]}"
+            break
+        fi
+    done
 
     # 6. Build Title and Case Definitions
     clean_spaces="${slug_base//-/ }"
+    clean_spaces="${clean_spaces//_/ }"
     title=$(echo "$clean_spaces" | perl -pe 's/\b(\w)/uc($1)/eg')
 
-    echo "✅ Converting: $filename -> patterns/converted/$slug_base.php"
+    echo "✅ Converting: $filename -> patterns/converted/$slug_base.php (Block Type: ${block_type:-None})"
 
     # Write out the fresh PHP pattern header manifest block
     if [[ -n "$block_type" ]]; then
@@ -113,12 +130,16 @@ EOF
 
     # 7. Execute Perl Translation engine safely via standard input (< "$file")
     perl -pe '
-        # Skip Gutenberg comment lines (<!-- wp:... -->)
+        # Replace image URLs across src, href, JSON attributes, and CSS url()
+        s/src="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"/src="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"/g;
+        s/href="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"/href="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"/g;
+        s/"url":"([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"/"url":"<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"/g;
+        s/url\((&quot;|"|)?([^"()\s]*\/)?([^\/"()\s]+\.(jpg|jpeg|png|gif|svg|webp))\1\)/url("<?php echo esc_url( get_theme_file_uri( "assets\/images\/$3" ) ); ?>")/g;
+
+        # Translate inner text on non-comment lines
         if (!/<!--/) {
             s/>\s*([A-Za-z][^<>\n]*[A-Za-z0-9\.!?,])\s*</><?php esc_html_e("$1", "lumina"); ?></g;
         }
-        # Replace image src paths with get_theme_file_uri()
-        s/src="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"/src="<?php echo esc_url( get_theme_file_uri( '\''assets\/images\/$2'\'' ) ); ?>"/g;
     ' < "$file" >> "$output_file"
 
     ((count++))

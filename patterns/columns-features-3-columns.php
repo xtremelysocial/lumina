@@ -1,66 +1,68 @@
 <?php
 /**
  * Title: Lumina Features 3 Columns
- * Slug: lumina/columns-lumina-features-3-columns
+ * Description: Lumina Features 3 Columns
+ * Slug: lumina/columns_features-3-columns
  * Categories: lumina, column
+ * Block Types: core/columns
  */
 ?>
-<!-- wp:group {"align":"wide","backgroundColor":"secondary","className":"is-style-rounded-border","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide is-style-rounded-border has-secondary-background-color has-background" id="features-3-columns">
-	<!-- wp:heading {"textAlign":"center"} -->
-	<h2 class="has-text-align-center" id="features-3-columns">Features 3 Columns</h2>
-	<!-- /wp:heading -->
+<!-- wp:group {"metadata":{"name":"Features 3 Columns"},"align":"full","style":{"spacing":{"padding":{"right":"var:preset|spacing|60","left":"var:preset|spacing|60"}}},"layout":{"type":"constrained"},"anchor":"features"} -->
+<div class="wp-block-group alignfull" id="features" style="padding-right:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
+    
+    <!-- wp:columns {"align":"wide"} -->
+    <div class="wp-block-columns alignwide">
+        
+        <!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"primary"} -->
+        <div class="wp-block-column is-style-rounded-border has-primary-background-color has-background">
+            
+            <!-- wp:icon {"icon":"core/arrow-right","align":"center","className":"is-style-round","backgroundColor":"primary-subtle","style":{"dimensions":{"width":"64px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"},"margin":{"bottom":"var:preset|spacing|30"}}}} /-->
 
-	<!-- wp:columns {"align":"wide"} -->
-	<div class="wp-block-columns alignwide">
-		<!-- wp:column -->
-		<div class="wp-block-column">
-			<!-- wp:image {"align":"center","width":100,"height":100,"sizeSlug":"thumbnail","linkDestination":"none","className":"is-style-rounded"} -->
-			<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/samples/thumbnail-gears.webp' ) ); ?>" alt="photo of golden cogwheel on black background" width="100" height="100"/></figure>
-			<!-- /wp:image -->
+            <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}},"anchor":"kinetic-physics"} -->
+            <h3 class="wp-block-heading has-text-align-center" id="kinetic-physics"><?php esc_html_e( 'Interactive Cards', 'lumina' ); ?></h3>
+            <!-- /wp:heading -->
 
-			<!-- wp:heading {"textAlign":"center","level":3} -->
-			<h3 class="has-text-align-center" id="column-1">Lorem Ipsum</h3>
-			<!-- /wp:heading -->
+            <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
+            <p class="has-text-align-center has-small-font-size"><?php esc_html_e( 'Container blocks carrying links or action buttons automatically respond with subtle lift and soft ambient shadows when hovered or tapped on mobile screens.', 'lumina' ); ?> <a href="#content-start"><?php esc_html_e( 'Learn more →', 'lumina' ); ?></a></p>
+            <!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"align":"center"} -->
-			<p class="has-text-align-center">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:column -->
+        </div>
+        <!-- /wp:column -->
 
-		<!-- wp:column -->
-		<div class="wp-block-column">
-			<!-- wp:image {"align":"center","width":100,"height":100,"sizeSlug":"thumbnail","linkDestination":"none","className":"is-style-rounded"} -->
-			<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/samples/thumbnail-hands.webp' ) ); ?>" alt="crop psychologist supporting patient during counseling indoors" width="100" height="100"/></figure>
-			<!-- /wp:image -->
+        <!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"secondary"} -->
+        <div class="wp-block-column is-style-rounded-border has-secondary-background-color has-background">
+            
+            <!-- wp:icon {"icon":"core/styles","align":"center","className":"is-style-round","backgroundColor":"secondary-subtle","style":{"dimensions":{"width":"64px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"},"margin":{"bottom":"var:preset|spacing|30"}}}} /-->
 
-			<!-- wp:heading {"textAlign":"center","level":3} -->
-			<h3 class="has-text-align-center" id="column-2">Dolor Sit Amet</h3>
-			<!-- /wp:heading -->
+            <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}},"anchor":"chromatic-system"} -->
+            <h3 class="wp-block-heading has-text-align-center" id="chromatic-system"><?php esc_html_e( 'Nature-Inspired Colors', 'lumina' ); ?></h3>
+            <!-- /wp:heading -->
 
-			<!-- wp:paragraph {"align":"center"} -->
-			<p class="has-text-align-center">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:column -->
+            <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
+            <p class="has-text-align-center has-small-font-size"><?php esc_html_e( 'Colors drawn from physical surroundings rather than harsh monitors. Rich earthy mid-tones and dark accents give you complete flexibility to direct visitor focus.', 'lumina' ); ?> <a href="#content-start"><?php esc_html_e( 'Learn more →', 'lumina' ); ?></a></p>
+            <!-- /wp:paragraph -->
 
-		<!-- wp:column -->
-		<div class="wp-block-column">
-			<!-- wp:image {"align":"center","width":100,"height":100,"sizeSlug":"thumbnail","linkDestination":"none","className":"is-style-rounded"} -->
-			<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/samples/thumbnail-dollars.webp' ) ); ?>" alt="pexels-photo-164661.jpeg" width="100" height="100"/></figure>
-			<!-- /wp:image -->
+        </div>
+        <!-- /wp:column -->
 
-			<!-- wp:heading {"textAlign":"center","level":3} -->
-			<h3 class="has-text-align-center" id="column-3">Duis Aute Irure</h3>
-			<!-- /wp:heading -->
+        <!-- wp:column {"className":"is-style-rounded-border","backgroundColor":"tertiary"} -->
+        <div class="wp-block-column is-style-rounded-border has-tertiary-background-color has-background">
+            
+            <!-- wp:icon {"icon":"core/desktop","align":"center","className":"is-style-round","backgroundColor":"tertiary-subtle","style":{"dimensions":{"width":"64px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"},"margin":{"bottom":"var:preset|spacing|30"}}}} /-->
 
-			<!-- wp:paragraph {"align":"center"} -->
-			<p class="has-text-align-center">Lorum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:column -->
-	</div>
-	<!-- /wp:columns -->
+            <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}},"anchor":"fse-engine"} -->
+            <h3 class="wp-block-heading has-text-align-center" id="fse-engine"><?php esc_html_e( 'Full Site Editing', 'lumina' ); ?></h3>
+            <!-- /wp:heading -->
+
+            <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
+            <p class="has-text-align-center has-small-font-size"><?php esc_html_e( 'Swap site headers, personalized footers, post grids, and color schemes directly within the Site Editor. Easily keep your site modern and fresh without writing code.', 'lumina' ); ?> <a href="#content-start"><?php esc_html_e( 'Learn more →', 'lumina' ); ?></a></p>
+            <!-- /wp:paragraph -->
+
+        </div>
+        <!-- /wp:column -->
+
+    </div>
+    <!-- /wp:columns -->
+
 </div>
 <!-- /wp:group -->

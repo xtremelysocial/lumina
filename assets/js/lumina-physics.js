@@ -53,22 +53,76 @@
 		 * DYNAMIC CARD ENGINE: Turn single-link cards into unified click targets
 		 */
 	
+		// Selector string matching any WP Core Lightbox trigger or container element
+		const lightboxSelector = '.lightbox-trigger, .wp-block-image__lightbox-trigger, .wp-lightbox-container, [data-wp-interactive="core/image"], [aria-haspopup="dialog"]';
+
+		// Helper to verify if an element or its parent is part of WP Core Lightbox
+		function isLightboxElement(el) {
+			var $el = $(el);
+			if ($el.is(lightboxSelector)) {
+				return true;
+			}
+			if (($el.attr('data-wp-on--click') || '').indexOf('showLightbox') !== -1) {
+				return true;
+			}
+			if ($el.closest(lightboxSelector).length > 0) {
+				return true;
+			}
+			return false;
+		}
+
 		// 1. INITIALIZATION: Target selector for candidate interactive cards
 		const $interactiveCards = $('[class*="wp-block-"]:is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):not(.alignfull)');
 
 		// 2. GET TARGET: Returns the target link/button if the card is "valid"
 		function getValidTarget($card) {
+			// Disqualify cards containing form controls
 			if ($card.find('form, input:not([type="hidden"]), textarea, select').length > 0) {
 				return null;
 			}
 		
-			var $buttons = $card.find('.wp-element-button');
-			var $links = $card.find('a').not('.wp-element-button');
-			
-			if ($buttons.length === 1 && $links.length === 0) return $buttons.first();
-			if ($buttons.length === 0 && $links.length === 1) return $links.first();
-			
-			return null;
+			// Find all candidate links and buttons inside the card (filtering out Lightbox elements)
+			var $candidates = $card.find('a, button, .wp-element-button').filter(function() {
+				return !isLightboxElement(this);
+			});
+
+			if ($candidates.length === 0) {
+				return null;
+			}
+
+			var urls = [];
+			var validCandidates = [];
+
+			$candidates.each(function() {
+				var $el = $(this);
+				var href = $el.attr('href');
+
+				if ($el.is('a') && href) {
+					urls.push(href.trim().replace(/\/+$/, ''));
+					validCandidates.push($el);
+				} else if ($el.is('.wp-element-button') && href) {
+					urls.push(href.trim().replace(/\/+$/, ''));
+					validCandidates.push($el);
+				}
+			});
+
+			if (urls.length === 0) {
+				return null;
+			}
+
+			// Verify all non-lightbox links/buttons share the EXACT same target URL
+			var firstUrl = urls[0];
+			var allMatch = urls.every(function(url) {
+				return url === firstUrl;
+			});
+
+			if (!allMatch) {
+				return null; // Differing destinations -> disqualifies card
+			}
+
+			// Return preferred target (prefer explicit button over simple link)
+			var $button = $(validCandidates).filter('.wp-element-button').first();
+			return $button.length ? $button : validCandidates[0];
 		}
 
 		// 3. THREE-PASS CARD RESOLUTION (Outer card stays active, inner cards are vetoed)
@@ -84,44 +138,65 @@
 		});
 
 		// Pass B: VETO INNER CHILD CARDS
-		// If an interactive card is nested inside another interactive card, strip interactivity 
-		// from the inner child so only the outer parent card remains the active click target.
 		$('.is-interactive-card').each(function() {
 			var $this = $(this);
-			// Check if this card has an ancestor that is ALSO an interactive card
 			var $parentCard = $this.parents('.is-interactive-card').first();
 			if ($parentCard.length) {
-				// This is an inner card—strip its interactive status so it won't get an arrow or separate click handler
 				$this.removeClass('is-interactive-card');
 			}
 		});
 
-		// Pass C: Inject arrow overlays and set cursor on the surviving (outer) cards
+		// Pass C: Inject arrow overlays and set cursor on surviving (outer) cards
 		$('.is-interactive-card').each(function() {
 			var $card = $(this);
 			var $target = getValidTarget($card);
-
+		
 			if ($target !== null) {
 				$card.css('cursor', 'pointer');
-
-				// Append arrow overlay badge to the outer card if not already present
+		
 				if ($card.find('> .lumina-card-arrow-overlay').length === 0) {
 					var href = $target.attr('href') || '';
 					var isAnchor = href.indexOf('#') === 0 || (href.indexOf('#') > -1 && href.split('#')[0] === window.location.href.split('#')[0]);
-
-					// \u2192\uFE0E = →︎ (Neutral Right Arrow) | \u2197\uFE0E = ↗︎ (Up-Right Arrow)
-					var arrowSymbol = isAnchor ? '\u2192\uFE0E' : '\u2197\uFE0E';
+					var isExternal = $target.get(0).hostname && $target.get(0).hostname !== window.location.hostname;
+		
+					// Default: Standard Internal Link (→︎ \u2192\uFE0E)
+					var arrowSymbol = '\u2192\uFE0E';
+		
+					if (isExternal) {
+						// External Link (↗︎ \u2197\uFE0E)
+						arrowSymbol = '\u2197\uFE0E';
+					} else if (isAnchor) {
+						var hashIndex = href.indexOf('#');
+						var hash = hashIndex !== -1 ? href.substring(hashIndex) : '';
+		
+						if (hash.length > 1) {
+							try {
+								var $anchorTarget = $(hash);
+								if ($anchorTarget.length) {
+									var cardTop = $card.offset().top;
+									var targetTop = $anchorTarget.offset().top;
+		
+									// \u2934\uFE0E = ⤴︎ (Curved Up) | \u2935\uFE0E = ⤵︎ (Curved Down)
+									arrowSymbol = (targetTop < cardTop) ? '\u2934\uFE0E' : '\u2935\uFE0E';
+								}
+							} catch (err) {
+								// Fallback for invalid selector strings (e.g. #/path)
+								arrowSymbol = '\u2192\uFE0E';
+							}
+						}
+					}
+		
 					var $overlay = $('<span class="lumina-card-arrow-overlay" aria-hidden="true">' + arrowSymbol + '</span>');
-
+		
 					if ($card.css('position') === 'static') {
 						$card.css('position', 'relative');
 					}
-
+		
 					$card.append($overlay);
 				}
 			}
 		});
-
+		
 		// 4. MOBILE TOUCH HANDLER
 		$(document).on('touchstart', '.is-interactive-card', function(e) {
 			var $card = $(this);
@@ -161,7 +236,8 @@
 				return;
 			}
 
-			if ($(e.target).closest('button, a, .wp-element-button, input, select').length) {
+			// Don't intercept clicks if the user clicked directly on a button, link, form element, or Lightbox trigger
+			if ($(e.target).closest('button, a, .wp-element-button, input, select, textarea, ' + lightboxSelector).length) {
 				$card.removeClass('is-active');
 				return;
 			}

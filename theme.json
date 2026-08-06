@@ -10,11 +10,11 @@
 					"mode": "is-light-theme",
 					"scheme": "lumina",
 					"image-folders": [
+						"artsy",
+						"buildings",
 						"classic",
-						"paper",
-						"sage",
-						"ocean",
-						"gold"
+						"nature",
+						"paper"
 					],
 					"image-default": "/assets/images/paper/paper-01.webp"
 				},
@@ -368,6 +368,10 @@
 				{ "name": "2X-Large", "slug": "2-xl", "size": "calc(2 * var(--wp--custom--border--radius))" },
 				{ "name": "3X-Large", "slug": "3-xl", "size": "calc(2.5 * var(--wp--custom--border--radius))" }
 			]			
+		},
+		"lightbox": {
+			"allowEditing": true,
+			"enabled": false
 		}
 	},
 	"styles": {

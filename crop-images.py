@@ -1,4 +1,71 @@
 #!/usr/bin/env python3
+"""
+==============================================================================
+IMAGE CENTER-CROPPER & RESCALER (1600x900 / 16:9)
+==============================================================================
+
+This script scans a directory for images, center-crops them to a 16:9 aspect 
+ratio, resizes them down to 1600x900 using Lanczos resampling, and exports 
+them to a specified output folder.
+
+Configured entirely via environment variables.
+
+------------------------------------------------------------------------------
+ENVIRONMENT VARIABLES & DEFAULTS
+------------------------------------------------------------------------------
+  SOURCE_DIR    : Folder containing input images.       (Default: ".")
+  OUTPUT_DIR    : Folder to save cropped images.        (Default: SOURCE_DIR/cropped_1600x900)
+  QUALITY       : Export compression quality (1-100).   (Default: "85")
+  OUTPUT_FORMAT : Target image format (webp, jpg, png). (Default: "webp")
+
+------------------------------------------------------------------------------
+USAGE EXAMPLES
+------------------------------------------------------------------------------
+
+1. DEFAULT RUN (NO INPUTS):
+   Processes images in the current directory ('.') and saves 1600x900 WebP 
+   files into a subfolder named './cropped_1600x900/' at 85% quality.
+
+   $ python3 crop-images.py
+   # Or if executable (chmod +x crop-images.py):
+   $ ./crop-images.py
+
+2. CUSTOM SOURCE DIRECTORY (SINGLE TARGET):
+   Process images from raw-blue directory using default WebP / 85% quality:
+
+   $ SOURCE_DIR="./zz_unused/zz_raw-images/raw-blue" ./crop-images.py
+
+3. CUSTOM SOURCE & OUTPUT DIRECTORIES:
+   Process images from raw-blue and output directly into theme assets:
+
+   $ SOURCE_DIR="./zz_unused/zz_raw-images/raw-blue" OUTPUT_DIR="./assets/images/heroes" ./crop-images.py
+
+4. CUSTOM FORMAT & QUALITY:
+   Process raw-blue folder images into high-quality JPEG files (95% quality):
+
+   $ SOURCE_DIR="./zz_unused/zz_raw-images/raw-blue" OUTPUT_FORMAT="jpg" QUALITY=95 ./crop-images.py
+
+5. COMBINED INLINE RUN (ALL VARIABLES):
+   Set custom source, destination, format, and quality in one line:
+
+   $ SOURCE_DIR="./zz_unused/zz_raw-images/raw-blue" \
+     OUTPUT_DIR="./assets/images/patterns" \
+     OUTPUT_FORMAT="webp" \
+     QUALITY=90 \
+     ./crop-images.py
+
+6. EXPORTING VARIABLES (MULTIPLE RUNS IN A SESSION):
+   Set variables once in your terminal session before executing sequentially:
+
+   $ export SOURCE_DIR="./zz_unused/zz_raw-images/raw-blue"
+   $ export OUTPUT_DIR="./assets/images/heroes"
+   $ export OUTPUT_FORMAT="webp"
+   $ export QUALITY=90
+   $ ./crop-images.py
+
+==============================================================================
+"""
+
 import os
 import sys
 from PIL import Image
