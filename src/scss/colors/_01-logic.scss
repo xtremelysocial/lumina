@@ -205,16 +205,15 @@
 	$remove-underline: null,
 ) {
 
+	// Excluded targets string
+	$excluded-links: ".wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content";
+
 	// Inherit link color, apply underlines in post content, and special
 	// underlines in the footers
 	@if $link == 'dark' or $link == 'light' or $link == 'inherit' {
 	
-		// Inherit or set link color
-		#{$selectors} a:where(:not(
-			.wp-element-button, 
-			.wp-block-social-link-anchor, 
-			.wp-block-navigation-item__content
-		)) {
+		// Specificity: (0, 1, 0) — 1 class (#{$selectors}), 0 elements
+		#{$selectors} :where(a:not(#{$excluded-links})) {
 			@if $link == 'dark' { 
 				@extend %engine-link-dark-text; 
 
@@ -223,24 +222,16 @@
 
 			} @else if $link == 'inherit'{
 				@extend %engine-link-inherit;
-			}		
+			}
 		}
 		
 		// In Post Content, also underline link
-		.wp-block-post-content #{$selectors} a:not(
-			.wp-element-button, 
-			.wp-block-social-link-anchor, 
-			.wp-block-navigation-item__content
-		) {
+		.wp-block-post-content #{$selectors} :where(a:not(#{$excluded-links})) {
 			@extend %engine-link-underline;
 		}
 		
 		// In Footers, only underline text links (e.g. <p>)
-		#{$selectors}:is(.site-footer, .footer-info) p a:where(:not(
-			.wp-element-button, 
-			.wp-block-social-link-anchor, 
-			.wp-block-navigation-item__content
-		)) {
+		#{$selectors}:is(.site-footer, .footer-info) p :where(a:not(#{$excluded-links})) {
 			@extend %engine-link-underline-special;
 		}
 	
@@ -248,11 +239,8 @@
 	} @else if $link == 'highlight' or $link == 'lighten' 
 			or $link == 'highlight-alt' or $link == 'darken' 
 	{
-		#{$selectors} a:not(
-			.wp-element-button, 
-			.wp-block-social-link-anchor, 
-			.wp-block-navigation-item__content
-		) {
+		// Specificity: (0, 1, 0) — 1 class (#{$selectors}), 0 elements
+		#{$selectors} :where(a:not(#{$excluded-links})) {
 
 			@if $link == 'highlight' { 
 				@extend %engine-link-highlight;
@@ -265,16 +253,12 @@
 
 			} @else if $link == 'darken'{
 				@extend %engine-link-darken;
-			}	
+			}
 		}
 		
 		// Remove link underline this way to override parent theme
 		@if $remove-underline {
-			.wp-block-post-content #{$selectors} a:not(
-				.wp-element-button, 
-				.wp-block-social-link-anchor, 
-				.wp-block-navigation-item__content
-			) {
+			.wp-block-post-content #{$selectors} :where(a:not(#{$excluded-links})) {
 				@extend %engine-link-remove-underline;
 			}
 		}

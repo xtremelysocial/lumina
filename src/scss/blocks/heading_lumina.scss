@@ -36,12 +36,12 @@ $sep-clearance: var(--wp--preset--spacing--30); //10px; // Fixed breathing room 
         }
 
         // Handle text alignments cleanly
-        &.has-text-align-center:after {
+        &.has-text-align-center::after {
             left: 50%;
             transform: translateX(-50%);
         }
 
-        &.has-text-align-right:after {
+        &.has-text-align-right::after {
             left: auto;
             right: 0;
         }

@@ -78,30 +78,39 @@ foreach ( $includes as $include ) {
 /**
  * Load main stylesheets and scripts on front-end
  */
-add_action( 'wp_enqueue_scripts', 'lumina_load_styles' );
+add_action( 'wp_enqueue_scripts', 'lumina_load_styles', 20 );
 
 if ( ! function_exists( 'lumina_load_styles' ) ) :
 
 	function lumina_load_styles() {
 
+		// Dynamically get parent theme slug ('flat-blocks') only when active as a child theme
+		$deps = array();
+		if ( is_child_theme() ) {
+			$deps[] = get_template(); 
+		}
+
 		// 1. Core Theme CSS
-		lumina_enqueue_style( get_stylesheet_directory() . '/assets/css/lumina-theme.css' );
-	
-		// 2. Conditionally Enqueue Light or Dark Mode based on admin/luminance settings
+		lumina_enqueue_style( 
+			get_stylesheet_directory() . '/assets/css/lumina-theme.css',
+			$deps
+		);
+
+		// 2. Conditionally Enqueue Light or Dark Mode
 		$active_mode = lumina_get_active_theme_mode();
 		$mode_file   = ( $active_mode === 'dark' ) ? 'lumina-dark-mode.css' : 'lumina-light-mode.css';
-	
+
 		lumina_enqueue_style( 
 			get_stylesheet_directory() . '/assets/css/' . $mode_file, 
 			array( 'lumina-theme' )
 		);
-	
+
 		// 3. Lumina Engine Resting State CSS
 		lumina_enqueue_style( 
 			get_stylesheet_directory() . '/assets/css/lumina-engine.css', 
 			array( 'lumina-theme' ) 
 		);
-	
+
 		// 4. Lumina Engine Interactive State CSS (Front-end only)
 		if ( ! is_admin() ) {
 			lumina_enqueue_style( 
@@ -109,12 +118,12 @@ if ( ! function_exists( 'lumina_load_styles' ) ) :
 				array( 'lumina-engine' ) 
 			);
 		}
-	
+
 		// 5. Lumina Physics / Gravity JS (Front-end only)
 		if ( ! is_admin() 
 			AND apply_filters( 'lumina_card_link_js', true ) 
 			AND file_exists( get_stylesheet_directory() . '/assets/js/lumina-physics.js' ) ) {
-	
+
 			$theme_version = wp_get_theme()->get( 'Version' ) ?? false;			
 			wp_enqueue_script( 
 				'lumina-physics', 

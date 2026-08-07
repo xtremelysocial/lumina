@@ -20,11 +20,11 @@
   height: 3px;
   background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
 }
-.is-style-separator.has-text-align-center:after {
+.is-style-separator.has-text-align-center::after {
   left: 50%;
   transform: translateX(-50%);
 }
-.is-style-separator.has-text-align-right:after {
+.is-style-separator.has-text-align-right::after {
   left: auto;
   right: 0;
 }

@@ -215,10 +215,10 @@ $shadow-hover:   var(--wp--custom--color--shadow--hover,
 ));
 
 // Shadow-high (.e.g Sharp)
-$shadow-high: 	 var(--wp--custom--color--shadow--hover-high, 
-				 var(--wp--preset--shadow--sharp, 
-				 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)
-));
+// $shadow-high: 	 var(--wp--custom--color--shadow--hover-high, 
+// 				 var(--wp--preset--shadow--sharp, 
+// 				 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)
+// ));
 
 // Animation for grow and shift up
 $lumina-timing: 		var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));

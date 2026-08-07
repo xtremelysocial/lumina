@@ -225,7 +225,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 }
 
 // ==========================================================================
-// 02.28 RESTING OVERLAY: Image mask overlay (:before)
+// 02.28 RESTING OVERLAY: Image mask overlay (::before)
 // ==========================================================================
 @mixin __blueprint-resting-overlay {
 
@@ -256,7 +256,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 
 %physics-resting-overlay {
 /* ==========================================================================
-   02.28 RESTING OVERLAY: Image mask overlay (:before)
+   02.28 RESTING OVERLAY: Image mask overlay (::before)
 ========================================================================== */
 	@include __blueprint-resting-overlay;
 }
@@ -779,11 +779,8 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	// Start in place
     transform: translateY(0) scale(1);
     
-    // Hover default shadow (e.g. Deep)
-//     box-shadow: var(--wp--custom--color--shadow--hover, 
-//                 var(--wp--preset--shadow--deep, 
-// 				0 6px 12px rgba(0, 0, 0, 0.13)));
-	box-shadow: config.$shadow-hover;
+    // Default shadow (e.g. Natural)
+	box-shadow: config.$shadow-default;
 
 	// Handle debug
 	@include lumina-debug('registry');

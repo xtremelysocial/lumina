@@ -1,48 +1,48 @@
-//* ==========================================================================
-//   02 GLOBAL OVERIDES: Styles outside of the core engine loops
-//	    v0.9.9 Build 30 MVP
-//   ========================================================================== */
+/* ==========================================================================
+   02 GLOBAL OVERIDES: Styles outside of the core engine loops
+	    v0.9.9 Build 30 MVP
+   ========================================================================== */
 
 @use '00-config' as config;
 @use '../physics' as phys;
 
 @mixin apply-global-logic($interactive: false) {
 
-	/* ==========================================================================
-	   02 THEME CSS: Reduce motion, adjust menus and icons, etc. 
-	========================================================================== */
+	// ==========================================================================
+	// 02 THEME CSS: Reduce motion, adjust menus and icons, etc. 
+	// ==========================================================================
 
 	// ----------------------------------------------------------------------
 	// PHASE 1: RESTING STATE (lumina-engine.css)
 	// ----------------------------------------------------------------------
 	@if not $interactive {
 	
-		/* Slow down and reduce motion when requested by the user */
+		// Slow down and reduce motion when requested by the user
 		@media (prefers-reduced-motion: reduce) {
 			:root {
-				/* Slow down the timing (e.g., from 400ms to 800ms) */
+				// Slow down timing
 				--wp--custom--animation--duration--normal: 500ms;
 				--wp--custom--animation--duration--medium: 800ms;
 		
-				/* Make the transforms subtle (e.g., 1.05 becomes 1.01) */
+				// Make transforms subtle
 				--wp--custom--animation--default--hover-small-transform: scale(1.01);
 				--wp--custom--animation--default--hover-transform: scale(1.03);
 				--wp--custom--animation--default--hover-large-transform: scale(1.04);
 		
-				/* Reduce the "lift" (e.g., -3px becomes -1px) */
+				// Reduce lift
 				--wp--custom--animation--default--object-small-transform: translateY(-1px);
 				--wp--custom--animation--default--object-transform: translateY(-2px);
 			}
 		}
 	
-		/* Remove shadow from logo-only or the shadow will be round */		
+		// Remove shadow from logo-only or the shadow will be round
 		.wp-site-blocks .wp-block-social-links.is-style-logos-only {
 			& .wp-block-social-link {
 				box-shadow: none;
 			}
 		}
 				
-		/* Remove the shadow from fixed header and add bottom border */
+		// Remove shadow from fixed header and add bottom border
 		.wp-site-blocks > header:has(.is-position-sticky),
 		.wp-site-blocks > header:has(.is-style-fixed-header) {
 			box-shadow: none;
@@ -50,75 +50,86 @@
 			z-index: 101;
 		}
 
-		/* Allow user to turn off shadow and animation for particular blocks */
+		// Allow user to turn off shadow and animation for particular blocks
 		[class*=wp-block-].is-style-object-plain {
 			box-shadow: none !important;
 		}
 		
-		/*-----------------------------------------------------------------------------
-		# Lumina Card Arrow Overlay Badge (Gutenberg Margin Reset)
-		-----------------------------------------------------------------------------*/
+		// -----------------------------------------------------------------------------
+		// Lumina Card Arrow Overlay Badge
+		// -----------------------------------------------------------------------------
 		
-		/* Ensure the card container forms the absolute positioning context */
+		// Ensure card container forms absolute positioning context
 		.is-interactive-card {
 			position: relative !important;
 		}
 		
-		/* Floating Badge Overlay */
+		// Floating Badge Overlay - Base Definition (32px)
 		.lumina-card-arrow-overlay {
 			position: absolute;
 			
-			/* 1. Neutralize WP layout engine block-gap margins */
+			// 1. Neutralize WP layout engine block-gap margins
 			margin: 0 !important;
 			margin-block-start: 0 !important;
 			
-			/* 2. Precise placement from top-right corner of card box */
-			top: var(--wp--preset--spacing--30);
+			// 2. Precise placement from bottom-right corner
+			bottom: var(--wp--preset--spacing--30);
 			right: var(--wp--preset--spacing--30);
 			
 			z-index: 10;
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
+			
+			// 32px Badge Circle
 			width: 32px;
 			height: 32px;
+			padding: 0 !important;
 			border-radius: 50%;
-			background: var(--wp--preset--color--contrast, #000000);
+			
+			// Default Contrast Badge
+			background: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 88%, transparent);
 			color: var(--wp--preset--color--base, #ffffff);
-			font-size: 14px;
+			
+			// Scaled arrow glyph
+			font-size: 15px;
 			line-height: 1;
 			
-			/* Hidden & Non-blocking at rest */
+			// Hidden & Non-blocking at rest
 			opacity: 0;
 			visibility: hidden;
 			pointer-events: none;
 			
-			/* Smooth scale transition */
+			// Smooth scale transition
 			transform: scale(0.65);
-			transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
-						transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
-						visibility 0.2s;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+			transition: opacity var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), 
+						transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), 
+						visibility var(--wp--custom--animation--duration--short, 200ms);
+			
+			// Engine shadow token
+			box-shadow: config.$shadow-default;
 		}
-		
-		/* Reveal ONLY when hovering the specific card or active on mobile first-tap */
-		.is-interactive-card:hover > .lumina-card-arrow-overlay,
-		.is-interactive-card.is-active > .lumina-card-arrow-overlay {
-			opacity: 0.9;
-			visibility: visible;
-			transform: scale(1);
+
+		// Inverted Badge (Contrast Card BG): Base Badge + Contrast Icon
+		.is-interactive-card.has-contrast-background-color > .lumina-card-arrow-overlay {
+			background: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 88%, transparent);
+			color: var(--wp--preset--color--contrast, #000000);
 		}
-		
-		.is-interactive-card:hover > .lumina-card-arrow-overlay {
-			opacity: 1;
-		}
+
+		// Full-Width Wide Grid Alignment Override (Aligns badge to theme wide-width container edge)
+// 		.is-interactive-card.alignfull > .lumina-card-arrow-overlay {
+// 			right: max(
+// 				calc(0.5 * (100% - var(--wp--style--global--wide-size, 1100px))),
+// 				var(--wp--style--root--padding-right, var(--wp--preset--spacing--50, 2rem))
+// 			);
+// 		}
 
 	// ----------------------------------------------------------------------
 	// PHASE 2: INTERACTION STATE (lumina-interactions.css)
 	// ----------------------------------------------------------------------
 	} @else {
 	
-		/* Remove shadow on hover for is-style-object plain custom block style */
+		// Remove shadow on hover for is-style-object plain custom block style
 		[class*=wp-block-].is-style-object-plain {
 			&:hover,
 			&:has(:focus-visible) {
@@ -127,12 +138,34 @@
 			}
 		}		
 		
-		/* Remove shadow from logo-only or the shadow will be round */		
+		// Remove shadow from logo-only or the shadow will be round
 		.wp-site-blocks .wp-block-social-links.is-style-logos-only {
 			& .wp-block-social-link:hover,
 			& .wp-block-social-link:has(:focus-visible) {
 				box-shadow: none;
 			}
 		}
+
+		// -----------------------------------------------------------------------------
+		// Lumina Card Arrow Overlay Badge (Hover & Active Interactions)
+		// -----------------------------------------------------------------------------
+
+		// Standard Cards: Reveal when hovering anywhere on card container or mobile tap
+// 		.is-interactive-card:not(.alignfull):hover > .lumina-card-arrow-overlay,
+// 		.is-interactive-card:not(.alignfull).is-active > .lumina-card-arrow-overlay {
+		.is-interactive-card:hover > .lumina-card-arrow-overlay,
+		.is-interactive-card.is-active > .lumina-card-arrow-overlay {
+			opacity: 1;
+			visibility: visible;
+			transform: scale(1);
+		}
+
+		// Full-Width Sections: Reveal overlay ONLY when hovering an internal link or button
+// 		.is-interactive-card.alignfull:has(a:hover, button:hover) > .lumina-card-arrow-overlay,
+// 		.is-interactive-card.alignfull.is-active > .lumina-card-arrow-overlay {
+// 			opacity: 1;
+// 			visibility: visible;
+// 			transform: scale(1);
+// 		}
 	}
 }

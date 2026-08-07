@@ -2,21 +2,27 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/lumina-interactions.scss ***!
   \******************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
+   02 GLOBAL OVERIDES: Styles outside of the core engine loops
+	    v0.9.9 Build 30 MVP
+   ========================================================================== */
+/* ==========================================================================
    LUMINA INTERACTIONS: Handles all :hover and active state physics
    v0.9.9 Build 30 MVP
    ========================================================================== */
-/* ==========================================================================
-   02 THEME CSS: Reduce motion, adjust menus and icons, etc. 
-========================================================================== */
-/* Remove shadow on hover for is-style-object plain custom block style */
 [class*=wp-block-].is-style-object-plain:hover, [class*=wp-block-].is-style-object-plain:has(:focus-visible) {
   box-shadow: none !important;
   transform: none !important;
 }
 
-/* Remove shadow from logo-only or the shadow will be round */
 .wp-site-blocks .wp-block-social-links.is-style-logos-only .wp-block-social-link:hover, .wp-site-blocks .wp-block-social-links.is-style-logos-only .wp-block-social-link:has(:focus-visible) {
   box-shadow: none;
+}
+
+.is-interactive-card:hover > .lumina-card-arrow-overlay,
+.is-interactive-card.is-active > .lumina-card-arrow-overlay {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
 }
 
 /* ==========================================================================
@@ -90,56 +96,56 @@
 [class*=wp-block-] .wp-element-button:hover,
 [class*=wp-block-] .wp-element-button:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
   opacity: 1;
 }
 
 [class*=wp-block-] a > .avatar:hover,
 [class*=wp-block-] a > .avatar:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
   opacity: 1;
 }
 
 .wp-block-social-links .wp-block-social-link:hover,
 .wp-block-social-links .wp-block-social-link:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
   opacity: 1;
 }
 
 .wp-block-tag-cloud:is(.is-style-outline) a:hover,
 .wp-block-tag-cloud:is(.is-style-outline) a:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
   opacity: 1;
 }
 
 [class*=wp-block-] input[type=submit]:not(.wp-element-button):hover,
 [class*=wp-block-] input[type=submit]:not(.wp-element-button):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
   opacity: 1;
 }
 
 [class*=wp-block-] input[type=button]:not(.wp-element-button):hover,
 [class*=wp-block-] input[type=button]:not(.wp-element-button):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
   opacity: 1;
 }
 
 [class*=wp-block-] input[type=reset]:not(.wp-element-button):hover,
 [class*=wp-block-] input[type=reset]:not(.wp-element-button):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
   opacity: 1;
 }
 
 [class*=wp-block-] input[type=file]::file-selector-button:hover,
 [class*=wp-block-] input[type=file]::file-selector-button:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
-  box-shadow: var(--wp--custom--color--shadow--hover-high, var(--wp--preset--shadow--sharp, 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
   opacity: 1;
 }
 

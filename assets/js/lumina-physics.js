@@ -71,8 +71,8 @@
 			return false;
 		}
 
-		// 1. INITIALIZATION: Target selector for candidate interactive cards
-		const $interactiveCards = $('[class*="wp-block-"]:is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):not(.alignfull)');
+		// 1. INITIALIZATION: Target selector for candidate interactive cards (excludes full-width sections)
+		const $interactiveCards = $('[class*="wp-block-"]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover)');
 
 		// 2. GET TARGET: Returns the target link/button if the card is "valid"
 		function getValidTarget($card) {
@@ -153,7 +153,7 @@
 		
 			if ($target !== null) {
 				$card.css('cursor', 'pointer');
-		
+
 				if ($card.find('> .lumina-card-arrow-overlay').length === 0) {
 					var href = $target.attr('href') || '';
 					var isAnchor = href.indexOf('#') === 0 || (href.indexOf('#') > -1 && href.split('#')[0] === window.location.href.split('#')[0]);
