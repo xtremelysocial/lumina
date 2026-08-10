@@ -1,0 +1,29 @@
+/**
+ * File:	lumina-editor-styles.css
+ * Theme:	Lumina
+ * 
+ * The stylesheet for the EDITOR.
+ *
+ * NOTE: This file is AUTO-GENERATED from the SASS source files 
+ * in /src/scss/lumina-editor-styles.scss. Do not make updates here.
+ * 
+ * @package lumina
+ * @since 	1.0
+ */
+
+/* ==========================================================================
+   LUMINA THEME: CSS styles
+   v0.9.9 Build 30 MVP
+   ========================================================================== */
+
+// LOAD EDITOR STYLES COLORS LOGIC
+@use "colors/05-editor-styles" as editor;
+
+// LOAD EDITOR COLOR STYLES CSS
+// Generate (0, 3, 0) editor hover rules directly into editor-styles.css
+@include editor.build-editor-hover-overrides();
+
+// TEST
+body, .editor-styles-wrapper {
+	outline: 10px solid red !important;
+}

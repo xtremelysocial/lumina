@@ -120,20 +120,17 @@
 @mixin apply-contrast-color(
 	$color, 			// color slug (e.g. primary-alt)
 	$text-style,		// light-text, dark-text, no-fallback
-	$root: null,		// Add :root to text color assignment
+	$root: null,		// Add :where(:root) to text color assignment
 ) {
 
-	// Build .has-$color-background-color	
-	$selectors: build-selector-list($color);
+	$clean-selectors: build-selector-list($color);
+	$root-prefix: "";
 	@if $root {
-		$selectors: build-selector-list(
-			$color,
-			$prefix: ':root .has-'
-		);	
+		$root-prefix: ":where(:root) ";
 	}
 
 	// Apply the selectors
-	#{$selectors} {
+	#{$root-prefix}#{$clean-selectors} {
 
 		// Pure variable hook for theme.json overrides
 		@if $text-style == 'no-fallback' {
@@ -168,9 +165,19 @@
 // ==========================================================================
 // 01.03 HEADING COLOR: Set light, dark, or inherit heading color
 // ==========================================================================
-@mixin apply-heading-action($selectors, $heading) {
+@mixin apply-heading-action(
+	$color, 
+	$heading,
+	$root: null
+) {
 
-	#{$selectors} {
+	$clean-selectors: build-selector-list($color);
+	$root-prefix: "";
+	@if $root {
+		$root-prefix: ":where(:root) ";
+	}
+
+	#{$root-prefix}#{$clean-selectors} {
 		:is(.wp-block-heading, 
 		.wp-block-post-title, 
 		.wp-block-query-title, 
@@ -200,20 +207,35 @@
 // 01.04 LINK COLOR: Set light, dark, or inherit link color
 // ==========================================================================
 @mixin apply-link-action(
-	$selectors, 
-	$link,
-	$remove-underline: null,
+	$color,                 // Pass color slug or slug list
+	$link,                  // 'dark', 'light', 'inherit', 'lighten', 'darken', 'highlight'
+	$remove-underline: null, // Set to remove underline
+	$root: null,            // Set to true for front-end scoping
+	$editor-styles: false   // Set to true to compile editor hover rules
 ) {
 
-	// Excluded targets string
 	$excluded-links: ".wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content";
+	$clean-selectors: build-selector-list($color);
 
-	// Inherit link color, apply underlines in post content, and special
-	// underlines in the footers
+	// ONLY apply :where(:root) on the front-end. 
+	// NEVER output :root or :where(:root) for editor styles, as add_editor_style() 
+	// prepends .editor-styles-wrapper natively.
+	$root-prefix: "";
+	@if $root and not $editor-styles {
+		$root-prefix: ":where(:root) ";
+	}
+
+	$target-selector: null;
+	@if $editor-styles {
+		// Output clean .has-* :hover selector for add_editor_style() parsing
+		$target-selector: "#{$clean-selectors} :where(a:not(#{$excluded-links})):hover";
+	} @else {
+		$target-selector: "#{$root-prefix}#{$clean-selectors} :where(a:not(#{$excluded-links}))";
+	}
+
+	// Apply specific link colors
 	@if $link == 'dark' or $link == 'light' or $link == 'inherit' {
-	
-		// Specificity: (0, 1, 0) — 1 class (#{$selectors}), 0 elements
-		#{$selectors} :where(a:not(#{$excluded-links})) {
+		#{$target-selector} {
 			@if $link == 'dark' { 
 				@extend %engine-link-dark-text; 
 
@@ -225,23 +247,22 @@
 			}
 		}
 		
-		// In Post Content, also underline link
-		.wp-block-post-content #{$selectors} :where(a:not(#{$excluded-links})) {
-			@extend %engine-link-underline;
-		}
-		
-		// In Footers, only underline text links (e.g. <p>)
-		#{$selectors}:is(.site-footer, .footer-info) p :where(a:not(#{$excluded-links})) {
-			@extend %engine-link-underline-special;
+		// Front-end only: Apply underlines
+		@if not $editor-styles {
+			:where(:root) .wp-block-post-content #{$clean-selectors} :where(a:not(#{$excluded-links})) {
+				@extend %engine-link-underline;
+			}
+			
+			:where(:root) #{$clean-selectors}:is(.site-footer, .footer-info) p :where(a:not(#{$excluded-links})) {
+				@extend %engine-link-underline-special;
+			}
 		}
 	
-	// Swap default dark link color for light one on dark bg's	
+	// Apply relative link colors
 	} @else if $link == 'highlight' or $link == 'lighten' 
 			or $link == 'highlight-alt' or $link == 'darken' 
 	{
-		// Specificity: (0, 1, 0) — 1 class (#{$selectors}), 0 elements
-		#{$selectors} :where(a:not(#{$excluded-links})) {
-
+		#{$target-selector} {
 			@if $link == 'highlight' { 
 				@extend %engine-link-highlight;
 
@@ -256,9 +277,9 @@
 			}
 		}
 		
-		// Remove link underline this way to override parent theme
-		@if $remove-underline {
-			.wp-block-post-content #{$selectors} :where(a:not(#{$excluded-links})) {
+		// Remove underlines on front-end if specified
+		@if $remove-underline and not $editor-styles {
+			:where(:root) .wp-block-post-content #{$clean-selectors} :where(a:not(#{$excluded-links})) {
 				@extend %engine-link-remove-underline;
 			}
 		}

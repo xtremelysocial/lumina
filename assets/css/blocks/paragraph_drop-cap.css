@@ -1,0 +1,15 @@
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/paragraph_drop-cap.scss ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/* Custom Drop Cap Typography & Spacing */
+.has-drop-cap:not(:focus)::first-letter {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 6rem;
+  font-weight: 500;
+  line-height: 0.85;
+  color: var(--wp--preset--color--dark);
+  float: left;
+  margin-top: 0.2rem;
+  margin-right: 0.75rem;
+  margin-bottom: 0.2rem;
+}

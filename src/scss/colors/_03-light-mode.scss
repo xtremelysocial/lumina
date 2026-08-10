@@ -8,7 +8,7 @@
 @use "index" as logic;
 
 //*-----------------------------------------------------------------------------
-// # GLOBAL 3-PASS COLORS ENGINE
+// # GLOBAL 5-PASS COLORS ENGINE
 //*-----------------------------------------------------------------------------
 
 //*-----------------------------------------------------------------------------
@@ -23,35 +23,28 @@
 	   	  color schemes.
 	========================================================================== */
 
-	:where(body:not(.is-dark-theme)) {
-    
+	:root :where(body:not(.is-dark-theme)) {
 		@each $entry in logic.$color-registry {
 			$config: 		map.merge(logic.$color-defaults, $entry);
 			$color:  		map.get($config, color);
 			$text:   		map.get($config, text);    
-// 			$heading:   	map.get($config, heading);    
 			$heading-light: map.get($config, heading-light);    
-			$link:   		map.get($config, link);
 			$footer: 		map.get($config, footer);
 			
 			$selectors: logic.build-selector-list($color);
 	
-			// Text is already dark in light mode
 			@if $text == 'dark-light' {
 				@include logic.apply-contrast-color($color, 'dark');
 	
-			// If text should be light in light mode, then apply to text AND headings
 			} @else if $text == 'light-dark' {
 				@include logic.apply-contrast-color($color, 'light');
-				
-				@include logic.apply-heading-action($selectors, 'light'); /////
+				@include logic.apply-heading-action($color, 'light');
 			}
 			
 			@if $heading-light {
-				@include logic.apply-heading-action($selectors, $heading-light); /////
+				@include logic.apply-heading-action($color, $heading-light);
 			}
 			
-			// If footer nav highlight on hover, then apply it
 			@if $footer {
 				@include logic.apply-footer-action($selectors, $footer);
 			}

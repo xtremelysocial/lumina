@@ -8,7 +8,7 @@
 @use "index" as logic;
 
 //*-----------------------------------------------------------------------------
-// # GLOBAL 3-PASS COLORS ENGINE
+// # GLOBAL 5-PASS COLORS ENGINE
 //*-----------------------------------------------------------------------------
 
 //*-----------------------------------------------------------------------------
@@ -24,7 +24,6 @@
 	========================================================================== */
 
 	:root :where(.is-dark-theme) {
-
 		@each $entry in logic.$color-registry {
 			$config:       		map.merge(logic.$color-defaults, $entry);
 			$color:        		map.get($config, color);
@@ -35,36 +34,26 @@
 	
 			$selectors: logic.build-selector-list($color);
 
-			// Dark-light colors need light text in dark mode. Headings are already
-			// light. 
 			@if $text == 'dark-light' {
-				@include logic.apply-contrast-color(
-					$color, 
-					'light', 
-				);
+				@include logic.apply-contrast-color($color, 'light');
 								
-			// If dark text is needed in dark mode, then apply it to text AND headings
 			} @else if $text == 'light-dark' {
 				@include logic.apply-contrast-color($color, 'dark');
-	
-				@include logic.apply-heading-action($selectors, 'dark');							
+				@include logic.apply-heading-action($color, 'dark');							
 			}        
 
-			// Heading Action Evaluation Stack in Dark Mode
 			@if $heading-dark {
-				@include logic.apply-heading-action($selectors, $heading-dark);
+				@include logic.apply-heading-action($color, $heading-dark);
 			}
 	
-			// Apply link color in dark mode, if specified
 			@if $link-dark {
 				@include logic.apply-link-action(
-					$selectors, 
-					$link-dark, 
+					$color: $color, 
+					$link: $link-dark, 
 					$remove-underline: true
 				);
 			}
 			
-			// Apply footer effects in dark mode
 			@if $footer-dark {
 				@include logic.apply-footer-action($selectors, $footer-dark);
 			}

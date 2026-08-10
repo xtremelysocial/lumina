@@ -1,0 +1,203 @@
+@use '@wordpress/base-styles/breakpoints';
+
+/* ==========================================================================
+   LUMINA: Master Columns & Gutter Dividers Engine (columns_lumina.scss)
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+ * 1. BASE CONFIGURATION & GUTTER GAP
+ * ------------------------------------------------------------------------- */
+.wp-block-columns.is-style-gutter-dividers {
+	position: relative;
+	--gutter-divider-gap: calc(var(--wp--style--block-gap, 2rem) * 2);
+	gap: var(--gutter-divider-gap) !important;
+
+	> .wp-block-column {
+		position: relative;
+	}
+}
+
+/* Consecutive Gutter Divider Blocks (Back-to-Back Rows) */
+.wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers {
+	position: relative;
+	margin-top: var(--gutter-divider-gap) !important;
+
+	/* Horizontal divider line between adjacent blocks */
+	&::before {
+		content: "";
+		position: absolute;
+		height: 1px;
+		width: 100%;
+		top: calc(var(--gutter-divider-gap) / -2);
+		left: 0;
+		background-color: color-mix(in srgb, currentColor 20%, transparent);
+		z-index: 2;
+		pointer-events: none;
+	}
+}
+
+/* -------------------------------------------------------------------------
+ * 2. DESKTOP VIEWPORTS (>= 782px via breakpoints module)
+ * ------------------------------------------------------------------------- */
+@media (min-width: breakpoints.$break-medium) {
+
+	/* Standard Vertical Dividers between side-by-side columns */
+	.wp-block-columns.is-style-gutter-dividers {
+		> .wp-block-column:not(:first-child)::before {
+			content: "";
+			position: absolute;
+			width: 1px;
+			height: 100%;
+			top: 0;
+			left: calc(var(--gutter-divider-gap) / -2);
+			background-color: color-mix(in srgb, currentColor 20%, transparent);
+			z-index: 2;
+			pointer-events: none;
+		}
+	}
+
+	/* Consecutive Blocks: Extend vertical lines UP and DOWN to intersect horizontal line */
+	.wp-block-columns.is-style-gutter-dividers:has(+ .wp-block-columns.is-style-gutter-dividers) {
+		> .wp-block-column:not(:first-child)::before {
+			height: calc(100% + (var(--gutter-divider-gap) / 2));
+		}
+	}
+
+	.wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers {
+		> .wp-block-column:not(:first-child)::before {
+			top: calc(var(--gutter-divider-gap) / -2);
+			height: calc(100% + (var(--gutter-divider-gap) / 2));
+		}
+	}
+
+	/* Default Top-Level 6-Column Blocks -> 3x2 Grid */
+	.wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(6)) {
+		display: grid !important;
+		grid-template-columns: repeat(3, 1fr) !important;
+
+		> .wp-block-column {
+			width: 100% !important;
+			max-width: 100% !important;
+			flex-basis: auto !important;
+			margin: 0 !important;
+		}
+	}
+
+	/* Nested 6-Column Blocks (Inside a Parent Column) -> 2x3 Grid */
+	.wp-block-column .wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(6)) {
+		grid-template-columns: repeat(2, 1fr) !important;
+	}
+
+	/* Crosshair Dividers: Top-Level 6-Up (3x2 Grid) */
+	.wp-block-columns.is-style-gutter-dividers:not(.wp-block-column *):has(> .wp-block-column:first-child:nth-last-child(6)) {
+		> .wp-block-column:not(:first-child)::before {
+			content: none;
+		}
+
+		> .wp-block-column:nth-child(2)::before,
+		> .wp-block-column:nth-child(3)::before {
+			content: "";
+			position: absolute;
+			width: 1px;
+			height: calc(100% + var(--gutter-divider-gap));
+			top: 0;
+			left: calc(var(--gutter-divider-gap) / -2);
+			background-color: color-mix(in srgb, currentColor 20%, transparent);
+			z-index: 2;
+			pointer-events: none;
+		}
+
+		> .wp-block-column:nth-child(5)::before,
+		> .wp-block-column:nth-child(6)::before {
+			content: "";
+			position: absolute;
+			width: 1px;
+			height: 100%;
+			top: 0;
+			left: calc(var(--gutter-divider-gap) / -2);
+			background-color: color-mix(in srgb, currentColor 20%, transparent);
+			z-index: 2;
+			pointer-events: none;
+		}
+
+		> .wp-block-column:nth-child(4)::after {
+			content: "";
+			position: absolute;
+			height: 1px;
+			width: calc(300% + (var(--gutter-divider-gap) * 2));
+			top: calc(var(--gutter-divider-gap) / -2);
+			left: 0;
+			background-color: color-mix(in srgb, currentColor 20%, transparent);
+			z-index: 2;
+			pointer-events: none;
+		}
+	}
+
+	/* Crosshair Dividers: Nested 6-Up (2x3 Grid) */
+	.wp-block-column .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(6)) {
+		> .wp-block-column:not(:first-child)::before {
+			content: none;
+		}
+
+		> .wp-block-column:nth-child(2n)::before {
+			content: "";
+			position: absolute;
+			width: 1px;
+			height: calc(100% + var(--gutter-divider-gap));
+			top: 0;
+			left: calc(var(--gutter-divider-gap) / -2);
+			background-color: color-mix(in srgb, currentColor 20%, transparent);
+			z-index: 2;
+			pointer-events: none;
+		}
+
+		> .wp-block-column:last-child::before {
+			height: 100%;
+		}
+
+		> .wp-block-column:nth-child(3)::after,
+		> .wp-block-column:nth-child(5)::after {
+			content: "";
+			position: absolute;
+			height: 1px;
+			width: calc(200% + var(--gutter-divider-gap));
+			top: calc(var(--gutter-divider-gap) / -2);
+			left: 0;
+			background-color: color-mix(in srgb, currentColor 20%, transparent);
+			z-index: 2;
+			pointer-events: none;
+		}
+	}
+}
+
+/* -------------------------------------------------------------------------
+ * 3. MOBILE & STACKED VIEWPORTS (< 782px via breakpoints module)
+ * ------------------------------------------------------------------------- */
+@media only screen and (max-width: #{ (breakpoints.$break-medium - 1) }) {
+
+	.wp-block-columns.is-style-gutter-dividers {
+		> .wp-block-column {
+			&::after {
+				content: none !important;
+			}
+
+			/* Draw 1px horizontal hairline above every stacked item except the first */
+			&:not(:first-child)::before {
+				content: "" !important;
+				position: absolute !important;
+				width: 100% !important;
+				height: 1px !important;
+				top: calc(var(--gutter-divider-gap) / -2) !important;
+				left: 0 !important;
+				background-color: color-mix(in srgb, currentColor 20%, transparent) !important;
+				z-index: 2 !important;
+				pointer-events: none !important;
+			}
+
+			/* Ensure the first stacked item inside a block has no divider above it */
+			&:first-child::before {
+				content: none !important;
+			}
+		}
+	}
+}

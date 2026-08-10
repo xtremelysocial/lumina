@@ -14,6 +14,8 @@
   border-radius: var(--wp--custom--border--radius, 0px);
   padding: var(--wp--preset--spacing--20) !important; /* Overrides Section #4 layout reset */
   overflow: hidden;
+  background-clip: content-box !important;
+  background-origin: content-box !important;
 }
 .wp-block-media-text.is-style-image-border .wp-block-media-text__media > a {
   display: block;

@@ -17,8 +17,8 @@
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"width":"340px","metadata":{"name":"Sidebar Column"},"lock":{"move":true,"remove":true}} -->
-<div class="wp-block-column" style="flex-basis:340px;">
+<!-- wp:column {"width":"var(--wp--custom--sidebar--width)","metadata":{"name":"Sidebar Column"},"lock":{"move":true,"remove":true}} -->
+<div class="wp-block-column" style="flex-basis:var(--wp--custom--sidebar--width);">
 <!-- wp:group {"metadata":{"name":"Sidebar Group"},"className":"sidebar is-style-rounded-border"} -->
 <div class="wp-block-group sidebar is-style-rounded-border">
 

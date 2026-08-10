@@ -1,0 +1,38 @@
+//* ==========================================================================
+//   05 EDITOR COLOR STYLES: Set colors in the Editor
+//	    v0.9.9 Build 30 MVP
+//   ========================================================================== */
+
+@use 'sass:map';
+
+@use "index" as logic;
+
+//*-----------------------------------------------------------------------------
+// # GLOBAL 5-PASS COLORS ENGINE
+//*-----------------------------------------------------------------------------
+
+//*-----------------------------------------------------------------------------
+// # PASS 5: EDITOR COLOR STYLES
+// # Text, heading, and/or link color overrides needed for the Editor
+//*-----------------------------------------------------------------------------
+@mixin build-editor-hover-overrides() {
+
+	// Loop through color registry
+	@each $entry in logic.$color-registry {
+		$map: 		map.merge(logic.$color-defaults, $entry);
+		$color: 	map.get($map, color);
+		$link: 		map.get($map, link);
+
+		// Neutralize Gutenberg global hover for any card where we are overriding
+		// the link color. This is only needed in the Editor due to WordPress 
+		// using very high specificity on this. 
+		@if $link {
+			@include logic.apply-link-action(
+				$color: $color, 
+				$link: $link, 
+				$root: true, 
+				$editor-styles: true
+			);
+		}
+	}
+}

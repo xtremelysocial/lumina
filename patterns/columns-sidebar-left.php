@@ -9,8 +9,8 @@
 ?>
 <!-- wp:columns {"metadata":{"name":"Content with Left Sidebar"},"align":"wide","className":"is-style-thick-gap"} -->
 <div class="wp-block-columns alignwide is-style-thick-gap" id="sidebar-left">
-<!-- wp:column {"width":"340px","metadata":{"name":"Sidebar Column"},"lock":{"move":true,"remove":true}} -->
-<div class="wp-block-column" style="flex-basis:340px;">
+<!-- wp:column {"width":"var(--wp--custom--sidebar--width)","metadata":{"name":"Sidebar Column"},"lock":{"move":true,"remove":true}} -->
+<div class="wp-block-column" style="flex-basis:var(--wp--custom--sidebar--width);">
 <!-- wp:group {"metadata":{"name":"Sidebar Group"},"className":"sidebar is-style-rounded-border"} -->
 <div class="wp-block-group sidebar is-style-rounded-border">
 <!-- wp:heading {"level":3,"placeholder":"Sidebar"} -->

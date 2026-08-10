@@ -1,0 +1,16 @@
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/icon_align-left.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/*-----------------------------------------------------------------------------
+# Lumina: Icon Block Normalization
+-----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+# Lumina: Block Style — Left Aligned Icon
+-----------------------------------------------------------------------------*/
+.wp-block-icon.is-style-align-left {
+  margin-right: -0.25em; /* Optically pulls internal SVG vector paths flush to text edge */
+  margin-left: 0.15em; /* Creates consistent breathing room before heading */
+  align-self: center; /* Vertically centers icon frame against adjacent heading */
+  flex-shrink: 0; /* Prevents icon box from squeezing in narrow columns */
+}

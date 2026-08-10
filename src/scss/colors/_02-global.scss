@@ -11,7 +11,7 @@
 @use "index" as logic;
 
 //*-----------------------------------------------------------------------------
-// # GLOBAL 3-PASS COLORS ENGINE
+// # GLOBAL 5-PASS COLORS ENGINE
 //*-----------------------------------------------------------------------------
 
 //*-----------------------------------------------------------------------------
@@ -32,18 +32,15 @@
 		$text:   	map.get($config, text);
 		$heading:   map.get($config, heading);
 		$link:   	map.get($config, link);
-	
-		// Build the .has-$color-background-color selector
-		$selectors: logic.build-selector-list($color);
 		
-		// Always need to add :root in the global space to override parent them
+		// Always need to add :where(:root) in the global space to override parent theme
 		$root: true; 
 
 		// Only apply static global contrast settings here. Dynamic adaptive 
 		// colors ('dark-light', 'light-dark') are handled by Pass 2 & Pass 3.
 		@if $text == 'light' {
 			@include logic.apply-contrast-color($color, 'light', $root);
-			@include logic.apply-heading-action($selectors, 'light');
+			@include logic.apply-heading-action($color, 'light', $root);
             
 		} @else if $text == 'dark' {
 			@include logic.apply-contrast-color($color, 'dark', $root);
@@ -54,12 +51,21 @@
 
 		// Handle heading override
 		@if $heading {
-			@include logic.apply-heading-action($selectors, $heading); //////
+			@include logic.apply-heading-action(
+				$color: $color, 
+				$heading: $heading, 
+				$root: $root
+			);
 		}
 		
 		// If link color, then apply it in the global space
 		@if $link {
-			@include logic.apply-link-action($selectors, $link, $remove-underline: true);
+			@include logic.apply-link-action(
+				$color: $color, 
+				$link: $link, 
+				$remove-underline: true,
+				$root: $root
+			);
 		}
 	}
 }

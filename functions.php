@@ -20,27 +20,29 @@ if ( ! function_exists( 'lumina_theme_support' ) ) :
 
 	function lumina_theme_support() {
 
-		// Standard post thumbnail image size (16:9 aspect ratio)
-		set_post_thumbnail_size( 1100, 619, array( 'left', 'top' ) );
+		// Standard post thumbnail image size (16:9 aspect ratio).
+		// true = center crop.
+		set_post_thumbnail_size( 1168, 667, true );
 				
 		// Selectable image sizes in the Block Editor
-		add_image_size( 'cropped-large', 1100, 619, array( 'left', 'top' ) );
-		add_image_size( 'cropped-thumbnail', 760, 428, array( 'left', 'top' ) );
-		add_image_size( 'cropped-slim', 1100, 309, true );
+		add_image_size( 'cropped-large', 1168, 657, true );
+		add_image_size( 'cropped-thumbnail', 760, 428, true );
+		add_image_size( 'cropped-slim', 1168, 329, true );
 
 		// Enqueue global styles needed for the editor iframe.
 		add_theme_support( 'editor-styles' );
 
 		// Determine mode dynamically for the Site Editor canvas
 		$mode_css = ( lumina_get_active_theme_mode() === 'dark' ) 
-			? '/assets/css/lumina-dark-mode.css' 
-			: '/assets/css/lumina-light-mode.css';
+			? 'assets/css/lumina-dark-mode.css' 
+			: 'assets/css/lumina-light-mode.css';
 		
 		$editor_styles = array(
-			'/assets/css/lumina-theme.css',
+			'assets/css/lumina-theme.css',
 			$mode_css,
-			'/assets/css/lumina-engine.css',
-			'/assets/css/editor-styles.css',
+			'assets/css/lumina-engine.css',
+// 			'assets/css/editor-styles.css',
+			'assets/css/lumina-editor-styles.css',
 		);
 
 		// Allow child themes to override the list of editor styles to load
@@ -139,8 +141,9 @@ endif;
 /**
  * Load INDIVIDUAL Block CSS styles on 'init' (Applies to Front-End and Editor)
  * Strictly scans local Lumina child directory to prevent duplicate parent enqueues.
+ * Set to priority 20 so it runs AFTER the parent theme.
  */
-add_action( 'init', 'lumina_load_block_styles' );
+add_action( 'init', 'lumina_load_block_styles', 20 );
 
 if ( ! function_exists( 'lumina_load_block_styles' ) ) :
 

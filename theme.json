@@ -9,14 +9,14 @@
 				"theme": {
 					"mode": "is-light-theme",
 					"scheme": "lumina",
-					"image-folders": [
+					"imageFolders": [
 						"artsy",
 						"buildings",
 						"classic",
 						"nature",
 						"paper"
 					],
-					"image-default": "/assets/images/paper/paper-01.webp"
+					"imageDefault": "/assets/images/paper/paper-01.webp"
 				},
 				"border": "color-mix(in srgb, currentColor 12%, transparent)",
 				"field": { 
@@ -94,7 +94,7 @@
 		},
 		"layout": {
 			"contentSize": 	"760px",
-			"wideSize": 	"1100px",
+			"wideSize": 	"1168px",
 			"allowCustomContentAndWideSize": false
 		},
 		"typography": {
@@ -119,17 +119,17 @@
 				},
 				{
 				  "slug": "medium",
-				  "size": "22px",
+				  "size": "21px",
 				  "name": "Medium (h4)",
 				  "fluid": false
 				},
 				{
 				  "slug": "large",
-				  "size": "28px",
+				  "size": "26px",
 				  "name": "Large (h3)",
 				  "fluid": {
-					"min": "24px",
-					"max": "28px"
+					"min": "22px",
+					"max": "26px"
 				  }
 				},
 				{
@@ -155,7 +155,7 @@
 				  "size": "48px",
 				  "name": "Huge",
 				  "fluid": {
-					"min": "42px",
+					"min": "40px",
 					"max": "48px"
 				  }
 				},
@@ -164,8 +164,8 @@
 				  "size": "58px",
 				  "name": "Gigantic",
 				  "fluid": {
-					"min": "44px",
-					"max": "50px"
+					"min": "46px",
+					"max": "58px"
 				  }
 				}
 		  	]
@@ -384,9 +384,6 @@
 				"left": 	"var:preset|spacing|50"
 			}
 		},	
-		"border": {
-			"radius": 		"var(--wp--custom--border--radius)"
-		},		
 		"typography": {
 			"fontSize": 	"var:preset|font-size|normal",		
 			"fontWeight": 	"var(--wp--custom--typography--font-weight--normal)",
@@ -470,7 +467,7 @@
 						"background": "var(--wp--custom--color--button--hover)"
 					}
 				}						
-			} 
+			}
 		},			
 		"blocks": {
 			"core/button" : {
@@ -509,16 +506,16 @@
 					"link": {
 						"color": {
 							"text": "var:preset|color|highlight-alt"
-						},
-						":hover": {
-							"color": {
-								"text": "var:preset|color|highlight-alt"
-							}
-						},
-						":active": {
-							"color": {
-								"text": "var:preset|color|highlight-alt"
-							}
+						}
+					},
+					":hover": {
+						"color": {
+							"text": "var:preset|color|highlight-alt"
+						}
+					},
+					":active": {
+						"color": {
+							"text": "var:preset|color|highlight-alt"
 						}
 					}
 				}	

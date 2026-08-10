@@ -7,112 +7,113 @@
  * Block Types: core/columns
  */
 ?>
-<!-- wp:group {"align":"wide","className":"is-style-no-padding","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"center","verticalAlignment":"top"}} -->
-<div class="wp-block-group alignwide is-style-no-padding" id="pricing-3-columns"><!-- wp:group {"style":{"spacing":{"padding":{"right":"0px","left":"0px"}}},"backgroundColor":"primary","className":"is-style-rounded-border"} -->
-<div class="wp-block-group is-style-rounded-border has-primary-background-color has-background" style="padding-right:0px;padding-left:0px"><!-- wp:heading {"textAlign":"center","level":3} -->
-<h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Starter", "lumina"); ?></h3>
-<!-- /wp:heading -->
+<!-- wp:columns {"align":"wide","className":"is-style-no-padding"} -->
+<div class="wp-block-columns alignwide is-style-no-padding" id="pricing-3-columns">
+	
+	<!-- Column 1: Starter -->
+	<!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"backgroundColor":"base-2","className":"is-style-rounded-border","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
+	<div class="wp-block-column is-style-rounded-border has-base-2-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+		<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+		<div class="wp-block-group">
+			<!-- wp:heading {"textAlign":"center","level":3} -->
+			<h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Starter", "lumina"); ?></h3>
+			<!-- /wp:heading -->
 
-<!-- wp:heading {"textAlign":"center","level":4} -->
-<h4 class="wp-block-heading has-text-align-center"><sup>$</sup>19/MO</h4>
-<!-- /wp:heading -->
+			<!-- wp:heading {"textAlign":"center","level":4} -->
+			<h4 class="wp-block-heading has-text-align-center"><sup>$</sup>19/MO</h4>
+			<!-- /wp:heading -->
 
-<!-- wp:list {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","right":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50"}}},"backgroundColor":"base","textColor":"contrast"} -->
-<ul class="has-contrast-color has-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:list-item -->
-<li><strong>10GB</strong>&nbsp;Storage</li>
-<!-- /wp:list-item -->
+			<!-- wp:list {"className":"is-style-no-bullets"} -->
+			<ul class="wp-block-list is-style-no-bullets">
+				<!-- wp:list-item --><li><strong>10GB</strong> Storage</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li>Up to <strong>10</strong> Users</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><strong>5</strong> Domains</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><strong><?php esc_html_e("Free", "lumina"); ?></strong> Setup</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><strong>1-year</strong> Free support</li><!-- /wp:list-item -->
+			</ul>
+			<!-- /wp:list -->
+		</div>
+		<!-- /wp:group -->
 
-<!-- wp:list-item -->
-<li>Up to&nbsp;<strong>10</strong>&nbsp;Users</li>
-<!-- /wp:list-item -->
+		<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+		<div class="wp-block-buttons">
+			<!-- wp:button {"width":100,"className":"is-style-outline"} -->
+			<div class="wp-block-button wp-block-button__width-100 is-style-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e("Sign up", "lumina"); ?></a></div>
+			<!-- /wp:button -->
+		</div>
+		<!-- /wp:buttons -->
+	</div>
+	<!-- /wp:column -->
 
-<!-- wp:list-item -->
-<li><strong>5</strong>&nbsp;Domains</li>
-<!-- /wp:list-item -->
+	<!-- Column 2: Standard (Featured) -->
+	<!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"backgroundColor":"primary","textColor":"base","className":"is-style-rounded-border","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
+	<div class="wp-block-column is-style-rounded-border has-primary-background-color has-base-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+		<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+		<div class="wp-block-group">
+			<!-- wp:heading {"textAlign":"center","level":3} -->
+			<h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Standard", "lumina"); ?></h3>
+			<!-- /wp:heading -->
 
-<!-- wp:list-item -->
-<li><strong><?php esc_html_e("Free", "lumina"); ?></strong>&nbsp;Setup</li>
-<!-- /wp:list-item -->
+			<!-- wp:heading {"textAlign":"center","level":4} -->
+			<h4 class="wp-block-heading has-text-align-center"><sup>$</sup>29/MO</h4>
+			<!-- /wp:heading -->
 
-<!-- wp:list-item -->
-<li><strong>1-year</strong>&nbsp;Free support</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
+			<!-- wp:list {"className":"is-style-no-bullets"} -->
+			<ul class="wp-block-list is-style-no-bullets">
+				<!-- wp:list-item --><li><strong>20GB</strong> Storage</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li>Up to <strong>20</strong> Users</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><strong>10</strong> Domains</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><strong><?php esc_html_e("Free", "lumina"); ?></strong> Setup</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><strong>2-year</strong> Free support</li><!-- /wp:list-item -->
+			</ul>
+			<!-- /wp:list -->
+		</div>
+		<!-- /wp:group -->
 
-<!-- wp:paragraph {"align":"center","className":"is-style-link-no-underline"} -->
-<p class="has-text-align-center is-style-no-margin is-style-link-no-underline"><a href="#"><?php esc_html_e("Sign up", "lumina"); ?></a></p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group -->
+		<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+		<div class="wp-block-buttons">
+			<!-- wp:button {"width":100,"backgroundColor":"base","textColor":"contrast"} -->
+			<div class="wp-block-button wp-block-button__width-100"><a class="wp-block-button__link has-contrast-color has-base-background-color has-text-color has-background wp-element-button" href="#"><?php esc_html_e("Sign up", "lumina"); ?></a></div>
+			<!-- /wp:button -->
+		</div>
+		<!-- /wp:buttons -->
+	</div>
+	<!-- /wp:column -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"right":"0px","left":"0px"}}},"backgroundColor":"secondary","className":"is-style-rounded-border"} -->
-<div class="wp-block-group is-style-rounded-border has-secondary-background-color has-background" style="padding-right:0px;padding-left:0px"><!-- wp:heading {"textAlign":"center","level":3} -->
-<h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Standard", "lumina"); ?></h3>
-<!-- /wp:heading -->
+	<!-- Column 3: Premium -->
+	<!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"backgroundColor":"base-2","className":"is-style-rounded-border","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between"}} -->
+	<div class="wp-block-column is-style-rounded-border has-base-2-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+		<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+		<div class="wp-block-group">
+			<!-- wp:heading {"textAlign":"center","level":3} -->
+			<h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Premium", "lumina"); ?></h3>
+			<!-- /wp:heading -->
 
-<!-- wp:heading {"textAlign":"center","level":4} -->
-<h4 class="wp-block-heading has-text-align-center"><sup>$</sup>29/MO</h4>
-<!-- /wp:heading -->
+			<!-- wp:heading {"textAlign":"center","level":4} -->
+			<h4 class="wp-block-heading has-text-align-center"><sup>$</sup>39/MO</h4>
+			<!-- /wp:heading -->
 
-<!-- wp:list {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","right":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50"}}},"backgroundColor":"base","textColor":"contrast"} -->
-<ul class="has-contrast-color has-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:list-item -->
-<li><strong>20GB</strong>&nbsp;Storage</li>
-<!-- /wp:list-item -->
+			<!-- wp:list {"className":"is-style-no-bullets"} -->
+			<ul class="wp-block-list is-style-no-bullets">
+				<!-- wp:list-item --><li><strong>30GB</strong> Storage</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li>Up to <strong>30</strong> Users</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><strong>20</strong> Domains</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><strong><?php esc_html_e("Free", "lumina"); ?></strong> Setup</li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><strong>3-year</strong> Free support</li><!-- /wp:list-item -->
+			</ul>
+			<!-- /wp:list -->
+		</div>
+		<!-- /wp:group -->
 
-<!-- wp:list-item -->
-<li>Up to&nbsp;<strong>20</strong>&nbsp;Users</li>
-<!-- /wp:list-item -->
+		<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+		<div class="wp-block-buttons">
+			<!-- wp:button {"width":100,"className":"is-style-outline"} -->
+			<div class="wp-block-button wp-block-button__width-100 is-style-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e("Sign up", "lumina"); ?></a></div>
+			<!-- /wp:button -->
+		</div>
+		<!-- /wp:buttons -->
+	</div>
+	<!-- /wp:column -->
 
-<!-- wp:list-item -->
-<li><strong>10</strong>&nbsp;Domains</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><strong><?php esc_html_e("Free", "lumina"); ?></strong>&nbsp;Setup</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><strong>2-year</strong>&nbsp;Free support</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
-
-<!-- wp:paragraph {"align":"center","className":"is-style-link-no-underline"} -->
-<p class="has-text-align-center is-style-no-margin is-style-link-no-underline"><a href="#"><?php esc_html_e("Sign up", "lumina"); ?></a></p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group -->
-
-<!-- wp:group {"style":{"spacing":{"padding":{"right":"0px","left":"0px"}}},"backgroundColor":"tertiary","className":"is-style-rounded-border"} -->
-<div class="wp-block-group is-style-rounded-border has-tertiary-background-color has-background" style="padding-right:0px;padding-left:0px"><!-- wp:heading {"textAlign":"center","level":3} -->
-<h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Premium", "lumina"); ?></h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"textAlign":"center","level":4} -->
-<h4 class="wp-block-heading has-text-align-center"><sup>$</sup>39/MO</h4>
-<!-- /wp:heading -->
-
-<!-- wp:list {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","right":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50"}}},"backgroundColor":"base","textColor":"contrast"} -->
-<ul class="has-contrast-color has-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:list-item -->
-<li><strong>30GB</strong>&nbsp;Storage</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>Up to&nbsp;<strong>30</strong>&nbsp;Users</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><strong>20</strong>&nbsp;Domains</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><strong><?php esc_html_e("Free", "lumina"); ?></strong>&nbsp;Setup</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><strong>3-year</strong>&nbsp;Free support</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
-
-<!-- wp:paragraph {"align":"center","className":"is-style-link-no-underline"} -->
-<p class="has-text-align-center is-style-no-margin is-style-link-no-underline"><a href="#"><?php esc_html_e("Sign up", "lumina"); ?></a></p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group -->
+</div>
+<!-- /wp:columns -->
