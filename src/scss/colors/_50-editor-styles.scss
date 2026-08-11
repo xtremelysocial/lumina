@@ -1,5 +1,5 @@
 //* ==========================================================================
-//   05 EDITOR COLOR STYLES: Set colors in the Editor
+//   50 EDITOR COLOR STYLES: Set colors in the Editor
 //	    v0.9.9 Build 30 MVP
 //   ========================================================================== */
 
@@ -16,6 +16,10 @@
 // # Text, heading, and/or link color overrides needed for the Editor
 //*-----------------------------------------------------------------------------
 @mixin build-editor-hover-overrides() {
+
+	/* ==========================================================================
+	   50 EDITOR COLOR STYLES: Set colors in the Editor
+	========================================================================== */
 
 	// Loop through color registry
 	@each $entry in logic.$color-registry {

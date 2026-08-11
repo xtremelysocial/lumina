@@ -1,13 +1,11 @@
 //* ==========================================================================
-//   02 GLOBAL COLORS: Set colors regardless of light or dark mode
+//   10 GLOBAL COLORS: Set colors regardless of light or dark mode
 //	    v0.9.9 Build 30 MVP
 //   ========================================================================== */
 
 // @use 'sass:list';
 @use 'sass:map';
 
-// @use '00-config' as config;
-// @use '01-logic' as logic;
 @use "index" as logic;
 
 //*-----------------------------------------------------------------------------
@@ -22,7 +20,7 @@
 @mixin apply-colors-global {
 
 	/* ==========================================================================
-	   02 GLOBAL COLORS: Set colors regardless of light or dark mode
+	   10 GLOBAL COLORS: Set colors regardless of light or dark mode
 	========================================================================== */
 
 	// Loop through the colors and output CSS

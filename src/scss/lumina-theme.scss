@@ -20,18 +20,11 @@
 // /*--------------------------------------------------------------
 //   LUMINA BASE STYLES
 // --------------------------------------------------------------*/
-// @use "theme/base/**/*.scss" as *;
 @use "base";
-
-// /*--------------------------------------------------------------
-//   LUMINA BLOCK STYLES
-// --------------------------------------------------------------*/
-// @use "theme/blocks/**/*.scss" as *;
 
 // /*--------------------------------------------------------------
 //   LUMINA POPULAR PLUGIN STYLES
 // --------------------------------------------------------------*/
-// @use "theme/plugins/**/*.scss" as *;
 @use "plugins";
 
 // /*--------------------------------------------------------------
@@ -39,19 +32,11 @@
 // --------------------------------------------------------------*/
 
 // LOAD COLORS LOGIC
-@use "colors/02-global" as colors;
-@use "colors/02b-gradients" as gradients;
-// @use "colors/03-light-mode" as light-mode;
-// @use "colors/04-dark-mode" as dark-mode;
+@use "colors/10-global" as colors;
+// @use "colors/20-gradients" as gradients;
 
 // LOAD GLOBAL COLORS CSS
 @include colors.apply-colors-global;
 
 // LOAD GLOBAL GRADIENT COLORS CSS
 // @include gradients.apply-colors-gradients;
-
-// LOAD LIGHT-MODE COLORS CSS
-// @include light-mode.apply-colors-light-mode;
-
-// LOAD DARK-MODE COLORS CSS
-// @include dark-mode.apply-colors-dark-mode;

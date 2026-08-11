@@ -17,19 +17,7 @@
    ========================================================================== */
 
 // LOAD COLORS LOGIC
-// @use "colors/02-global" as colors;
-// @use "colors/02b-gradients" as gradients;
-// @use "colors/03-light-mode" as light-mode;
-@use "colors/04-dark-mode" as dark-mode;
-
-// LOAD GLOBAL COLORS CSS
-// @include colors.apply-colors-global;
-
-// LOAD GLOBAL GRADIENT COLORS CSS
-// @include gradients.apply-colors-gradients;
-
-// LOAD LIGHT-MODE COLORS CSS
-// @include light-mode.apply-colors-light-mode;
+@use "colors/40-dark-mode" as dark-mode;
 
 // LOAD DARK-MODE COLORS CSS
 @include dark-mode.apply-colors-dark-mode;

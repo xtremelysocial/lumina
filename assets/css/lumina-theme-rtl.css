@@ -249,7 +249,8 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   COLORS: DEFAULT TEXT, HEADING, AND LINK COLORS
  -----------------------------------------------------------------------------*/
 /*
- * Default contrast (text) based on background color.
+ * Default contrast (text) color based on background color.
+ *
  * To override, set these in theme.json:
  *		--wp--custom--color--contrast--{color}
  */
@@ -420,7 +421,7 @@ h1, h2, h3, h4, h5, h6) {
 }
 
 /* ==========================================================================
-   02 GLOBAL COLORS: Set colors regardless of light or dark mode
+   10 GLOBAL COLORS: Set colors regardless of light or dark mode
 ========================================================================== */
 :where(:root) .has-primary-background-color {
   color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--foreground-alt));

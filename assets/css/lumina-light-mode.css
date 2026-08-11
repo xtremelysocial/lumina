@@ -21,7 +21,8 @@
   COLORS: DEFAULT TEXT, HEADING, AND LINK COLORS
  -----------------------------------------------------------------------------*/
 /*
- * Default contrast (text) based on background color.
+ * Default contrast (text) color based on background color.
+ *
  * To override, set these in theme.json:
  *		--wp--custom--color--contrast--{color}
  */
@@ -81,7 +82,7 @@ h1, h2, h3, h4, h5, h6) {
 }
 
 /* ==========================================================================
-   02 LIGHT-MODE COLORS: Apply text, heading, and link colors for light-mode
+   30 LIGHT-MODE COLORS: Apply text, heading, and link colors for light-mode
    	  color schemes.
 ========================================================================== */
 :root :where(body:not(.is-dark-theme)) .has-primary-subtle-background-color {
