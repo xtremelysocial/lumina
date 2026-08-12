@@ -1,12 +1,16 @@
-/* Custom Drop Cap Typography & Spacing */
+/*--------------------------------------------------------------
+# LUMINA Paragraph (Drop Cap)
+--------------------------------------------------------------*/
 .has-drop-cap:not(:focus)::first-letter {
-     font-family: var(--wp--preset--font-family--heading);
-     font-size: 6rem;
-     font-weight: 500;
-     line-height: 0.85;
-     color: var(--wp--preset--color--dark);
-     float: left;
-     margin-top: 0.2rem;
-     margin-right: 0.75rem;
-     margin-bottom: 0.2rem;
+	// Typography & Color
+	font-family: var(--wp--preset--font-family--heading);
+	font-weight: 600;
+	color: var(--wp--preset--color--primary-alt);
+
+	// Sizing & Spacing
+	font-size: 3.4em;
+	line-height: 0.8;
+	margin-top: 0.05em;
+	margin-right: 0.5rem;
+	margin-bottom: -0.1em;
 }

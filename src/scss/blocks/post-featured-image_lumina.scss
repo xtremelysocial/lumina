@@ -1,9 +1,29 @@
-/*-----------------------------------------------------------------------------
-# LUMINA Post Featured Image styles
------------------------------------------------------------------------------*/
+/* ==========================================================================
+   LUMINA BLOCKS: Post Featured Image
+   ========================================================================== */
 
-/* Remove parent theme's featured image padding and shadow */
-.wp-block-post-featured-image img {
-	padding: 0;
-	box-shadow: none;
+.wp-block-post-featured-image {
+	max-width: 100%;
+
+	// Resets flat-blocks img padding/shadow and enforces responsive sizing
+	img {
+		width: 100%;
+		height: auto;
+		padding: 0;
+		box-shadow: none;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	// Full-Width Breakout Reset
+	&.alignfull {
+		max-width: calc(
+			100% + var(--wp--style--root--padding-left, 0px) + var(--wp--style--root--padding-right, 0px)
+		);
+		border-radius: 0;
+
+		img {
+			border-radius: 0;
+		}
+	}
 }

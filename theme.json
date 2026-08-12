@@ -10,13 +10,13 @@
 					"mode": "is-light-theme",
 					"scheme": "lumina",
 					"imageFolders": [
-						"artsy",
+						"arts",
 						"buildings",
 						"classic",
 						"nature",
 						"paper"
 					],
-					"imageDefault": "/assets/images/paper/paper-01.webp"
+					"imageDefault": "/assets/images/samples/image-lumina-featured.webp"
 				},
 				"border": "color-mix(in srgb, currentColor 12%, transparent)",
 				"field": { 

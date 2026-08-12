@@ -1,32 +1,21 @@
-/*--------------------------------------------------------------
-## Browser-Side Aspect Ratio Fixes (High-Res Layout Sizes Only)
---------------------------------------------------------------*/
+/* ==========================================================================
+   GLOBAL: Base Image Resets & Aspect Ratio Classes
+   ========================================================================== */
 
-// 1. Structural Fluidity & Unified Center Crops
-// Nested to gain the selector specificity needed to defeat core block styles safely
-.wp-block-latest-posts__featured-image,
-.wp-block-post-featured-image,
-.wp-block-query {
-	
-	img.size-cropped-thumbnail,
-	img.size-cropped-large,
-	img.size-cropped-slim,
-	img.size-large {
-		width: 100%;
-		height: auto;
-		object-fit: cover;
-		object-position: center center;
-	}
+img {
+	max-width: 100%;
+	height: auto;
 }
 
-// 2. The Lumina 16:9 Cinematic Framework
+// Global Theme Aspect Ratios
 img.size-cropped-large,
 img.size-cropped-thumbnail,
 img.size-large {
 	aspect-ratio: 16 / 9;
+	object-fit: cover;
 }
 
-// 3. The Lumina 16:4.5 Ultra-Wide Panorama
 img.size-cropped-slim {
 	aspect-ratio: 16 / 4.5;
+	object-fit: cover;
 }

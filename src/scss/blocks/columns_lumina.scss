@@ -37,7 +37,7 @@
 }
 
 /* -------------------------------------------------------------------------
- * 2. DESKTOP VIEWPORTS (>= 782px via breakpoints module)
+ * 2. DESKTOP & TABLET VIEWPORTS (>= 782px via breakpoints module)
  * ------------------------------------------------------------------------- */
 @media (min-width: breakpoints.$break-medium) {
 
@@ -171,7 +171,71 @@
 }
 
 /* -------------------------------------------------------------------------
- * 3. MOBILE & STACKED VIEWPORTS (< 782px via breakpoints module)
+ * 3. TABLET SPECIFIC COLLAPSE (782px to 960px / $break-large)
+ * ------------------------------------------------------------------------- */
+@media (min-width: breakpoints.$break-medium) and (max-width: #{breakpoints.$break-large}) {
+
+	/* 4-Column Blocks -> 2x2 Grid on Tablet */
+	.wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(4)) {
+		display: grid !important;
+		grid-template-columns: repeat(2, 1fr) !important;
+
+		> .wp-block-column {
+			width: 100% !important;
+			max-width: 100% !important;
+			flex-basis: auto !important;
+			margin: 0 !important;
+		}
+	}
+
+	/* Crosshair Dividers: 4-Up in 2x2 Grid */
+	.wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(4)) {
+		> .wp-block-column:not(:first-child)::before {
+			content: none;
+		}
+
+		/* Vertical dividers for 2nd and 4th items */
+		> .wp-block-column:nth-child(2)::before {
+			content: "";
+			position: absolute;
+			width: 1px;
+			height: calc(100% + var(--gutter-divider-gap));
+			top: 0;
+			left: calc(var(--gutter-divider-gap) / -2);
+			background-color: color-mix(in srgb, currentColor 20%, transparent);
+			z-index: 2;
+			pointer-events: none;
+		}
+
+		> .wp-block-column:nth-child(4)::before {
+			content: "";
+			position: absolute;
+			width: 1px;
+			height: 100%;
+			top: 0;
+			left: calc(var(--gutter-divider-gap) / -2);
+			background-color: color-mix(in srgb, currentColor 20%, transparent);
+			z-index: 2;
+			pointer-events: none;
+		}
+
+		/* Horizontal divider line under row 1 */
+		> .wp-block-column:nth-child(3)::after {
+			content: "";
+			position: absolute;
+			height: 1px;
+			width: calc(200% + var(--gutter-divider-gap));
+			top: calc(var(--gutter-divider-gap) / -2);
+			left: 0;
+			background-color: color-mix(in srgb, currentColor 20%, transparent);
+			z-index: 2;
+			pointer-events: none;
+		}
+	}
+}
+
+/* -------------------------------------------------------------------------
+ * 4. MOBILE & STACKED VIEWPORTS (< 782px via breakpoints module)
  * ------------------------------------------------------------------------- */
 @media only screen and (max-width: #{ (breakpoints.$break-medium - 1) }) {
 

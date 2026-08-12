@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "thick-rounded-border",
+	"title": "Thick Border",
+	"blockTypes": [ "core/group", "core/columns", "core/column", "core/cover", "core/media-text", "core/comments", "core/code" ],
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--neutral)"
+		},
+		"border": {
+			"style": "solid",
+			"width": "2px",
+			"color": "var(--wp--custom--color--border)",
+			"radius": "var(--wp--custom--border--radius)"
+		},
+		"spacing": {
+			"padding": "var:preset|spacing|50"
+		}
+	}
+}

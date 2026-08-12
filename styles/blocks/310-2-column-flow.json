@@ -1,0 +1,10 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"slug": "2-columns",
+	"title": "2 Column Flow",
+	"blockTypes": [ "core/group" ],
+	"styles": {
+		"css": ""
+	}
+}

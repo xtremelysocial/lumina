@@ -46,6 +46,32 @@
   color: var(--wp--preset--color--foreground-alt);
 }
 
+/* Apply overflow clipping ONLY while the block displays an empty Gutenberg placeholder */
+.wp-block-post-featured-image:has(.components-placeholder) {
+  overflow: hidden;
+}
+
+/* Ensure the placeholder wrapper respects the 16:4.5 / 16:9 container aspect ratio */
+.wp-block-post-featured-image .components-placeholder {
+  max-height: 100%;
+  min-height: 0 !important;
+}
+
+.wp-block-latest-posts__featured-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wp-block-latest-posts__featured-image img[src*="-150x150"], .wp-block-latest-posts__featured-image img[style*="150px"] {
+  aspect-ratio: 1/1;
+}
+.wp-block-latest-posts__featured-image img[src*="-1168x329"], .wp-block-latest-posts__featured-image img[style*="329px"], .wp-block-latest-posts__featured-image img[style*="1168px"] {
+  aspect-ratio: 16/4.5;
+  max-height: none !important;
+}
+
 /* ==========================================================================
    50 EDITOR COLOR STYLES: Set colors in the Editor
 ========================================================================== */

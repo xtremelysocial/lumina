@@ -1,15 +1,16 @@
 /*!************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/paragraph_drop-cap.scss ***!
   \************************************************************************************************************************************************************************************************************************************/
-/* Custom Drop Cap Typography & Spacing */
+/*--------------------------------------------------------------
+# LUMINA Paragraph (Drop Cap)
+--------------------------------------------------------------*/
 .has-drop-cap:not(:focus)::first-letter {
   font-family: var(--wp--preset--font-family--heading);
-  font-size: 6rem;
-  font-weight: 500;
-  line-height: 0.85;
-  color: var(--wp--preset--color--dark);
-  float: right;
-  margin-top: 0.2rem;
-  margin-left: 0.75rem;
-  margin-bottom: 0.2rem;
+  font-weight: 600;
+  color: var(--wp--preset--color--primary-alt);
+  font-size: 3.4em;
+  line-height: 0.8;
+  margin-top: 0.05em;
+  margin-left: 0.5rem;
+  margin-bottom: -0.1em;
 }

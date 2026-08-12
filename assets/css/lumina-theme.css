@@ -21,37 +21,26 @@
 /**
  * Base SCSS Barrel File
  */
-/*--------------------------------------------------------------
-## Browser-Side Aspect Ratio Fixes (High-Res Layout Sizes Only)
---------------------------------------------------------------*/
-.wp-block-latest-posts__featured-image img.size-cropped-thumbnail,
-.wp-block-latest-posts__featured-image img.size-cropped-large,
-.wp-block-latest-posts__featured-image img.size-cropped-slim,
-.wp-block-latest-posts__featured-image img.size-large,
-.wp-block-post-featured-image img.size-cropped-thumbnail,
-.wp-block-post-featured-image img.size-cropped-large,
-.wp-block-post-featured-image img.size-cropped-slim,
-.wp-block-post-featured-image img.size-large,
-.wp-block-query img.size-cropped-thumbnail,
-.wp-block-query img.size-cropped-large,
-.wp-block-query img.size-cropped-slim,
-.wp-block-query img.size-large {
-  width: 100%;
+/* ==========================================================================
+   GLOBAL: Base Image Resets & Aspect Ratio Classes
+   ========================================================================== */
+img {
+  max-width: 100%;
   height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center center;
-     object-position: center center;
 }
 
 img.size-cropped-large,
 img.size-cropped-thumbnail,
 img.size-large {
   aspect-ratio: 16/9;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 img.size-cropped-slim {
   aspect-ratio: 16/4.5;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /*--------------------------------------------------------------
@@ -95,7 +84,7 @@ ol.is-style-list-dividers,
 # Padding and Margin Styles
 --------------------------------------------------------------*/
 /* Override parent theme's padding on colored blocks */
-.wp-block-group.has-background:not(.alignfull) {
+.wp-block-group.has-background:not(.alignfull):not(.is-layout-flex) {
   padding-left: var(--wp--preset--spacing--60);
   padding-right: var(--wp--preset--spacing--60);
 }

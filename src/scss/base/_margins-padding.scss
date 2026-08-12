@@ -8,7 +8,7 @@
 --------------------------------------------------------------*/
 
 /* Override parent theme's padding on colored blocks */
-.wp-block-group.has-background:not(.alignfull) {
+.wp-block-group.has-background:not(.alignfull):not(.is-layout-flex) {
 	padding-left: var(--wp--preset--spacing--60);
 	padding-right: var(--wp--preset--spacing--60);
 }

@@ -16,13 +16,52 @@
    v0.9.9 Build 30 MVP
    ========================================================================== */
 
+// LOAD EDITOR STYLES COLORS LOGIC
+@use "colors/50-editor-styles" as editor;
+
 // TEST
 // body, .editor-styles-wrapper {
 // 	outline: 10px solid red !important;
 // }
 
-// LOAD EDITOR STYLES COLORS LOGIC
-@use "colors/50-editor-styles" as editor;
+// Hide overflow so our slim images don't spill over the post title
+// .wp-block-post-featured-image {
+// 	overflow: hidden;
+// }
+
+/* Apply overflow clipping ONLY while the block displays an empty Gutenberg placeholder */
+.wp-block-post-featured-image:has(.components-placeholder) {
+	overflow: hidden;
+}
+
+/* Ensure the placeholder wrapper respects the 16:4.5 / 16:9 container aspect ratio */
+.wp-block-post-featured-image .components-placeholder {
+	max-height: 100%;
+	min-height: 0 !important;
+}
+
+// Set Latest Post block featured image aspect ratios 
+.wp-block-latest-posts__featured-image img {
+	width: 100%;
+	height: auto;
+	// Baseline default: Handles 16:9 (760x428), Large (1024x619), Medium, Medium-Large, etc.
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+
+	// 1. Square Thumbnail: Intercepts WordPress -150x150 filename or 150px inline styles
+	&[src*="-150x150"],
+	&[style*="150px"] {
+		aspect-ratio: 1 / 1;
+	}
+
+	// 2. Ultra-Wide Slim Banner: Intercepts 16:4.5 filename or inline Inspector styles
+	&[src*="-1168x329"],
+	&[style*="329px"],
+	&[style*="1168px"] {
+		aspect-ratio: 16 / 4.5;
+		max-height: none !important;
+	}
+}
 
 // LOAD EDITOR COLOR STYLES CSS
 @include editor.build-editor-hover-overrides();
