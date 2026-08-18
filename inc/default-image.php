@@ -16,6 +16,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * TEST & OVERRIDE CONFIGURATION
+ * Set to true to force default fallback images across ALL posts for testing.
+ * Set to false for normal production operation.
+ */
+if ( ! defined( 'FORCE_DEFAULT_IMAGE' ) ) {
+	define( 'FORCE_DEFAULT_IMAGE', true ); // Set to false for production
+}
+
+/**
  * 1. THE ENGINE CORE
  * Dynamically scans Lumina's asset directory for fallback images.
  */
@@ -24,35 +33,27 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 
 		$pid = $post_id ? $post_id : get_the_ID();
 		
-		// ---------------------------------------------------------
-		// CONFIGURATION & THEME.JSON DYNAMIC RESOLUTION
-		// ---------------------------------------------------------
 		$base_path        = 'assets/images/';
 
-		$keyword          = ''; // Optional filename prefix (e.g., 'sage-' or '')
-
-		$exclude_dirs     = [ 	// Subfolder names to skip
+		$exclude_dirs     = [
 			'thumbnails',
 			'samples',
 			'screenshots',
 		]; 
 
-		$exclude_prefixes = [   // Filename prefixes to skip
-		]; 
+		$exclude_prefixes = []; 
 		
 		$allowed_extensions = [ 'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg' ];
 
-		// Set a true default image path that actually exists in Lumina
-		$true_default       = 'assets/images/paper/paper-01.webp';
+		$true_default       = 'assets/images/samples/image-lumina-featured.webp';
 
-		// 1. Fetch Global Settings from theme.json
 		$global_settings = function_exists( 'wp_get_global_settings' ) ? wp_get_global_settings() : [];
-		$theme_custom    = $global_settings['custom']['color']['theme'] ?? [];
+		$custom_settings = $global_settings['custom'] ?? [];
+		$theme_custom    = $custom_settings['color']['theme'] ?? [];
 
 		$target_folders = [];
 
-		// Check for Array / String keys: 'image-folders', 'image-folder', 'images'
-		foreach ( [ 'image-folders', 'image-folder', 'images' ] as $key ) {
+		foreach ( [ 'image-folders', 'image-folder', 'images', 'imageFolders', 'imageFolder' ] as $key ) {
 			if ( ! empty( $theme_custom[ $key ] ) ) {
 				$val = $theme_custom[ $key ];
 				if ( is_array( $val ) ) {
@@ -63,9 +64,8 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 			}
 		}
 
-		// Check for Numbered Keys: 'image-folder-01', 'image-folder-02', etc.
 		foreach ( $theme_custom as $key => $val ) {
-			if ( preg_match( '/^image[-_]folder[-_]?\d+$/i', $key ) && ! empty( $val ) ) {
+			if ( preg_match( '/^image[-_]?folder[-_]?\d+$/i', $key ) && ! empty( $val ) ) {
 				if ( is_array( $val ) ) {
 					$target_folders = array_merge( $target_folders, $val );
 				} elseif ( is_string( $val ) ) {
@@ -76,19 +76,48 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 
 		$target_folders = array_filter( array_unique( $target_folders ) );
 
-		// Fallback to 'scheme' if no explicit image folders were configured
 		if ( empty( $target_folders ) && ! empty( $theme_custom['scheme'] ) ) {
 			$target_folders[] = $theme_custom['scheme'];
 		}
 
-		// ---------------------------------------------------------
-		// DIRECTORY SCANNING ENGINE (STRICTLY LUMINA / CHILD THEME)
-		// ---------------------------------------------------------
+		$target_keywords = [];
+		$keyword_keys    = [ 'imageKeywords', 'image-keywords', 'image_keywords', 'imageKeyword', 'image-keyword', 'keywords' ];
+		
+		$settings_sources = array_filter( [ $theme_custom, $custom_settings ] );
+
+		foreach ( $settings_sources as $source ) {
+			if ( ! is_array( $source ) ) {
+				continue;
+			}
+
+			foreach ( $keyword_keys as $key ) {
+				if ( ! empty( $source[ $key ] ) ) {
+					$val = $source[ $key ];
+					if ( is_array( $val ) ) {
+						$target_keywords = array_merge( $target_keywords, $val );
+					} elseif ( is_string( $val ) ) {
+						$target_keywords[] = $val;
+					}
+				}
+			}
+
+			foreach ( $source as $key => $val ) {
+				if ( preg_match( '/^image[-_]?keyword[s]?[-_]?\d+$/i', $key ) && ! empty( $val ) ) {
+					if ( is_array( $val ) ) {
+						$target_keywords = array_merge( $target_keywords, $val );
+					} elseif ( is_string( $val ) ) {
+						$target_keywords[] = $val;
+					}
+				}
+			}
+		}
+
+		$target_keywords = array_filter( array_map( 'trim', array_unique( $target_keywords ) ) );
+
 		$child_theme_root = wp_normalize_path( get_stylesheet_directory() );
 		$full_base_path   = trailingslashit( $child_theme_root ) . $base_path;
 		$paths_to_scan    = [];
 
-		// 1. Scan specified target folders
 		if ( ! empty( $target_folders ) ) {
 			foreach ( $target_folders as $folder ) {
 				$folder_path = trailingslashit( $full_base_path ) . trim( $folder, '/' ) . '/';
@@ -98,8 +127,6 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 			}
 		}
 
-		// 2. Auto-Discovery Fallback: If no target folders matched, scan ALL subfolders in Lumina assets/images/
-		// (Root /assets/images/ is excluded so pattern/static assets are never used as featured fallbacks)
 		if ( empty( $paths_to_scan ) && is_dir( $full_base_path ) ) {
 			$subdirs = glob( trailingslashit( $full_base_path ) . '*', GLOB_ONLYDIR );
 			if ( ! empty( $subdirs ) ) {
@@ -114,9 +141,8 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 
 		$images = [];
 
-		// Perform scan across resolved subdirectories
 		foreach ( $paths_to_scan as $scan_path ) {
-			$search_pattern = trailingslashit( $scan_path ) . $keyword . '*.{jpg,jpeg,png,gif,webp,svg}';
+			$search_pattern = trailingslashit( $scan_path ) . '*.{jpg,jpeg,png,gif,webp,svg}';
 			$matched_files  = glob( $search_pattern, GLOB_BRACE );
 
 			if ( ! empty( $matched_files ) && is_array( $matched_files ) ) {
@@ -132,6 +158,19 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 							}
 						}
 
+						if ( ! $should_exclude && ! empty( $target_keywords ) ) {
+							$has_keyword_match = false;
+							foreach ( $target_keywords as $kw ) {
+								if ( ! empty( $kw ) && stripos( $filename, $kw ) !== false ) {
+									$has_keyword_match = true;
+									break;
+								}
+							}
+							if ( ! $has_keyword_match ) {
+								$should_exclude = true;
+							}
+						}
+
 						if ( ! $should_exclude ) {
 							$normalized_file = wp_normalize_path( $file );
 							$images[]        = ltrim( str_replace( $child_theme_root, '', $normalized_file ), '/' );
@@ -143,9 +182,6 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 
 		$images = array_values( array_unique( $images ) );
 
-		// ---------------------------------------------------------
-		// RESOLVE TARGET FILE PATH
-		// ---------------------------------------------------------
 		if ( ! empty( $images ) ) {
 			$hash_seed            = 'lumina_' . $pid;
 			$hashed_val           = abs( crc32( $hash_seed ) );
@@ -155,14 +191,11 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 			$target_relative_path = $true_default;
 		}
 
-		// ---------------------------------------------------------
-		// GENERATE FINAL WRAPPER DATA (FORCED TO CHILD THEME URI)
-		// ---------------------------------------------------------
 		$default_url = get_stylesheet_directory_uri() . '/' . $target_relative_path;
-		$default_url = apply_filters( 'flatblocks_default_image_url', $default_url, $pid );
+		$default_url = apply_filters( 'lumina_default_image_url', $default_url, $pid );
 
 		$image_alt = esc_attr( get_the_title( $pid ) );
-		$image_alt = apply_filters( 'flatblocks_default_image_alt', $image_alt, $pid );
+		$image_alt = apply_filters( 'lumina_default_image_alt', $image_alt, $pid );
 
 		return [
 			'url' => $default_url,
@@ -176,7 +209,9 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
  */
 if ( ! function_exists( __NAMESPACE__ . '\filter_cover_block_fallback' ) ) {
 	function filter_cover_block_fallback( $block_content, $block ) {
-		if ( ! empty( $block['attrs']['useFeaturedImage'] ) && ! get_post_thumbnail_id( get_the_ID() ) ) {
+		$force_override = defined( 'FORCE_DEFAULT_IMAGE' ) && FORCE_DEFAULT_IMAGE;
+
+		if ( ! empty( $block['attrs']['useFeaturedImage'] ) && ( $force_override || ! get_post_thumbnail_id( get_the_ID() ) ) ) {
 			$fallback = get_featured_image_fallback_data( get_the_ID() );
 			
 			if ( preg_match( '/src=["\']([^"\']*)["\']/i', $block_content ) ) {
@@ -194,13 +229,13 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_cover_block_fallback' ) ) {
  */
 if ( ! function_exists( __NAMESPACE__ . '\filter_legacy_post_thumbnail_html' ) ) {
 	function filter_legacy_post_thumbnail_html( $html, $pid, $post_thumbnail_id, $size, $attr ) {
+		$force_override = defined( 'FORCE_DEFAULT_IMAGE' ) && FORCE_DEFAULT_IMAGE;
 
-		// Only intercept and inject a fallback image if no real thumbnail exists
-// 		if ( ! $html && $pid ) {
+		// Only force fallback if constant is true OR post missing a real thumbnail
+		if ( $force_override || ! $post_thumbnail_id ) {
 			$fallback    = get_featured_image_fallback_data( $pid );
 			$image_class = $size ? "attachment-{$size} size-{$size} wp-post-image" : 'wp-post-image';
 			
-			// Preserve block classes passed by WordPress (e.g. has-highlight-border-color)
 			if ( is_array( $attr ) && ! empty( $attr['class'] ) ) {
 				$image_class .= ' ' . $attr['class'];
 			}
@@ -212,7 +247,7 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_legacy_post_thumbnail_html' ) )
 			$image_dimensions = $dimensions ? sprintf( 'width="%d" height="%d"', $dimensions[1], $dimensions[2] ) : '';
 			$image_style     .= $dimensions ? sprintf( 'width:%dpx;height:%dpx;', $dimensions[1], $dimensions[2] ) : '';
 			
-			$html = sprintf(
+			return sprintf(
 				'<img loading="lazy" decoding="async" src="%s" alt="%s" class="%s" style="%s" %s />',
 				esc_url( $fallback['url'] ),
 				esc_attr( $fallback['alt'] ),
@@ -220,7 +255,7 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_legacy_post_thumbnail_html' ) )
 				esc_attr( $image_style ),
 				$image_dimensions
 			);
-// 		}
+		}
 
 		return $html;
 	}

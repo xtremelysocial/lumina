@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "outline-border",
+	"title": "Outline Border",
+	"blockTypes": [ "core/group", "core/column", "core/comments" ],
+	"styles": {
+		"border": {
+			"style": "solid",
+			"width": "1px",
+			"color": "var(--wp--custom--color--border)",
+			"radius": "var(--wp--custom--border--radius)"
+		},
+		"spacing": {
+			"padding": "var(--wp--preset--spacing--40)"
+		}
+	}
+}

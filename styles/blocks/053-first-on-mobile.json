@@ -1,0 +1,10 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "first-on-mobile",
+	"title": "First on Mobile",
+	"blockTypes": [ "core/column" ],
+	"styles": {
+		"css": ""
+	}
+}

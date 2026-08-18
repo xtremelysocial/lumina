@@ -24,11 +24,18 @@ if ( ! function_exists( 'lumina_theme_support' ) ) :
 		// true = center crop.
 		set_post_thumbnail_size( 1168, 667, true );
 				
-		// Selectable image sizes in the Block Editor
+		// 16:9 image sizes
+		add_image_size( 'cropped-full', 1600, 900, true );
 		add_image_size( 'cropped-large', 1168, 657, true );
 		add_image_size( 'cropped-thumbnail', 760, 428, true );
+				
+		// Selectable 16:4.5 image sizes
 		add_image_size( 'cropped-slim', 1168, 329, true );
 
+		// 21:9 image sizes
+// 		add_image_size( 'cropped-ultrawide', 1168, 501, true );
+		add_image_size( 'cropped-ultrawide', 1600, 686, true );
+		
 		// Enqueue global styles needed for the editor iframe.
 		add_theme_support( 'editor-styles' );
 
@@ -65,7 +72,8 @@ $includes = array (
 	'/inc/add-body-classes.php',
 	'/inc/default-image.php',
 	'/inc/parent-theme.php',
-	'/inc/block-variations.php',
+// 	'/inc/block-variations.php',
+	'/inc/block-bindings.php',
 	'/inc/remove-core-patterns.php',
 );
 
@@ -86,7 +94,7 @@ if ( ! function_exists( 'lumina_load_styles' ) ) :
 
 	function lumina_load_styles() {
 
-		// Dynamically get parent theme slug ('flat-blocks') only when active as a child theme
+		// Dynamically get parent theme slug (e.g. 'flat-blocks') only when active as a child theme
 		$deps = array();
 		if ( is_child_theme() ) {
 			$deps[] = get_template(); 
@@ -273,9 +281,11 @@ if ( ! function_exists( 'lumina_image_sizes' ) ) :
 	function lumina_image_sizes( $sizes ) {
 		return array_merge( $sizes, array(
 			'medium-large'      => __( 'Medium Large', 'lumina' ),
-			'cropped-thumbnail' => __( 'Post Thumbnail Medium (cropped)', 'lumina' ),
+			'cropped-thumbnail' => __( 'Post Thumbnail Medium 16:9 (cropped)', 'lumina' ),
+			'cropped-full'     	=> __( 'Post Thumbnail Full 16:9 (cropped)', 'lumina' ),
 			'cropped-large'     => __( 'Post Thumbnail Large (cropped)', 'lumina' ),
 			'cropped-slim'      => __( 'Lumina Slim Banner 16:4.5 (cropped)', 'lumina' ),
+			'cropped-ultrawide' => __( 'Lumina Ultrawide 21:9 (cropped)', 'lumina' ),
 		) );
 	}
 endif;

@@ -9,7 +9,7 @@
 ?>
 <!-- wp:social-links {"openInNewTab":true,"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"left"}} -->
 <ul class="wp-block-social-links">
-<!-- wp:social-link {"url":"https://wordpress.org","service":"wordpress"} /-->
-<!-- wp:social-link {"url":"https://facebook.com/WordPress/","service":"facebook"} /-->
-<!-- wp:social-link {"url":"https://x.com/wordpress","service":"x"} /-->
+<!-- wp:social-link {"url":"https://instagram.com/wordpress","service":"instagram"} /-->
+<!-- wp:social-link {"url":"https://facebook.com/wordpress/","service":"facebook"} /-->
+<!-- wp:social-link {"url":"https://youtube.com/wordpress","service":"youtube"} /-->
 </ul><!-- /wp:social-links -->

@@ -4,7 +4,7 @@
  * Slug: lumina/text-theme-name
  * Categories: lumina, text
  * Inserter: false
- * viewportWidth: 640
+ * viewportWidth: 760
  * Description: Theme name with link
  */
 

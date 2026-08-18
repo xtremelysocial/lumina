@@ -4,7 +4,7 @@
  * Description: Text Title And Subtitle With Bg Image
  * Slug: lumina/text-title-and-subtitle-with-bg-image
  * Categories: lumina, media, text
- * Block Types: core/text
+ * Block Types: core/paragraph
  */
 ?>
 <!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( "assets/images/classic/classic-04.webp" ) ); ?>","dimRatio":60,"minHeight":130,"minHeightUnit":"px","align":"full","style":{"spacing":{"margin":{"top":"0"}}}} -->

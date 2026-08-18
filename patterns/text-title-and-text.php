@@ -4,7 +4,7 @@
  * Description: Text Title And Text
  * Slug: lumina/text-title-and-text
  * Categories: lumina, text
- * Block Types: core/text
+ * Block Types: core/paragraph
  */
 ?>
 <!-- wp:group {"align":"full","style":{"spacing":{"margin":{"top":"0"}}},"backgroundColor":"secondary","className":"alignfull is-style-default","layout":{"type":"constrained"}} -->

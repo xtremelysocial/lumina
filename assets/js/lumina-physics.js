@@ -13,7 +13,7 @@
 	$(document).ready(function() {
 
 		/*
-		 * DETAIL OPEN / CLOSE: Retains user setting
+		 * 01. DETAIL OPEN / CLOSE: Retains user setting
 		 */
 		$( 'details' ).each( function( index ) {
 			const $details = $( this );
@@ -50,7 +50,78 @@
 		} );
 
 		/*
-		 * DYNAMIC CARD ENGINE: Turn single-link cards into unified click targets
+		 * 02. MEDIA FRAME ENGINE & VIEWPORT AUTO-WRAPPER
+		 */
+
+		// A. Unified Mat Targets: Auto-wraps unlinked framed/pan-zoom images in a static viewport
+		var matContainersSelector = [
+			'.wp-block-media-text.is-style-image-border .wp-block-media-text__media',
+			'.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media',
+			'.wp-block-image.is-style-image-border',
+			'.wp-block-image.is-style-pan-zoom',
+			'.wp-block-post-featured-image.is-style-image-border',
+			'.wp-block-post-featured-image.is-style-pan-zoom'
+		].join( ', ' );
+
+		$( matContainersSelector ).each( function() {
+			var $container = $( this );
+
+			// Skip if the image is already wrapped in an <a> tag (link/lightbox handles its own viewport)
+			if ( $container.children( 'a' ).length > 0 ) {
+				return;
+			}
+
+			var $img = $container.children( 'img' );
+
+			if ( $img.length && !$img.parent().hasClass( 'lumina-image-viewport' ) ) {
+				$img.wrap( '<div class="lumina-image-viewport"></div>' );
+			}
+		} );
+
+		// B. Radius & Border Sync: Transfers Gutenberg inline styles from <img> to outer <figure> mask
+		var matFiguresSelector = [
+			'.wp-block-image.is-style-pan-zoom',
+			'.wp-block-post-featured-image.is-style-pan-zoom',
+			'.wp-block-image.is-style-image-border',
+			'.wp-block-post-featured-image.is-style-image-border'
+		].join( ', ' );
+
+		$( matFiguresSelector ).each( function() {
+			var $figure = $( this );
+			var $img    = $figure.find( 'img' );
+
+			if ( $img.length ) {
+				var borderRadius = $img.css( 'border-top-left-radius' );
+				
+				if ( borderRadius && borderRadius !== '0px' ) {
+					var outerPx = parseFloat( borderRadius ) || 9;
+					
+					// Concentric Math: Outer Radius (9px) - Padding (6px) - Border (1px) = 2px
+					var innerPx = Math.max( 0, outerPx - 6 - 1 ) + 'px';
+
+					// Inject both CSS variables onto <figure> inline style
+					$figure[0].style.setProperty( '--outer-radius', borderRadius );
+					$figure[0].style.setProperty( '--inner-border-radius', innerPx );
+
+					$figure.css( {
+						'border-radius': borderRadius,
+						'border-top-left-radius': $img.css( 'border-top-left-radius' ),
+						'border-top-right-radius': $img.css( 'border-top-right-radius' ),
+						'border-bottom-left-radius': $img.css( 'border-bottom-left-radius' ),
+						'border-bottom-right-radius': $img.css( 'border-bottom-right-radius' )
+					} );
+
+					// Zero out inner image radius & border so scaling stays inside the mask
+					$img.css( {
+						'border-radius': '0',
+						'border': 'none'
+					} );
+				}
+			}
+		} );
+
+		/*
+		 * 03. DYNAMIC CARD ENGINE: Turn single-link cards into unified click targets
 		 */
 	
 		// Selector string matching any WP Core Lightbox trigger or container element
@@ -196,13 +267,11 @@
 				}
 			}
 		});
-		
-		// 4. MOBILE TOUCH HANDLER
+
+		// 04. MOBILE TOUCH HANDLER (Clean Card-Only Target)
 		$(document).on('touchstart', '.is-interactive-card', function(e) {
 			var $card = $(this);
-			var $target = getValidTarget($card);
-			if (!$target) return;
-
+		
 			if (!$card.hasClass('is-active')) {
 				$('.is-interactive-card').not($card).removeClass('is-active');
 				$card.addClass('is-active');
@@ -211,18 +280,18 @@
 				$card.data('just-activated', false);
 			}
 		});
-
+		
 		$(document).on('touchmove', function() {
 			$('.is-interactive-card').data('just-activated', false);
 		});
-
+		
 		$(document).on('touchstart click', function(e) {
 			if (!$(e.target).closest('.is-interactive-card').length) {
 				$('.is-interactive-card').removeClass('is-active');
 			}
-		});
+		});		
 	
-		// 5. ACTION: Click / Navigation Handler
+		// 05. ACTION: Click / Navigation Handler
 		$(document).on('click', '.is-interactive-card', function(e) {
 			var $card = $(this);
 			var $target = getValidTarget($card);
@@ -269,6 +338,7 @@
 				$target[0].click();
 			}
 		});
+
 	});
 	
 } )( jQuery );

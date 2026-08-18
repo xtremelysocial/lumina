@@ -40,16 +40,3 @@
 		column-count: 2;
 	}
 }
-
-// /* One-click style for Group Grids */
-// .wp-block-group.is-style-group-grid-dividers {
-//      background-color: color-mix(in srgb, currentColor 15%, transparent) !important; /* The line color */
-//      gap: 1px !important; /* Creates 1px dividers horizontally and vertically */
-//      padding: 1px; /* Prevents outer border bleeding */
-// 
-//      /* Ensure child cards/items cover the gap background */
-//      > * {
-//           background-color: var(--wp--preset--color--base, #ffffff);
-//           margin: 0 !important;
-//      }
-// }

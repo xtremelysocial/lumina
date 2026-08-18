@@ -1,11 +1,11 @@
 /* ==========================================================================
-   LUMINA BLOCKS: Post Featured Image
+   LUMINA: Post Featured Image
    ========================================================================== */
 
 .wp-block-post-featured-image {
 	max-width: 100%;
 
-	// Resets flat-blocks img padding/shadow and enforces responsive sizing
+	// Overrides parent theme img padding/shadow and enforces responsive sizing
 	img {
 		width: 100%;
 		height: auto;

@@ -29,18 +29,38 @@ img {
   height: auto;
 }
 
+/* Global Theme Aspect Ratios */
+/* 16:9 Standard & Full Widescreen Ratios */
+img.size-cropped-full,
 img.size-cropped-large,
 img.size-cropped-thumbnail,
-img.size-large {
+img.size-large,
+.size-cropped-full img,
+.size-cropped-large img,
+.size-cropped-thumbnail img,
+.size-large img {
   aspect-ratio: 16/9;
   -o-object-fit: cover;
      object-fit: cover;
+  width: 100%;
 }
 
-img.size-cropped-slim {
+/* 21:9 Master Ultrawide Ratio */
+img.size-cropped-ultrawide,
+.size-cropped-ultrawide img {
+  aspect-ratio: 21/9;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+
+/* 16:4.5 Lumina Slim Banner Ratio */
+img.size-cropped-slim,
+.size-cropped-slim img {
   aspect-ratio: 16/4.5;
   -o-object-fit: cover;
      object-fit: cover;
+  width: 100%;
 }
 
 /*--------------------------------------------------------------

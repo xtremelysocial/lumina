@@ -9,8 +9,8 @@
 # Lumina: Block Style — Left Aligned Icon
 -----------------------------------------------------------------------------*/
 .wp-block-icon.is-style-align-left {
-  margin-right: -0.25em; /* Optically pulls internal SVG vector paths flush to text edge */
-  margin-left: 0.15em; /* Creates consistent breathing room before heading */
-  align-self: center; /* Vertically centers icon frame against adjacent heading */
-  flex-shrink: 0; /* Prevents icon box from squeezing in narrow columns */
+  margin-right: -0.25em;
+  margin-left: 0.15em;
+  align-self: center;
+  flex-shrink: 0;
 }

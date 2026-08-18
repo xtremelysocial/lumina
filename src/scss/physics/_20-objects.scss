@@ -1,0 +1,156 @@
+//* ==========================================================================
+//   20 OBJECTS: Container Contents (e.g. Images, Columns)
+//	    v0.9.9 Build 30 MVP
+//   ========================================================================== */
+
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:map';
+
+// @use '00-config' as config;
+// @use 'physics' as phys;
+@use '00-config' as config;
+@use '04-registry' as phys;
+
+@mixin apply-object-logic($interactive: false) {
+
+	@if config.$lumina-dev-mode {
+	/* ==========================================================================
+	   20 OBJECTS: Container Contents (e.g. Images, Columns)
+	   ========================================================================== */
+	}
+
+	// LOOP THROUGH OBJECTS IN OUR BLOCK REGISTRY
+	@each $entry in config.$lumina-block-registry {
+
+		// MERGE REGISTRY ENTRY WITH DEFAULTS
+		$config: map.merge(config.$registry-defaults, $entry);
+		$role:   map.get($config, role);
+	
+		@if string.index($role, 'object') != null {
+
+			// EXTRACT INDIVIDIAL FIELDS
+			$block:   map.get($config, block);
+			$is:      map.get($config, is);
+			$has:     map.get($config, has);
+			$exclude: map.get($config, exclude);			
+			$trigger: map.get($config, trigger);
+			$target:  map.get($config, target);
+				
+			// GET WRAPPER SELECTOR
+			$wrapper-sel: phys.compile-selector(
+				$block, $is, $has, $exclude,
+				$trigger, $target, 
+				'wrapper',
+				$role
+			);
+
+			// GET TARGET SELECTOR
+			$target-sel: phys.compile-selector(
+				$block, $is, $has, $exclude,
+				$trigger, $target, 
+				'target',
+				$role
+			);
+
+			// ADD OBJECTS AND IMAGES TO THE VETO LISTS
+// 			$sel-to-register: if($target != 'self', $wrapper-sel, $target-sel);
+			$sel-to-register: if(sass($target != "self"): $wrapper-sel; else: $target-sel);	
+			@if $role == 'object' {
+				@if not list.index(phys.get-objects(), $sel-to-register) {
+					@include phys.register-object($sel-to-register);
+				}
+			} @else if $role == 'object-zoom' or $role == 'object-grow' {
+				@if not list.index(phys.get-images(), $sel-to-register) {
+					@include phys.register-image($sel-to-register);
+				}
+			}
+			
+			// ----------------------------------------------------------------------
+			// PHASE 1: RESTING STATE (Rendered to lumina-engine.css)
+			// ----------------------------------------------------------------------
+			@if not $interactive {
+			
+				// CONDITION 1: Separate Wrapper Behavior Needed (e.g. Zoom Portals)
+				// Only apply wrapper styling if target is NOT self.
+				@if $target != 'self' {
+					#{$wrapper-sel} {
+						@include phys.apply-wrapper-resting-state(
+							$role: $role,
+							$block: $block,
+						);
+					}
+				}
+		
+				// CONDITION 2: Main Target Behavior (Applies to everything)
+				// For Columns, this naturally grabs the wrapper level string. 
+				// For Images, the child path.
+				#{$target-sel} {
+					@include phys.apply-resting-state(
+						$role: $role,
+						$block: $block,
+						$trigger: $trigger
+					);
+				}
+			}
+			
+			// ----------------------------------------------------------------------
+			// PHASE 2: INTERACTION STATE (Rendered to lumina-interactions.css)
+			// ----------------------------------------------------------------------
+			@else {
+				
+				// CONDITION 1: Separate Wrapper Interaction (Depth Lifts / Structural Shadows)
+				@if $target != 'self' {
+					$wrapper-hover: phys.compile-selector(
+						$block, $is, $has, $exclude,
+						$trigger, $target, 
+						'wrapper-hover',
+						$role
+					);
+					
+					// GET WRAPPER FOCUS SELECTOR
+					$wrapper-focus: phys.compile-selector(
+						$block, $is, $has, $exclude,
+						$trigger, $target, 
+						'wrapper-focus',
+						$role
+					);
+	
+					// WRITE WRAPPER FOCUS
+					#{$wrapper-hover}, 
+					#{$wrapper-focus} {
+						@include phys.apply-active-state(
+							$role: $role,
+							$context: 'wrapper'
+						);
+					}
+				}
+	
+				// CONDITION 2: Main Target Interaction (Kinetic Scale / Structural Leaps)
+				$target-hover: phys.compile-selector(
+					$block, $is, $has, $exclude,
+					$trigger, $target, 
+					'target-hover',
+					$role
+				);
+	
+				// GET TARGET FOCUS SELECTOR
+				$target-focus: phys.compile-selector(
+					$block, $is, $has, $exclude,
+					$trigger, $target, 
+					'target-focus', 
+					$role
+				);
+	
+				// WRITE TARGET FOCUS
+				#{$target-hover}, 
+				#{$target-focus} {
+					@include phys.apply-active-state(
+						$role: $role,
+						$context: 'target'
+					);
+				}        
+			}
+		}
+	}
+}

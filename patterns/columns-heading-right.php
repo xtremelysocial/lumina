@@ -18,8 +18,8 @@
 	</div>
 	<!-- /wp:column -->
 
-	<!-- wp:column {"width":"33.33%","metadata":{"name":"Heading"}} -->
-	<div class="wp-block-column" style="flex-basis:33.33%">
+	<!-- wp:column {"width":"33.33%","metadata":{"name":"Heading"},"className":"is-style-first-on-mobile"} -->
+	<div class="wp-block-column is-style-first-on-mobile" style="flex-basis:33.33%">
 		<!-- wp:heading {"className":"is-style-separator"} -->
 		<h2 class="wp-block-heading is-style-separator"><?php esc_html_e( 'Section Title', 'lumina' ); ?></h2>
 		<!-- /wp:heading -->

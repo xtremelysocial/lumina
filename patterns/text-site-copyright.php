@@ -13,7 +13,7 @@
 <p>© </p>
 <!-- /wp:paragraph -->
 
-<!-- wp:pattern {"slug":"flat-blocks/text-current-year"} /-->
+<!-- wp:pattern {"slug":"lumina/text-current-year"} /-->
 
-<!-- wp:pattern {"slug":"flat-blocks/text-site-title-paragraph"} /--></div>
+<!-- wp:pattern {"slug":"lumina/text-site-title-paragraph"} /--></div>
 <!-- /wp:group -->

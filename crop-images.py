@@ -73,13 +73,16 @@ from PIL import Image
 # ==============================================================================
 # CONFIGURATION FROM ENVIRONMENT VARIABLES
 # ==============================================================================
-SOURCE_DIR = os.environ.get("SOURCE_DIR", ".")
-OUTPUT_DIR = os.environ.get("OUTPUT_DIR", os.path.join(SOURCE_DIR, "cropped_1600x900"))
 QUALITY = int(os.environ.get("QUALITY", "85"))
 OUTPUT_FORMAT = os.environ.get("OUTPUT_FORMAT", "webp").lower()
 TARGET_W = 1600
 TARGET_H = 900
+#TARGET_H = 686
 TARGET_RATIO = TARGET_W / TARGET_H
+
+SOURCE_DIR = os.environ.get("SOURCE_DIR", ".")
+#OUTPUT_DIR = os.environ.get("OUTPUT_DIR", os.path.join(SOURCE_DIR, "cropped_1600x900"))
+OUTPUT_DIR = os.environ.get("OUTPUT_DIR", os.path.join(SOURCE_DIR, f"cropped_{TARGET_W}x{TARGET_H}"))
 
 VALID_EXTS = (".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tiff")
 

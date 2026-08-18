@@ -10,13 +10,15 @@
 					"mode": "is-light-theme",
 					"scheme": "lumina",
 					"imageFolders": [
-						"arts",
-						"buildings",
-						"classic",
-						"nature",
-						"paper"
+						"lumina"
 					],
 					"imageDefault": "/assets/images/samples/image-lumina-featured.webp"
+				},
+				"opacity": {
+					"faint": "color-mix(in srgb, currentColor 5%, transparent)",
+					"subtle": "color-mix(in srgb, currentColor 15%, transparent)",
+					"emphasis": "color-mix(in srgb, currentColor 35%, transparent)",
+					"muted": "color-mix(in srgb, currentColor 60%, transparent)"
 				},
 				"border": "color-mix(in srgb, currentColor 12%, transparent)",
 				"field": { 
@@ -34,7 +36,7 @@
 				"heading": {
 					"text": 		"var(--wp--preset--color--contrast)",
 					"separator": 	"var(--wp--preset--color--tertiary)"
-				},			
+				},
 				"shadow": {
 					"natural": "1px 4px 8px rgba(42, 50, 61, 0.14), 1px 2px 3px rgba(42, 50, 61, 0.08)",
 					"deep":    "2px 8px 16px rgba(42, 50, 61, 0.20), 1px 4px 6px rgba(42, 50, 61, 0.12)",
@@ -183,7 +185,13 @@
 			"core/image": {
 				"lightbox": {
 					"allowEditing": true,
-					"enabled": false
+					"enabled": true
+				}
+			},
+			"core/post-featured-image": {
+				"lightbox": {
+					"allowEditing": true,
+					"enabled": true
 				}
 			},
 			"core/gallery": {
@@ -496,7 +504,7 @@
                         "right": "var:preset|spacing|20"
                     }
                 }
-            },			
+            },
 			"core/site-title": {
 				"typography": {
 					"fontSize": "var:preset|font-size|large",
@@ -682,13 +690,43 @@
 		{
 			"name": "featured-image-wide",
 			"title": "Lumina Wide Featured Image",
-			"description": "Lumina wide featured image",
+			"description": "Lumina wide (16:9) featured image",
 			"area": "content"
 		},
 		{
 			"name": "featured-image-wide-linked",
 			"title": "Lumina Wide Featured Image (linked)",
-			"description": "Lumina linked wide featured image",
+			"description": "Lumina linked wide (16:9) featured image",
+			"area": "content"
+		},
+		{
+			"name": "featured-image-slim",
+			"title": "Lumina Slim Featured Image",
+			"description": "Lumina slim (16:4.5) featured image",
+			"area": "content"
+		},
+		{
+			"name": "featured-image-slim-linked",
+			"title": "Lumina Slim Featured Image (linked)",
+			"description": "Lumina linked slim (16:4.5) featured image",
+			"area": "content"
+		},
+		{
+			"name": "featured-image-ultrawide",
+			"title": "Lumina Ultrawide Featured Image",
+			"description": "Lumina ultrawide (21:9) featured image",
+			"area": "content"
+		},
+		{
+			"name": "featured-image-ultrawide-linked",
+			"title": "Lumina Ultrawide Featured Image (linked)",
+			"description": "Lumina linked ultrawide (21:9) featured image",
+			"area": "content"
+		},
+		{
+			"name": "contact-info",
+			"title": "Lumina Contact Info",
+			"description": "Contact Info (e.g. address, phone, email)",
 			"area": "content"
 		},
 		{
@@ -737,6 +775,18 @@
 			"name": "footer-colored",
 			"title": "Lumina Alternate Dark Footer",
 			"description": "A dark footer alternative with tertiary colors",
+			"area": "footer"
+		},
+		{
+			"name": "footer-about-2-navs-contact-info",
+			"title": "Lumina Footer About, 2 Menus, Contact Info",
+			"description": "Footer w/block 3 (About), 2 nav menus, and contact info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-about-2-navs-contact-site-info",
+			"title": "Lumina Footer About, 2 Menus, Contact & Site Info",
+			"description": "Footer w/block 3 (About), 2 nav menus, contact info, site info",
 			"area": "footer"
 		}
 	]

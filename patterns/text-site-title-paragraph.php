@@ -3,8 +3,7 @@
  * Title: Site Title Paragraph Link
  * Slug: lumina/text-site-title-paragraph
  * Categories: lumina, text
- * Inserter: false
- * viewportWidth: 640
+ * viewportWidth: 760
  * Description: Displays the dynamic site title wrapped in a paragraph link for flawless footer alignment.
  */
 

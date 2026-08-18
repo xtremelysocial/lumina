@@ -1,0 +1,97 @@
+//* ==========================================================================
+//   30 BUTTONS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+// 	    v0.9.9 Build 30 MVP
+//   ========================================================================== */
+
+@use 'sass:list';
+@use 'sass:map';
+
+// @use '00-config' as config;
+// @use 'physics' as phys;
+@use '00-config' as config;
+@use '04-registry' as phys;
+
+@mixin apply-button-logic($interactive: false) {
+
+	@if config.$lumina-dev-mode {
+	/* ==========================================================================
+	   30 BUTTONS: Buttons and Button-like Objects (e.g. Buttons, Tag Clouds)
+	   ========================================================================== */
+	}
+
+	// LOOP THROUGH BUTTONS IN OUR PHYSICS MAP
+	@each $entry in config.$lumina-block-registry {
+
+		// 1. MERGE REGISTRY ENTRY WITH DEFAULTS
+		$config: map.merge(config.$registry-defaults, $entry);
+		$role:   map.get($config, role);
+
+		@if $role == 'button' {
+
+			// 2. EXTRACT INDIVIDIAL FIELDS
+			$block:   map.get($config, block);
+			$is:      map.get($config, is);
+			$has:     map.get($config, has);
+			$exclude: map.get($config, exclude);			
+			$trigger: map.get($config, trigger);
+			$target:  map.get($config, target);
+			
+			$spacing: map.get($config, spacing);
+
+			// ----------------------------------------------------------------------
+			// PHASE 1: RESTING STATE (Rendered to lumina-engine.css)
+			// ----------------------------------------------------------------------
+			@if not $interactive {
+
+				// GET THE TARGET SELECTOR
+				$target-sel: phys.compile-selector(
+					$block, $is, $has, $exclude,
+					$trigger, $target, 
+					'target',
+					$role
+				);
+					
+				// WRITE OUT THE CSS FOR THE TARGET
+				#{$target-sel} {
+					@include phys.apply-resting-state(
+						$role: $role,
+						$block: $block,
+						$trigger: $trigger
+					);
+
+					// ADD MARGIN TO LEGACY HTML BUTTONS ONLY
+					@if $spacing {
+						@include phys.apply-button-spacing;
+					}
+				}
+
+			// ----------------------------------------------------------------------
+			// PHASE 2: INTERACTION STATE (Rendered to lumina-interactions.css)
+			// ----------------------------------------------------------------------
+			} @else {
+			
+				$target-hover: phys.compile-selector(
+					$block, $is, $has, $exclude,
+					$trigger, $target, 
+					'target-hover',
+					$role
+				);
+	
+				$target-focus: phys.compile-selector(
+					$block, $is, $has, $exclude,
+					$trigger, $target, 
+					'target-focus', 
+					$role
+				);
+	
+				#{$target-hover}, 
+				#{$target-focus} {
+					@include phys.apply-active-state(
+						$role: $role,
+						$context: 'target'
+					);
+				}
+			}
+		}
+	}
+}

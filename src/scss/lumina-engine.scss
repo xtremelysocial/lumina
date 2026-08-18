@@ -1,17 +1,10 @@
-// /* ==========================================================================
-//    LUMINA ENGINE: Registers objects and sets their resting states
-//    ========================================================================== */
+/* ==========================================================================
+   LUMINA ENGINE: Registers objects and sets their resting states
+   ========================================================================== */
 
-// Load all needed mixins
-@use 'engine/00-config' as config;
 @use 'physics' as phys;
-@use 'engine/02-global' as global;
-@use 'engine/10-cards' as cards;
-@use 'engine/20-objects' as objects;
-@use 'engine/30-buttons' as buttons;
-@use 'engine/40-vetos' as vetos;
 
-@if config.$lumina-dev-mode {
+@if phys.$lumina-dev-mode {
 /* ==========================================================================
    LUMINA ENGINE: Registers objects and sets their resting states
    v0.9.9 Build 30 MVP
@@ -19,16 +12,16 @@
 }
 
 // LOAD GLOBAL CSS
-@include global.apply-global-logic($interactive: false);
+@include phys.apply-global-logic($interactive: false);
 
 // LOAD CARD CSS
-@include cards.apply-card-logic($interactive: false);
+@include phys.apply-card-logic($interactive: false);
 
 // LOAD OBJECT CSS
-@include objects.apply-object-logic($interactive: false);
+@include phys.apply-object-logic($interactive: false);
 
 // LOAD BUTTON CSS
-@include buttons.apply-button-logic($interactive: false);
+@include phys.apply-button-logic($interactive: false);
 
 // LOAD CARD AND OBJECT VETO CSS
-@include vetos.apply-veto-logic($interactive: false);
+@include phys.apply-veto-logic($interactive: false);

@@ -31,9 +31,7 @@
 					"hover": "var(--wp--preset--color--primary-alt)",
 					"hoverOpacity": "0.85"
 				},
-				"nav": {
-					"highlight": "var(--wp--preset--color--highlight)"
-				},
+				"highlight": "var(--wp--preset--color--highlight)",
 				"shadow": {
 					"natural": "0 2px 4px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.30)",
 					"deep":    "0 3px 6px rgba(0, 0, 0, 0.30), 0 8px 18px rgba(0, 0, 0, 0.40)",

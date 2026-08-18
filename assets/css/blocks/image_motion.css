@@ -1,0 +1,145 @@
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/image_motion.scss ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/* ==========================================================================
+   FEATURED HERO PAN & ZOOM (CINEMATIC VIDEO LOOP SIMULATOR)
+   ========================================================================== */
+/* ==========================================================================
+   KEYFRAME ANIMATION ENGINES
+   ========================================================================== */
+@keyframes luminaPanZoomVideoLoop {
+  0% {
+    transform: scale(1.15) translate(-3.5%, 2.5%);
+    filter: brightness(1);
+  }
+  100% {
+    transform: scale(1.32) translate(3.5%, -2.5%);
+    filter: brightness(1.03);
+  }
+}
+@keyframes luminaPanZoomMobileLoop {
+  0% {
+    transform: scale(1.22) translate(0%, 0%);
+  }
+  50% {
+    transform: scale(1.34) translate(-2.5%, -1.5%);
+  }
+  100% {
+    transform: scale(1.25) translate(1.5%, -2%);
+  }
+}
+/* ==========================================================================
+   UNIFIED MAT FRAME STRUCTURE (.is-style-image-border & .is-style-pan-zoom)
+   ========================================================================== */
+.wp-block-image.is-style-image-border,
+.wp-block-image.is-style-pan-zoom,
+.wp-block-post-featured-image.is-style-image-border,
+.wp-block-post-featured-image.is-style-pan-zoom,
+.wp-block-media-text.is-style-image-border .wp-block-media-text__media,
+.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media {
+  box-sizing: border-box;
+  border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(255, 255, 255, 0.15));
+  padding: var(--wp--preset--spacing--20, 6px);
+  /* Dynamic outer radius fallback */
+  --outer-radius: var(--wp--custom--border--radius, 18px);
+  border-radius: var(--outer-radius);
+  overflow: hidden !important;
+  /* Reactive Concentric Inner Radius: Outer Radius - Padding - Border Width */
+  --inner-border-radius: calc(
+  	var(--outer-radius) -
+  	var(--wp--preset--spacing--20, 6px) -
+  	var(--wp--custom--border--width, 1px)
+  );
+  /* 1. Wrapper Containers (Linked <a> or JS Viewport) */
+}
+.wp-block-image.is-style-image-border > a,
+.wp-block-image.is-style-image-border > .lumina-image-viewport,
+.wp-block-image.is-style-pan-zoom > a,
+.wp-block-image.is-style-pan-zoom > .lumina-image-viewport,
+.wp-block-post-featured-image.is-style-image-border > a,
+.wp-block-post-featured-image.is-style-image-border > .lumina-image-viewport,
+.wp-block-post-featured-image.is-style-pan-zoom > a,
+.wp-block-post-featured-image.is-style-pan-zoom > .lumina-image-viewport,
+.wp-block-media-text.is-style-image-border .wp-block-media-text__media > a,
+.wp-block-media-text.is-style-image-border .wp-block-media-text__media > .lumina-image-viewport,
+.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media > a,
+.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media > .lumina-image-viewport {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--inner-border-radius);
+}
+.wp-block-image.is-style-image-border > a img,
+.wp-block-image.is-style-image-border > .lumina-image-viewport img,
+.wp-block-image.is-style-pan-zoom > a img,
+.wp-block-image.is-style-pan-zoom > .lumina-image-viewport img,
+.wp-block-post-featured-image.is-style-image-border > a img,
+.wp-block-post-featured-image.is-style-image-border > .lumina-image-viewport img,
+.wp-block-post-featured-image.is-style-pan-zoom > a img,
+.wp-block-post-featured-image.is-style-pan-zoom > .lumina-image-viewport img,
+.wp-block-media-text.is-style-image-border .wp-block-media-text__media > a img,
+.wp-block-media-text.is-style-image-border .wp-block-media-text__media > .lumina-image-viewport img,
+.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media > a img,
+.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media > .lumina-image-viewport img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wp-block-image.is-style-image-border,
+.wp-block-image.is-style-pan-zoom,
+.wp-block-post-featured-image.is-style-image-border,
+.wp-block-post-featured-image.is-style-pan-zoom,
+.wp-block-media-text.is-style-image-border .wp-block-media-text__media,
+.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media {
+  /* 2. Direct Unlinked Image Fallback */
+}
+.wp-block-image.is-style-image-border > img,
+.wp-block-image.is-style-pan-zoom > img,
+.wp-block-post-featured-image.is-style-image-border > img,
+.wp-block-post-featured-image.is-style-pan-zoom > img,
+.wp-block-media-text.is-style-image-border .wp-block-media-text__media > img,
+.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: var(--inner-border-radius);
+}
+
+/* ==========================================================================
+   3. PAN & ZOOM ANIMATION TARGETS
+   ========================================================================== */
+/* Core Image, Featured Image, and Media-Text Pan Zoom Targets */
+.wp-block-image.is-style-pan-zoom img,
+.wp-block-post-featured-image.is-style-pan-zoom img,
+.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media img,
+.wp-block-cover.is-style-pan-zoom img.wp-block-cover__image-background {
+  will-change: transform, filter;
+  animation: luminaPanZoomVideoLoop 8s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
+  transform-origin: center center;
+}
+
+/* Core Cover Block Reset */
+.wp-block-cover.is-style-pan-zoom {
+  overflow: hidden !important;
+}
+
+/* Mobile Motion Tuning (<= 781px) */
+@media (max-width: 781px) {
+  .is-style-pan-zoom img {
+    animation-name: luminaPanZoomMobileLoop !important;
+    animation-duration: calc(8s * 0.85) !important;
+  }
+}
+/* Accessibility Safety Net */
+@media (prefers-reduced-motion: reduce) {
+  .is-style-pan-zoom img {
+    animation: none !important;
+    transform: scale(1) !important;
+    filter: none !important;
+  }
+}

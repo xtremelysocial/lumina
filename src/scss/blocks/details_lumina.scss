@@ -1,77 +1,43 @@
 /*-----------------------------------------------------------------------------
-# LUMINA Details (Override parent theme)
+# LUMINA Details / Accordion Styling
 -----------------------------------------------------------------------------*/
 
-/* Closed Summary will have primary font color */
-.wp-block-details > summary {
-	transition: 
-		opacity var(--wp--custom--animation--duration--short, 250ms) ease-in-out, 
-		color var(--wp--custom--animation--duration--short, 250ms) ease-in-out;
-}
-
-.wp-block-details:not(.has-text-color) > summary {
-// 	color: var(--wp--custom--color--highlight, var(--wp--preset--color--highlight));
-// 	font-weight: var(--wp--custom--typography--font-weight--medium);
-// 	transition: color var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, ease-in);
-	color: var(--wp--custom--color--heading--text, var(--wp--preset--color--contrast));
-}
-
-/* Highlight Summary on hover and when open */
-// .wp-block-details[open] > summary,
-.wp-block-details > summary:hover {
-	opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
-}
-// .wp-block-details:not(.has-text-color) > summary:hover,
-// .wp-block-details:not(.has-text-color)[open] > summary {
-// 	color: var(--wp--custom--color--highlight, var(--wp--preset--color--highlight-alt));
-// }
-
-/*--------------------------------------------------------------
-## Bring details closer to the summary so they look connected
---------------------------------------------------------------*/
+// Bring details closer to the summary so they look connected
 .wp-block-details > summary + * {
 	margin-top: calc(0.5 * var(--wp--style--block-gap));
 }
 
-.wp-block-details > summary::-webkit-details-marker {
-    display: none;
-}
-
-/*-----------------------------------------------------------------------------
-# Lumina Custom Accordion Styling
------------------------------------------------------------------------------*/
-
-/* 1. Force flex layout to instantly break 'list-item' status & kill native arrow */
+// 1. Force flex layout to instantly break 'list-item' status & kill native arrow
 .wp-block-details > summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none; // Modern standard arrow strip
-    cursor: pointer;
-    font-weight: var(--wp--custom--typography--font-weight--normal);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	list-style: none; // Modern standard arrow strip
+	cursor: pointer;
+// 	font-weight: var(--wp--custom--typography--font-weight--normal);
 }
 
-/* 2. Overkill fallback to ensure Safari behaves */
+// 2. Overkill fallback to ensure Safari behaves
 .wp-block-details > summary::-webkit-details-marker {
-    display: none !important;
+	display: none !important;
 }
 .wp-block-details > summary::marker {
-    content: "";
-    display: none;
+	content: "";
+	display: none;
 }
 
-/* 3. Inject a sleek, right-aligned custom indicator that doesn't scale crazily */
+// 3. Inject a sleek, right-aligned custom indicator that doesn't scale crazily
 .wp-block-details > summary::after {
-    content: "+";
-    font-size: 1em; //1.1rem; // Hardcoded size so it stays clean even with large text
-    font-weight: var(--wp--custom--typography--font-weight--medium);
-    font-family: monospace, sans-serif; // Keeps plus/minus structurally aligned
-    opacity: 0.6;
-    transition: transform 0.2s ease;
+	content: "+";
+	font-size: 1em; // Hardcoded size so it stays clean even with large text
+	font-weight: var(--wp--custom--typography--font-weight--medium, 400);
+	font-family: monospace, sans-serif; // Keeps plus/minus structurally aligned
+	opacity: 0.6;
+	transition: transform 0.2s ease;
 }
 
-/* 4. Swap to a clean Unicode minus sign when the accordion is open */
+// 4. Swap to a clean Unicode minus sign when the accordion is open
 .wp-block-details[open] > summary::after {
-    content: "−"; // Unicode minus sign looks much cleaner than a hyphen
-    opacity: 0.9;
+	content: "−"; // Unicode minus sign looks much cleaner than a hyphen
+	opacity: 0.9;
 }

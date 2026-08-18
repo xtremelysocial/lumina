@@ -4,7 +4,6 @@
  * Description: Text Faq
  * Slug: lumina/text-faq
  * Categories: lumina, text
- * Block Types: core/text
  */
 ?>
 <!-- wp:group {"layout":{"type":"constrained"}} -->

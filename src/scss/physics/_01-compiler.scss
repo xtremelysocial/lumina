@@ -12,7 +12,7 @@
 @use 'sass:list';
 @use 'sass:map';
 
-@use '../engine/00-config' as config;
+@use '00-config' as config;
 
 // ==========================================================================
 // 01.01 CENTRALIZED SELECTOR COMPILER: Declarative Spec Enforcer

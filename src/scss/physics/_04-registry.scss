@@ -12,7 +12,10 @@
 @use 'sass:list';
 @use 'sass:map';
 
-@use '../engine/00-config' as config;
+@forward '01-compiler';
+@forward '02-resting';
+
+@use '00-config' as config;
 @use '01-compiler' as *;
 @use '02-resting' as resting; // Needed for resting state mixins
 @use '03-actions' as actions; // Needed for active state mixins

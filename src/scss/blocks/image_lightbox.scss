@@ -1,0 +1,21 @@
+/* ==========================================================================
+   FEATURED HERO LIGHTBOX SHOWS FULL IMAGE
+   ========================================================================== */
+
+/* Ensure Lightbox overlay modal ALWAYS displays full, uncropped image */
+.wp-lightbox-overlay img {
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    border: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+}
+
+.wp-lightbox-overlay .wp-block-image,
+.wp-lightbox-overlay .lightbox-image-container {
+    width: auto !important;
+    height: auto !important;
+}

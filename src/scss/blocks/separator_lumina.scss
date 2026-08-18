@@ -5,7 +5,7 @@
 .wp-block-separator {
 
     // 1. NEUTRALIZE LEGACY SPACING
-    margin-block-end: 0; // Wipes out the flat-blocks bottom stack
+    margin-block-end: 0; // Wipes out the parent theme's margin
 
     // 2. DYNAMIC COLOR HOOKS & CONTRAST FIXES
 //     .has-background &:not(.is-style-dots) {

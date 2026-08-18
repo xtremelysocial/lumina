@@ -8,149 +8,90 @@
    LUMINA: Master Columns & Gutter Dividers Engine (columns_lumina.scss)
    ========================================================================== */
 /* -------------------------------------------------------------------------
- * 1. BASE CONFIGURATION & GUTTER GAP
+ * 0. FLEX HEIGHT STRETCH (SURGICAL INTENT ONLY)
+ * ------------------------------------------------------------------------- */
+.wp-block-column {
+  /* Nested columns expand ONLY when explicit stretch intent is set */
+}
+.wp-block-column.is-vertically-aligned-stretch > .wp-block-columns,
+.wp-block-column > .wp-block-columns:is(.is-vertically-aligned-stretch, .is-vertically-aligned-space-between) {
+  height: 100%;
+}
+.wp-block-column {
+  /* Card stack groups expand ONLY when explicit stretch intent is set */
+}
+.wp-block-column.is-vertically-aligned-stretch > .wp-block-group.is-vertical,
+.wp-block-column > .wp-block-group.is-vertical:is(.is-content-justification-space-between,
+.is-content-justification-stretch,
+.is-vertically-aligned-space-between,
+.is-vertically-aligned-stretch) {
+  height: 100%;
+}
+
+/* -------------------------------------------------------------------------
+ * 1. GUTTER DIVIDERS BASE ENGINE (.is-style-gutter-dividers)
  * ------------------------------------------------------------------------- */
 .wp-block-columns.is-style-gutter-dividers {
   position: relative;
-  --gutter-divider-gap: calc(var(--wp--style--block-gap, 2rem) * 2);
+  --gutter-divider-gap: var(--wp--style--block-gap, 2rem);
   gap: var(--gutter-divider-gap) !important;
 }
 .wp-block-columns.is-style-gutter-dividers > .wp-block-column {
   position: relative;
 }
-
-/* Consecutive Gutter Divider Blocks (Back-to-Back Rows) */
-.wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers {
-  position: relative;
-  margin-top: var(--gutter-divider-gap) !important;
-  /* Horizontal divider line between adjacent blocks */
+.wp-block-columns.is-style-gutter-dividers {
+  /* Base Vertical Dividers between side-by-side flex columns */
 }
-.wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers::before {
+.wp-block-columns.is-style-gutter-dividers > .wp-block-column:not(:first-child)::before {
   content: "";
   position: absolute;
-  height: 1px;
-  width: 100%;
-  top: calc(var(--gutter-divider-gap) / -2);
-  left: 0;
+  width: 1px;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--gutter-divider-gap) / -2);
   background-color: color-mix(in srgb, currentColor 20%, transparent);
   z-index: 2;
   pointer-events: none;
 }
 
 /* -------------------------------------------------------------------------
- * 2. DESKTOP & TABLET VIEWPORTS (>= 782px via breakpoints module)
+ * 2. BACK-TO-BACK ROW DIVIDERS & CROSSHAIRS (+)
  * ------------------------------------------------------------------------- */
-@media (min-width: 782px) {
-  /* Standard Vertical Dividers between side-by-side columns */
-  .wp-block-columns.is-style-gutter-dividers > .wp-block-column:not(:first-child)::before {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 100%;
-    top: 0;
-    left: calc(var(--gutter-divider-gap) / -2);
-    background-color: color-mix(in srgb, currentColor 20%, transparent);
-    z-index: 2;
-    pointer-events: none;
-  }
-  /* Consecutive Blocks: Extend vertical lines UP and DOWN to intersect horizontal line */
-  .wp-block-columns.is-style-gutter-dividers:has(+ .wp-block-columns.is-style-gutter-dividers) > .wp-block-column:not(:first-child)::before {
-    height: calc(100% + var(--gutter-divider-gap) / 2);
-  }
-  .wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers > .wp-block-column:not(:first-child)::before {
-    top: calc(var(--gutter-divider-gap) / -2);
-    height: calc(100% + var(--gutter-divider-gap) / 2);
-  }
-  /* Default Top-Level 6-Column Blocks -> 3x2 Grid */
-  .wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(6)) {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
-  .wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column {
-    width: 100% !important;
-    max-width: 100% !important;
-    flex-basis: auto !important;
-    margin: 0 !important;
-  }
-  /* Nested 6-Column Blocks (Inside a Parent Column) -> 2x3 Grid */
-  .wp-block-column .wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(6)) {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  /* Crosshair Dividers: Top-Level 6-Up (3x2 Grid) */
-  .wp-block-columns.is-style-gutter-dividers:not(.wp-block-column *):has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:not(:first-child)::before {
-    content: none;
-  }
-  .wp-block-columns.is-style-gutter-dividers:not(.wp-block-column *):has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:nth-child(2)::before,
-  .wp-block-columns.is-style-gutter-dividers:not(.wp-block-column *):has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:nth-child(3)::before {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: calc(100% + var(--gutter-divider-gap));
-    top: 0;
-    left: calc(var(--gutter-divider-gap) / -2);
-    background-color: color-mix(in srgb, currentColor 20%, transparent);
-    z-index: 2;
-    pointer-events: none;
-  }
-  .wp-block-columns.is-style-gutter-dividers:not(.wp-block-column *):has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:nth-child(5)::before,
-  .wp-block-columns.is-style-gutter-dividers:not(.wp-block-column *):has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:nth-child(6)::before {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 100%;
-    top: 0;
-    left: calc(var(--gutter-divider-gap) / -2);
-    background-color: color-mix(in srgb, currentColor 20%, transparent);
-    z-index: 2;
-    pointer-events: none;
-  }
-  .wp-block-columns.is-style-gutter-dividers:not(.wp-block-column *):has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:nth-child(4)::after {
-    content: "";
-    position: absolute;
-    height: 1px;
-    width: calc(300% + var(--gutter-divider-gap) * 2);
-    top: calc(var(--gutter-divider-gap) / -2);
-    left: 0;
-    background-color: color-mix(in srgb, currentColor 20%, transparent);
-    z-index: 2;
-    pointer-events: none;
-  }
-  /* Crosshair Dividers: Nested 6-Up (2x3 Grid) */
-  .wp-block-column .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:not(:first-child)::before {
-    content: none;
-  }
-  .wp-block-column .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:nth-child(2n)::before {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: calc(100% + var(--gutter-divider-gap));
-    top: 0;
-    left: calc(var(--gutter-divider-gap) / -2);
-    background-color: color-mix(in srgb, currentColor 20%, transparent);
-    z-index: 2;
-    pointer-events: none;
-  }
-  .wp-block-column .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:last-child::before {
-    height: 100%;
-  }
-  .wp-block-column .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:nth-child(3)::after,
-  .wp-block-column .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(6)) > .wp-block-column:nth-child(5)::after {
-    content: "";
-    position: absolute;
-    height: 1px;
-    width: calc(200% + var(--gutter-divider-gap));
-    top: calc(var(--gutter-divider-gap) / -2);
-    left: 0;
-    background-color: color-mix(in srgb, currentColor 20%, transparent);
-    z-index: 2;
-    pointer-events: none;
-  }
+/* Standardize top margin between consecutive divider rows to match internal gap */
+.wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers {
+  position: relative;
+  margin-top: var(--gutter-divider-gap) !important;
+  /* Single horizontal divider line between adjacent row containers */
 }
+.wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  left: 0;
+  right: 0;
+  top: calc(var(--gutter-divider-gap) / -2);
+  background-color: color-mix(in srgb, currentColor 20%, transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+.wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers {
+  /* Extend vertical lines UP on bottom row to meet horizontal line */
+}
+.wp-block-columns.is-style-gutter-dividers + .wp-block-columns.is-style-gutter-dividers > .wp-block-column:not(:first-child)::before {
+  top: calc(var(--gutter-divider-gap) / -2);
+}
+
+/* Extend vertical lines DOWN on top row to meet horizontal line */
+.wp-block-columns.is-style-gutter-dividers:has(+ .wp-block-columns.is-style-gutter-dividers) > .wp-block-column:not(:first-child)::before {
+  bottom: calc(var(--gutter-divider-gap) / -2);
+}
+
 /* -------------------------------------------------------------------------
- * 3. TABLET SPECIFIC COLLAPSE (782px to 960px / $break-large)
+ * 3. TABLET GRID TRANSFORMATIONS (600px to 960px / $break-small to $break-large)
+ *    Preserves tablet multi-column grids for landscape phones (717px) & tablets
  * ------------------------------------------------------------------------- */
-@media (min-width: 782px) and (max-width: 960px) {
-  /* 4-Column Blocks -> 2x2 Grid on Tablet */
+@media (min-width: 600px) and (max-width: 960px) {
+  /* --- A. 4-Column Container -> 2x2 Grid on Tablet --- */
   .wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(4)) {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
@@ -161,30 +102,33 @@
     flex-basis: auto !important;
     margin: 0 !important;
   }
-  /* Crosshair Dividers: 4-Up in 2x2 Grid */
+  /* Crosshair Dividers: 4-Up in 2x2 Grid (Seamless Center Intersection) */
   .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(4)) > .wp-block-column:not(:first-child)::before {
     content: none;
   }
   .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(4)) {
-    /* Vertical dividers for 2nd and 4th items */
+    /* Top-right vertical divider extends DOWN into row gap */
   }
   .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(4)) > .wp-block-column:nth-child(2)::before {
     content: "";
     position: absolute;
     width: 1px;
-    height: calc(100% + var(--gutter-divider-gap));
     top: 0;
+    bottom: calc(var(--gutter-divider-gap) / -2);
     left: calc(var(--gutter-divider-gap) / -2);
     background-color: color-mix(in srgb, currentColor 20%, transparent);
     z-index: 2;
     pointer-events: none;
   }
+  .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(4)) {
+    /* Bottom-right vertical divider extends UP into row gap to meet top line */
+  }
   .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(4)) > .wp-block-column:nth-child(4)::before {
     content: "";
     position: absolute;
     width: 1px;
-    height: 100%;
-    top: 0;
+    top: calc(var(--gutter-divider-gap) / -2);
+    bottom: 0;
     left: calc(var(--gutter-divider-gap) / -2);
     background-color: color-mix(in srgb, currentColor 20%, transparent);
     z-index: 2;
@@ -204,32 +148,97 @@
     z-index: 2;
     pointer-events: none;
   }
+  /* --- B. OPT-IN 3-Column Container -> 1 + 2 Grid on Tablet (Only when .is-style-first-on-mobile exists) --- */
+  .wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(3)):has(> .wp-block-column.is-style-first-on-mobile) {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(3)):has(> .wp-block-column.is-style-first-on-mobile) > .wp-block-column {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-basis: auto !important;
+    margin: 0 !important;
+  }
+  .wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(3)):has(> .wp-block-column.is-style-first-on-mobile) > .wp-block-column.is-style-first-on-mobile {
+    grid-column: span 2 !important;
+    order: -1 !important;
+  }
+  /* Crosshair Dividers: 3-Up in Opt-In 1 + 2 Grid */
+  .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(3)):has(> .wp-block-column.is-style-first-on-mobile) > .wp-block-column:not(:first-child)::before {
+    content: none;
+  }
+  .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(3)):has(> .wp-block-column.is-style-first-on-mobile) {
+    /* Vertical divider between bottom two columns extending UP into gap */
+  }
+  .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(3)):has(> .wp-block-column.is-style-first-on-mobile) > .wp-block-column:not(.is-style-first-on-mobile):last-child::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    top: calc(var(--gutter-divider-gap) / -2);
+    bottom: 0;
+    left: calc(var(--gutter-divider-gap) / -2);
+    background-color: color-mix(in srgb, currentColor 20%, transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(3)):has(> .wp-block-column.is-style-first-on-mobile) {
+    /* Horizontal divider under featured top column */
+  }
+  .wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(3)):has(> .wp-block-column.is-style-first-on-mobile) > .wp-block-column.is-style-first-on-mobile::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: calc(200% + var(--gutter-divider-gap));
+    bottom: calc(var(--gutter-divider-gap) / -2);
+    left: 0;
+    background-color: color-mix(in srgb, currentColor 20%, transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
 }
 /* -------------------------------------------------------------------------
- * 4. MOBILE & STACKED VIEWPORTS (< 782px via breakpoints module)
+ * 4. MOBILE VIEWPORTS (< 600px / < $break-small)
  * ------------------------------------------------------------------------- */
-@media only screen and (max-width: 781px) {
-  .wp-block-columns.is-style-gutter-dividers > .wp-block-column::after {
-    content: none !important;
+@media only screen and (max-width: 599px) {
+  /* Standard mobile stack fallback */
+  .wp-block-columns:not(.is-not-stacked-on-mobile) {
+    flex-direction: column !important;
   }
-  .wp-block-columns.is-style-gutter-dividers > .wp-block-column {
-    /* Draw 1px horizontal hairline above every stacked item except the first */
-  }
-  .wp-block-columns.is-style-gutter-dividers > .wp-block-column:not(:first-child)::before {
-    content: "" !important;
-    position: absolute !important;
+  .wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column {
     width: 100% !important;
-    height: 1px !important;
-    top: calc(var(--gutter-divider-gap) / -2) !important;
-    left: 0 !important;
-    background-color: color-mix(in srgb, currentColor 20%, transparent) !important;
-    z-index: 2 !important;
-    pointer-events: none !important;
+    max-width: 100% !important;
+    flex-basis: auto !important;
   }
-  .wp-block-columns.is-style-gutter-dividers > .wp-block-column {
-    /* Ensure the first stacked item inside a block has no divider above it */
-  }
-  .wp-block-columns.is-style-gutter-dividers > .wp-block-column:first-child::before {
+  /* Convert vertical lines to 1px horizontal hairlines above stacked mobile columns */
+  .wp-block-columns.is-style-gutter-dividers:not(.is-not-stacked-on-mobile) > .wp-block-column::after {
     content: none !important;
+  }
+  .wp-block-columns.is-style-gutter-dividers:not(.is-not-stacked-on-mobile) > .wp-block-column:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: calc(var(--gutter-divider-gap) / -2);
+    left: 0;
+    background-color: color-mix(in srgb, currentColor 20%, transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .wp-block-columns.is-style-gutter-dividers:not(.is-not-stacked-on-mobile) > .wp-block-column:first-child::before {
+    content: none !important;
+  }
+  /* Elevates image/video media columns to stack above text on mobile viewports */
+  .wp-block-columns.is-style-image-border,
+  .wp-block-columns:has(.wp-block-video.is-style-image-border, .wp-block-image.is-style-image-border) {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .wp-block-columns.is-style-image-border > .wp-block-column:has(.wp-block-video, .wp-block-image),
+  .wp-block-columns:has(.wp-block-video.is-style-image-border, .wp-block-image.is-style-image-border) > .wp-block-column:has(.wp-block-video, .wp-block-image) {
+    order: -1 !important;
+  }
+  /* Generic mobile reordering utility */
+  .wp-block-columns > .wp-block-column.is-style-first-on-mobile {
+    order: -1 !important;
   }
 }
