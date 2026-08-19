@@ -3,73 +3,78 @@
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-## Custom: Heading w/Separator (Layout-Aware Sibling Edition)
+## Custom: Heading w/Separator (Native Block & Flex Edition)
 --------------------------------------------------------------*/
 
-// List of selectors to add a separator
 $separators: (
     '.is-style-separator',
-//     '.entry-header .entry-subtitle'
 );
 $sep-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
 $sep-height: 3px;
 $sep-width: calc(6 * var(--wp--style--block-gap));
-$sep-clearance: var(--wp--preset--spacing--30); //10px; // Fixed breathing room to clear text descenders (g, j, p, q, y)
+
+$sep-top: var(--wp--preset--spacing--20);      // Space between heading text baseline and line
+$sep-top-flex: var(--wp--preset--spacing--30); // Space between flex group bounding box and line
+$sep-bottom: var(--wp--preset--spacing--30);   // Space between line and next block
 
 @each $separator in $separators {
     #{$separator} {
         
-        // Anchor the element natively without touching its padding or margins
-        position: relative; 
-
-        // 1. Position the line exactly below the text box footprint
+        // 1. Native Block Flow Line (Inside the heading's box footprint)
         &::after {
             content: "";
-            position: absolute;
-            left: 0;
-            top: 100%;
-            margin-top: #{$sep-clearance};
-
+            display: block;
             width: #{$sep-width};
-            height: #{$sep-height}; 
+            height: #{$sep-height};
+            margin-top: #{$sep-top};
+            margin-bottom: #{$sep-bottom};
             background-color: #{$sep-color};
         }
 
-        // Handle text alignments cleanly
+        // 2. Alignment handling via standard block margins
         &.has-text-align-center::after {
-            left: 50%;
-            transform: translateX(-50%);
+            margin-left: auto;
+            margin-right: auto;
         }
 
         &.has-text-align-right::after {
-            left: auto;
-            right: 0;
+            margin-left: auto;
+            margin-right: 0;
         }
 
-// 		&.wp-block-group {
-			margin-bottom: calc(var(--wp--style--block-gap, 1.5rem) + #{$sep-clearance} + #{$sep-height}) !important;
-// 		}
+        // 3. Flex Container Support (Groups / Rows with .is-layout-flex or .is-nowrap)
+        &:is(.is-layout-flex, .is-nowrap, [class*="is-layout-flex"]) {
+            flex-wrap: wrap !important;
+            row-gap: #{$sep-top-flex} !important; // Uses flex-specific spacing token
 
-        // 3. THE MAGIC BULLET: Override the next block's margin-top 
-        // ONLY if it is a direct sibling inside the same container.
-        & + * {
-            margin-top: calc(var(--wp--style--block-gap, 1.5rem) + #{$sep-clearance} + #{$sep-height}) !important;
+            &::after {
+                width: 100% !important;
+                flex-basis: 100% !important; // Unconstrained 100% forces Flexbox onto Row 2
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+                background-color: transparent !important;
+                background-image: linear-gradient(#{$sep-color}, #{$sep-color});
+                background-repeat: no-repeat;
+                background-size: #{$sep-width} #{$sep-height};
+                background-position: left center;
+            }
+
+            &.has-text-align-center::after {
+                background-position: center center;
+            }
+
+            &.has-text-align-right::after {
+                background-position: right center;
+            }
         }
 
-        // Override separator color when parent or block has a background 
+        // 4. Color override for dark/colored backgrounds
         @at-root .has-background #{&}::after,
         &.has-background::after {
-//             background-color: currentcolor;
-			background-color: color-mix(in srgb, $sep-color 85%, currentColor);
+            $dark-sep: color-mix(in srgb, $sep-color 85%, currentColor);
+            background-color: $dark-sep;
+            background-image: linear-gradient($dark-sep, $dark-sep);
         }
-    }
-}
-
-/* Editor Stability Mapping */
-@each $selector in $separators {
-    .is-root-container #{$selector}::after {
-        top: 100% !important;
-        bottom: auto !important; 
     }
 }
 

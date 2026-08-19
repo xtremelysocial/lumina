@@ -233,6 +233,17 @@ $grow-large:    		var(--wp--custom--animation--default--hover-large-transform, s
 $shift-subtle:  		var(--wp--custom--animation--default--object-small-transform, translateY(-3px)); 
 $shift-standard: 		var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
 
+// Image Frame Config
+$img-frame-padding: var(--wp--preset--spacing--20, 4px);
+$img-border-width: var(--wp--custom--border--width, 1px);
+
+// Theme Fluid Radius Tokens
+$img-radius-lg: var(--wp--preset--border-radius--lg, 16px);
+$img-radius-sm: var(--wp--preset--border-radius--sm, 6px);
+
+// Hardware Mockup Fixed Radii
+$hardware-device-radius: 18px;
+
 // Image Filter
 $image-filter:			''; //var(--wp--custom--image--filter, brightness(1));
 $image-hover-filter:	''; //var(--wp--custom--image--hover-filter, brightness(1.15));

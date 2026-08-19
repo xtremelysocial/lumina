@@ -6,10 +6,10 @@
 	"settings": {
 		"custom": {
 			"border": {
-				"radius": "var(--wp--preset--border-radius--md, 9px)"
+				"radius": "12px"
 			},
 			"button": {
-				"radius": "var(--wp--preset--border-radius--sm, 6px)" 
+				"radius": "var(--wp--preset--border-radius--sm)" 
 			},
 			"spacing": {
 				"gap": "20px"
@@ -33,16 +33,16 @@
 	},
 	"styles": {
 		"blocks": {
-			"core/button" : {
+			"core/button": {
 				"variations": {
 					"button-alt": {
 						"border": {
-							"radius": "var(--wp--preset--border-radius--lg, 12px)"
+							"radius": "var(--wp--preset--border-radius--md)"
 						}
 					},
 					"button-outline-alt": {
 						"border": {
-							"radius": "var(--wp--preset--border-radius--lg, 12px)"
+							"radius": "var(--wp--preset--border-radius--md)"
 						}
 					}
 				}

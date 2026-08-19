@@ -1,7 +1,9 @@
 /**
  * Base SCSS Barrel File
  */
-@forward "images";
+@forward "images-aspect-ratios";
+@forward "images-lumina";
+@forward "images-motion";
 @forward "list-dividers";
 @forward "margins-padding";
 @forward "other-themes";

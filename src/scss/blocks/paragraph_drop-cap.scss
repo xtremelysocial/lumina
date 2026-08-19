@@ -1,6 +1,11 @@
 /*--------------------------------------------------------------
 # LUMINA Paragraph (Drop Cap)
 --------------------------------------------------------------*/
+// Provide top clearance below headings for the oversized initial letter
+.has-drop-cap {
+	margin-top: var(--wp--preset--spacing--20) !important;
+}
+
 .has-drop-cap:not(:focus)::first-letter {
 	// Typography & Color
 	font-family: var(--wp--preset--font-family--heading);

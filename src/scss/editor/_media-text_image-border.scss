@@ -1,31 +1,14 @@
 /* ==========================================================================
-   BLOCK EDITOR STYLES: Media & Text Framed Overrides
-   Disables live pan-zoom animations and applies native CSS mat padding
+   BLOCK EDITOR STYLES: Pan-Zoom Motion Override
+   Disables live keyframe motion in Gutenberg canvas
    ========================================================================== */
 
-.editor-styles-wrapper .wp-block-media-text.is-style-image-border {
-
-	.wp-block-media-text__media {
-		box-sizing: border-box;
-		border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(255, 255, 255, 0.15));
-		padding: var(--wp--preset--spacing--20, 6px);
-		border-radius: var(--wp--custom--border--radius, 18px);
-
-		/* Disable pan-zoom animation inside the Gutenberg canvas */
-		img {
+.editor-styles-wrapper {
+	.is-style-pan-zoom {
+		img,
+		.wp-block-cover__image-background {
 			animation: none !important;
 			transform: none !important;
-			display: block;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-
-			/* Concentric Inner Radius Math: Outer (18px) - Padding (6px) - Border (1px) */
-			border-radius: calc(
-				var(--wp--custom--border--radius, 18px) - 
-				var(--wp--preset--spacing--20, 6px) - 
-				var(--wp--custom--border--width, 1px)
-			);
 		}
 	}
 }

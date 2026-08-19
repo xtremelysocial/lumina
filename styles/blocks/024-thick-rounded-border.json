@@ -12,7 +12,7 @@
 			"style": "solid",
 			"width": "2px",
 			"color": "var(--wp--custom--color--border)",
-			"radius": "var(--wp--custom--border--radius)"
+			"radius": "var:preset|border-radius|lg"
 		},
 		"spacing": {
 			"padding": "var:preset|spacing|50"

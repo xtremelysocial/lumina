@@ -5,29 +5,14 @@
 	"description": "A sophisticated, art gallery mood featuring sharp architectural corners, and a weighted, luxurious physical presence.",
 	"settings": {
 		"custom": {
-			"color": {
-				"border": "var(--wp--preset--color--neutral-alt)",
-				"field": { 
-					"outline": "rgba(45, 35, 25, 0.25)" 
-				},
-				"button": { 
-					"hoverOpacity": "0.9" 
-				},
-				"link": { 
-					"hoverOpacity": "0.8" 
-				},
-				"navigation": { 
-					"background": "var(--wp--preset--color--base)" 
-				}
-			},
 			"border": {
-				"radius": "var(--wp--preset--border-radius--sm, 6px)"
+				"radius": "8px"
 			},
 			"button": {
-				"radius": "var(--wp--preset--border-radius--sm, 6px)"
+				"radius": "var(--wp--preset--border-radius--sm)"
 			},
 			"spacing": {
-				"gap": "30px"
+				"gap": "28px"
 			},
 			"animation": {
 				"duration": {
@@ -54,16 +39,16 @@
 	},
 	"styles": {
 		"blocks": {
-			"core/button" : {
+			"core/button": {
 				"variations": {
 					"button-alt": {
 						"border": {
-							"radius": "var(--wp--preset--border-radius--md, 9px)"
+							"radius": "var(--wp--preset--border-radius--md)"
 						}
 					},
 					"button-outline-alt": {
 						"border": {
-							"radius": "var(--wp--preset--border-radius--md, 9px)"
+							"radius": "var(--wp--preset--border-radius--md)"
 						}
 					}
 				}

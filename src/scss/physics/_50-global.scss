@@ -34,8 +34,13 @@
 				--wp--custom--animation--default--object-transform: translateY(-2px);
 			}
 		}
-	
-		// Remove shadow from logo-only or the shadow will be round
+
+		// FIX core WordPress Media Text block when border radius is applied
+		.wp-block-media-text {
+			overflow: hidden;
+		}
+			
+		// Remove shadow from logo-only Social Icons or the shadow will be round
 		.wp-site-blocks .wp-block-social-links.is-style-logos-only {
 			& .wp-block-social-link {
 				box-shadow: none;

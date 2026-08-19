@@ -5,11 +5,10 @@
 .wp-block-post-featured-image {
 	max-width: 100%;
 
-	// Overrides parent theme img padding/shadow and enforces responsive sizing
+	// Overrides parent theme img shadow and enforces responsive sizing
 	img {
 		width: 100%;
 		height: auto;
-		padding: 0;
 		box-shadow: none;
 		object-fit: cover;
 		object-position: center;

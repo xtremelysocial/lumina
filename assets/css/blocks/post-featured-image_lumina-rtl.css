@@ -10,7 +10,6 @@
 .wp-block-post-featured-image img {
   width: 100%;
   height: auto;
-  padding: 0;
   box-shadow: none;
   -o-object-fit: cover;
      object-fit: cover;

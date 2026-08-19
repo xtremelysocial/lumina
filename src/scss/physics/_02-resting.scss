@@ -62,7 +62,7 @@
 //    02.13 BORDER: Border and radius
 //    ========================================================================== */
 @mixin __blueprint-border {
-	border-radius: var(--wp--custom--border--radius, 18px);
+	border-radius: var(--wp--preset--border-radius--lg, 16px);
 	border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border); 
 }
 
@@ -395,7 +395,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	// Apply border, radius, and padding to plain images only
 	&:not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) {
 		img {	
-// 			border-radius: var(--wp--custom--border--radius, 18px);
+// 			border-radius: var(--wp--preset--border-radius--lg, 16px);
 // 			border: 1px solid var(--wp--custom--color--border);
 			@include __blueprint-border;
 			padding: var(--wp--preset--spacing--20);
@@ -498,7 +498,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 
 	// Add border, radius, and padding for a framed portait look
 // 	border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--color--border);
-// 	border-radius: var(--wp--custom--border--radius, 18px);
+// 	border-radius: var(--wp--preset--border-radius--lg, 16px);
 	@include __blueprint-border;
 
 	padding: var(--wp--preset--spacing--20);
@@ -631,23 +631,28 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 // 	}
 
 	// --------------------------------------------------------------------------
-	// VARIANT A: STANDARD BORDER (is-style-image-border)
+	// VARIANT A: STANDARD BORDER (Brand UI - Scales with Theme Mood)
 	// --------------------------------------------------------------------------
 	&.is-style-image-border {
 
 		&:not(#{config.$blocks-layout-brakes}) {	
-			border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(255,255,255,0.15));
-			padding: var(--wp--preset--spacing--20, 4.5px);
-			border-radius: 18px;
+			border: config.$img-border-width var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(255,255,255,0.15));
+			padding: config.$img-frame-padding;
+			border-radius: config.$img-radius-lg;
 	
 			> a {
 				overflow: hidden;
-				// Inner Radius = Outer Radius (18px) - Padding (4.5px) - Border (1px)
-				border-radius: calc(
-					18px - 
-					var(--wp--preset--spacing--20, 4.5px) - 
-					1px
-				);
+				/* Concentric Inner Radius = Outer (16px) - Padding (4px) - Border (1px) */
+				border-radius: max(0px, calc(#{config.$img-radius-lg} - #{config.$img-frame-padding} - #{config.$img-border-width}));
+			}
+
+			/* Slim Aspect Ratio Clamp (16:4.5) */
+			&:is([style*="16/4.5"], [style*="16 / 4.5"], :has([style*="16/4.5"]), :has([style*="16 / 4.5"]), :has(.size-cropped-slim)) {
+				border-radius: config.$img-radius-sm !important;
+
+				> a {
+					border-radius: max(0px, calc(#{config.$img-radius-sm} - #{config.$img-frame-padding} - #{config.$img-border-width})) !important;
+				}
 			}
 		}
 	}
@@ -659,8 +664,8 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	&.is-style-image-round-border {
 
 		&:not(#{config.$blocks-layout-brakes}) {	
-			border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(255,255,255,0.15));
-			padding: var(--wp--preset--spacing--20, 4.5px);
+			border: config.$img-border-width var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(255,255,255,0.15));
+			padding: config.$img-frame-padding;
 			border-radius: 9999px;
 	
 			> a {
@@ -671,27 +676,23 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	}
 
 	// --------------------------------------------------------------------------
-	// VARIANT C: COMPUTER MONITOR MOCKUP (is-style-image-computer-screen)
+	// VARIANT C: COMPUTER MONITOR MOCKUP (Fixed Hardware Physics)
 	// --------------------------------------------------------------------------
 	&.is-style-image-computer-screen {
 
 		&:not(#{config.$blocks-layout-brakes}) {	
-
-			// Maps directly to your 034 JSON specification
 			border-style: solid;
 			border-color: var(--wp--preset--color--almost-black, #111);
 			border-width: var(--wp--preset--spacing--40) var(--wp--preset--spacing--40) var(--wp--preset--spacing--20) var(--wp--preset--spacing--40); 
 			padding: 0;
 			
-			border-top-left-radius: 18px;
-			border-top-right-radius: 18px;
+			border-top-left-radius: config.$hardware-device-radius;
+			border-top-right-radius: config.$hardware-device-radius;
 			border-bottom-left-radius: 0px;
 			border-bottom-right-radius: 0px;
 	
 			> a {
 				overflow: hidden;
-				// Outer curve (18px) - Padding (0px) - Border thickness (var(--wp--preset--spacing--40)) = 
-				// Square interior
 				border-top-left-radius: 0px;
 				border-top-right-radius: 0px;
 				border-bottom-left-radius: 0px;
@@ -701,15 +702,14 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	}
 
 	// --------------------------------------------------------------------------
-	// VARIANT D: HARD BEZEL DEVICE (is-style-image-tablet-phone-screen)
+	// VARIANT D: HARD BEZEL DEVICE (Fixed Hardware Physics)
 	// --------------------------------------------------------------------------
 	&.is-style-image-tablet-phone-screen {
 
 		&:not(#{config.$blocks-layout-brakes}) {	
-	
 			border: var(--wp--preset--spacing--30, 12px) solid var(--wp--preset--color--almost-black, #111);
 			padding: 0;
-			border-radius: 18px;
+			border-radius: config.$hardware-device-radius;
 	
 			> a {
 				overflow: hidden;

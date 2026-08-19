@@ -23,6 +23,14 @@
 	   10 GLOBAL COLORS: Set colors regardless of light or dark mode
 	========================================================================== */
 
+	// Handle defaults for our custom block styles that add background color	
+// 	.is-style-rounded-border,
+// 	.is-style-rounded-corners,
+// 	.is-style-thick-rounded-border {
+// // 		background-color: var(--wp--preset--color--neutral);
+// 		color: var(--wp--preset--color--contrast);
+// 	}
+
 	// Loop through the colors and output CSS
 	@each $entry in logic.$color-registry {
 		$config: 	map.merge(logic.$color-defaults, $entry);

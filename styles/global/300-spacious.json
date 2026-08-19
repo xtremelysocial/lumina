@@ -2,17 +2,17 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"title": "Lumina Spacious",
-	"description": "An ultra-modern, fluid mood. Organic 30px 'pebble' corners, elastic spring physics.",
+	"description": "An ultra-modern, fluid mood. Organic 24px 'pebble' corners, elastic spring physics.",
 	"settings": {
 		"custom": {
 			"border": {
-				"radius": "var(--wp--preset--border-radius--3-xl, 30px)" 
+				"radius": "24px" 
 			},
 			"button": {
 				"radius": "999px" 
 			},
 			"spacing": {
-				"gap": "34px"
+				"gap": "30px"
 			},
 			"animation": {
 				"duration": {
@@ -33,16 +33,16 @@
 	},
 	"styles": {
 		"blocks": {
-			"core/button" : {
+			"core/button": {
 				"variations": {
 					"button-alt": {
 						"border": {
-							"radius": "var(--wp--preset--border-radius--3-xl, 30px)"
+							"radius": "var(--wp--preset--border-radius--2-xl)"
 						}
 					},
 					"button-outline-alt": {
 						"border": {
-							"radius": "var(--wp--preset--border-radius--3-xl, 30px)"
+							"radius": "var(--wp--preset--border-radius--2-xl)"
 						}
 					}
 				}

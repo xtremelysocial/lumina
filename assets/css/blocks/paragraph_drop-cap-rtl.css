@@ -4,6 +4,10 @@
 /*--------------------------------------------------------------
 # LUMINA Paragraph (Drop Cap)
 --------------------------------------------------------------*/
+.has-drop-cap {
+  margin-top: var(--wp--preset--spacing--20) !important;
+}
+
 .has-drop-cap:not(:focus)::first-letter {
   font-family: var(--wp--preset--font-family--heading);
   font-weight: 600;

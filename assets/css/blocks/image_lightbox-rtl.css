@@ -2,23 +2,54 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/image_lightbox.scss ***!
   \********************************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
-   FEATURED HERO LIGHTBOX SHOWS FULL IMAGE
+   WORDPRESS CORE LIGHTBOX OVERRIDES
+   Full-viewport expansion, un-cropped scaling, & border/radius resets
    ========================================================================== */
-/* Ensure Lightbox overlay modal ALWAYS displays full, uncropped image */
-.wp-lightbox-overlay img {
-  aspect-ratio: auto !important;
-  -o-object-fit: contain !important;
-     object-fit: contain !important;
+.wp-lightbox-overlay {
+  /* 1. Strip borders, radii, and shadows from all modal wrappers & image */
+}
+.wp-lightbox-overlay figure,
+.wp-lightbox-overlay img,
+.wp-lightbox-overlay .wp-block-image,
+.wp-lightbox-overlay .lightbox-image-container,
+.wp-lightbox-overlay .wp-lightbox-container {
   border: none !important;
+  border-width: 0 !important;
   border-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+.wp-lightbox-overlay {
+  /* 2. Unclamp wrapper containers so they don't lock image to small pixel sizes */
+}
+.wp-lightbox-overlay .wp-block-image,
+.wp-lightbox-overlay .lightbox-image-container,
+.wp-lightbox-overlay .wp-lightbox-container,
+.wp-lightbox-overlay figure {
   width: auto !important;
   height: auto !important;
   max-width: 90vw !important;
   max-height: 90vh !important;
 }
+.wp-lightbox-overlay {
+  /* 3. Force modal image to expand to fill available viewport space */
+}
+.wp-lightbox-overlay img {
+  width: 90vw !important;
+  height: 90vh !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  aspect-ratio: auto !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important; /* Scales image up proportionally to fit the 90vw/vh box */
+}
 
-.wp-lightbox-overlay .wp-block-image,
-.wp-lightbox-overlay .lightbox-image-container {
-  width: auto !important;
-  height: auto !important;
+/* 4. Hide residual 1px page border left behind on main page while modal is active */
+.wp-lightbox-container img[data-wp-class--hide] {
+  border-color: transparent !important;
+  border-width: 0 !important;
 }

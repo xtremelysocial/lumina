@@ -6,7 +6,7 @@
 	"blockTypes": [ "core/icon" ],
 	"styles": {
 		"border": {
-			"radius": "var:preset|border-radius|md",
+			"radius": "var:preset|border-radius|lg",
 			"color": "var(--wp--custom--color--border)",
 			"style": "solid",
 			"width": "1px"

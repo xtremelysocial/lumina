@@ -29,20 +29,20 @@
 
 .wp-block-navigation__responsive-container:not(.is-menu-open) {
 	.wp-block-navigation__submenu-container {
-		border-radius: var(--wp--custom--border--radius, 8px);
+		border-radius: var(--wp--preset--border-radius--lg, 16px);
 	
 		//  Round the top corners of the absolute first link item
 		& > :first-child,
 		& > :first-child > a {
-			border-top-left-radius: var(--wp--custom--border--radius, 8px);
-			border-top-right-radius: var(--wp--custom--border--radius, 8px);
+			border-top-left-radius: var(--wp--preset--border-radius--lg, 16px);
+			border-top-right-radius: var(--wp--preset--border-radius--lg, 16px);
 		}
 		
 		// 3. Round the bottom corners of the absolute last link item
 		& > :last-child,
 		& > :last-child > a {
-			border-bottom-left-radius: var(--wp--custom--border--radius, 8px);
-			border-bottom-right-radius: var(--wp--custom--border--radius, 8px);
+			border-bottom-left-radius: var(--wp--preset--border-radius--lg, 16px);
+			border-bottom-right-radius: var(--wp--preset--border-radius--lg, 16px);
 		}	
 	}
 }
