@@ -47,9 +47,13 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 16%, 91%)", "name": "Secondary Subtle Alt (91% Slate Border)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 20%, 91%)", "name": "Tertiary Subtle Alt (91% Gold Border)" },
 
-				{ "slug": "highlight", "color": "hsl(206, 65%, 48%)", "name": "Highlight (Clean Slate Link)" },
-
-				{ "slug": "highlight-alt", "color": "hsl(206, 70%, 38%)", "name": "Highlight Alt (Deep Slate Hover)" },
+				{ "slug": "highlight", "color": "hsl(206, 70%, 72%)", "name": "Highlight (Clean Slate Sky Pop)" },
+				{ "slug": "highlight-secondary", "color": "hsl(154, 60%, 68%)", "name": "Highlight Secondary (Vibrant Mint Sage Pop)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(34, 70%, 68%)", "name": "Highlight Tertiary (Vibrant Signal Gold Pop)" },
+				
+				{ "slug": "highlight-alt", "color": "hsl(206, 65%, 34%)", "name": "Highlight Alt (Deep Slate Tech Anchor)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(154, 50%, 30%)", "name": "Highlight Secondary Alt (Deep Tech Sage Anchor)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(34, 60%, 34%)", "name": "Highlight Tertiary Alt (Deep Signal Gold Anchor)" },
 
 				{ "slug": "primary-dark", "color": "hsl(154, 24%, 12%)", "name": "Primary Dark (Deep Sage Tech Floor 12%)" },
 				{ "slug": "dark", "color": "hsl(206, 20%, 12%)", "name": "Dark (Obsidian Core Tech Floor 12%)" },

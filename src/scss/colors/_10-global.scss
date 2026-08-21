@@ -55,7 +55,7 @@
 			@include logic.apply-contrast-color($color, $text, $root);
 		}
 
-		// Handle heading override
+		// Handle heading override in the global space
 		@if $heading {
 			@include logic.apply-heading-action(
 				$color: $color, 

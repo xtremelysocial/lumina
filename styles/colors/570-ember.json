@@ -13,7 +13,11 @@
 					"background": "var(--wp--preset--color--primary)",
 					"hover": "var(--wp--preset--color--primary-alt)",
 					"hoverOpacity": "0.85"
-				}			
+				},
+				"heading": { 
+					"text": "var(--wp--preset--color--primary-dark)", 
+					"separator": "var(--wp--preset--color--primary)"
+				}
 			}
 		},
 		"color": {
@@ -34,9 +38,13 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(44, 14%, 83%)", "name": "Secondary Subtle Alt (Gold Border 83%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(146, 10%, 83%)", "name": "Tertiary Subtle Alt (Sage Seam 83%)" },
 
-				{ "slug": "highlight", "color": "hsl(12, 88%, 62%)", "name": "Highlight (Blazing Ember Hover/Pop 62%)" },
-
-				{ "slug": "highlight-alt", "color": "hsl(12, 76%, 38%)", "name": "Highlight Alt (Deep Volcanic Link Anchor 38%)" },
+				{ "slug": "highlight", "color": "hsl(12, 80%, 68%)", "name": "Highlight (Blazing Ember Hover/Pop)" },
+				{ "slug": "highlight-secondary", "color": "hsl(34, 75%, 68%)", "name": "Highlight Secondary (Glowing Ochre Pop)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(152, 50%, 68%)", "name": "Highlight Tertiary (Ash Pine Pop)" },
+				
+				{ "slug": "highlight-alt", "color": "hsl(12, 76%, 38%)", "name": "Highlight Alt (Deep Volcanic Link Anchor)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(34, 65%, 36%)", "name": "Highlight Secondary Alt (Burnished Ember Gold Anchor)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(152, 42%, 32%)", "name": "Highlight Tertiary Alt (Deep Ash Pine Anchor)" },
 				
 				{ "slug": "primary-dark", "color": "hsl(12, 32%, 16%)", "name": "Primary Dark (Deep Charcoal Terra Cotta 16%)" },
 				{ "slug": "dark", "color": "hsl(11, 28%, 16%)", "name": "Dark (Deep Obsidian Heading 16%)" },

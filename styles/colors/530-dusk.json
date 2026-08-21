@@ -24,7 +24,7 @@
 					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--contrast)",
+					"text": "var(--wp--preset--color--highlight-secondary-alt)",
 					"separator": "var(--wp--preset--color--tertiary)"
 				},
 				"button": {
@@ -52,8 +52,12 @@
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(24, 16%, 83%)", "name": "Tertiary Subtle Alt (Evening Glow Orange Border 83%)" },
 
 				{ "slug": "highlight", "color": "hsl(150, 65%, 68%)", "name": "Highlight (Pastel Emerald Hover)" },
-
+				{ "slug": "highlight-secondary", "color": "hsl(12, 65%, 70%)", "name": "Highlight Secondary (Twilight Flame Pop)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(214, 55%, 72%)", "name": "Highlight Tertiary (Dusk Indigo Pop)" },
+				
 				{ "slug": "highlight-alt", "color": "hsl(151, 55%, 30%)", "name": "Highlight Alt (Alpine Emerald Link Anchor)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(12, 58%, 36%)", "name": "Highlight Secondary Alt (Twilight Terracotta Anchor)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(214, 50%, 32%)", "name": "Highlight Tertiary Alt (Midnight Indigo Anchor)" },
 
 				{ "slug": "primary-dark", "color": "hsl(214, 18%, 14%)", "name": "Primary Dark (Midnight Slate Deep 14%)" },
 				{ "slug": "dark", "color": "hsl(206, 20%, 20%)", "name": "Dark (Secondary Maritime Footer Pair 20%)" },

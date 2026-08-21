@@ -24,7 +24,7 @@
 					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--contrast)",
+					"text": "var(--wp--preset--color--highlight-secondary-alt)",
 					"separator": "var(--wp--preset--color--primary)"
 				}
 			}
@@ -47,9 +47,13 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(218, 16%, 83%)", "name": "Secondary Subtle Alt (Tailored Slate 83%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(6, 14%, 83%)", "name": "Tertiary Subtle Alt (Rose Concrete 83%)" },
 
-				{ "slug": "highlight", "color": "hsl(0, 44%, 62%)", "name": "Highlight (Dusty Rose Hover)" },
-
-				{ "slug": "highlight-alt", "color": "hsl(0, 48%, 32%)", "name": "Highlight Alt (Historical Crimson Anchor 32%)" },
+				{ "slug": "highlight", "color": "hsl(0, 52%, 68%)", "name": "Highlight (Dusty Rose Hover)" },
+				{ "slug": "highlight-secondary", "color": "hsl(327, 45%, 72%)", "name": "Highlight Secondary (Velvet Orchid Pop)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(38, 65%, 70%)", "name": "Highlight Tertiary (Gilded Amber Pop)" },
+				
+				{ "slug": "highlight-alt", "color": "hsl(0, 48%, 32%)", "name": "Highlight Alt (Historical Crimson Anchor)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(327, 40%, 32%)", "name": "Highlight Secondary Alt (Royal Velvet Plum Anchor)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(38, 55%, 36%)", "name": "Highlight Tertiary Alt (Antique Gold Velvet Anchor)" },
 				
 				{ "slug": "primary-dark", "color": "hsl(327, 10%, 22%)", "name": "Primary Dark (Dark Purple Deep 22%)" },
 				{ "slug": "dark", "color": "hsl(207, 20%, 22%)", "name": "Dark (Secondary Midnight Footer Pair 22%)" },

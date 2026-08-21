@@ -24,7 +24,7 @@
 					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--contrast)",
+					"text": "var(--wp--preset--color--primary-dark)",
 					"separator": "var(--wp--preset--color--primary)"
 				}
 			}
@@ -48,8 +48,12 @@
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(146, 16%, 83%)", "name": "Tertiary Subtle Alt (Sage Seam 83%)" },
 				
 				{ "slug": "highlight", "color": "hsl(152, 65%, 68%)", "name": "Highlight (Soft Sage Hover)" },
-
+				{ "slug": "highlight-secondary", "color": "hsl(34, 70%, 68%)", "name": "Highlight Secondary (Sunlit Gold Glow)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(207, 55%, 70%)", "name": "Highlight Tertiary (Sunlit Ocean Pop)" },
+				
 				{ "slug": "highlight-alt", "color": "hsl(149, 55%, 30%)", "name": "Highlight Alt (Clear Moss Anchor)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(34, 60%, 36%)", "name": "Highlight Secondary Alt (Burnished Ochre Anchor)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(207, 48%, 34%)", "name": "Highlight Tertiary Alt (Deep Sol Blue Anchor)" },
 
 				{ "slug": "primary-dark", "color": "hsl(34, 32%, 22%)", "name": "Primary Dark (Antique Gold Deep 22%)" },
 				{ "slug": "dark", "color": "hsl(207, 20%, 22%)", "name": "Dark (Secondary Midnight Footer Pair 22%)" },

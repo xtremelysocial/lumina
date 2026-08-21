@@ -29,6 +29,7 @@
 			$color:  		map.get($config, color);
 			$text:   		map.get($config, text);    
 			$heading-light: map.get($config, heading-light);    
+			$link-light: 	map.get($config, link-light);    
 			$footer: 		map.get($config, footer);
 			
 			$selectors: logic.build-selector-list($color);
@@ -44,6 +45,16 @@
 			@if $heading-light {
 				@include logic.apply-heading-action($color, $heading-light);
 			}
+			
+			@if $link-light {
+				@include logic.apply-link-action(
+					$color: $color, 
+					$link: $link-light, 
+					$remove-underline: true,
+					$root: false
+				);
+			}
+
 			
 			@if $footer {
 				@include logic.apply-footer-action($selectors, $footer);

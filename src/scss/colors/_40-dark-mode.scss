@@ -50,7 +50,8 @@
 				@include logic.apply-link-action(
 					$color: $color, 
 					$link: $link-dark, 
-					$remove-underline: true
+					$remove-underline: true,
+					$root: false
 				);
 			}
 			

@@ -24,8 +24,8 @@
 					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--contrast)",
-					"separator": "var(--wp--preset--color--tertiary)"
+					"text": "var(--wp--preset--color--highlight-secondary-alt)",
+					"separator": "var(--wp--preset--color--primary)"
 				}
 			}
 		},	
@@ -47,9 +47,13 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(208, 16%, 83%)", "name": "Secondary Subtle Alt (Tailored Slate 83%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(6, 14%, 83%)", "name": "Tertiary Subtle Alt (Rose Concrete 83%)" },
 				
-				{ "slug": "highlight", "color": "hsl(0, 44%, 71%)", "name": "Highlight (Vibrant Rose Hover 71%)" },
-
-				{ "slug": "highlight-alt", "color": "hsl(356, 62%, 32%)", "name": "Highlight Alt (Rich Crimson Anchor 32%)" },
+				{ "slug": "highlight", "color": "hsl(0, 52%, 70%)", "name": "Highlight (Vibrant Rose Hover)" },
+				{ "slug": "highlight-secondary", "color": "hsl(151, 45%, 68%)", "name": "Highlight Secondary (Alpine Sage Pop)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(208, 48%, 70%)", "name": "Highlight Tertiary (Heritage Sapphire Pop)" },
+				
+				{ "slug": "highlight-alt", "color": "hsl(356, 62%, 32%)", "name": "Highlight Alt (Rich Crimson Anchor)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(151, 42%, 32%)", "name": "Highlight Secondary Alt (Alpine Sage Anchor)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(208, 45%, 32%)", "name": "Highlight Tertiary Alt (Heritage Sapphire Anchor)" },
 
 				{ "slug": "primary-dark", "color": "hsl(151, 24%, 22%)", "name": "Primary Dark (Deep Alpine Sage Deep 22%)" },
 				{ "slug": "dark", "color": "hsl(208, 20%, 22%)", "name": "Dark (Secondary Midnight Footer Pair 22%)" },

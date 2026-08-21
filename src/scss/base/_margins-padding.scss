@@ -3,9 +3,64 @@
 --------------------------------------------------------------*/
 @use "@wordpress/base-styles/breakpoints";
 
-/*--------------------------------------------------------------
-# Padding and Margin Styles
---------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+# Increase Top-Level Vertical Spacing Between Blocks
+-----------------------------------------------------------------------------*/
+
+/* 1. Macro Section Spacing */
+:root :where(.wp-block-post-content) > * + * {
+    margin-block-start: var(--wp--preset--spacing--60);
+}
+
+/* 2. Heading Micro-Tether */
+/* Expanded to catch headers, entry-headers, groups, and standard content containers */
+:root :where(.wp-block-post-content, .wp-block-column, .entry-header, .wp-block-group) > :where(
+    .wp-block-heading,
+    .wp-block-site-title,
+    .wp-block-post-title,
+    .wp-block-query-title,
+    .wp-block-site-tagline
+) + * {
+    margin-block-start: var(--wp--preset--spacing--30);
+}
+
+/* 3. Page / Post Subtitle */
+.entry-subtitle {
+	/* Removed margin-top: 0 !important so Heading Micro-Tether handles the 24px gap */
+	margin-block-end: var(--wp--preset--spacing--30);
+}
+
+/* 
+ * 4. Remove top margin on page/post title when placed into the content side of 
+ * Templates that have a sidebar. 
+ */
+.main-content.wp-block-columns .entry-header.wp-block-group {
+    padding-top: 0 !important;
+//     padding-bottom: 0 !important;
+} 
+
+/* 5. Bump post content bottom gap to match macro section spacing */
+/* Add bottom margin to main unless its the post content, then add it to that */
+// A. When Comments, Meta, or another block is the last child of <main>
+main > :last-child:not(.wp-block-post-content):not(:empty),
+
+// B. When Post Content IS the last child of <main> (simple pages, no comments/meta)
+main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
+    margin-block-end: var(--wp--preset--spacing--60);
+}
+
+/*-----------------------------------------------------------------------------
+# Collapsing Ghost (Empty) Blocks
+-----------------------------------------------------------------------------*/
+// Target the template part if the comments container has no visible HTML child elements
+.wp-block-template-part:empty {
+	margin-block-start: 0; 
+	margin-block-end: 0; 
+}
+
+/*-----------------------------------------------------------------------------
+# Padding Styles
+-----------------------------------------------------------------------------*/
 
 /* Override parent theme's padding on colored blocks */
 .wp-site-blocks {
@@ -15,15 +70,10 @@
 	}
 }
 
-/* ==========================================================================
-   ENTRY SUBTITLE / META BAR
-   Neutralizes Gutenberg blockGap injection below post/page titles
-   ========================================================================== */
-
-.entry-subtitle {
-	margin-top: 0 !important;
-	margin-bottom: var(--wp--preset--spacing--30);
-}
+/*-----------------------------------------------------------------------------
+# Avatar Styles
+// TO-DO: Move somewhere else more appropriate
+-----------------------------------------------------------------------------*/
 
 /* Set avatars to look like images with border */
 a > .avatar {
@@ -31,48 +81,3 @@ a > .avatar {
 	border-radius: var(--wp--custom--button--radius);
 }
 
-/* Add top margin to main unless its the post content or a featured image */
-// main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-image):not(.wp-block-cover):not(.wp-block-template-part):not(.wp-block-image) {
-// main > :first-child:not(.alignfull),
-// .wp-block-entry-content > :first-child:not(.alignfull) {
-// main > :first-child:not(.wp-block-post-content):not(.alignfull),
-// :root :where(.is-layout-flow).wp-block-post-content > :first-child:not(.alignfull),
-// :root :where(.is-layout-constrained).wp-block-post-content > :first-child:not(.alignfull) {	
-// 	margin-block-start: var(--wp--preset--spacing--50);
-// }
-
-// /* But don't add it to empty template parts */
-// main > :first-child.wp-block-template-part:empty {
-// 	margin-block-start: 0 !important; 
-// }
-
-/* 
- * Remove top margin on page/post title when placed into the content side of 
- * Templates that have a sidebar. 
- */
-.main-content.wp-block-columns .entry-header.wp-block-group {
-    padding-top: 0 !important;
-//     padding-bottom: 0 !important;
-} 
-
-/* Add bottom margin to main unless its the post content, then add it to that */
-// main > :last-child:not(.wp-block-post-content),
-// main > :last-child:not(.wp-block-post-content):not(:empty),
-// :root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
-// :root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {	
-// 	margin-block-end: var(--wp--preset--spacing--50);
-// }
-
-/* But don't add it to empty template parts */
-// main > :last-child.wp-block-template-part:empty {
-// 	margin-block-end: 0 !important; 	
-// }
-
-/*-----------------------------------------------------------------------------
-# Collapsing Ghost Blocks (Bypassing WordPress Whitespace Outtakes)
------------------------------------------------------------------------------*/
-// Target the template part if the comments container has no visible HTML child elements
-.wp-block-template-part:empty {
-	margin-block-start: 0; 
-	margin-block-end: 0; 
-}

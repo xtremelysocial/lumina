@@ -24,7 +24,7 @@
 					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
-					"text": "hsl(154, 20%, 14%)",
+					"text": "var(--wp--preset--color--primary-dark-alt)",
 					"separator": "var(--wp--preset--color--primary)"
 				}
 			}
@@ -48,8 +48,12 @@
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 10%, 91%)", "name--": "Tertiary Subtle Alt (Gold Hairline 91%)" },
 
 				{ "slug": "highlight", "color": "hsl(154, 45%, 68%)", "name": "Highlight (Soft Matte Sage Pop)" },
-
+				{ "slug": "highlight-secondary", "color": "hsl(206, 45%, 72%)", "name": "Highlight Secondary (Misty Slate Pop)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(34, 55%, 70%)", "name": "Highlight Tertiary (Misty Gold Pop)" },
+				
 				{ "slug": "highlight-alt", "color": "hsl(154, 40%, 32%)", "name": "Highlight Alt (Misty Pine Link Anchor)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(206, 42%, 34%)", "name": "Highlight Secondary Alt (Misty Slate Anchor)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(34, 50%, 36%)", "name": "Highlight Tertiary Alt (Misty Ochre Anchor)" },
 
 				{ "slug": "primary-dark", "color": "hsl(154, 20%, 22%)", "name": "Primary Dark (Muted Sage Deep 22%)" },
 				{ "slug": "dark", "color": "hsl(206, 20%, 22%)", "name": "Dark (Secondary Slate Footer pair 22%)" },

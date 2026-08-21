@@ -69,7 +69,8 @@
 
 		// Add padding to the nav item link (a)
         & .wp-block-navigation-item__content { //},
-			padding-bottom: var(--wp--preset--spacing--30);
+// 			padding-bottom: var(--wp--preset--spacing--30);
+			padding-bottom: .5em;
 		}
 		
 		// Top-level nav items need their own bottom border and padding as well

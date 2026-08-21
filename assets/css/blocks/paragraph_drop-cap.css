@@ -5,7 +5,7 @@
 # LUMINA Paragraph (Drop Cap)
 --------------------------------------------------------------*/
 .has-drop-cap {
-  margin-top: var(--wp--preset--spacing--20) !important;
+  margin-top: var(--wp--preset--spacing--30);
 }
 
 .has-drop-cap:not(:focus)::first-letter {

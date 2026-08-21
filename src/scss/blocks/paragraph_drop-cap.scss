@@ -3,7 +3,7 @@
 --------------------------------------------------------------*/
 // Provide top clearance below headings for the oversized initial letter
 .has-drop-cap {
-	margin-top: var(--wp--preset--spacing--20) !important;
+	margin-top: var(--wp--preset--spacing--30); // !important;
 }
 
 .has-drop-cap:not(:focus)::first-letter {

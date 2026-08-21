@@ -23,7 +23,7 @@
 					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--highlight-secondary)",
+					"text": "var(--wp--preset--color--highlight-tertiary)",
 					"separator": "var(--wp--preset--color--primary)"
 				},
 				"button": {

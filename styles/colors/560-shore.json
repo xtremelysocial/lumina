@@ -10,7 +10,7 @@
 					"scheme": "shore"
 				},
 				"heading": {
-					"text": "hsl(206, 28%, 8%)",
+					"text": "var(--wp--preset--color--primary-dark-alt)",
 					"separator": "var(--wp--preset--color--primary)"
 				},
 				"button": {
@@ -38,9 +38,13 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 14%, 83%)", "name": "Secondary Subtle Alt (Midnight Border 83%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(43, 12%, 83%)", "name": "Tertiary Subtle Alt (Structured Sand Border 83%)" },
 
-				{ "slug": "highlight", "color": "hsl(206, 45%, 44%)", "name": "Highlight (Crisp Coastal Blue Link)" },
-
-				{ "slug": "highlight-alt", "color": "hsl(206, 42%, 32%)", "name": "Highlight Alt (Deep Atlantic Hover 32%)" },
+				{ "slug": "highlight", "color": "hsl(206, 60%, 72%)", "name": "Highlight (Crisp Coastal Sky Pop)" },
+				{ "slug": "highlight-secondary", "color": "hsl(43, 55%, 70%)", "name": "Highlight Secondary (Warm Shore Dune Pop)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(165, 50%, 68%)", "name": "Highlight Tertiary (Misty Seafoam Pop)" },
+				
+				{ "slug": "highlight-alt", "color": "hsl(206, 45%, 32%)", "name": "Highlight Alt (Deep Atlantic Anchor)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(43, 40%, 36%)", "name": "Highlight Secondary Alt (Driftwood Sand Anchor)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(165, 42%, 32%)", "name": "Highlight Tertiary Alt (Coastal Tide Anchor)" },
 
 				{ "slug": "primary-dark", "color": "hsl(206, 22%, 22%)", "name": "Primary Dark (Steel Slate Deep 22%)" },
 				{ "slug": "dark", "color": "hsl(206, 22%, 16%)", "name": "Dark (Secondary Midnight Footer Pair 16%)" },

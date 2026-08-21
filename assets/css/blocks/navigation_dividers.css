@@ -47,7 +47,7 @@
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item__content {
-  padding-bottom: var(--wp--preset--spacing--30);
+  padding-bottom: 0.5em;
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
