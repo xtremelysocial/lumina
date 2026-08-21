@@ -214,7 +214,8 @@
 	$editor-styles: false   // Set to true to compile editor hover rules
 ) {
 
-	$excluded-links: ".wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content";
+// 	$excluded-links: ".wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content";
+	$excluded-links: ".wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg)";
 	$clean-selectors: build-selector-list($color);
 
 	// Clean root prefix without trailing spaces
