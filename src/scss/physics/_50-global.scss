@@ -60,9 +60,9 @@
 			box-shadow: none !important;
 		}
 		
-		// -----------------------------------------------------------------------------
-		// Lumina Card Arrow Overlay Badge
-		// -----------------------------------------------------------------------------
+		/* -----------------------------------------------------------------------------
+		   Lumina Card Arrow Overlay Badge (Resting State Definitions)
+		   ----------------------------------------------------------------------------- */
 		
 		// Ensure card container forms absolute positioning context
 		.is-interactive-card {
@@ -71,15 +71,15 @@
 		
 		// Floating Badge Overlay - Base Definition (32px)
 		.lumina-card-arrow-overlay {
-			position: absolute;
+			position: absolute !important;
 			
 			// 1. Neutralize WP layout engine block-gap margins
 			margin: 0 !important;
 			margin-block-start: 0 !important;
 			
 			// 2. Precise placement from bottom-right corner
-			bottom: var(--wp--preset--spacing--30);
-			right: var(--wp--preset--spacing--30);
+			bottom: var(--wp--preset--spacing--30) !important;
+			right: var(--wp--preset--spacing--30) !important;
 			
 			z-index: 10;
 			display: inline-flex;
@@ -111,23 +111,50 @@
 						transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), 
 						visibility var(--wp--custom--animation--duration--short, 200ms);
 			
-			// Engine shadow token
 			box-shadow: config.$shadow-default;
+		
+			/* --- TOOLTIP TEXT BUBBLE (::before) --- */
+			&::before {
+				position: absolute;
+				right: 40px; /* 32px badge + 8px gap */
+				top: 50%;
+				transform: translateY(-50%) translateX(6px);
+				
+				padding: 4px 8px;
+				background: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 90%, transparent);
+				color: var(--wp--preset--color--base, #ffffff);
+				font-size: 11px;
+				font-weight: 500;
+				line-height: 1.2;
+				letter-spacing: 0.02em;
+				border-radius: 4px;
+				white-space: nowrap;
+				
+				opacity: 0;
+				visibility: hidden;
+				pointer-events: none;
+				transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+				z-index: 11;
+				box-shadow: config.$shadow-default;
+			}
+		
+			/* Dynamic Action Labels */
+			&.lumina-action-internal::before { content: "View Page"; }
+			&.lumina-action-external::before { content: "External Link"; }
+			&.lumina-action-scroll-up::before { content: "Scroll Up"; }
+			&.lumina-action-scroll-down::before { content: "Scroll Down"; }
 		}
-
-		// Inverted Badge (Contrast Card BG): Base Badge + Contrast Icon
+		
+		// Inverted Badge (Contrast Card BG)
 		.is-interactive-card.has-contrast-background-color > .lumina-card-arrow-overlay {
 			background: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 88%, transparent);
 			color: var(--wp--preset--color--contrast, #000000);
+		
+			&::before {
+				background: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 90%, transparent);
+				color: var(--wp--preset--color--contrast, #000000);
+			}
 		}
-
-		// Full-Width Wide Grid Alignment Override (Aligns badge to theme wide-width container edge)
-// 		.is-interactive-card.alignfull > .lumina-card-arrow-overlay {
-// 			right: max(
-// 				calc(0.5 * (100% - var(--wp--style--global--wide-size, 1100px))),
-// 				var(--wp--style--root--padding-right, var(--wp--preset--spacing--50, 2rem))
-// 			);
-// 		}
 
 	// ----------------------------------------------------------------------
 	// PHASE 2: INTERACTION STATE (lumina-interactions.css)
@@ -151,26 +178,24 @@
 			}
 		}
 
-		// -----------------------------------------------------------------------------
-		// Lumina Card Arrow Overlay Badge (Hover & Active Interactions)
-		// -----------------------------------------------------------------------------
-
-		// Standard Cards: Reveal when hovering anywhere on card container or mobile tap
-// 		.is-interactive-card:not(.alignfull):hover > .lumina-card-arrow-overlay,
-// 		.is-interactive-card:not(.alignfull).is-active > .lumina-card-arrow-overlay {
+		/* -----------------------------------------------------------------------------
+		   Lumina Card Arrow Overlay Badge (Hover & Active Triggers)
+		   ----------------------------------------------------------------------------- */
+		
+		// 1. Reveal Badge on Card Hover (Enables pointer-events so badge can receive direct hover)
 		.is-interactive-card:hover > .lumina-card-arrow-overlay,
 		.is-interactive-card.is-active > .lumina-card-arrow-overlay {
 			opacity: 1;
 			visibility: visible;
 			transform: scale(1);
+			pointer-events: auto !important;
 		}
 
-		// Full-Width Sections: Reveal overlay ONLY when hovering an internal link or button
-// 		.is-interactive-card.alignfull:has(a:hover, button:hover) > .lumina-card-arrow-overlay,
-// 		.is-interactive-card.alignfull.is-active > .lumina-card-arrow-overlay {
-// 			opacity: 1;
-// 			visibility: visible;
-// 			transform: scale(1);
-// 		}
+		// 2. Reveal Text Tooltip ONLY when hovering directly on the badge itself
+		.lumina-card-arrow-overlay:hover::before {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(-50%) translateX(0);
+		}
 	}
 }

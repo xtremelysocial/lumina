@@ -43,14 +43,27 @@
 	color: var(--wp--preset--color--almost-black);
 }
 
-%engine-heading-dark {
+%engine-heading-light-text {
+    /* Set link color to light text */
+    color: var(--wp--preset--color--foreground-alt);
+}
+
+%engine-heading-accent {
 	/* Set heading to custom color heading text */
 	color: var(--wp--custom--color--heading--text, var(--wp--preset--color--secondary-alt));
 }
 
+%engine-heading-lighten {
+	/* Lighten headings on dark backgrounds */
+    filter: config.$filter-link-lighten;
+// 	color: var(--wp--preset--color--highlight);
+// 	text-decoration-line: none; // override parent
+}
+
 %engine-heading-darken {
 	/* Darken headings on light backgrounds */
-	filter: brightness(0.52) saturate(1.6);
+// 	filter: brightness(0.52) saturate(1.6);
+	filter: config.$filter-link-darken;
 }
 
 %engine-link-inherit {
@@ -174,10 +187,10 @@
 	$clean-selectors: build-selector-list($color);
 	$root-prefix: "";
 	@if $root {
-		$root-prefix: ":where(:root) ";
+		$root-prefix: ":where(:root)";
 	}
 
-	#{$root-prefix}#{$clean-selectors} {
+	#{$root-prefix} #{$clean-selectors} {
 		:is(.wp-block-heading, 
 		.wp-block-post-title, 
 		.wp-block-query-title, 
@@ -185,20 +198,43 @@
 		.wp-block-site-tagline,
 		h1, h2, h3, h4, h5, h6
 		) {
-			@if $heading == 'light' or $heading == 'inherit' {
+		
+			// 1. Natural Container / Body Inheritance
+			@if $heading == 'inherit' {
 				@extend %engine-heading-inherit;
 
-			// Apply dark heading color if specified in color registry entry
-			} @else if $heading == 'heading-dark' {
-				@extend %engine-heading-dark;
-		
+			// 2. Controlled Accent / Pop Override
+			} @else if $heading == 'accent' {
+				@extend %engine-heading-accent;
+
+			// 3. Static High-Contrast Overrides
+			} @else if $heading == 'dark' {
+				@extend %engine-heading-dark-text;
+
+			} @else if $heading == 'light' {
+				@extend %engine-heading-light-text;
+
+			// 4. Relative Filter Overrides
 			} @else if $heading == 'darken' {
 				@extend %engine-heading-darken;
 
-			// Light backgrounds, set dark heading color
-			} @else if $heading == 'dark' {
-				@extend %engine-heading-dark-text;
+			} @else if $heading == 'lighten' {
+				@extend %engine-heading-lighten;
 			}
+// 			@if $heading == 'light' or $heading == 'inherit' {
+// 				@extend %engine-heading-inherit;
+// 
+// 			// Apply dark heading color if specified in color registry entry
+// 			} @else if $heading == true or $heading == 'accent' {
+// 				@extend %engine-heading-accent;
+// 		
+// 			} @else if $heading == 'darken' {
+// 				@extend %engine-heading-darken;
+// 
+// 			// Light backgrounds, set dark heading color
+// 			} @else if $heading == 'dark' {
+// 				@extend %engine-heading-dark-text;
+// 			}
 		}
 	}
 }

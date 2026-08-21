@@ -36,6 +36,11 @@ h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-dark-gray-background-
 .wp-block-query-title,
 .wp-block-site-title,
 .wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-very-dark-gray-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-very-light-green-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
@@ -99,6 +104,56 @@ h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-light-red-background-
 h1, h2, h3, h4, h5, h6) {
   /* Set heading to dark text */
   color: var(--wp--preset--color--almost-black);
+}
+
+:root :where(.is-dark-theme) .has-primary-subtle-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-secondary-subtle-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-tertiary-subtle-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-primary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-secondary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-tertiary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-neutral-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-neutral-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :root :where(.is-dark-theme) .has-light-gray-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6) {
+  /* Set heading to custom color heading text */
+  color: var(--wp--custom--color--heading--text, var(--wp--preset--color--secondary-alt));
 }
 
 :root :where(.is-dark-theme) .has-white-background-color :is(.wp-block-heading,
@@ -189,4 +244,7 @@ h1, h2, h3, h4, h5, h6) {
 }
 :root :where(.is-dark-theme) .has-dark-gray-background-color {
   color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--almost-black));
+}
+:root :where(.is-dark-theme) .has-very-dark-gray-background-color {
+  color: var(--wp--custom--color--contrast--very-dark-gray, var(--wp--preset--color--almost-black));
 }

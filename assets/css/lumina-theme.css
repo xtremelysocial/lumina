@@ -79,12 +79,16 @@ img.size-cropped-slim,
   border-radius: var(--wp--preset--border-radius--lg, 16px);
 }
 
-/* 2. SLIM ASPECT RATIO DEFAULTS (Targets img directly for unvaried static images) */
+/* 2. SHALLOW VIEWPORT ASPECT RATIO DEFAULTS (16:4.5 Slim & 21:9 Ultra-Wide) */
 :where(.wp-block-image:not(.is-style-pan-zoom),
 .wp-block-post-featured-image:not(.is-style-pan-zoom)) :where(img[style*="16/4.5"],
 img[style*="16 / 4.5"],
+img[style*="21/9"],
+img[style*="21 / 9"],
 img.size-cropped-slim,
-.size-cropped-slim img) {
+.size-cropped-slim img,
+img.size-cropped-ultrawide,
+.size-cropped-ultrawide img) {
   border-radius: var(--wp--preset--border-radius--sm, 8px);
 }
 
@@ -106,72 +110,74 @@ img.size-cropped-slim,
 }
 @keyframes luminaPanZoomMobileLoop {
   0% {
-    transform: scale(1.22) translate(0%, 0%);
+    transform: scale(1.25) translate(0%, 0%);
   }
   50% {
-    transform: scale(1.34) translate(-2.5%, -1.5%);
+    transform: scale(1.42) translate(-2.5%, -1.5%);
   }
   100% {
-    transform: scale(1.25) translate(1.5%, -2%);
+    transform: scale(1.28) translate(1.5%, -2%);
   }
 }
 @keyframes luminaPanZoomSlimLoop {
   0% {
-    transform: scale(1.08) translate(-2.8%, -4.5%);
+    transform: scale(1.12) translate(-4.5%, -7.2%);
     filter: brightness(1);
   }
   100% {
-    transform: scale(1.15) translate(2.8%, 4.5%);
+    transform: scale(1.26) translate(4.5%, 7.2%);
     filter: brightness(1.03);
   }
 }
 /* ==========================================================================
-   PAN & ZOOM BLOCK STYLE (.is-style-pan-zoom) — MOTION CONTAINER
+   PAN & ZOOM BLOCK STYLES — MOTION CONTAINERS
    ========================================================================== */
-/* 1. Base Motion Wrapper (Non-Slim Defaults to border-radius-lg) */
-.wp-block-image.is-style-pan-zoom,
-.wp-block-post-featured-image.is-style-pan-zoom,
-.wp-block-cover.is-style-pan-zoom {
+/* 1. Base Motion Wrappers (Non-Shallow Defaults to border-radius-lg) */
+.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
+.wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
+.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) {
+  position: relative;
   overflow: hidden; /* Mask camera movement */
-  border-radius: var(--wp--preset--border-radius--lg, 16px); /* Non-slim motion default */
+  border-radius: var(--wp--preset--border-radius--lg, 16px); /* Standard motion default */
   /* Full-Width Breakout Override */
 }
-.wp-block-image.is-style-pan-zoom.alignfull,
-.wp-block-post-featured-image.is-style-pan-zoom.alignfull,
-.wp-block-cover.is-style-pan-zoom.alignfull {
+.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull,
+.wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull,
+.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull {
   border: none !important;
   border-radius: 0 !important;
 }
-.wp-block-image.is-style-pan-zoom,
-.wp-block-post-featured-image.is-style-pan-zoom,
-.wp-block-cover.is-style-pan-zoom {
+.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
+.wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
+.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) {
   /* Child img inherits wrapper frame mask so keyframe transforms don't bleed */
 }
-.wp-block-image.is-style-pan-zoom img,
-.wp-block-image.is-style-pan-zoom .wp-block-cover__image-background,
-.wp-block-post-featured-image.is-style-pan-zoom img,
-.wp-block-post-featured-image.is-style-pan-zoom .wp-block-cover__image-background,
-.wp-block-cover.is-style-pan-zoom img,
-.wp-block-cover.is-style-pan-zoom .wp-block-cover__image-background {
+.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) img,
+.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-cover__image-background,
+.wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) img,
+.wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-cover__image-background,
+.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) img,
+.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-cover__image-background {
   border-radius: inherit !important;
 }
 
 /* 2. Zero-Specificity Fallback for Complex Containers (Media & Text) */
-:where(.wp-block-media-text.is-style-pan-zoom) .wp-block-media-text__media {
+:where(.wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover)) .wp-block-media-text__media {
+  position: relative;
   border: var(--wp--custom--border--style, solid) var(--wp--custom--border--width, 1px) var(--wp--custom--color--border, currentColor);
   border-radius: var(--wp--preset--border-radius--lg, 16px);
   overflow: hidden;
 }
 
 /* 3. Universal Nested Image Animation Engine */
-.wp-block-image.is-style-pan-zoom img,
-.wp-block-image.is-style-pan-zoom .wp-block-cover__image-background,
-.wp-block-post-featured-image.is-style-pan-zoom img,
-.wp-block-post-featured-image.is-style-pan-zoom .wp-block-cover__image-background,
-.wp-block-cover.is-style-pan-zoom img,
-.wp-block-cover.is-style-pan-zoom .wp-block-cover__image-background,
-.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media img,
-.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media .wp-block-cover__image-background {
+.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) img,
+.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-cover__image-background,
+.wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) img,
+.wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-cover__image-background,
+.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) img,
+.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-cover__image-background,
+.wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-media-text__media img,
+.wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-media-text__media .wp-block-cover__image-background {
   display: block;
   width: 100%;
   height: 100%;
@@ -183,54 +189,138 @@ img.size-cropped-slim,
 }
 
 /* ==========================================================================
-   SLIM BANNER MOTION OVERRIDE (16:4.5 Shallow Viewports)
+   HOVER / TAP MOTION MODIFIER (.is-style-pan-zoom-hover)
    ========================================================================== */
-.is-style-pan-zoom:is([style*="16/4.5"],
-[style*="16 / 4.5"],
-:has([style*="16/4.5"]),
-:has([style*="16 / 4.5"]),
-:has(.size-cropped-slim)) {
-  /* Clamps wrapper to small radius token */
-  border-radius: var(--wp--preset--border-radius--sm, 8px);
+.is-style-pan-zoom-hover {
+  position: relative;
+  /* 1. Default Paused State & Physics Collision Shield */
 }
-.is-style-pan-zoom:is([style*="16/4.5"],
-[style*="16 / 4.5"],
-:has([style*="16/4.5"]),
-:has([style*="16 / 4.5"]),
-:has(.size-cropped-slim)) img,
-.is-style-pan-zoom:is([style*="16/4.5"],
-[style*="16 / 4.5"],
-:has([style*="16/4.5"]),
-:has([style*="16 / 4.5"]),
-:has(.size-cropped-slim)) .wp-block-cover__image-background {
-  animation-name: luminaPanZoomSlimLoop;
-  animation-duration: 9.5s;
+.is-style-pan-zoom-hover img,
+.is-style-pan-zoom-hover .wp-block-cover__image-background {
+  animation-play-state: paused !important;
+  transition: none !important; /* Prevents physics engine transforms from causing motion snapping */
+}
+.is-style-pan-zoom-hover {
+  /* 2. Motion Indicator Badge Overlay (Icon Only — No Text Tooltip) */
+}
+.is-style-pan-zoom-hover::after {
+  content: "";
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  opacity: 0.75;
+  transition: opacity 250ms ease, transform 250ms ease;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M15 3l2.3 2.3-3.89 3.89 1.42 1.42 3.88-3.88L21 9V3h-6zM9 21L6.7 18.7l3.89-3.89-1.42-1.42-3.88 3.88L3 15v6h6z"/></svg>');
+  background-size: 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 2;
+}
+.is-style-pan-zoom-hover {
+  /* 3. Smooth Play State Toggle */
+}
+.is-style-pan-zoom-hover:hover img,
+.is-style-pan-zoom-hover:hover .wp-block-cover__image-background {
+  animation-play-state: running !important;
+}
+.is-style-pan-zoom-hover:hover::after {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 /* ==========================================================================
-   RESPONSIVE & ACCESSIBILITY OVERRIDES
+   SHALLOW VIEWPORT MOTION OVERRIDE (16:4.5 Slim & 21:9 Ultra-Wide)
    ========================================================================== */
+:is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is([style*="16/4.5"],
+[style*="16 / 4.5"],
+:has([style*="16/4.5"]),
+:has([style*="16 / 4.5"]),
+[style*="21/9"],
+[style*="21 / 9"],
+:has([style*="21/9"]),
+:has([style*="21 / 9"]),
+:has(.size-cropped-slim),
+:has(.size-cropped-ultrawide)) {
+  /* Clamps wrapper to small radius token */
+  border-radius: var(--wp--preset--border-radius--sm, 8px);
+}
+:is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is([style*="16/4.5"],
+[style*="16 / 4.5"],
+:has([style*="16/4.5"]),
+:has([style*="16 / 4.5"]),
+[style*="21/9"],
+[style*="21 / 9"],
+:has([style*="21/9"]),
+:has([style*="21 / 9"]),
+:has(.size-cropped-slim),
+:has(.size-cropped-ultrawide)) img,
+:is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is([style*="16/4.5"],
+[style*="16 / 4.5"],
+:has([style*="16/4.5"]),
+:has([style*="16 / 4.5"]),
+[style*="21/9"],
+[style*="21 / 9"],
+:has([style*="21/9"]),
+:has([style*="21 / 9"]),
+:has(.size-cropped-slim),
+:has(.size-cropped-ultrawide)) .wp-block-cover__image-background {
+  animation-name: luminaPanZoomSlimLoop;
+  animation-duration: 6.2s;
+}
+
+/* ==========================================================================
+   LIGHTBOX & ACCESSIBILITY OVERRIDES
+   ========================================================================== */
+/* Safely stops pan-zoom keyframes and hides badges in Lightbox without breaking JS transform positioning */
+.wp-lightbox-overlay img {
+  animation: none !important;
+}
+.wp-lightbox-overlay *::after,
+.wp-lightbox-overlay *::before {
+  display: none !important;
+  content: none !important;
+}
+
 @media (max-width: 781px) {
-  .is-style-pan-zoom:not(:is([style*="16/4.5"],
+  :is(.is-style-pan-zoom, .is-style-pan-zoom-hover):not(:is([style*="16/4.5"],
   [style*="16 / 4.5"],
   :has([style*="16/4.5"]),
   :has([style*="16 / 4.5"]),
-  :has(.size-cropped-slim))) img,
-  .is-style-pan-zoom:not(:is([style*="16/4.5"],
+  [style*="21/9"],
+  [style*="21 / 9"],
+  :has([style*="21/9"]),
+  :has([style*="21 / 9"]),
+  :has(.size-cropped-slim),
+  :has(.size-cropped-ultrawide))) img,
+  :is(.is-style-pan-zoom, .is-style-pan-zoom-hover):not(:is([style*="16/4.5"],
   [style*="16 / 4.5"],
   :has([style*="16/4.5"]),
   :has([style*="16 / 4.5"]),
-  :has(.size-cropped-slim))) .wp-block-cover__image-background {
+  [style*="21/9"],
+  [style*="21 / 9"],
+  :has([style*="21/9"]),
+  :has([style*="21 / 9"]),
+  :has(.size-cropped-slim),
+  :has(.size-cropped-ultrawide))) .wp-block-cover__image-background {
     animation-name: luminaPanZoomMobileLoop;
-    animation-duration: 6.8s;
+    animation-duration: 5.5s;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .is-style-pan-zoom img,
-  .is-style-pan-zoom .wp-block-cover__image-background {
-    animation: none;
-    transform: scale(1);
-    filter: none;
+  :is(.is-style-pan-zoom, .is-style-pan-zoom-hover)::after {
+    display: none !important;
+  }
+  :is(.is-style-pan-zoom, .is-style-pan-zoom-hover) img,
+  :is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-cover__image-background {
+    animation: none !important;
+    transform: scale(1) !important;
+    filter: none !important;
   }
 }
 /*--------------------------------------------------------------
@@ -495,7 +585,87 @@ h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-alt-background-color :is(.
 .wp-block-query-title,
 .wp-block-site-title,
 .wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-very-dark-gray-background-color :is(.wp-block-heading,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-contrast-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-primary-dark-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-primary-dark-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-dark-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-dark-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-dark-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-dark-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-not-quite-black-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-almost-black-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-black-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6) {
+  /* Inherit heading color */
+  color: inherit;
+}
+
+:where(:root) .has-primary-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-primary-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-alt-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
@@ -591,8 +761,8 @@ h1, h2, h3, h4, h5, h6), :where(:root) .has-dark-red-background-color :is(.wp-bl
 .wp-block-site-title,
 .wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6) {
-  /* Inherit heading color */
-  color: inherit;
+  /* Set link color to light text */
+  color: var(--wp--preset--color--foreground-alt);
 }
 
 :where(:root) .has-primary-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-primary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-gray-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-orange-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-orange-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-orange-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-blue-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-blue-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-blue-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-purple-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-purple-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-purple-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-red-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-red-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-red-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-bright-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-bright-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {
@@ -649,10 +819,6 @@ h1, h2, h3, h4, h5, h6) {
 
 :where(:root) .has-off-white-background-color {
   color: var(--wp--custom--color--contrast--off-white, var(--wp--preset--color--almost-black));
-}
-
-:where(:root) .has-very-dark-gray-background-color {
-  color: var(--wp--custom--color--contrast--very-dark-gray, var(--wp--preset--color--foreground-alt));
 }
 
 :where(:root) .has-primary-dark-background-color {

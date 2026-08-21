@@ -18,15 +18,19 @@
 	border-radius: var(--wp--preset--border-radius--lg, 16px);
 }
 
-/* 2. SLIM ASPECT RATIO DEFAULTS (Targets img directly for unvaried static images) */
+/* 2. SHALLOW VIEWPORT ASPECT RATIO DEFAULTS (16:4.5 Slim & 21:9 Ultra-Wide) */
 :where(
 	.wp-block-image:not(.is-style-pan-zoom),
 	.wp-block-post-featured-image:not(.is-style-pan-zoom)
 ) :where(
 	img[style*="16/4.5"],
 	img[style*="16 / 4.5"],
+	img[style*="21/9"],
+	img[style*="21 / 9"],
 	img.size-cropped-slim,
-	.size-cropped-slim img
+	.size-cropped-slim img,
+	img.size-cropped-ultrawide,
+	.size-cropped-ultrawide img
 ) {
 	border-radius: var(--wp--preset--border-radius--sm, 8px);
 }

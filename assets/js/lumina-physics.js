@@ -153,17 +153,19 @@
 		
 			if ($target !== null) {
 				$card.css('cursor', 'pointer');
-
+		
 				if ($card.find('> .lumina-card-arrow-overlay').length === 0) {
 					var href = $target.attr('href') || '';
 					var isAnchor = href.indexOf('#') === 0 || (href.indexOf('#') > -1 && href.split('#')[0] === window.location.href.split('#')[0]);
 					var isExternal = $target.get(0).hostname && $target.get(0).hostname !== window.location.hostname;
 		
-					// Default: Standard Internal Link (→︎ \u2192\uFE0E)
+					// Default: Standard Internal Link
+					var actionClass = 'lumina-action-internal';
 					var arrowSymbol = '\u2192\uFE0E';
 		
 					if (isExternal) {
-						// External Link (↗︎ \u2197\uFE0E)
+						// External Link
+						actionClass = 'lumina-action-external';
 						arrowSymbol = '\u2197\uFE0E';
 					} else if (isAnchor) {
 						var hashIndex = href.indexOf('#');
@@ -176,17 +178,22 @@
 									var cardTop = $card.offset().top;
 									var targetTop = $anchorTarget.offset().top;
 		
-									// \u2934\uFE0E = ⤴︎ (Curved Up) | \u2935\uFE0E = ⤵︎ (Curved Down)
-									arrowSymbol = (targetTop < cardTop) ? '\u2934\uFE0E' : '\u2935\uFE0E';
+									if (targetTop < cardTop) {
+										actionClass = 'lumina-action-scroll-up';
+										arrowSymbol = '\u2934\uFE0E';
+									} else {
+										actionClass = 'lumina-action-scroll-down';
+										arrowSymbol = '\u2935\uFE0E';
+									}
 								}
 							} catch (err) {
-								// Fallback for invalid selector strings (e.g. #/path)
+								actionClass = 'lumina-action-internal';
 								arrowSymbol = '\u2192\uFE0E';
 							}
 						}
 					}
 		
-					var $overlay = $('<span class="lumina-card-arrow-overlay" aria-hidden="true">' + arrowSymbol + '</span>');
+					var $overlay = $('<span class="lumina-card-arrow-overlay ' + actionClass + '" aria-hidden="true">' + arrowSymbol + '</span>');
 		
 					if ($card.css('position') === 'static') {
 						$card.css('position', 'relative');

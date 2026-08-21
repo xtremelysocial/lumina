@@ -26,14 +26,14 @@
 $color-defaults: (
     color:           null, 	// color slug (e.g. white, black, etc.)
     text:            null,	// dark, light, dark-light, light-dark, no-fallback
-    heading:		 null,	// dark or light
-    heading-light:	 null,	// dark or light or inherit
-    heading-dark:    null, 	// true or false
-    link:            null,	// 'inherit', 'dark', 'light',  'lighten', 'darken', 'highlight', 'highlight-alt'
-    link-light:      null,	// 'inherit', 'dark', 'light',  'lighten', 'darken', 'highlight', 'highlight-alt'
-    link-dark:       null, 	// 'inherit', 'dark', 'light',  'lighten', 'darken', 'highlight', 'highlight-alt'
-    footer:          null,    // hover-highlight, hover-highlight-alt
-    footer-dark:     null,    // hover-highlight, hover-highlight-alt
+    heading:		 null,	// inherit, dark, light, lighten, darken, accent
+    heading-light:	 null,	// inherit, dark, light, lighten, darken, accent
+    heading-dark:    null, 	// inherit, dark, light, lighten, darken, accent
+    link:            null,	// inherit, dark, light, lighten, darken, highlight, highlight-alt
+    link-light:      null,	// inherit, dark, light, lighten, darken, highlight, highlight-alt
+    link-dark:       null, 	// inherit, dark, light, lighten, darken, highlight, highlight-alt
+    footer:          null,  // hover-highlight, hover-highlight-alt
+    footer-dark:     null,  // hover-highlight, hover-highlight-alt
 );
 
 //*-----------------------------------------------------------------------------
@@ -43,11 +43,15 @@ $color-defaults: (
 $color-registry: (
 
 	// --- MAIN COLORS (DARK) (FLAT BLOCKS) ---
-    ( color: 'primary',          	text: 'light',  	link: 'inherit' ),
-    ( color: 'primary-alt',      	text: 'light',  	link: 'inherit' ),
+    ( color: 'primary',          	text: 'light',  	link: 'inherit', 
+    		heading: 'inherit' 
+    ),
+    ( color: 'primary-alt',      	text: 'light',  	link: 'inherit', 
+    		heading: 'inherit' 
+    ),
 
     ( color: 'secondary',        	text: 'light',  	link-light: 'inherit',
-    		footer-dark: 'hover-highlight'  
+    		heading: 'inherit',		footer-dark: 'hover-highlight'  
     ),
     
 //     ( color: 'secondary-alt',    	text: 'light',  	link-light: 'inherit',
@@ -55,17 +59,17 @@ $color-registry: (
 //     ), 
 
     ( color: 'tertiary',         	text: 'light',  	link-light: 'inherit',
-    		footer-dark: 'hover-highlight'  
+    		heading: 'inherit',		footer-dark: 'hover-highlight'  
     ),
     ( color: 'tertiary-alt',     	text: 'light',  	link-light: 'inherit',
-    		footer-dark: 'hover-highlight'  
+    		heading: 'inherit',		footer-dark: 'hover-highlight'  
     ),
 
 //     ( color: 'secondary',        	text: 'light',  	link: 'inherit',
 //     		link-dark: 'highlight', footer-dark: 'hover-highlight'  
 //     ),
     ( color: 'secondary-alt',    	text: 'light',  	link-light: 'lighten',
-    		footer-dark: 'hover-highlight'  
+    		heading: 'inherit',		footer-dark: 'hover-highlight'  
     ), 
 // 
 //     ( color: 'tertiary',         	text: 'light',  	link: 'inherit',
@@ -77,18 +81,18 @@ $color-registry: (
 
     // --- SUBTLE SEMANTIC COLORS (LUMINA ONLY) ---
     // Fluid: Light backgrounds in light mode, invert to dark in dark mode
-    ( color: 'primary-subtle',		text: 'dark-light', heading-dark: true ),							
-    ( color: 'secondary-subtle',    text: 'dark-light', heading-dark: true ),						
-    ( color: 'tertiary-subtle',     text: 'dark-light', heading-dark: true ),
+    ( color: 'primary-subtle',		text: 'dark-light', heading-dark: 'accent' ),							
+    ( color: 'secondary-subtle',    text: 'dark-light', heading-dark: 'accent' ),						
+    ( color: 'tertiary-subtle',     text: 'dark-light', heading-dark: 'accent' ),
     
     // --- SUBTLE ALT SEMANTIC COLORS (LUMINA ONLY) ---
-    ( color: 'primary-subtle-alt',  text: 'dark-light', heading-dark: true, 
+    ( color: 'primary-subtle-alt',  text: 'dark-light', heading-dark: 'accent', 
     		link-light: 'dark', link-dark: 'lighten', footer: 'hover-highlight-alt' 
     ),
-    ( color: 'secondary-subtle-alt', text: 'dark-light', heading-dark: true, 
+    ( color: 'secondary-subtle-alt', text: 'dark-light', heading-dark: 'accent', 
     		link-light: 'dark', link-dark: 'lighten', footer: 'hover-highlight-alt' 
     ),
-    ( color: 'tertiary-subtle-alt', text: 'dark-light', heading-dark: true, 
+    ( color: 'tertiary-subtle-alt', text: 'dark-light', heading-dark: 'accent', 
     		link-light: 'dark', link-dark: 'lighten', footer: 'hover-highlight-alt' 
     ),
 
@@ -96,13 +100,13 @@ $color-registry: (
 ////     ( color: 'base',              text: 'no-fallback' ),      
 //     ( color: 'foreground-alt',   text: 'dark' ),
 	( color: 'contrast',          	text: 'light-dark', link-light: 'lighten', 
-			link-dark: 'darken' ), //'inherit'
+			heading: 'inherit',		link-dark: 'darken' ), //'inherit'
 
     // --- NEUTRALS (E.G. SIDEBAR, BORDERS, DEFAULT CARD COLORS) ---
-    ( color: 'neutral',             text: 'dark-light', heading-dark: true,
+    ( color: 'neutral',             text: 'dark-light', heading-dark: 'accent',
     		footer-dark: 'hover-highlight' 
     ),
-    ( color: 'neutral-alt',         text: 'dark-light', heading-dark: true,
+    ( color: 'neutral-alt',         text: 'dark-light', heading-dark: 'accent',
     		footer-dark: 'hover-highlight'  
     ),
 
@@ -121,9 +125,12 @@ $color-registry: (
     		footer-dark: 'hover-highlight' 
     ),
 
-    ( color: 'light-gray',          text: 'dark-light', footer: 'hover-highlight-alt', 
-    		footer-dark: 'hover-highlight' 
-    ),
+	( color: 'light-gray',			text: 'dark-light',	heading-dark: 'accent',
+			footer: 'hover-highlight-alt',				footer-dark: 'hover-highlight'
+	),
+//     ( color: 'light-gray',          text: 'dark-light', footer: 'hover-highlight-alt', 
+//     		footer-dark: 'hover-highlight' 
+//     ),
 
     ( color: 'gray',                text: 'dark-light', footer: 'hover-highlight-alt', 
     		footer-dark: 'hover-highlight' 
@@ -133,16 +140,30 @@ $color-registry: (
     ( color: 'dark-gray',           text: 'light-dark', link: 'inherit', 
     	footer: 'hover-highlight-alt' 
     ),
-    ( color: 'very-dark-gray',    	text: 'light', 		link-light: 'lighten',
-     	link-dark: 'darken', footer: 'hover-highlight-alt'
-     ),
+
+	( color: 'very-dark-gray',		text: 'light-dark',		heading-dark: 'dark',
+			link-dark: 'darken',	footer: 'hover-highlight-alt'
+	),
+
+//     ( color: 'very-dark-gray',    	text: 'light', 		link-light: 'lighten',
+//      	link-dark: 'darken', footer: 'hover-highlight-alt'
+//      ),
     
     // --- DARK SEMANTIC COLORS (LUMINA ONLY) ---
     // Static dark zones that enforce high-contrast light text across both viewports
-    ( color: 'primary-dark',        text: 'light', 		link-light: 'lighten', heading-light: 'inherit' ),
-    ( color: 'primary-dark-alt',    text: 'light', 		link-light: 'lighten', heading-light: 'inherit' ),
-    ( color: 'tertiary-dark',       text: 'light', 		link-light: 'lighten', heading-light: 'inherit' ),
-    ( color: 'tertiary-dark-alt',   text: 'light', 		link-light: 'lighten', heading-light: 'inherit' ),
+    ( color: 'primary-dark',        text: 'light', 		link-light: 'lighten', 
+    		heading: 'inherit' 
+    ),
+    
+    ( color: 'primary-dark-alt',    text: 'light', 		link-light: 'lighten', 
+    		heading: 'inherit' 
+    ),
+    ( color: 'tertiary-dark',       text: 'light', 		link-light: 'lighten', 
+    		heading: 'inherit' 
+    ),
+    ( color: 'tertiary-dark-alt',   text: 'light', 		link-light: 'lighten', 
+    		heading: 'inherit' 
+    ),
     
     // --- VERY LIGHT NAMED COLORS (LUMINA ONLY) ---
     ( color: 'very-light-green',    text: 'dark', 		link-dark: 'darken',
@@ -224,21 +245,21 @@ $color-registry: (
 //     ( color: 'not-quite-black',	text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
 //     ( color: 'almost-black',	text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
 //     ( color: 'black',			text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
-//     ( color: 'dark',			text: 'light', 	link: 'lighten', heading-dark: 'heading-dark' ),
-//     ( color: 'dark-alt',		text: 'light', 	link: 'lighten', heading-dark: 'heading-dark' ),
-//     ( color: 'not-quite-black',	text: 'light', 	link: 'lighten', heading-dark: 'heading-dark' ),
-//     ( color: 'almost-black',	text: 'light', 	link: 'lighten', heading-dark: 'heading-dark' ),
-//     ( color: 'black',			text: 'light', 	link: 'lighten', heading-dark: 'heading-dark' ),
+//     ( color: 'dark',			text: 'light', 	link: 'lighten', heading-dark: 'accent' ),
+//     ( color: 'dark-alt',		text: 'light', 	link: 'lighten', heading-dark: 'accent' ),
+//     ( color: 'not-quite-black',	text: 'light', 	link: 'lighten', heading-dark: 'accent' ),
+//     ( color: 'almost-black',	text: 'light', 	link: 'lighten', heading-dark: 'accent' ),
+//     ( color: 'black',			text: 'light', 	link: 'lighten', heading-dark: 'accent' ),
 //     ( color: 'dark',			text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
 //     ( color: 'dark-alt',		text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
 //     ( color: 'not-quite-black',	text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
 //     ( color: 'almost-black',	text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
 //     ( color: 'black',			text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
-    ( color: 'dark',			link-light: 'lighten', heading-light: 'inherit' ),
-    ( color: 'dark-alt',		link-light: 'lighten', heading-light: 'inherit' ),
-    ( color: 'not-quite-black',	link-light: 'lighten', heading-light: 'inherit' ),
-    ( color: 'almost-black',	link-light: 'lighten', heading-light: 'inherit' ),
-    ( color: 'black',			link-light: 'lighten', heading-light: 'inherit' ),
+    ( color: 'dark',			link-light: 'lighten', heading: 'inherit' ),
+    ( color: 'dark-alt',		link-light: 'lighten', heading: 'inherit' ),
+    ( color: 'not-quite-black',	link-light: 'lighten', heading: 'inherit' ),
+    ( color: 'almost-black',	link-light: 'lighten', heading: 'inherit' ),
+    ( color: 'black',			link-light: 'lighten', heading: 'inherit' ),
     
     // ONLY IN FLAT-BLOCKS, BUT OVERRIDE LINKS FOR TESTING
     ( color: 'bright-green', 	link: 'inherit' ),

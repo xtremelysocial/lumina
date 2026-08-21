@@ -21,11 +21,21 @@
   box-shadow: none;
 }
 
+/* -----------------------------------------------------------------------------
+   Lumina Card Arrow Overlay Badge (Hover & Active Triggers)
+   ----------------------------------------------------------------------------- */
 .is-interactive-card:hover > .lumina-card-arrow-overlay,
 .is-interactive-card.is-active > .lumina-card-arrow-overlay {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
+  pointer-events: auto !important;
+}
+
+.lumina-card-arrow-overlay:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
 }
 
 /* ==========================================================================

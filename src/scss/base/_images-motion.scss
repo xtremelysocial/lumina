@@ -13,17 +13,17 @@ $pan-light-start:       1.00 !default;  // Base light
 $pan-light-end:         1.03 !default;  // Subtle highlight as camera moves in
 
 // 2. Mobile Motion Variables (<= 781px)
-$pan-mobile-duration:   6.8s !default;
-$pan-mobile-scale-0:    1.22 !default;  // Start zoom level on mobile
-$pan-mobile-scale-50:   1.34 !default;  // Peak mid-loop zoom
-$pan-mobile-scale-100:  1.25 !default;  // End loop zoom
+$pan-mobile-duration:   5.5s !default;  // Faster loop (was 6.8s)
+$pan-mobile-scale-0:    1.25 !default;  // Deeper base zoom (was 1.22)
+$pan-mobile-scale-50:   1.42 !default;  // Higher push-in peak (was 1.34)
+$pan-mobile-scale-100:  1.28 !default;  // Loop finish (was 1.25)
 
-// 3. Slim Banner Motion Variables (16:4.5 Shallow Viewports)
-$pan-slim-duration:     9.5s !default;  
-$pan-slim-scale-start:  1.08 !default;  
-$pan-slim-scale-end:    1.15 !default;  
-$pan-slim-shift-x:      2.8% !default;  
-$pan-slim-shift-y:      4.5% !default;  
+// 3. Slim & Ultra-Wide Motion Variables (Shallow Viewports)
+$pan-slim-duration:     6.2s !default;  // Faster loop for shallow viewports (was 9.5s)
+$pan-slim-scale-start:  1.12 !default;  // Higher start scale (was 1.08)
+$pan-slim-scale-end:    1.26 !default;  // Higher end scale (was 1.15)
+$pan-slim-shift-x:      4.5% !default;  // Increased horizontal travel (was 2.8%)
+$pan-slim-shift-y:      7.2% !default;  // Increased vertical travel (was 4.5%)
 
 /* ==========================================================================
    KEYFRAME ANIMATION ENGINES
@@ -64,15 +64,16 @@ $pan-slim-shift-y:      4.5% !default;
 }
 
 /* ==========================================================================
-   PAN & ZOOM BLOCK STYLE (.is-style-pan-zoom) — MOTION CONTAINER
+   PAN & ZOOM BLOCK STYLES — MOTION CONTAINERS
    ========================================================================== */
 
-/* 1. Base Motion Wrapper (Non-Slim Defaults to border-radius-lg) */
-.wp-block-image.is-style-pan-zoom,
-.wp-block-post-featured-image.is-style-pan-zoom,
-.wp-block-cover.is-style-pan-zoom {
+/* 1. Base Motion Wrappers (Non-Shallow Defaults to border-radius-lg) */
+.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
+.wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
+.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) {
+	position: relative;
 	overflow: hidden; /* Mask camera movement */
-	border-radius: var(--wp--preset--border-radius--lg, 16px); /* Non-slim motion default */
+	border-radius: var(--wp--preset--border-radius--lg, 16px); /* Standard motion default */
 
 	/* Full-Width Breakout Override */
 	&.alignfull {
@@ -88,17 +89,18 @@ $pan-slim-shift-y:      4.5% !default;
 }
 
 /* 2. Zero-Specificity Fallback for Complex Containers (Media & Text) */
-:where(.wp-block-media-text.is-style-pan-zoom) .wp-block-media-text__media {
+:where(.wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover)) .wp-block-media-text__media {
+	position: relative;
 	border: var(--wp--custom--border--style, solid) var(--wp--custom--border--width, 1px) var(--wp--custom--color--border, currentColor);
 	border-radius: var(--wp--preset--border-radius--lg, 16px);	
 	overflow: hidden; 
 }
 
 /* 3. Universal Nested Image Animation Engine */
-.wp-block-image.is-style-pan-zoom,
-.wp-block-post-featured-image.is-style-pan-zoom,
-.wp-block-cover.is-style-pan-zoom,
-.wp-block-media-text.is-style-pan-zoom .wp-block-media-text__media {
+.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
+.wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
+.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
+.wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-media-text__media {
 	img,
 	.wp-block-cover__image-background {
 		display: block;
@@ -112,15 +114,69 @@ $pan-slim-shift-y:      4.5% !default;
 }
 
 /* ==========================================================================
-   SLIM BANNER MOTION OVERRIDE (16:4.5 Shallow Viewports)
+   HOVER / TAP MOTION MODIFIER (.is-style-pan-zoom-hover)
    ========================================================================== */
 
-.is-style-pan-zoom:is(
+.is-style-pan-zoom-hover {
+	position: relative;
+
+	/* 1. Default Paused State & Physics Collision Shield */
+	img,
+	.wp-block-cover__image-background {
+		animation-play-state: paused !important;
+		transition: none !important; /* Prevents physics engine transforms from causing motion snapping */
+	}
+
+	/* 2. Motion Indicator Badge Overlay (Icon Only — No Text Tooltip) */
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 12px;
+		right: 12px;
+		width: 28px;
+		height: 28px;
+		background: rgba(0, 0, 0, 0.55);
+		backdrop-filter: blur(4px);
+		border-radius: 50%;
+		opacity: 0.75;
+		transition: opacity 250ms ease, transform 250ms ease;
+		background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M15 3l2.3 2.3-3.89 3.89 1.42 1.42 3.88-3.88L21 9V3h-6zM9 21L6.7 18.7l3.89-3.89-1.42-1.42-3.88 3.88L3 15v6h6z"/></svg>');
+		background-size: 14px;
+		background-position: center;
+		background-repeat: no-repeat;
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	/* 3. Smooth Play State Toggle */
+	&:hover {
+		img,
+		.wp-block-cover__image-background {
+			animation-play-state: running !important;
+		}
+
+		&::after {
+			opacity: 1;
+			transform: scale(1.1);
+		}
+	}
+}
+
+/* ==========================================================================
+   SHALLOW VIEWPORT MOTION OVERRIDE (16:4.5 Slim & 21:9 Ultra-Wide)
+   ========================================================================== */
+
+:is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is(
 	[style*="16/4.5"],
 	[style*="16 / 4.5"],
 	:has([style*="16/4.5"]),
 	:has([style*="16 / 4.5"]),
-	:has(.size-cropped-slim)
+	[style*="21/9"],
+	[style*="21 / 9"],
+	:has([style*="21/9"]),
+	:has([style*="21 / 9"]),
+	:has(.size-cropped-slim),
+	:has(.size-cropped-ultrawide)
 ) {
 	/* Clamps wrapper to small radius token */
 	border-radius: var(--wp--preset--border-radius--sm, 8px);
@@ -133,17 +189,35 @@ $pan-slim-shift-y:      4.5% !default;
 }
 
 /* ==========================================================================
-   RESPONSIVE & ACCESSIBILITY OVERRIDES
+   LIGHTBOX & ACCESSIBILITY OVERRIDES
    ========================================================================== */
 
+/* Safely stops pan-zoom keyframes and hides badges in Lightbox without breaking JS transform positioning */
+.wp-lightbox-overlay {
+	img {
+		animation: none !important;
+	}
+
+	*::after,
+	*::before {
+		display: none !important;
+		content: none !important;
+	}
+}
+
 @media (max-width: 781px) {
-	.is-style-pan-zoom:not(
+	:is(.is-style-pan-zoom, .is-style-pan-zoom-hover):not(
 		:is(
 			[style*="16/4.5"],
 			[style*="16 / 4.5"],
 			:has([style*="16/4.5"]),
 			:has([style*="16 / 4.5"]),
-			:has(.size-cropped-slim)
+			[style*="21/9"],
+			[style*="21 / 9"],
+			:has([style*="21/9"]),
+			:has([style*="21 / 9"]),
+			:has(.size-cropped-slim),
+			:has(.size-cropped-ultrawide)
 		)
 	) {
 		img,
@@ -155,10 +229,16 @@ $pan-slim-shift-y:      4.5% !default;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.is-style-pan-zoom img,
-	.is-style-pan-zoom .wp-block-cover__image-background {
-		animation: none;
-		transform: scale(1);
-		filter: none;
+	:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) {
+		&::after {
+			display: none !important;
+		}
+
+		img,
+		.wp-block-cover__image-background {
+			animation: none !important;
+			transform: scale(1) !important;
+			filter: none !important;
+		}
 	}
 }

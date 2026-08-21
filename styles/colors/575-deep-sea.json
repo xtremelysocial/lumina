@@ -23,7 +23,7 @@
 					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--highlight-secondary)",
+					"text": "var(--wp--preset--color--highlight-secondary-alt)",
 					"separator": "var(--wp--preset--color--primary)"
 				},
 				"button": {
@@ -43,50 +43,50 @@
 		},
 		"color": {
 			"palette": [
-				{ "slug": "primary", "color": "hsl(202, 32%, 38%)", "name": "Primary (Toned Deep Sea Cyan)" },
-				{ "slug": "secondary", "color": "hsl(212, 29%, 15%)", "name": "Secondary (Submerged Panel)" },
-				{ "slug": "tertiary", "color": "hsl(212, 30%, 7%)", "name": "Tertiary (Abyssal Recess)" },
+				{ "slug": "primary", "color": "hsl(195, 32%, 38%)", "name": "Primary (Glacial Deep Cyan)" },
+				{ "slug": "secondary", "color": "hsl(215, 29%, 15%)", "name": "Secondary (Abyssal Navy Panel)" },
+				{ "slug": "tertiary", "color": "hsl(175, 28%, 12%)", "name": "Tertiary (Submerged Maritime Trench)" },
 
-				{ "slug": "primary-alt", "color": "hsl(202, 35%, 48%)", "name": "Primary Alt (Glacial Hover)" },			
-				{ "slug": "secondary-alt", "color": "hsl(212, 28%, 20%)", "name": "Secondary Alt (Hero & CTA Canvas)" },
-				{ "slug": "tertiary-alt", "color": "hsl(212, 29%, 12%)", "name": "Tertiary Alt (Deep Recess)" },		
+				{ "slug": "primary-alt", "color": "hsl(195, 35%, 48%)", "name": "Primary Alt (Glacial Hover)" },			
+				{ "slug": "secondary-alt", "color": "hsl(215, 28%, 20%)", "name": "Secondary Alt (Hero & CTA Canvas)" },
+				{ "slug": "tertiary-alt", "color": "hsl(175, 29%, 16%)", "name": "Tertiary Alt (Deep Maritime Recess)" },		
 
-				{ "slug": "primary-subtle", "color": "hsl(212, 26%, 16%)", "name": "Primary Subtle (Deep Slate Fill)" },
-				{ "slug": "secondary-subtle", "color": "hsl(212, 24%, 13%)", "name": "Secondary Subtle (Abyssal Marine Fill)" },
-				{ "slug": "tertiary-subtle", "color": "hsl(212, 33%, 5%)", "name": "Tertiary Subtle (Floor Fill)" },
+				{ "slug": "primary-subtle", "color": "hsl(195, 26%, 16%)", "name": "Primary Subtle (Deep Cyan Fill)" },
+				{ "slug": "secondary-subtle", "color": "hsl(215, 24%, 13%)", "name": "Secondary Subtle (Abyssal Navy Fill)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(175, 33%, 6%)", "name": "Tertiary Subtle (Maritime Trench Fill)" },
 
-				{ "slug": "primary-subtle-alt", "color": "hsl(212, 22%, 24%)", "name": "Primary Subtle Alt (Light Slate Fill)" },
-				{ "slug": "secondary-subtle-alt", "color": "hsl(212, 20%, 18%)", "name": "Secondary Subtle Alt (Marine Layer)" },
-				{ "slug": "tertiary-subtle-alt", "color": "hsl(212, 33%, 8%)", "name": "Tertiary Subtle Alt (Floor Panel)" },	
+				{ "slug": "primary-subtle-alt", "color": "hsl(195, 22%, 24%)", "name": "Primary Subtle Alt (Light Cyan Fill)" },
+				{ "slug": "secondary-subtle-alt", "color": "hsl(215, 20%, 18%)", "name": "Secondary Subtle Alt (Navy Marine Layer)" },
+				{ "slug": "tertiary-subtle-alt", "color": "hsl(175, 33%, 9%)", "name": "Tertiary Subtle Alt (Trench Panel)" },	
 
-				{ "slug": "highlight", "color": "hsl(202, 82%, 80%)", "name": "Highlight (Glacial Ice)" },
-				{ "slug": "highlight-secondary", "color": "hsl(169, 56%, 83%)", "name": "Highlight Secondary (Bioluminescent Seafoam)" },
+				{ "slug": "highlight", "color": "hsl(195, 82%, 80%)", "name": "Highlight (Glacial Ice)" },
+				{ "slug": "highlight-secondary", "color": "hsl(172, 56%, 83%)", "name": "Highlight Secondary (Bioluminescent Seafoam)" },
 				{ "slug": "highlight-tertiary", "color": "hsl(38, 85%, 75%)", "name": "Highlight Tertiary (Bioluminescent Amber)" },
 
-				{ "slug": "highlight-alt", "color": "hsl(202, 75%, 53%)", "name": "Highlight Alt (Luminous Sky Blue)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(169, 60%, 70%)", "name": "Highlight Secondary Alt (Warm Seafoam Anchor)" },
+				{ "slug": "highlight-alt", "color": "hsl(195, 75%, 53%)", "name": "Highlight Alt (Luminous Sky Blue)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(195, 25%, 82%)", "name": "Highlight Secondary Alt (Glacial Steel Heading Anchor)" },
 				{ "slug": "highlight-tertiary-alt", "color": "hsl(38, 75%, 50%)", "name": "Highlight Tertiary Alt (Deep Amber Anchor)" },
 
-				{ "slug": "primary-dark", "color": "hsl(202, 32%, 8%)", "name": "Primary Dark (Deep Oceanic Cyan Trench 8%)" },
-				{ "slug": "dark", "color": "hsl(212, 35%, 6%)", "name": "Dark (Abyssal Midnight Floor 6%)" },
-				{ "slug": "tertiary-dark", "color": "hsl(212, 30%, 8%)", "name": "Dark Tertiary (Deep Maritime Trench Floor 8%)" },
+				{ "slug": "primary-dark", "color": "hsl(195, 32%, 8%)", "name": "Primary Dark (Deep Glacial Trench 8%)" },
+				{ "slug": "dark", "color": "hsl(215, 35%, 6%)", "name": "Dark (Abyssal Navy Floor 6%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(175, 30%, 8%)", "name": "Dark Tertiary (Deep Maritime Floor 8%)" },
 
-				{ "slug": "primary-dark-alt", "color": "hsl(202, 35%, 4%)", "name": "Primary Dark Alt (Abyssal Glacial Void 4%)" },				
-				{ "slug": "dark-alt", "color": "hsl(212, 35%, 3%)", "name": "Dark Alt (Abyssal Midnight Void 3%)" },							
-				{ "slug": "tertiary-dark-alt", "color": "hsl(212, 30%, 4%)", "name": "Dark Tertiary Alt (Deep Maritime Trench Void 4%)" },
+				{ "slug": "primary-dark-alt", "color": "hsl(195, 35%, 4%)", "name": "Primary Dark Alt (Abyssal Glacial Void 4%)" },				
+				{ "slug": "dark-alt", "color": "hsl(215, 35%, 3%)", "name": "Dark Alt (Abyssal Navy Void 3%)" },							
+				{ "slug": "tertiary-dark-alt", "color": "hsl(175, 30%, 4%)", "name": "Dark Tertiary Alt (Deep Maritime Void 4%)" },
 
-				{ "slug": "base", "color": "hsl(212, 29%, 10%)", "name": "Base (Dark Deep Sea Canvas)" },
+				{ "slug": "base", "color": "hsl(215, 29%, 10%)", "name": "Base (Dark Deep Sea Canvas)" },
 				{ "slug": "contrast", "color": "hsl(43, 27%, 97%)", "name": "Contrast (Off White Typography)" },
 				{ "slug": "foreground-alt", "color": "hsl(43, 27%, 97%)", "name": "Foreground Alt (Off White)" },
 
-				{ "slug": "neutral", "color": "hsl(212, 29%, 15%)", "name": "Neutral (Submerged Slate)" },
-				{ "slug": "neutral-alt", "color": "hsl(212, 28%, 20%)", "name": "Neutral Alt (Maritime Border)" },
+				{ "slug": "neutral", "color": "hsl(215, 29%, 15%)", "name": "Neutral (Submerged Slate)" },
+				{ "slug": "neutral-alt", "color": "hsl(215, 28%, 20%)", "name": "Neutral Alt (Maritime Border)" },
 
-				{ "slug": "very-light-gray", "color": "hsl(212, 20%, 12%)", "name": "Very Light Gray (Inverted Deep Footer Floor 12%)" },
-				{ "slug": "light-gray", "color": "hsl(212, 16%, 22%)", "name": "Light Gray (Inverted Structural Card Well 22%)" },
-				{ "slug": "gray", "color": "hsl(212, 12%, 35%)", "name": "Gray (Inverted Technical Border Seam 35%)" },
-				{ "slug": "dark-gray", "color": "hsl(212, 10%, 65%)", "name": "Dark Gray (Inverted Muted Typography 65%)" },
-				{ "slug": "very-dark-gray", "color": "hsl(212, 12%, 85%)", "name": "Very Dark Gray (Inverted Tech Pop Typography 85%)" },
+				{ "slug": "very-light-gray", "color": "hsl(215, 20%, 12%)", "name": "Very Light Gray (Inverted Deep Footer Floor 12%)" },
+				{ "slug": "light-gray", "color": "hsl(215, 16%, 22%)", "name": "Light Gray (Inverted Structural Card Well 22%)" },
+				{ "slug": "gray", "color": "hsl(215, 12%, 35%)", "name": "Gray (Inverted Technical Border Seam 35%)" },
+				{ "slug": "dark-gray", "color": "hsl(215, 10%, 65%)", "name": "Dark Gray (Inverted Muted Typography 65%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(215, 12%, 85%)", "name": "Very Dark Gray (Inverted Tech Pop Typography 85%)" },
 
 				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
 				{ "slug": "off-white", "color": "hsl(43, 27%, 97%)", "name": "Off White" },
@@ -128,20 +128,20 @@
 				{ "slug": "dark-red", "color": "hsl(0, 23%, 22%)", "name": "Dark Red (Ember Alt Anchor 22%)" }		
 			],
 			"duotone": [
-				{ "colors": ["hsl(207, 28%, 31%)", "hsl(43, 27%, 97%)"], "slug": "primary", "name": "Primary" },
-				{ "colors": ["hsl(207, 28%, 41%)", "hsl(43, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt" },
-				{ "colors": ["hsl(212, 29%, 15%)", "hsl(43, 27%, 97%)"], "slug": "secondary", "name": "Secondary" },
-				{ "colors": ["hsl(212, 28%, 20%)", "hsl(43, 27%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt" },
-				{ "colors": ["hsl(212, 30%, 7%)", "hsl(43, 27%, 97%)"], "slug": "tertiary", "name": "Tertiary" },
-				{ "colors": ["hsl(212, 29%, 12%)", "hsl(43, 27%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt" },
+				{ "colors": ["hsl(195, 32%, 38%)", "hsl(43, 27%, 97%)"], "slug": "primary", "name": "Primary (Glacial Cyan)" },
+				{ "colors": ["hsl(195, 35%, 48%)", "hsl(43, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt" },
+				{ "colors": ["hsl(215, 29%, 15%)", "hsl(43, 27%, 97%)"], "slug": "secondary", "name": "Secondary (Abyssal Navy)" },
+				{ "colors": ["hsl(215, 28%, 20%)", "hsl(43, 27%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt" },
+				{ "colors": ["hsl(175, 28%, 12%)", "hsl(43, 27%, 97%)"], "slug": "tertiary", "name": "Tertiary (Maritime Trench)" },
+				{ "colors": ["hsl(175, 29%, 16%)", "hsl(43, 27%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt" },
 				{ "colors": ["hsl(327, 5%, 40%)", "hsl(33, 30%, 51%)"], "slug": "purple-yellow", "name": "Purple and Yellow" },
-				{ "colors": ["hsl(212, 29%, 15%)", "hsl(0, 18%, 36%)"], "slug": "blue-red", "name": "Blue and Red" },
-				{ "colors": ["hsl(212, 30%, 7%)", "hsl(207, 28%, 31%)"], "slug": "midnight", "name": "Midnight" },
+				{ "colors": ["hsl(215, 29%, 15%)", "hsl(0, 18%, 36%)"], "slug": "blue-red", "name": "Blue and Red" },
+				{ "colors": ["hsl(215, 30%, 7%)", "hsl(195, 32%, 38%)"], "slug": "midnight", "name": "Midnight" },
 				{ "colors": ["hsl(0, 18%, 36%)", "hsl(33, 30%, 51%)"], "slug": "magenta-yellow", "name": "Red and Yellow" },
 				{ "colors": ["hsl(327, 5%, 40%)", "hsl(155, 16%, 46%)"], "slug": "purple-green", "name": "Purple and Green" },
-				{ "colors": ["hsl(207, 28%, 31%)", "hsl(12, 31%, 49%)"], "slug": "blue-orange", "name": "Blue and Orange" },
+				{ "colors": ["hsl(195, 32%, 38%)", "hsl(12, 31%, 49%)"], "slug": "blue-orange", "name": "Blue and Orange" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale" },
-				{ "colors": ["hsl(0, 0%, 0%)", "hsl(212, 29%, 15%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
+				{ "colors": ["hsl(0, 0%, 0%)", "hsl(215, 29%, 15%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			]
 		}
 	},
