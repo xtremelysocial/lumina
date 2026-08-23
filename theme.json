@@ -34,7 +34,7 @@
 					"hoverOpacity": "0.6" 
 				},
 				"heading": {
-					"text": 		"var(--wp--preset--color--contrast)",
+					"text": 		"var(--wp--preset--color--dark)",
 					"separator": 	"var(--wp--preset--color--tertiary)"
 				},
 				"shadow": {
@@ -78,11 +78,24 @@
 				"timingFunction": 	"cubic-bezier(0.4, 0, 0.2, 1)",
 				"fillMode": 		"both",
 				"default": {
-					"hoverSmallTransform": 	"scale(1.03)",
-					"hoverTransform": 		"scale(1.05)",
-					"hoverLargeTransform": 	"scale(1.08)",
-					"objectSmallTransform": "translateY(-3px)",
-					"objectTransform": 		"translateY(-4px)"
+					"transform": 		"none",
+					"hoverTransform": 	"scale(1.05)"
+				},
+				"button": {
+					"transform": "none",
+					"hoverTransform": "scale(1.05)"
+				},
+				"card": {
+					"transform": "none",
+					"hoverTransform": "translateY(-3px)"
+				},
+				"image": {
+					"transform": "none",
+					"hoverTransform": "translateY(-4px)"
+				},
+				"mediaText": {
+					"transform": "scale(1.00)",
+					"hoverTransform": "scale(1.08)"
 				}
 			},
 			"typography": {

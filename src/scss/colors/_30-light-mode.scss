@@ -23,7 +23,7 @@
 	   	  color schemes.
 	========================================================================== */
 
-	:root :where(body:not(.is-dark-theme)) {
+	:where(:root) :where(body:not(.is-dark-theme)) {
 		@each $entry in logic.$color-registry {
 			$config: 		map.merge(logic.$color-defaults, $entry);
 			$color:  		map.get($config, color);
@@ -54,8 +54,7 @@
 					$root: false
 				);
 			}
-
-			
+	
 			@if $footer {
 				@include logic.apply-footer-action($selectors, $footer);
 			}

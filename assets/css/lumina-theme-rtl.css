@@ -570,17 +570,17 @@ h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-background-color :is(.wp-b
 .wp-block-query-title,
 .wp-block-site-title,
 .wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
 .wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-alt-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
@@ -655,17 +655,17 @@ h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-background-color :is(.wp-b
 .wp-block-query-title,
 .wp-block-site-title,
 .wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
 .wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-alt-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
 .wp-block-site-title,
@@ -801,16 +801,16 @@ h1, h2, h3, h4, h5, h6) {
   color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--foreground-alt));
 }
 
+:where(:root) .has-secondary-alt-background-color {
+  color: var(--wp--custom--color--contrast--secondary-alt, var(--wp--preset--color--foreground-alt));
+}
+
 :where(:root) .has-tertiary-background-color {
   color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--foreground-alt));
 }
 
 :where(:root) .has-tertiary-alt-background-color {
   color: var(--wp--custom--color--contrast--tertiary-alt, var(--wp--preset--color--foreground-alt));
-}
-
-:where(:root) .has-secondary-alt-background-color {
-  color: var(--wp--custom--color--contrast--secondary-alt, var(--wp--preset--color--foreground-alt));
 }
 
 :where(:root) .has-white-background-color {

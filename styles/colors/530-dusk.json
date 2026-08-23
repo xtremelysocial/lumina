@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Lumina Dusk (The Blue Hour: Modern, moody evening tones)",
+	"title": "Lumina Dusk - The Blue Hour: Modern, moody evening tones",
 	"settings": {
 		"custom": {
 			"color": {
@@ -24,7 +24,7 @@
 					"tertiary-dark-alt": "var(--wp--preset--color--base)"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--highlight-secondary-alt)",
+					"text": "var(--wp--preset--color--dark-alt)",
 					"separator": "var(--wp--preset--color--tertiary)"
 				},
 				"button": {
@@ -52,12 +52,12 @@
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(24, 16%, 83%)", "name": "Tertiary Subtle Alt (Evening Glow Orange Border 83%)" },
 
 				{ "slug": "highlight", "color": "hsl(150, 65%, 68%)", "name": "Highlight (Pastel Emerald Hover)" },
-				{ "slug": "highlight-secondary", "color": "hsl(12, 65%, 70%)", "name": "Highlight Secondary (Twilight Flame Pop)" },
-				{ "slug": "highlight-tertiary", "color": "hsl(214, 55%, 72%)", "name": "Highlight Tertiary (Dusk Indigo Pop)" },
+				{ "slug": "highlight-secondary", "color": "hsl(12, 65%, 70%)", "name": "Highlight Secondary (Twilight Flame)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(214, 55%, 72%)", "name": "Highlight Tertiary (Dusk Indigo)" },
 				
-				{ "slug": "highlight-alt", "color": "hsl(151, 55%, 30%)", "name": "Highlight Alt (Alpine Emerald Link Anchor)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(12, 58%, 36%)", "name": "Highlight Secondary Alt (Twilight Terracotta Anchor)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(214, 50%, 32%)", "name": "Highlight Tertiary Alt (Midnight Indigo Anchor)" },
+				{ "slug": "highlight-alt", "color": "hsl(151, 55%, 30%)", "name": "Highlight Alt (Alpine Emerald)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(12, 58%, 36%)", "name": "Highlight Secondary Alt (Twilight Terracotta)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(214, 50%, 32%)", "name": "Highlight Tertiary Alt (Midnight Indigo)" },
 
 				{ "slug": "primary-dark", "color": "hsl(214, 18%, 14%)", "name": "Primary Dark (Midnight Slate Deep 14%)" },
 				{ "slug": "dark", "color": "hsl(206, 20%, 20%)", "name": "Dark (Secondary Maritime Footer Pair 20%)" },
@@ -90,34 +90,34 @@
 				{ "slug": "very-light-green", "color": "hsl(154, 20%, 91%)", "name": "Very Light Green (Moss Subtle 91%)" },
 				{ "slug": "light-green", "color": "hsl(154, 16%, 83%)", "name": "Light Green (Moss Subtle Alt 83%)" },
 				{ "slug": "green", "color": "hsl(154, 24%, 48%)", "name": "Green (Moss Primary 48%)" },
-				{ "slug": "dark-green", "color": "hsl(154, 26%, 38%)", "name": "Dark Green (Moss Alt Anchor 38%)" },
+				{ "slug": "dark-green", "color": "hsl(154, 26%, 38%)", "name": "Dark Green (Moss 38%)" },
 				
 				{ "slug": "very-light-yellow", "color": "hsl(34, 22%, 91%)", "name": "Very Light Yellow (Ochre Subtle 91%)" },
 				{ "slug": "light-yellow", "color": "hsl(34, 16%, 83%)", "name": "Light Yellow (Ochre Subtle Alt 83%)" },
 				{ "slug": "yellow", "color": "hsl(34, 32%, 48%)", "name": "Yellow (Ochre Primary 48%)" },
-				{ "slug": "dark-yellow", "color": "hsl(34, 34%, 38%)", "name": "Dark Yellow (Ochre Alt Anchor 38%)" },
+				{ "slug": "dark-yellow", "color": "hsl(34, 34%, 38%)", "name": "Dark Yellow (Ochre 38%)" },
 
 				{ "slug": "very-light-orange", "color": "hsl(22, 26%, 91%)", "name": "Very Light Orange (Flame Subtle 91%)" },
 				{ "slug": "light-orange", "color": "hsl(22, 22%, 83%)", "name": "Light Orange (Flame Subtle Alt 83%)" },
 				{ "slug": "orange", "color": "hsl(12, 32%, 48%)", "name": "Orange (Flame Primary 48%)" },
-				{ "slug": "dark-orange", "color": "hsl(12, 32%, 38%)", "name": "Dark Orange (Flame Alt Anchor 38%)" },
+				{ "slug": "dark-orange", "color": "hsl(12, 32%, 38%)", "name": "Dark Orange (Flame 38%)" },
 				
 				{ "slug": "very-light-blue", "color": "hsl(206, 24%, 91%)", "name": "Very Light Blue (Ocean Subtle 91%)" },
 				{ "slug": "light-blue", "color": "hsl(206, 18%, 83%)", "name": "Light Blue (Ocean Subtle Alt 83%)" },
 				{ "slug": "blue", "color": "hsl(206, 24%, 44%)", "name": "Blue (Ocean Primary 44%)" },
-				{ "slug": "dark-blue", "color": "hsl(206, 26%, 34%)", "name": "Dark Blue (Ocean Alt Anchor 34%)" },
+				{ "slug": "dark-blue", "color": "hsl(206, 26%, 34%)", "name": "Dark Blue (Ocean 34%)" },
 				{ "slug": "midnight-blue", "color": "hsl(208, 21%, 22%)", "name": "Midnight Blue (Lumina Balanced 22%)" },
 				{ "slug": "dark-midnight-blue", "color": "hsl(209, 24%, 16%)", "name": "Dark Midnight Blue (Lumina Balanced 16%)" },
 				
 				{ "slug": "very-light-purple", "color": "hsl(320, 16%, 91%)", "name": "Very Light Purple (Velvet Subtle 91%)" },
 				{ "slug": "light-purple", "color": "hsl(320, 12%, 83%)", "name": "Light Purple (Velvet Subtle Alt 83%)" },
 				{ "slug": "purple", "color": "hsl(327, 8%, 32%)", "name": "Purple (Velvet Primary 32%)" },
-				{ "slug": "dark-purple", "color": "hsl(327, 8%, 22%)", "name": "Dark Purple (Velvet Alt Anchor 22%)" },
+				{ "slug": "dark-purple", "color": "hsl(327, 8%, 22%)", "name": "Dark Purple (Velvet 22%)" },
 
 				{ "slug": "very-light-red", "color": "hsl(6, 22%, 91%)", "name": "Very Light Red (Ember Subtle 91%)" },
 				{ "slug": "light-red", "color": "hsl(6, 18%, 83%)", "name": "Light Red (Ember Subtle Alt 83%)" },
 				{ "slug": "red", "color": "hsl(0, 23%, 32%)", "name": "Red (Ember Primary 32%)" },
-				{ "slug": "dark-red", "color": "hsl(0, 23%, 22%)", "name": "Dark Red (Ember Alt Anchor 22%)" }		
+				{ "slug": "dark-red", "color": "hsl(0, 23%, 22%)", "name": "Dark Red (Ember 22%)" }		
 			],		
 			"duotone": [
 				{ "colors": ["hsl(214, 18%, 19%)", "hsl(43, 27%, 97%)"], "slug": "primary", "name": "Primary (Dark Midnight Blue)" },

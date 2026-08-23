@@ -220,18 +220,64 @@ $shadow-hover:   var(--wp--custom--color--shadow--hover,
 // 				 4px 12px 22px rgba(0, 0, 0, 0.28), 2px 8px 10px rgba(0, 0, 0, 0.15)
 // ));
 
-// Animation for grow and shift up
+// Base Timing Tokens (Short = 250ms for Cards/Buttons | Medium = 500ms for Images/Assets)
 $lumina-timing: 		var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 $lumina-timing-medium: 	var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 
-// Growth
-$grow-small: 			var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
-$grow-standard: 		var(--wp--custom--animation--default--hover-transform, scale(1.05));
-$grow-large:    		var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
+// 1. Role: Cards (Engine applies $shift-subtle to interactive card containers)
+$shift-subtle:  		var(--wp--custom--animation--card--hover-transform, 
+						 translateY(-4px));
 
-// Shift Up
-$shift-subtle:  		var(--wp--custom--animation--default--object-small-transform, translateY(-3px)); 
-$shift-standard: 		var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
+// 2. Role: Standard Images (Engine applies $shift-standard to core image blocks)
+$shift-standard: 		var(--wp--custom--animation--image--hover-transform, 
+						 translateY(-3px));
+
+// 3. Role: Buttons (Engine applies $grow-large to button elements)
+$grow-large:    		var(--wp--custom--animation--button--hover-transform, 
+						 var(--wp--custom--animation--default--hover-transform, 
+						 scale(1.05)));
+
+// 4. Role: Media & Text (Engine applies $grow-standard to constrained image zooms)
+$grow-standard: 		var(--wp--custom--animation--media-text--hover-transform, 
+						 scale(1.08));
+
+// Reserved Growth Legacy Token
+$grow-small: 			var(--wp--custom--animation--default--hover-small-transform, 
+						 scale(1.03));
+						 
+// 1. Role: Buttons (Growth)
+// $grow-standard: 		var(--wp--custom--animation--button--hover-transform, 
+// 						 var(--wp--custom--animation--default--hover-transform, 
+// 						 scale(1.05)));
+// 
+// // 2. Role: Cards (-4px Primary CTA Container Lift)
+// $shift-standard: 		var(--wp--custom--animation--card--hover-transform, 
+// 						 translateY(-4px));
+// 
+// // 3. Role: Standard Images (-3px Subtle Asset Lift)
+// $shift-subtle:  		var(--wp--custom--animation--image--hover-transform, 
+// 						 translateY(-3px));
+// 
+// // 4. Role: Media & Text (Constrained Zoom)
+// $grow-large:    		var(--wp--custom--animation--media-text--hover-transform, 
+// 						 scale(1.08));
+// 
+// // Reserved Growth Variant
+// $grow-small: 			var(--wp--custom--animation--default--hover-small-transform, 
+// 						 scale(1.03));
+						 
+// // Animation for grow and shift up
+// $lumina-timing: 		var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+// $lumina-timing-medium: 	var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+// 
+// // Growth
+// $grow-small: 			var(--wp--custom--animation--default--hover-small-transform, scale(1.03));
+// $grow-standard: 		var(--wp--custom--animation--default--hover-transform, scale(1.05));
+// $grow-large:    		var(--wp--custom--animation--default--hover-large-transform, scale(1.08));
+// 
+// // Shift Up
+// $shift-subtle:  		var(--wp--custom--animation--default--object-small-transform, translateY(-3px)); 
+// $shift-standard: 		var(--wp--custom--animation--default--object-transform, translateY(-4px)); 
 
 // Image Frame Config
 $img-frame-padding: var(--wp--preset--spacing--20, 4px);

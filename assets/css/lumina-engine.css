@@ -14,13 +14,15 @@
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --wp--custom--animation--duration--normal: 500ms;
+    --wp--custom--animation--duration--short: 400ms;
     --wp--custom--animation--duration--medium: 800ms;
-    --wp--custom--animation--default--hover-small-transform: scale(1.01);
-    --wp--custom--animation--default--hover-transform: scale(1.03);
-    --wp--custom--animation--default--hover-large-transform: scale(1.04);
-    --wp--custom--animation--default--object-small-transform: translateY(-1px);
-    --wp--custom--animation--default--object-transform: translateY(-2px);
+    --wp--custom--animation--duration--normal: 1000ms;
+    /* Scaled-back hover effects */
+    --wp--custom--animation--default--hover-transform: scale(1.01);
+    --wp--custom--animation--button--hover-transform: scale(1.01);
+    --wp--custom--animation--card--hover-transform: translateY(-1px);
+    --wp--custom--animation--image--hover-transform: translateY(-1px);
+    --wp--custom--animation--media-text--hover-transform: scale(1.02);
   }
 }
 .wp-block-media-text {
