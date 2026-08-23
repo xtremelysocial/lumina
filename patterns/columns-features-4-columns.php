@@ -15,7 +15,7 @@
 <!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","width":100,"height":100,"sizeSlug":"thumbnail","linkDestination":"none","className":"is-style-image-round-border is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-image-round-border is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/thumbnails/thumbnail-gears.jpg" ) ); ?>" alt="photo of golden cogwheel on black background" width="100" height="100"/></figure>
+<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-image-round-border is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/thumbnails/02.jpg" ) ); ?>" alt="photo of golden cogwheel on black background" width="100" height="100"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"textAlign":"center","level":3} -->
@@ -29,7 +29,7 @@
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","width":100,"height":100,"sizeSlug":"thumbnail","linkDestination":"none","className":"is-style-image-round-border is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-image-round-border is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/thumbnails/thumbnail-hands.jpg" ) ); ?>" alt="crop psychologist supporting patient during counseling indoors" width="100" height="100"/></figure>
+<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-image-round-border is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/thumbnails/03.jpg" ) ); ?>" alt="crop psychologist supporting patient during counseling indoors" width="100" height="100"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"textAlign":"center","level":3} -->
@@ -43,7 +43,7 @@
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","width":100,"height":100,"sizeSlug":"thumbnail","linkDestination":"none","className":"is-style-image-round-border is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-image-round-border is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/thumbnails/thumbnail-dollars.jpg" ) ); ?>" alt="US dollar" width="100" height="100"/></figure>
+<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-image-round-border is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/thumbnails/01.jpg" ) ); ?>" alt="US dollar" width="100" height="100"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"textAlign":"center","level":3} -->
@@ -57,7 +57,7 @@
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","width":100,"sizeSlug":"thumbnail","linkDestination":"none","className":"is-style-image-round-border is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-image-round-border is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/thumbnails/thumbnail-help.jpg" ) ); ?>" alt="person in gray shirt holding brown cardboard" width="100"/></figure>
+<figure class="wp-block-image aligncenter size-thumbnail is-resized is-style-image-round-border is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/thumbnails/04.jpg" ) ); ?>" alt="person in gray shirt holding brown cardboard" width="100"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading {"textAlign":"center","level":3} -->

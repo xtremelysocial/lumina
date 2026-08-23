@@ -69,12 +69,12 @@ endif;
  * Load the theme's PHP include files
  */
 $includes = array (
-	'/inc/add-body-classes.php',
-	'/inc/default-image.php',
-	'/inc/parent-theme.php',
-// 	'/inc/block-variations.php',
 	'/inc/block-bindings.php',
-	'/inc/remove-core-patterns.php',
+	'/inc/block-patterns.php',
+// 	'/inc/block-variations.php',
+	'/inc/body-classes.php',
+	'/inc/images.php',
+	'/inc/parent-theme.php',
 );
 
 $includes = apply_filters( 'lumina_load_includes', $includes );

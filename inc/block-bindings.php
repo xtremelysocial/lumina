@@ -1,9 +1,9 @@
 <?php
 /**
  * File:	block-bindings.php
- * Theme:	Lumina
+ * Theme:	Shared Block Binding Functions
  * 
- * @package lumina
+ * @package XtremelySocial
  */
 
 add_action( 'init', 'lumina_register_block_bindings' );

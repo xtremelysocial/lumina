@@ -6,8 +6,8 @@
  * Categories: lumina, banner
  */
 ?>
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( "assets/images/classic/classic-17.jpg" ) ); ?>","dimRatio":40,"overlayColor":"primary","minHeight":480,"isDark":true,"align":"full","style":{"spacing":{"margin":{"top":"0"}}}} -->
-<div class="wp-block-cover alignfull is-dark" style="min-height:480px;margin-top:0;" id="cover-scroll-colored-blocks"><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-40 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( "assets/images/classic/classic-17.jpg" ) ); ?>" data-object-fit="cover"/><div class="wp-block-cover__inner-container">
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/17.jpg" ) ); ?>","dimRatio":40,"overlayColor":"primary","minHeight":480,"isDark":true,"align":"full","style":{"spacing":{"margin":{"top":"0"}}}} -->
+<div class="wp-block-cover alignfull is-dark" style="min-height:480px;margin-top:0;" id="cover-scroll-colored-blocks"><span aria-hidden="true" class="wp-block-cover__background has-primary-background-color has-background-dim-40 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/17.jpg" ) ); ?>" data-object-fit="cover"/><div class="wp-block-cover__inner-container">
 <!-- wp:group -->
 <div class="wp-block-group"><!-- wp:heading {"textAlign":"center","placeholder":"Cover Image Title","fontSize":"huge"} -->
 <h2 class="wp-block-heading has-text-align-center has-huge-font-size" id="title"><?php esc_html_e("Cover Scroll Colored Blocks", "lumina"); ?></h2>

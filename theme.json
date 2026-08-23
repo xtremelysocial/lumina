@@ -12,7 +12,7 @@
 					"imageFolders": [
 						"lumina"
 					],
-					"imageDefault": "/assets/images/samples/image-lumina-featured.webp"
+					"imageDefault": "/assets/images/samples/01.webp"
 				},
 				"opacity": {
 					"faint": 	"color-mix(in srgb, currentColor 5%, transparent)",

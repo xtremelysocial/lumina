@@ -18,6 +18,6 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"lightbox":{"enabled":true},"width":750,"linkDestination":"none","align":"center","className":"size-large is-style-image-computer-screen"} -->
-<figure class="wp-block-image aligncenter size-large is-style-image-computer-screen"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/screenshots/image-computer-screen.png" ) ); ?>" alt="screenshot" width="750"/></figure>
+<figure class="wp-block-image aligncenter size-large is-style-image-computer-screen"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/screenshots/image-computer-screen.png" ) ); ?>" alt="screenshot" width="750"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:group -->

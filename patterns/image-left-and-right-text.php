@@ -30,7 +30,7 @@
 		<div class="wp-block-column" style="flex-basis:50%">
 			<!-- wp:image {"align":"center","sizeSlug":"large","className":"is-style-rounded-border"} -->
 			<figure class="wp-block-image aligncenter size-large is-style-rounded-border">
-				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/classic/classic-06.webp' ) ); ?>" alt="Modern hardware design" />
+				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/lumina/06.webp' ) ); ?>" alt="Modern hardware design" />
 			</figure>
 			<!-- /wp:image -->
 		</div>

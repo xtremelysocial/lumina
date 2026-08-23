@@ -7,8 +7,8 @@
  * Block Types: core/paragraph
  */
 ?>
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( "assets/images/classic/classic-04.webp" ) ); ?>","dimRatio":60,"minHeight":130,"minHeightUnit":"px","align":"full","style":{"spacing":{"margin":{"top":"0"}}}} -->
-<div class="wp-block-cover alignfull" style="margin-top:0;min-height:130px" id="title-and-subtitle-with-background-image"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-60 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( "assets/images/classic/classic-09.webp" ) ); ?>" data-object-fit="cover"/><div class="wp-block-cover__inner-container">
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/04.webp" ) ); ?>","dimRatio":60,"minHeight":130,"minHeightUnit":"px","align":"full","style":{"spacing":{"margin":{"top":"0"}}}} -->
+<div class="wp-block-cover alignfull" style="margin-top:0;min-height:130px" id="title-and-subtitle-with-background-image"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-60 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/09.webp" ) ); ?>" data-object-fit="cover"/><div class="wp-block-cover__inner-container">
 <!-- wp:group {"className":"alignwide"} -->
 <div class="wp-block-group alignwide">
 <!-- wp:heading {"placeholder":"Title","fontSize":"x-large"} -->

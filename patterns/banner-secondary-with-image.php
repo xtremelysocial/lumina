@@ -6,7 +6,7 @@
  * Categories: lumina,banner,media
  */
 
-$theme_image_url = esc_url( get_theme_file_uri( 'assets/images/classic/classic-06.webp' ) );
+$theme_image_url = esc_url( get_theme_file_uri( 'assets/images/lumina/06.webp' ) );
 ?>
 <!-- wp:media-text {"align":"full","mediaPosition":"right","mediaId":6131,"mediaLink":"https://test.xtremelysocial.com/2016/go-wordpress-themes/photo-1451866961142-cd9f8c737e8b/","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"full","imageFill":false,"metadata":{"name":"Hero Banner"},"className":"is-style-image-border","backgroundColor":"secondary"} -->
 <div class="wp-block-media-text alignfull has-media-on-the-right is-stacked-on-mobile is-style-image-border has-secondary-background-color has-background" style="grid-template-columns:auto 45%"><div class="wp-block-media-text__content"><!-- wp:heading {"level":1} -->
