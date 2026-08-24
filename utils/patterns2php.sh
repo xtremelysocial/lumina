@@ -1,9 +1,24 @@
 #!/bin/zsh
 
-# Enforce script directory anchoring
+# ==============================================================================
+# Lumina Theme Pattern Converter (patterns2php.sh)
+# ==============================================================================
+# Converts raw HTML block pattern layouts from /patterns/html into production-ready
+# WordPress PHP pattern files in /patterns/converted with i18n text domain wrapper
+# functions, asset URI helpers, and clean block comment manifests.
+#
+# USAGE EXAMPLES (Run from Theme Root):
+#   ./utils/patterns2php.sh                 # Process all HTML files (skips existing)
+#   ./utils/patterns2php.sh hero            # Process only HTML files matching "hero"
+#   ./utils/patterns2php.sh --force         # Overwrite all converted PHP pattern files
+#   ./utils/patterns2php.sh hero -f         # Force overwrite only "hero" patterns
+# ==============================================================================
+
+# Enforce script directory anchoring (Script lives in /utils)
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-SOURCE_DIR="${SCRIPT_DIR}/patterns/html"
-OUTPUT_DIR="${SCRIPT_DIR}/patterns/converted"
+THEME_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+SOURCE_DIR="${THEME_ROOT}/patterns/html"
+OUTPUT_DIR="${THEME_ROOT}/patterns/converted"
 
 # Easily extendable Block Type Keyword Mappings
 # Add new "keyword" "core/block-name" pairs here to match anywhere in filenames
@@ -74,6 +89,19 @@ for file in "$SOURCE_DIR"/*.html(N); do
     # 4. Compute Taxonomy Categories Array
     categories=("lumina")
 
+    # A. Harvest categories directly from root block JSON metadata if present
+    raw_json_cats=$(perl -0777 -ne 'if (/<!-- wp:[^{]*\{.*?"metadata":\{.*?"categories":\[(.*?)\]/s) { my $c = $1; $c =~ s/"//g; print $c; }' "$file")
+
+    if [[ -n "$raw_json_cats" ]]; then
+        for cat in ${(s:,:)raw_json_cats}; do
+            trimmed=$(echo "$cat" | xargs)
+            if [[ -n "$trimmed" ]]; then
+                categories+=("$trimmed")
+            fi
+        done
+    fi
+
+    # B. Supplemental keyword guessing from filename
     if [[ "$slug_base" == *button* ]]; then categories+=("buttons" "call-to-action"); fi
     if [[ "$slug_base" == *column* ]]; then categories+=("column"); fi
     if [[ "$slug_base" == *cover* || "$slug_base" == *banner* || "$slug_base" == *bokeh* ]]; then categories+=("banner"); fi
@@ -83,8 +111,9 @@ for file in "$SOURCE_DIR"/*.html(N); do
     if [[ "$slug_base" == *pricing* ]]; then categories+=("pricing"); fi
     if [[ "$slug_base" == *query* ]]; then categories+=("query"); fi
 
-    # Convert array to clean comma-separated string
-    categories_str="${(j:, :)categories}"
+    # C. Deduplicate array with Zsh built-in (u) flag
+    unique_categories=(${(u)categories})
+    categories_str="${(j:, :)unique_categories}"
 
     # 5. Search for block keywords anywhere in the filename
     block_type=""
@@ -130,6 +159,13 @@ EOF
 
     # 7. Execute Perl Translation engine safely via standard input (< "$file")
     perl -pe '
+    
+        # Safely strip "id":123, "mediaID":123, and "patternName":"..." from block JSON comments
+        if (/<!--\s*wp:/) {
+            s/"(?:id|mediaID)":\s*\d+,\s*|,\s*"(?:id|mediaID)":\s*\d+|"(?:id|mediaID)":\s*\d+//g;
+            s/"patternName":"[^"]+",\s*|,\s*"patternName":"[^"]+"|"patternName":"[^"]+"//g;
+        }
+    
         # Replace image URLs across src, href, JSON attributes, and CSS url()
         s/src="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"/src="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"/g;
         s/href="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"/href="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"/g;

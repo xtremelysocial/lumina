@@ -361,15 +361,13 @@ ol.is-style-list-dividers,
  * Breakpoints & Media Queries
  */
 /*-----------------------------------------------------------------------------
-# Increase Top-Level Vertical Spacing Between Blocks
+# Adjust Margins
+# Larger vertical margin between blocks, less between headings and contents, etc.
 -----------------------------------------------------------------------------*/
-/* 1. Macro Section Spacing */
 :root :where(.wp-block-post-content) > * + * {
   margin-block-start: var(--wp--preset--spacing--60);
 }
 
-/* 2. Heading Micro-Tether */
-/* Expanded to catch headers, entry-headers, groups, and standard content containers */
 :root :where(.wp-block-post-content, .wp-block-column, .entry-header, .wp-block-group) > :where(.wp-block-heading,
 .wp-block-site-title,
 .wp-block-post-title,
@@ -378,22 +376,19 @@ ol.is-style-list-dividers,
   margin-block-start: var(--wp--preset--spacing--30);
 }
 
-/* 3. Page / Post Subtitle */
+:root :where(.wp-block-post-content, .wp-block-column, .entry-header, .wp-block-group) > :where(p, .wp-block-paragraph) + :where(p, .wp-block-paragraph) {
+  margin-block-start: var(--wp--preset--spacing--30);
+}
+
 .entry-subtitle {
   /* Removed margin-top: 0 !important so Heading Micro-Tether handles the 24px gap */
   margin-block-end: var(--wp--preset--spacing--30);
 }
 
-/* 
- * 4. Remove top margin on page/post title when placed into the content side of 
- * Templates that have a sidebar. 
- */
 .main-content.wp-block-columns .entry-header.wp-block-group {
   padding-top: 0 !important;
 }
 
-/* 5. Bump post content bottom gap to match macro section spacing */
-/* Add bottom margin to main unless its the post content, then add it to that */
 main > :last-child:not(.wp-block-post-content):not(:empty),
 main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
   margin-block-end: var(--wp--preset--spacing--60);
