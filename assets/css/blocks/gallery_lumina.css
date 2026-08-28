@@ -4,6 +4,14 @@
 /*--------------------------------------------------------------
 ## LUMINA Gallery (Override parent theme)
 --------------------------------------------------------------*/
-.wp-block-gallery {
+.wp-block-gallery.is-style-image-border {
   --wp--style--gallery-gap-default: var(--wp--preset--spacing--30, calc(var(--wp--style--block-gap, 24px) / 2));
+}
+.wp-block-gallery:not(.is-style-image-border) {
+  --wp--style--gallery-gap-default: var(--wp--preset--spacing--20, calc(var(--wp--style--block-gap, 24px) / 3));
+}
+
+/* Remove padding from images with border */
+.wp-block-gallery.is-style-image-border .wp-block-image:not(.is-style-image-round-border):not(.is-style-image-computer-screen):not(.is-style-image-tablet-phone-screen) img {
+  padding: 0;
 }

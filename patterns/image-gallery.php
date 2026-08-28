@@ -4,47 +4,53 @@
  * Description: Image Gallery
  * Slug: lumina/image-gallery
  * Categories: lumina, media
- * Block Types: core/image
+ * Block Types: core/gallery
  */
 ?>
-<!-- wp:gallery {"ids":[],"shortCodeTransforms":[],"columns":4,"linkTo":"none","sizeSlug":"medium","align":"wide","className":"is-style-image-border"} -->
-<figure class="wp-block-gallery is-style-image-border alignwide has-nested-images columns-4 is-cropped" id="image-gallery"><!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"medium","linkDestination":"none"} -->
-<figure class="wp-block-image size-medium"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/01.webp" ) ); ?>" alt=""/><figcaption class="wp-element-caption"><?php esc_html_e("Bokeh", "lumina"); ?></figcaption></figure>
+<!-- wp:group {"metadata":{"name":"Image Gallery"},"align":"wide","layout":{"type":"constrained"},"anchor":"image-gallery-1"} -->
+<div class="wp-block-group alignwide" id="image-gallery-1"><!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
+<h2 class="wp-block-heading has-text-align-center"><?php esc_html_e("Image Gallery", "lumina"); ?></h2>
+<!-- /wp:heading -->
+
+<!-- wp:gallery {"columns":4,"randomOrder":true,"linkTo":"none","sizeSlug":"cropped-thumbnail","align":"wide","className":"is-style-default","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|20","left":"var:preset|spacing|20"}}}} -->
+<figure class="wp-block-gallery alignwide has-nested-images columns-4 is-cropped is-style-default"><!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
+<figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/01.webp" ) ); ?>" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"medium","linkDestination":"none"} -->
-<figure class="wp-block-image size-medium"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/10.webp" ) ); ?>" alt=""/><figcaption class="wp-element-caption"><?php esc_html_e("Desk Meeting", "lumina"); ?></figcaption></figure>
+<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
+<figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/02.webp" ) ); ?>" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"medium","linkDestination":"none"} -->
-<figure class="wp-block-image size-medium"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/08.webp" ) ); ?>" alt=""/><figcaption class="wp-element-caption"><?php esc_html_e("Desk Dark", "lumina"); ?></figcaption></figure>
+<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
+<figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/03.webp" ) ); ?>" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"medium","linkDestination":"none"} -->
-<figure class="wp-block-image size-medium"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/09.webp" ) ); ?>" alt=""/><figcaption class="wp-element-caption"><?php esc_html_e("Desk Light", "lumina"); ?></figcaption></figure>
+<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
+<figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/04.webp" ) ); ?>" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"medium","linkDestination":"none"} -->
-<figure class="wp-block-image size-medium"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/04.webp" ) ); ?>" alt=""/><figcaption class="wp-element-caption"><?php esc_html_e("Blue Lines", "lumina"); ?></figcaption></figure>
+<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
+<figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/05.webp" ) ); ?>" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"medium","linkDestination":"none"} -->
-<figure class="wp-block-image size-medium"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/03.webp" ) ); ?>" alt=""/><figcaption class="wp-element-caption"><?php esc_html_e("Blue Circles", "lumina"); ?></figcaption></figure>
+<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
+<figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/06.webp" ) ); ?>" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"medium","linkDestination":"none"} -->
-<figure class="wp-block-image size-medium"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/17.webp" ) ); ?>" alt=""/><figcaption class="wp-element-caption"><?php esc_html_e("Colored Blocks", "lumina"); ?></figcaption></figure>
+<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
+<figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/07.webp" ) ); ?>" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"medium","linkDestination":"none"} -->
-<figure class="wp-block-image size-medium"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/05.webp" ) ); ?>" alt=""/><figcaption class="wp-element-caption"><?php esc_html_e("Colored Chalk", "lumina"); ?></figcaption></figure>
+<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
+<figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/08.webp" ) ); ?>" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"medium","linkDestination":"none"} -->
-<figure class="wp-block-image size-medium"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/02.webp" ) ); ?>" alt=""/><figcaption class="wp-element-caption"><?php esc_html_e("Geodesic Lights", "lumina"); ?></figcaption></figure>
+<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
+<figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/09.webp" ) ); ?>" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"medium","linkDestination":"none"} -->
-<figure class="wp-block-image size-medium"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/15.webp" ) ); ?>" alt=""/><figcaption class="wp-element-caption"><?php esc_html_e("Man on Rocks", "lumina"); ?></figcaption></figure>
-<!-- /wp:image --><figcaption class="blocks-gallery-caption wp-element-caption"><?php esc_html_e("Lorum Ipsum", "lumina"); ?></figcaption></figure>
-<!-- /wp:gallery -->
+<!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
+<figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/10.webp" ) ); ?>" alt=""/></figure>
+<!-- /wp:image --><figcaption class="blocks-gallery-caption wp-element-caption">Image Gallery (Rounded)</figcaption></figure>
+<!-- /wp:gallery --></div>
+<!-- /wp:group -->

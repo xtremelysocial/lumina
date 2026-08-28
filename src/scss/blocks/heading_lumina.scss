@@ -8,7 +8,10 @@
 
 $separators: (
     '.is-style-separator',
+//     '.is-style-separator-primary',
+//     '.is-style-separator-secondary',
 );
+
 $sep-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
 $sep-height: 3px;
 $sep-width: calc(6 * var(--wp--style--block-gap));

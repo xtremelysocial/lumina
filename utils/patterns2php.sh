@@ -20,18 +20,26 @@ THEME_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 SOURCE_DIR="${THEME_ROOT}/patterns/html"
 OUTPUT_DIR="${THEME_ROOT}/patterns/converted"
 
-# Easily extendable Block Type Keyword Mappings
-# Add new "keyword" "core/block-name" pairs here to match anywhere in filenames
+# Comprehensive Block Type Keyword Mappings
 typeset -A BLOCK_MAP
 BLOCK_MAP=(
-    "button"   "core/buttons"
-    "banner"   "core/cover"
-    "columns"  "core/columns"
-    "page"     "core/page"
-    "query"    "core/query"
-    "text"     "core/paragraph"
-    "header"   "core/template-part/header"
-    "footer"   "core/template-part/footer"
+    "button"        "core/buttons"
+    "buttons"       "core/buttons"
+    "columns"       "core/columns"
+    "cover"         "core/cover"
+    "banner"        "core/cover"
+    "details"       "core/details"
+    "faq"           "core/details"
+    "gallery"       "core/gallery"
+    "image"         "core/image"
+    "media"         "core/media-text"
+    "page"          "core/page"
+    "query"         "core/query"
+    "social-icons"  "core/social-icons"
+    "site-title"    "core/site-title"
+    "text"          "core/paragraph"
+    "header"        "core/template-part/header"
+    "footer"        "core/template-part/footer"
 )
 
 # Capture options ($1 can be a filter string or --force / -f)
@@ -63,6 +71,9 @@ count=0
 
 # Enable Zsh null globbing
 setopt NULL_GLOB 2>/dev/null || true
+
+# Pre-sort block keys by length descending so 'gallery' matches before 'image'
+sorted_block_keys=(${(f)"$(for k in ${(k)BLOCK_MAP}; do echo "${#k} $k"; done | sort -rn | cut -d' ' -f2-)"})
 
 for file in "$SOURCE_DIR"/*.html(N); do
     [[ -f "$file" ]] || continue
@@ -115,9 +126,9 @@ for file in "$SOURCE_DIR"/*.html(N); do
     unique_categories=(${(u)categories})
     categories_str="${(j:, :)unique_categories}"
 
-    # 5. Search for block keywords anywhere in the filename
+    # 5. Search for block keywords anywhere in filename (longest keys first)
     block_type=""
-    for key in ${(k)BLOCK_MAP}; do
+    for key in $sorted_block_keys; do
         if [[ "$slug_base" == *"$key"* ]]; then
             block_type="${BLOCK_MAP[$key]}"
             break

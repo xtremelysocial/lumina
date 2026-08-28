@@ -61,8 +61,9 @@
    BLOCK EDITOR STYLES: Pan-Zoom Motion Override
    Disables live keyframe motion in Gutenberg canvas
    ========================================================================== */
-.editor-styles-wrapper .is-style-pan-zoom img,
-.editor-styles-wrapper .is-style-pan-zoom .wp-block-cover__image-background {
+.wp-block-image img,
+.wp-block-image .wp-block-cover__image-background, .wp-block-post-featured-image .wp-block-cover img,
+.wp-block-post-featured-image .wp-block-cover .wp-block-cover__image-background {
   animation: none !important;
   transform: none !important;
 }

@@ -1,0 +1,23 @@
+/* ==========================================================================
+   LUMINA: Icon Block Engine (icon.scss)
+   ========================================================================== */
+
+// 1. Icons inside Flex Containers (Row / Group blocks)
+:root :where(.is-layout-flex) > .wp-block-icon {
+	margin-left: -0.15em; // Optically pulls SVG vector flush to text edge
+	margin-right: 0;
+	align-self: center; // Guarantees vertical centering against adjacent headings
+	flex-shrink: 0;    // Prevents SVG frame from collapsing in narrow columns
+}
+
+// 2. Standard Floating Icons (.alignleft / .alignright)
+// Overrides WP Core's aggressive 2em float margin down to spacing-30 (16px)
+.wp-block-icon {
+	&.alignleft {
+		margin-right: var(--wp--preset--spacing--30) !important;
+	}
+
+	&.alignright {
+		margin-left: var(--wp--preset--spacing--30) !important;
+	}
+}

@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Lumina Text Site Title And Tagline
- * Description: Text Site Title And Tagline
+ * Title: Lumina Text Site Title and Tagline
+ * Description: Text Site Title and Tagline
  * Slug: lumina/text-site-title-and-tagline
  * Categories: lumina, text
  */

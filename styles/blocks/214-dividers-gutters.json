@@ -3,7 +3,7 @@
 	"version": 3,
 	"slug": "gutter-dividers",
 	"title": "Inset Dividers",
-	"blockTypes": [ "core/columns", "core/group", "core/query" ],
+	"blockTypes": [ "core/columns", "core/query" ],
 	"styles": {
 		"css": ""
 	}

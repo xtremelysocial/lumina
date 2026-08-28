@@ -9,7 +9,7 @@
 			"radius": "50%"
 		},
 		"color": {
-			"background": "var:preset|color|primary-subtle"
+			"background": "var:preset|color|neutral-alt"
 		},
 		"spacing": {
 			"padding": {

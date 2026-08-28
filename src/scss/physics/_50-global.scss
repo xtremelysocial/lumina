@@ -68,6 +68,12 @@
 			box-shadow: none !important;
 		}
 		
+		// Set avatars to look like images with border
+		a > .avatar {
+			border: var(--wp--custom--color--border--width, 1px) var(--wp--custom--color--border--style, solid) var(--wp--custom--color--border);
+			border-radius: var(--wp--custom--button--radius);
+		}
+		
 		/* -----------------------------------------------------------------------------
 		   Lumina Card Arrow Overlay Badge (Resting State Definitions)
 		   ----------------------------------------------------------------------------- */

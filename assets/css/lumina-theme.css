@@ -92,6 +92,16 @@ img.size-cropped-ultrawide,
   border-radius: var(--wp--preset--border-radius--sm, 8px);
 }
 
+/* Remove Padding from Images w/Border */
+.wp-block-image.is-style-image-border img {
+  padding: 0;
+}
+
+/* Remove Padding from Image Round w/Border */
+.wp-block-image.is-style-image-round-border img {
+  padding: 0;
+}
+
 /* ==========================================================================
    FEATURED HERO PAN & ZOOM (CINEMATIC CAMERA SLIDER ENGINE)
    ========================================================================== */
@@ -161,12 +171,23 @@ img.size-cropped-ultrawide,
   border-radius: inherit !important;
 }
 
-/* 2. Zero-Specificity Fallback for Complex Containers (Media & Text) */
-:where(.wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover)) .wp-block-media-text__media {
+/* 2. Media & Text Motion Mask */
+.wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) > .wp-block-media-text__media {
   position: relative;
+  overflow: hidden; /* Mask camera movement */
+}
+.wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) {
+  /* Crop to Fill ON: Strip column gap padding so media and card blocks touch flush */
+}
+.wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).is-image-fill-element > .wp-block-media-text__content {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Apply rounded framing + border ONLY when floating (Crop to Fill is OFF) */
+.wp-block-media-text:not(.is-image-fill-element):is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-media-text__media {
   border: var(--wp--custom--border--style, solid) var(--wp--custom--border--width, 1px) var(--wp--custom--color--border, currentColor);
   border-radius: var(--wp--preset--border-radius--lg, 16px);
-  overflow: hidden;
 }
 
 /* 3. Universal Nested Image Animation Engine */
@@ -364,25 +385,54 @@ ol.is-style-list-dividers,
 # Adjust Margins
 # Larger vertical margin between blocks, less between headings and contents, etc.
 -----------------------------------------------------------------------------*/
-:root :where(.wp-block-post-content) > * + * {
-  margin-block-start: var(--wp--preset--spacing--60);
+p, .wp-block-paragraph {
+  margin-block-end: 0;
 }
 
-:root :where(.wp-block-post-content, .wp-block-column, .entry-header, .wp-block-group) > :where(.wp-block-heading,
-.wp-block-site-title,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-tagline) + * {
+h1, h2, h3, h4, h5, h6,
+.wp-block-heading {
+  margin-block-end: 0;
+}
+
+:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > .wp-block-template-part > * {
   margin-block-start: var(--wp--preset--spacing--30);
 }
 
-:root :where(.wp-block-post-content, .wp-block-column, .entry-header, .wp-block-group) > :where(p, .wp-block-paragraph) + :where(p, .wp-block-paragraph) {
+:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > .wp-block-template-part > :first-child {
+  margin-block-start: 0;
+}
+
+:root :where(.wp-block-post-content, .wp-block-media-text__content) > * + * {
+  margin-block-start: var(--wp--preset--spacing--50);
+}
+
+:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > :where(h1, h2, h3, h4, h5, h6,
+.wp-block-heading,
+.wp-block-site-title,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-tagline):not(.is-style-separator) + :where(p, .wp-block-paragraph,
+ul, ol, .wp-block-list,
+blockquote, .wp-block-quote,
+.wp-block-template-part,
+.wp-block-group:has(> .wp-block-template-part)) {
+  margin-block-start: var(--wp--preset--spacing--30);
+}
+:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > :where(p, .wp-block-paragraph,
+ul, ol, .wp-block-list,
+blockquote, .wp-block-quote,
+.wp-block-template-part,
+.wp-block-group:has(> .wp-block-template-part)) + :where(p, .wp-block-paragraph,
+ul, ol, .wp-block-list,
+blockquote, .wp-block-quote,
+.wp-block-template-part,
+.wp-block-group:has(> .wp-block-template-part)) {
   margin-block-start: var(--wp--preset--spacing--30);
 }
 
 .entry-subtitle {
-  /* Removed margin-top: 0 !important so Heading Micro-Tether handles the 24px gap */
-  margin-block-end: var(--wp--preset--spacing--30);
+  margin-block-start: var(--wp--preset--spacing--30);
+  margin-block-end: 0;
 }
 
 .main-content.wp-block-columns .entry-header.wp-block-group {
@@ -391,7 +441,7 @@ ol.is-style-list-dividers,
 
 main > :last-child:not(.wp-block-post-content):not(:empty),
 main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
-  margin-block-end: var(--wp--preset--spacing--60);
+  margin-block-end: var(--wp--preset--spacing--50);
 }
 
 /*-----------------------------------------------------------------------------
@@ -403,22 +453,11 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
 }
 
 /*-----------------------------------------------------------------------------
-# Padding Styles
+# Container Padding Styles
 -----------------------------------------------------------------------------*/
-/* Override parent theme's padding on colored blocks */
 .wp-site-blocks .wp-block-group.has-background:not(.alignfull):not(.is-layout-flex) {
   padding-left: var(--wp--preset--spacing--60);
   padding-right: var(--wp--preset--spacing--60);
-}
-
-/*-----------------------------------------------------------------------------
-# Avatar Styles
-// TO-DO: Move somewhere else more appropriate
------------------------------------------------------------------------------*/
-/* Set avatars to look like images with border */
-a > .avatar {
-  border: var(--wp--custom--border--width, 1px) solid var(--wp--custom--border--color);
-  border-radius: var(--wp--custom--button--radius);
 }
 
 /*--------------------------------------------------------------
@@ -509,8 +548,10 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.co
 body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column {
   order: 1;
 }
-.is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+.is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column.sidebar-column, .is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.sidebar-column,
 body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.sidebar-column,
 body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
   order: 2;
 }
@@ -525,7 +566,8 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   body[class*=-sidebar-left] .wp-block-columns.main-content > .wp-block-column.content-column {
     order: 1;
   }
-  .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+  .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column.sidebar-column, .is-style-sidebar-left .wp-block-columns.main-content > .wp-block-column:not(.content-column),
+  body[class*=-sidebar-left] .wp-block-columns.main-content > .wp-block-column.sidebar-column,
   body[class*=-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
     order: 2;
   }
@@ -633,131 +675,6 @@ h1, h2, h3, h4, h5, h6), :where(:root) .has-black-background-color :is(.wp-block
 h1, h2, h3, h4, h5, h6) {
   /* Inherit heading color */
   color: inherit;
-}
-
-:where(:root) .has-primary-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-primary-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-primary-dark-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-primary-dark-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-dark-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-dark-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-green-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-dark-green-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-yellow-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-dark-yellow-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-orange-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-dark-orange-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-blue-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-dark-blue-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-midnight-blue-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-dark-midnight-blue-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-purple-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-dark-purple-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-red-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-dark-red-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6) {
-  /* Set link color to light text */
-  color: var(--wp--preset--color--foreground-alt);
 }
 
 :where(:root) .has-primary-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-primary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-gray-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-orange-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-orange-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-orange-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-blue-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-blue-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-blue-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-purple-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-purple-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-purple-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-red-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-red-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-red-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-bright-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-bright-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {

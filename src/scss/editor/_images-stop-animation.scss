@@ -3,12 +3,10 @@
    Disables live keyframe motion in Gutenberg canvas
    ========================================================================== */
 
-.editor-styles-wrapper {
-	.is-style-pan-zoom {
-		img,
-		.wp-block-cover__image-background {
-			animation: none !important;
-			transform: none !important;
-		}
+.wp-block-image, .wp-block-post-featured-image .wp-block-cover {
+	img,
+	.wp-block-cover__image-background {
+		animation: none !important;
+		transform: none !important;
 	}
 }

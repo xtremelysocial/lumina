@@ -27,6 +27,7 @@ body[class*="-sidebar-right"] {
 			// The Sidebar Column (1st in the DOM) gets pushed to the right
 // 			&:first-child,
 // 			&:last-child:not(.content-column),
+			&.sidebar-column,
 			&:not(.content-column) {
 				order: 2;
 			}
@@ -55,6 +56,7 @@ body[class*="-sidebar-left"] {
 				}
 
 				// Drops the left sidebar down to the bottom slot below content
+				&.sidebar-column,
 				&:not(.content-column) {
 					order: 2;
 				}

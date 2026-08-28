@@ -188,6 +188,11 @@
 		"dimensions": {
 			"aspectRatios": [
 				{
+					"name": "Ultrawide - 21:9",
+					"slug": "ultrawide",
+					"ratio": "21:9"
+				}k
+				{
 					"name": "Slim - 16:4.5",
 					"slug": "slim",
 					"ratio": "16/4.5"
@@ -505,14 +510,6 @@
 			"core/icon": {
                 "dimensions": {
                     "width": "42px"
-                },
-                "spacing": {
-                    "padding": {
-                        "top": "var:preset|spacing|20",
-                        "bottom": "var:preset|spacing|20",
-                        "left": "var:preset|spacing|20",
-                        "right": "var:preset|spacing|20"
-                    }
                 }
             },
 			"core/site-title": {
@@ -674,6 +671,36 @@
 			"area": "uncategorized"
 		},
 		{
+			"name": "header-default",
+			"title": "Header Standard",
+			"description": "Standard header",
+			"area": "header"
+		},
+		{
+			"name": "header-centered",
+			"title": "Header Centered",
+			"description": "Centered header w/site tagline",
+			"area": "header"
+		},
+		{
+			"name": "header-centered-nav-fixed",
+			"title": "Header Centered Nav Fixed to Top",
+			"description": "Fixed header with centered navigation",
+			"area": "header"
+		},		
+		{
+			"name": "header-centered-no-tagline",
+			"title": "Header Centered No Tagline",
+			"description": "Centered header w/out site tagline",
+			"area": "header"
+		},
+		{
+			"name": "header-colored",
+			"title": "Colored Header (Primary Alt)",
+			"description": "Colored header (Primary Alt color)",
+			"area": "header"
+		},
+		{
 			"name": "header-fixed",
 			"title": "Lumina Header Fixed to Top",
 			"description": "Fixed header",
@@ -684,6 +711,174 @@
 			"title": "Lumina Home Page Header",
 			"description": "Header for the Home page",
 			"area": "header"
+		},
+		{
+			"name": "header-logo",
+			"title": "Header Logo (no Site title)",
+			"description": "Logo only header (no site title or tagline)",
+			"area": "header"
+		},
+		{
+			"name": "header-logo-fixed",
+			"title": "Header Logo Fixed to Top",
+			"description": "Logo only fixed header",
+			"area": "header"
+		},
+		{
+			"name": "header-dark",
+			"title": "Header Dark",
+			"description": "Dark header",
+			"area": "header"
+		},
+		{
+			"name": "header-dark-fixed",
+			"title": "Header Dark Fixed to Top",
+			"description": "Fixed dark header",
+			"area": "header"
+		},
+		{
+			"name": "header-left-align",
+			"title": "Header Left Align",
+			"description": "Left-aligned header w/site tagline",
+			"area": "header"
+		},
+		{
+			"name": "header-left-align-no-tagline",
+			"title": "Header Left Align No Tagline",
+			"description": "Left-aligned header w/out site tagline",
+			"area": "header"
+		},
+		{
+			"name": "header-nav-only-fixed",
+			"title": "Header Mobile Nav Only Fixed to Top",
+			"description": "Fixed mobile nav only header",
+			"area": "header"
+		},
+		{
+			"name": "header-tagline",
+			"title": "Header with Tagline",
+			"description": "Header with site tagline",
+			"area": "header"
+		},
+		{
+			"name": "menu-header",
+			"title": "Menu Header",
+			"description": "Default header nav menu (right)",
+			"area": "menu"
+		},
+		{
+			"name": "menu-header-centered",
+			"title": "Menu Header Centered",
+			"description": "Centered header nav menu",
+			"area": "menu"
+		},
+		{
+			"name": "menu-header-centered-only-nav",
+			"title": "Menu Header Centered Nav Only",
+			"description": "Centered header navigation menu without logo or title",
+			"area": "menu"
+		},
+		{
+			"name": "menu-header-dark",
+			"title": "Menu Header Dark",
+			"description": "Dark header nav menu (right)",
+			"area": "menu"
+		},
+		{
+			"name": "menu-header-no-mobile",
+			"title": "Menu Header Never Mobile",
+			"description": "Never mobile header menu (right)",
+			"area": "menu"
+		},
+		{
+			"name": "menu-header-mobile",
+			"title": "Menu Header Always Mobile",
+			"description": "Always mobile header menu (right)",
+			"area": "menu"
+		},
+		{
+			"name": "menu-footer",
+			"title": "Menu Footer",
+			"description": "Default footer menu",
+			"area": "menu"
+		},
+		{
+			"name": "menu-footer-1",
+			"title": "Menu Footer 1",
+			"description": "Vertical footer menu 1",
+			"area": "menu"
+		},
+		{
+			"name": "menu-footer-2",
+			"title": "Menu Footer 2",
+			"description": "Vertical footer menu 2",
+			"area": "menu"
+		},
+		{
+			"name": "menu-footer-3",
+			"title": "Menu Footer 3",
+			"description": "Vertical footer menu 3",
+			"area": "menu"
+		},
+		{
+			"name": "query",
+			"title": "Query Template",
+			"description": "Query Template Part",
+			"area": "content"
+		},
+		{
+			"name": "post-meta",
+			"title": "Post Meta",
+			"description": "Post meta (author, categories, and tags)",
+			"area": "content"
+		},
+		{
+			"name": "post-title",
+			"title": "Post Title",
+			"description": "Title for posts",
+			"area": "title"
+		},
+		{
+			"name": "page-title",
+			"title": "Page Title",
+			"description": "Title for pages",
+			"area": "title"
+		},
+		{
+			"name": "archive-title",
+			"title": "Archive Title",
+			"description": "Title for archives (categories, tags, etc.)",
+			"area": "title"
+		},
+		{
+			"name": "404-title",
+			"title": "Error (404) Title",
+			"description": "Title for the error page (404)",
+			"area": "title"
+		},
+		{
+			"name": "search-title",
+			"title": "Search Title",
+			"description": "Title for the search page",
+			"area": "title"
+		},
+		{
+			"name": "sitemap-title",
+			"title": "Sitemap Title",
+			"description": "Title for the sitemap page",
+			"area": "title"
+		},
+		{
+			"name": "home-title",
+			"title": "Home Title",
+			"description": "Title for the home page",
+			"area": "title"
+		},		
+		{
+			"name": "post-navigation",
+			"title": "Post Navigation",
+			"description": "Next and previous post links",
+			"area": "content"
 		},
 		{
 			"name": "featured-image",
@@ -770,9 +965,51 @@
 			"area": "content"
 		},
 		{
+			"name": "content-home-top",
+			"title": "Content Home Top (when blog is front page)",
+			"description": "Content for top of the home page (when blog is front page)",
+			"area": "content"
+		},
+		{
+			"name": "content-sitemap",
+			"title": "Content Sitemap",
+			"description": "Sitemap content (pages, categories, recent posts)",
+			"area": "content"
+		},
+		{
 			"name": "author-bio",
 			"title": "Author Bio",
 			"description": "Author avatar, name, and bio",
+			"area": "content"
+		},
+		{
+			"name": "sidebar",
+			"title": "Sidebar",
+			"description": "Sidebar (search, account, categories, social links)",
+			"area": "content"
+		},
+		{
+			"name": "social-icons",
+			"title": "Social Icons",
+			"description": "Social media icons with links",
+			"area": "content"
+		},
+		{
+			"name": "social-icons-neutral",
+			"title": "Social Icons Monochrome",
+			"description": "Huge social media icons in neutral color",
+			"area": "content"
+		},
+		{
+			"name": "comments",
+			"title": "Comments",
+			"description": "Comments list and comment form",
+			"area": "content"
+		},
+		{
+			"name": "current-year",
+			"title": "Current Year",
+			"description": "Dynamic current year display",
 			"area": "content"
 		},
 		{
@@ -782,9 +1019,69 @@
 			"area": "uncategorized"
 		},
 		{
+			"name": "theme-tagline",
+			"title": "Theme Tagline",
+			"description": "Theme tagline (theme by xtremelysocial)",
+			"area": "content"
+		},
+		{
+			"name": "site-copyright",
+			"title": "Site Copyright",
+			"description": "Site copyright (© by site-name)",
+			"area": "content"
+		},
+		{
+			"name": "jetpack-sharing",
+			"title": "Jetpack Sharing Buttons",
+			"description": "Jetpack social sharing integration",
+			"area": "content"
+		},
+		{
+			"name": "footer-block-1",
+			"title": "Footer Block 1",
+			"description": "Footer block 1 (e.g. recent posts)",
+			"area": "content"
+		},
+		{
+			"name": "footer-block-2",
+			"title": "Footer Block 2",
+			"description": "Footer block 2 (e.g. recent comments)",
+			"area": "content"
+		},
+		{
+			"name": "footer-block-3",
+			"title": "Footer Block 3",
+			"description": "Footer block 3 (e.g. about)",
+			"area": "content"
+		},
+		{
+			"name": "footer-block-4",
+			"title": "Footer Block 3 w/link underlines",
+			"description": "Footer block 3 (e.g. about) with underlined links",
+			"area": "content"
+		},
+		{
+			"name": "footer-3-blocks",
+			"title": "Footer 3 Blocks (recent posts, recent comments, about)",
+			"description": "Footer 3 blocks (e.g. recent posts, recent comments, about)",
+			"area": "footer"
+		},
+		{
 			"name": "footer-default",
 			"title": "Lumina Default Light Footer",
 			"description": "Clean, lightly tinted footer",
+			"area": "footer"
+		},
+		{
+			"name": "footer-default-no-color",
+			"title": "Footer Standard No Background Color",
+			"description": "Standard footer w/out background color",
+			"area": "footer"
+		},
+		{
+			"name": "footer-default-light",
+			"title": "Footer Standard Light",
+			"description": "Standard footer w/light background color",
 			"area": "footer"
 		},
 		{
@@ -800,7 +1097,43 @@
 			"area": "footer"
 		},
 		{
-			"name": "footer-about-2-navs-contact-info",
+			"name": "footer-colored-underlines",
+			"title": "Footer Colored w/link underlines",
+			"description": "Colored footer w/link underlines (Primary & Primary Alt color)",
+			"area": "footer"
+		},
+		{
+			"name": "footer-3-blocks-nav-site-info",
+			"title": "Footer 3 Blocks plus Menu and Site Info",
+			"description": "Footer w/3 blocks plus nav menu and site info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-3-blocks-nav-site-social",
+			"title": "Footer 3 Blocks plus Menu, Site Info, and Social Icons",
+			"description": "Footer w/3 blocks plus nav menu, site info, and social icons",
+			"area": "footer"
+		},
+		{
+			"name": "footer-3-blocks-nav-social",
+			"title": "Footer 3 Blocks plus Menu and Social Icons",
+			"description": "Footer w/3 blocks plus nav menu and social icons",
+			"area": "footer"
+		},
+		{
+			"name": "footer-about-3-navs",
+			"title": "Footer About and 3 Menus",
+			"description": "Footer w/block 3 (About) and 3 nav menus",
+			"area": "footer"
+		},
+		{
+			"name": "footer-about-3-navs-site-info",
+			"title": "Footer About and 3 Menus plus Site Info",
+			"description": "Footer w/block 3 (About), 3 nav menus, and site info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-about-2-navs-contact",
 			"title": "Lumina Footer About, 2 Menus, Contact Info",
 			"description": "Footer w/block 3 (About), 2 nav menus, and contact info",
 			"area": "footer"
@@ -809,6 +1142,84 @@
 			"name": "footer-about-2-navs-contact-site-info",
 			"title": "Lumina Footer About, 2 Menus, Contact & Site Info",
 			"description": "Footer w/block 3 (About), 2 nav menus, contact info, site info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-3-blocks-nav-tagline",
+			"title": "Footer 3 Blocks plus Menu and Tagline",
+			"description": "Footer w/3 blocks plus nav menu and site tagline",
+			"area": "footer"
+		},
+		{
+			"name": "footer-compact-site-info",
+			"title": "Footer Compact Site Info",
+			"description": "Compact footer w/site info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-compact-nav-site-info",
+			"title": "Footer Compact Menu and Site Info",
+			"description": "Compact footer w/nav menu and site info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-compact-nav-theme",
+			"title": "Footer Compact Menu and Theme Tagline",
+			"description": "Compact footer w/nav menu and theme info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-compact-nav-social",
+			"title": "Footer Compact Menu and Social Icons",
+			"description": "Compact footer w/nav menu and social icons",
+			"area": "footer"
+		},
+		{
+			"name": "footer-compact-nav-site-social",
+			"title": "Footer Compact w/Nav Menu, Site Info, and Social Icons",
+			"description": "Compact footer w/nav menu, site info, and social icons",
+			"area": "footer"
+		},
+		{
+			"name": "footer-compact-contact-info-social",
+			"title": "Footer Compact w/Contact Info and Social Icons",
+			"description": "Compact footer w/site info and social icons",
+			"area": "footer"
+		},
+		{
+			"name": "footer-map-static",
+			"title": "Footer w/Static Map (image) and Contact Info",
+			"description": "Footer w/static map (image) and contact info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-map-jetpack",
+			"title": "Footer w/Jetpack Map and Contact Info",
+			"description": "Footer w/Jetpack map and contact info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-motto-social-icons",
+			"title": "Footer w/Motto and Social Icons",
+			"description": "Footer w/motto and huge social icons",
+			"area": "footer"
+		},
+		{
+			"name": "footer-motto-social-site",
+			"title": "Footer w/Motto, Social Icons, and Site Info",
+			"description": "Footer w/motto, social icons, and site info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-social-map-static",
+			"title": "Footer w/Colored Social Icons, Static Map, and Contact Info",
+			"description": "Footer w/colored social icons, static map, and contact info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-social-map-jetpack",
+			"title": "Footer w/Colored Social Icons and Jetpack Map and Contact Info",
+			"description": "Footer w/colored social icons and Jetpack map and contact info",
 			"area": "footer"
 		}
 	],
@@ -844,6 +1255,12 @@
 			"postTypes": ["page"]
 		},
 		{
+			"name": "page-featured-image-nosidebar",
+			"title": "Page Featured Image No Sidebar",
+			"description": "Page w/large featured image and no sidebar",
+			"postTypes": ["page"]
+		},
+		{
 			"name": "page-notitle",
 			"title": "Page No Title",
 			"description": "Page w/out title",
@@ -856,9 +1273,21 @@
 			"postTypes": ["page"]
 		},
 		{
+			"name": "page-nosidebar",
+			"title": "Page No Sidebar",
+			"description": "Page w/out sidebar",
+			"postTypes": ["page"]
+		},
+		{
 			"name": "page-notitle-nocomments",
 			"title": "Page No Title or Comments",
 			"description": "Page w/out title or comments",
+			"postTypes": ["page"]
+		},
+		{
+			"name": "page-nocomments-nosidebar",
+			"title": "Page No Comments No Sidebar",
+			"description": "Page w/out comments or sidebar",
 			"postTypes": ["page"]
 		},
 		{
@@ -910,6 +1339,12 @@
 			"postTypes": ["post"]
 		},
 		{
+			"name": "single-featured-image-nosidebar",
+			"title": "Post Featured Image No Sidebar",
+			"description": "Post w/large featured image and no sidebar",
+			"postTypes": ["post"]
+		},
+		{
 			"name": "single-notitle",
 			"title": "Post No Title",
 			"description": "Post w/out title",
@@ -919,6 +1354,12 @@
 			"name": "single-nocomments",
 			"title": "Post No Comments",
 			"description": "Post w/out comments",
+			"postTypes": ["post"]
+		},
+		{
+			"name": "single-nosidebar",
+			"title": "Post No Sidebar",
+			"description": "Post w/out sidebar",
 			"postTypes": ["post"]
 		},
 		{
@@ -943,31 +1384,6 @@
 			"name": "single-sidebar-right",
 			"title": "Post Right Sidebar",
 			"description": "Post w/right sidebar",
-			"postTypes": ["post"]
-		},
-		{
-			"name": "page-nosidebar",
-			"title": "Page No Sidebar",
-			"postTypes": ["page"]
-		},
-		{
-			"name": "page-nocomments-nosidebar",
-			"title": "Page No Comments No Sidebar",
-			"postTypes": ["page"]
-		},
-		{
-			"name": "page-featured-image-nosidebar",
-			"title": "Page Featured Image No Sidebar",
-			"postTypes": ["page"]
-		},
-		{
-			"name": "single-nosidebar",
-			"title": "Post No Sidebar",
-			"postTypes": ["post"]
-		},
-		{
-			"name": "single-featured-image-nosidebar",
-			"title": "Post Featured Image No Sidebar",
 			"postTypes": ["post"]
 		}
 	]	

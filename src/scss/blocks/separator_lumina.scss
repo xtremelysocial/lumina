@@ -1,26 +1,32 @@
 /*------------------------------------------------------------------------------
-# LUMINA Separator - Pure Alignment & Width Matrix
+# LUMINA Separator - Pure Alignment, Width & Color Matrix
 ------------------------------------------------------------------------------*/
 
 .wp-block-separator {
 
-    // 1. NEUTRALIZE LEGACY SPACING
-    margin-block-end: 0; // Wipes out the parent theme's margin
+    // 1. NEUTRALIZE LEGACY SPACING & CORE BORDER HACKS
+    margin-block-end: 0;
+    border: none !important;
+    height: 1px;
 
-    // 2. DYNAMIC COLOR HOOKS & CONTRAST FIXES
-//     .has-background &:not(.is-style-dots) {
-//         color: color-mix(in srgb, currentColor 30%, transparent);
-//     }
+    // Thickness variations
+    &.is-style-thick,
+    &.is-style-thick-wide {
+        height: 2px;
+    }
 
-    // Use the body text color so dots are cleanly visible 
-//     &.is-style-dots {
-//         color: inherit; 
-//     }
+    // Dots variation uses font text rendering
+    &.is-style-dots {
+        height: auto;
+        background-color: transparent !important;
+        border: none !important;
+    }
 
-	/* 2. Contextual Opacity: Automatically soften when inside colored blocks */
-	:where(.has-background, [class*="-background-color"]) &:not(.has-text-color) {
-		opacity: 0.35;
-	}
+    // 2. DYNAMIC COLOR FALLBACK
+    // If no explicit user color or theme.json color is present, fallback to container ink (currentColor)
+    &:not(.has-text-color):not(.has-background-color) {
+        color: currentColor;
+    }
 
     // 3. INHERENT WIDTH TRACKS
     // Short accent lines (Default, Thick)

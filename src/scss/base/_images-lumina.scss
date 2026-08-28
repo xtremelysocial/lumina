@@ -34,3 +34,23 @@
 ) {
 	border-radius: var(--wp--preset--border-radius--sm, 8px);
 }
+
+/* Remove Padding from Images w/Border */
+.wp-block-image.is-style-image-border {
+// 	border-radius: var(--wp--custom--border--radius);
+	
+	& img {
+// 		padding: var(--wp--preset--spacing--20);
+		padding: 0;
+	}
+}
+
+/* Remove Padding from Image Round w/Border */
+.wp-block-image.is-style-image-round-border {
+//     border-radius: 9999px !important;
+    
+    & img {
+// 		padding: var(--wp--preset--spacing--20);
+		padding: 0;
+    }
+}

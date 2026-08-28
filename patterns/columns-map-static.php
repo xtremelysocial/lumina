@@ -1,21 +1,18 @@
 <?php
 /**
- * Title: Lumina Columns Map Static
- * Description: Columns Map Static
+ * Title: Static Map & Contact Info
+ * Description: Static map with address, contact info, and social media icons
  * Slug: lumina/columns-map-static
- * Categories: lumina, column, image
+ * Categories: lumina, column, media
+ * Block Types: core/media-text
  */
- $theme_image_url = esc_url( get_theme_file_uri( 'assets/images/samples/maps/01.webp' ) );
 ?>
-<!-- wp:columns {"verticalAlignment":"top","align":"full","style":{"spacing":{"blockGap":{"top":"0","left":"0"},"padding":{"top":"0","right":"0","bottom":"0","left":"0"},"margin":{"top":"0"}}},"backgroundColor":"dark","className":"alignfull is-style-no-gap"} -->
-<div class="wp-block-columns alignfull are-vertically-aligned-top is-style-no-gap has-dark-background-color has-background" id="static-map-and-address" style="margin-top:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:column {"verticalAlignment":"top","width":"66.66666%"} -->
-<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:66.66666%"><!-- wp:image {"sizeSlug":"large","linkDestination":"custom","style":{"color":{}}} -->
-<figure class="wp-block-image size-large"><a href="https://www.google.com/maps/@41.9677379,-71.487411,15z"><img src="<?php echo $theme_image_url; ?>" alt="map"/></a></figure>
-<!-- /wp:image --></div>
-<!-- /wp:column -->
+<!-- wp:media-text {"align":"full","mediaLink":"#content-start","linkDestination":"custom","mediaType":"image","mediaWidth":67,"imageFill":false,"metadata":{"name":"Static Map \u0026 Contact Info Full Width"},"className":"is-style-no-gap","style":{"spacing":{"margin":{"bottom":"0"}}},"backgroundColor":"secondary-alt","anchor":"static-map-and-contact-info-full"} -->
+<div class="wp-block-media-text alignfull is-stacked-on-mobile is-style-no-gap has-secondary-alt-background-color has-background" style="margin-bottom:0;grid-template-columns:67% auto" id="static-map-and-contact-info-full"><figure class="wp-block-media-text__media"><a href="#content-start"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/01.webp" ) ); ?>" alt="Map"/></a></figure><div class="wp-block-media-text__content">
+<!-- wp:heading {"level":3,"placeholder":"Contact","anchor":"contact-info"} -->
+<h3 id="contact-info"><?php esc_html_e("Contact", "lumina"); ?></h3>
+<!-- /wp:heading -->
 
-<!-- wp:column {"verticalAlignment":"top","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","right":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60"}}},"backgroundColor":"dark","className":"is-style-default"} -->
-<div class="wp-block-column is-vertically-aligned-top is-style-default has-dark-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)">
 <!-- wp:template-part {"slug":"contact-info"} /--></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
+<!-- /wp:group --></div></div>
+<!-- /wp:media-text -->

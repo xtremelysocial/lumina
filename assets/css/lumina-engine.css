@@ -44,6 +44,11 @@
   box-shadow: none !important;
 }
 
+a > .avatar {
+  border: var(--wp--custom--color--border--width, 1px) var(--wp--custom--color--border--style, solid) var(--wp--custom--color--border);
+  border-radius: var(--wp--custom--button--radius);
+}
+
 /* -----------------------------------------------------------------------------
    Lumina Card Arrow Overlay Badge (Resting State Definitions)
    ----------------------------------------------------------------------------- */

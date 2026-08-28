@@ -46,7 +46,7 @@
 		// colors ('dark-light', 'light-dark') are handled by Pass 2 & Pass 3.
 		@if $text == 'light' {
 			@include logic.apply-contrast-color($color, 'light', $root);
-			@include logic.apply-heading-action($color, 'light', $root);
+// 			@include logic.apply-heading-action($color, 'light', $root);
             
 		} @else if $text == 'dark' {
 			@include logic.apply-contrast-color($color, 'dark', $root);

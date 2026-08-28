@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6), :where(:root) :where(body:not(.is-dark-theme)) .has-ver
 .wp-block-site-title,
 .wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6) {
-  /* Set link color to light text */
+  /* Set heading color to light text */
   color: var(--wp--preset--color--foreground-alt);
 }
 
