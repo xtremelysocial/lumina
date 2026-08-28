@@ -32,6 +32,26 @@
   transform: scale(1);
   pointer-events: auto !important;
 }
+.is-interactive-card:hover > .lumina-card-arrow-overlay.lumina-action-internal::after,
+.is-interactive-card.is-active > .lumina-card-arrow-overlay.lumina-action-internal::after,
+.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay.lumina-action-internal::after {
+  transform: translateX(2px);
+}
+.is-interactive-card:hover > .lumina-card-arrow-overlay.lumina-action-external::after,
+.is-interactive-card.is-active > .lumina-card-arrow-overlay.lumina-action-external::after,
+.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay.lumina-action-external::after {
+  transform: translate(1px, -1px);
+}
+.is-interactive-card:hover > .lumina-card-arrow-overlay.lumina-action-scroll-up::after,
+.is-interactive-card.is-active > .lumina-card-arrow-overlay.lumina-action-scroll-up::after,
+.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay.lumina-action-scroll-up::after {
+  transform: translateY(-2px);
+}
+.is-interactive-card:hover > .lumina-card-arrow-overlay.lumina-action-scroll-down::after,
+.is-interactive-card.is-active > .lumina-card-arrow-overlay.lumina-action-scroll-down::after,
+.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay.lumina-action-scroll-down::after {
+  transform: translateY(2px);
+}
 
 .lumina-card-arrow-overlay:hover::before {
   opacity: 1;

@@ -146,7 +146,7 @@
 			}
 		});
 
-		// Pass C: Inject arrow overlays and set cursor on surviving (outer) cards
+		// Pass C: Inject class-based overlays and set cursor on surviving (outer) cards
 		$('.is-interactive-card').each(function() {
 			var $card = $(this);
 			var $target = getValidTarget($card);
@@ -161,12 +161,10 @@
 		
 					// Default: Standard Internal Link
 					var actionClass = 'lumina-action-internal';
-					var arrowSymbol = '\u2192\uFE0E';
 		
 					if (isExternal) {
 						// External Link
 						actionClass = 'lumina-action-external';
-						arrowSymbol = '\u2197\uFE0E';
 					} else if (isAnchor) {
 						var hashIndex = href.indexOf('#');
 						var hash = hashIndex !== -1 ? href.substring(hashIndex) : '';
@@ -180,20 +178,18 @@
 		
 									if (targetTop < cardTop) {
 										actionClass = 'lumina-action-scroll-up';
-										arrowSymbol = '\u2934\uFE0E';
 									} else {
 										actionClass = 'lumina-action-scroll-down';
-										arrowSymbol = '\u2935\uFE0E';
 									}
 								}
 							} catch (err) {
 								actionClass = 'lumina-action-internal';
-								arrowSymbol = '\u2192\uFE0E';
 							}
 						}
 					}
 		
-					var $overlay = $('<span class="lumina-card-arrow-overlay ' + actionClass + '" aria-hidden="true">' + arrowSymbol + '</span>');
+					// Clean HTML node (Icons dynamically attached via SCSS mask engine)
+					var $overlay = $('<span class="lumina-card-arrow-overlay ' + actionClass + '" aria-hidden="true"></span>');
 		
 					if ($card.css('position') === 'static') {
 						$card.css('position', 'relative');

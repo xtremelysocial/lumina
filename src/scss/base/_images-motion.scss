@@ -148,40 +148,86 @@ $pan-slim-shift-y:      7.2% !default;  // Increased vertical travel (was 4.5%)
 	img,
 	.wp-block-cover__image-background {
 		animation-play-state: paused !important;
-		transition: none !important; /* Prevents physics engine transforms from causing motion snapping */
+		transition: none !important;
 	}
 
-	/* 2. Motion Indicator Badge Overlay (Icon Only — No Text Tooltip) */
+	/* 2A. Translucent Circle Background (::before) */
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: var(--wp--preset--spacing--30, 12px);
+		right: var(--wp--preset--spacing--30, 12px);
+		width: 28px;
+		height: 28px;
+		border-radius: 50%;
+		opacity: 0.7;
+		transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), 
+					transform 300ms cubic-bezier(0.16, 1, 0.3, 1), 
+					background-color 200ms ease;
+		pointer-events: none;
+		z-index: 2;
+
+		/* Universal Default: Translucent Dark + Blur */
+		background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 65%, transparent);
+		backdrop-filter: blur(4px);
+		-webkit-backdrop-filter: blur(4px);
+	}
+
+	/* 2B. Sparkle Mask Icon Layer (::after - Static at Rest) */
 	&::after {
 		content: "";
 		position: absolute;
-		bottom: 12px;
-		right: 12px;
+		bottom: var(--wp--preset--spacing--30, 12px);
+		right: var(--wp--preset--spacing--30, 12px);
 		width: 28px;
 		height: 28px;
-		background: rgba(0, 0, 0, 0.55);
-		backdrop-filter: blur(4px);
-		border-radius: 50%;
-		opacity: 0.75;
-		transition: opacity 250ms ease, transform 250ms ease;
-		background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M15 3l2.3 2.3-3.89 3.89 1.42 1.42 3.88-3.88L21 9V3h-6zM9 21L6.7 18.7l3.89-3.89-1.42-1.42-3.88 3.88L3 15v6h6z"/></svg>');
-		background-size: 14px;
-		background-position: center;
-		background-repeat: no-repeat;
+		opacity: 0.7;
+// 		transform: scale(0.9) rotate(0deg);
+		transform: scale(1) rotate(0deg);
+		transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), 
+					transform 300ms cubic-bezier(0.16, 1, 0.3, 1), 
+					color 200ms ease;
 		pointer-events: none;
-		z-index: 2;
+		z-index: 3;
+
+		/* Icon Fill Color */
+		color: var(--wp--preset--color--base, #ffffff);
+		background-color: currentColor;
+
+		/* SVG Sparkle Mask */
+		mask-image: url('../icons/sparkles.svg');
+// 		mask-image: url('../icons/arrows-loop.svg');
+// 		mask-image: url('../icons/opposing-arrows.svg');
+		mask-size: 14px;
+		mask-repeat: no-repeat;
+		mask-position: center;
 	}
 
-	/* 3. Smooth Play State Toggle */
+	/* Cover Light Theme Inversion */
+	&.is-light {
+		&::before {
+			background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 75%, transparent);
+		}
+		&::after {
+			color: var(--wp--preset--color--contrast, #000000);
+		}
+	}
+
+	/* 3. Active Motion State (Image Pans, Sparkle Pops & Rotates) */
 	&:hover {
 		img,
 		.wp-block-cover__image-background {
 			animation-play-state: running !important;
 		}
 
-		&::after {
+		&::before {
 			opacity: 1;
 			transform: scale(1.1);
+		}
+
+		&::after {
+			opacity: 1;
+			transform: scale(1.2) rotate(45deg); /* Pops and tilts to signal active magic */
 		}
 	}
 }

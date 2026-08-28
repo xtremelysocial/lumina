@@ -72,8 +72,6 @@ a > .avatar {
   border-radius: 50%;
   background: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 88%, transparent);
   color: var(--wp--preset--color--base, #ffffff);
-  font-size: 15px;
-  line-height: 1;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -117,6 +115,56 @@ a > .avatar {
 }
 .lumina-card-arrow-overlay.lumina-action-scroll-down::before {
   content: "Scroll Down";
+}
+.lumina-card-arrow-overlay.lumina-action-play::before {
+  content: "Play Motion";
+}
+.lumina-card-arrow-overlay.lumina-action-pause::before {
+  content: "Pause Motion";
+}
+.lumina-card-arrow-overlay {
+  /* --- SVG ICON MASK ENGINE (::after) --- */
+}
+.lumina-card-arrow-overlay::after {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  transition: transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lumina-card-arrow-overlay {
+  /* SVG Mask Assignments using asset folder filenames */
+}
+.lumina-card-arrow-overlay.lumina-action-internal::after {
+  -webkit-mask-image: url("../icons/arrow-right.svg");
+          mask-image: url("../icons/arrow-right.svg");
+}
+.lumina-card-arrow-overlay.lumina-action-external::after {
+  -webkit-mask-image: url("../icons/external-link.svg");
+          mask-image: url("../icons/external-link.svg");
+}
+.lumina-card-arrow-overlay.lumina-action-scroll-up::after {
+  -webkit-mask-image: url("../icons/arrow-curved-up.svg");
+          mask-image: url("../icons/arrow-curved-up.svg");
+}
+.lumina-card-arrow-overlay.lumina-action-scroll-down::after {
+  -webkit-mask-image: url("../icons/arrow-curved-down.svg");
+          mask-image: url("../icons/arrow-curved-down.svg");
+}
+.lumina-card-arrow-overlay.lumina-action-play::after {
+  -webkit-mask-image: url("../icons/play.svg");
+          mask-image: url("../icons/play.svg");
+}
+.lumina-card-arrow-overlay.lumina-action-pause::after {
+  -webkit-mask-image: url("../icons/pause.svg");
+          mask-image: url("../icons/pause.svg");
 }
 
 .is-interactive-card.has-contrast-background-color > .lumina-card-arrow-overlay {

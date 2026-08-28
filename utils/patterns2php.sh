@@ -70,7 +70,7 @@ fi
 count=0
 
 # Enable Zsh null globbing
-setopt NULL_GLOB 2>/dev/null || true
+setopt NULL_GLOB 2>/devnull || true
 
 # Pre-sort block keys by length descending so 'gallery' matches before 'image'
 sorted_block_keys=(${(f)"$(for k in ${(k)BLOCK_MAP}; do echo "${#k} $k"; done | sort -rn | cut -d' ' -f2-)"})
@@ -168,25 +168,41 @@ EOF
 EOF
     fi
 
-    # 7. Execute Perl Translation engine safely via standard input (< "$file")
-    perl -pe '
+    # 7. Execute Perl Translation engine safely in slurping mode (-0777)
+    perl -0777 -pe '
     
         # Safely strip "id":123, "mediaID":123, and "patternName":"..." from block JSON comments
-        if (/<!--\s*wp:/) {
-            s/"(?:id|mediaID)":\s*\d+,\s*|,\s*"(?:id|mediaID)":\s*\d+|"(?:id|mediaID)":\s*\d+//g;
-            s/"patternName":"[^"]+",\s*|,\s*"patternName":"[^"]+"|"patternName":"[^"]+"//g;
-        }
+        s{<!--\s*wp:.*?-->}{
+            my $c = $&;
+            $c =~ s/"(?:id|mediaID)":\s*\d+,\s*|,\s*"(?:id|mediaID)":\s*\d+|"(?:id|mediaID)":\s*\d+//g;
+            $c =~ s/"patternName":"[^"]+",\s*|,\s*"patternName":"[^"]+"|"patternName":"[^"]+"//g;
+            $c;
+        }gse;
     
         # Replace image URLs across src, href, JSON attributes, and CSS url()
-        s/src="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"/src="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"/g;
-        s/href="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"/href="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"/g;
-        s/"url":"([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"/"url":"<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"/g;
-        s/url\((&quot;|"|)?([^"()\s]*\/)?([^\/"()\s]+\.(jpg|jpeg|png|gif|svg|webp))\1\)/url("<?php echo esc_url( get_theme_file_uri( "assets\/images\/$3" ) ); ?>")/g;
+        s{src="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"}{src="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
+        s{href="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"}{href="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
+        s{"url":"([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"}{"url":"<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
+        s{url\((&quot;|"|)?([^"()\s]*\/)?([^\/"()\s]+\.(jpg|jpeg|png|gif|svg|webp))\1\)}{url("<?php echo esc_url( get_theme_file_uri( "assets\/images\/$3" ) ); ?>")}g;
 
-        # Translate inner text on non-comment lines
-        if (!/<!--/) {
-            s/>\s*([A-Za-z][^<>\n]*[A-Za-z0-9\.!?,])\s*</><?php esc_html_e("$1", "lumina"); ?></g;
-        }
+        # 1. Stash HTML comments using a strictly numeric placeholder (___INDEX___) to avoid letter matching
+        my @comments;
+        s{<!--.*?-->}{ push(@comments, $&); "___" . $#comments . "___" }gse;
+
+        # 2. Translate inner tag text containing letters (skips tags, attributes, and stashed numeric placeholders)
+        s{>\s*([^<>\n]*?[a-zA-Z][^<>\n]*?)\s*<}{
+            my $txt = $1;
+            if ($txt !~ /^<\?php/) {
+                $txt =~ s/"/\\"/g;
+                "><" . "?php esc_html_e(\"$txt\", \"lumina\"); ?>" . "<";
+            } else {
+                ">$txt<";
+            }
+        }ge;
+
+        # 3. Restore stashed HTML block comments back to exact positions
+        s{___(\d+)___}{$comments[$1]}ge;
+
     ' < "$file" >> "$output_file"
 
     ((count++))
