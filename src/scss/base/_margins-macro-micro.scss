@@ -4,14 +4,14 @@
 @use "@wordpress/base-styles/breakpoints";
 
 /*-----------------------------------------------------------------------------
-# Adjust Margins
-# Larger vertical margin between blocks, less between headings and contents, etc.
+# Adjust Margins - Macro & Micro Vertical Spacing
+# Larger vertical margin between blocks, less between headings and contents, 
+# etc.
 -----------------------------------------------------------------------------*/
 
-// 0. Set Macro, Micro, and Group spacing variables
+// 0. Set Macro (e.g. block + block) & Micro (e.g. hx + p) vertical spacing
 $macro-spacing: var(--wp--preset--spacing--50);
 $micro-spacing: var(--wp--preset--spacing--30);
-$group-spacing: var(--wp--preset--spacing--60);
 
 // 1. Base HTML & Browser Overrides
 // A. Zero margin-block-end on paragraphs so browser bottom margins don't stack with micro-tether
@@ -103,16 +103,4 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
 .wp-block-template-part:empty {
 	margin-block-start: 0; 
 	margin-block-end: 0; 
-}
-
-/*-----------------------------------------------------------------------------
-# Container Padding Styles
------------------------------------------------------------------------------*/
-
-// 8. Override parent theme's padding on colored blocks
-.wp-site-blocks {
-	.wp-block-group.has-background:not(.alignfull):not(.is-layout-flex) {
-		padding-left: $group-spacing;
-		padding-right: $group-spacing;
-	}
 }

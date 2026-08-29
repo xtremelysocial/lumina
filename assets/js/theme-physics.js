@@ -1,5 +1,5 @@
 /**
- * File:        lumina-physics.js
+ * File:        theme-physics.js
  * Theme:       Lumina Blocks
  *
  * Javascript for turning cards with a single link or button into a click target.

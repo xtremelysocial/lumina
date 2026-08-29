@@ -1,6 +1,6 @@
-/*!*******************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/lumina-editor-styles.scss ***!
-  \*******************************************************************************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/theme-editor-styles.scss ***!
+  \******************************************************************************************************************************************************************************************************************************/
 /**
  * File:	lumina-editor-styles.css
  * Theme:	Lumina
@@ -50,20 +50,17 @@
 }
 
 /* ==========================================================================
-   BLOCK EDITOR STYLES: Margin Collapse Normalizer
-   Collapses double-margins on block + block
-   ========================================================================== */
-.is-root-container > .block-editor-block-list__block + .block-editor-block-list__block {
-  margin-top: var(--wp--style--block-gap);
-}
-
-/* ==========================================================================
    BLOCK EDITOR STYLES: Pan-Zoom Motion Override
    Disables live keyframe motion in Gutenberg canvas
    ========================================================================== */
-.wp-block-image img,
-.wp-block-image .wp-block-cover__image-background, .wp-block-post-featured-image .wp-block-cover img,
-.wp-block-post-featured-image .wp-block-cover .wp-block-cover__image-background {
+:is(.wp-block-image,
+.wp-block-post-featured-image,
+.wp-block-cover,
+.wp-block-media-text) img,
+:is(.wp-block-image,
+.wp-block-post-featured-image,
+.wp-block-cover,
+.wp-block-media-text) .wp-block-cover__image-background {
   animation: none !important;
   transform: none !important;
 }

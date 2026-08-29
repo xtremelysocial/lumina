@@ -6,21 +6,23 @@
  * @package XtremelySocial
  */
 
-add_action( 'init', 'lumina_register_block_bindings' );
+namespace XtremelySocial\Lumina;
 
-function lumina_register_block_bindings() {
+add_action( 'init', __NAMESPACE__ . '\register_block_bindings' );
+
+function register_block_bindings() {
 
 	// Featured Image (Lightbox, Template Part & Fallback Engine Compatible)
 	register_block_bindings_source( 'lumina/featured-image', array(
 		'label'              => __( 'Featured Image', 'lumina' ),
-		'get_value_callback' => 'lumina_featured_image_binding',
+		'get_value_callback' => __NAMESPACE__ . '\featured_image_binding',
 		'uses_context'       => array( 'postId' ),
 	) );
 
 }
 
 /* Featured Image binding source */
-function lumina_featured_image_binding( $source_args, $block_instance, $attribute_name = 'url' ) {
+function featured_image_binding( $source_args, $block_instance, $attribute_name = 'url' ) {
 	// 1. Four-tier Post ID lookup to guarantee context inside template parts
 	$post_id = 0;
 
@@ -72,7 +74,7 @@ function lumina_featured_image_binding( $source_args, $block_instance, $attribut
 	}
 
 	// 3. Fallback Engine: Triggered if no real image exists OR if FORCE_DEFAULT_IMAGE is true
-	if ( function_exists( 'XtremelySocial\get_featured_image_fallback_data' ) ) {
+	if ( function_exists( '\XtremelySocial\get_featured_image_fallback_data' ) ) {
 		$fallback = \XtremelySocial\get_featured_image_fallback_data( $post_id );
 		
 		if ( 'url' === $target_attr ) {

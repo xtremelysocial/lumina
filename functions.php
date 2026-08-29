@@ -41,15 +41,15 @@ if ( ! function_exists( 'lumina_theme_support' ) ) :
 
 		// Determine mode dynamically for the Site Editor canvas
 		$mode_css = ( lumina_get_active_theme_mode() === 'dark' ) 
-			? 'assets/css/lumina-dark-mode.css' 
-			: 'assets/css/lumina-light-mode.css';
+			? 'assets/css/theme-dark-mode.css' 
+			: 'assets/css/theme-light-mode.css';
 		
 		$editor_styles = array(
-			'assets/css/lumina-theme.css',
+			'assets/css/theme-styles.css',
 			$mode_css,
-			'assets/css/lumina-engine.css',
+			'assets/css/theme-engine.css',
 // 			'assets/css/editor-styles.css',
-			'assets/css/lumina-editor-styles.css',
+			'assets/css/theme-editor-styles.css',
 		);
 
 		// Allow child themes to override the list of editor styles to load
@@ -73,6 +73,7 @@ $includes = array (
 	'/inc/block-patterns.php',
 // 	'/inc/block-variations.php',
 	'/inc/body-classes.php',
+	'/inc/icons.php',
 	'/inc/images.php',
 	'/inc/parent-theme.php',
 );
@@ -102,42 +103,42 @@ if ( ! function_exists( 'lumina_load_styles' ) ) :
 
 		// 1. Core Theme CSS
 		lumina_enqueue_style( 
-			get_stylesheet_directory() . '/assets/css/lumina-theme.css',
+			get_stylesheet_directory() . '/assets/css/theme-styles.css',
 			$deps
 		);
 
 		// 2. Conditionally Enqueue Light or Dark Mode
 		$active_mode = lumina_get_active_theme_mode();
-		$mode_file   = ( $active_mode === 'dark' ) ? 'lumina-dark-mode.css' : 'lumina-light-mode.css';
+		$mode_file   = ( $active_mode === 'dark' ) ? 'theme-dark-mode.css' : 'theme-light-mode.css';
 
 		lumina_enqueue_style( 
 			get_stylesheet_directory() . '/assets/css/' . $mode_file, 
-			array( 'lumina-theme' )
+			array( 'theme-styles' )
 		);
 
 		// 3. Lumina Engine Resting State CSS
 		lumina_enqueue_style( 
-			get_stylesheet_directory() . '/assets/css/lumina-engine.css', 
-			array( 'lumina-theme' ) 
+			get_stylesheet_directory() . '/assets/css/theme-engine.css', 
+			array( 'theme-styles' ) 
 		);
 
 		// 4. Lumina Engine Interactive State CSS (Front-end only)
 		if ( ! is_admin() ) {
 			lumina_enqueue_style( 
-				get_stylesheet_directory() . '/assets/css/lumina-interactions.css', 
-				array( 'lumina-engine' ) 
+				get_stylesheet_directory() . '/assets/css/theme-interactions.css', 
+				array( 'theme-engine' ) 
 			);
 		}
 
 		// 5. Lumina Physics / Gravity JS (Front-end only)
 		if ( ! is_admin() 
 			AND apply_filters( 'lumina_card_link_js', true ) 
-			AND file_exists( get_stylesheet_directory() . '/assets/js/lumina-physics.js' ) ) {
+			AND file_exists( get_stylesheet_directory() . '/assets/js/theme-physics.js' ) ) {
 
 			$theme_version = wp_get_theme()->get( 'Version' ) ?? false;			
 			wp_enqueue_script( 
-				'lumina-physics', 
-				get_stylesheet_directory_uri() . '/assets/js/lumina-physics.js', 
+				'theme-physics', 
+				get_stylesheet_directory_uri() . '/assets/js/theme-physics.js', 
 				array( 'jquery' ), 
 				$theme_version, 
 				true 
@@ -158,7 +159,7 @@ if ( ! function_exists( 'lumina_load_block_styles' ) ) :
 	function lumina_load_block_styles() {
 
 		$block_path = '/assets/css/blocks/';
-		$main_asset = get_stylesheet_directory() . '/assets/css/lumina-theme.asset.php';
+		$main_asset = get_stylesheet_directory() . '/assets/css/theme-styles.asset.php';
 
 		// 1. Get build version
 		if ( file_exists( $main_asset ) ) {
@@ -169,12 +170,12 @@ if ( ! function_exists( 'lumina_load_block_styles' ) ) :
 		}
 
 		// 2. REGISTER main handle early on 'init' so it exists as a valid dependency
-		if ( ! wp_style_is( 'lumina-theme', 'registered' ) ) {
-			$main_css_path = get_stylesheet_directory() . '/assets/css/lumina-theme.css';
+		if ( ! wp_style_is( 'theme-styles', 'registered' ) ) {
+			$main_css_path = get_stylesheet_directory() . '/assets/css/theme-styles.css';
 			if ( file_exists( $main_css_path ) ) {
 				wp_register_style(
-					'lumina-theme',
-					get_stylesheet_directory_uri() . '/assets/css/lumina-theme.css',
+					'theme-styles',
+					get_stylesheet_directory_uri() . '/assets/css/theme-styles.css',
 					array(),
 					$block_css_version
 				);
@@ -199,7 +200,7 @@ if ( ! function_exists( 'lumina_load_block_styles' ) ) :
 
 			$parts      = explode( '_', $file_slug );
 			$block_name = $parts[0];
-			$handle     = "lumina-block-{$file_slug}";
+			$handle     = "theme-block-{$file_slug}";
 
 			wp_enqueue_block_style( "core/{$block_name}", array(
 				'handle' => $handle,
@@ -345,7 +346,7 @@ if ( ! function_exists( 'lumina_enqueue_style' ) ) :
 		if ( ! empty( $custom_deps ) ) {
 			$deps = $custom_deps;
 		} else {
-			$deps = $handle === 'lumina-theme' ? array() : array( 'lumina-theme' );
+			$deps = $handle === 'theme-styles' ? array() : array( 'theme-styles' );
 		}
 		
 		if ( file_exists( $style ) ) {

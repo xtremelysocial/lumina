@@ -9,11 +9,11 @@
 
 // 0. GLOBAL / FOUNDATION LAYER
 @forward '00-config';
+@forward '05-global';
 @forward '10-cards';
 @forward '20-objects';
 @forward '30-buttons';
 @forward '40-vetos';
-@forward '50-global';
 
 // 1. COMPILER LAYER: Only expose the master selector builder
 @forward '01-compiler' show 

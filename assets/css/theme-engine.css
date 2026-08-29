@@ -1,6 +1,6 @@
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/lumina-engine.scss ***!
-  \************************************************************************************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/theme-engine.scss ***!
+  \***********************************************************************************************************************************************************************************************************************/
 /* ==========================================================================
    LUMINA ENGINE: Registers objects and sets their resting states
    ========================================================================== */
@@ -61,7 +61,7 @@ a > .avatar {
   margin: 0 !important;
   margin-block-start: 0 !important;
   bottom: var(--wp--preset--spacing--30) !important;
-  left: var(--wp--preset--spacing--30) !important;
+  right: var(--wp--preset--spacing--30) !important;
   z-index: 10;
   display: inline-flex;
   align-items: center;
@@ -82,9 +82,9 @@ a > .avatar {
 }
 .lumina-card-arrow-overlay::before {
   position: absolute;
-  left: 40px; /* 32px badge + 8px gap */
+  right: 40px; /* 32px badge + 8px gap */
   top: 50%;
-  transform: translateY(-50%) translateX(-6px);
+  transform: translateY(-50%) translateX(6px);
   padding: 4px 8px;
   background: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 90%, transparent);
   color: var(--wp--preset--color--base, #ffffff);
@@ -263,17 +263,17 @@ a > .avatar {
   border-color: var(--wp--preset--color--almost-black, #111);
   border-width: var(--wp--preset--spacing--40) var(--wp--preset--spacing--40) var(--wp--preset--spacing--20) var(--wp--preset--spacing--40);
   padding: 0;
-  border-top-right-radius: 18px;
   border-top-left-radius: 18px;
-  border-bottom-right-radius: 0px;
+  border-top-right-radius: 18px;
   border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-computer-screen:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) > a {
   overflow: hidden;
-  border-top-right-radius: 0px;
   border-top-left-radius: 0px;
-  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
   border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-tablet-phone-screen:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
   border: var(--wp--preset--spacing--30, 12px) solid var(--wp--preset--color--almost-black, #111);
@@ -396,28 +396,28 @@ a > .avatar {
   transition: transform var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), outline var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
-  margin-left: var(--wp--preset--spacing--30);
+  margin-right: var(--wp--preset--spacing--30);
 }
 
 [class*=wp-block-] input[type=button]:not(.wp-element-button) {
   transition: transform var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), outline var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
-  margin-left: var(--wp--preset--spacing--30);
+  margin-right: var(--wp--preset--spacing--30);
 }
 
 [class*=wp-block-] input[type=reset]:not(.wp-element-button) {
   transition: transform var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), outline var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
-  margin-left: var(--wp--preset--spacing--30);
+  margin-right: var(--wp--preset--spacing--30);
 }
 
 [class*=wp-block-] input[type=file]::file-selector-button {
   transition: transform var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), outline var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   transform: translateY(0) scale(1);
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
-  margin-left: var(--wp--preset--spacing--30);
+  margin-right: var(--wp--preset--spacing--30);
 }
 
 /* ==========================================================================

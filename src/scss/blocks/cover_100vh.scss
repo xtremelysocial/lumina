@@ -1,0 +1,19 @@
+/* ==========================================================================
+   COVER BLOCK: Viewport Height Offset Adjustments
+   Subtracts fixed header height & WP Admin Bar from 100vh / 100dvh Cover blocks
+   ========================================================================== */
+
+.wp-block-cover:is([style*="100vh"], [style*="100dvh"]) {
+	min-height: calc(
+		100dvh - var(--header-height, 0px) - var(--wp-admin--admin-bar--height, 0px)
+	) !important;
+}
+
+/* Fallback for older browsers not supporting 100dvh */
+@supports not (min-height: 100dvh) {
+	.wp-block-cover:is([style*="100vh"], [style*="100dvh"]) {
+		min-height: calc(
+			100vh - var(--header-height, 0px) - var(--wp-admin--admin-bar--height, 0px)
+		) !important;
+	}
+}

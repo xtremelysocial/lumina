@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GLOBAL: Base Image Resets & Aspect Ratio Classes
+   GLOBAL: Base Image Aspect Ratios
    ========================================================================== */
 
 img {
@@ -37,4 +37,31 @@ img.size-cropped-slim,
 	aspect-ratio: 16 / 4.5;
 	object-fit: cover;
 	width: 100%;
+}
+
+/* ==========================================================================
+   SHALLOW VIEWPORT RADIUS CLAMPING (16:4.5 Slim & 21:9 Ultrawide)
+   Clamps 16px radius down to 8px ONLY on styled, bordered, or motion images.
+   ========================================================================== */
+
+:is(
+	.is-style-image-border,
+	.is-style-image-round-border,
+	.is-style-pan-zoom,
+	.is-style-pan-zoom-hover
+):is(
+	[style*="16/4.5"],
+	[style*="16 / 4.5"],
+	[style*="21/9"],
+	[style*="21 / 9"],
+	.size-cropped-slim,
+	.size-cropped-ultrawide,
+	:has(.size-cropped-slim),
+	:has(.size-cropped-ultrawide)
+) {
+	border-radius: var(--wp--preset--border-radius--sm, 8px);
+
+	img {
+		border-radius: inherit;
+	}
 }

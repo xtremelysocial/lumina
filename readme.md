@@ -61,4 +61,68 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
-See the Flat Blocks parent theme for a list of third-party resources used by that theme.
+This theme bundles the following third-party resources:
+
+=== Images ===
+
+All images are from the following resources and are licensed under CC0/GPL, including modifications made for the Lumina Theme to adjust image sizes.
+
+* [The New York Met](https://www.metmuseum.org]) - Impressionist images (Degas, Monet, Seurat, Renoir, Lancret)
+
+* [Wikimedia Commons](https://commons.wikimedia.org) - Impressionist images (Van Gogh)
+
+* [Pexels](https://pexels.com) - 
+
+* [PX Here](https://pxhere.com) - 
+
+=== Fonts === 
+
+== Lato ==
+Copyright (c) 2010-2011 by tyPoland Lukasz Dziedzic with Reserved Font Name "Lato". Licensed under the SIL Open Font License, Version 1.1. 
+Source: http://www.typoland.com/
+License: Copyright (c) 2011-2011 by tyPoland Lukasz Dziedzic (http://www.typoland.com/) with Reserved Font Name "Lato". Licensed under the SIL Open Font License, Version 1.1 (http://scripts.sil.org/OFL). 
+
+== Raleway ==
+Copyright 2010 The Raleway Project Authors (impallari@gmail.com), with Reserved Font Name "Raleway".
+Source: http://theleagueofmoveabletype.com
+License: This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL
+
+== Roboto ==
+Copyright 2011 Google Inc. All Rights Reserved.
+Source: Google.com
+License: Licensed under the Apache License, Version 2.0
+
+== Lora ==
+Copyright 2011 The Lora Project Authors (https://github.com/cyrealtype/Lora-Cyrillic), with Reserved Font Name "Lora".
+Source: http://cyreal.org
+License: This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL
+
+== Source Sans Pro ==
+© 2010 - 2018 Adobe Systems Incorporated (http://www.adobe.com/), with Reserved Font Name ‘Source’.
+Source: http://www.adobe.com/type
+License: This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL. This Font Software is distributed on an ‘AS IS’ BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software.
+
+== Playfair Display ==
+Copyright 2017 The Playfair Display Project Authors (https://github.com/clauseggers/Playfair-Display), with Reserved Font Name "Playfair Display".
+Source: http://www.forthehearts.net
+License: This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL
+
+== Source Serif 4 Variable ==
+© 2014 - 2021 Adobe Systems Incorporated (http://www.adobe.com/), with Reserved Font Name ‘Source’.
+Source: http://www.adobe.com/type
+License: This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL. This Font Software is distributed on an ‘AS IS’ BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the SIL Open Font License for the specific language, permissions and limitations governing your use of this Font Software.
+
+== Nunito ==
+Copyright 2014 The Nunito Project Authors (https://github.com/googlefonts/nunito)
+Source: http://www.sansoxygen.com
+License: This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+
+== Style Script ==
+Copyright 2013 The Style Script Project Authors (https://github.com/googlefonts/style-script)
+Source: http://www.typesetit.com
+License: This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+
+== Roboto Mono ==
+Copyright 2015 The Roboto Mono Project Authors (https://github.com/googlefonts/robotomono)
+Source: Google.com
+License: Licensed under the Apache License, Version 2.0

@@ -25,14 +25,3 @@ ol.is-style-list-dividers,
 .is-style-list-dividers:not(.has-background) li ul li {
 	padding-left: var(--wp--preset--spacing--40);
 }
-
-/*--------------------------------------------------------------
-## Page List Custom Style: Top Level Truncation
---------------------------------------------------------------*/
-.wp-block-page-list.is-style-top-level {
-	
-	// Safely hide any nested sub-lists rendered by the recursive engine
-	.wp-block-pages-list__item.has-child ul {
-		display: none !important;
-	}
-}

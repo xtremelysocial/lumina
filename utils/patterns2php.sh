@@ -94,8 +94,9 @@ for file in "$SOURCE_DIR"/*.html(N); do
         continue
     fi
 
-    # 3. Establish Namespace Slug
-    slug="lumina/$slug_base"
+	# 3. Establish Namespace Slug (Sanitize special characters like '+' into '-')
+    clean_slug_base=$(echo "$slug_base" | tr -c 'a-zA-Z0-9_-' '-')
+    slug="lumina/$clean_slug_base"
 
     # 4. Compute Taxonomy Categories Array
     categories=("lumina")

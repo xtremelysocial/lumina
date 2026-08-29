@@ -2,7 +2,7 @@
 /**
  * Title: Site Description Large Centered
  * Description: Detailed Site Description - Large and Centered
- * Slug: lumina/text-site-description-large
+ * Slug: lumina/text-site-description-large-centered
  * Categories: lumina, text
  * Block Types: core/paragraph
  */

@@ -1,5 +1,5 @@
 /*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/lumina-theme.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/theme-styles.scss ***!
   \***********************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /**
@@ -23,7 +23,7 @@
  * Base SCSS Barrel File
  */
 /* ==========================================================================
-   GLOBAL: Base Image Resets & Aspect Ratio Classes
+   GLOBAL: Base Image Aspect Ratios
    ========================================================================== */
 img {
   max-width: 100%;
@@ -65,41 +65,34 @@ img.size-cropped-slim,
 }
 
 /* ==========================================================================
-   LUMINA STATIC IMAGE STYLES (PURE CASCADE / ZERO SPECIFICITY)
-   Direct element targeting for standard Gutenberg DOM structures
+   SHALLOW VIEWPORT RADIUS CLAMPING (16:4.5 Slim & 21:9 Ultrawide)
+   Clamps 16px radius down to 8px ONLY on styled, bordered, or motion images.
    ========================================================================== */
-/* 1. BASE UNLINKED STATIC IMAGES (Targets img directly with 0 specificity) */
-:where(.wp-block-image:not(:has(a:not(figcaption a))):not(.is-style-pan-zoom),
-.wp-block-post-featured-image:not(:has(a)):not(.is-style-pan-zoom)):where(.is-style-image-border,
-.has-custom-border,
-:has(img.has-border-color),
-:has(img[class*=has-border-color])) img {
-  box-sizing: border-box;
-  border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, currentColor);
-  border-radius: var(--wp--preset--border-radius--lg, 16px);
-}
-
-/* 2. SHALLOW VIEWPORT ASPECT RATIO DEFAULTS (16:4.5 Slim & 21:9 Ultra-Wide) */
-:where(.wp-block-image:not(.is-style-pan-zoom),
-.wp-block-post-featured-image:not(.is-style-pan-zoom)) :where(img[style*="16/4.5"],
-img[style*="16 / 4.5"],
-img[style*="21/9"],
-img[style*="21 / 9"],
-img.size-cropped-slim,
-.size-cropped-slim img,
-img.size-cropped-ultrawide,
-.size-cropped-ultrawide img) {
+:is(.is-style-image-border,
+.is-style-image-round-border,
+.is-style-pan-zoom,
+.is-style-pan-zoom-hover):is([style*="16/4.5"],
+[style*="16 / 4.5"],
+[style*="21/9"],
+[style*="21 / 9"],
+.size-cropped-slim,
+.size-cropped-ultrawide,
+:has(.size-cropped-slim),
+:has(.size-cropped-ultrawide)) {
   border-radius: var(--wp--preset--border-radius--sm, 8px);
 }
-
-/* Remove Padding from Images w/Border */
-.wp-block-image.is-style-image-border img {
-  padding: 0;
-}
-
-/* Remove Padding from Image Round w/Border */
-.wp-block-image.is-style-image-round-border img {
-  padding: 0;
+:is(.is-style-image-border,
+.is-style-image-round-border,
+.is-style-pan-zoom,
+.is-style-pan-zoom-hover):is([style*="16/4.5"],
+[style*="16 / 4.5"],
+[style*="21/9"],
+[style*="21 / 9"],
+.size-cropped-slim,
+.size-cropped-ultrawide,
+:has(.size-cropped-slim),
+:has(.size-cropped-ultrawide)) img {
+  border-radius: inherit;
 }
 
 /* ==========================================================================
@@ -147,20 +140,14 @@ img.size-cropped-ultrawide,
 .wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
 .wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) {
   position: relative;
-  overflow: hidden; /* Mask camera movement */
-  border-radius: var(--wp--preset--border-radius--lg, 16px); /* Standard motion default */
-  /* Full-Width Breakout Override */
+  overflow: hidden;
+  border-radius: var(--wp--preset--border-radius--lg, 16px);
 }
 .wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull,
 .wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull,
 .wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull {
   border: none !important;
   border-radius: 0 !important;
-}
-.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
-.wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
-.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) {
-  /* Child img inherits wrapper frame mask so keyframe transforms don't bleed */
 }
 .wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) img,
 .wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-cover__image-background,
@@ -174,17 +161,13 @@ img.size-cropped-ultrawide,
 /* 2. Media & Text Motion Mask */
 .wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) > .wp-block-media-text__media {
   position: relative;
-  overflow: hidden; /* Mask camera movement */
-}
-.wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) {
-  /* Crop to Fill ON: Strip column gap padding so media and card blocks touch flush */
+  overflow: hidden;
 }
 .wp-block-media-text:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).is-image-fill-element > .wp-block-media-text__content {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* Apply rounded framing + border ONLY when floating (Crop to Fill is OFF) */
 .wp-block-media-text:not(.is-image-fill-element):is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-media-text__media {
   border: var(--wp--custom--border--style, solid) var(--wp--custom--border--width, 1px) var(--wp--custom--color--border, currentColor);
   border-radius: var(--wp--preset--border-radius--lg, 16px);
@@ -214,7 +197,6 @@ img.size-cropped-ultrawide,
    ========================================================================== */
 .is-style-pan-zoom-hover {
   position: relative;
-  /* 1. Default Paused State & Physics Collision Shield */
 }
 .is-style-pan-zoom-hover img,
 .is-style-pan-zoom-hover .wp-block-cover__image-background {
@@ -236,10 +218,8 @@ img.size-cropped-ultrawide,
   transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
   pointer-events: none;
   z-index: 2;
-  /* Universal Default: Translucent Dark + Blur */
   background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 65%, transparent);
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
 }
 .is-style-pan-zoom-hover {
   /* 2B. Sparkle Mask Icon Layer (::after - Static at Rest) */
@@ -256,10 +236,8 @@ img.size-cropped-ultrawide,
   transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms ease;
   pointer-events: none;
   z-index: 3;
-  /* Icon Fill Color */
   color: var(--wp--preset--color--base, #ffffff);
   background-color: currentColor;
-  /* SVG Sparkle Mask */
   -webkit-mask-image: url("../icons/sparkles.svg");
           mask-image: url("../icons/sparkles.svg");
   -webkit-mask-size: 14px;
@@ -269,17 +247,11 @@ img.size-cropped-ultrawide,
   -webkit-mask-position: center;
           mask-position: center;
 }
-.is-style-pan-zoom-hover {
-  /* Cover Light Theme Inversion */
-}
 .is-style-pan-zoom-hover.is-light::before {
   background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 75%, transparent);
 }
 .is-style-pan-zoom-hover.is-light::after {
   color: var(--wp--preset--color--contrast, #000000);
-}
-.is-style-pan-zoom-hover {
-  /* 3. Active Motion State (Image Pans, Sparkle Pops & Rotates) */
 }
 .is-style-pan-zoom-hover:hover img,
 .is-style-pan-zoom-hover:hover .wp-block-cover__image-background {
@@ -291,7 +263,7 @@ img.size-cropped-ultrawide,
 }
 .is-style-pan-zoom-hover:hover::after {
   opacity: 1;
-  transform: scale(1.2) rotate(45deg); /* Pops and tilts to signal active magic */
+  transform: scale(1.2) rotate(45deg);
 }
 
 /* ==========================================================================
@@ -307,7 +279,6 @@ img.size-cropped-ultrawide,
 :has([style*="21 / 9"]),
 :has(.size-cropped-slim),
 :has(.size-cropped-ultrawide)) {
-  /* Clamps wrapper to small radius token */
   border-radius: var(--wp--preset--border-radius--sm, 8px);
 }
 :is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is([style*="16/4.5"],
@@ -337,7 +308,6 @@ img.size-cropped-ultrawide,
 /* ==========================================================================
    LIGHTBOX & ACCESSIBILITY OVERRIDES
    ========================================================================== */
-/* Safely stops pan-zoom keyframes and hides badges in Lightbox without breaking JS transform positioning */
 .wp-lightbox-overlay img {
   animation: none !important;
 }
@@ -408,21 +378,15 @@ ol.is-style-list-dividers,
 }
 
 /*--------------------------------------------------------------
-## Page List Custom Style: Top Level Truncation
---------------------------------------------------------------*/
-.wp-block-page-list.is-style-top-level .wp-block-pages-list__item.has-child ul {
-  display: none !important;
-}
-
-/*--------------------------------------------------------------
 # Base Styles
 --------------------------------------------------------------*/
 /**
  * Breakpoints & Media Queries
  */
 /*-----------------------------------------------------------------------------
-# Adjust Margins
-# Larger vertical margin between blocks, less between headings and contents, etc.
+# Adjust Margins - Macro & Micro Vertical Spacing
+# Larger vertical margin between blocks, less between headings and contents, 
+# etc.
 -----------------------------------------------------------------------------*/
 p, .wp-block-paragraph {
   margin-block-end: 0;
@@ -489,14 +453,6 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
 .wp-block-template-part:empty {
   margin-block-start: 0;
   margin-block-end: 0;
-}
-
-/*-----------------------------------------------------------------------------
-# Container Padding Styles
------------------------------------------------------------------------------*/
-.wp-site-blocks .wp-block-group.has-background:not(.alignfull):not(.is-layout-flex) {
-  padding-left: var(--wp--preset--spacing--60);
-  padding-right: var(--wp--preset--spacing--60);
 }
 
 /*--------------------------------------------------------------
@@ -580,7 +536,7 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
 # Base Styles
 --------------------------------------------------------------*/
 /* =========================================================================
-   Lumina Content Layout Structural Stabilization (No !important)
+Content Layout Structural Stabilization
    ========================================================================= */
 .is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column.content-column,
 body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column,
@@ -610,6 +566,23 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   body[class*=-sidebar-left] .wp-block-columns.main-content > .wp-block-column:not(.content-column) {
     order: 2;
   }
+}
+
+/*-----------------------------------------------------------------------------
+# Override Parent Theme CSS
+-----------------------------------------------------------------------------*/
+/* Override parent theme's padding on colored blocks */
+.wp-site-blocks .wp-block-group.has-background:not(.alignfull):not(.is-layout-flex) {
+  padding-left: var(--wp--preset--spacing--60);
+  padding-right: var(--wp--preset--spacing--60);
+}
+
+/* Remove Padding from Images w/Border */
+.wp-block-image.is-style-image-border img, .wp-block-image.is-style-image-round-border img, .wp-block-image.has-custom-border img,
+.wp-block-post-featured-image.is-style-image-border img,
+.wp-block-post-featured-image.is-style-image-round-border img,
+.wp-block-post-featured-image.has-custom-border img {
+  padding: 0;
 }
 
 /**

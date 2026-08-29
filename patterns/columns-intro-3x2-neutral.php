@@ -2,7 +2,7 @@
 /**
  * Title: Columns Intro + 3x2 Neutral
  * Description: Columns Intro + 3x2 Neutral
- * Slug: lumina/columns-intro+3x2-neutral
+ * Slug: lumina/columns-intro-3x2-neutral
  * Categories: lumina, column
  * Block Types: core/columns
  */

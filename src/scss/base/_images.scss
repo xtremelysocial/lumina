@@ -1,0 +1,80 @@
+/* ==========================================================================
+   GLOBAL: Base Image Resets & Aspect Ratio Classes
+   ========================================================================== */
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL THEME ASPECT RATIOS
+   -------------------------------------------------------------------------- */
+
+/* 16:9 Standard & Widescreen Ratios */
+img.size-cropped-full,
+img.size-cropped-large,
+img.size-cropped-thumbnail,
+img.size-large,
+.size-cropped-full img,
+.size-cropped-large img,
+.size-cropped-thumbnail img,
+.size-large img {
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	width: 100%;
+}
+
+/* 21:9 Master Ultrawide Ratio */
+img.size-cropped-ultrawide,
+.size-cropped-ultrawide img {
+	aspect-ratio: 21 / 9;
+	object-fit: cover;
+	width: 100%;
+}
+
+/* 16:4.5 Lumina Slim Banner Ratio */
+img.size-cropped-slim,
+.size-cropped-slim img {
+	aspect-ratio: 16 / 4.5;
+	object-fit: cover;
+	width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   2. STATIC IMAGE BORDER & CORNER RADIUS ENGINE (ZERO SPECIFICITY)
+   -------------------------------------------------------------------------- */
+
+/* Base Unlinked Static Images (Standard 16px Corner Radius) */
+:where(
+	.wp-block-image:not(:has(a:not(figcaption a))):not(.is-style-pan-zoom),
+	.wp-block-post-featured-image:not(:has(a)):not(.is-style-pan-zoom)
+):where(
+	.is-style-image-border,
+	.is-style-image-round-border,
+	.has-custom-border,
+	:has(img.has-border-color),
+	:has(img[class*="has-border-color"])
+) img {
+	box-sizing: border-box;
+// 	padding: 0; // Ensures flush borders across all themes
+	border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, currentColor);
+	border-radius: var(--wp--preset--border-radius--lg, 16px);
+}
+
+/* Shallow Viewport Aspect Ratio Defaults (8px Corner Radius for Slim & Ultrawide) */
+:where(
+	.wp-block-image:not(.is-style-pan-zoom),
+	.wp-block-post-featured-image:not(.is-style-pan-zoom)
+) :where(
+	img[style*="16/4.5"],
+	img[style*="16 / 4.5"],
+	img[style*="21/9"],
+	img[style*="21 / 9"],
+	img.size-cropped-slim,
+	.size-cropped-slim img,
+	img.size-cropped-ultrawide,
+	.size-cropped-ultrawide img
+) {
+	border-radius: var(--wp--preset--border-radius--sm, 8px);
+}
