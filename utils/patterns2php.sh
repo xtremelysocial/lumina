@@ -3,20 +3,25 @@
 # ==============================================================================
 # Lumina Theme Pattern Converter (patterns2php.sh)
 # ==============================================================================
-# Converts raw HTML block pattern layouts from /patterns/html into production-ready
-# WordPress PHP pattern files in /patterns/converted with i18n text domain wrapper
-# functions, asset URI helpers, and clean block comment manifests.
+# Converts raw HTML block pattern layouts from /patterns/html (or any specified
+# subfolder like /parts) into production-ready WordPress PHP pattern files in 
+# /patterns/converted with i18n text domain wrapper functions, asset URI helpers, 
+# and clean block comment manifests.
 #
 # USAGE EXAMPLES (Run from Theme Root):
-#   ./utils/patterns2php.sh                 # Process all HTML files (skips existing)
-#   ./utils/patterns2php.sh hero            # Process only HTML files matching "hero"
+#   ./utils/patterns2php.sh                 # Process default files in /patterns/html (skips existing)
+#   ./utils/patterns2php.sh hero            # Process files matching "hero" in /patterns/html
+#   ./utils/patterns2php.sh parts           # Process all HTML files in /parts
+#   ./utils/patterns2php.sh parts header    # Process files matching "header" in /parts
 #   ./utils/patterns2php.sh --force         # Overwrite all converted PHP pattern files
-#   ./utils/patterns2php.sh hero -f         # Force overwrite only "hero" patterns
+#   ./utils/patterns2php.sh parts header -f # Force overwrite matching files in /parts
 # ==============================================================================
 
 # Enforce script directory anchoring (Script lives in /utils)
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 THEME_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+# Default directories
 SOURCE_DIR="${THEME_ROOT}/patterns/html"
 OUTPUT_DIR="${THEME_ROOT}/patterns/converted"
 
@@ -27,12 +32,13 @@ BLOCK_MAP=(
     "buttons"       "core/buttons"
     "columns"       "core/columns"
     "cover"         "core/cover"
-    "banner"        "core/cover"
+#     "banner"        "core/cover"
     "details"       "core/details"
     "faq"           "core/details"
     "gallery"       "core/gallery"
     "image"         "core/image"
-    "media"         "core/media-text"
+#     "media"         "core/media-text"
+    "media-text"    "core/media-text"
     "page"          "core/page"
     "query"         "core/query"
     "social-icons"  "core/social-icons"
@@ -42,13 +48,16 @@ BLOCK_MAP=(
     "footer"        "core/template-part/footer"
 )
 
-# Capture options ($1 can be a filter string or --force / -f)
+# Capture options ($1 can be a filter string, folder path, or --force / -f)
 FORCE_OVERWRITE=false
 FILTER=""
 
 for arg in "$@"; do
     if [[ "$arg" == "--force" || "$arg" == "-f" ]]; then
         FORCE_OVERWRITE=true
+    elif [[ -d "${THEME_ROOT}/$arg" ]]; then
+        # Dynamically switch source folder if valid theme directory passed (e.g., "parts")
+        SOURCE_DIR="${THEME_ROOT}/$arg"
     else
         FILTER="$arg"
     fi
@@ -94,8 +103,9 @@ for file in "$SOURCE_DIR"/*.html(N); do
         continue
     fi
 
-	# 3. Establish Namespace Slug (Sanitize special characters like '+' into '-')
-    clean_slug_base=$(echo "$slug_base" | tr -c 'a-zA-Z0-9_-' '-')
+    # 3. Establish Namespace Slug (Sanitize special characters like '+' into '-')
+#     clean_slug_base=$(echo "$slug_base" | tr -c 'a-zA-Z0-9_-' '-')
+	clean_slug_base="${slug_base//[^a-zA-Z0-9_-]/-}"
     slug="lumina/$clean_slug_base"
 
     # 4. Compute Taxonomy Categories Array

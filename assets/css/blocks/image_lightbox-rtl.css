@@ -5,9 +5,9 @@
    WORDPRESS CORE LIGHTBOX OVERRIDES
    ========================================================================== */
 .wp-lightbox-overlay {
-  /* 1. Hide the placeholder thumbnail container to eliminate double-image bleed */
+  /* 1. Hide thumbnail image directly (no :has required) to eliminate double-image bleed */
 }
-.wp-lightbox-overlay .lightbox-image-container:has(img[data-wp-bind--src="state.selectedImage.currentSrc"]) {
+.wp-lightbox-overlay img[data-wp-bind--src="state.selectedImage.currentSrc"] {
   display: none !important;
 }
 .wp-lightbox-overlay {

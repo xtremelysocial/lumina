@@ -4,8 +4,8 @@
 
 .wp-lightbox-overlay {
 
-	/* 1. Hide the placeholder thumbnail container to eliminate double-image bleed */
-	.lightbox-image-container:has(img[data-wp-bind--src="state.selectedImage.currentSrc"]) {
+	/* 1. Hide thumbnail image directly (no :has required) to eliminate double-image bleed */
+	img[data-wp-bind--src="state.selectedImage.currentSrc"] {
 		display: none !important;
 	}
 

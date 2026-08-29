@@ -1,10 +1,19 @@
+<?php
+/**
+ * Title: Cover Scroll Page Header
+ * Description: Cover Scroll Page Header
+ * Slug: lumina/cover-scroll-page-header
+ * Categories: lumina, banner
+ * Block Types: core/cover
+ */
+?>
 <!-- wp:cover {"useFeaturedImage":true,"dimRatio":30,"isUserOverlayColor":true,"contentPosition":"center center","sizeSlug":"large","metadata":{"name":"Cover Scroll Page Header"},"align":"full","className":"is-style-pan-zoom-hover","style":{"spacing":{"margin":{"top":"0"}}},"anchor":"cover-scroll-page-header"} -->
-<div class="wp-block-cover alignfull is-style-pan-zoom-hover" style="margin-top:0" id="cover-scroll-page-header"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:post-title {"level":1,"align":"wide","className":"entry-title","style":{"typography":{"textAlign":"center"}},"fontSize":"huge"} /-->
+<div class="wp-block-cover alignfull is-style-pan-zoom-hover" style="margin-top:0" id="cover-scroll-page-header"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:post-title {"level":1,"align":"wide","className":"entry-title","style":{"typography":{"textAlign":"center","lineHeight":"1.2"}},"fontSize":"huge"} /-->
 
-<!-- wp:post-excerpt {"className":"is-style-no-readmore","style":{"typography":{"textAlign":"center","lineHeight":"1.2"}},"fontSize":"x-large"} /-->
+<!-- wp:post-excerpt {"excerptLength":20,"className":"is-style-no-readmore","style":{"typography":{"textAlign":"center","lineHeight":"1.2"}},"fontSize":"x-large"} /-->
 
 <!-- wp:paragraph {"placeholder":"Scroll Down","metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-arrow-down-alt2-no-text","style":{"elements":{"link":{"color":{"text":"inherit"}}},"typography":{"textAlign":"center"}},"fontSize":"x-large"} -->
-<p class="has-text-align-center is-style-icon-arrow-down-alt2-no-text has-link-color has-x-large-font-size"><a href="#content-start" rel="nofollow">Scroll Down</a></p>
+<p class="has-text-align-center is-style-icon-arrow-down-alt2-no-text has-link-color has-x-large-font-size"><a href="#content-start" rel="nofollow"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 

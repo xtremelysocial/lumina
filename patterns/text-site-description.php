@@ -1,10 +1,12 @@
 <?php
 /**
  * Title: Site Description
- * Description: Detailed Site Description
+ * Description: Site Description
  * Slug: lumina/text-site-description
  * Categories: lumina, text
- * Block Types: core/paragraph
+ * BlockTypes: core/paragraph 
  */
 ?>
-<!-- wp:template-part {"slug":"site-description"} /-->
+<!-- wp:paragraph -->
+<p><?php esc_html_e("Lumina is a refined modern theme inspired by the colors, light, depth and motion of the environment around us", "lumina"); ?></p>
+<!-- /wp:paragraph -->

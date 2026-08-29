@@ -144,8 +144,6 @@
 			content: "";
 			position: absolute;
 			height: 1px;
-// 			width: calc(200% + var(--gutter-divider-gap));
-// 			width: calc(100% + var(--gutter-divider-gap));
 			top: calc(var(--gutter-divider-gap) / -2);
 			left: 0;
 			right: calc(-100% - var(--gutter-divider-gap));
@@ -198,8 +196,6 @@
 			content: "";
 			position: absolute;
 			height: 1px;
-// 			width: calc(200% + var(--gutter-divider-gap));
-			left: 0;
 			right: 0;
 			bottom: calc(var(--gutter-divider-gap) / -2);
 			left: 0;
@@ -238,47 +234,47 @@
 		}
 	}
 
-	/* --- D. 2-Column Container -> Preserved 2-Up Side-by-Side on Tablet --- */
+	/* --- D. 2-Column Container -> Smart 2-Up vs Stacked CTAs on Tablet --- */
 	.wp-block-columns.wp-block-columns:not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(2)) {
-		flex-direction: row !important;
-		flex-wrap: nowrap !important;
+		/* Default: Stack 2-column containers vertically on tablet */
+		flex-direction: column !important;
+		flex-wrap: wrap !important;
 
 		> .wp-block-column {
-			flex-basis: 0 !important; /* Defeats WP core flex-basis: 100% !important */
-			flex-grow: 1 !important;
-			width: auto !important;
-			max-width: none !important;
+			flex-basis: 100% !important;
+			width: 100% !important;
+			max-width: 100% !important;
 		}
 
-		/* Collapse 2-column containers ONLY when nested, flagged with first-on-mobile, or holding video */
-		&:is(
-			:has(> .wp-block-column > .wp-block-columns),
-			:has(> .wp-block-column.is-style-first-on-mobile),
-			:has(> .wp-block-column.is-first-on-mobile),
-			:has(> .wp-block-column.first-on-mobile),
-			:has(> .wp-block-column .wp-block-video),
-			:has(> .wp-block-column:has(.wp-block-video))
+		/* Smart 2-Up Exception: Preserves side-by-side ONLY when individual child columns are styled cards */
+		&:not(.has-background):is(
+			.is-style-cards,
+			.is-style-keep-2-up,
+			:has(> .wp-block-column:is(
+				.has-background,
+				.is-style-rounded-border,
+				.is-style-rounded-corners,
+				.is-style-outline-border,
+				.is-style-card,
+				.has-border-color,
+				[class*="has-border-color"]
+			))
 		) {
-			flex-direction: column !important;
-			flex-wrap: wrap !important;
+			flex-direction: row !important;
+			flex-wrap: nowrap !important;
 
 			> .wp-block-column {
-				flex-basis: 100% !important;
-				width: 100% !important;
-				max-width: 100% !important;
+				flex-basis: 0 !important;
+				flex-grow: 1 !important;
+				min-width: 0;
+				width: auto !important;
+				max-width: none !important;
 			}
 		}
 	}
 
 	/* Hairline adjustment for 2-column containers stacked on tablet */
-	.wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(2)):is(
-		:has(> .wp-block-column > .wp-block-columns),
-		:has(> .wp-block-column.is-style-first-on-mobile),
-		:has(> .wp-block-column.is-first-on-mobile),
-		:has(> .wp-block-column.first-on-mobile),
-		:has(> .wp-block-column .wp-block-video),
-		:has(> .wp-block-column:has(.wp-block-video))
-	) {
+	.wp-block-columns.is-style-gutter-dividers:has(> .wp-block-column:first-child:nth-last-child(2)) {
 		> .wp-block-column:not(:first-child)::before {
 			content: "" !important;
 			position: absolute !important;
@@ -295,11 +291,11 @@
 }
 
 /* -------------------------------------------------------------------------
- * 4. STACKED VIEWPORTS (< 600px / < $break-small)
+ * 4. STACKED VIEWPORTS & SMART 2-UP (< 600px / < $break-small)
  * ------------------------------------------------------------------------- */
 @media only screen and (max-width: #{ (breakpoints.$break-small - 1) }) {
 
-	/* Force single-column stacking layout across ALL multi-column layouts on mobile */
+	/* Default: Force single-column stacking layout across ALL multi-column layouts on mobile */
 	.wp-block-columns.wp-block-columns:not(.is-not-stacked-on-mobile) {
 		display: flex !important;
 		flex-direction: column !important;
@@ -312,7 +308,35 @@
 		}
 	}
 
-	/* Horizontal hairlines strictly for GUTTER DIVIDERS on mobile */
+	/* Smart 2-Up Mobile Exception:
+	   EXCLUDES parent background containers (.not(.has-background)).
+	   Preserves side-by-side ONLY when individual child columns are styled cards/borders. */
+	.wp-block-columns.wp-block-columns:not(.has-background):not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(2)):is(
+		.is-style-cards,
+		.is-style-keep-2-up,
+		:has(> .wp-block-column:is(
+			.has-background,
+			.is-style-rounded-border,
+			.is-style-rounded-corners,
+			.is-style-outline-border,
+			.is-style-card,
+			.has-border-color,
+			[class*="has-border-color"]
+		))
+	) {
+		flex-direction: row !important;
+		flex-wrap: nowrap !important;
+
+		> .wp-block-column {
+			flex-basis: 0 !important;
+			flex-grow: 1 !important;
+			min-width: 0;
+			width: auto !important;
+			max-width: none !important;
+		}
+	}
+
+	/* Horizontal hairlines strictly for standard stacked GUTTER DIVIDERS on mobile */
 	.wp-block-columns.is-style-gutter-dividers:not(.is-not-stacked-on-mobile) {
 		> .wp-block-column {
 			&::after {
@@ -335,6 +359,29 @@
 			&:first-child::before {
 				content: none !important;
 			}
+		}
+	}
+
+	/* Preserve vertical divider if a smart 2-up container uses gutter dividers on mobile */
+	.wp-block-columns.is-style-gutter-dividers:not(.has-background):not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(2)):is(
+		.is-style-cards,
+		.is-style-keep-2-up,
+		:has(> .wp-block-column:is(
+			.has-background,
+			.is-style-rounded-border,
+			.is-style-rounded-corners,
+			.is-style-outline-border,
+			.is-style-card,
+			.has-border-color,
+			[class*="has-border-color"]
+		))
+	) {
+		> .wp-block-column:not(:first-child)::before {
+			width: 1px !important;
+			height: auto !important;
+			top: 0 !important;
+			bottom: 0 !important;
+			left: calc(var(--gutter-divider-gap) / -2) !important;
 		}
 	}
 }

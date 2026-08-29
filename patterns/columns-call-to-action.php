@@ -9,8 +9,8 @@
 ?>
 <!-- wp:group {"metadata":{"name":"Call-to-Action"},"align":"wide","className":"is-style-rounded-border","backgroundColor":"secondary","layout":{"type":"constrained"},"anchor":"call-to-action-2-column"} -->
 <div class="wp-block-group alignwide is-style-rounded-border has-secondary-background-color has-background" id="call-to-action-2-column"><!-- wp:columns {"verticalAlignment":"center","align":"wide","className":"is-style-center-on-mobile"} -->
-<div class="wp-block-columns alignwide are-vertically-aligned-center is-style-center-on-mobile"><!-- wp:column {"verticalAlignment":"center","width":"70%","className":"is-style-first-on-mobile"} -->
-<div class="wp-block-column is-vertically-aligned-center is-style-first-on-mobile" style="flex-basis:70%"><!-- wp:heading -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center is-style-center-on-mobile"><!-- wp:column {"verticalAlignment":"center","width":"70%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:70%"><!-- wp:heading -->
 <h2 class="wp-block-heading"><strong><?php esc_html_e("Illuminate", "lumina"); ?></strong><?php esc_html_e("your Website Today", "lumina"); ?></h2>
 <!-- /wp:heading -->
 

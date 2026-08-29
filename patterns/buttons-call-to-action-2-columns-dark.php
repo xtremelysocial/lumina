@@ -9,8 +9,8 @@
 ?>
 <!-- wp:group {"metadata":{"name":"Call-to-Action Dark"},"align":"wide","className":"is-style-rounded-border","backgroundColor":"dark","layout":{"type":"constrained"},"anchor":"call-to-action-2-columns-dark"} -->
 <div class="wp-block-group alignwide is-style-rounded-border has-dark-background-color has-background" id="call-to-action-2-columns-dark"><!-- wp:columns {"verticalAlignment":"center","align":"wide","className":"is-style-center-on-mobile"} -->
-<div class="wp-block-columns alignwide are-vertically-aligned-center is-style-center-on-mobile"><!-- wp:column {"verticalAlignment":"center","width":"70%","className":"is-style-first-on-mobile"} -->
-<div class="wp-block-column is-vertically-aligned-center is-style-first-on-mobile" style="flex-basis:70%"><!-- wp:heading -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center is-style-center-on-mobile"><!-- wp:column {"verticalAlignment":"center","width":"70%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:70%"><!-- wp:heading -->
 <h2 class="wp-block-heading"><?php esc_html_e("Bring Your Site to Life", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
