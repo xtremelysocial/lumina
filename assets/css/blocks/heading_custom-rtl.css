@@ -1,5 +1,5 @@
 /*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/heading_lumina.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/heading_custom.scss ***!
   \********************************************************************************************************************************************************************************************************************************/
 /*--------------------------------------------------------------
 # LUMINA Heading Block Styles
@@ -17,12 +17,12 @@
   background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
 }
 .is-style-separator.has-text-align-center::after {
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 .is-style-separator.has-text-align-right::after {
-  margin-left: auto;
-  margin-right: 0;
+  margin-right: auto;
+  margin-left: 0;
 }
 .is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]) {
   flex-wrap: wrap !important;
@@ -37,13 +37,13 @@
   background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)));
   background-repeat: no-repeat;
   background-size: calc(6 * var(--wp--style--block-gap)) 3px;
-  background-position: left center;
+  background-position: right center;
 }
 .is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-center::after {
   background-position: center center;
 }
 .is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-right::after {
-  background-position: right center;
+  background-position: left center;
 }
 .has-background .is-style-separator::after, .is-style-separator.has-background::after {
   background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)) 85%, currentColor);
@@ -59,7 +59,7 @@
   padding-bottom: var(--wp--custom--link--offset, 0.1em);
   background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
   background-repeat: no-repeat;
-  background-position: 0 100%;
+  background-position: 100% 100%;
   background-size: 0% 2px;
   transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 }
@@ -86,7 +86,7 @@
   padding-bottom: var(--wp--custom--link--offset, 0.1em);
   background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
   background-repeat: no-repeat;
-  background-position: 0 100%;
+  background-position: 100% 100%;
   background-size: 0% 2px;
   transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 }
@@ -113,7 +113,7 @@
   padding-bottom: var(--wp--custom--link--offset, 0.1em);
   background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
   background-repeat: no-repeat;
-  background-position: 0 100%;
+  background-position: 100% 100%;
   background-size: 0% 2px;
   transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 }
@@ -140,7 +140,7 @@
   padding-bottom: var(--wp--custom--link--offset, 0.1em);
   background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
   background-repeat: no-repeat;
-  background-position: 0 100%;
+  background-position: 100% 100%;
   background-size: 0% 2px;
   transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 }

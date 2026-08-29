@@ -35,7 +35,8 @@ h1, h2, h3, h4, h5, h6,
 
 // 2. Macro Section Spacing
 // Sets macro spacing between top-level post blocks and Media & Text content elements.
-:root :where(.wp-block-post-content, .wp-block-media-text__content) > * + * {
+// :root :where(.wp-block-post-content, .wp-block-media-text__content) > * + * {
+:root :where(.wp-block-post-content) > * + * {
 	margin-block-start: $macro-spacing;
 }
 

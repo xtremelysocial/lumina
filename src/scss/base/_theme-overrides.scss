@@ -17,7 +17,8 @@ $image-padding: 0;
 
 /* Remove Padding from Images w/Border */
 .wp-block-image,
-.wp-block-post-featured-image {
+.wp-block-post-featured-image,
+.wp-block-gallery {
 	&.is-style-image-border,
 	&.is-style-image-round-border,
 	&.has-custom-border {
