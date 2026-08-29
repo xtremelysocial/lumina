@@ -30,6 +30,15 @@ img {
   height: auto;
 }
 
+/* Core Latest Posts Featured Image Reset */
+.wp-block-latest-posts__featured-image img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 /* Global Theme Aspect Ratios */
 /* 16:9 Standard & Full Widescreen Ratios */
 img.size-cropped-full,
@@ -93,6 +102,18 @@ img.size-cropped-slim,
 :has(.size-cropped-slim),
 :has(.size-cropped-ultrawide)) img {
   border-radius: inherit;
+}
+
+/* ==========================================================================
+   GLOBAL FULL-WIDTH (ALIGNFULL) BREAKOUT & RADIUS RESET
+   ========================================================================== */
+:is(.wp-block-image, .wp-block-post-featured-image, .wp-block-cover).alignfull {
+  max-width: calc(100% + var(--wp--style--root--padding-left, 0px) + var(--wp--style--root--padding-right, 0px));
+  border-radius: 0 !important;
+}
+:is(.wp-block-image, .wp-block-post-featured-image, .wp-block-cover).alignfull img,
+:is(.wp-block-image, .wp-block-post-featured-image, .wp-block-cover).alignfull .wp-block-cover__image-background {
+  border-radius: 0 !important;
 }
 
 /* ==========================================================================
@@ -577,7 +598,7 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   padding-left: var(--wp--preset--spacing--60);
 }
 
-/* Remove Padding from Images w/Border */
+/* Override parent theme's padding on images with borders */
 .wp-block-image.is-style-image-border img, .wp-block-image.is-style-image-round-border img, .wp-block-image.has-custom-border img,
 .wp-block-post-featured-image.is-style-image-border img,
 .wp-block-post-featured-image.is-style-image-round-border img,
@@ -586,6 +607,11 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 .wp-block-gallery.is-style-image-round-border img,
 .wp-block-gallery.has-custom-border img {
   padding: 0;
+}
+
+/* Override parent theme's box shadow on post featured images */
+.wp-block-post-featured-image img {
+  box-shadow: none; /* Strips parent theme default image shadow */
 }
 
 /**

@@ -1,23 +1,17 @@
-/*--------------------------------------------------------------
-# LUMINA Latest Posts Block Styles
---------------------------------------------------------------*/
+@use '@wordpress/base-styles/breakpoints';
 
 /*--------------------------------------------------------------
 ## Custom: Latest Post Dividers
 --------------------------------------------------------------*/
 
-/* Post grid with dividers get border on the right */
-
-//  Note: Breakpoint of 601 is what is hard-coded in WordPress v6.0+
-//  to collapse media & text and latest posts grid 
-@media only screen and (min-width: 601px) {	
+/* Post grid with dividers gets border on the right */
+@media (min-width: breakpoints.$break-small) {	
 	.wp-block-latest-posts.is-grid.is-style-list-dividers {
-		margin-bottom: var(--wp--style--block-gap);
-	}
+		margin-block-end: var(--wp--style--block-gap, 1.5rem);
 
-	.wp-block-latest-posts.is-grid.is-style-list-dividers li:not(:last-child) {
-		border-right: solid 1px rgba(128, 128, 128, 0.2);
-		padding-right: 1.25em; //var(--wp--preset--spacing--40);
-		//margin-top: var(--wp--preset--spacing--30);
+		li:not(:last-child) {
+			border-right: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+			padding-right: var(--wp--preset--spacing--40, 1.25em);
+		}
 	}
 }

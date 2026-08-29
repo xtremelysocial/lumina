@@ -2,7 +2,7 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/navigation_dividers.scss ***!
   \*************************************************************************************************************************************************************************************************************************************/
 /*--------------------------------------------------------------
-# LUMINA Navigation: Custom Block Styles
+# LUMINA Navigation: Custom Block Styles (navigation_dividers.scss)
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 ## Custom: Nav Dividers
@@ -10,28 +10,37 @@
 /* Desktop Submenu Dividers */
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
   width: 100%;
+  /* Add divider using an ::after pseudo-element to every list item except the last */
 }
-.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-navigation-item:not(:last-child), .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-pages-list__item:not(:last-child) {
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-navigation-item:not(:last-child),
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-pages-list__item:not(:last-child) {
   position: relative;
 }
-.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-navigation-item:not(:last-child)::after, .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-pages-list__item:not(:last-child)::after {
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-navigation-item:not(:last-child)::after,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > .wp-block-pages-list__item:not(:last-child)::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: var(--wp--preset--spacing--30);
-  right: var(--wp--preset--spacing--30);
+  left: var(--wp--preset--spacing--30, 0.75rem);
+  right: var(--wp--preset--spacing--30, 0.75rem);
   height: 1px;
-  background-color: rgba(128, 128, 128, 0.2);
+  background-color: color-mix(in srgb, currentColor 20%, transparent);
   pointer-events: none;
 }
 
-/* Mobile menu dividers */
-/* Remove padding on drop-down menus when expanded on the mobile nav */
+/* Mobile & Vertical Navigation Dividers */
+/* Reset dropdown menu padding when expanded on mobile overlay nav */
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
   padding: 0;
 }
 
-.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container, .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__submenu-container, .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-page-list,
+.wp-block-navigation.is-vertical.is-style-nav-dividers,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open {
+  /* Expand containers full-width */
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container,
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__submenu-container,
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-page-list,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-page-list {
@@ -45,14 +54,26 @@
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item:not(:last-child) {
   border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
 }
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+  /* Matches native WordPress core navigation item bottom padding metric */
+}
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item__content {
   padding-bottom: 0.5em;
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+  /* Top-level parent nav items */
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
   width: 100%;
   border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+  /* Text Alignment & Flex Justification */
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-right .wp-block-navigation-item,
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container.items-justified-right .wp-block-navigation-item__content,
@@ -73,5 +94,5 @@
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-center .wp-block-navigation-item,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container.items-justified-center .wp-block-navigation-item__content {
   text-align: center;
-  justify-content: flex-center;
+  justify-content: center;
 }

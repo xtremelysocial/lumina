@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------
-# LUMINA Navigation: Custom Block Styles
+# LUMINA Navigation: Custom Block Styles (navigation_dividers.scss)
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -9,82 +9,72 @@
 /* Desktop Submenu Dividers */
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) {
 
-    & .wp-block-navigation__submenu-container {
-	
-        // Add container rounding and padding so the dividers don't touch the edge
-        width: 100%; 
+	.wp-block-navigation__submenu-container {
+		width: 100%;
 
-        // Add divider using an ::after pseudo-element to every list item except the last one
-        & > .wp-block-navigation-item:not(:last-child),
-        & > .wp-block-pages-list__item:not(:last-child) {
+		/* Add divider using an ::after pseudo-element to every list item except the last */
+		> .wp-block-navigation-item:not(:last-child),
+		> .wp-block-pages-list__item:not(:last-child) {
+			position: relative;
 
-			// Establish stacking context for the absolute pseudo-element
-			position: relative; 
-			
-			// Add an inset bottom border	
 			&::after {
 				content: "";
 				position: absolute;
 				bottom: 0;
-				left: var(--wp--preset--spacing--30);
-				right: var(--wp--preset--spacing--30);
+				left: var(--wp--preset--spacing--30, 0.75rem);
+				right: var(--wp--preset--spacing--30, 0.75rem);
 				height: 1px;
-				background-color: rgba(128, 128, 128, 0.2);
-
-				// Ensures the pseudo-element doesn't interfere with clicks
+				background-color: color-mix(in srgb, currentColor 20%, transparent);
 				pointer-events: none;
 			}
-        }
-    }
+		}
+	}
 }
 
-/* Mobile menu dividers */
+/* Mobile & Vertical Navigation Dividers */
 
-/* Remove padding on drop-down menus when expanded on the mobile nav */
+/* Reset dropdown menu padding when expanded on mobile overlay nav */
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
-    padding: 0;
+	padding: 0;
 }
 
 .wp-block-navigation.is-vertical.is-style-nav-dividers,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open {
 
-	// Style the mobile navigation container
-	& .wp-block-navigation__container,
-	& .wp-block-navigation__submenu-container, //this makes them all 100% wide
-	& .wp-block-page-list {	
+	/* Expand containers full-width */
+	.wp-block-navigation__container,
+	.wp-block-navigation__submenu-container,
+	.wp-block-page-list {
 		width: 100%;
 	}
 
-	& .wp-block-navigation__container {
+	.wp-block-navigation__container {
 
-		// Make each nav item full-width
-		& .wp-block-navigation-item {
+		.wp-block-navigation-item {
 			width: 100%;
+
+			&:not(:last-child) {
+				border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+			}
 		}
 
-		// Add border to the nav item (li) other than the last one
-		& .wp-block-navigation-item:not(:last-child) { //,
-			border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);		
+		/* Matches native WordPress core navigation item bottom padding metric */
+		.wp-block-navigation-item__content {
+			padding-bottom: 0.5em;
 		}
 
-		// Add padding to the nav item link (a)
-        & .wp-block-navigation-item__content { //},
-// 			padding-bottom: var(--wp--preset--spacing--30);
-			padding-bottom: .5em;
-		}
-		
-		// Top-level nav items need their own bottom border and padding as well
-		& .wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
+		/* Top-level parent nav items */
+		.wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
 			width: 100%;
 			border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
 		}
 
-		// Since now full-width, align the items
+		/* Text Alignment & Flex Justification */
 		&.items-justified-right {
 			.wp-block-navigation-item,
 			.wp-block-navigation-item__content {
 				text-align: right;
-				justify-content: flex-end;				
+				justify-content: flex-end;
 			}
 		}
 
@@ -92,7 +82,7 @@
 			.wp-block-navigation-item,
 			.wp-block-navigation-item__content {
 				text-align: left;
-				justify-content: flex-start;				
+				justify-content: flex-start;
 			}
 		}
 
@@ -100,7 +90,7 @@
 			.wp-block-navigation-item,
 			.wp-block-navigation-item__content {
 				text-align: center;
-				justify-content: flex-center;				
+				justify-content: center;
 			}
 		}
 	}

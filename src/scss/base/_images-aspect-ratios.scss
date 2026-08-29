@@ -7,6 +7,14 @@ img {
 	height: auto;
 }
 
+/* Core Latest Posts Featured Image Reset */
+.wp-block-latest-posts__featured-image img {
+	width: 100% !important;
+	max-width: 100% !important;
+	height: auto !important;
+	object-fit: cover;
+}
+
 /* Global Theme Aspect Ratios */
 
 /* 16:9 Standard & Full Widescreen Ratios */
@@ -63,5 +71,21 @@ img.size-cropped-slim,
 
 	img {
 		border-radius: inherit;
+	}
+}
+
+/* ==========================================================================
+   GLOBAL FULL-WIDTH (ALIGNFULL) BREAKOUT & RADIUS RESET
+   ========================================================================== */
+
+:is(.wp-block-image, .wp-block-post-featured-image, .wp-block-cover).alignfull {
+	max-width: calc(
+		100% + var(--wp--style--root--padding-left, 0px) + var(--wp--style--root--padding-right, 0px)
+	);
+	border-radius: 0 !important;
+
+	img,
+	.wp-block-cover__image-background {
+		border-radius: 0 !important;
 	}
 }

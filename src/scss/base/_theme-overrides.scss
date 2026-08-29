@@ -7,7 +7,6 @@ $group-spacing: var(--wp--preset--spacing--60);
 $image-padding: 0;
 
 /* Override parent theme's padding on colored blocks */
-
 .wp-site-blocks {
 	.wp-block-group.has-background:not(.alignfull):not(.is-layout-flex) {
 		padding-left: $group-spacing;
@@ -15,7 +14,7 @@ $image-padding: 0;
 	}
 }
 
-/* Remove Padding from Images w/Border */
+/* Override parent theme's padding on images with borders */
 .wp-block-image,
 .wp-block-post-featured-image,
 .wp-block-gallery {
@@ -26,4 +25,9 @@ $image-padding: 0;
 			padding: $image-padding;
 		}
 	}
+}
+
+/* Override parent theme's box shadow on post featured images */
+.wp-block-post-featured-image img {
+	box-shadow: none; /* Strips parent theme default image shadow */
 }
