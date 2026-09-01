@@ -3,7 +3,7 @@
 	"version": 3,
 	"slug": "top-level",
 	"title": "Border",
-	"blockTypes": [ "core/pages-list", "core/navigation" ],
+	"blockTypes": [ "core/pages-list" ],
 	"styles": {
 		"css": ""
 	}

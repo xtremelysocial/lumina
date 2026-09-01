@@ -2,7 +2,8 @@
  * File:        theme-physics.js
  * Theme:       Lumina Blocks
  *
- * Javascript for turning cards with a single link or button into a click target.
+ * Javascript for turning cards with a single link or button into a click target
+ * and managing interactive image state toggles.
  *
  * @package lumina
  * @since   1.0
@@ -12,9 +13,9 @@
 	
 	$(document).ready(function() {
 
-		/*
+		/* ==========================================================================
 		 * 01. DETAIL OPEN / CLOSE: Retains user setting
-		 */
+		 * ========================================================================== */
 		$( 'details' ).each( function( index ) {
 			const $details = $( this );
 			
@@ -49,9 +50,110 @@
 			} );
 		} );
 
-		/*
-		 * 02. DYNAMIC CARD ENGINE: Turn single-link cards into unified click targets
-		 */
+		/* ==========================================================================
+		 * 02. ASPECT RATIO TOGGLE ENGINE
+		 * ========================================================================== */
+		const luminaAspectConfig = {
+			// 'global'    = Toggling 1 image sets visitor preference site-wide for all toggle headers
+			// 'per-image' = Toggling an image saves state for that exact image on that specific page
+			mode: 'global'
+		};
+		
+		// --- GLOBAL MODE: Restore site-wide preference on page load ---
+		if ( luminaAspectConfig.mode === 'global' ) {
+			if ( localStorage.getItem( 'lumina_global_aspect' ) === 'expanded' ) {
+				$( 'body' ).addClass( 'aspect-pref-full' );
+			}
+		}
+		
+		$( '.wp-block-image:is(.is-style-aspect-toggle, .is-style-toggle-aspect)' ).each( function( index ) {
+			const $container = $( this );
+			const $img       = $container.find( 'img' );
+		
+			if ( ! $img.length ) return;
+		
+			// 1. Inject Lumina standard overlay badge if missing
+			let $badge = $container.find( '> button.lumina-aspect-toggle' );
+			if ( ! $badge.length ) {
+				$badge = $( `
+					<button class="lumina-card-arrow-overlay lumina-aspect-toggle" 
+							type="button" 
+							aria-label="Toggle image aspect ratio" 
+							aria-expanded="false">
+					</button>
+				` );
+				
+				if ( $container.css( 'position' ) === 'static' ) {
+					$container.css( 'position', 'relative' );
+				}
+				$container.append( $badge );
+			}
+		
+			// 2. Resolve scoped storage key (Used in 'per-image' mode)
+			const elementIdentifier = $container.attr( 'id' ) || $img.attr( 'src' )?.split( '/' ).pop()?.split( '?' )[0] || 'toggle_img';
+			const pagePath          = window.location.pathname.replace( /[^a-zA-Z0-9]/g, '_' );
+			const localStorageKey   = 'lumina_aspect_state_' + pagePath + '_' + elementIdentifier + '_' + index;
+		
+			// 3. Helper to update UI badge states
+			function updateBadgeState( isExpanded ) {
+				$badge.toggleClass( 'lumina-action-aspect-collapse', isExpanded )
+					  .toggleClass( 'lumina-action-aspect-expand', ! isExpanded )
+					  .attr( 'aria-expanded', isExpanded ? 'true' : 'false' );
+			}
+		
+			// 4. RESTORE STATE
+			if ( luminaAspectConfig.mode === 'global' ) {
+				const isGlobalFull = $( 'body' ).hasClass( 'aspect-pref-full' );
+				updateBadgeState( isGlobalFull );
+			} else {
+				const savedLocalState = localStorage.getItem( localStorageKey );
+				const isLocalExpanded = savedLocalState === 'expanded';
+				$container.toggleClass( 'is-expanded', isLocalExpanded );
+				updateBadgeState( isLocalExpanded );
+			}
+		
+			// 5. CLICK HANDLER
+			$container.on( 'click', 'button.lumina-aspect-toggle, img', function( e ) {
+				if ( $( e.target ).is( 'a, figcaption' ) || $( e.target ).closest( 'figcaption, a' ).length ) {
+					return;
+				}
+		
+				const isBadgeClick = $( e.target ).closest( 'button.lumina-aspect-toggle' ).length > 0;
+				const hasLightbox   = isLightboxElement( $img[0] ) || $container.find( '.wp-lightbox-container' ).length > 0;
+		
+				// If clicking image directly and Lightbox is enabled, let WP Core Lightbox open
+				if ( ! isBadgeClick && hasLightbox ) {
+					return;
+				}
+		
+				e.preventDefault();
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+		
+				if ( luminaAspectConfig.mode === 'global' ) {
+					// --- GLOBAL MODE TOGGLE ---
+					const isNowFull = $( 'body' ).toggleClass( 'aspect-pref-full' ).hasClass( 'aspect-pref-full' );
+					localStorage.setItem( 'lumina_global_aspect', isNowFull ? 'expanded' : 'slim' );
+		
+					// Sync all badges currently rendered on page
+					$( '.lumina-aspect-toggle' ).each( function() {
+						const $b = $( this );
+						$b.toggleClass( 'lumina-action-aspect-collapse', isNowFull )
+						  .toggleClass( 'lumina-action-aspect-expand', ! isNowFull )
+						  .attr( 'aria-expanded', isNowFull ? 'true' : 'false' );
+					} );
+				} else {
+					// --- PER-IMAGE MODE TOGGLE ---
+					const isNowExpanded = $container.toggleClass( 'is-expanded' ).hasClass( 'is-expanded' );
+					updateBadgeState( isNowExpanded );
+					localStorage.setItem( localStorageKey, isNowExpanded ? 'expanded' : 'slim' );
+				}
+			} );
+		} );
+
+		/* ==========================================================================
+		 * 03. DYNAMIC CARD ENGINE: Turn single-link cards into unified click targets
+		 * ========================================================================== */
 	
 		// Selector string matching any WP Core Lightbox trigger or container element
 		const lightboxSelector = '.lightbox-trigger, .wp-block-image__lightbox-trigger, .wp-lightbox-container, [data-wp-interactive="core/image"], [aria-haspopup="dialog"]';
@@ -81,8 +183,12 @@
 				return null;
 			}
 		
-			// Find all candidate links and buttons inside the card (filtering out Lightbox elements)
+			// Find candidate links/buttons (filtering out Lightbox AND Aspect Toggle controls)
 			var $candidates = $card.find('a, button, .wp-element-button').filter(function() {
+				var $el = $(this);
+				if ($el.hasClass('lumina-aspect-toggle') || $el.closest('.is-style-aspect-toggle').length > 0) {
+					return false;
+				}
 				return !isLightboxElement(this);
 			});
 
@@ -200,10 +306,17 @@
 			}
 		});
 
-		// 03. MOBILE TOUCH HANDLER (Clean Card-Only Target)
+		/* ==========================================================================
+		 * 04. MOBILE TOUCH HANDLER (Clean Card-Only Target)
+		 * ========================================================================== */
 		$(document).on('touchstart', '.is-interactive-card', function(e) {
 			var $card = $(this);
 		
+			// Bypass card activation if touch lands directly on an aspect toggle or lightbox image
+			if ($(e.target).closest('.lumina-aspect-toggle, .is-style-aspect-toggle, ' + lightboxSelector).length) {
+				return;
+			}
+
 			if (!$card.hasClass('is-active')) {
 				$('.is-interactive-card').not($card).removeClass('is-active');
 				$card.addClass('is-active');
@@ -223,7 +336,9 @@
 			}
 		});		
 	
-		// 04. ACTION: Click / Navigation Handler
+		/* ==========================================================================
+		 * 05. ACTION: Click / Navigation Handler
+		 * ========================================================================== */
 		$(document).on('click', '.is-interactive-card', function(e) {
 			var $card = $(this);
 			var $target = getValidTarget($card);
@@ -237,8 +352,8 @@
 				return;
 			}
 
-			// Don't intercept clicks if the user clicked directly on a button, link, form element, or Lightbox trigger
-			if ($(e.target).closest('button, a, .wp-element-button, input, select, textarea, ' + lightboxSelector).length) {
+			// Exclude clicks on native buttons, links, lightbox elements, AND aspect toggles
+			if ($(e.target).closest('button, a, .wp-element-button, input, select, textarea, .lumina-aspect-toggle, .is-style-aspect-toggle, ' + lightboxSelector).length) {
 				$card.removeClass('is-active');
 				return;
 			}

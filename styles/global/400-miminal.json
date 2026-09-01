@@ -1,0 +1,65 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Lumina Minimal",
+	"description": "A minimalist mood. Sharp corners, tight spacing, minimal motion.",
+	"settings": {
+		"custom": {
+			"border": {
+				"radius": "8px"
+			},
+			"button": {
+				"radius": "var(--wp--preset--border-radius--sm)" 
+			},
+			"spacing": {
+				"gap": "20px"
+			},
+			"animation": {
+				"duration": {
+					"short": "150ms",
+					"medium": "250ms"
+				},
+				"timingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+				"fillMode": "both",
+				"default": {
+					"transform": 		"none",
+					"hoverTransform": 	"scale(1.02)"
+				},
+				"button": {
+					"transform": "none",
+					"hoverTransform": "scale(1.03)"
+				},
+				"card": {
+					"transform": "none",
+					"hoverTransform": "translateY(-2px)"
+				},
+				"image": {
+					"transform": "none",
+					"hoverTransform": "translateY(-3px)"
+				},
+				"mediaText": {
+					"transform": "scale(1.00)",
+					"hoverTransform": "scale(1.05)"
+				}
+			}
+		}
+	},
+	"styles": {
+		"blocks": {
+			"core/button": {
+				"variations": {
+					"button-alt": {
+						"border": {
+							"radius": "var(--wp--preset--border-radius--md)"
+						}
+					},
+					"button-outline-alt": {
+						"border": {
+							"radius": "var(--wp--preset--border-radius--md)"
+						}
+					}
+				}
+			}
+		}
+	}
+}

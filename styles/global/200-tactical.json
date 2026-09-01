@@ -22,11 +22,24 @@
 				"timingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
 				"fillMode": "both",
 				"default": {
-					"hoverSmallTransform": "scale(1.02)",
-					"hoverTransform": "scale(1.04)",
-					"hoverLargeTransform": "scale(1.10)",
-					"objectSmallTransform": "translateY(-3px)",
-					"objectTransform": "translateY(-4px)"
+					"transform": 		"none",
+					"hoverTransform": 	"scale(1.04)"
+				},
+				"button": {
+					"transform": "none",
+					"hoverTransform": "scale(1.04)"
+				},
+				"card": {
+					"transform": "none",
+					"hoverTransform": "translateY(-3px)"
+				},
+				"image": {
+					"transform": "none",
+					"hoverTransform": "translateY(-4px)"
+				},
+				"mediaText": {
+					"transform": "scale(1.00)",
+					"hoverTransform": "scale(1.10)"
 				}
 			}
 		}

@@ -31,7 +31,8 @@ $pan-slim-shift-x:          4.5% !default;
 $pan-slim-shift-y:          7.2% !default;  
 
 // 5. Motion Icon
-$pan-motion-icon:			'rotate'; //'chevron-expand';
+// $pan-motion-icon:			'motion'; // 'expand';
+$pan-motion-icon:	'../icons/engine/motion.svg';
 
 /* ==========================================================================
    KEYFRAME ANIMATION ENGINES
@@ -232,7 +233,8 @@ $pan-motion-icon:			'rotate'; //'chevron-expand';
 		background-color: currentColor;
 
 // 		mask-image: url('../icons/chevron-expand.svg');
-		mask-image: url('../icons/engine/#{$pan-motion-icon}.svg');
+// 		mask-image: url('../icons/engine/#{$pan-motion-icon}.svg');
+		mask-image: url($pan-motion-icon);
 		
 		mask-size: 18px;
 		mask-repeat: no-repeat;

@@ -16,17 +16,30 @@
 			},
 			"animation": {
 				"duration": {
-					"short": "200ms",
-					"medium": "800ms"
+					"short": 		"200ms",
+					"medium": 		"800ms"
 				},
 				"timingFunction": "cubic-bezier(0.2, 0, 0, 1)",
-				"fillMode": "both",
+				"fillMode": 		"both",
 				"default": {
-					"hoverSmallTransform": "scale(1.02)",
-					"hoverTransform": "scale(1.03)",
-					"hoverLargeTransform": "scale(1.05)",
-					"objectSmallTransform": "translateY(-3px)",
-					"objectTransform": "translateY(-4px)"
+					"transform": 		"none",
+					"hoverTransform": 	"scale(1.02)"
+				},
+				"button": {
+					"transform": "none",
+					"hoverTransform": "scale(1.05)"
+				},
+				"card": {
+					"transform": "none",
+					"hoverTransform": "translateY(-3px)"
+				},
+				"image": {
+					"transform": "none",
+					"hoverTransform": "translateY(-4px)"
+				},
+				"mediaText": {
+					"transform": "scale(1.00)",
+					"hoverTransform": "scale(1.05)"
 				}
 			},
 			"link": {

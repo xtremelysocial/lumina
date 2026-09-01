@@ -144,22 +144,22 @@ a > .avatar {
   /* SVG Mask Assignments using asset folder filenames */
 }
 .lumina-card-arrow-overlay.lumina-action-internal::after {
-  -webkit-mask-image: url("../icons/engine/arrow-right.svg");
-          mask-image: url("../icons/engine/arrow-right.svg");
+  -webkit-mask-image: url("../icons/engine/internal-link.svg");
+          mask-image: url("../icons/engine/internal-link.svg");
   transform: translateX(1px);
 }
 .lumina-card-arrow-overlay.lumina-action-external::after {
-  -webkit-mask-image: url("../icons/engine/external.svg");
-          mask-image: url("../icons/engine/external.svg");
+  -webkit-mask-image: url("../icons/engine/external-link.svg");
+          mask-image: url("../icons/engine/external-link.svg");
 }
 .lumina-card-arrow-overlay.lumina-action-scroll-up::after {
-  -webkit-mask-image: url("../icons/engine/arrow-curved-up.svg");
-          mask-image: url("../icons/engine/arrow-curved-up.svg");
+  -webkit-mask-image: url("../icons/engine/scroll-up.svg");
+          mask-image: url("../icons/engine/scroll-up.svg");
   transform: translate(1px, 1px);
 }
 .lumina-card-arrow-overlay.lumina-action-scroll-down::after {
-  -webkit-mask-image: url("../icons/engine/arrow-curved-down.svg");
-          mask-image: url("../icons/engine/arrow-curved-down.svg");
+  -webkit-mask-image: url("../icons/engine/scroll-down.svg");
+          mask-image: url("../icons/engine/scroll-down.svg");
   transform: translate(1px, -3px);
 }
 
