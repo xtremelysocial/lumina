@@ -267,6 +267,27 @@ $color-registry: (
     ( color: 'dark-bright-green', 	link: 'inherit' ),
 );
 
+//*-----------------------------------------------------------------------------
+// 0.3  SETUP: LUMINA GRADIENTS
+// -----------------------------------------------------------------------------*/
+// MAP OF ALL GRADIENTS IN THE PALETTE (THAT AREN'T IN PARENT THEME)
+
+// List of all gradients
+// $gradient-tracks: (
+// 	'primary':   ('primary-gradient', 'primary-to-secondary-gradient', 'secondary-to-primary-gradient', 'primary-to-tertiary-gradient', 'tertiary-to-primary-gradient'),
+// 	'secondary': ('secondary-gradient', 'secondary-to-tertiary-gradient', 'tertiary-to-secondary-gradient'),
+// 	'tertiary':  ('tertiary-gradient')
+// ) !default;
+$gradient-tracks: null;
+
+// List of gradients to preserve colors
+// $gradient-preserve-colors: ('gray-gradient', 'yellow-gradient') !default;
+$gradient-preserve-colors: null;
+	
+
+//*-----------------------------------------------------------------------------
+// 0.4  SETUP: LIGHTEN AND DARKEN FOR LINKS AND/ORHEADERS
+// -----------------------------------------------------------------------------*/
 // Optimize link lighten and darken for Lumina specifically
 $filter-link-lighten: brightness(2.05) saturate(0.87) !default;
 $filter-link-darken:  brightness(0.52) saturate(1.6) !default;

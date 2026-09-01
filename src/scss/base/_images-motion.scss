@@ -3,27 +3,35 @@
    ========================================================================== */
 
 // 1. Desktop Standard Motion Variables
-$pan-duration:          8s !default;
-$pan-easing:            cubic-bezier(0.42, 0, 0.58, 1) !default;
-$pan-scale-start:       1.15 !default;  // Resting camera zoom
-$pan-scale-end:         1.32 !default;  // Max camera push-in depth
-$pan-shift-x:           3.5% !default;  // Horizontal dolly travel
-$pan-shift-y:           2.5% !default;  // Vertical jib travel
-$pan-light-start:       1.00 !default;  // Base light
-$pan-light-end:         1.03 !default;  // Subtle highlight as camera moves in
+$pan-duration:              8s !default;
+$pan-easing:                cubic-bezier(0.42, 0, 0.58, 1) !default;
+$pan-scale-start:           1.15 !default;  // Resting camera zoom
+$pan-scale-end:             1.32 !default;  // Max camera push-in depth
+$pan-shift-x:               3.5% !default;  // Horizontal dolly travel
+$pan-shift-y:               2.5% !default;  // Vertical jib travel
+$pan-light-start:           1.00 !default;  // Base light
+$pan-light-end:             1.10 !default; //1.03 !default;  // Subtle highlight as camera moves in
 
-// 2. Mobile Motion Variables (<= 781px)
-$pan-mobile-duration:   5.5s !default;  
-$pan-mobile-scale-0:    1.25 !default;  
-$pan-mobile-scale-50:   1.42 !default;  
-$pan-mobile-scale-100:  1.28 !default;  
+// 2. Experimental Light Engine Toggle
+// Set to true to test CSS brightness filter (may cause WebKit paint leaks/jerks over time)
+// Set to false for 0-paint pure GPU transform engine
+$pan-use-filter-brightness: true !default; //false !default;
 
-// 3. Slim & Ultra-Wide Motion Variables (Shallow Viewports)
-$pan-slim-duration:     6.2s !default;  
-$pan-slim-scale-start:  1.12 !default;  
-$pan-slim-scale-end:    1.26 !default;  
-$pan-slim-shift-x:      4.5% !default;  
-$pan-slim-shift-y:      7.2% !default;  
+// 3. Mobile Motion Variables (<= 781px)
+$pan-mobile-duration:       5.5s !default;  
+$pan-mobile-scale-0:        1.25 !default;  
+$pan-mobile-scale-50:       1.42 !default;  
+$pan-mobile-scale-100:      1.28 !default;  
+
+// 4. Slim & Ultra-Wide Motion Variables (Shallow Viewports)
+$pan-slim-duration:         6.2s !default;  
+$pan-slim-scale-start:      1.12 !default;  
+$pan-slim-scale-end:        1.26 !default;  
+$pan-slim-shift-x:          4.5% !default;  
+$pan-slim-shift-y:          7.2% !default;  
+
+// 5. Motion Icon
+$pan-motion-icon:			'rotate'; //'chevron-expand';
 
 /* ==========================================================================
    KEYFRAME ANIMATION ENGINES
@@ -31,35 +39,53 @@ $pan-slim-shift-y:      7.2% !default;
 
 @keyframes luminaPanZoomVideoLoop {
 	0% {
-		transform: scale($pan-scale-start) translate(-#{$pan-shift-x}, #{$pan-shift-y});
-		filter: brightness($pan-light-start);
+		transform: translate3d(-#{$pan-shift-x}, #{$pan-shift-y}, 0) scale($pan-scale-start);
+		@if $pan-use-filter-brightness {
+			filter: brightness($pan-light-start);
+		}
 	}
 	100% {
-		transform: scale($pan-scale-end) translate($pan-shift-x, -#{$pan-shift-y});
-		filter: brightness($pan-light-end);
+		transform: translate3d($pan-shift-x, -#{$pan-shift-y}, 0) scale($pan-scale-end);
+		@if $pan-use-filter-brightness {
+			filter: brightness($pan-light-end);
+		}
 	}
 }
 
 @keyframes luminaPanZoomMobileLoop {
 	0% {
-		transform: scale($pan-mobile-scale-0) translate(0%, 0%);
+		transform: translate3d(0%, 0%, 0) scale($pan-mobile-scale-0);
 	}
 	50% {
-		transform: scale($pan-mobile-scale-50) translate(-2.5%, -1.5%);
+		transform: translate3d(-2.5%, -1.5%, 0) scale($pan-mobile-scale-50);
 	}
 	100% {
-		transform: scale($pan-mobile-scale-100) translate(1.5%, -2%);
+		transform: translate3d(1.5%, -2%, 0) scale($pan-mobile-scale-100);
 	}
 }
 
 @keyframes luminaPanZoomSlimLoop {
 	0% {
-		transform: scale($pan-slim-scale-start) translate(-#{$pan-slim-shift-x}, -#{$pan-slim-shift-y});
-		filter: brightness($pan-light-start);
+		transform: translate3d(-#{$pan-slim-shift-x}, -#{$pan-slim-shift-y}, 0) scale($pan-slim-scale-start);
+		@if $pan-use-filter-brightness {
+			filter: brightness($pan-light-start);
+		}
 	}
 	100% {
-		transform: scale($pan-slim-scale-end) translate($pan-slim-shift-x, #{$pan-slim-shift-y});
-		filter: brightness($pan-light-end);
+		transform: translate3d($pan-slim-shift-x, #{$pan-slim-shift-y}, 0) scale($pan-slim-scale-end);
+		@if $pan-use-filter-brightness {
+			filter: brightness($pan-light-end);
+		}
+	}
+}
+
+/* Zero-Repaint GPU Overlay Light Flare */
+@keyframes luminaLightFlareLoop {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.15;
 	}
 }
 
@@ -115,10 +141,36 @@ $pan-slim-shift-y:      7.2% !default;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		will-change: transform, filter;
+
+		// 1. Only allow transform in will-change to lock layer paint count
+		// will-change: transform, filter; // <-- ORIGINAL FILTER TRIGGER
+		@if $pan-use-filter-brightness {
+			will-change: transform, filter;
+		} @else {
+			will-change: transform;
+		}
+		
+		// 2. Force hard 3D GPU layer lock to eliminate cached reload jerks
+		transform: translateZ(0);
+		backface-visibility: hidden;
+
 		animation: luminaPanZoomVideoLoop $pan-duration $pan-easing infinite alternate;
 		transform-origin: center center;
 	}
+
+	// Pure GPU Light Flare Overlay (0 CPU paints)
+// 	@if not $pan-use-filter-brightness {
+// 		&::after {
+// 			content: "";
+// 			position: absolute;
+// 			inset: 0;
+// 			background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+// 			pointer-events: none;
+// 			z-index: 1;
+// 			will-change: opacity;
+// 			animation: luminaLightFlareLoop $pan-duration $pan-easing infinite alternate;
+// 		}
+// 	}
 }
 
 /* ==========================================================================
@@ -131,7 +183,10 @@ $pan-slim-shift-y:      7.2% !default;
 	img,
 	.wp-block-cover__image-background {
 		animation-play-state: paused !important;
-		transition: none !important;
+		
+		// Lock GPU layer to prevent animation clock jumps
+		transform: translateZ(0);
+		backface-visibility: hidden;
 	}
 
 	/* 2A. Translucent Circle Background (::before) */
@@ -150,11 +205,14 @@ $pan-slim-shift-y:      7.2% !default;
 		pointer-events: none;
 		z-index: 2;
 
-		background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 65%, transparent);
-		backdrop-filter: blur(4px);
+		// backdrop-filter: blur(4px); // <-- REMOVED TO PREVENT IMAGE REPAINTS
+		// background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 65%, transparent);
+		
+		// Solid opacity mix instead of backdrop-filter to prevent image repaints
+		background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 80%, transparent);
 	}
 
-	/* 2B. Sparkle Mask Icon Layer (::after - Static at Rest) */
+	/* 2B. Chevron Expand Mask Icon Layer (::after - Static at Rest) */
 	&::after {
 		content: "";
 		position: absolute;
@@ -173,8 +231,10 @@ $pan-slim-shift-y:      7.2% !default;
 		color: var(--wp--preset--color--base, #ffffff);
 		background-color: currentColor;
 
-		mask-image: url('../icons/sparkles.svg');
-		mask-size: 14px;
+// 		mask-image: url('../icons/chevron-expand.svg');
+		mask-image: url('../icons/engine/#{$pan-motion-icon}.svg');
+		
+		mask-size: 18px;
 		mask-repeat: no-repeat;
 		mask-position: center;
 	}

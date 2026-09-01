@@ -6,7 +6,7 @@
  * @package XtremelySocial
  */
 
-namespace XtremelySocial\Lumina;
+namespace XtremelySocial;
 
 add_action( 'init', __NAMESPACE__ . '\register_block_bindings' );
 

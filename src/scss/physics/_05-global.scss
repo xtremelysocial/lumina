@@ -1,5 +1,5 @@
 /* ==========================================================================
-   50 GLOBAL OVERIDES: Styles outside of the core engine loops
+   05 GLOBAL OVERIDES: Styles outside of the core engine loops
 	    v0.9.9 Build 30 MVP
    ========================================================================== */
 
@@ -31,15 +31,6 @@
 				--wp--custom--animation--card--hover-transform: translateY(-1px);
 				--wp--custom--animation--image--hover-transform: translateY(-1px);
 				--wp--custom--animation--media-text--hover-transform: scale(1.02);
-				
-// 				// Make transforms subtle
-// 				--wp--custom--animation--default--hover-small-transform: scale(1.01);
-// 				--wp--custom--animation--default--hover-transform: scale(1.03);
-// 				--wp--custom--animation--default--hover-large-transform: scale(1.04);
-// 		
-// 				// Reduce lift
-// 				--wp--custom--animation--default--object-small-transform: translateY(-1px);
-// 				--wp--custom--animation--default--object-transform: translateY(-2px);
 			}
 		}
 
@@ -50,17 +41,20 @@
 			
 		// Remove shadow from logo-only Social Icons or the shadow will be round
 		.wp-site-blocks .wp-block-social-links.is-style-logos-only {
+			box-shadow: none;
+
 			& .wp-block-social-link {
 				box-shadow: none;
 			}
 		}
 				
-		// Remove shadow from fixed header and add bottom border
-		.wp-site-blocks > header:has(.is-position-sticky),
-		.wp-site-blocks > header:has(.is-style-fixed-header) {
+		// Remove shadow from fixed header and apply bottom border
+// 		.wp-site-blocks > header:has(.is-position-sticky),
+// 		.wp-site-blocks > header:has(.is-style-fixed-header) {
+		.wp-site-blocks > :has(.is-position-sticky),
+		.wp-site-blocks > :has(.is-style-fixed-header) {
 			box-shadow: none;
-			border: var(--wp--custom--color--border--width, 1px) var(--wp--custom--color--border--style, solid) var(--wp--custom--color--border);
-			z-index: 101;
+// 			border-bottom: var(--wp--custom--color--border--width, 1px) var(--wp--custom--color--border--style, solid) var(--wp--custom--color--border);
 		}
 
 		// Allow user to turn off shadow and animation for particular blocks
@@ -75,11 +69,11 @@
 		}
 		
 		/* -----------------------------------------------------------------------------
-		   Lumina Card Arrow Overlay Badge (Resting State Definitions)
+		   Lumina Card & Motion Overlay Badge (Resting State Definitions)
 		   ----------------------------------------------------------------------------- */
 		
-		// Ensure card container forms absolute positioning context
-		.is-interactive-card {
+		// Ensure card & motion containers form absolute positioning context
+		:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image) {
 			position: relative !important;
 		}
 		
@@ -153,50 +147,52 @@
 			&.lumina-action-external::before { content: "External Link"; }
 			&.lumina-action-scroll-up::before { content: "Scroll Up"; }
 			&.lumina-action-scroll-down::before { content: "Scroll Down"; }
-			&.lumina-action-play::before { content: "Play Motion"; }
+			&.lumina-action-play::before { content: "Start Motion"; }
 			&.lumina-action-pause::before { content: "Pause Motion"; }
 		
 			/* --- SVG ICON MASK ENGINE (::after) --- */
 			&::after {
 				content: "";
 				display: block;
-				width: 16px;
-				height: 16px;
+				width: 20px;
+				height: 20px;
 				background-color: currentColor;
 				mask-size: contain;
 				mask-repeat: no-repeat;
 				mask-position: center;
-// 				-webkit-mask-size: contain;
-// 				-webkit-mask-repeat: no-repeat;
-// 				-webkit-mask-position: center;
 				transition: transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1);
 			}
 		
 			/* SVG Mask Assignments using asset folder filenames */
 			&.lumina-action-internal::after {
-				mask-image: url('../icons/arrow-right.svg');
-// 				-webkit-mask-image: url('../icons/arrow-right.svg');
+				mask-image: url('../icons/engine/arrow-right.svg');
+				transform: translateX(-1px);
+// 				mask-image: url('~@wordpress/icons/build-module/library/arrow-right.svg');
+// 				mask-image: url('../../../node_modules/@wordpress/icons/build-module/library/arrow-right.svg');
 			}
 			&.lumina-action-external::after {
-				mask-image: url('../icons/external-link.svg');
-// 				-webkit-mask-image: url('../icons/external-link.svg');
+				mask-image: url('../icons/engine/external.svg');
+// 				mask-position: center;
+// 				mask-image: url('../icons/external-link.svg');
+// 				mask-image: url('~@wordpress/icons/build-module/library/external.svg');
+// 				mask-image: url('../../../node_modules/@wordpress/icons/build-module/library/external.svg');
 			}
 			&.lumina-action-scroll-up::after {
-				mask-image: url('../icons/arrow-curved-up.svg');
-// 				-webkit-mask-image: url('../icons/arrow-curved-up.svg');
+// 				mask-position: calc(50% + 1px) center;
+				mask-image: url('../icons/engine/arrow-curved-up.svg');
+				transform: translate(-1px, 1px);
 			}
 			&.lumina-action-scroll-down::after {
-				mask-image: url('../icons/arrow-curved-down.svg');
-// 				-webkit-mask-image: url('../icons/arrow-curved-down.svg');
+				mask-image: url('../icons/engine/arrow-curved-down.svg');
+// 				mask-position: calc(50% + 1px) calc(50% + 1px);
+				transform: translate(-1px, -3px);
 			}
-			&.lumina-action-play::after {
-				mask-image: url('../icons/play.svg');
-// 				-webkit-mask-image: url('../icons/play.svg');
-			}
-			&.lumina-action-pause::after {
-				mask-image: url('../icons/pause.svg');
-// 				-webkit-mask-image: url('../icons/pause.svg');
-			}
+// 			&.lumina-action-play::after {
+// 				mask-image: url('../icons/engine/play.svg');
+// 			}
+// 			&.lumina-action-pause::after {
+// 				mask-image: url('../icons/engine/pause.svg');
+// 			}
 		}
 		
 		// Inverted Badge (Contrast Card BG)
@@ -233,38 +229,37 @@
 		}
 
 		/* -----------------------------------------------------------------------------
-		   Lumina Card Arrow Overlay Badge (Hover & Active Triggers)
+		   Lumina Card & Image Overlay Badge (Hover & Active Triggers)
 		   ----------------------------------------------------------------------------- */
 		
-		// 1. Reveal Badge on Card Hover (Enables pointer-events so badge can receive direct hover)
-		.is-interactive-card:hover > .lumina-card-arrow-overlay,
-		.is-interactive-card.is-active > .lumina-card-arrow-overlay,
-		.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay {
+		/* 1. Reveal Badge on Container Hover (Enables pointer-events for direct badge hover) */
+		:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image):hover .lumina-card-arrow-overlay,
+		:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image).is-active .lumina-card-arrow-overlay,
+		:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image):has(:focus-visible) .lumina-card-arrow-overlay {
 			opacity: 1;
 			visibility: visible;
 			transform: scale(1);
 			pointer-events: auto !important;
 		
-			// Subtle directional nudges on card hover for the icon element (::after)
-			&.lumina-action-internal::after {
-				transform: translateX(2px);
-			}
-			&.lumina-action-external::after {
-				transform: translate(1px, -1px);
-			}
-			&.lumina-action-scroll-up::after {
-				transform: translateY(-2px);
-			}
-			&.lumina-action-scroll-down::after {
-				transform: translateY(2px);
-			}
+			/* Directional & Scale nudges on parent hover */
+// 			&.lumina-action-internal::after { transform: translateX(2px); }
+// 			&.lumina-action-external::after { transform: translate(1px, -1px); }
+// 			&.lumina-action-scroll-up::after { transform: translateY(-2px); }
+// 			&.lumina-action-scroll-down::after { transform: translateY(2px); }
+// 			&.lumina-action-play::after,
+// 			&.lumina-action-pause::after { transform: scale(1.1); }
+			&.lumina-action-internal::after { transform: translateX(1px); }
+			&.lumina-action-external::after { transform: translate(1px, -1px); }
+			&.lumina-action-scroll-up::after { transform: translate(-1px, -1px); }
+			&.lumina-action-scroll-down::after { transform: translate(-1px, -1px); }
 		}
 		
-		// 2. Reveal Text Tooltip ONLY when hovering directly on the badge itself
+		/* 2. Reveal Text Tooltip ONLY when hovering directly on the badge itself */
 		.lumina-card-arrow-overlay:hover::before {
 			opacity: 1;
 			visibility: visible;
 			transform: translateY(-50%) translateX(0);
 		}
+
 	}
 }

@@ -13,36 +13,36 @@
 //*-----------------------------------------------------------------------------
 
 //*-----------------------------------------------------------------------------
-// # PASS 1: GRADIENT COLORS
+// # PASS 2: GRADIENT COLORS
 // # Text, heading, and link defaults on gradient backgrounds
 //*-----------------------------------------------------------------------------
 
 @mixin apply-colors-gradients {
 
-	/* ==========================================================================
-	   20 GRADIENT COLORS: Set colors on gradient backgrounds
-	========================================================================== */
-
-	$gradient-preserve-colors: ('gray-gradient', 'yellow-gradient');
-	
-	:root :where([class*="-gradient-background"]:not(#{logic.build-selector-list($gradient-preserve-colors, ".has-", "")})) {
-		color: var(--wp--preset--color--foreground-alt);
+	@if logic.$gradient-tracks or logic.$gradient-preserve-colors {
+		/* ==========================================================================
+		   20 GRADIENT COLORS: Set colors on gradient backgrounds
+		========================================================================== */
 	}
+
+	// Generate CSS for gradient colors
+	@if logic.$gradient-tracks {
 	
-	// Pass clean color track tokens directly to the list generator
-	$gradient-tracks: (
-		'primary':   ('primary-gradient', 'primary-to-secondary-gradient', 'secondary-to-primary-gradient', 'primary-to-tertiary-gradient', 'tertiary-to-primary-gradient'),
-		'secondary': ('secondary-gradient', 'secondary-to-tertiary-gradient', 'tertiary-to-secondary-gradient'),
-		'tertiary':  ('tertiary-gradient')
-	);
-	
-	@each $track, $slugs in $gradient-tracks {
-		:root :where(#{logic.build-selector-list($slugs, ".has-", "")}) {
-			color: var(--wp--custom--color--contrast--#{$track}, var(--wp--preset--color--foreground-alt));
+		@each $track, $slugs in logic.$gradient-tracks {
+			:root :where(#{logic.build-selector-list($slugs, ".has-", "")}) {
+				color: var(--wp--custom--color--contrast--#{$track}, var(--wp--preset--color--foreground-alt));
+			}
+		}
+		
+		:root :where([class*="-gradient-background"]) :where(a:not(.wp-element-button)) {
+			color: inherit;	
 		}
 	}
-	
-	:root :where([class*="-gradient-background"]) :where(a:not(.wp-element-button)) {
-		color: inherit;	
+
+	// Genereate CSS to preserve colors on certain gradients	
+	@if logic.$gradient-preserve-colors {	
+		:root :where([class*="-gradient-background"]:not(#{logic.build-selector-list(logic.$gradient-preserve-colors, ".has-", "")})) {
+			color: var(--wp--preset--color--foreground-alt);
+		}
 	}
 }

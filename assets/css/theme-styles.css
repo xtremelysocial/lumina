@@ -19,9 +19,6 @@
    LUMINA THEME: CSS styles
    v0.9.9 Build 30 MVP
    ========================================================================== */
-/**
- * Base SCSS Barrel File
- */
 /* ==========================================================================
    GLOBAL: Base Image Aspect Ratios
    ========================================================================== */
@@ -124,33 +121,42 @@ img.size-cropped-slim,
    ========================================================================== */
 @keyframes luminaPanZoomVideoLoop {
   0% {
-    transform: scale(1.15) translate(-3.5%, 2.5%);
+    transform: translate3d(-3.5%, 2.5%, 0) scale(1.15);
     filter: brightness(1);
   }
   100% {
-    transform: scale(1.32) translate(3.5%, -2.5%);
-    filter: brightness(1.03);
+    transform: translate3d(3.5%, -2.5%, 0) scale(1.32);
+    filter: brightness(1.1);
   }
 }
 @keyframes luminaPanZoomMobileLoop {
   0% {
-    transform: scale(1.25) translate(0%, 0%);
+    transform: translate3d(0%, 0%, 0) scale(1.25);
   }
   50% {
-    transform: scale(1.42) translate(-2.5%, -1.5%);
+    transform: translate3d(-2.5%, -1.5%, 0) scale(1.42);
   }
   100% {
-    transform: scale(1.28) translate(1.5%, -2%);
+    transform: translate3d(1.5%, -2%, 0) scale(1.28);
   }
 }
 @keyframes luminaPanZoomSlimLoop {
   0% {
-    transform: scale(1.12) translate(-4.5%, -7.2%);
+    transform: translate3d(-4.5%, -7.2%, 0) scale(1.12);
     filter: brightness(1);
   }
   100% {
-    transform: scale(1.26) translate(4.5%, 7.2%);
-    filter: brightness(1.03);
+    transform: translate3d(4.5%, 7.2%, 0) scale(1.26);
+    filter: brightness(1.1);
+  }
+}
+/* Zero-Repaint GPU Overlay Light Flare */
+@keyframes luminaLightFlareLoop {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.15;
   }
 }
 /* ==========================================================================
@@ -209,6 +215,8 @@ img.size-cropped-slim,
   -o-object-fit: cover;
      object-fit: cover;
   will-change: transform, filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   animation: luminaPanZoomVideoLoop 8s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
   transform-origin: center center;
 }
@@ -222,7 +230,8 @@ img.size-cropped-slim,
 .is-style-pan-zoom-hover img,
 .is-style-pan-zoom-hover .wp-block-cover__image-background {
   animation-play-state: paused !important;
-  transition: none !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .is-style-pan-zoom-hover {
   /* 2A. Translucent Circle Background (::before) */
@@ -239,11 +248,10 @@ img.size-cropped-slim,
   transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
   pointer-events: none;
   z-index: 2;
-  background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 65%, transparent);
-  backdrop-filter: blur(4px);
+  background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 80%, transparent);
 }
 .is-style-pan-zoom-hover {
-  /* 2B. Sparkle Mask Icon Layer (::after - Static at Rest) */
+  /* 2B. Chevron Expand Mask Icon Layer (::after - Static at Rest) */
 }
 .is-style-pan-zoom-hover::after {
   content: "";
@@ -259,10 +267,10 @@ img.size-cropped-slim,
   z-index: 3;
   color: var(--wp--preset--color--base, #ffffff);
   background-color: currentColor;
-  -webkit-mask-image: url("../icons/sparkles.svg");
-          mask-image: url("../icons/sparkles.svg");
-  -webkit-mask-size: 14px;
-          mask-size: 14px;
+  -webkit-mask-image: url("../icons/engine/rotate.svg");
+          mask-image: url("../icons/engine/rotate.svg");
+  -webkit-mask-size: 18px;
+          mask-size: 18px;
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
   -webkit-mask-position: center;
@@ -553,11 +561,8 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
   color: inherit;
 }
 
-/*--------------------------------------------------------------
-# Base Styles
---------------------------------------------------------------*/
 /* =========================================================================
-Content Layout Structural Stabilization
+	Content Layout Structural Stabilization
    ========================================================================= */
 .is-style-sidebar-right .wp-block-columns.main-content > .wp-block-column.content-column,
 body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column.content-column,
@@ -602,21 +607,19 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 .wp-block-image.is-style-image-border img, .wp-block-image.is-style-image-round-border img, .wp-block-image.has-custom-border img,
 .wp-block-post-featured-image.is-style-image-border img,
 .wp-block-post-featured-image.is-style-image-round-border img,
-.wp-block-post-featured-image.has-custom-border img,
-.wp-block-gallery.is-style-image-border img,
-.wp-block-gallery.is-style-image-round-border img,
-.wp-block-gallery.has-custom-border img {
+.wp-block-post-featured-image.has-custom-border img {
   padding: 0;
+}
+
+.wp-block-gallery.is-style-image-border img, .wp-block-gallery.is-style-image-round-border img {
+  padding: 0 !important;
 }
 
 /* Override parent theme's box shadow on post featured images */
 .wp-block-post-featured-image img {
-  box-shadow: none; /* Strips parent theme default image shadow */
+  box-shadow: none;
 }
 
-/**
- * Plugins SCSS Barrel File
- */
 /*-----------------------------------------------------------------------------
 # Style Jetpack Contact Form buttons to match ours
 -----------------------------------------------------------------------------*/

@@ -5,7 +5,7 @@
    LUMINA INTERACTIONS: Handles all :hover and active state physics
    ========================================================================== */
 /* ==========================================================================
-   50 GLOBAL OVERIDES: Styles outside of the core engine loops
+   05 GLOBAL OVERIDES: Styles outside of the core engine loops
 	    v0.9.9 Build 30 MVP
    ========================================================================== */
 /* ==========================================================================
@@ -22,37 +22,40 @@
 }
 
 /* -----------------------------------------------------------------------------
-   Lumina Card Arrow Overlay Badge (Hover & Active Triggers)
+   Lumina Card & Image Overlay Badge (Hover & Active Triggers)
    ----------------------------------------------------------------------------- */
-.is-interactive-card:hover > .lumina-card-arrow-overlay,
-.is-interactive-card.is-active > .lumina-card-arrow-overlay,
-.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay {
+/* 1. Reveal Badge on Container Hover (Enables pointer-events for direct badge hover) */
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image):hover .lumina-card-arrow-overlay,
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image).is-active .lumina-card-arrow-overlay,
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image):has(:focus-visible) .lumina-card-arrow-overlay {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
   pointer-events: auto !important;
+  /* Directional & Scale nudges on parent hover */
 }
-.is-interactive-card:hover > .lumina-card-arrow-overlay.lumina-action-internal::after,
-.is-interactive-card.is-active > .lumina-card-arrow-overlay.lumina-action-internal::after,
-.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay.lumina-action-internal::after {
-  transform: translateX(-2px);
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image):hover .lumina-card-arrow-overlay.lumina-action-internal::after,
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image).is-active .lumina-card-arrow-overlay.lumina-action-internal::after,
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image):has(:focus-visible) .lumina-card-arrow-overlay.lumina-action-internal::after {
+  transform: translateX(-1px);
 }
-.is-interactive-card:hover > .lumina-card-arrow-overlay.lumina-action-external::after,
-.is-interactive-card.is-active > .lumina-card-arrow-overlay.lumina-action-external::after,
-.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay.lumina-action-external::after {
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image):hover .lumina-card-arrow-overlay.lumina-action-external::after,
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image).is-active .lumina-card-arrow-overlay.lumina-action-external::after,
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image):has(:focus-visible) .lumina-card-arrow-overlay.lumina-action-external::after {
   transform: translate(-1px, -1px);
 }
-.is-interactive-card:hover > .lumina-card-arrow-overlay.lumina-action-scroll-up::after,
-.is-interactive-card.is-active > .lumina-card-arrow-overlay.lumina-action-scroll-up::after,
-.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay.lumina-action-scroll-up::after {
-  transform: translateY(-2px);
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image):hover .lumina-card-arrow-overlay.lumina-action-scroll-up::after,
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image).is-active .lumina-card-arrow-overlay.lumina-action-scroll-up::after,
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image):has(:focus-visible) .lumina-card-arrow-overlay.lumina-action-scroll-up::after {
+  transform: translate(1px, -1px);
 }
-.is-interactive-card:hover > .lumina-card-arrow-overlay.lumina-action-scroll-down::after,
-.is-interactive-card.is-active > .lumina-card-arrow-overlay.lumina-action-scroll-down::after,
-.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay.lumina-action-scroll-down::after {
-  transform: translateY(2px);
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image):hover .lumina-card-arrow-overlay.lumina-action-scroll-down::after,
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image).is-active .lumina-card-arrow-overlay.lumina-action-scroll-down::after,
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image):has(:focus-visible) .lumina-card-arrow-overlay.lumina-action-scroll-down::after {
+  transform: translate(1px, -1px);
 }
 
+/* 2. Reveal Text Tooltip ONLY when hovering directly on the badge itself */
 .lumina-card-arrow-overlay:hover::before {
   opacity: 1;
   visibility: visible;

@@ -1,6 +1,12 @@
-/**
- * Base SCSS Barrel File
- */
+//* ==========================================================================
+//   00 LUMINA STYLES: Theme Style CSS
+//		Compiles to theme-styles.css
+//   ========================================================================== */
+
+//* ==========================================================================
+//	 v0.9.9 Build 30 MVP
+//   ========================================================================== */
+ 
 @forward "images-aspect-ratios";
 @forward "images-motion";
 @forward "list-dividers";
@@ -8,3 +14,4 @@
 @forward "other-themes";
 @forward "sidebars";
 @forward "theme-overrides";
+// @forward "browser-fixes";

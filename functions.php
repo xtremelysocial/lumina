@@ -294,9 +294,12 @@ endif;
 /**
  * Anchor Tags for Scroll-To-Top
  */
-add_action( 'wp_body_open', 'lumina_body_open' );
 
-if ( ! function_exists( 'lumina_body_open' ) ) :
+// if ( ! function_exists( 'lumina_body_open' ) ) :
+if ( ! function_exists( 'lumina_body_open' ) AND ! function_exists( 'flatblocks_body_open') ):
+
+	add_action( 'wp_body_open', 'lumina_body_open' );
+
 	function lumina_body_open() { 
 		echo '<a id="page"></a><a id="wrapper"></a>'; 
 	}

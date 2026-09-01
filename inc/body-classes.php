@@ -125,9 +125,9 @@ if ( ! function_exists( __NAMESPACE__ . '\add_body_classes' ) ) :
 			$rc = ( $rc <= 0.03928 ) ? $rc / 12.92 : pow( ( $rc + 0.055 ) / 1.055, 2.4 );
 			$gc = ( $gc <= 0.03928 ) ? $gc / 12.92 : pow( ( $gc + 0.055 ) / 1.055, 2.4 );
 			$bc = ( $bc <= 0.03928 ) ? $bc / 12.92 : pow( ( $bc + 0.055 ) / 1.055, 2.4 );
-			$luminance = 0.2126 * $rc + 0.7152 * $gc + 0.0722 * $bc;
+			$lightness = 0.2126 * $rc + 0.7152 * $gc + 0.0722 * $bc;
 		
-			$bg_class = ( $luminance < 0.5 ) ? 'is-dark-background' : 'is-light-background';
+			$bg_class = ( $lightness < 0.5 ) ? 'is-dark-background' : 'is-light-background';
 
 			// -----------------------------------------------------------------
 			// 2. QUERY THEME ENGINE MODE & SCHEME VARIANT

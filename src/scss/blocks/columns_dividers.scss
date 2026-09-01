@@ -291,11 +291,11 @@
 }
 
 /* -------------------------------------------------------------------------
- * 4. STACKED VIEWPORTS & SMART 2-UP (< 600px / < $break-small)
+ * 4. STACKED VIEWPORTS (< 600px / < $break-small)
  * ------------------------------------------------------------------------- */
 @media only screen and (max-width: #{ (breakpoints.$break-small - 1) }) {
 
-	/* Default: Force single-column stacking layout across ALL multi-column layouts on mobile */
+	/* Force single-column stacking layout across ALL multi-column layouts on mobile */
 	.wp-block-columns.wp-block-columns:not(.is-not-stacked-on-mobile) {
 		display: flex !important;
 		flex-direction: column !important;
@@ -305,34 +305,6 @@
 			flex-basis: 100% !important;
 			width: 100% !important;
 			max-width: 100% !important;
-		}
-	}
-
-	/* Smart 2-Up Mobile Exception:
-	   EXCLUDES parent background containers (.not(.has-background)).
-	   Preserves side-by-side ONLY when individual child columns are styled cards/borders. */
-	.wp-block-columns.wp-block-columns:not(.has-background):not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(2)):is(
-		.is-style-cards,
-		.is-style-keep-2-up,
-		:has(> .wp-block-column:is(
-			.has-background,
-			.is-style-rounded-border,
-			.is-style-rounded-corners,
-			.is-style-outline-border,
-			.is-style-card,
-			.has-border-color,
-			[class*="has-border-color"]
-		))
-	) {
-		flex-direction: row !important;
-		flex-wrap: nowrap !important;
-
-		> .wp-block-column {
-			flex-basis: 0 !important;
-			flex-grow: 1 !important;
-			min-width: 0;
-			width: auto !important;
-			max-width: none !important;
 		}
 	}
 
@@ -359,29 +331,6 @@
 			&:first-child::before {
 				content: none !important;
 			}
-		}
-	}
-
-	/* Preserve vertical divider if a smart 2-up container uses gutter dividers on mobile */
-	.wp-block-columns.is-style-gutter-dividers:not(.has-background):not(.is-not-stacked-on-mobile):has(> .wp-block-column:first-child:nth-last-child(2)):is(
-		.is-style-cards,
-		.is-style-keep-2-up,
-		:has(> .wp-block-column:is(
-			.has-background,
-			.is-style-rounded-border,
-			.is-style-rounded-corners,
-			.is-style-outline-border,
-			.is-style-card,
-			.has-border-color,
-			[class*="has-border-color"]
-		))
-	) {
-		> .wp-block-column:not(:first-child)::before {
-			width: 1px !important;
-			height: auto !important;
-			top: 0 !important;
-			bottom: 0 !important;
-			left: calc(var(--gutter-divider-gap) / -2) !important;
 		}
 	}
 }

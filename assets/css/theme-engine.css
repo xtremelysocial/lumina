@@ -5,7 +5,7 @@
    LUMINA ENGINE: Registers objects and sets their resting states
    ========================================================================== */
 /* ==========================================================================
-   50 GLOBAL OVERIDES: Styles outside of the core engine loops
+   05 GLOBAL OVERIDES: Styles outside of the core engine loops
 	    v0.9.9 Build 30 MVP
    ========================================================================== */
 /* ==========================================================================
@@ -29,15 +29,16 @@
   overflow: hidden;
 }
 
+.wp-site-blocks .wp-block-social-links.is-style-logos-only {
+  box-shadow: none;
+}
 .wp-site-blocks .wp-block-social-links.is-style-logos-only .wp-block-social-link {
   box-shadow: none;
 }
 
-.wp-site-blocks > header:has(.is-position-sticky),
-.wp-site-blocks > header:has(.is-style-fixed-header) {
+.wp-site-blocks > :has(.is-position-sticky),
+.wp-site-blocks > :has(.is-style-fixed-header) {
   box-shadow: none;
-  border: var(--wp--custom--color--border--width, 1px) var(--wp--custom--color--border--style, solid) var(--wp--custom--color--border);
-  z-index: 101;
 }
 
 [class*=wp-block-].is-style-object-plain {
@@ -50,9 +51,9 @@ a > .avatar {
 }
 
 /* -----------------------------------------------------------------------------
-   Lumina Card Arrow Overlay Badge (Resting State Definitions)
+   Lumina Card & Motion Overlay Badge (Resting State Definitions)
    ----------------------------------------------------------------------------- */
-.is-interactive-card {
+:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image) {
   position: relative !important;
 }
 
@@ -117,7 +118,7 @@ a > .avatar {
   content: "Scroll Down";
 }
 .lumina-card-arrow-overlay.lumina-action-play::before {
-  content: "Play Motion";
+  content: "Start Motion";
 }
 .lumina-card-arrow-overlay.lumina-action-pause::before {
   content: "Pause Motion";
@@ -128,8 +129,8 @@ a > .avatar {
 .lumina-card-arrow-overlay::after {
   content: "";
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   background-color: currentColor;
   -webkit-mask-size: contain;
           mask-size: contain;
@@ -143,28 +144,23 @@ a > .avatar {
   /* SVG Mask Assignments using asset folder filenames */
 }
 .lumina-card-arrow-overlay.lumina-action-internal::after {
-  -webkit-mask-image: url("../icons/arrow-right.svg");
-          mask-image: url("../icons/arrow-right.svg");
+  -webkit-mask-image: url("../icons/engine/arrow-right.svg");
+          mask-image: url("../icons/engine/arrow-right.svg");
+  transform: translateX(-1px);
 }
 .lumina-card-arrow-overlay.lumina-action-external::after {
-  -webkit-mask-image: url("../icons/external-link.svg");
-          mask-image: url("../icons/external-link.svg");
+  -webkit-mask-image: url("../icons/engine/external.svg");
+          mask-image: url("../icons/engine/external.svg");
 }
 .lumina-card-arrow-overlay.lumina-action-scroll-up::after {
-  -webkit-mask-image: url("../icons/arrow-curved-up.svg");
-          mask-image: url("../icons/arrow-curved-up.svg");
+  -webkit-mask-image: url("../icons/engine/arrow-curved-up.svg");
+          mask-image: url("../icons/engine/arrow-curved-up.svg");
+  transform: translate(-1px, 1px);
 }
 .lumina-card-arrow-overlay.lumina-action-scroll-down::after {
-  -webkit-mask-image: url("../icons/arrow-curved-down.svg");
-          mask-image: url("../icons/arrow-curved-down.svg");
-}
-.lumina-card-arrow-overlay.lumina-action-play::after {
-  -webkit-mask-image: url("../icons/play.svg");
-          mask-image: url("../icons/play.svg");
-}
-.lumina-card-arrow-overlay.lumina-action-pause::after {
-  -webkit-mask-image: url("../icons/pause.svg");
-          mask-image: url("../icons/pause.svg");
+  -webkit-mask-image: url("../icons/engine/arrow-curved-down.svg");
+          mask-image: url("../icons/engine/arrow-curved-down.svg");
+  transform: translate(-1px, -3px);
 }
 
 .is-interactive-card.has-contrast-background-color > .lumina-card-arrow-overlay {

@@ -33,10 +33,10 @@
 
 // LOAD COLORS LOGIC
 @use "colors/10-global" as colors;
-// @use "colors/20-gradients" as gradients;
+@use "colors/20-gradients" as gradients;
 
 // LOAD GLOBAL COLORS CSS
 @include colors.apply-colors-global;
 
 // LOAD GLOBAL GRADIENT COLORS CSS
-// @include gradients.apply-colors-gradients;
+@include gradients.apply-colors-gradients;
