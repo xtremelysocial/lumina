@@ -17,6 +17,6 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"aspectRatio":"16/9","scale":"cover","align":"center","className":"is-resized size-large is-style-image-computer-screen"} -->
-<figure class="wp-block-image aligncenter is-resized size-large is-style-image-computer-screen"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/samples/screenshots/01.webp" ) ); ?>" alt="screenshot" style="aspect-ratio:16/9;object-fit:cover"/></figure>
+<figure class="wp-block-image aligncenter is-resized size-large is-style-image-computer-screen"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/screenshots/01.webp" ) ); ?>" alt="screenshot" style="aspect-ratio:16/9;object-fit:cover"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:group -->

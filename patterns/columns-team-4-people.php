@@ -15,7 +15,7 @@
 <!-- wp:columns {"align":"wide","className":"is-style-gutter-dividers"} -->
 <div class="wp-block-columns alignwide is-style-gutter-dividers"><!-- wp:column {"width":""} -->
 <div class="wp-block-column"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/01.webp" ) ); ?>" alt="Male Person" style="aspect-ratio:1;object-fit:cover"/></figure>
+<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/profiles/male/01.webp" ) ); ?>" alt="Male Person" style="aspect-ratio:1;object-fit:cover"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
@@ -39,7 +39,7 @@
 
 <!-- wp:column {"width":""} -->
 <div class="wp-block-column"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/01.webp" ) ); ?>" alt="Female Person" style="aspect-ratio:1;object-fit:cover"/></figure>
+<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/profiles/female/01.webp" ) ); ?>" alt="Female Person" style="aspect-ratio:1;object-fit:cover"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
@@ -63,7 +63,7 @@
 
 <!-- wp:column {"width":""} -->
 <div class="wp-block-column"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/02.webp" ) ); ?>" alt="Female Person" style="aspect-ratio:1;object-fit:cover"/></figure>
+<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/profiles/female/02.webp" ) ); ?>" alt="Female Person" style="aspect-ratio:1;object-fit:cover"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
@@ -87,7 +87,7 @@
 
 <!-- wp:column {"width":""} -->
 <div class="wp-block-column"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"large","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-large is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/02.webp" ) ); ?>" alt="Male Person" style="aspect-ratio:1;object-fit:cover"/></figure>
+<figure class="wp-block-image aligncenter size-large is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/profiles/male/02.webp" ) ); ?>" alt="Male Person" style="aspect-ratio:1;object-fit:cover"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->

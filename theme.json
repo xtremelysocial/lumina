@@ -348,12 +348,12 @@
 				{ "slug": "dark-red", "color": "hsl(0, 23%, 22%)", "name": "Dark Red (Ember Alt Anchor 22%)" }
 			],
 			"duotone": [
-				{ "colors": ["hsl(154, 26%, 38%)", "hsl(32, 20%, 97%)"], "slug": "primary", "name": "Primary (Obsidian Pine)" },
-				{ "colors": ["hsl(154, 16%, 83%)", "hsl(32, 20%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Muted Sage)" },
-				{ "colors": ["hsl(206, 26%, 34%)", "hsl(32, 20%, 97%)"], "slug": "secondary", "name": "Secondary (Deep Ink)" },
-				{ "colors": ["hsl(206, 18%, 83%)", "hsl(32, 20%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Steel Slate)" },
-				{ "colors": ["hsl(34, 34%, 38%)", "hsl(32, 20%, 97%)"], "slug": "tertiary", "name": "Tertiary (Dark Espresso)" },
-				{ "colors": ["hsl(34, 16%, 83%)", "hsl(32, 20%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Warm Sand)" },
+				{ "colors": ["hsl(154, 24%, 48%)", "hsl(32, 20%, 97%)"], "slug": "primary", "name": "Primary (Crisp Sage)" },
+				{ "colors": ["hsl(154, 26%, 38%)", "hsl(32, 20%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Deep Alpine Sage)" },
+				{ "colors": ["hsl(206, 24%, 44%)", "hsl(32, 20%, 97%)"], "slug": "secondary", "name": "Secondary (Ocean Blue)" },
+				{ "colors": ["hsl(206, 26%, 34%)", "hsl(32, 20%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Storm Navy)" },
+				{ "colors": ["hsl(34, 32%, 48%)", "hsl(32, 20%, 97%)"], "slug": "tertiary", "name": "Tertiary (Antique Gold)" },
+				{ "colors": ["hsl(34, 34%, 38%)", "hsl(32, 20%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Burnished Ochre)" },
 				{ "colors": ["hsl(209, 24%, 16%)", "hsl(206, 24%, 44%)"], "slug": "midnight", "name": "Midnight (SaaS Dark Mode)" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale (Pure Crisp)" },
 				{ "colors": ["hsl(0, 0%, 11%)", "hsl(32, 6%, 71%)"], "slug": "dark-grayscale", "name": "Dark Grayscale (Muted Carbon)" }
@@ -666,37 +666,37 @@
 	"templateParts": [
 		{
 			"name": "header",
-			"title": "Header Wrapper",
+			"title": "Lumina Header Wrapper",
 			"description": "Site Header Wrapper",
 			"area": "uncategorized"
 		},
 		{
 			"name": "header-default",
-			"title": "Header Standard",
+			"title": "Lumina Header Standard",
 			"description": "Standard header",
 			"area": "header"
 		},
 		{
 			"name": "header-centered",
-			"title": "Header Centered",
+			"title": "Lumina Header Centered",
 			"description": "Centered header w/site tagline",
 			"area": "header"
 		},
 		{
 			"name": "header-centered-nav-fixed",
-			"title": "Header Centered Nav Fixed to Top",
+			"title": "Lumina Header Centered Nav Fixed to Top",
 			"description": "Fixed header with centered navigation",
 			"area": "header"
 		},		
 		{
 			"name": "header-centered-no-tagline",
-			"title": "Header Centered No Tagline",
+			"title": "Lumina Header Centered No Tagline",
 			"description": "Centered header w/out site tagline",
 			"area": "header"
 		},
 		{
 			"name": "header-colored",
-			"title": "Colored Header (Primary Alt)",
+			"title": "Lumina Colored Header (Primary Alt)",
 			"description": "Colored header (Primary Alt color)",
 			"area": "header"
 		},
@@ -714,169 +714,169 @@
 		},
 		{
 			"name": "header-logo",
-			"title": "Header Logo (no Site title)",
+			"title": "Lumina Header Logo (no Site title)",
 			"description": "Logo only header (no site title or tagline)",
 			"area": "header"
 		},
 		{
 			"name": "header-logo-fixed",
-			"title": "Header Logo Fixed to Top",
+			"title": "Lumina Header Logo Fixed to Top",
 			"description": "Logo only fixed header",
 			"area": "header"
 		},
 		{
 			"name": "header-dark",
-			"title": "Header Dark",
+			"title": "Lumina Header Dark",
 			"description": "Dark header",
 			"area": "header"
 		},
 		{
 			"name": "header-dark-fixed",
-			"title": "Header Dark Fixed to Top",
+			"title": "Lumina Header Dark Fixed to Top",
 			"description": "Fixed dark header",
 			"area": "header"
 		},
 		{
 			"name": "header-left-align",
-			"title": "Header Left Align",
+			"title": "Lumina Header Left Align",
 			"description": "Left-aligned header w/site tagline",
 			"area": "header"
 		},
 		{
 			"name": "header-left-align-no-tagline",
-			"title": "Header Left Align No Tagline",
+			"title": "Lumina Header Left Align No Tagline",
 			"description": "Left-aligned header w/out site tagline",
 			"area": "header"
 		},
 		{
 			"name": "header-nav-only-fixed",
-			"title": "Header Mobile Nav Only Fixed to Top",
+			"title": "Lumina Header Mobile Nav Only Fixed to Top",
 			"description": "Fixed mobile nav only header",
 			"area": "header"
 		},
 		{
 			"name": "header-tagline",
-			"title": "Header with Tagline",
+			"title": "Lumina Header with Tagline",
 			"description": "Header with site tagline",
 			"area": "header"
 		},
 		{
 			"name": "menu-header",
-			"title": "Menu Header",
+			"title": "Lumina Menu Header",
 			"description": "Default header nav menu (right)",
 			"area": "menu"
 		},
 		{
 			"name": "menu-header-centered",
-			"title": "Menu Header Centered",
+			"title": "Lumina Menu Header Centered",
 			"description": "Centered header nav menu",
 			"area": "menu"
 		},
 		{
 			"name": "menu-header-centered-only-nav",
-			"title": "Menu Header Centered Nav Only",
+			"title": "Lumina Menu Header Centered Nav Only",
 			"description": "Centered header navigation menu without logo or title",
 			"area": "menu"
 		},
 		{
 			"name": "menu-header-dark",
-			"title": "Menu Header Dark",
+			"title": "Lumina Menu Header Dark",
 			"description": "Dark header nav menu (right)",
 			"area": "menu"
 		},
 		{
 			"name": "menu-header-no-mobile",
-			"title": "Menu Header Never Mobile",
+			"title": "Lumina Menu Header Never Mobile",
 			"description": "Never mobile header menu (right)",
 			"area": "menu"
 		},
 		{
 			"name": "menu-header-mobile",
-			"title": "Menu Header Always Mobile",
+			"title": "Lumina Menu Header Always Mobile",
 			"description": "Always mobile header menu (right)",
 			"area": "menu"
 		},
 		{
 			"name": "menu-footer",
-			"title": "Menu Footer",
+			"title": "Lumina Menu Footer",
 			"description": "Default footer menu",
 			"area": "menu"
 		},
 		{
 			"name": "menu-footer-1",
-			"title": "Menu Footer 1",
+			"title": "Lumina Menu Footer 1",
 			"description": "Vertical footer menu 1",
 			"area": "menu"
 		},
 		{
 			"name": "menu-footer-2",
-			"title": "Menu Footer 2",
+			"title": "Lumina Menu Footer 2",
 			"description": "Vertical footer menu 2",
 			"area": "menu"
 		},
 		{
 			"name": "menu-footer-3",
-			"title": "Menu Footer 3",
+			"title": "Lumina Menu Footer 3",
 			"description": "Vertical footer menu 3",
 			"area": "menu"
 		},
 		{
 			"name": "query",
-			"title": "Query Template",
+			"title": "Lumina Query Template",
 			"description": "Query Template Part",
 			"area": "content"
 		},
 		{
 			"name": "post-meta",
-			"title": "Post Meta",
+			"title": "Lumina Post Meta",
 			"description": "Post meta (author, categories, and tags)",
 			"area": "content"
 		},
 		{
 			"name": "post-title",
-			"title": "Post Title",
+			"title": "Lumina Post Title",
 			"description": "Title for posts",
 			"area": "title"
 		},
 		{
 			"name": "page-title",
-			"title": "Page Title",
+			"title": "Lumina Page Title",
 			"description": "Title for pages",
 			"area": "title"
 		},
 		{
 			"name": "archive-title",
-			"title": "Archive Title",
+			"title": "Lumina Archive Title",
 			"description": "Title for archives (categories, tags, etc.)",
 			"area": "title"
 		},
 		{
 			"name": "404-title",
-			"title": "Error (404) Title",
+			"title": "Lumina Error (404) Title",
 			"description": "Title for the error page (404)",
 			"area": "title"
 		},
 		{
 			"name": "search-title",
-			"title": "Search Title",
+			"title": "Lumina Search Title",
 			"description": "Title for the search page",
 			"area": "title"
 		},
 		{
 			"name": "sitemap-title",
-			"title": "Sitemap Title",
+			"title": "Lumina Sitemap Title",
 			"description": "Title for the sitemap page",
 			"area": "title"
 		},
 		{
 			"name": "home-title",
-			"title": "Home Title",
+			"title": "Lumina Home Title",
 			"description": "Title for the home page",
 			"area": "title"
 		},		
 		{
 			"name": "post-navigation",
-			"title": "Post Navigation",
+			"title": "Lumina Post Navigation",
 			"description": "Next and previous post links",
 			"area": "content"
 		},
@@ -966,103 +966,103 @@
 		},
 		{
 			"name": "content-home-top",
-			"title": "Content Home Top (when blog is front page)",
+			"title": "Lumina Content Home Top (when blog is front page)",
 			"description": "Content for top of the home page (when blog is front page)",
 			"area": "content"
 		},
 		{
 			"name": "content-sitemap",
-			"title": "Content Sitemap",
+			"title": "Lumina Content Sitemap",
 			"description": "Sitemap content (pages, categories, recent posts)",
 			"area": "content"
 		},
 		{
 			"name": "author-bio",
-			"title": "Author Bio",
+			"title": "Lumina Author Bio",
 			"description": "Author avatar, name, and bio",
 			"area": "content"
 		},
 		{
 			"name": "sidebar",
-			"title": "Sidebar",
+			"title": "Lumina Sidebar",
 			"description": "Sidebar (search, account, categories, social links)",
 			"area": "content"
 		},
 		{
 			"name": "social-icons",
-			"title": "Social Icons",
+			"title": "Lumina Social Icons",
 			"description": "Social media icons with links",
 			"area": "content"
 		},
 		{
 			"name": "social-icons-neutral",
-			"title": "Social Icons Monochrome",
+			"title": "Lumina Social Icons Monochrome",
 			"description": "Huge social media icons in neutral color",
 			"area": "content"
 		},
 		{
 			"name": "comments",
-			"title": "Comments",
+			"title": "Lumina Comments",
 			"description": "Comments list and comment form",
 			"area": "content"
 		},
 		{
 			"name": "current-year",
-			"title": "Current Year",
+			"title": "Lumina Current Year",
 			"description": "Dynamic current year display",
 			"area": "content"
 		},
 		{
 			"name": "footer",
-			"title": "Footer Wrapper",
+			"title": "Lumina Footer Wrapper",
 			"description": "Footer Wrapper",
 			"area": "uncategorized"
 		},
 		{
 			"name": "theme-tagline",
-			"title": "Theme Tagline",
+			"title": "Lumina Theme Tagline",
 			"description": "Theme tagline (theme by xtremelysocial)",
 			"area": "content"
 		},
 		{
 			"name": "site-copyright",
-			"title": "Site Copyright",
+			"title": "Lumina Site Copyright",
 			"description": "Site copyright (© by site-name)",
 			"area": "content"
 		},
 		{
 			"name": "jetpack-sharing",
-			"title": "Jetpack Sharing Buttons",
+			"title": "Lumina Jetpack Sharing Buttons",
 			"description": "Jetpack social sharing integration",
 			"area": "content"
 		},
 		{
 			"name": "footer-block-1",
-			"title": "Footer Block 1",
+			"title": "Lumina Footer Block 1",
 			"description": "Footer block 1 (e.g. recent posts)",
 			"area": "content"
 		},
 		{
 			"name": "footer-block-2",
-			"title": "Footer Block 2",
+			"title": "Lumina Footer Block 2",
 			"description": "Footer block 2 (e.g. recent comments)",
 			"area": "content"
 		},
 		{
 			"name": "footer-block-3",
-			"title": "Footer Block 3",
+			"title": "Lumina Footer Block 3",
 			"description": "Footer block 3 (e.g. about)",
 			"area": "content"
 		},
 		{
 			"name": "footer-block-4",
-			"title": "Footer Block 3 w/link underlines",
+			"title": "Lumina Footer Block 3 w/link underlines",
 			"description": "Footer block 3 (e.g. about) with underlined links",
 			"area": "content"
 		},
 		{
 			"name": "footer-3-blocks",
-			"title": "Footer 3 Blocks (recent posts, recent comments, about)",
+			"title": "Lumina Footer 3 Blocks (recent posts, recent comments, about)",
 			"description": "Footer 3 blocks (e.g. recent posts, recent comments, about)",
 			"area": "footer"
 		},
@@ -1074,13 +1074,13 @@
 		},
 		{
 			"name": "footer-default-no-color",
-			"title": "Footer Standard No Background Color",
+			"title": "Lumina Footer Standard No Background Color",
 			"description": "Standard footer w/out background color",
 			"area": "footer"
 		},
 		{
 			"name": "footer-default-light",
-			"title": "Footer Standard Light",
+			"title": "Lumina Footer Standard Light",
 			"description": "Standard footer w/light background color",
 			"area": "footer"
 		},
@@ -1098,37 +1098,37 @@
 		},
 		{
 			"name": "footer-colored-underlines",
-			"title": "Footer Colored w/link underlines",
+			"title": "Lumina Footer Colored w/link underlines",
 			"description": "Colored footer w/link underlines (Primary & Primary Alt color)",
 			"area": "footer"
 		},
 		{
 			"name": "footer-3-blocks-nav-site-info",
-			"title": "Footer 3 Blocks plus Menu and Site Info",
+			"title": "Lumina Footer 3 Blocks plus Menu and Site Info",
 			"description": "Footer w/3 blocks plus nav menu and site info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-3-blocks-nav-site-social",
-			"title": "Footer 3 Blocks plus Menu, Site Info, and Social Icons",
+			"title": "Lumina Footer 3 Blocks plus Menu, Site Info, and Social Icons",
 			"description": "Footer w/3 blocks plus nav menu, site info, and social icons",
 			"area": "footer"
 		},
 		{
 			"name": "footer-3-blocks-nav-social",
-			"title": "Footer 3 Blocks plus Menu and Social Icons",
+			"title": "Lumina Footer 3 Blocks plus Menu and Social Icons",
 			"description": "Footer w/3 blocks plus nav menu and social icons",
 			"area": "footer"
 		},
 		{
 			"name": "footer-about-3-navs",
-			"title": "Footer About and 3 Menus",
+			"title": "Lumina Footer About and 3 Menus",
 			"description": "Footer w/block 3 (About) and 3 nav menus",
 			"area": "footer"
 		},
 		{
 			"name": "footer-about-3-navs-site-info",
-			"title": "Footer About and 3 Menus plus Site Info",
+			"title": "Lumina Footer About and 3 Menus plus Site Info",
 			"description": "Footer w/block 3 (About), 3 nav menus, and site info",
 			"area": "footer"
 		},
@@ -1146,79 +1146,79 @@
 		},
 		{
 			"name": "footer-3-blocks-nav-tagline",
-			"title": "Footer 3 Blocks plus Menu and Tagline",
+			"title": "Lumina Footer 3 Blocks plus Menu and Tagline",
 			"description": "Footer w/3 blocks plus nav menu and site tagline",
 			"area": "footer"
 		},
 		{
 			"name": "footer-compact-site-info",
-			"title": "Footer Compact Site Info",
+			"title": "Lumina Footer Compact Site Info",
 			"description": "Compact footer w/site info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-compact-nav-site-info",
-			"title": "Footer Compact Menu and Site Info",
+			"title": "Lumina Footer Compact Menu and Site Info",
 			"description": "Compact footer w/nav menu and site info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-compact-nav-theme",
-			"title": "Footer Compact Menu and Theme Tagline",
+			"title": "Lumina Footer Compact Menu and Theme Tagline",
 			"description": "Compact footer w/nav menu and theme info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-compact-nav-social",
-			"title": "Footer Compact Menu and Social Icons",
+			"title": "Lumina Footer Compact Menu and Social Icons",
 			"description": "Compact footer w/nav menu and social icons",
 			"area": "footer"
 		},
 		{
 			"name": "footer-compact-nav-site-social",
-			"title": "Footer Compact w/Nav Menu, Site Info, and Social Icons",
+			"title": "Lumina Footer Compact w/Nav Menu, Site Info, and Social Icons",
 			"description": "Compact footer w/nav menu, site info, and social icons",
 			"area": "footer"
 		},
 		{
 			"name": "footer-compact-contact-info-social",
-			"title": "Footer Compact w/Contact Info and Social Icons",
+			"title": "Lumina Footer Compact w/Contact Info and Social Icons",
 			"description": "Compact footer w/site info and social icons",
 			"area": "footer"
 		},
 		{
 			"name": "footer-map-static",
-			"title": "Footer w/Static Map (image) and Contact Info",
+			"title": "Lumina Footer w/Static Map (image) and Contact Info",
 			"description": "Footer w/static map (image) and contact info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-map-jetpack",
-			"title": "Footer w/Jetpack Map and Contact Info",
+			"title": "Lumina Footer w/Jetpack Map and Contact Info",
 			"description": "Footer w/Jetpack map and contact info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-motto-social-icons",
-			"title": "Footer w/Motto and Social Icons",
+			"title": "Lumina Footer w/Motto and Social Icons",
 			"description": "Footer w/motto and huge social icons",
 			"area": "footer"
 		},
 		{
 			"name": "footer-motto-social-site",
-			"title": "Footer w/Motto, Social Icons, and Site Info",
+			"title": "Lumina Footer w/Motto, Social Icons, and Site Info",
 			"description": "Footer w/motto, social icons, and site info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-social-map-static",
-			"title": "Footer w/Colored Social Icons, Static Map, and Contact Info",
+			"title": "Lumina Footer w/Colored Social Icons, Static Map, and Contact Info",
 			"description": "Footer w/colored social icons, static map, and contact info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-social-map-jetpack",
-			"title": "Footer w/Colored Social Icons and Jetpack Map and Contact Info",
+			"title": "Lumina Footer w/Colored Social Icons and Jetpack Map and Contact Info",
 			"description": "Footer w/colored social icons and Jetpack map and contact info",
 			"area": "footer"
 		}

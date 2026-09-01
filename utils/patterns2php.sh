@@ -190,17 +190,17 @@ EOF
             $c;
         }gse;
     
-        # Replace image URLs across src, href, JSON attributes, and CSS url()
-        s{src="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"}{src="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
-        s{href="([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"}{href="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
-        s{"url":"([^"]*\/)?([^\/"]+\.(jpg|jpeg|png|gif|svg|webp))"}{"url":"<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
-        s{url\((&quot;|"|)?([^"()\s]*\/)?([^\/"()\s]+\.(jpg|jpeg|png|gif|svg|webp))\1\)}{url("<?php echo esc_url( get_theme_file_uri( "assets\/images\/$3" ) ); ?>")}g;
+        # Preserve subfolders (e.g. lumina/06.webp) while anchoring on assets/images/
+        s{src="([^"]*?assets\/images\/)?([^"]+\.(jpg|jpeg|png|gif|svg|webp))"}{src="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
+        s{href="([^"]*?assets\/images\/)?([^"]+\.(jpg|jpeg|png|gif|svg|webp))"}{href="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
+        s{"url":"([^"]*?assets\/images\/)?([^"]+\.(jpg|jpeg|png|gif|svg|webp))"}{"url":"<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
+        s{url\((&quot;|"|)?([^"()\s]*?assets\/images\/)?([^"()\s]+\.(jpg|jpeg|png|gif|svg|webp))\1\)}{url("<?php echo esc_url( get_theme_file_uri( "assets\/images\/$3" ) ); ?>")}g;
 
-        # 1. Stash HTML comments using a strictly numeric placeholder (___INDEX___) to avoid letter matching
+        # 1. Stash HTML comments using a strictly numeric placeholder (___INDEX___)
         my @comments;
         s{<!--.*?-->}{ push(@comments, $&); "___" . $#comments . "___" }gse;
 
-        # 2. Translate inner tag text containing letters (skips tags, attributes, and stashed numeric placeholders)
+        # 2. Translate inner tag text containing letters
         s{>\s*([^<>\n]*?[a-zA-Z][^<>\n]*?)\s*<}{
             my $txt = $1;
             if ($txt !~ /^<\?php/) {

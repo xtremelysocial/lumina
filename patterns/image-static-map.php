@@ -8,5 +8,5 @@
  */
 ?>
 <!-- wp:image {"lightbox":{"enabled":true},"align":"center","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image aligncenter size-large"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/samples/maps/01.webp" ) ); ?>" alt="screenshot"/></figure>
+<figure class="wp-block-image aligncenter size-large"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/maps/01.webp" ) ); ?>" alt="screenshot"/></figure>
 <!-- /wp:image -->
