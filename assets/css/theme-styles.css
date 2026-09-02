@@ -114,6 +114,23 @@ img.size-cropped-slim,
 }
 
 /* ==========================================================================
+   LUMINA ENGINE: Decoupled Image Hover Opacity
+   ========================================================================== */
+/* Overrides flat-blocks default opacity to prevent linked images 
+   from dimming mid-flight during kinetic scale/zoom transforms */
+.wp-block-image a:hover, .wp-block-image a:active,
+figure > a:hover,
+figure > a:active,
+.wp-block-post-featured-image a:hover,
+.wp-block-post-featured-image a:active,
+.wp-block-latest-posts__featured-image a:hover,
+.wp-block-latest-posts__featured-image a:active,
+.wp-block-media-text__media a:hover,
+.wp-block-media-text__media a:active {
+  opacity: var(--wp--custom--color--image--hover-opacity, 1);
+}
+
+/* ==========================================================================
    FEATURED HERO PAN & ZOOM (CINEMATIC CAMERA SLIDER ENGINE)
    ========================================================================== */
 /* ==========================================================================

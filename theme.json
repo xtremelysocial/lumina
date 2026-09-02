@@ -28,7 +28,10 @@
 					"background": 	"var(--wp--preset--color--primary)",
 					"text": 		"var(--wp--preset--color--foreground-alt)",
 					"hover": 		"var(--wp--preset--color--primary-alt)",
-					"hoverOpacity": "0.8" 
+					"hoverOpacity": "1" 
+				},
+				"image": {
+					"hoverOpacity": "1" 
 				},
 				"link": {
 					"hoverOpacity": "0.6" 

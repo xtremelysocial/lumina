@@ -370,7 +370,8 @@
 	box-shadow: config.$shadow-hover;
 
 	// Since we are growing, ensure opacity is full
-	opacity: 1; 
+// 	opacity: 1; 
+	opacity: var(--wp--custom--color--button--link-hover, 1);
 	
 	// Debug mode
 	@include lumina-debug('button');

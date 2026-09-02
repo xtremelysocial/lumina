@@ -1,0 +1,16 @@
+/* ==========================================================================
+   LUMINA ENGINE: Decoupled Image Hover Opacity
+   ========================================================================== */
+
+/* Overrides flat-blocks default opacity to prevent linked images 
+   from dimming mid-flight during kinetic scale/zoom transforms */
+.wp-block-image a,
+figure > a,
+.wp-block-post-featured-image a,
+.wp-block-latest-posts__featured-image a,
+.wp-block-media-text__media a {
+    &:hover,
+    &:active {
+        opacity: var(--wp--custom--color--image--hover-opacity, 1);
+    }
+}

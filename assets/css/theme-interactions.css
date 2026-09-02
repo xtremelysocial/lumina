@@ -134,56 +134,56 @@
 [class*=wp-block-] .wp-element-button:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--button--hover-transform, var(--wp--custom--animation--default--hover-transform, scale(1.05)));
   box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
-  opacity: 1;
+  opacity: var(--wp--custom--color--button--link-hover, 1);
 }
 
 [class*=wp-block-] a > .avatar:hover,
 [class*=wp-block-] a > .avatar:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--button--hover-transform, var(--wp--custom--animation--default--hover-transform, scale(1.05)));
   box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
-  opacity: 1;
+  opacity: var(--wp--custom--color--button--link-hover, 1);
 }
 
 .wp-block-social-links .wp-block-social-link:hover,
 .wp-block-social-links .wp-block-social-link:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--button--hover-transform, var(--wp--custom--animation--default--hover-transform, scale(1.05)));
   box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
-  opacity: 1;
+  opacity: var(--wp--custom--color--button--link-hover, 1);
 }
 
 .wp-block-tag-cloud:is(.is-style-outline) a:hover,
 .wp-block-tag-cloud:is(.is-style-outline) a:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--button--hover-transform, var(--wp--custom--animation--default--hover-transform, scale(1.05)));
   box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
-  opacity: 1;
+  opacity: var(--wp--custom--color--button--link-hover, 1);
 }
 
 [class*=wp-block-] input[type=submit]:not(.wp-element-button):hover,
 [class*=wp-block-] input[type=submit]:not(.wp-element-button):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--button--hover-transform, var(--wp--custom--animation--default--hover-transform, scale(1.05)));
   box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
-  opacity: 1;
+  opacity: var(--wp--custom--color--button--link-hover, 1);
 }
 
 [class*=wp-block-] input[type=button]:not(.wp-element-button):hover,
 [class*=wp-block-] input[type=button]:not(.wp-element-button):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--button--hover-transform, var(--wp--custom--animation--default--hover-transform, scale(1.05)));
   box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
-  opacity: 1;
+  opacity: var(--wp--custom--color--button--link-hover, 1);
 }
 
 [class*=wp-block-] input[type=reset]:not(.wp-element-button):hover,
 [class*=wp-block-] input[type=reset]:not(.wp-element-button):has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--button--hover-transform, var(--wp--custom--animation--default--hover-transform, scale(1.05)));
   box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
-  opacity: 1;
+  opacity: var(--wp--custom--color--button--link-hover, 1);
 }
 
 [class*=wp-block-] input[type=file]::file-selector-button:hover,
 [class*=wp-block-] input[type=file]::file-selector-button:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--button--hover-transform, var(--wp--custom--animation--default--hover-transform, scale(1.05)));
   box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
-  opacity: 1;
+  opacity: var(--wp--custom--color--button--link-hover, 1);
 }
 
 /* ==========================================================================

@@ -4,7 +4,8 @@
 
 // Bring details closer to the summary so they look connected
 .wp-block-details > summary + * {
-	margin-top: calc(0.5 * var(--wp--style--block-gap));
+// 	margin-top: calc(0.5 * var(--wp--style--block-gap));
+	margin-top: var(--wp--preset--spacing--30);
 }
 
 // 1. Force flex layout to instantly break 'list-item' status & kill native arrow
@@ -32,12 +33,12 @@
 	font-size: 1em; // Hardcoded size so it stays clean even with large text
 	font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 	font-family: monospace, sans-serif; // Keeps plus/minus structurally aligned
-	opacity: 0.6;
+	opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
 	transition: transform 0.2s ease;
 }
 
 // 4. Swap to a clean Unicode minus sign when the accordion is open
 .wp-block-details[open] > summary::after {
 	content: "−"; // Unicode minus sign looks much cleaner than a hyphen
-	opacity: 0.9;
+	opacity: 1; //0.9;
 }

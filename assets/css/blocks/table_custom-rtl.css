@@ -50,7 +50,7 @@
 .wp-block-table.is-style-table-alternate th a:focus,
 .wp-block-table.is-style-table-alternate tfoot td a:hover,
 .wp-block-table.is-style-table-alternate tfoot td a:focus {
-  opacity: 0.8;
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
 }
 
 /*--------------------------------------------------------------

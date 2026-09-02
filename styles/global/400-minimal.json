@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Lumina Minimal",
+	"description": "A refined, reduced motion mood. Interactive objects don't grow or shift, but react to interaction by drawing closer to the user",
+	"settings": {
+		"custom": {
+			"animation": {
+				"default": {
+					"hoverTransform": "none"
+				},
+				"button": {
+					"hoverTransform": "none"
+				},
+				"card": {
+					"hoverTransform": "none"
+				},
+				"image": {
+					"hoverTransform": "none"
+				},
+				"mediaText": {
+					"hoverTransform": "none"
+				}
+			},
+			"color": {
+				"button": {
+					"hoverOpacity": "0.85"
+				},
+				"image": {
+					"hoverOpacity": "0.85"
+				}
+			}
+		}
+	}
+}

@@ -6,7 +6,7 @@
 # LUMINA Details / Accordion Styling
 -----------------------------------------------------------------------------*/
 .wp-block-details > summary + * {
-  margin-top: calc(0.5 * var(--wp--style--block-gap));
+  margin-top: var(--wp--preset--spacing--30);
 }
 
 .wp-block-details > summary {
@@ -31,11 +31,11 @@
   font-size: 1em;
   font-weight: var(--wp--custom--typography--font-weight--medium, 400);
   font-family: monospace, sans-serif;
-  opacity: 0.6;
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
   transition: transform 0.2s ease;
 }
 
 .wp-block-details[open] > summary::after {
   content: "−";
-  opacity: 0.9;
+  opacity: 1;
 }
