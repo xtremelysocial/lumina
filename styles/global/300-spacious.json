@@ -40,6 +40,11 @@
 				"mediaText": {
 					"transform": "scale(1.00)",
 					"hoverTransform": "scale(1.15)"
+				},
+				"motion": {
+					"panIntensity":  1.25,
+					"zoomIntensity": 1.30,
+					"durationFactor": 1.10
 				}
 			}
 		}

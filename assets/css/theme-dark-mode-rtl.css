@@ -106,56 +106,6 @@ h1, h2, h3, h4, h5, h6) {
   color: var(--wp--preset--color--almost-black);
 }
 
-:where(:root) :where(.is-dark-theme) .has-primary-subtle-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) :where(.is-dark-theme) .has-secondary-subtle-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) :where(.is-dark-theme) .has-tertiary-subtle-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) :where(.is-dark-theme) .has-primary-subtle-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) :where(.is-dark-theme) .has-secondary-subtle-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) :where(.is-dark-theme) .has-tertiary-subtle-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) :where(.is-dark-theme) .has-neutral-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) :where(.is-dark-theme) .has-neutral-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) :where(.is-dark-theme) .has-light-gray-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6) {
-  /* Set heading to custom color heading text */
-  color: var(--wp--custom--color--heading--text, var(--wp--preset--color--secondary-alt));
-}
-
 :where(:root) :where(.is-dark-theme) .has-white-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
@@ -168,12 +118,12 @@ h1, h2, h3, h4, h5, h6), :where(:root) :where(.is-dark-theme) .has-off-white-bac
 .wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6) {
   /* Darken headings on light backgrounds */
-  filter: brightness(0.52) saturate(1.6);
+  filter: var(--wp--custom--color--highlight--darken, brightness(0.41) saturate(1.15));
 }
 
 :where(:root) :where(.is-dark-theme) .has-contrast-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(.is-dark-theme) .has-white-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(.is-dark-theme) .has-off-white-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(.is-dark-theme) .has-very-dark-gray-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(.is-dark-theme) .has-very-light-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(.is-dark-theme) .has-very-light-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(.is-dark-theme) .has-very-light-orange-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(.is-dark-theme) .has-very-light-blue-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(.is-dark-theme) .has-very-light-purple-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(.is-dark-theme) .has-very-light-red-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {
   /* Darken link color on light backgrounds */
-  filter: brightness(0.52) saturate(1.6);
+  filter: var(--wp--custom--color--highlight--darken, brightness(0.41) saturate(1.15));
 }
 
 :where(:root) :where(.is-dark-theme) .has-secondary-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,

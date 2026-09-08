@@ -9,6 +9,11 @@
   margin-top: var(--wp--preset--spacing--30);
 }
 
+.wp-block-details:not(.is-style-plain) > summary {
+  border-bottom: 1px solid var(--wp--custom--color--border);
+  padding-bottom: var(--wp--preset--spacing--20, 6px);
+}
+
 .wp-block-details > summary {
   display: flex;
   justify-content: space-between;
@@ -28,11 +33,12 @@
 
 .wp-block-details > summary::after {
   content: "+";
-  font-size: 1em;
+  font-size: 1.3em;
+  line-height: 1;
   font-weight: var(--wp--custom--typography--font-weight--medium, 400);
   font-family: monospace, sans-serif;
-  opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
-  transition: transform 0.2s ease;
+  opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+  transition: transform var(--wp--custom--animation--duration--short, 250ms) ease;
 }
 
 .wp-block-details[open] > summary::after {

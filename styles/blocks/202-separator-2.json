@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "separator-2",
+	"title": "Separator Accent 2",
+	"blockTypes": [
+		"core/heading",
+		"core/paragraph",
+		"core/query-title",
+		"core/post-title",
+		"core/site-title",
+		"core/post-excerpt"
+	],
+	"styles": {
+		"css": ""
+	}
+}

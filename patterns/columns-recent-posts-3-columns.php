@@ -24,7 +24,7 @@
 
 <!-- wp:query {"queryId":19,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"taxQuery":null,"parents":[],"format":[],"excludeCurrent":null},"align":"wide","className":"is-style-gutter-dividers"} -->
 <div class="wp-block-query alignwide is-style-gutter-dividers"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"220px"}} -->
-<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/4.5","sizeSlug":"cropped-large","className":"is-style-default"} /-->
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"21/9","sizeSlug":"cropped-large","className":"is-style-default"} /-->
 
 <!-- wp:post-title {"level":4,"isLink":true} /-->
 

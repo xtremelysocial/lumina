@@ -20,6 +20,11 @@
 				},
 				"mediaText": {
 					"hoverTransform": "none"
+				},
+				"motion": {
+					"panIntensity":  0.0,
+					"zoomIntensity": 0.0,
+					"durationFactor": 1.0
 				}
 			},
 			"color": {

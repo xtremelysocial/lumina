@@ -29,7 +29,21 @@
 }
 
 // ==========================================================================
-// 01.02 %EXTENDS FOR SELECTOR GROUPING: Combine selectors for reducing CSS
+// 01.02 BUILD GRADIENT SELECTOR LIST: Build compiled comma-separated CSS 
+//		 gradient background selector string, both legacy and WP v7.0.
+// ==========================================================================
+@function build-gradient-selector-list(
+	$gradients
+) {
+	$selectors: "";
+	@each $gradient in $gradients {
+		$selectors: $selectors + '[style*="--wp--preset--gradient--#{$gradient})"],.has-#{$gradient}-gradient-background,';
+	}
+	@return string.slice($selectors, 1, string.length($selectors) - 1);
+}
+
+// ==========================================================================
+// 01.03 %EXTENDS FOR SELECTOR GROUPING: Combine selectors for reducing CSS
 //		 file size
 // ==========================================================================
 
@@ -57,7 +71,6 @@
 	/* Lighten headings on dark backgrounds */
     filter: config.$filter-link-lighten;
 // 	color: var(--wp--preset--color--highlight);
-// 	text-decoration-line: none; // override parent
 }
 
 %engine-heading-darken {
@@ -75,14 +88,12 @@
 	/* Lighten link color on dark backgrounds */
     filter: config.$filter-link-lighten;
 // 	color: var(--wp--preset--color--highlight);
-// 	text-decoration-line: none; // override parent
 }
 
 %engine-link-darken {
 	/* Darken link color on light backgrounds */
     filter: config.$filter-link-darken;
 // 	color: var(--wp--preset--color--highlight-alt);
-// 	text-decoration-line: none; // override parent
 }
 
 %engine-link-dark-text {
@@ -100,7 +111,6 @@
     color: var(--wp--preset--color--highlight);
 // 	filter: brightness(2.05) saturate(0.87);
 // 	filter: none; // Needed only for overriding parent
-// 	text-decoration-line: none; // override parent
 }
 
 %engine-link-highlight-alt {
@@ -108,8 +118,21 @@
     color: var(--wp--preset--color--highlight-alt);
 // 	filter: brightness(0.41) saturate(1.15);
 // 	filter: none; // Needed only for overriding parent
-// 	text-decoration-line: none; // override parent
 }
+
+// %engine-link-custom-highlight {
+// 	/* Set link color to highlight for dark backgrounds */
+//     color: var(--wp--custom--color--highlight);
+// // 	filter: brightness(2.05) saturate(0.87);
+// // 	filter: none; // Needed only for overriding parent
+// }
+// 
+// %engine-link-custom-highlight-alt {
+// 	/* Set link color to highlight-alt for light backgrounds */
+//     color: var(--wp--custom--color--highlight-alt);
+// // 	filter: brightness(0.41) saturate(1.15);
+// // 	filter: none; // Needed only for overriding parent
+// }
 
 %engine-link-underline {
 	/* Underline links */
@@ -128,7 +151,7 @@
 }
 
 // ==========================================================================
-// 01.03 CONTRAST (TEXT) COLOR: Set light or dark text color
+// 01.04 CONTRAST (TEXT) COLOR: Set light or dark text color
 // ==========================================================================
 @mixin apply-contrast-color(
 	$color, 			// color slug (e.g. primary-alt)
@@ -176,7 +199,7 @@
 }
 
 // ==========================================================================
-// 01.03 HEADING COLOR: Set light, dark, or inherit heading color
+// 01.05 HEADING COLOR: Set light, dark, or inherit heading color
 // ==========================================================================
 @mixin apply-heading-action(
 	$color, 
@@ -221,30 +244,17 @@
 			} @else if $heading == 'lighten' {
 				@extend %engine-heading-lighten;
 			}
-// 			@if $heading == 'light' or $heading == 'inherit' {
-// 				@extend %engine-heading-inherit;
-// 
-// 			// Apply dark heading color if specified in color registry entry
-// 			} @else if $heading == true or $heading == 'accent' {
-// 				@extend %engine-heading-accent;
-// 		
-// 			} @else if $heading == 'darken' {
-// 				@extend %engine-heading-darken;
-// 
-// 			// Light backgrounds, set dark heading color
-// 			} @else if $heading == 'dark' {
-// 				@extend %engine-heading-dark-text;
-// 			}
 		}
 	}
 }
 
 // ==========================================================================
-// 01.04 LINK COLOR: Set light, dark, or inherit link color
+// 01.06 LINK COLOR: Set light, dark, or inherit link color
 // ==========================================================================
 @mixin apply-link-action(
-	$color,                 // Pass color slug or slug list
-	$link,                  // 'inherit', 'dark', 'light', 'lighten', 'darken', 'highlight', 'highlight-alt'
+	$color,			// Pass color slug or slug list
+	$link,          // 'inherit', 'dark', 'light', 'darken', 'lighten', 
+					// 'highlight', or 'highlight-alt'
 	$remove-underline: null, // Set to remove underline
 	$root: null,            // Set to true for standalone front-end scoping
 	$editor-styles: false   // Set to true to compile editor hover rules
@@ -252,6 +262,7 @@
 
 // 	$excluded-links: ".wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content";
 	$excluded-links: ".wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg)";
+
 	$clean-selectors: build-selector-list($color);
 
 	// Clean root prefix without trailing spaces
@@ -312,12 +323,14 @@
 		#{$target-selector} {
 			@if $link == 'highlight' { 
 				@extend %engine-link-highlight;
+// 				@extend %engine-link-lighten;
 
 			} @else if $link == 'lighten' { 
 				@extend %engine-link-lighten;
 
 			} @else if $link == 'highlight-alt'{
 				@extend %engine-link-highlight-alt;
+// 				@extend %engine-link-darken;
 
 			} @else if $link == 'darken'{
 				@extend %engine-link-darken;
@@ -340,7 +353,7 @@
 }
 
 // ==========================================================================
-// 01.05 FOOTER HOVER COLOR: Set hover-highlight or hover-highlight-alt
+// 01.07 FOOTER HOVER COLOR: Set hover-highlight or hover-highlight-alt
 // ==========================================================================
 @mixin apply-footer-action($selectors, $footer) {
 

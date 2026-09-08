@@ -1,18 +1,21 @@
 /*--------------------------------------------------------------
-# LUMINA Heading Block Styles
+# LUMINA Heading & Text Block Styles (Global Space)
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
 ## Custom: Heading w/Separator (Native Block & Flex Edition)
 --------------------------------------------------------------*/
 
+$sep-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
+$sep-color-2: var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary));
+$sep-color-3: var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral));
+
 $separators: (
-    '.is-style-separator',
-//     '.is-style-separator-primary',
-//     '.is-style-separator-secondary',
+    '.is-style-separator': $sep-color,
+    '.is-style-separator-2': $sep-color-2,
+    '.is-style-separator-3': $sep-color-3,
 );
 
-$sep-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
 $sep-height: 3px;
 $sep-width: calc(6 * var(--wp--style--block-gap));
 
@@ -20,7 +23,7 @@ $sep-top: var(--wp--preset--spacing--20);      // Space between heading text bas
 $sep-top-flex: var(--wp--preset--spacing--30); // Space between flex group bounding box and line
 $sep-bottom: var(--wp--preset--spacing--30);   // Space between line and next block
 
-@each $separator in $separators {
+@each $separator, $color in $separators {
     #{$separator} {
         
         // 1. Native Block Flow Line (Inside the heading's box footprint)
@@ -31,7 +34,7 @@ $sep-bottom: var(--wp--preset--spacing--30);   // Space between line and next bl
             height: #{$sep-height};
             margin-top: #{$sep-top};
             margin-bottom: #{$sep-bottom};
-            background-color: #{$sep-color};
+            background-color: #{$color};
         }
 
         // 2. Alignment handling via standard block margins
@@ -56,7 +59,7 @@ $sep-bottom: var(--wp--preset--spacing--30);   // Space between line and next bl
                 margin-top: 0 !important;
                 margin-bottom: 0 !important;
                 background-color: transparent !important;
-                background-image: linear-gradient(#{$sep-color}, #{$sep-color});
+                background-image: linear-gradient(#{$color}, #{$color});
                 background-repeat: no-repeat;
                 background-size: #{$sep-width} #{$sep-height};
                 background-position: left center;
@@ -74,7 +77,7 @@ $sep-bottom: var(--wp--preset--spacing--30);   // Space between line and next bl
         // 4. Color override for dark/colored backgrounds
         @at-root .has-background #{&}::after,
         &.has-background::after {
-            $dark-sep: color-mix(in srgb, $sep-color 85%, currentColor);
+            $dark-sep: color-mix(in srgb, #{$color} 85%, currentColor);
             background-color: $dark-sep;
             background-image: linear-gradient($dark-sep, $dark-sep);
         }

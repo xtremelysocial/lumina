@@ -3,7 +3,7 @@
  * Title: Columns Intro + 3x2 w/Dividers
  * Description: Columns Intro + 3x2 w/Dividers
  * Slug: lumina/columns-intro-3x2-dividers
- * Categories: lumina, column
+ * Categories: lumina, column, featured
  * Block Types: core/columns
  */
 ?>
@@ -26,8 +26,8 @@
 <p class="has-text-align-center has-primary-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">12</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}},"textColor":"contrast"} -->
-<p class="has-text-align-center has-contrast-color has-text-color" style="line-height:1.4"><?php esc_html_e("Color Schemes", "lumina"); ?></p>
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
+<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Color Schemes", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -36,8 +36,8 @@
 <p class="has-text-align-center has-primary-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">12+</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}},"textColor":"contrast"} -->
-<p class="has-text-align-center has-contrast-color has-text-color" style="line-height:1.4"><?php esc_html_e("Header Layouts", "lumina"); ?></p>
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
+<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Header Layouts", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -46,8 +46,8 @@
 <p class="has-text-align-center has-primary-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">24+</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}},"textColor":"contrast"} -->
-<p class="has-text-align-center has-contrast-color has-text-color" style="line-height:1.4"><?php esc_html_e("Footer Layouts", "lumina"); ?></p>
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
+<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Footer Layouts", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
@@ -58,8 +58,8 @@
 <p class="has-text-align-center has-primary-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">12</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}},"textColor":"contrast"} -->
-<p class="has-text-align-center has-contrast-color has-text-color" style="line-height:1.4"><?php esc_html_e("Fonts", "lumina"); ?></p>
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
+<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Fonts", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -68,8 +68,8 @@
 <p class="has-text-align-center has-primary-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">60+</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}},"textColor":"contrast"} -->
-<p class="has-text-align-center has-contrast-color has-text-color" style="line-height:1.4"><?php esc_html_e("Custom Block Styles", "lumina"); ?></p>
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
+<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Custom Block Styles", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -78,8 +78,8 @@
 <p class="has-text-align-center has-primary-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">64+</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}},"textColor":"contrast"} -->
-<p class="has-text-align-center has-contrast-color has-text-color" style="line-height:1.4"><?php esc_html_e("Block Patterns", "lumina"); ?></p>
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
+<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Block Patterns", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>

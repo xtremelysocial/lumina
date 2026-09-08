@@ -21,6 +21,11 @@
 				},
 				"timingFunction": "cubic-bezier(0.2, 0, 0, 1)",
 				"fillMode": 		"both",
+				"motion": {
+					"panIntensity":  0.85,
+					"zoomIntensity": 0.85,
+					"durationFactor": 1.25
+				},
 				"default": {
 					"transform": 		"none",
 					"hoverTransform": 	"scale(1.02)"

@@ -3,7 +3,7 @@
  * Title: Columns Sub Tables 4
  * Description: Columns Sub Tables 4
  * Slug: lumina/columns-sub-tables-4
- * Categories: lumina, column
+ * Categories: lumina, column, featured
  * Block Types: core/columns
  */
 ?>
@@ -83,7 +83,7 @@
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"}} -->
 <div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"almost-black","className":"is-style-button-alt"} -->
-<div class="wp-block-button is-style-button-alt"><a class="wp-block-button__link has-almost-black-background-color has-background wp-element-button" href="#content-start"><?php esc_html_e("$29 / month", "lumina"); ?></a></div>
+<div class="wp-block-button is-style-button-alt"><a class="wp-block-button__link has-almost-black-background-color has-background wp-element-button" href="#content-start"><?php esc_html_e("$200 / year", "lumina"); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>

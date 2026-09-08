@@ -23,13 +23,11 @@
 					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--highlight-secondary-alt)",
+					"text": "var(--wp--preset--color--contrast)",
 					"separator": "var(--wp--preset--color--primary)"
 				},
 				"button": {
-					"background": "var(--wp--preset--color--primary)",
-					"hover": "var(--wp--preset--color--primary-alt)",
-					"hoverOpacity": "0.80"
+					"background": "var(--wp--preset--color--primary)"
 				},
 				"highlight": "var(--wp--preset--color--highlight)",
 				"shadow": {
@@ -43,39 +41,40 @@
 		},
 		"color": {
 			"palette": [
-				{ "slug": "primary", "color": "hsl(195, 32%, 38%)", "name": "Primary (Glacial Deep Cyan)" },
-				{ "slug": "secondary", "color": "hsl(215, 29%, 15%)", "name": "Secondary (Abyssal Navy Panel)" },
-				{ "slug": "tertiary", "color": "hsl(175, 28%, 12%)", "name": "Tertiary (Submerged Maritime Trench)" },
-
-				{ "slug": "primary-alt", "color": "hsl(195, 35%, 48%)", "name": "Primary Alt (Glacial Hover)" },			
-				{ "slug": "secondary-alt", "color": "hsl(215, 28%, 20%)", "name": "Secondary Alt (Hero & CTA Canvas)" },
-				{ "slug": "tertiary-alt", "color": "hsl(175, 29%, 16%)", "name": "Tertiary Alt (Deep Maritime Recess)" },		
-
-				{ "slug": "primary-subtle", "color": "hsl(195, 26%, 16%)", "name": "Primary Subtle (Deep Cyan Fill)" },
-				{ "slug": "secondary-subtle", "color": "hsl(215, 24%, 13%)", "name": "Secondary Subtle (Abyssal Navy Fill)" },
-				{ "slug": "tertiary-subtle", "color": "hsl(175, 33%, 6%)", "name": "Tertiary Subtle (Maritime Trench Fill)" },
-
-				{ "slug": "primary-subtle-alt", "color": "hsl(195, 22%, 24%)", "name": "Primary Subtle Alt (Light Cyan Fill)" },
-				{ "slug": "secondary-subtle-alt", "color": "hsl(215, 20%, 18%)", "name": "Secondary Subtle Alt (Navy Marine Layer)" },
-				{ "slug": "tertiary-subtle-alt", "color": "hsl(175, 33%, 9%)", "name": "Tertiary Subtle Alt (Trench Panel)" },	
-
-				{ "slug": "highlight", "color": "hsl(195, 82%, 80%)", "name": "Highlight (Glacial Ice)" },
-				{ "slug": "highlight-secondary", "color": "hsl(172, 56%, 83%)", "name": "Highlight Secondary (Bioluminescent Seafoam)" },
-				{ "slug": "highlight-tertiary", "color": "hsl(38, 85%, 75%)", "name": "Highlight Tertiary (Bioluminescent Amber)" },
-
-				{ "slug": "highlight-alt", "color": "hsl(195, 75%, 53%)", "name": "Highlight Alt (Luminous Sky Blue)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(195, 25%, 82%)", "name": "Highlight Secondary Alt (Glacial Steel Heading)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(38, 75%, 50%)", "name": "Highlight Tertiary Alt (Deep Amber)" },
-
-				{ "slug": "primary-dark", "color": "hsl(195, 32%, 8%)", "name": "Primary Dark (Deep Glacial Trench 8%)" },
-				{ "slug": "dark", "color": "hsl(215, 35%, 6%)", "name": "Dark (Abyssal Navy Floor 6%)" },
-				{ "slug": "tertiary-dark", "color": "hsl(175, 30%, 8%)", "name": "Dark Tertiary (Deep Maritime Floor 8%)" },
-
-				{ "slug": "primary-dark-alt", "color": "hsl(195, 35%, 4%)", "name": "Primary Dark Alt (Abyssal Glacial Void 4%)" },				
-				{ "slug": "dark-alt", "color": "hsl(215, 35%, 3%)", "name": "Dark Alt (Abyssal Navy Void 3%)" },							
-				{ "slug": "tertiary-dark-alt", "color": "hsl(175, 30%, 4%)", "name": "Dark Tertiary Alt (Deep Maritime Void 4%)" },
+				{ "slug": "primary", "color": "hsl(195, 32%, 38%)", "name": "Primary (Glacial Deep Cyan 38%)" },
+				{ "slug": "secondary", "color": "hsl(205, 30%, 28%)", "name": "Secondary (Glacial Slate Panel 28%)" },
+				{ "slug": "tertiary", "color": "hsl(215, 29%, 18%)", "name": "Tertiary (Abyssal Navy Trench 18%)" },
 
 				{ "slug": "base", "color": "hsl(215, 29%, 10%)", "name": "Base (Dark Deep Sea Canvas)" },
+
+				{ "slug": "primary-alt", "color": "hsl(195, 35%, 28%)", "name": "Primary Alt (Deep Glacial Cyan 28%)" },			
+				{ "slug": "secondary-alt", "color": "hsl(205, 32%, 18%)", "name": "Secondary Alt (Hero & CTA Canvas 18%)" },
+				{ "slug": "tertiary-alt", "color": "hsl(215, 28%, 12%)", "name": "Tertiary Alt (Deep Abyssal Recess 12%)" },		
+
+				{ "slug": "primary-subtle", "color": "hsl(195, 26%, 18%)", "name": "Primary Subtle (Deep Cyan Fill 18%)" },
+				{ "slug": "secondary-subtle", "color": "hsl(205, 24%, 16%)", "name": "Secondary Subtle (Glacial Slate Fill 16%)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(215, 24%, 13%)", "name": "Tertiary Subtle (Abyssal Navy Fill 13%)" },
+
+				{ "slug": "primary-subtle-alt", "color": "hsl(195, 22%, 14%)", "name": "Primary Subtle Alt (Deep Cyan Seam 14%)" },
+				{ "slug": "secondary-subtle-alt", "color": "hsl(205, 22%, 12%)", "name": "Secondary Subtle Alt (Glacial Slate Seam 12%)" },
+				{ "slug": "tertiary-subtle-alt", "color": "hsl(215, 20%, 9%)", "name": "Tertiary Subtle Alt (Navy Marine Seam 9%)" },	
+
+				{ "slug": "highlight", "color": "hsl(195, 82%, 80%)", "name": "Highlight (Glacial Ice Link)" },
+				{ "slug": "highlight-secondary", "color": "hsl(172, 56%, 83%)", "name": "Highlight Secondary (Bioluminescent Seafoam Link)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(38, 85%, 75%)", "name": "Highlight Tertiary (Bioluminescent Amber Link)" },
+
+				{ "slug": "highlight-alt", "color": "hsl(195, 75%, 50%)", "name": "Highlight Alt (Glacial Cyan Button/Heading Ink)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(172, 55%, 46%)", "name": "Highlight Secondary Alt (Deep Seafoam Button/Heading Ink)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(38, 75%, 50%)", "name": "Highlight Tertiary Alt (Deep Amber Button/Heading Ink)" },
+
+				{ "slug": "primary-dark", "color": "hsl(195, 32%, 22%)", "name": "Primary Dark (Cyan Section Band 22%)" },
+				{ "slug": "dark", "color": "hsl(205, 30%, 18%)", "name": "Dark (Slate Section Band 18%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(215, 35%, 14%)", "name": "Dark Tertiary (Navy Section Band 14%)" },
+
+				{ "slug": "primary-dark-alt", "color": "hsl(195, 35%, 16%)", "name": "Primary Dark Alt (Deep Cyan Band 16%)" },				
+				{ "slug": "dark-alt", "color": "hsl(205, 35%, 13%)", "name": "Dark Alt (Deep Slate Band 13%)" },							
+				{ "slug": "tertiary-dark-alt", "color": "hsl(215, 35%, 10%)", "name": "Dark Tertiary Alt (Deep Navy Band 10%)" },
+
 				{ "slug": "contrast", "color": "hsl(43, 27%, 97%)", "name": "Contrast (Off White Typography)" },
 				{ "slug": "foreground-alt", "color": "hsl(43, 27%, 97%)", "name": "Foreground Alt (Off White)" },
 
@@ -129,11 +128,11 @@
 			],
 			"duotone": [
 				{ "colors": ["hsl(195, 32%, 38%)", "hsl(43, 27%, 97%)"], "slug": "primary", "name": "Primary (Glacial Cyan)" },
-				{ "colors": ["hsl(195, 35%, 48%)", "hsl(43, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt" },
-				{ "colors": ["hsl(215, 29%, 15%)", "hsl(43, 27%, 97%)"], "slug": "secondary", "name": "Secondary (Abyssal Navy)" },
-				{ "colors": ["hsl(215, 28%, 20%)", "hsl(43, 27%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt" },
-				{ "colors": ["hsl(175, 28%, 12%)", "hsl(43, 27%, 97%)"], "slug": "tertiary", "name": "Tertiary (Maritime Trench)" },
-				{ "colors": ["hsl(175, 29%, 16%)", "hsl(43, 27%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt" },
+				{ "colors": ["hsl(195, 35%, 28%)", "hsl(43, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Deep Glacial)" },
+				{ "colors": ["hsl(205, 30%, 28%)", "hsl(43, 27%, 97%)"], "slug": "secondary", "name": "Secondary (Glacial Slate)" },
+				{ "colors": ["hsl(205, 32%, 18%)", "hsl(43, 27%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Hero Canvas)" },
+				{ "colors": ["hsl(215, 29%, 18%)", "hsl(43, 27%, 97%)"], "slug": "tertiary", "name": "Tertiary (Abyssal Navy)" },
+				{ "colors": ["hsl(215, 28%, 12%)", "hsl(43, 27%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Deep Abyssal)" },
 				{ "colors": ["hsl(327, 5%, 40%)", "hsl(33, 30%, 51%)"], "slug": "purple-yellow", "name": "Purple and Yellow" },
 				{ "colors": ["hsl(215, 29%, 15%)", "hsl(0, 18%, 36%)"], "slug": "blue-red", "name": "Blue and Red" },
 				{ "colors": ["hsl(215, 30%, 7%)", "hsl(195, 32%, 38%)"], "slug": "midnight", "name": "Midnight" },

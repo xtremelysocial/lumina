@@ -54,15 +54,11 @@ $color-registry: (
     		heading: 'inherit',		footer-dark: 'hover-highlight'  
     ),
     
-//     ( color: 'secondary-alt',    	text: 'light',  	link-light: 'inherit',
-//     		footer-dark: 'hover-highlight'  
+//     ( color: 'secondary-alt',    	text: 'light',  	link-light: 'highlight',
+//     		heading: 'inherit',		footer-dark: 'hover-highlight'  
 //     ), 
-
-//     ( color: 'secondary',        	text: 'light',  	link: 'inherit',
-//     		link-dark: 'highlight', footer-dark: 'hover-highlight'  
-//     ),
-    ( color: 'secondary-alt',    	text: 'light',  	link-light: 'highlight',
-    		heading: 'inherit',		footer-dark: 'hover-highlight'  
+    ( color: 'secondary-alt',    	text: 'light',  	link-light: 'inherit',
+    		footer-dark: 'hover-highlight'  
     ), 
 
     ( color: 'tertiary',         	text: 'light',  	link-light: 'inherit',
@@ -72,28 +68,20 @@ $color-registry: (
     		heading: 'inherit',		footer-dark: 'hover-highlight'  
     ),
 
-// 
-//     ( color: 'tertiary',         	text: 'light',  	link: 'inherit',
-//     		link-dark: 'highlight', footer-dark: 'hover-highlight'  
-//     ),
-//     ( color: 'tertiary-alt',     	text: 'light',  	link: 'inherit',
-//     		link-dark: 'highlight', footer-dark: 'hover-highlight'  
-//     ),
-
     // --- SUBTLE SEMANTIC COLORS (LUMINA ONLY) ---
     // Fluid: Light backgrounds in light mode, invert to dark in dark mode
-    ( color: 'primary-subtle',		text: 'dark-light', heading-dark: 'accent' ),							
-    ( color: 'secondary-subtle',    text: 'dark-light', heading-dark: 'accent' ),						
-    ( color: 'tertiary-subtle',     text: 'dark-light', heading-dark: 'accent' ),
+    ( color: 'primary-subtle',		text: 'dark-light', heading: 'accent' ),							
+    ( color: 'secondary-subtle',    text: 'dark-light', heading: 'accent' ),						
+    ( color: 'tertiary-subtle',     text: 'dark-light', heading: 'accent' ),
     
     // --- SUBTLE ALT SEMANTIC COLORS (LUMINA ONLY) ---
-    ( color: 'primary-subtle-alt',  text: 'dark-light', heading-dark: 'accent', 
+    ( color: 'primary-subtle-alt',  text: 'dark-light', heading: 'accent', 
     		link-light: 'dark',		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'secondary-subtle-alt', text: 'dark-light', heading-dark: 'accent', 
+    ( color: 'secondary-subtle-alt', text: 'dark-light', heading: 'accent', 
     		link-light: 'dark',		footer: 'hover-highlight-alt' 
     ),
-    ( color: 'tertiary-subtle-alt', text: 'dark-light', heading-dark: 'accent', 
+    ( color: 'tertiary-subtle-alt', text: 'dark-light', heading: 'accent', 
     		link-light: 'dark',		footer: 'hover-highlight-alt' 
     ),
 
@@ -104,10 +92,10 @@ $color-registry: (
 			heading: 'inherit',		link-dark: 'darken' ), //'inherit'
 
     // --- NEUTRALS (E.G. SIDEBAR, BORDERS, DEFAULT CARD COLORS) ---
-    ( color: 'neutral',             text: 'dark-light', heading-dark: 'accent',
+    ( color: 'neutral',             text: 'dark-light', heading: 'accent',
     		footer-dark: 'hover-highlight' 
     ),
-    ( color: 'neutral-alt',         text: 'dark-light', heading-dark: 'accent',
+    ( color: 'neutral-alt',         text: 'dark-light', heading: 'accent',
     		footer-dark: 'hover-highlight'  
     ),
 
@@ -126,17 +114,13 @@ $color-registry: (
     		footer-dark: 'hover-highlight' 
     ),
 
-	( color: 'light-gray',			text: 'dark-light',	heading-dark: 'accent',
+	( color: 'light-gray',			text: 'dark-light',	heading: 'accent',
 			footer: 'hover-highlight-alt',				footer-dark: 'hover-highlight'
 	),
-//     ( color: 'light-gray',          text: 'dark-light', footer: 'hover-highlight-alt', 
-//     		footer-dark: 'hover-highlight' 
-//     ),
 
     ( color: 'gray',                text: 'dark-light', footer: 'hover-highlight-alt', 
     		footer-dark: 'hover-highlight' 
     ),
-//     ( color: 'gray', heading: 'dark', text: 'dark-light', footer: 'hover-highlight-alt' ),
 
     ( color: 'dark-gray',           text: 'light-dark', link: 'inherit', 
     	footer: 'hover-highlight-alt' 
@@ -145,10 +129,6 @@ $color-registry: (
 	( color: 'very-dark-gray',		text: 'light-dark',		heading-dark: 'dark',
 		link-light: 'highlight', 		link-dark: 'darken',	footer: 'hover-highlight-alt'
 	),
-
-//     ( color: 'very-dark-gray',    	text: 'light', 		link-light: 'highlight',
-//      	link-dark: 'darken', footer: 'hover-highlight-alt'
-//      ),
     
     // --- DARK SEMANTIC COLORS (LUMINA ONLY) ---
     // Static dark zones that enforce high-contrast light text across both viewports
@@ -219,10 +199,13 @@ $color-registry: (
     ( color: 'midnight-blue',   text: 'light',  		link-light: 'inherit',
     		footer-dark: 'hover-highlight' 
     ),
-//     ( color: 'dark-midnight-blue',text: 'light',  	link: 'highlight' ),
-    ( color: 'dark-midnight-blue',text: 'light',  		link-light: 'highlight',
+    ( color: 'dark-midnight-blue',text: 'light',  		link-light: 'inherit',
     	footer-dark: 'hover-highlight' 
     ),
+//     ( color: 'dark-midnight-blue',text: 'light',  	link: 'highlight' ),
+//     ( color: 'dark-midnight-blue',text: 'light',  		link-light: 'highlight',
+//     	footer-dark: 'hover-highlight' 
+//     ),
 
 	// --- PURPLE NAMED COLORS ---
     ( color: 'light-purple',    text: 'dark', 			heading-dark: 'dark',
@@ -241,21 +224,6 @@ $color-registry: (
     ( color: 'dark-red',		text: 'light',  		link: 'inherit' ),
     
     // --- VERY DARK NAMED COLORS (OVERRIDE PARENT THEME - MUST UPDATE LATER)---
-//     ( color: 'dark',			text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
-//     ( color: 'dark-alt',		text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
-//     ( color: 'not-quite-black',	text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
-//     ( color: 'almost-black',	text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
-//     ( color: 'black',			text: 'light', 	link: 'lighten', link-dark: 'highlight' ),
-//     ( color: 'dark',			text: 'light', 	link: 'lighten', heading-dark: 'accent' ),
-//     ( color: 'dark-alt',		text: 'light', 	link: 'lighten', heading-dark: 'accent' ),
-//     ( color: 'not-quite-black',	text: 'light', 	link: 'lighten', heading-dark: 'accent' ),
-//     ( color: 'almost-black',	text: 'light', 	link: 'lighten', heading-dark: 'accent' ),
-//     ( color: 'black',			text: 'light', 	link: 'lighten', heading-dark: 'accent' ),
-//     ( color: 'dark',			text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
-//     ( color: 'dark-alt',		text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
-//     ( color: 'not-quite-black',	text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
-//     ( color: 'almost-black',	text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
-//     ( color: 'black',			text: 'light', 	link: 'lighten', heading-light: 'inherit' ),
     ( color: 'dark',			link-light: 'highlight', heading: 'inherit' ),
     ( color: 'dark-alt',		link-light: 'highlight', heading: 'inherit' ),
     ( color: 'not-quite-black',	link-light: 'highlight', heading: 'inherit' ),
@@ -270,24 +238,30 @@ $color-registry: (
 //*-----------------------------------------------------------------------------
 // 0.3  SETUP: LUMINA GRADIENTS
 // -----------------------------------------------------------------------------*/
-// MAP OF ALL GRADIENTS IN THE PALETTE (THAT AREN'T IN PARENT THEME)
 
-// List of all gradients
-// $gradient-tracks: (
-// 	'primary':   ('primary-gradient', 'primary-to-secondary-gradient', 'secondary-to-primary-gradient', 'primary-to-tertiary-gradient', 'tertiary-to-primary-gradient'),
-// 	'secondary': ('secondary-gradient', 'secondary-to-tertiary-gradient', 'tertiary-to-secondary-gradient'),
-// 	'tertiary':  ('tertiary-gradient')
-// ) !default;
-$gradient-tracks: null;
+// 1. List of dark gradient tracks that require light contrast text
+$gradient-tracks: (
+	'primary':            ('primary'),
+	'secondary':          ('secondary'),
+	'tertiary':           ('tertiary'),
+	'highlight':          ('highlight-primary'),
+	'highlight-secondary':('highlight-secondary'),
+	'highlight-tertiary': ('highlight-tertiary')
+) !default;
 
-// List of gradients to preserve colors
-// $gradient-preserve-colors: ('gray-gradient', 'yellow-gradient') !default;
-$gradient-preserve-colors: null;
-	
+// 2. List of light/subtle gradients that preserve default dark body & heading text
+$gradient-preserve-colors: (
+// 	'yellow',
+	'gray',
+	'primary-subtle',
+	'secondary-subtle',
+	'tertiary-subtle'
+) !default;
 
 //*-----------------------------------------------------------------------------
 // 0.4  SETUP: LIGHTEN AND DARKEN FOR LINKS AND/ORHEADERS
 // -----------------------------------------------------------------------------*/
-// Optimize link lighten and darken for Lumina specifically
-$filter-link-lighten: brightness(2.05) saturate(0.87) !default;
-$filter-link-darken:  brightness(0.52) saturate(1.6) !default;
+// Optimize link lighten and darken for Lumina main palette specifically.
+// Each color scheme can then fine-tune these with the custom json vars.
+$filter-link-lighten: var(--wp--custom--color--highlight-alt--lighten, brightness(2.43) saturate(0.87)) !default;
+$filter-link-darken:  var(--wp--custom--color--highlight--darken, brightness(0.41) saturate(1.15)) !default;

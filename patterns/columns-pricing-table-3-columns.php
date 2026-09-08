@@ -52,8 +52,8 @@
 <!-- /wp:group -->
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"}} -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"primary-alt","className":"is-style-button-alt"} -->
-<div class="wp-block-button is-style-button-alt"><a class="wp-block-button__link has-primary-alt-background-color has-background wp-element-button" href="#content-start"><?php esc_html_e("$19 / month", "lumina"); ?></a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"primary","className":"is-style-button-alt"} -->
+<div class="wp-block-button is-style-button-alt"><a class="wp-block-button__link has-primary-background-color has-background wp-element-button" href="#content-start"><?php esc_html_e("$19 / month", "lumina"); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
@@ -98,8 +98,8 @@
 <!-- /wp:group -->
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"}} -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"secondary-alt","className":"is-style-button-alt"} -->
-<div class="wp-block-button is-style-button-alt"><a class="wp-block-button__link has-secondary-alt-background-color has-background wp-element-button" href="#content-start"><?php esc_html_e("$29 / month", "lumina"); ?></a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"secondary","className":"is-style-button-alt"} -->
+<div class="wp-block-button is-style-button-alt"><a class="wp-block-button__link has-secondary-background-color has-background wp-element-button" href="#content-start"><?php esc_html_e("$29 / month", "lumina"); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
@@ -144,8 +144,8 @@
 <!-- /wp:group -->
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"}} -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"tertiary-alt","className":"is-style-button-alt"} -->
-<div class="wp-block-button is-style-button-alt"><a class="wp-block-button__link has-tertiary-alt-background-color has-background wp-element-button" href="#content-start"><?php esc_html_e("$39 / month", "lumina"); ?></a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"tertiary","className":"is-style-button-alt"} -->
+<div class="wp-block-button is-style-button-alt"><a class="wp-block-button__link has-tertiary-background-color has-background wp-element-button" href="#content-start"><?php esc_html_e("$39 / month", "lumina"); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>

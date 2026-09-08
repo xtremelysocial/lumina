@@ -10,29 +10,33 @@ $pan-scale-end:             1.32 !default;  // Max camera push-in depth
 $pan-shift-x:               3.5% !default;  // Horizontal dolly travel
 $pan-shift-y:               2.5% !default;  // Vertical jib travel
 $pan-light-start:           1.00 !default;  // Base light
-$pan-light-end:             1.10 !default; //1.03 !default;  // Subtle highlight as camera moves in
+$pan-light-end:             1.10 !default;  // Subtle highlight as camera moves in
 
 // 2. Experimental Light Engine Toggle
 // Set to true to test CSS brightness filter (may cause WebKit paint leaks/jerks over time)
 // Set to false for 0-paint pure GPU transform engine
-$pan-use-filter-brightness: true !default; //false !default;
+$pan-use-filter-brightness: false !default;
 
 // 3. Mobile Motion Variables (<= 781px)
-$pan-mobile-duration:       5.5s !default;  
-$pan-mobile-scale-0:        1.25 !default;  
-$pan-mobile-scale-50:       1.42 !default;  
-$pan-mobile-scale-100:      1.28 !default;  
+$pan-mobile-duration:       5.5s !default; 
+$pan-mobile-scale-0:        1.25 !default; 
+$pan-mobile-scale-50:       1.42 !default; 
+$pan-mobile-scale-100:      1.28 !default; 
 
 // 4. Slim & Ultra-Wide Motion Variables (Shallow Viewports)
-$pan-slim-duration:         6.2s !default;  
-$pan-slim-scale-start:      1.12 !default;  
-$pan-slim-scale-end:        1.26 !default;  
-$pan-slim-shift-x:          4.5% !default;  
-$pan-slim-shift-y:          7.2% !default;  
+$pan-slim-duration:         6.2s !default; 
+$pan-slim-scale-start:      1.12 !default; 
+$pan-slim-scale-end:        1.26 !default; 
+$pan-slim-shift-x:          4.5% !default; 
+$pan-slim-shift-y:          7.2% !default; 
 
-// 5. Motion Icon
-// $pan-motion-icon:			'motion'; // 'expand';
-$pan-motion-icon:	'../icons/engine/motion.svg';
+// 5. Motion Icon Path
+$pan-motion-icon:           '../icons/engine/motion.svg' !default;
+
+// 6. Theme JSON Custom Motion Multipliers
+$var-pan:      var(--wp--custom--animation--motion--pan-intensity, 1);
+$var-zoom:     var(--wp--custom--animation--motion--zoom-intensity, 1);
+$var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 
 /* ==========================================================================
    KEYFRAME ANIMATION ENGINES
@@ -40,13 +44,21 @@ $pan-motion-icon:	'../icons/engine/motion.svg';
 
 @keyframes luminaPanZoomVideoLoop {
 	0% {
-		transform: translate3d(-#{$pan-shift-x}, #{$pan-shift-y}, 0) scale($pan-scale-start);
+		transform: translate3d(
+			calc(-1 * #{$pan-shift-x} * #{$var-pan}), 
+			calc(-1 * #{$pan-shift-y} * #{$var-pan}), // Changed from + to - (Top-Left start)
+			0
+		) scale(calc(1 + (#{$pan-scale-start} - 1) * #{$var-zoom}));
 		@if $pan-use-filter-brightness {
 			filter: brightness($pan-light-start);
 		}
 	}
 	100% {
-		transform: translate3d($pan-shift-x, -#{$pan-shift-y}, 0) scale($pan-scale-end);
+		transform: translate3d(
+			calc(#{$pan-shift-x} * #{$var-pan}), 
+			calc(#{$pan-shift-y} * #{$var-pan}),     // Changed from - to + (Bottom-Right end)
+			0
+		) scale(calc(1 + (#{$pan-scale-end} - 1) * #{$var-zoom}));
 		@if $pan-use-filter-brightness {
 			filter: brightness($pan-light-end);
 		}
@@ -55,25 +67,41 @@ $pan-motion-icon:	'../icons/engine/motion.svg';
 
 @keyframes luminaPanZoomMobileLoop {
 	0% {
-		transform: translate3d(0%, 0%, 0) scale($pan-mobile-scale-0);
+		transform: translate3d(0%, 0%, 0) scale(calc(1 + (#{$pan-mobile-scale-0} - 1) * #{$var-zoom}));
 	}
 	50% {
-		transform: translate3d(-2.5%, -1.5%, 0) scale($pan-mobile-scale-50);
+		transform: translate3d(
+			calc(-2.5% * #{$var-pan}), 
+			calc(-1.5% * #{$var-pan}), 
+			0
+		) scale(calc(1 + (#{$pan-mobile-scale-50} - 1) * #{$var-zoom}));
 	}
 	100% {
-		transform: translate3d(1.5%, -2%, 0) scale($pan-mobile-scale-100);
+		transform: translate3d(
+			calc(1.5% * #{$var-pan}), 
+			calc(-2% * #{$var-pan}), 
+			0
+		) scale(calc(1 + (#{$pan-mobile-scale-100} - 1) * #{$var-zoom}));
 	}
 }
 
 @keyframes luminaPanZoomSlimLoop {
 	0% {
-		transform: translate3d(-#{$pan-slim-shift-x}, -#{$pan-slim-shift-y}, 0) scale($pan-slim-scale-start);
+		transform: translate3d(
+			calc(-1 * #{$pan-slim-shift-x} * #{$var-pan}), 
+			calc(-1 * #{$pan-slim-shift-y} * #{$var-pan}), 
+			0
+		) scale(calc(1 + (#{$pan-slim-scale-start} - 1) * #{$var-zoom}));
 		@if $pan-use-filter-brightness {
 			filter: brightness($pan-light-start);
 		}
 	}
 	100% {
-		transform: translate3d($pan-slim-shift-x, #{$pan-slim-shift-y}, 0) scale($pan-slim-scale-end);
+		transform: translate3d(
+			calc(#{$pan-slim-shift-x} * #{$var-pan}), 
+			calc(#{$pan-slim-shift-y} * #{$var-pan}), 
+			0
+		) scale(calc(1 + (#{$pan-slim-scale-end} - 1) * #{$var-zoom}));
 		@if $pan-use-filter-brightness {
 			filter: brightness($pan-light-end);
 		}
@@ -143,35 +171,30 @@ $pan-motion-icon:	'../icons/engine/motion.svg';
 		height: 100%;
 		object-fit: cover;
 
-		// 1. Only allow transform in will-change to lock layer paint count
-		// will-change: transform, filter; // <-- ORIGINAL FILTER TRIGGER
+		// 1. Layer optimization for pure GPU composition
 		@if $pan-use-filter-brightness {
 			will-change: transform, filter;
 		} @else {
 			will-change: transform;
 		}
 		
-		// 2. Force hard 3D GPU layer lock to eliminate cached reload jerks
-		transform: translateZ(0);
+		// 2. Set default resting transform directly to Keyframe 0% to eliminate 1-frame scale snapping
+		transform: translate3d(
+			calc(-1 * #{$pan-shift-x} * #{$var-pan}), 
+			calc(-1 * #{$pan-shift-y} * #{$var-pan}), 
+			0
+		) scale(calc(1 + (#{$pan-scale-start} - 1) * #{$var-zoom}));
 		backface-visibility: hidden;
-
-		animation: luminaPanZoomVideoLoop $pan-duration $pan-easing infinite alternate;
 		transform-origin: center center;
-	}
 
-	// Pure GPU Light Flare Overlay (0 CPU paints)
-// 	@if not $pan-use-filter-brightness {
-// 		&::after {
-// 			content: "";
-// 			position: absolute;
-// 			inset: 0;
-// 			background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
-// 			pointer-events: none;
-// 			z-index: 1;
-// 			will-change: opacity;
-// 			animation: luminaLightFlareLoop $pan-duration $pan-easing infinite alternate;
-// 		}
-// 	}
+		// 3. Animation assignment with fill-mode: both to enforce keyframe 0% before initial hover
+		animation-name: luminaPanZoomVideoLoop;
+		animation-duration: calc(#{$pan-duration} * #{$var-duration});
+		animation-timing-function: $pan-easing;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+		animation-fill-mode: both;
+	}
 }
 
 /* ==========================================================================
@@ -185,8 +208,8 @@ $pan-motion-icon:	'../icons/engine/motion.svg';
 	.wp-block-cover__image-background {
 		animation-play-state: paused !important;
 		
-		// Lock GPU layer to prevent animation clock jumps
-		transform: translateZ(0);
+		// Preserve 3D hardware layer on paused state to prevent timeline clocks from jumping
+		transform-style: preserve-3d;
 		backface-visibility: hidden;
 	}
 
@@ -200,15 +223,12 @@ $pan-motion-icon:	'../icons/engine/motion.svg';
 		height: 28px;
 		border-radius: 50%;
 		opacity: 0.7;
-		transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), 
-					transform 300ms cubic-bezier(0.16, 1, 0.3, 1), 
+		transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
+					transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
 					background-color 200ms ease;
 		pointer-events: none;
 		z-index: 2;
 
-		// backdrop-filter: blur(4px); // <-- REMOVED TO PREVENT IMAGE REPAINTS
-		// background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 65%, transparent);
-		
 		// Solid opacity mix instead of backdrop-filter to prevent image repaints
 		background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 80%, transparent);
 	}
@@ -223,8 +243,8 @@ $pan-motion-icon:	'../icons/engine/motion.svg';
 		height: 28px;
 		opacity: 0.7;
 		transform: scale(1) rotate(0deg);
-		transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), 
-					transform 300ms cubic-bezier(0.16, 1, 0.3, 1), 
+		transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
+					transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
 					color 200ms ease;
 		pointer-events: none;
 		z-index: 3;
@@ -232,12 +252,14 @@ $pan-motion-icon:	'../icons/engine/motion.svg';
 		color: var(--wp--preset--color--base, #ffffff);
 		background-color: currentColor;
 
-// 		mask-image: url('../icons/chevron-expand.svg');
-// 		mask-image: url('../icons/engine/#{$pan-motion-icon}.svg');
+		-webkit-mask-image: url($pan-motion-icon);
 		mask-image: url($pan-motion-icon);
 		
+		-webkit-mask-size: 18px;
 		mask-size: 18px;
+		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
 		mask-position: center;
 	}
 
@@ -289,7 +311,12 @@ $pan-motion-icon:	'../icons/engine/motion.svg';
 	img,
 	.wp-block-cover__image-background {
 		animation-name: luminaPanZoomSlimLoop;
-		animation-duration: $pan-slim-duration;
+		animation-duration: calc(#{$pan-slim-duration} * #{$var-duration});
+		transform: translate3d(
+			calc(-1 * #{$pan-slim-shift-x} * #{$var-pan}), 
+			calc(-1 * #{$pan-slim-shift-y} * #{$var-pan}), 
+			0
+		) scale(calc(1 + (#{$pan-slim-scale-start} - 1) * #{$var-zoom}));
 	}
 }
 
@@ -327,7 +354,8 @@ $pan-motion-icon:	'../icons/engine/motion.svg';
 		img,
 		.wp-block-cover__image-background {
 			animation-name: luminaPanZoomMobileLoop;
-			animation-duration: $pan-mobile-duration;
+			animation-duration: calc(#{$pan-mobile-duration} * #{$var-duration});
+			transform: translate3d(0%, 0%, 0) scale(calc(1 + (#{$pan-mobile-scale-0} - 1) * #{$var-zoom}));
 		}
 	}
 }

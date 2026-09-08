@@ -14,8 +14,8 @@
 <h2 class="wp-block-heading is-style-separator"><?php esc_html_e("Frequently Asked Questions (FAQ)", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.5"}},"textColor":"contrast"} -->
-<p class="has-contrast-color has-text-color" style="line-height:1.5"><?php esc_html_e("Have questions about our services or theme features? Find quick answers to common inquiries below, or reach out to our team directly.", "lumina"); ?></p>
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.5"}}} -->
+<p style="line-height:1.5"><?php esc_html_e("Have questions about our services or theme features? Find quick answers to common inquiries below, or reach out to our team directly.", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 

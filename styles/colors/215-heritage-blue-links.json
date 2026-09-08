@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Lumina Heritage - The Professor’s Library: Patina crimson, burnished brass, and oxford navy",
+	"title": "Lumina Heritage w/Blue Links - The Professor’s Library: Patina crimson, burnished brass, and oxford navy",
 	"settings": {
 		"custom": {
 			"color": {
@@ -11,8 +11,12 @@
 				},
 				"heading": {
 					"text": "var(--wp--preset--color--contrast)",
-					"separator": "var(--wp--preset--color--tertiary)"
-				}
+					"separator": "var(--wp--preset--color--primary-alt)"
+				},
+				"button": {
+					"background": "var(--wp--preset--color--primary)",
+					"text": "var(--wp--preset--color--foreground-alt)"
+				}				
 			}
 		},	
 		"color": {
@@ -20,6 +24,8 @@
 				{ "slug": "primary", "color": "hsl(0, 23%, 32%)", "name": "Primary (Patina Crimson Core 32%)" },
 				{ "slug": "secondary", "color": "hsl(38, 38%, 40%)", "name": "Secondary (Aged Brass Core 40%)" },
 				{ "slug": "tertiary", "color": "hsl(215, 25%, 24%)", "name": "Tertiary (Oxford Navy Core 24%)" },
+
+				{ "slug": "base", "color": "hsl(40, 25%, 96%)", "name": "Base (Warm Parchment Canvas)" },
 
 				{ "slug": "primary-alt", "color": "hsl(0, 23%, 22%)", "name": "Primary Alt (Shadow Crimson Action 22%)" },
 				{ "slug": "secondary-alt", "color": "hsl(38, 40%, 30%)", "name": "Secondary Alt (Burnished Brass Action 30%)" },
@@ -33,13 +39,13 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(38, 14%, 83%)", "name": "Secondary Subtle Alt (Brass Border 83%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(154, 10%, 83%)", "name": "Tertiary Subtle Alt (Desk Felt Border 83%)" },
 
-				{ "slug": "highlight", "color": "hsl(6, 70%, 82%)", "name": "Highlight (Patina Coral Glow - Dark BGs 82%)" },
-				{ "slug": "highlight-secondary", "color": "hsl(38, 75%, 76%)", "name": "Highlight Secondary (Gilded Amber Glow 76%)" },
-				{ "slug": "highlight-tertiary", "color": "hsl(215, 65%, 78%)", "name": "Highlight Tertiary (Oxford Sky Glow 78%)" },
+				{ "slug": "highlight", "color": "hsl(215, 65%, 78%)", "name": "Highlight (Oxford Sky Glow - Dark BGs 78%)" },
+				{ "slug": "highlight-secondary", "color": "hsl(38, 75%, 76%)", "name": "Highlight Secondary (Gilded Amber Glow - Dark BGs 76%)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(6, 70%, 82%)", "name": "Highlight Tertiary (Patina Coral Glow - Dark BGs 82%)" },
 
-				{ "slug": "highlight-alt", "color": "hsl(0, 62%, 40%)", "name": "Highlight Alt (Patina Crimson Link 40%)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(32, 65%, 34%)", "name": "Highlight Secondary Alt (Warm Copper Link 34%)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(215, 60%, 34%)", "name": "Highlight Tertiary Alt (Vivid Oxford Link 34%)" },
+				{ "slug": "highlight-alt", "color": "hsl(215, 60%, 34%)", "name": "Highlight Alt (Vivid Oxford Link - Light BGs 34%)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(32, 65%, 34%)", "name": "Highlight Secondary Alt (Warm Copper Link - Light BGs 34%)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(0, 62%, 36%)", "name": "Highlight Tertiary Alt (Deep Crimson Link - Light BGs 36%)" },
 
 				{ "slug": "primary-dark", "color": "hsl(0, 32%, 18%)", "name": "Primary Dark (Deep Crimson Floor)" },
 				{ "slug": "dark", "color": "hsl(38, 30%, 16%)", "name": "Dark (Secondary Aged Brass Footer Pair)" },
@@ -49,7 +55,6 @@
 				{ "slug": "dark-alt", "color": "hsl(38, 32%, 10%)", "name": "Dark Alt (Abyssal Brass Footer Deep)" },
 				{ "slug": "tertiary-dark-alt", "color": "hsl(215, 28%, 11%)", "name": "Dark Tertiary Alt (Abyssal Navy Void)" },
 
-				{ "slug": "base", "color": "hsl(40, 25%, 96%)", "name": "Base (Warm Parchment Canvas)" },
 				{ "slug": "contrast", "color": "hsl(15, 18%, 11%)", "name": "Contrast (Mahogany Infused Ink)" },
 				{ "slug": "foreground-alt", "color": "hsl(40, 25%, 96%)", "name": "Foreground Alt (Warm Parchment)" },
 
@@ -123,6 +128,21 @@
 			"heading": {
 				"color": {
 					"text": "var(--wp--custom--color--heading--text)"
+				}
+			},
+			"link": {
+				"color": { 
+					"text": "var:preset|color|highlight-alt" 
+				},
+				":hover": { 
+					"color": { 
+						"text": "var:preset|color|highlight-alt" 
+					} 
+				},
+				":active": {
+					"color": { 
+						"text": "var:preset|color|highlight-alt" 
+					}
 				}
 			}
 		}

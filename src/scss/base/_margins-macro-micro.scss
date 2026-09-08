@@ -80,18 +80,33 @@ h1, h2, h3, h4, h5, h6,
 	}
 }
 
-// 4. Page / Post Subtitle
+// 4. List Item Micro-Tether Engine (Item-to-Item & Nested List Flow)
+// :where(ul, ol, .wp-block-list):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-page-list, .wp-block-social-links) {
+:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-page-list, .wp-block-social-links) {
+
+	// Consecutive List Items
+	> li + li {
+		margin-block-start: calc(0.5 * $micro-spacing); // or calc(0.5 * $micro-spacing) for tighter list rhythm
+	}
+
+	// Nested Lists within List Items
+	> li > :where(ul, ol) {
+		margin-block-start: $micro-spacing;
+	}
+}
+
+// 5. Page / Post Subtitle
 .entry-subtitle {
 	margin-block-start: $micro-spacing;
 	margin-block-end: 0;
 }
 
-// 5. Sidebar Template Header Top Padding Reset
+// 6. Sidebar Template Header Top Padding Reset
 .main-content.wp-block-columns .entry-header.wp-block-group {
 	padding-top: 0 !important;
 } 
 
-// 6. Post & Page Bottom Buffer (Matches Macro Section Spacing)
+// 7. Post & Page Bottom Buffer (Matches Macro Section Spacing)
 main > :last-child:not(.wp-block-post-content):not(:empty),
 main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
 	margin-block-end: $macro-spacing;
@@ -100,7 +115,7 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
 /*-----------------------------------------------------------------------------
 # Collapsing Ghost (Empty) Blocks
 -----------------------------------------------------------------------------*/
-// 7. Target the template part if the comments container has no visible HTML child elements
+// 8. Target the template part if the comments container has no visible HTML child elements
 .wp-block-template-part:empty {
 	margin-block-start: 0; 
 	margin-block-end: 0; 

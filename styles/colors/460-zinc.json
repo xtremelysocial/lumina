@@ -10,8 +10,6 @@
 					"scheme": "zinc"
 				},
 				"contrast": {
-					"tertiary": "var(--wp--preset--color--base)",
-					"tertiary-alt": "var(--wp--preset--color--base)",
 					"primary-subtle": "var(--wp--preset--color--foreground-alt)",
 					"primary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
 					"secondary-subtle": "var(--wp--preset--color--foreground-alt)",
@@ -25,13 +23,11 @@
 					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--highlight-secondary-alt)",
+					"text": "var(--wp--preset--color--contrast)",
 					"separator": "var(--wp--preset--color--primary)"
 				},
 				"button": {
-					"background": "var(--wp--preset--color--primary)",
-					"hover": "var(--wp--preset--color--primary-alt)",
-					"hoverOpacity": "0.80"
+					"background": "var(--wp--preset--color--primary)"
 				},
 				"highlight": "var(--wp--preset--color--highlight)",
 				"shadow": {
@@ -45,39 +41,40 @@
 		},
 		"color": {
 			"palette": [
-				{ "slug": "primary", "color": "hsl(50, 4%, 44%)", "name": "Primary (Machine Stone Gray)" },
-				{ "slug": "secondary", "color": "hsl(210, 18%, 32%)", "name": "Secondary (Midnight Industrial Blue)" },
-				{ "slug": "tertiary", "color": "hsl(50, 4%, 68%)", "name": "Tertiary (Machined Silver)" },
-
-				{ "slug": "primary-alt", "color": "hsl(50, 4%, 32%)", "name": "Primary Alt (Oiled Gunmetal Steel)" },
-				{ "slug": "secondary-alt", "color": "hsl(210, 18%, 22%)", "name": "Secondary Alt (Dark Midnight Steel)" },
-				{ "slug": "tertiary-alt", "color": "hsl(50, 4%, 56%)", "name": "Tertiary Alt (Burnished Zinc)" },
-
-				{ "slug": "primary-subtle", "color": "hsl(0, 0%, 14%)", "name": "Primary Subtle (Carbon Plate Fill)" },
-				{ "slug": "secondary-subtle", "color": "hsl(210, 14%, 14%)", "name": "Secondary Subtle (Gunmetal Blue Fill)" },
-				{ "slug": "tertiary-subtle", "color": "hsl(50, 4%, 14%)", "name": "Tertiary Subtle (Technical Stone Fill)" },
-
-				{ "slug": "primary-subtle-alt", "color": "hsl(0, 0%, 18%)", "name": "Primary Subtle Alt (Light Carbon)" },
-				{ "slug": "secondary-subtle-alt", "color": "hsl(210, 14%, 18%)", "name": "Secondary Subtle Alt (Light Gunmetal)" },
-				{ "slug": "tertiary-subtle-alt", "color": "hsl(50, 4%, 18%)", "name": "Tertiary Subtle Alt (Light Stone)" },
-
-				{ "slug": "highlight", "color": "hsl(189, 85%, 78%)", "name": "Highlight (Glow Aqua)" },
-				{ "slug": "highlight-secondary", "color": "hsl(204, 29%, 94%)", "name": "Highlight Secondary (Specular Titanium Sheen)" },
-				{ "slug": "highlight-tertiary", "color": "hsl(36, 88%, 74%)", "name": "Highlight Tertiary (Industrial Hazard Gold)" },
-
-				{ "slug": "highlight-alt", "color": "hsl(189, 64%, 53%)", "name": "Highlight Alt (Technical Aqua)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(204, 32%, 82%)", "name": "Highlight Secondary Alt (Machined Steel)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(36, 80%, 62%)", "name": "Highlight Tertiary Alt (Anodized Amber)" },
-
-				{ "slug": "primary-dark", "color": "hsl(50, 4%, 12%)", "name": "Primary Dark (Deep Oiled Gunmetal Floor 12%)" },
-				{ "slug": "dark", "color": "hsl(0, 0%, 6%)", "name": "Dark (Abyssal Carbon Floor 6%)" },
-				{ "slug": "tertiary-dark", "color": "hsl(210, 15%, 12%)", "name": "Dark Tertiary (Deep Industrial Slate Floor 12%)" },
-
-				{ "slug": "primary-dark-alt", "color": "hsl(50, 4%, 6%)", "name": "Primary Dark Alt (Abyssal Oiled Gunmetal Void 6%)" },
-				{ "slug": "dark-alt", "color": "hsl(0, 0%, 3%)", "name": "Dark Alt (Absolute Dark Void 3%)" },							
-				{ "slug": "tertiary-dark-alt", "color": "hsl(210, 15%, 6%)", "name": "Dark Tertiary Alt (Abyssal Industrial Slate Void 6%)" },
+				{ "slug": "primary", "color": "hsl(50, 4%, 42%)", "name": "Primary (Machine Stone Gray 42%)" },
+				{ "slug": "secondary", "color": "hsl(210, 18%, 32%)", "name": "Secondary (Midnight Industrial Blue 32%)" },
+				{ "slug": "tertiary", "color": "hsl(50, 4%, 22%)", "name": "Tertiary (Machined Gunmetal 22%)" },
 
 				{ "slug": "base", "color": "hsl(0, 0%, 10%)", "name": "Base (Rich Carbon Dark Canvas)" },
+
+				{ "slug": "primary-alt", "color": "hsl(50, 4%, 30%)", "name": "Primary Alt (Deep Machine Stone 30%)" },
+				{ "slug": "secondary-alt", "color": "hsl(210, 18%, 22%)", "name": "Secondary Alt (Dark Midnight Steel 22%)" },
+				{ "slug": "tertiary-alt", "color": "hsl(50, 4%, 15%)", "name": "Tertiary Alt (Deep Gunmetal Recess 15%)" },
+
+				{ "slug": "primary-subtle", "color": "hsl(50, 4%, 18%)", "name": "Primary Subtle (Technical Stone Fill 18%)" },
+				{ "slug": "secondary-subtle", "color": "hsl(210, 14%, 16%)", "name": "Secondary Subtle (Gunmetal Blue Fill 16%)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(0, 0%, 13%)", "name": "Tertiary Subtle (Carbon Plate Fill 13%)" },
+
+				{ "slug": "primary-subtle-alt", "color": "hsl(50, 4%, 14%)", "name": "Primary Subtle Alt (Deep Stone Seam 14%)" },
+				{ "slug": "secondary-subtle-alt", "color": "hsl(210, 14%, 12%)", "name": "Secondary Subtle Alt (Deep Gunmetal Seam 12%)" },
+				{ "slug": "tertiary-subtle-alt", "color": "hsl(0, 0%, 9%)", "name": "Tertiary Subtle Alt (Deep Carbon Seam 9%)" },
+
+				{ "slug": "highlight", "color": "hsl(189, 85%, 78%)", "name": "Highlight (Glow Aqua Link)" },
+				{ "slug": "highlight-secondary", "color": "hsl(204, 50%, 82%)", "name": "Highlight Secondary (Titanium Link)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(36, 88%, 74%)", "name": "Highlight Tertiary (Hazard Gold Link)" },
+
+				{ "slug": "highlight-alt", "color": "hsl(189, 70%, 50%)", "name": "Highlight Alt (Technical Aqua Button/Heading Ink)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(204, 45%, 48%)", "name": "Highlight Secondary Alt (Machined Steel Button/Heading Ink)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(36, 75%, 50%)", "name": "Highlight Tertiary Alt (Anodized Amber Button/Heading Ink)" },
+
+				{ "slug": "primary-dark", "color": "hsl(50, 4%, 22%)", "name": "Primary Dark (Stone Section Band 22%)" },
+				{ "slug": "dark", "color": "hsl(210, 18%, 18%)", "name": "Dark (Gunmetal Slate Section Band 18%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(0, 0%, 14%)", "name": "Dark Tertiary (Carbon Section Band 14%)" },
+
+				{ "slug": "primary-dark-alt", "color": "hsl(50, 4%, 16%)", "name": "Primary Dark Alt (Deep Stone Band 16%)" },
+				{ "slug": "dark-alt", "color": "hsl(210, 18%, 13%)", "name": "Dark Alt (Deep Gunmetal Band 13%)" },							
+				{ "slug": "tertiary-dark-alt", "color": "hsl(0, 0%, 10%)", "name": "Dark Tertiary Alt (Deep Carbon Band 10%)" },
+
 				{ "slug": "contrast", "color": "hsl(45, 29%, 97%)", "name": "Contrast (Off White Paper Typography)" },
 				{ "slug": "foreground-alt", "color": "hsl(45, 29%, 97%)", "name": "Foreground Alt (Off White)" },
 
@@ -130,20 +127,20 @@
 				{ "slug": "dark-red", "color": "hsl(0, 23%, 22%)", "name": "Dark Red (Ember 22%)" }		
 			],
 			"duotone": [
-				{ "colors": ["hsl(50, 4%, 44%)", "hsl(45, 29%, 97%)"], "slug": "primary", "name": "Primary (Machine Gray)" },
-				{ "colors": ["hsl(50, 4%, 32%)", "hsl(45, 29%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Oiled Gunmetal)" },
+				{ "colors": ["hsl(50, 4%, 42%)", "hsl(45, 29%, 97%)"], "slug": "primary", "name": "Primary (Machine Gray)" },
+				{ "colors": ["hsl(50, 4%, 30%)", "hsl(45, 29%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Deep Machine Stone)" },
 				{ "colors": ["hsl(210, 18%, 32%)", "hsl(45, 29%, 97%)"], "slug": "secondary", "name": "Secondary (Midnight Blue)" },
 				{ "colors": ["hsl(210, 18%, 22%)", "hsl(45, 29%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Dark Midnight)" },
-				{ "colors": ["hsl(50, 4%, 68%)", "hsl(45, 29%, 97%)"], "slug": "tertiary", "name": "Tertiary (Machined Silver)" },
-				{ "colors": ["hsl(50, 4%, 56%)", "hsl(45, 29%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Burnished Zinc)" },
+				{ "colors": ["hsl(50, 4%, 22%)", "hsl(45, 29%, 97%)"], "slug": "tertiary", "name": "Tertiary (Machined Gunmetal)" },
+				{ "colors": ["hsl(50, 4%, 15%)", "hsl(45, 29%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Deep Gunmetal Recess)" },
 				{ "colors": ["hsl(327, 5%, 31%)", "hsl(33, 30%, 51%)"], "slug": "purple-yellow", "name": "Purple and Yellow" },
 				{ "colors": ["hsl(210, 22%, 19%)", "hsl(0, 18%, 27%)"], "slug": "blue-red", "name": "Blue and Red" },
-				{ "colors": ["hsl(0, 0%, 18%)", "hsl(210, 22%, 19%)"], "slug": "midnight", "name": "Midnight Blue" },
+				{ "colors": ["hsl(210, 18%, 13%)", "hsl(50, 4%, 42%)"], "slug": "midnight", "name": "Midnight Blue" },
 				{ "colors": ["hsl(0, 18%, 27%)", "hsl(33, 30%, 51%)"], "slug": "magenta-yellow", "name": "Red and Yellow" },
 				{ "colors": ["hsl(327, 5%, 31%)", "hsl(155, 16%, 46%)"], "slug": "purple-green", "name": "Purple and Green" },
 				{ "colors": ["hsl(210, 22%, 19%)", "hsl(12, 31%, 49%)"], "slug": "blue-orange", "name": "Blue and Orange" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale" },
-				{ "colors": ["hsl(0, 0%, 0%)", "hsl(50, 4%, 44%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
+				{ "colors": ["hsl(0, 0%, 0%)", "hsl(50, 4%, 42%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			]
 		}
 	},

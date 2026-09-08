@@ -3,7 +3,7 @@
  * Title: Image Gallery
  * Description: Image Gallery
  * Slug: lumina/image-gallery
- * Categories: lumina, media
+ * Categories: lumina, media, featured
  * Block Types: core/gallery
  */
 ?>

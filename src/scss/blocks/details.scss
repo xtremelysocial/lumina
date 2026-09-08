@@ -8,6 +8,15 @@
 	margin-top: var(--wp--preset--spacing--30);
 }
 
+// .wp-block-details,
+// .wp-block-details[open] > summary {
+// .wp-block-post-content .wp-block-details:not(.is-style-plain) > summary {
+// .wp-block-details.is-style-divider > summary {
+.wp-block-details:not(.is-style-plain) > summary {
+	border-bottom: 1px solid var(--wp--custom--color--border);
+	padding-bottom: var(--wp--preset--spacing--20, 6px);
+}
+
 // 1. Force flex layout to instantly break 'list-item' status & kill native arrow
 .wp-block-details > summary {
 	display: flex;
@@ -16,6 +25,7 @@
 	list-style: none; // Modern standard arrow strip
 	cursor: pointer;
 // 	font-weight: var(--wp--custom--typography--font-weight--normal);
+// 	font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 }
 
 // 2. Overkill fallback to ensure Safari behaves
@@ -30,11 +40,14 @@
 // 3. Inject a sleek, right-aligned custom indicator that doesn't scale crazily
 .wp-block-details > summary::after {
 	content: "+";
-	font-size: 1em; // Hardcoded size so it stays clean even with large text
+	font-size: 1.3em; // Hardcoded size so it stays clean even with large text
+	line-height: 1;
 	font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 	font-family: monospace, sans-serif; // Keeps plus/minus structurally aligned
-	opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
-	transition: transform 0.2s ease;
+	opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+// 	margin-left: var(--wp--preset--spacing--30, 1rem);
+// 	flex-shrink: 0;
+	transition: transform var(--wp--custom--animation--duration--short, 250ms) ease;
 }
 
 // 4. Swap to a clean Unicode minus sign when the accordion is open

@@ -138,33 +138,29 @@ figure > a:active,
    ========================================================================== */
 @keyframes luminaPanZoomVideoLoop {
   0% {
-    transform: translate3d(-3.5%, 2.5%, 0) scale(1.15);
-    filter: brightness(1);
+    transform: translate3d(calc(-1 * 3.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), calc(-1 * 2.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.15 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   }
   100% {
-    transform: translate3d(3.5%, -2.5%, 0) scale(1.32);
-    filter: brightness(1.1);
+    transform: translate3d(calc(3.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), calc(2.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.32 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   }
 }
 @keyframes luminaPanZoomMobileLoop {
   0% {
-    transform: translate3d(0%, 0%, 0) scale(1.25);
+    transform: translate3d(0%, 0%, 0) scale(calc(1 + (1.25 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   }
   50% {
-    transform: translate3d(-2.5%, -1.5%, 0) scale(1.42);
+    transform: translate3d(calc(-2.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), calc(-1.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.42 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   }
   100% {
-    transform: translate3d(1.5%, -2%, 0) scale(1.28);
+    transform: translate3d(calc(1.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), calc(-2% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.28 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   }
 }
 @keyframes luminaPanZoomSlimLoop {
   0% {
-    transform: translate3d(-4.5%, -7.2%, 0) scale(1.12);
-    filter: brightness(1);
+    transform: translate3d(calc(-1 * 4.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), calc(-1 * 7.2% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.12 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   }
   100% {
-    transform: translate3d(4.5%, 7.2%, 0) scale(1.26);
-    filter: brightness(1.1);
+    transform: translate3d(calc(4.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), calc(7.2% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.26 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   }
 }
 /* Zero-Repaint GPU Overlay Light Flare */
@@ -231,11 +227,16 @@ figure > a:active,
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  will-change: transform, filter;
-  transform: translateZ(0);
+  will-change: transform;
+  transform: translate3d(calc(-1 * 3.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), calc(-1 * 2.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.15 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   backface-visibility: hidden;
-  animation: luminaPanZoomVideoLoop 8s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
   transform-origin: center center;
+  animation-name: luminaPanZoomVideoLoop;
+  animation-duration: calc(8s * var(--wp--custom--animation--motion--duration-factor, 1));
+  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: both;
 }
 
 /* ==========================================================================
@@ -247,7 +248,7 @@ figure > a:active,
 .is-style-pan-zoom-hover img,
 .is-style-pan-zoom-hover .wp-block-cover__image-background {
   animation-play-state: paused !important;
-  transform: translateZ(0);
+  transform-style: preserve-3d;
   backface-visibility: hidden;
 }
 .is-style-pan-zoom-hover {
@@ -285,13 +286,13 @@ figure > a:active,
   color: var(--wp--preset--color--base, #ffffff);
   background-color: currentColor;
   -webkit-mask-image: url("../icons/engine/motion.svg");
-          mask-image: url("../icons/engine/motion.svg");
+  mask-image: url("../icons/engine/motion.svg");
   -webkit-mask-size: 18px;
-          mask-size: 18px;
+  mask-size: 18px;
   -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   -webkit-mask-position: center;
-          mask-position: center;
+  mask-position: center;
 }
 .is-style-pan-zoom-hover.is-light::before {
   background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 75%, transparent);
@@ -348,7 +349,8 @@ figure > a:active,
 :has(.size-cropped-slim),
 :has(.size-cropped-ultrawide)) .wp-block-cover__image-background {
   animation-name: luminaPanZoomSlimLoop;
-  animation-duration: 6.2s;
+  animation-duration: calc(6.2s * var(--wp--custom--animation--motion--duration-factor, 1));
+  transform: translate3d(calc(-1 * 4.5% * var(--wp--custom--animation--motion--pan-intensity, 1)), calc(-1 * 7.2% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.12 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
 }
 
 /* ==========================================================================
@@ -385,7 +387,8 @@ figure > a:active,
   :has(.size-cropped-slim),
   :has(.size-cropped-ultrawide))) .wp-block-cover__image-background {
     animation-name: luminaPanZoomMobileLoop;
-    animation-duration: 5.5s;
+    animation-duration: calc(5.5s * var(--wp--custom--animation--motion--duration-factor, 1));
+    transform: translate3d(0%, 0%, 0) scale(calc(1 + (1.25 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -476,6 +479,13 @@ ul, ol, .wp-block-list,
 blockquote, .wp-block-quote,
 .wp-block-template-part,
 .wp-block-group:has(> .wp-block-template-part)) {
+  margin-block-start: var(--wp--preset--spacing--30);
+}
+
+:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-page-list, .wp-block-social-links) > li + li {
+  margin-block-start: calc(0.5 * var(--wp--preset--spacing--30));
+}
+:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-page-list, .wp-block-social-links) > li > :where(ul, ol) {
   margin-block-start: var(--wp--preset--spacing--30);
 }
 
@@ -578,6 +588,252 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
   color: inherit;
 }
 
+/*--------------------------------------------------------------
+# LUMINA Heading & Text Block Styles (Global Space)
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Custom: Heading w/Separator (Native Block & Flex Edition)
+--------------------------------------------------------------*/
+.is-style-separator::after {
+  content: "";
+  display: block;
+  width: calc(6 * var(--wp--style--block-gap));
+  height: 3px;
+  margin-top: var(--wp--preset--spacing--20);
+  margin-bottom: var(--wp--preset--spacing--30);
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary));
+}
+.is-style-separator.has-text-align-center::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+.is-style-separator.has-text-align-right::after {
+  margin-left: auto;
+  margin-right: 0;
+}
+.is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]) {
+  flex-wrap: wrap !important;
+  row-gap: var(--wp--preset--spacing--30) !important;
+}
+.is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex])::after {
+  width: 100% !important;
+  flex-basis: 100% !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)));
+  background-repeat: no-repeat;
+  background-size: calc(6 * var(--wp--style--block-gap)) 3px;
+  background-position: left center;
+}
+.is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-center::after {
+  background-position: center center;
+}
+.is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-right::after {
+  background-position: right center;
+}
+.has-background .is-style-separator::after, .is-style-separator.has-background::after {
+  background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)) 85%, currentColor);
+  background-image: linear-gradient(color-mix(in srgb, var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)) 85%, currentColor), color-mix(in srgb, var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)) 85%, currentColor));
+}
+
+.is-style-separator-2::after {
+  content: "";
+  display: block;
+  width: calc(6 * var(--wp--style--block-gap));
+  height: 3px;
+  margin-top: var(--wp--preset--spacing--20);
+  margin-bottom: var(--wp--preset--spacing--30);
+  background-color: var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary));
+}
+.is-style-separator-2.has-text-align-center::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+.is-style-separator-2.has-text-align-right::after {
+  margin-left: auto;
+  margin-right: 0;
+}
+.is-style-separator-2:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]) {
+  flex-wrap: wrap !important;
+  row-gap: var(--wp--preset--spacing--30) !important;
+}
+.is-style-separator-2:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex])::after {
+  width: 100% !important;
+  flex-basis: 100% !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)), var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)));
+  background-repeat: no-repeat;
+  background-size: calc(6 * var(--wp--style--block-gap)) 3px;
+  background-position: left center;
+}
+.is-style-separator-2:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-center::after {
+  background-position: center center;
+}
+.is-style-separator-2:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-right::after {
+  background-position: right center;
+}
+.has-background .is-style-separator-2::after, .is-style-separator-2.has-background::after {
+  background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)) 85%, currentColor);
+  background-image: linear-gradient(color-mix(in srgb, var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)) 85%, currentColor), color-mix(in srgb, var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)) 85%, currentColor));
+}
+
+.is-style-separator-3::after {
+  content: "";
+  display: block;
+  width: calc(6 * var(--wp--style--block-gap));
+  height: 3px;
+  margin-top: var(--wp--preset--spacing--20);
+  margin-bottom: var(--wp--preset--spacing--30);
+  background-color: var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral));
+}
+.is-style-separator-3.has-text-align-center::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+.is-style-separator-3.has-text-align-right::after {
+  margin-left: auto;
+  margin-right: 0;
+}
+.is-style-separator-3:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]) {
+  flex-wrap: wrap !important;
+  row-gap: var(--wp--preset--spacing--30) !important;
+}
+.is-style-separator-3:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex])::after {
+  width: 100% !important;
+  flex-basis: 100% !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)), var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)));
+  background-repeat: no-repeat;
+  background-size: calc(6 * var(--wp--style--block-gap)) 3px;
+  background-position: left center;
+}
+.is-style-separator-3:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-center::after {
+  background-position: center center;
+}
+.is-style-separator-3:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-right::after {
+  background-position: right center;
+}
+.has-background .is-style-separator-3::after, .is-style-separator-3.has-background::after {
+  background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)) 85%, currentColor);
+  background-image: linear-gradient(color-mix(in srgb, var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)) 85%, currentColor), color-mix(in srgb, var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)) 85%, currentColor));
+}
+
+/*--------------------------------------------------------------
+## Custom Heading Link Animation (Responsive & Mobile-Locked)
+--------------------------------------------------------------*/
+.wp-block-heading a {
+  display: inline;
+  text-decoration: none !important;
+  padding-bottom: var(--wp--custom--link--offset, 0.1em);
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+}
+@media (max-width: 768px) {
+  .wp-block-heading a {
+    transition: background-size 0s 10s;
+  }
+}
+.wp-block-heading a:hover, .wp-block-heading a:active {
+  opacity: 1;
+}
+.wp-block-heading a:hover, .wp-block-heading a:active, .wp-block-heading a:focus {
+  background-size: 100% 2px;
+}
+@media (max-width: 768px) {
+  .wp-block-heading a:hover, .wp-block-heading a:active, .wp-block-heading a:focus {
+    transition: background-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  }
+}
+
+.wp-block-site-title a {
+  display: inline;
+  text-decoration: none !important;
+  padding-bottom: var(--wp--custom--link--offset, 0.1em);
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+}
+@media (max-width: 768px) {
+  .wp-block-site-title a {
+    transition: background-size 0s 10s;
+  }
+}
+.wp-block-site-title a:hover, .wp-block-site-title a:active {
+  opacity: 1;
+}
+.wp-block-site-title a:hover, .wp-block-site-title a:active, .wp-block-site-title a:focus {
+  background-size: 100% 2px;
+}
+@media (max-width: 768px) {
+  .wp-block-site-title a:hover, .wp-block-site-title a:active, .wp-block-site-title a:focus {
+    transition: background-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  }
+}
+
+.wp-block-post-title a {
+  display: inline;
+  text-decoration: none !important;
+  padding-bottom: var(--wp--custom--link--offset, 0.1em);
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+}
+@media (max-width: 768px) {
+  .wp-block-post-title a {
+    transition: background-size 0s 10s;
+  }
+}
+.wp-block-post-title a:hover, .wp-block-post-title a:active {
+  opacity: 1;
+}
+.wp-block-post-title a:hover, .wp-block-post-title a:active, .wp-block-post-title a:focus {
+  background-size: 100% 2px;
+}
+@media (max-width: 768px) {
+  .wp-block-post-title a:hover, .wp-block-post-title a:active, .wp-block-post-title a:focus {
+    transition: background-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  }
+}
+
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title {
+  display: inline;
+  text-decoration: none !important;
+  padding-bottom: var(--wp--custom--link--offset, 0.1em);
+  background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--primary)));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+}
+@media (max-width: 768px) {
+  .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title {
+    transition: background-size 0s 10s;
+  }
+}
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active {
+  opacity: 1;
+}
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:focus {
+  background-size: 100% 2px;
+}
+@media (max-width: 768px) {
+  .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:hover, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:active, .wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title:focus {
+    transition: background-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  }
+}
+
 /* =========================================================================
 	Content Layout Structural Stabilization
    ========================================================================= */
@@ -668,11 +924,6 @@ h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-background-color :is(.wp-b
 .wp-block-query-title,
 .wp-block-site-title,
 .wp-block-site-tagline,
-h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-alt-background-color :is(.wp-block-heading,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-title,
-.wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-background-color :is(.wp-block-heading,
 .wp-block-post-title,
 .wp-block-query-title,
@@ -736,6 +987,56 @@ h1, h2, h3, h4, h5, h6), :where(:root) .has-black-background-color :is(.wp-block
 h1, h2, h3, h4, h5, h6) {
   /* Inherit heading color */
   color: inherit;
+}
+
+:where(:root) .has-primary-subtle-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-subtle-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-subtle-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-primary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-secondary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-tertiary-subtle-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-neutral-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-neutral-alt-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6), :where(:root) .has-light-gray-background-color :is(.wp-block-heading,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-title,
+.wp-block-site-tagline,
+h1, h2, h3, h4, h5, h6) {
+  /* Set heading to custom color heading text */
+  color: var(--wp--custom--color--heading--text, var(--wp--preset--color--secondary-alt));
 }
 
 :where(:root) .has-primary-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-primary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-gray-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-orange-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-orange-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-orange-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-blue-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-blue-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-blue-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-purple-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-purple-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-purple-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-light-red-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-red-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-red-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-bright-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-bright-green-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {
@@ -912,4 +1213,43 @@ h1, h2, h3, h4, h5, h6) {
 
 :where(:root) .has-dark-red-background-color {
   color: var(--wp--custom--color--contrast--dark-red, var(--wp--preset--color--foreground-alt));
+}
+
+/* ==========================================================================
+   20 GRADIENT COLORS: Set colors on gradient backgrounds
+========================================================================== */
+:root :where([style*="--wp--preset--gradient--"]:not([style*="--wp--preset--gradient--gray)"], .has-gray-gradient-background, [style*="--wp--preset--gradient--primary-subtle)"], .has-primary-subtle-gradient-background, [style*="--wp--preset--gradient--secondary-subtle)"], .has-secondary-subtle-gradient-background, [style*="--wp--preset--gradient--tertiary-subtle)"], .has-tertiary-subtle-gradient-background),
+[class*=-gradient-background]:not([style*="--wp--preset--gradient--gray)"], .has-gray-gradient-background, [style*="--wp--preset--gradient--primary-subtle)"], .has-primary-subtle-gradient-background, [style*="--wp--preset--gradient--secondary-subtle)"], .has-secondary-subtle-gradient-background, [style*="--wp--preset--gradient--tertiary-subtle)"], .has-tertiary-subtle-gradient-background)) {
+  color: var(--wp--preset--color--foreground-alt);
+}
+
+:root :where([style*="--wp--preset--gradient--primary)"], .has-primary-gradient-background) {
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--foreground-alt));
+}
+
+:root :where([style*="--wp--preset--gradient--secondary)"], .has-secondary-gradient-background) {
+  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--foreground-alt));
+}
+
+:root :where([style*="--wp--preset--gradient--tertiary)"], .has-tertiary-gradient-background) {
+  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--foreground-alt));
+}
+
+:root :where([style*="--wp--preset--gradient--highlight-primary)"], .has-highlight-primary-gradient-background) {
+  color: var(--wp--custom--color--contrast--highlight, var(--wp--preset--color--foreground-alt));
+}
+
+:root :where([style*="--wp--preset--gradient--highlight-secondary)"], .has-highlight-secondary-gradient-background) {
+  color: var(--wp--custom--color--contrast--highlight-secondary, var(--wp--preset--color--foreground-alt));
+}
+
+:root :where([style*="--wp--preset--gradient--highlight-tertiary)"], .has-highlight-tertiary-gradient-background) {
+  color: var(--wp--custom--color--contrast--highlight-tertiary, var(--wp--preset--color--foreground-alt));
+}
+
+:root :where([style*="--wp--preset--gradient--"], [class*=-gradient-background]) :where(a:not(.wp-element-button)) {
+  color: inherit;
+}
+:root :where([style*="--wp--preset--gradient--"], [class*=-gradient-background]) :where(:is(.wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline, h1, h2, h3, h4, h5, h6)) {
+  color: inherit;
 }

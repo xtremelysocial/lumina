@@ -3,7 +3,7 @@
  * Title: Columns Team 4 People
  * Description: Columns Team 4 People
  * Slug: lumina/columns-team-4-people
- * Categories: lumina, column, team
+ * Categories: lumina, column, team, featured
  * Block Types: core/columns
  */
 ?>

@@ -3,7 +3,7 @@
  * Title: Columns Call To Action
  * Description: Columns Call To Action
  * Slug: lumina/columns-call-to-action
- * Categories: lumina, column
+ * Categories: lumina, column, featured
  * Block Types: core/columns
  */
 ?>

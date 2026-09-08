@@ -1,0 +1,36 @@
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/buttons_hover.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/* ==========================================================================
+   LUMINA: Master Button Hovers (Text-Isolated)
+   ========================================================================== */
+:where(.wp-block-button__link) {
+  transition: background-image 0.15s ease, background-color 0.15s ease, filter 0.2s ease, opacity 0.15s ease;
+}
+
+:where(.wp-block-button__link:not(.has-gradient):not([style*="--wp--preset--gradient--"])) {
+  /* Fallback Tint for Custom Picker & Solid Preset Colors */
+}
+:where(.wp-block-button__link:not(.has-gradient):not([style*="--wp--preset--gradient--"])):hover, :where(.wp-block-button__link:not(.has-gradient):not([style*="--wp--preset--gradient--"])):active {
+  background-image: linear-gradient(rgba(0, 0, 0, var(--wp--custom--color--button--hover-tint, 0.15)), rgba(0, 0, 0, var(--wp--custom--color--button--hover-tint, 0.15)));
+}
+
+:where(.wp-block-button__link:is(.has-gradient, [style*="--wp--preset--gradient--"])):hover, :where(.wp-block-button__link:is(.has-gradient, [style*="--wp--preset--gradient--"])):active {
+  filter: brightness(1.12) saturate(1.05);
+}
+
+:where(.is-style-outline,
+.is-style-button-outline-alt,
+.is-style-button-outline-alt-2) :where(.wp-block-button__link):hover, :where(.is-style-outline,
+.is-style-button-outline-alt,
+.is-style-button-outline-alt-2) :where(.wp-block-button__link):active,
+:where(.wp-block-button__link.is-style-outline,
+.wp-block-button__link.is-style-button-outline-alt,
+.wp-block-button__link.is-style-button-outline-alt-2):hover,
+:where(.wp-block-button__link.is-style-outline,
+.wp-block-button__link.is-style-button-outline-alt,
+.wp-block-button__link.is-style-button-outline-alt-2):active {
+  background-image: none;
+  filter: none;
+  opacity: var(--wp--custom--color--button--hover-opacity, 1);
+}

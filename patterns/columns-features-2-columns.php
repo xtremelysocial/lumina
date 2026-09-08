@@ -3,7 +3,7 @@
  * Title: Columns Features 2 Columns
  * Description: Columns Features 2 Columns
  * Slug: lumina/columns-features-2-columns
- * Categories: lumina, column, featured
+ * Categories: lumina, column
  * Block Types: core/columns
  */
 ?>

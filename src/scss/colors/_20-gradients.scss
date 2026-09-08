@@ -25,24 +25,35 @@
 		========================================================================== */
 	}
 
-	// Generate CSS for gradient colors
+	// 1. General catch-all for utility gradients (runs FIRST for cascade priority)
+	@if logic.$gradient-preserve-colors {	
+		:root :where([style*="--wp--preset--gradient--"]:not(#{logic.build-gradient-selector-list(logic.$gradient-preserve-colors)}), 
+		[class*="-gradient-background"]:not(#{logic.build-gradient-selector-list(logic.$gradient-preserve-colors)})) {
+			color: var(--wp--preset--color--foreground-alt);
+		}
+	}
+
+	// 2. Specific track color overrides
 	@if logic.$gradient-tracks {
-	
+
+		// Override contrast color	
 		@each $track, $slugs in logic.$gradient-tracks {
-			:root :where(#{logic.build-selector-list($slugs, ".has-", "")}) {
+			:root :where(#{logic.build-gradient-selector-list($slugs)}) {
 				color: var(--wp--custom--color--contrast--#{$track}, var(--wp--preset--color--foreground-alt));
 			}
 		}
 		
-		:root :where([class*="-gradient-background"]) :where(a:not(.wp-element-button)) {
-			color: inherit;	
-		}
-	}
+		:root :where([style*="--wp--preset--gradient--"], [class*="-gradient-background"]) {
+		
+			// Override link color
+			:where(a:not(.wp-element-button)) {
+				color: inherit;	
+			}
 
-	// Genereate CSS to preserve colors on certain gradients	
-	@if logic.$gradient-preserve-colors {	
-		:root :where([class*="-gradient-background"]:not(#{logic.build-selector-list(logic.$gradient-preserve-colors, ".has-", "")})) {
-			color: var(--wp--preset--color--foreground-alt);
+			// Override heading color
+			:where(:is(.wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline, h1, h2, h3, h4, h5, h6)) {
+				color: inherit;
+			}
 		}
 	}
 }

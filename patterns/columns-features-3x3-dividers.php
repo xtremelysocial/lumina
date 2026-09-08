@@ -3,7 +3,7 @@
  * Title: Columns Features 3x2 Dividers
  * Description: Columns Features 3x2 w/Dividers
  * Slug: lumina/columns-features-3x2-dividers
- * Categories: lumina, column
+ * Categories: lumina, column, featured
  * Block Types: core/columns
  */
 ?>

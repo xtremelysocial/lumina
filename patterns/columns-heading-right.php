@@ -2,8 +2,8 @@
 /**
  * Title: Lumina Split Section (Content Left & Heading Right)
  * Slug: lumina/columns-heading-right
- * Categories: lumina, column, text, featured
- * Block Types: core/columns
+ * Categories: lumina, column, text
+ * Block Types: core/columns, core/heading
  * Description: 67/33 column layout with body content on the left and styled heading on the right.
  */
 ?>

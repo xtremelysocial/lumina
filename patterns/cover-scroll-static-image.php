@@ -3,7 +3,7 @@
  * Title: Cover Scroll Static Image
  * Description: Cover Scroll Static Image
  * Slug: lumina/cover-scroll-static-image
- * Categories: lumina, banner, media
+ * Categories: lumina, banner, media, featured
  * Block Types: core/cover
  */
 ?>
