@@ -244,6 +244,7 @@ figure > a:active,
    ========================================================================== */
 .is-style-pan-zoom-hover {
   position: relative;
+  --motion-active: clamp(0, calc((var(--wp--custom--animation--motion--pan-intensity, 1) + var(--wp--custom--animation--motion--zoom-intensity, 1)) * 1000), 1);
 }
 .is-style-pan-zoom-hover img,
 .is-style-pan-zoom-hover .wp-block-cover__image-background {
@@ -262,7 +263,8 @@ figure > a:active,
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  opacity: 0.7;
+  opacity: calc(0.7 * var(--motion-active));
+  transform: scale(var(--motion-active));
   transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
   pointer-events: none;
   z-index: 2;
@@ -278,21 +280,21 @@ figure > a:active,
   left: var(--wp--preset--spacing--30, 12px);
   width: 28px;
   height: 28px;
-  opacity: 0.7;
-  transform: scale(1) rotate(0deg);
+  opacity: calc(0.7 * var(--motion-active));
+  transform: scale(var(--motion-active)) rotate(0deg);
   transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms ease;
   pointer-events: none;
   z-index: 3;
   color: var(--wp--preset--color--base, #ffffff);
   background-color: currentColor;
   -webkit-mask-image: url("../icons/engine/motion.svg");
-  mask-image: url("../icons/engine/motion.svg");
+          mask-image: url("../icons/engine/motion.svg");
   -webkit-mask-size: 18px;
-  mask-size: 18px;
+          mask-size: 18px;
   -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
   -webkit-mask-position: center;
-  mask-position: center;
+          mask-position: center;
 }
 .is-style-pan-zoom-hover.is-light::before {
   background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 75%, transparent);
@@ -305,12 +307,12 @@ figure > a:active,
   animation-play-state: running !important;
 }
 .is-style-pan-zoom-hover:hover::before {
-  opacity: 1;
-  transform: scale(1.1);
+  opacity: var(--motion-active);
+  transform: scale(calc(1.1 * var(--motion-active)));
 }
 .is-style-pan-zoom-hover:hover::after {
-  opacity: 1;
-  transform: scale(1.2) rotate(-45deg);
+  opacity: var(--motion-active);
+  transform: scale(calc(1.2 * var(--motion-active))) rotate(-45deg);
 }
 
 /* ==========================================================================

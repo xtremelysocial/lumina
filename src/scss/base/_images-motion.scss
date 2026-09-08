@@ -204,6 +204,9 @@ $var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 .is-style-pan-zoom-hover {
 	position: relative;
 
+	// Boolean active flag: Evaluates to 0 if both pan & zoom are 0, or 1 if either > 0
+	--motion-active: clamp(0, calc((#{$var-pan} + #{$var-zoom}) * 1000), 1);
+
 	img,
 	.wp-block-cover__image-background {
 		animation-play-state: paused !important;
@@ -222,7 +225,8 @@ $var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 		width: 28px;
 		height: 28px;
 		border-radius: 50%;
-		opacity: 0.7;
+		opacity: calc(0.7 * var(--motion-active));
+		transform: scale(var(--motion-active));
 		transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
 					transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
 					background-color 200ms ease;
@@ -241,8 +245,8 @@ $var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 		right: var(--wp--preset--spacing--30, 12px);
 		width: 28px;
 		height: 28px;
-		opacity: 0.7;
-		transform: scale(1) rotate(0deg);
+		opacity: calc(0.7 * var(--motion-active));
+		transform: scale(var(--motion-active)) rotate(0deg);
 		transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
 					transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
 					color 200ms ease;
@@ -252,14 +256,9 @@ $var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 		color: var(--wp--preset--color--base, #ffffff);
 		background-color: currentColor;
 
-		-webkit-mask-image: url($pan-motion-icon);
 		mask-image: url($pan-motion-icon);
-		
-		-webkit-mask-size: 18px;
 		mask-size: 18px;
-		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
-		-webkit-mask-position: center;
 		mask-position: center;
 	}
 
@@ -279,13 +278,13 @@ $var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 		}
 
 		&::before {
-			opacity: 1;
-			transform: scale(1.1);
+			opacity: var(--motion-active);
+			transform: scale(calc(1.1 * var(--motion-active)));
 		}
 
 		&::after {
-			opacity: 1;
-			transform: scale(1.2) rotate(45deg);
+			opacity: var(--motion-active);
+			transform: scale(calc(1.2 * var(--motion-active))) rotate(45deg);
 		}
 	}
 }
