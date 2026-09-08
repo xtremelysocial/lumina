@@ -46,7 +46,7 @@ $color-registry: (
     ( color: 'primary',          	text: 'light',  	link: 'inherit', 
     		heading: 'inherit' 
     ),
-    ( color: 'primary-alt',      	text: 'light',  	link: 'inherit', 
+    ( color: 'primary-alt',      	text: 'light',  	link: 'lighten', //inherit
     		heading: 'inherit' 
     ),
 
@@ -57,14 +57,14 @@ $color-registry: (
 //     ( color: 'secondary-alt',    	text: 'light',  	link-light: 'highlight',
 //     		heading: 'inherit',		footer-dark: 'hover-highlight'  
 //     ), 
-    ( color: 'secondary-alt',    	text: 'light',  	link: 'inherit',
+    ( color: 'secondary-alt',    	text: 'light',  	link: 'lighten', //inherit
     		heading: 'inherit',		footer-dark: 'hover-highlight'  
     ), 
 
     ( color: 'tertiary',         	text: 'light',  	link: 'inherit',
     		heading: 'inherit',		footer-dark: 'hover-highlight'  
     ),
-    ( color: 'tertiary-alt',     	text: 'light',  	link: 'inherit',
+    ( color: 'tertiary-alt',     	text: 'light',  	link: 'lighten', //inherit
     		heading: 'inherit',		footer-dark: 'hover-highlight'  
     ),
 
@@ -270,9 +270,7 @@ $gradient-preserve-colors: (
 ) !default;
 
 //*-----------------------------------------------------------------------------
-// 0.4  SETUP: LIGHTEN AND DARKEN FOR LINKS AND/ORHEADERS
+// 0.4 SETUP: LIGHTEN AND DARKEN FOR LINKS AND HEADERS
 // -----------------------------------------------------------------------------*/
-// Optimize link lighten and darken for Lumina main palette specifically.
-// Each color scheme can then fine-tune these with the custom json vars.
-$filter-link-lighten: var(--wp--custom--color--highlight-alt--lighten, brightness(2.43) saturate(0.87)) !default;
+$filter-link-lighten: var(--wp--custom--color--highlight-alt--lighten, brightness(1.70) saturate(1.25)) !default;
 $filter-link-darken:  var(--wp--custom--color--highlight--darken, brightness(0.41) saturate(1.15)) !default;

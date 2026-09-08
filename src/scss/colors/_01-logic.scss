@@ -326,6 +326,7 @@
 // 				@extend %engine-link-lighten;
 
 			} @else if $link == 'lighten' { 
+				@extend %engine-link-highlight-alt; // OVERRIDE Flat Blocks
 				@extend %engine-link-lighten;
 
 			} @else if $link == 'highlight-alt'{
@@ -333,6 +334,7 @@
 // 				@extend %engine-link-darken;
 
 			} @else if $link == 'darken'{
+				@extend %engine-link-highlight; // OVERRIDE Flat Blocks
 				@extend %engine-link-darken;
 			}
 		}

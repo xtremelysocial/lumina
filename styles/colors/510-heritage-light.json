@@ -13,8 +13,12 @@
 					"darken": "brightness(0.75) saturate(0.85)"
 				},
 				"highlight-alt": {
-					"lighten": "brightness(1.33) saturate(1.18)"
+					"lighten": "brightness(0.85) saturate(1.20)"
 				},
+				"border": "color-mix(in srgb, currentColor 8%, transparent)",
+				"field": { 
+					"outline": "color-mix(in srgb, currentColor 12%, transparent)" 
+				},								
 				"contrast": {
 					"primary": "var(--wp--preset--color--contrast)",
 					"secondary": "var(--wp--preset--color--contrast)",
