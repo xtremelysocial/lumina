@@ -132,7 +132,7 @@ if ( ! function_exists( 'lumina_load_styles' ) ) :
 
 		// 5. Lumina Physics / Gravity JS (Front-end only)
 		if ( ! is_admin() 
-			AND apply_filters( 'lumina_card_link_js', true ) 
+			AND apply_filters( 'lumina_physics_js', true ) 
 			AND file_exists( get_stylesheet_directory() . '/assets/js/theme-physics.js' ) ) {
 
 			$theme_version = wp_get_theme()->get( 'Version' ) ?? false;			
@@ -296,7 +296,8 @@ endif;
  */
 
 // if ( ! function_exists( 'lumina_body_open' ) ) :
-if ( ! function_exists( 'lumina_body_open' ) AND ! function_exists( 'flatblocks_body_open') ):
+// if ( ! function_exists( 'lumina_body_open' ) AND ! function_exists( 'flatblocks_body_open') ):
+if ( ! function_exists( 'lumina_body_open' ) AND ! is_child() ):
 
 	add_action( 'wp_body_open', 'lumina_body_open' );
 

@@ -3,7 +3,7 @@
  * Title: Text Social Icons Huge
  * Description: Social Icons Huge
  * Slug: lumina/text-social-icons-huge
- * Categories: lumina, text
+ * Categories: lumina, buttons
  * Block Types: core/social-icons
  */
 ?>

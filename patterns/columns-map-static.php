@@ -3,7 +3,7 @@
  * Title: Static Map & Contact Info
  * Description: Static map, contact info, social icons
  * Slug: lumina/columns-map-static
- * Categories: lumina, text, column
+ * Categories: lumina, column, media
  * Block Types: core/columns
  */
 ?>

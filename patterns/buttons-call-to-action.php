@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Columns Call To Action
+ * Title: Call To Action
  * Description: Columns Call To Action
  * Slug: lumina/columns-call-to-action
- * Categories: lumina, column, featured
+ * Categories: lumina, call-to-action, featured
  * Block Types: core/columns
  */
 ?>

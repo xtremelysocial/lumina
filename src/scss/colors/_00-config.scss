@@ -1,6 +1,6 @@
 //* ==========================================================================
 //   00 COLOR CONFIGURATION: Colors Engine (Text, heading, link colors)
-//	 	v0.9.9 Build 30 MVP
+//	 	v0.9.9 Build 30 MVP - Finalize Patterns
 //   ========================================================================== */
 
 // ==========================================================================
@@ -42,7 +42,7 @@ $color-defaults: (
 // MAP OF ALL COLORS IN THE PALETTE (THAT AREN'T IN PARENT THEME)
 $color-registry: (
 
-	// --- MAIN COLORS (DARK) (FLAT BLOCKS) ---
+	// --- MAIN COLORS  ---
     ( color: 'primary',          	text: 'light',  	link: 'inherit', 
     		heading: 'inherit' 
     ),
@@ -103,7 +103,7 @@ $color-registry: (
 //     ( color: 'highlight',     	  text: 'dark',  	link: 'inherit' ),
 //     ( color: 'highlight-alt', 	  text: 'light', 	link: 'inherit' ),
 
-    // --- WHITE & GRAY NAMED COLORS (OVERRIDE PARENT THEME)---
+    // --- WHITE & GRAY NAMED COLORS ---
     ( color: 'white',      			text: 'dark', 		heading-dark: 'inherit',
     		link-dark: 'highlight-alt',	footer: 'hover-highlight-alt' 
     ),
@@ -141,23 +141,16 @@ $color-registry: (
 // 		link-light: 'highlight', 	link-dark: 'highlight-alt',	footer: 'hover-highlight-alt'
 // 	),
     
-    // --- DARK SEMANTIC COLORS (LUMINA ONLY) ---
-    // Static dark zones that enforce high-contrast light text across both viewports
-    ( color: 'primary-dark',        text: 'light', 		link: 'highlight', 
-    		heading: 'inherit' 
-    ),
+    // --- DARK SEMANTIC COLORS (FLAT BLOCKS HAS ONLY DARK/ALT) ---
+    ( color: 'dark',			text: 'light',	link: 'highlight', heading: 'inherit' ),
+    ( color: 'dark-alt',		text: 'light',	link: 'highlight', heading: 'inherit' ),
+
+    ( color: 'primary-dark',        text: 'light', 		link: 'highlight', heading: 'inherit' ),    
+    ( color: 'primary-dark-alt',    text: 'light', 		link: 'highlight', heading: 'inherit' ),
+    ( color: 'tertiary-dark',       text: 'light', 		link: 'highlight', heading: 'inherit' ),
+    ( color: 'tertiary-dark-alt',   text: 'light', 		link: 'highlight', heading: 'inherit' ),
     
-    ( color: 'primary-dark-alt',    text: 'light', 		link: 'highlight', 
-    		heading: 'inherit' 
-    ),
-    ( color: 'tertiary-dark',       text: 'light', 		link: 'highlight', 
-    		heading: 'inherit' 
-    ),
-    ( color: 'tertiary-dark-alt',   text: 'light', 		link: 'highlight', 
-    		heading: 'inherit' 
-    ),
-    
-    // --- VERY LIGHT NAMED COLORS (LUMINA ONLY) ---
+    // --- VERY LIGHT NAMED COLORS (REMOVE - NOT NEEDED AT ALL) ---
     ( color: 'very-light-green',    text: 'dark', 		link-dark: 'highlight-alt',
 			heading-dark: 'dark' 
     ),
@@ -176,33 +169,33 @@ $color-registry: (
     		heading-dark: 'dark' 
     ),
 
-    // --- GREEN NAMED COLORS ---
+    // --- GREEN NAMED COLORS (FLAT BLOCKS ONLY) ---
     ( color: 'light-green',         text: 'dark', 		heading-dark: 'dark',
     	link: 'inherit' 
-    ), // OVERRIDE PARENT 
+    ),
 
     ( color: 'green',             	text: 'light',  	link: 'inherit' ),    	   
     ( color: 'dark-green',          text: 'light', 		link: 'inherit' ), // LUMINA ONLY
 
-    // --- YELLOW & ORANGE NAMED COLORS ---
+    // --- YELLOW & ORANGE NAMED COLORS (FLAT BLOCKS ONLY) ---
     ( color: 'light-yellow',      text: 'dark',			heading-dark: 'dark',
      	link: 'inherit' 
-    ), // OVERRIDE PARENT
+    ),
 
     ( color: 'yellow',            text: 'light', 		link: 'light' ), // OVERRIDE PARENT
     ( color: 'dark-yellow',       text: 'light', 		link: 'light' ), // LUMINA ONLY
 
     ( color: 'light-orange',      text: 'dark', 		heading-dark: 'dark',
     	link: 'inherit' 
-    ), // OVERRIDE PARENT
+    ),
 
     ( color: 'orange',            text: 'light',  		link: 'inherit' ),
     ( color: 'dark-orange',       text: 'light',  		link: 'inherit' ),
         
-	// --- BLUE NAMED COLORS ---
+	// --- BLUE NAMED COLORS (FLAT BLOCKS ONLY) ---
     ( color: 'light-blue',        text: 'dark', 		heading-dark: 'dark',
       	link: 'inherit' 
-    ), // OVERRIDE PARENT
+    ),
 
     ( color: 'blue',            text: 'light',  		link: 'inherit' ),
     ( color: 'dark-blue',       text: 'light',  		link: 'inherit' ),
@@ -218,25 +211,23 @@ $color-registry: (
 //     	footer-dark: 'hover-highlight' 
 //     ),
 
-	// --- PURPLE NAMED COLORS ---
+	// --- PURPLE NAMED COLORS (FLAT BLOCKS ONLY) ---
     ( color: 'light-purple',    text: 'dark', 			heading-dark: 'dark',
       	link: 'inherit'
-    ), // OVERRIDE PARENT
+    ),
 
     ( color: 'purple',          text: 'light',  		link: 'inherit' ),
     ( color: 'dark-purple',     text: 'light',  		link: 'inherit' ),
 
-    // --- RED NAMED COLORS ---
+    // --- RED NAMED COLORS (FLAT BLOCKS ONLY) ---
     ( color: 'light-red',		text: 'dark', 			heading-dark: 'dark',
       	link: 'inherit' 
-    ), // OVERRIDE PARENT  
+    ),
 
     ( color: 'red',				text: 'light',  		link: 'inherit' ),
     ( color: 'dark-red',		text: 'light',  		link: 'inherit' ),
     
-    // --- VERY DARK NAMED COLORS (OVERRIDE PARENT THEME - MUST UPDATE LATER)---
-    ( color: 'dark',			text: 'light',	link: 'highlight', heading: 'inherit' ),
-    ( color: 'dark-alt',		text: 'light',	link: 'highlight', heading: 'inherit' ),
+    // --- VERY DARK NAMED COLORS
     ( color: 'not-quite-black',	text: 'light',	link: 'highlight', heading: 'inherit' ),
     ( color: 'almost-black',	text: 'light',	link: 'highlight', heading: 'inherit' ),
     ( color: 'black',			text: 'light',	link: 'highlight', heading: 'inherit' ),
@@ -262,7 +253,7 @@ $gradient-tracks: (
 
 // 2. List of light/subtle gradients that preserve default dark body & heading text
 $gradient-preserve-colors: (
-// 	'yellow',
+// 	'yellow', // FLAT BLOCKS ONLY
 	'gray',
 	'primary-subtle',
 	'secondary-subtle',

@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Banner Page Hero Media Text
- * Description: Banner Page Hero Media Text
+ * Title: Banner Page Hero Media & Text
+ * Description: Banner Page Hero Media & Text
  * Slug: lumina/banner-page-hero-media-text
- * Categories: lumina, banner, media, text
+ * Categories: lumina, banner, media
  * Block Types: core/media-text
  */
 ?>

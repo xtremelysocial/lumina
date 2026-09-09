@@ -3,7 +3,7 @@
  * Title: Call To Action 2 Columns Dark
  * Description: Call To Action 2 Columns Dark
  * Slug: lumina/buttons-call-to-action-2-columns-dark
- * Categories: lumina, buttons, call-to-action, column
+ * Categories: lumina, buttons, call-to-action
  * Block Types: core/columns, core/buttons
  */
 ?>

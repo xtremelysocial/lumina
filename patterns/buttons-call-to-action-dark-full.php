@@ -3,7 +3,7 @@
  * Title: Columns Call To Action Dark Full
  * Description: Columns Call To Action Dark Full
  * Slug: lumina/columns-call-to-action-dark-full
- * Categories: lumina, column
+ * Categories: lumina, call-to-action
  * Block Types: core/columns
  */
 ?>

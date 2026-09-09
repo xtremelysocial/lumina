@@ -22,7 +22,11 @@
 	
 	<!-- wp:pattern {"slug":"lumina/columns-intro-3x2-dividers"} /-->
 
+	<!-- wp:pattern {"slug":"lumina/image-gallery"} /-->
+
 	<!-- wp:pattern {"slug":"lumina/columns-call-to-action"} /-->
+	
+	<!-- wp:pattern {"slug":"lumina/columns-recent-posts-3-columns"} /-->
 	
 </div>
 <!-- /wp:group -->

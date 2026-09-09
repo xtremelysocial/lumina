@@ -3,7 +3,7 @@
  * Title: Media Text 2 Blocks
  * Description: Media Text 2 Blocks
  * Slug: lumina/media-text-2-blocks
- * Categories: lumina, media, text
+ * Categories: lumina, media
  * Block Types: core/media-text
  */
 ?>

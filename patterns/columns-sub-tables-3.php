@@ -3,18 +3,18 @@
  * Title: Columns Sub Tables 3
  * Description: Columns Sub Tables 3
  * Slug: lumina/columns-sub-tables-3
- * Categories: lumina, column, featured
+ * Categories: lumina, column
  * Block Types: core/columns
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Subscription Tables 4 Columns"},"align":"wide","layout":{"type":"constrained"},"anchor":"sub-levels-4"} -->
-<div class="wp-block-group alignwide" id="sub-levels-4"><!-- wp:heading {"align":"wide","className":"is-style-separator"} -->
-<h2 class="wp-block-heading alignwide is-style-separator"><?php esc_html_e("Subscription Tables 4 Levels", "lumina"); ?></h2>
+<!-- wp:group {"metadata":{"name":"Subscription Tables 3 Levels"},"align":"wide","layout":{"type":"constrained"},"anchor":"sub-levels-3"} -->
+<div class="wp-block-group alignwide" id="sub-levels-3"><!-- wp:heading {"align":"wide","className":"is-style-separator"} -->
+<h2 class="wp-block-heading alignwide is-style-separator"><?php esc_html_e("Subscription Tables 3 Levels", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
-<!-- wp:columns {"metadata":{"name":"4 Columns"},"align":"wide"} -->
-<div class="wp-block-columns alignwide"><!-- wp:column {"verticalAlignment":"stretch","className":"is-style-rounded-border","backgroundColor":"primary-subtle","layout":{"type":"default"}} -->
-<div class="wp-block-column is-vertically-aligned-stretch is-style-rounded-border has-primary-subtle-background-color has-background"><!-- wp:group {"align":"wide","className":"is-style-default","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between","justifyContent":"stretch"}} -->
+<!-- wp:columns {"metadata":{"name":"3 Columns"},"align":"wide"} -->
+<div class="wp-block-columns alignwide"><!-- wp:column {"verticalAlignment":"stretch","className":"is-style-rounded-border is-style-first-on-mobile","backgroundColor":"primary-subtle","layout":{"type":"default"}} -->
+<div class="wp-block-column is-vertically-aligned-stretch is-style-rounded-border is-style-first-on-mobile has-primary-subtle-background-color has-background"><!-- wp:group {"align":"wide","className":"is-style-default","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between","justifyContent":"stretch"}} -->
 <div class="wp-block-group alignwide is-style-default"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap","verticalAlignment":"space-between"}} -->
 <div class="wp-block-group"><!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading"><strong><?php esc_html_e("Single", "lumina"); ?></strong></h3>
@@ -51,8 +51,8 @@
 <!-- /wp:group --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"stretch","className":"is-style-rounded-border","backgroundColor":"secondary-subtle","layout":{"type":"default"}} -->
-<div class="wp-block-column is-vertically-aligned-stretch is-style-rounded-border has-secondary-subtle-background-color has-background"><!-- wp:group {"align":"wide","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between","justifyContent":"stretch"}} -->
+<!-- wp:column {"verticalAlignment":"stretch","backgroundColor":"secondary-subtle","layout":{"type":"default"}} -->
+<div class="wp-block-column is-vertically-aligned-stretch has-secondary-subtle-background-color has-background"><!-- wp:group {"align":"wide","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between","justifyContent":"stretch"}} -->
 <div class="wp-block-group alignwide"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap","verticalAlignment":"space-between"}} -->
 <div class="wp-block-group"><!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading"><strong><?php esc_html_e("Family", "lumina"); ?></strong></h3>
@@ -83,7 +83,7 @@
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"}} -->
 <div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"almost-black","className":"is-style-button-alt"} -->
-<div class="wp-block-button is-style-button-alt"><a class="wp-block-button__link has-almost-black-background-color has-background wp-element-button" href="#content-start"><?php esc_html_e("$200 / year", "lumina"); ?></a></div>
+<div class="wp-block-button is-style-button-alt"><a class="wp-block-button__link has-almost-black-background-color has-background wp-element-button" href="#content-start"><?php esc_html_e("$29 / month", "lumina"); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
@@ -133,6 +133,6 @@
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
-<!-- /wp:column --><div>
+<!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->

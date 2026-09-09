@@ -155,7 +155,7 @@ $var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 }
 
 .wp-block-media-text:not(.is-image-fill-element):is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-media-text__media {
-	border: var(--wp--custom--border--style, solid) var(--wp--custom--border--width, 1px) var(--wp--custom--color--border, currentColor);
+	border: var(--wp--custom--border--style, solid) var(--wp--custom--border--width, 1px) var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
 	border-radius: var(--wp--preset--border-radius--lg, 16px);
 }
 
@@ -279,12 +279,14 @@ $var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 
 		&::before {
 			opacity: var(--motion-active);
-			transform: scale(calc(1.1 * var(--motion-active)));
+// 			transform: scale(calc(1.1 * var(--motion-active)));
+			transform: scale(calc(1 * var(--motion-active)));
 		}
 
 		&::after {
 			opacity: var(--motion-active);
-			transform: scale(calc(1.2 * var(--motion-active))) rotate(45deg);
+// 			transform: scale(calc(1.2 * var(--motion-active))) rotate(45deg);
+			transform: scale(calc(1 * var(--motion-active))) rotate(45deg);
 		}
 	}
 }

@@ -15,7 +15,7 @@
  */
 /* ==========================================================================
    LUMINA THEME: EDITOR CSS styles
-   v0.9.9 Build 30 MVP
+   v0.9.9 Build 30 MVP - Finalize Patterns
    ========================================================================== */
 /* ==========================================================================
    BLOCK EDITOR STYLES: Image Aspect Ratios
@@ -86,7 +86,7 @@
   color: var(--wp--preset--color--foreground-alt);
 }
 
-.has-primary-dark-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-primary-dark-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-tertiary-dark-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-tertiary-dark-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-dark-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-dark-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-not-quite-black-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-almost-black-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-black-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover {
+.has-dark-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-dark-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-primary-dark-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-primary-dark-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-tertiary-dark-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-tertiary-dark-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-not-quite-black-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-almost-black-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-black-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover {
   /* Set link color to highlight for dark backgrounds */
   color: var(--wp--preset--color--highlight);
 }

@@ -3,7 +3,7 @@
  * Title: Social Icons Neutral
  * Description: Social Icons Neutral
  * Slug: lumina/text-social-icons-neutral
- * Categories: lumina, text
+ * Categories: lumina, buttons
  * Block Types: core/social-icons
  */
 ?>

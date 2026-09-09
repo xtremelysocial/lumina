@@ -3,7 +3,7 @@
  * Title: Banner Home Hero Video & Text
  * Description: Banner Home Hero Video & Text
  * Slug: lumina/banner-home-hero-video-text
- * Categories: lumina, banner, text
+ * Categories: lumina, banner
  * Block Types: core/columns
  */
 ?>

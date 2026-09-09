@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Media Text 2 Blocks w/Featured Image
- * Description: Media Text w/2 colored group blocks and featured image
+ * Title: Media & Text 2 Blocks w/Featured Image
+ * Description: Media & Text w/2 colored group blocks and featured image
  * Slug: lumina/media-text-2-blocks-featured
- * Categories: lumina, media, text
+ * Categories: lumina, media
  * Block Types: core/media-text
  */
 ?>

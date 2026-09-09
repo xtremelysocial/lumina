@@ -6,11 +6,11 @@
    ========================================================================== */
 /* ==========================================================================
    05 GLOBAL OVERIDES: Styles outside of the core engine loops
-	    v0.9.9 Build 30 MVP
+	    v0.9.9 Build 30 MVP - Finalize Patterns
    ========================================================================== */
 /* ==========================================================================
    LUMINA ENGINE: Registers objects and sets their resting states
-   v0.9.9 Build 30 MVP
+   v0.9.9 Build 30 MVP - Finalize Patterns
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   :root {
@@ -29,10 +29,10 @@
   overflow: hidden;
 }
 
-.wp-site-blocks .wp-block-social-links.is-style-logos-only {
+:is(.wp-site-blocks, .editor-styles-wrapper) .wp-block-social-links.is-style-logos-only {
   box-shadow: none;
 }
-.wp-site-blocks .wp-block-social-links.is-style-logos-only .wp-block-social-link {
+:is(.wp-site-blocks, .editor-styles-wrapper) .wp-block-social-links.is-style-logos-only .wp-block-social-link {
   box-shadow: none;
 }
 
