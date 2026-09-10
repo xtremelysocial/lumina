@@ -16,6 +16,6 @@
 
 <!-- wp:pattern {"slug":"lumina/image-gallery-rounded"} /-->
 
-<!-- wp:pattern {"slug":"lumina/testimonial-with-avatar"} /-->
+<!-- wp:pattern {"slug":"lumina/text-testimonial"} /-->
 
-<!-- wp:pattern {"slug":"lumina/call-to-action-rounded"} /-->
+<!-- wp:pattern {"slug":"lumina/buttons-call-to-action-rounded"} /-->

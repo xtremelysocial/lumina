@@ -4,10 +4,9 @@
  * Description: Banner Home Hero Media & Text
  * Slug: lumina/banner-home-hero-media-text
  * Categories: lumina, banner, media
- * Block Types: core/media-text
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Home Banner Media \u0026 Text"},"align":"full","gradient":"tertiary","layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text"} -->
+<!-- wp:group {"metadata":{"name":"Home Banner Media \u0026 Text","patternName":"lumina/banner-home-hero-media-text"},"align":"full","gradient":"tertiary","layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text"} -->
 <div class="wp-block-group alignfull has-tertiary-gradient-background has-background" id="banner-home-hero-media-text">
 	<!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom is-style-default"} -->
 	<div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom is-style-default" style="grid-template-columns:auto 45%">

@@ -28,4 +28,4 @@
 
 <!-- wp:pattern {"slug":"lumina/image-gallery-rounded"} /-->
 
-<!-- wp:pattern {"slug":"lumina/call-to-action-dark-full-width"} /-->
+<!-- wp:pattern {"slug":"lumina/buttons-call-to-action-dark-full-width"} /-->

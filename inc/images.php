@@ -4,7 +4,7 @@
  * Theme:       Shared Media Functions
  *
  * Unified Media Architecture. Handles native image blocks,
- * cover toggles, lightboxes, and legacy post loops.
+ * cover toggles, media-text toggles, lightboxes, and legacy post loops.
  *
  * @package     XtremelySocial
  */
@@ -41,7 +41,6 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 
 		$exclude_prefixes = []; 
 		
-// 		$allowed_extensions = [ 'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg' ];
 		$allowed_extensions = [ 'jpg', 'jpeg', 'png', 'gif', 'webp' ];
 
 		$true_default       = 'assets/images/samples/01.webp';
@@ -204,7 +203,7 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 }
 
 /**
- * 2. THE COVER TOGGLE INTERCEPT
+ * 2A. THE COVER TOGGLE INTERCEPT
  */
 if ( ! function_exists( __NAMESPACE__ . '\filter_cover_block_fallback' ) ) {
 	function filter_cover_block_fallback( $block_content, $block ) {
@@ -221,6 +220,44 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_cover_block_fallback' ) ) {
 		return $block_content;
 	}
 	add_filter( 'render_block_core/cover', __NAMESPACE__ . '\filter_cover_block_fallback', 10, 2 );
+}
+
+/**
+ * 2B. THE MEDIA & TEXT TOGGLE INTERCEPT
+ */
+if ( ! function_exists( __NAMESPACE__ . '\filter_media_text_block_fallback' ) ) {
+	function filter_media_text_block_fallback( $block_content, $block ) {
+		$force_override = defined( 'FORCE_DEFAULT_IMAGE' ) && FORCE_DEFAULT_IMAGE;
+
+		if ( ! empty( $block['attrs']['useFeaturedImage'] ) && ( $force_override || ! get_post_thumbnail_id( get_the_ID() ) ) ) {
+			$fallback = get_featured_image_fallback_data( get_the_ID() );
+
+			// 1. Handle inline background images (if imageFill mode is enabled)
+			if ( preg_match( '/url\([^)]*\)/i', $block_content ) ) {
+				$block_content = preg_replace( '/url\([^)]*\)/', 'url(' . esc_url( $fallback['url'] ) . ')', $block_content );
+			}
+
+			// 2. If an <img> tag already exists inside the block, swap its src
+			if ( preg_match( '/<img[^>]+>/i', $block_content ) ) {
+				$block_content = preg_replace( '/src=["\']([^"\']*)["\']/i', 'src="' . esc_url( $fallback['url'] ) . '"', $block_content );
+			} else {
+				// 3. If core rendered an empty <figure> wrapper, inject the fallback <img> tag directly
+				$img_tag = sprintf(
+					'<img src="%s" alt="%s" class="wp-post-image" />',
+					esc_url( $fallback['url'] ),
+					esc_attr( $fallback['alt'] )
+				);
+
+				$block_content = preg_replace(
+					'/(<figure[^>]*class=["\'][^"\']*wp-block-media-text__media[^"\']*["\'][^>]*>)([\s\S]*?)(<\/figure>)/i',
+					'$1' . $img_tag . '$3',
+					$block_content
+				);
+			}
+		}
+		return $block_content;
+	}
+	add_filter( 'render_block_core/media-text', __NAMESPACE__ . '\filter_media_text_block_fallback', 10, 2 );
 }
 
 /**

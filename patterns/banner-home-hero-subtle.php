@@ -1,0 +1,27 @@
+<?php
+/**
+ * Title: Banner Home Hero Subtle Background Media & Text
+ * Description: Banner Home Hero Media & Text Subtle Background
+ * Slug: lumina/banner-home-hero-media-text-subtle
+ * Categories: lumina, banner
+ */
+?>
+<!-- wp:group {"metadata":{"name":"Home Banner Subtle Media \u0026 Text","patternName":"lumina/banner-home-hero-media-text-subtle"},"align":"full","className":"is-style-default","style":{"background":{"gradient":"var:preset|gradient|tertiary-subtle"},"border":{"bottom":{"color":"var:preset|color|neutral-alt","width":"3px"}},"elements":{"link":{"color":{"text":"var:preset|color|tertiary-alt"}}}},"textColor":"tertiary-alt","layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text-subtle"} -->
+<div class="wp-block-group alignfull is-style-default has-tertiary-alt-color has-text-color has-link-color" id="banner-home-hero-media-text-subtle" style="border-bottom-color:var(--wp--preset--color--neutral-alt);border-bottom-width:3px"><!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom is-style-default"} -->
+<div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom is-style-default" style="grid-template-columns:auto 45%"><div class="wp-block-media-text__content"><!-- wp:site-title {"isLink":false,"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"huge"} /-->
+
+<!-- wp:site-tagline {"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"x-large"} /-->
+
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"large"} -->
+<p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("Lumina is a refined modern theme inspired by the colors, light, depth and motion of the environment around us", "lumina"); ?></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-arrow-down-alt2-no-text","style":{"typography":{"textAlign":"center"}}} -->
+<p class="has-text-align-center is-style-icon-arrow-down-alt2-no-text"><a href="#content-start"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
+<!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/01.webp" ) ); ?>" alt=""/></figure></div>
+<!-- /wp:media-text --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"lock":{"move":false,"remove":true},"metadata":{"name":"Content Start"},"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"},"anchor":"content-start"} -->
+<div id="content-start" class="wp-block-group" style="margin-top:0;margin-bottom:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"></div>
+<!-- /wp:group -->

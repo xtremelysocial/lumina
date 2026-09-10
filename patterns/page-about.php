@@ -30,4 +30,4 @@
 
 <!-- wp:pattern {"slug":"lumina/testimonial-with-avatar"} /-->
 
-<!-- wp:pattern {"slug":"lumina/call-to-action-2-columns-dark"} /-->
+<!-- wp:pattern {"slug":"lumina/buttons-call-to-action-2-columns-dark"} /-->

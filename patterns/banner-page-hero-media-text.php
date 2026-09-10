@@ -4,10 +4,9 @@
  * Description: Banner Page Hero Media & Text
  * Slug: lumina/banner-page-hero-media-text
  * Categories: lumina, banner, media
- * Block Types: core/media-text
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Page Banner Media \u0026 Text Hero"},"align":"full","backgroundColor":"secondary-alt","layout":{"type":"constrained"},"anchor":"banner-page-hero-media-text"} -->
+<!-- wp:group {"metadata":{"name":"Page Banner Media \u0026 Text Hero","patternName":"lumina/banner-page-hero-media-text"},"align":"full","backgroundColor":"secondary-alt","layout":{"type":"constrained"},"anchor":"banner-page-hero-media-text"} -->
 <div class="wp-block-group alignfull has-secondary-alt-background-color has-background" id="banner-page-hero-media-text"><!-- wp:media-text {"align":"wide","mediaPosition":"right","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"useFeaturedImage":true,"className":"is-style-pan-zoom"} -->
 <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom" style="grid-template-columns:auto 45%"><div class="wp-block-media-text__content"><!-- wp:post-title {"level":1,"align":"wide","className":"entry-title","style":{"typography":{"lineHeight":"1.2"}},"fontSize":"huge"} /-->
 

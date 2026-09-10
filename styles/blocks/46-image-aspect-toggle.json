@@ -1,8 +1,8 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"slug": "pan-zoom-hover",
-	"title": "Hover Pan & Zoom",
+	"slug": "toggle-aspect",
+	"title": "Toggle Aspect Ratio",
 	"blockTypes": [ "core/image", "core/post-featured-image", "core/cover" ],
 	"styles": {
 		"css": ""

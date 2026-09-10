@@ -30,4 +30,4 @@
 
 <!-- wp:pattern {"slug":"lumina/faq-2-columns"} /-->
 
-<!-- wp:pattern {"slug":"lumina/call-to-action-2-columns"} /-->
+<!-- wp:pattern {"slug":"lumina/buttons-call-to-action-2-columns"} /-->

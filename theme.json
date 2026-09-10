@@ -1337,6 +1337,12 @@
 			"postTypes": ["page"]
 		},
 		{
+			"name": "page-noimage",
+			"title": "Page No Featured Image",
+			"description": "Page w/out featured image",
+			"postTypes": ["page"]
+		},
+		{
 			"name": "page-notitle",
 			"title": "Page No Title",
 			"description": "Page w/out title",
@@ -1418,6 +1424,12 @@
 			"name": "single-featured-image-nosidebar",
 			"title": "Post Featured Image No Sidebar",
 			"description": "Post w/large featured image and no sidebar",
+			"postTypes": ["post"]
+		},
+		{
+			"name": "single-noimage",
+			"title": "Post No Featured Image",
+			"description": "Post w/out featured image",
 			"postTypes": ["post"]
 		},
 		{
