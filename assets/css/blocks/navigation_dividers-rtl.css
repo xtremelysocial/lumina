@@ -24,7 +24,7 @@
   right: var(--wp--preset--spacing--30, 0.75rem);
   left: var(--wp--preset--spacing--30, 0.75rem);
   height: 1px;
-  background-color: color-mix(in srgb, currentColor 20%, transparent);
+  background-color: var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
   pointer-events: none;
 }
 
@@ -52,7 +52,7 @@
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item:not(:last-child),
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item:not(:last-child) {
-  border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-bottom: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
@@ -64,12 +64,17 @@
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
-  /* Top-level parent nav items */
+  /* Top-level parent nav items (has-child) */
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
   width: 100%;
-  border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-bottom: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
+  /* Lock border color so link hover state doesn't turn line teal */
+}
+.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content:hover,
+.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content:hover {
+  border-bottom-color: var(--wp--custom--color--border, color-mix(in srgb, #000 15%, transparent));
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {

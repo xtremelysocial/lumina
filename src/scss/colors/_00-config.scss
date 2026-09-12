@@ -263,5 +263,5 @@ $gradient-preserve-colors: (
 //*-----------------------------------------------------------------------------
 // 0.4 SETUP: LIGHTEN AND DARKEN FOR LINKS AND HEADERS
 // -----------------------------------------------------------------------------*/
-$filter-link-lighten: var(--wp--custom--color--highlight-alt--lighten, brightness(1.70) saturate(1.25)) !default;
-$filter-link-darken:  var(--wp--custom--color--highlight--darken, brightness(0.41) saturate(1.15)) !default;
+$filter-link-lighten: var(--wp--custom--color--highlight-alt--lighten, brightness(2.20) saturate(0.80)) !default;
+$filter-link-darken:  var(--wp--custom--color--highlight--darken, brightness(0.40) saturate(1.15)) !default;

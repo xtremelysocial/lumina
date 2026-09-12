@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6,
 
 // 4. List Item Micro-Tether Engine (Item-to-Item & Nested List Flow)
 // :where(ul, ol, .wp-block-list):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-page-list, .wp-block-social-links) {
-:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-page-list, .wp-block-social-links) {
+:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-navigation__submenu-container, .wp-block-page-list, .wp-block-social-links) {
 
 	// Consecutive List Items
 	> li + li {

@@ -24,7 +24,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 function get_excluded_block_styles() {
 // 	return 'parent';
 // 	return array( 'no-padding', 'no-gap', 'thick-gap' ); //TEST
-	return array( 'no-gap', 'thick-gap' ); //TEST
+// 	return array( 'no-gap', 'thick-gap' ); //TEST
+	return array( 'no-gap' ); //TEST
 // 	return array(); 
 }
 

@@ -78,7 +78,7 @@
 
 .has-primary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-secondary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-tertiary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover {
   /* Lighten link color on dark backgrounds */
-  filter: var(--wp--custom--color--highlight-alt--lighten, brightness(1.7) saturate(1.25));
+  filter: var(--wp--custom--color--highlight-alt--lighten, brightness(2.2) saturate(0.8));
 }
 
 .has-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover, .has-dark-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))):hover {

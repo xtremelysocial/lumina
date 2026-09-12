@@ -1,0 +1,49 @@
+/*--------------------------------------------------------------
+# LUMINA Navigation
+--------------------------------------------------------------*/
+
+/* Set the navigation menu, drop-downs, and mobile menu colors */
+.site-header:not(.has-background) .wp-block-navigation:not(.has-background) {
+
+	&,
+	& .wp-block-navigation__responsive-container.is-menu-open {
+		background-color: var(--wp--custom--color--navigation--background, var(--wp--preset--color--base));
+// 		color: var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast));
+	}
+}
+
+.site-header:not(.has-background) .wp-block-navigation:not(.has-text-color) {
+	.wp-block-navigation__submenu-container {
+    	color: var(--wp--preset--color--contrast);
+    }
+}
+
+/* Drop-down card rounded corner clipping (desktop/tablet) */
+.wp-block-navigation__responsive-container:not(.is-menu-open) {
+	.wp-block-navigation__submenu-container {
+		border-radius: var(--wp--preset--border-radius--lg, 16px);
+	
+		// Round top corners of the first item
+		& > :first-child,
+		& > :first-child > a {
+			border-top-left-radius: var(--wp--preset--border-radius--lg, 16px);
+			border-top-right-radius: var(--wp--preset--border-radius--lg, 16px);
+		}
+		
+		// Round bottom corners of the last item
+		& > :last-child,
+		& > :last-child > a {
+			border-bottom-left-radius: var(--wp--preset--border-radius--lg, 16px);
+			border-bottom-right-radius: var(--wp--preset--border-radius--lg, 16px);
+		}	
+	}
+}
+
+/* Set mobile menu overlay to use theme base & contrast tokens */
+.wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open {
+    background-color: var(--wp--preset--color--base);
+}
+
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open {
+    color: var(--wp--preset--color--contrast);
+}

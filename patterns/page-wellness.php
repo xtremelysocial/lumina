@@ -8,9 +8,9 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"lumina/banner-home-hero-media-text"} /-->
+<!-- wp:pattern {"slug":"lumina/banner-page-hero-media-text"} /-->
 
-<!-- wp:pattern {"slug":"lumina/features-intro+2-columns"} /-->
+<!-- wp:pattern {"slug":"lumina/columns-features-3-columns"} /-->
 
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|20"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--20)">
@@ -26,8 +26,8 @@
 
 <!-- wp:pattern {"slug":"lumina/columns-sub-tables-3"} /-->
 
-<!-- wp:pattern {"slug":"lumina/team-3-people"} /-->
+<!-- wp:pattern {"slug":"lumina/columns-team-3-people"} /-->
 
-<!-- wp:pattern {"slug":"lumina/faq-2-columns"} /-->
+<!-- wp:pattern {"slug":"lumina/text-faq"} /-->
 
 <!-- wp:pattern {"slug":"lumina/buttons-call-to-action-2-columns"} /-->

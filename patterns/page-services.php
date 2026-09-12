@@ -22,7 +22,7 @@
 </div>
 <!-- /wp:group -->
 
-<!-- wp:pattern {"slug":"lumina/columns-features-4-columns"} /-->
+<!-- wp:pattern {"slug":"lumina/columns-features-3-columns"} /-->
 
 <!-- wp:pattern {"slug":"lumina/columns-intro+3x2-dividers"} /-->
 

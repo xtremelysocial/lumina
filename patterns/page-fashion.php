@@ -8,7 +8,7 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"lumina/banner-home-hero-video-text"} /-->
+<!-- wp:pattern {"slug":"lumina/banner-home-hero-media-text"} /-->
 
 <!-- wp:pattern {"slug":"lumina/drop-caps-3-columns"} /-->
 

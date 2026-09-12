@@ -484,10 +484,10 @@ blockquote, .wp-block-quote,
   margin-block-start: var(--wp--preset--spacing--30);
 }
 
-:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-page-list, .wp-block-social-links) > li + li {
+:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-navigation__submenu-container, .wp-block-page-list, .wp-block-social-links) > li + li {
   margin-block-start: calc(0.5 * var(--wp--preset--spacing--30));
 }
-:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-page-list, .wp-block-social-links) > li > :where(ul, ol) {
+:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-navigation__submenu-container, .wp-block-page-list, .wp-block-social-links) > li > :where(ul, ol) {
   margin-block-start: var(--wp--preset--spacing--30);
 }
 
@@ -1053,7 +1053,7 @@ h1, h2, h3, h4, h5, h6) {
 
 :where(:root) .has-primary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-secondary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-tertiary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {
   /* Lighten link color on dark backgrounds */
-  filter: var(--wp--custom--color--highlight-alt--lighten, brightness(1.7) saturate(1.25));
+  filter: var(--wp--custom--color--highlight-alt--lighten, brightness(2.2) saturate(0.8));
 }
 
 :where(:root) .has-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {

@@ -151,7 +151,7 @@
 			} );
 		} );
 
-		/* ==========================================================================
+				/* ==========================================================================
 		 * 03. DYNAMIC CARD ENGINE: Turn single-link cards into unified click targets
 		 * ========================================================================== */
 	
@@ -173,8 +173,8 @@
 			return false;
 		}
 
-		// 1. INITIALIZATION: Target selector for candidate interactive cards (excludes full-width sections)
-		const $interactiveCards = $('[class*="wp-block-"]:not(.alignfull):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover)');
+		// 1. INITIALIZATION: Target selector for candidate interactive cards (Excludes media text blocks and multi-column grid layouts)
+		const $interactiveCards = $('[class*="wp-block-"]:not(.alignfull, .wp-block-media-text, .wp-block-columns):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover)');
 
 		// 2. GET TARGET: Returns the target link/button if the card is "valid"
 		function getValidTarget($card) {

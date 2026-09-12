@@ -9,7 +9,7 @@
 ?>
 <!-- wp:group {"metadata":{"name":"Subscription Tables 3 Columns"},"align":"wide","layout":{"type":"constrained"},"anchor":"sub-levels-3"} -->
 <div class="wp-block-group alignwide" id="sub-levels-3"><!-- wp:heading {"align":"wide","className":"is-style-separator"} -->
-<h2 class="wp-block-heading alignwide is-style-separator"><?php esc_html_e("Subscription Tables 3 Levels", "lumina"); ?></h2>
+<h2 class="wp-block-heading alignwide is-style-separator"><?php esc_html_e("4 Convenient Subscription Levels", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:columns {"metadata":{"name":"3 Columns"},"align":"wide"} -->

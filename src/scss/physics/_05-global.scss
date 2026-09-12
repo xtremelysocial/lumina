@@ -207,7 +207,7 @@
 			}
 		}
 
-	// ----------------------------------------------------------------------
+		// ----------------------------------------------------------------------
 	// PHASE 2: INTERACTION STATE (lumina-interactions.css)
 	// ----------------------------------------------------------------------
 	} @else {
@@ -233,22 +233,18 @@
 		   Lumina Card & Image Overlay Badge (Hover & Active Triggers)
 		   ----------------------------------------------------------------------------- */
 		
-		/* 1. Reveal Badge on Container Hover (Enables pointer-events for direct badge hover) */
-		:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image):hover .lumina-card-arrow-overlay,
-		:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image).is-active .lumina-card-arrow-overlay,
-		:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image):has(:focus-visible) .lumina-card-arrow-overlay {
+		/* 1. Reveal Badge on Scoped Container Hover (Uses strict target pairing to prevent cross-card leaks) */
+		.is-interactive-card:hover > .lumina-card-arrow-overlay,
+		.is-interactive-card.is-active > .lumina-card-arrow-overlay,
+		.is-interactive-card:has(:focus-visible) > .lumina-card-arrow-overlay,
+		:is(.is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image):hover > .lumina-card-arrow-overlay,
+		:is(.is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image).is-active > .lumina-card-arrow-overlay,
+		:is(.is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image):has(:focus-visible) > .lumina-card-arrow-overlay {
 			opacity: 1;
 			visibility: visible;
 			transform: scale(1);
 			pointer-events: auto !important;
 		
-			/* Directional & Scale nudges on parent hover */
-// 			&.lumina-action-internal::after { transform: translateX(2px); }
-// 			&.lumina-action-external::after { transform: translate(1px, -1px); }
-// 			&.lumina-action-scroll-up::after { transform: translateY(-2px); }
-// 			&.lumina-action-scroll-down::after { transform: translateY(2px); }
-// 			&.lumina-action-play::after,
-// 			&.lumina-action-pause::after { transform: scale(1.1); }
 			&.lumina-action-internal::after { transform: translateX(1px); }
 			&.lumina-action-external::after { transform: translate(1px, -1px); }
 			&.lumina-action-scroll-up::after { transform: translate(-1px, -1px); }
@@ -263,4 +259,5 @@
 		}
 
 	}
+
 }

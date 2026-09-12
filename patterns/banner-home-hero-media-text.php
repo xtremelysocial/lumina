@@ -6,7 +6,7 @@
  * Categories: lumina, banner, media
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Home Banner Media \u0026 Text","patternName":"lumina/banner-home-hero-media-text"},"align":"full","gradient":"tertiary","layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text"} -->
+<!-- wp:group {"metadata":{"name":"Home Banner Media \u0026 Text"},"align":"full","gradient":"tertiary","layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text"} -->
 <div class="wp-block-group alignfull has-tertiary-gradient-background has-background" id="banner-home-hero-media-text">
 	<!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom is-style-default"} -->
 	<div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom is-style-default" style="grid-template-columns:auto 45%">
@@ -31,6 +31,6 @@
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"lock":{"move":false,"remove":true},"metadata":{"name":"Content Start"},"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"},"anchor":"content-start"} -->
+<!-- wp:group {"metadata":{"name":"Content Start"},"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"},"anchor":"content-start"} -->
 <div id="content-start" class="wp-block-group" style="margin-top:0;margin-bottom:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"></div>
 <!-- /wp:group -->

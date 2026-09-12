@@ -20,22 +20,23 @@ if ( ! function_exists( 'lumina_theme_support' ) ) :
 
 	function lumina_theme_support() {
 
-		// Standard post thumbnail image size (16:9 aspect ratio).
-		// true = center crop.
-		set_post_thumbnail_size( 1168, 667, true );
-				
-		// 16:9 image sizes
-		add_image_size( 'cropped-full', 1600, 900, true );
-		add_image_size( 'cropped-large', 1168, 657, true );
-		add_image_size( 'cropped-thumbnail', 760, 428, true );
-				
-		// Selectable 16:4.5 image sizes
-		add_image_size( 'cropped-slim', 1168, 329, true );
+		// Theme widths from CSS and theme.json
+		$full_size = apply_filters( 'xtremelysocial_full_size', 1600 );
+		$wide_size = apply_filters( 'xtremelysocial_content_size', 1138 );
+		$content_size = apply_filters( 'xtremelysocial_content_size', 760 );
 
-		// 21:9 image sizes
-// 		add_image_size( 'cropped-ultrawide', 1168, 501, true );
-		add_image_size( 'cropped-ultrawide', 1600, 686, true );
-		
+		// Full width images: 16:9 and ultrawide 21:9
+		add_image_size( 'cropped-full', $full_size, round( 9 / 16 * $full_size ), true );
+		add_image_size( 'cropped-ultrawide', $full_size, round( 9 / 21 * $full_size ), true );
+
+		// Wide images: 16:9 and slim 16:4.5
+		add_image_size( 'cropped-large', $wide_size, round( 9 / 16 * $wide_size ), true );
+		set_post_thumbnail_size( $wide_size, round( 9 / 16 * $wide_size ), true );
+		add_image_size( 'cropped-slim', $wide_size, round( 4.5 / 16 * $wide_size ), true );
+
+		// Narrow image: 16/9
+		add_image_size( 'cropped-thumbnail', $content_size, round( 9 / 16 * $content_size ), true );
+				
 		// Enqueue global styles needed for the editor iframe.
 		add_theme_support( 'editor-styles' );
 
@@ -297,7 +298,7 @@ endif;
 
 // if ( ! function_exists( 'lumina_body_open' ) ) :
 // if ( ! function_exists( 'lumina_body_open' ) AND ! function_exists( 'flatblocks_body_open') ):
-if ( ! function_exists( 'lumina_body_open' ) AND ! is_child() ):
+if ( ! function_exists( 'lumina_body_open' ) AND ! is_child_theme() ):
 
 	add_action( 'wp_body_open', 'lumina_body_open' );
 
