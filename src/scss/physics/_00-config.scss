@@ -129,6 +129,15 @@ $lumina-block-registry: (
 		role:    'button'
 	),
 
+	(
+		block:   '*', 
+		is:      'none',
+		has:     'none', 
+		trigger: '.wp-block-button__link',
+		target:  'self',
+		role:    'button'
+	),
+
 	// Avatars
 	(
 		block:   '*', 

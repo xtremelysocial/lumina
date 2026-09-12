@@ -12,20 +12,25 @@
 				"heading": {
 					"text": "var(--wp--preset--color--primary-dark-alt)",
 					"separator": "var(--wp--preset--color--tertiary)"
-				}
+				},
+				"link": {
+					"hoverOpacity": "0.7" 
+				}			
 			}
 		},
 		"color": {
 			"palette": [
-				{ "slug": "primary", "color": "hsl(327, 12%, 28%)", "name": "Primary (Royal Velvet Plum 28%)" },
-				{ "slug": "secondary", "color": "hsl(207, 20%, 34%)", "name": "Secondary (Midnight Sapphire Slate 34%)" },
-				{ "slug": "tertiary", "color": "hsl(0, 28%, 38%)", "name": "Tertiary (Deep Ruby Crimson 38%)" },
+				{ "slug": "primary", "color": "hsl(327, 18%, 48%)", "name": "Primary (Royal Velvet Plum 48%)" },
+				{ "slug": "secondary", "color": "hsl(207, 22%, 44%)", "name": "Secondary (Midnight Sapphire Slate 44%)" },
+				{ "slug": "tertiary", "color": "hsl(0, 28%, 48%)", "name": "Tertiary (Deep Ruby Crimson 48%)" },
 
 				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White Canvas)" },
-
-				{ "slug": "primary-alt", "color": "hsl(327, 12%, 18%)", "name": "Primary Alt (Deep Abyssal Plum 18%)" },
-				{ "slug": "secondary-alt", "color": "hsl(207, 22%, 24%)", "name": "Secondary Alt (Sapphire Hero Base 24%)" },
-				{ "slug": "tertiary-alt", "color": "hsl(0, 28%, 28%)", "name": "Tertiary Alt (Garnet Action Anchor 28%)" },
+				{ "slug": "contrast", "color": "hsl(330, 8%, 11%)", "name": "Contrast (Plum Infused Velvet Ink)" },
+				{ "slug": "foreground-alt", "color": "hsl(45, 27%, 97%)", "name": "Foreground Alt (Bone White)" },
+				
+				{ "slug": "primary-alt", "color": "hsl(327, 18%, 38%)", "name": "Primary Alt (Deep Abyssal Plum 38%)" },
+				{ "slug": "secondary-alt", "color": "hsl(207, 24%, 34%)", "name": "Secondary Alt (Sapphire Hero Base 34%)" },
+				{ "slug": "tertiary-alt", "color": "hsl(0, 28%, 38%)", "name": "Tertiary Alt (Garnet Action Anchor 38%)" },
 				
 				{ "slug": "primary-subtle", "color": "hsl(327, 16%, 91%)", "name": "Primary Subtle (Whisper Lavender Fill 91%)" },
 				{ "slug": "secondary-subtle", "color": "hsl(207, 20%, 91%)", "name": "Secondary Subtle (Whisper Sapphire Fill 91%)" },
@@ -39,20 +44,17 @@
 				{ "slug": "highlight-secondary", "color": "hsl(327, 55%, 74%)", "name": "Highlight Secondary (Luminescent Orchid Link)" },
 				{ "slug": "highlight-tertiary", "color": "hsl(0, 60%, 72%)", "name": "Highlight Tertiary (Luminescent Ruby Link)" },
 				
-				{ "slug": "highlight-alt", "color": "hsl(207, 60%, 42%)", "name": "Highlight Alt (Electric Sapphire Accent 42%)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(327, 55%, 42%)", "name": "Highlight Secondary Alt (Luminous Royal Orchid 42%)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(348, 55%, 42%)", "name": "Highlight Tertiary Alt (Glowing Ruby Crimson 42%)" },
+				{ "slug": "highlight-alt", "color": "hsl(207, 65%, 36%)", "name": "Highlight Alt (Electric Sapphire Link Ink 36%)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(327, 60%, 36%)", "name": "Highlight Secondary Alt (Royal Orchid Link Ink 36%)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(348, 62%, 36%)", "name": "Highlight Tertiary Alt (Glowing Ruby Link Ink 36%)" },
 				
-				{ "slug": "primary-dark", "color": "hsl(327, 12%, 15%)", "name": "Primary Dark (Royal Plum Deep 15%)" },
-				{ "slug": "dark", "color": "hsl(207, 20%, 18%)", "name": "Dark (Midnight Sapphire Footer 18%)" },
-				{ "slug": "tertiary-dark", "color": "hsl(0, 23%, 20%)", "name": "Dark Tertiary (Deep Crimson Well 20%)" },
+				{ "slug": "primary-dark", "color": "hsl(327, 24%, 22%)", "name": "Primary Dark (Royal Plum Card 22%)" },
+				{ "slug": "dark", "color": "hsl(207, 28%, 22%)", "name": "Dark (Midnight Sapphire Footer 22%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(0, 30%, 22%)", "name": "Dark Tertiary (Deep Crimson Well 22%)" },
 
-				{ "slug": "primary-dark-alt", "color": "hsl(327, 14%, 10%)", "name": "Primary Dark Alt (Royal Plum Abyssal 10%)" },
-				{ "slug": "dark-alt", "color": "hsl(207, 22%, 12%)", "name": "Dark Alt (Midnight Sapphire Floor 12%)" },				
-				{ "slug": "tertiary-dark-alt", "color": "hsl(0, 23%, 14%)", "name": "Dark Tertiary Alt (Deep Crimson Floor 14%)" },
-				
-				{ "slug": "contrast", "color": "hsl(330, 8%, 11%)", "name": "Contrast (Plum Infused Velvet Ink)" },
-				{ "slug": "foreground-alt", "color": "hsl(45, 27%, 97%)", "name": "Foreground Alt (Bone White)" },
+				{ "slug": "primary-dark-alt", "color": "hsl(327, 26%, 15%)", "name": "Primary Dark Alt (Royal Plum Abyssal 15%)" },
+				{ "slug": "dark-alt", "color": "hsl(207, 30%, 15%)", "name": "Dark Alt (Midnight Sapphire Floor 15%)" },				
+				{ "slug": "tertiary-dark-alt", "color": "hsl(0, 30%, 15%)", "name": "Dark Tertiary Alt (Deep Crimson Floor 15%)" },
 				
 				{ "slug": "neutral", "color": "hsl(45, 14%, 94%)", "name": "Neutral (Custom Muted Off-White Component Well 94%)" },
 				{ "slug": "neutral-alt", "color": "hsl(45, 10%, 87%)", "name": "Neutral Alt (Component Border Seam 87%)" },
@@ -89,13 +91,13 @@
 				{ "slug": "light-blue", "color": "hsl(206, 18%, 83%)", "name": "Light Blue (Ocean Subtle Alt 83%)" },
 				{ "slug": "blue", "color": "hsl(206, 24%, 44%)", "name": "Blue (Ocean Primary 44%)" },
 				{ "slug": "dark-blue", "color": "hsl(206, 26%, 34%)", "name": "Dark Blue (Ocean 34%)" },
-				{ "slug": "midnight-blue", "color": "hsl(208, 21%, 22%)", "name": "Midnight Blue (Lumina Balanced 22%)" },
-				{ "slug": "dark-midnight-blue", "color": "hsl(209, 24%, 16%)", "name": "Dark Midnight Blue (Lumina Balanced 16%)" },
+				{ "slug": "midnight-blue", "color": "hsl(208, 28%, 22%)", "name": "Midnight Blue (Lumina Balanced 22%)" },
+				{ "slug": "dark-midnight-blue", "color": "hsl(209, 30%, 15%)", "name": "Dark Midnight Blue (Lumina Balanced 15%)" },
 				
 				{ "slug": "very-light-purple", "color": "hsl(320, 16%, 91%)", "name": "Very Light Purple (Velvet Subtle 91%)" },
 				{ "slug": "light-purple", "color": "hsl(320, 12%, 83%)", "name": "Light Purple (Velvet Subtle Alt 83%)" },
-				{ "slug": "purple", "color": "hsl(327, 8%, 32%)", "name": "Purple (Velvet Primary 32%)" },
-				{ "slug": "dark-purple", "color": "hsl(327, 8%, 22%)", "name": "Dark Purple (Velvet 22%)" },
+				{ "slug": "purple", "color": "hsl(327, 18%, 48%)", "name": "Purple (Velvet Primary 48%)" },
+				{ "slug": "dark-purple", "color": "hsl(327, 18%, 38%)", "name": "Dark Purple (Velvet Alt 38%)" },
 
 				{ "slug": "very-light-red", "color": "hsl(6, 22%, 91%)", "name": "Very Light Red (Ember Subtle 91%)" },
 				{ "slug": "light-red", "color": "hsl(6, 18%, 83%)", "name": "Light Red (Ember Subtle Alt 83%)" },
@@ -103,13 +105,13 @@
 				{ "slug": "dark-red", "color": "hsl(0, 23%, 22%)", "name": "Dark Red (Ember 22%)" }		
 			],
 			"duotone": [
-				{ "colors": ["hsl(327, 12%, 28%)", "hsl(45, 27%, 97%)"], "slug": "primary", "name": "Primary (Royal Velvet Plum)" },
-				{ "colors": ["hsl(327, 12%, 18%)", "hsl(45, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Deep Shadow Plum)" },
-				{ "colors": ["hsl(207, 20%, 34%)", "hsl(45, 27%, 97%)"], "slug": "secondary", "name": "Secondary (Midnight Sapphire)" },
-				{ "colors": ["hsl(207, 22%, 24%)", "hsl(45, 27%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Sapphire Hero Base)" },
-				{ "colors": ["hsl(0, 28%, 38%)", "hsl(45, 27%, 97%)"], "slug": "tertiary", "name": "Tertiary (Deep Ruby Crimson)" },
-				{ "colors": ["hsl(0, 28%, 28%)", "hsl(45, 27%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Garnet Action Anchor)" },
-				{ "colors": ["hsl(330, 8%, 10%)", "hsl(327, 12%, 28%)"], "slug": "midnight", "name": "Midnight Velvet" },
+				{ "colors": ["hsl(327, 18%, 48%)", "hsl(45, 27%, 97%)"], "slug": "primary", "name": "Primary (Royal Velvet Plum)" },
+				{ "colors": ["hsl(327, 18%, 38%)", "hsl(45, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Deep Shadow Plum)" },
+				{ "colors": ["hsl(207, 22%, 44%)", "hsl(45, 27%, 97%)"], "slug": "secondary", "name": "Secondary (Midnight Sapphire)" },
+				{ "colors": ["hsl(207, 24%, 34%)", "hsl(45, 27%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Sapphire Hero Base)" },
+				{ "colors": ["hsl(0, 28%, 48%)", "hsl(45, 27%, 97%)"], "slug": "tertiary", "name": "Tertiary (Deep Ruby Crimson)" },
+				{ "colors": ["hsl(0, 28%, 38%)", "hsl(45, 27%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Garnet Action Anchor)" },
+				{ "colors": ["hsl(330, 8%, 10%)", "hsl(327, 18%, 48%)"], "slug": "midnight", "name": "Midnight Velvet" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(45, 8%, 71%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			]

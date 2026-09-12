@@ -151,6 +151,13 @@
   opacity: var(--wp--custom--color--button--hover-opacity, 1);
 }
 
+[class*=wp-block-] .wp-block-button__link:hover,
+[class*=wp-block-] .wp-block-button__link:has(:focus-visible) {
+  transform: translateY(0) var(--wp--custom--animation--button--hover-transform, var(--wp--custom--animation--default--hover-transform, scale(1.05)));
+  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
+  opacity: var(--wp--custom--color--button--hover-opacity, 1);
+}
+
 [class*=wp-block-] a > .avatar:hover,
 [class*=wp-block-] a > .avatar:has(:focus-visible) {
   transform: translateY(0) var(--wp--custom--animation--button--hover-transform, var(--wp--custom--animation--default--hover-transform, scale(1.05)));

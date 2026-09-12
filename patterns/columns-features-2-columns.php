@@ -17,7 +17,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center"><?php esc_html_e("Container blocks carrying links or action buttons automatically respond with subtle lift and soft ambient shadows when hovered or tapped on mobile screens.", "lumina"); ?><a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
+<p class="has-text-align-center"><?php esc_html_e("Container blocks carrying links or action buttons automatically respond with subtle lift and soft ambient shadows when hovered or tapped on mobile screens.", "lumina"); ?> <a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -29,7 +29,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center"><?php esc_html_e("Swap or customize site headers, footers, post grids, and color schemes directly within the Site Editor. Easily keep your site modern and fresh without writing code.", "lumina"); ?><a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
+<p class="has-text-align-center"><?php esc_html_e("Swap or customize site headers, footers, post grids, and color schemes directly within the Site Editor. Easily keep your site modern and fresh without writing code.", "lumina"); ?> <a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
