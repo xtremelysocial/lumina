@@ -24,7 +24,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
-<p class="has-text-align-center has-small-font-size"><?php esc_html_e("Lead Designer", "lumina"); ?></p>
+<p class="has-text-align-center has-small-font-size"><?php esc_html_e("Personal Instructor", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -48,7 +48,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
-<p class="has-text-align-center has-small-font-size"><?php esc_html_e("Lead Programmer", "lumina"); ?></p>
+<p class="has-text-align-center has-small-font-size"><?php esc_html_e("Lead Instructor", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -72,7 +72,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
-<p class="has-text-align-center has-small-font-size"><?php esc_html_e("Content Editor", "lumina"); ?></p>
+<p class="has-text-align-center has-small-font-size"><?php esc_html_e("Program Director", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

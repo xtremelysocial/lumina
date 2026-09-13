@@ -1,18 +1,18 @@
 <?php
 /**
- * Title: Columns Sub Tables 3
- * Description: Columns Sub Tables 3
- * Slug: lumina/columns-sub-tables-3
+ * Title: Subscription Tables 4
+ * Description: Columns Sub Tables 4
+ * Slug: lumina/columns-sub-tables-4
  * Categories: lumina, column
  * Block Types: core/columns
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Subscription Tables 3 Columns"},"align":"wide","layout":{"type":"constrained"},"anchor":"sub-levels-3"} -->
-<div class="wp-block-group alignwide" id="sub-levels-3"><!-- wp:heading {"align":"wide","className":"is-style-separator"} -->
+<!-- wp:group {"metadata":{"name":"Subscription Tables 4 Columns"},"align":"wide","layout":{"type":"constrained"},"anchor":"sub-levels-4"} -->
+<div class="wp-block-group alignwide" id="sub-levels-4"><!-- wp:heading {"align":"wide","className":"is-style-separator"} -->
 <h2 class="wp-block-heading alignwide is-style-separator"><?php esc_html_e("4 Convenient Subscription Levels", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
-<!-- wp:columns {"metadata":{"name":"3 Columns"},"align":"wide"} -->
+<!-- wp:columns {"metadata":{"name":"4 Columns"},"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"verticalAlignment":"stretch","className":"is-style-rounded-border","backgroundColor":"primary-subtle","layout":{"type":"default"}} -->
 <div class="wp-block-column is-vertically-aligned-stretch is-style-rounded-border has-primary-subtle-background-color has-background"><!-- wp:group {"align":"wide","className":"is-style-default","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between","justifyContent":"stretch"}} -->
 <div class="wp-block-group alignwide is-style-default"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap","verticalAlignment":"space-between"}} -->

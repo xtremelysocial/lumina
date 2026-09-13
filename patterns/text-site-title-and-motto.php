@@ -10,6 +10,8 @@
 <div class="wp-block-group alignfull is-style-default has-secondary-background-color has-background" id="site-title-and-tagline" style="margin-top:0;">
 <!-- wp:site-title {"level":2,"textAlign":"center","isLink":false,"fontSize":"x-large"} /-->
 
-<!-- wp:pattern {"slug":"lumina/text-site-motto"} /-->
+<!-- wp:paragraph -->
+<p><?php esc_html_e("We believe your website should feel balanced and organic—bringing the natural rhythms and structural patterns of the physical world straight onto your digital canvas.", "lumina"); ?></p>
+<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

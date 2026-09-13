@@ -8,9 +8,9 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"lumina/banner-page-hero-media-text"} /-->
+<!-- wp:pattern {"slug":"lumina/banner-hero-media-text"} /-->
 
-<!-- wp:pattern {"slug":"lumina/columns-features-3-columns"} /-->
+<!-- wp:pattern {"slug":"lumina/columns-drop-caps-3"} /-->
 
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|20"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--20)">

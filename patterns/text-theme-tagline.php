@@ -6,14 +6,36 @@
  * Categories: lumina, text
  * Block Types: 
  */
+
+// Get the theme attributes
+$theme = wp_get_theme();
 ?>
+
 <!-- wp:group {"metadata":{"name":"Theme Tagline"},"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
 <div class="wp-block-group">
-<!-- wp:pattern {"slug":"lumina/text-theme-name"} /-->
 
+<?php // Display the theme name with link
+echo sprintf( 
+	'<!-- wp:paragraph --><p>
+<a href="%s" target="_blank">%s</a></p>
+<!-- /wp:paragraph -->',
+	$theme->get( 'ThemeURI' ) ?? 'https://xtremelysocial.com/wordpress/lumina',
+	$theme->get( 'Name' ) ?? 'Lumina'
+);
+?>
 <!-- wp:paragraph -->
 <p>theme by</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:pattern {"slug":"lumina/text-theme-author"} /--></div>
+<?php // Display the theme author with link
+echo sprintf( 
+	'<!-- wp:paragraph --><p>
+<a href="%s" target="_blank">%s</a></p>
+<!-- /wp:paragraph -->',
+	$theme->get( 'AuthorURI' ) ?? 'https://xtremelysocial.com/',
+	$theme->get( 'Author' ) ?? 'XtremelySocial'
+);
+?>
+
+</div>
 <!-- /wp:group -->

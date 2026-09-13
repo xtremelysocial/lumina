@@ -1,0 +1,19 @@
+parts:
+site-copyright, theme-tagline; 
+
+patterns:
+text-current-year, text-site-description, text-contact-info-site-title-and-motto, text-site-copyright, text-theme-tagline
+
+USED: text-site-title-paragraph,
+USED: text-theme-tagline, 
+
+consider removing these patterns (but some need their contents pasted into one of the above):
+
+DONE: COPY CONTENTS: text-site-motto, 
+DONE: COPY CONTENTS: text-theme-name, 
+DONE: COPY CONTENTS: text-theme-author, 
+
+NOT USED-text-excerpt-heading, 
+NOT USED: text-title-and-subtitle-with-bg, 
+NOT NEEDED: text-title-and-subtitle, 
+NOT NEEDED: text-title-and-text

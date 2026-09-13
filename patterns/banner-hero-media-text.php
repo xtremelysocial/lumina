@@ -9,15 +9,15 @@
 <!-- wp:group {"metadata":{"name":"Banner Hero Media \u0026 Text"},"align":"full","backgroundColor":"secondary-alt","layout":{"type":"constrained"},"anchor":"banner-hero-media-text"} -->
 <div class="wp-block-group alignfull has-secondary-alt-background-color has-background" id="banner-hero-media-text"><!-- wp:media-text {"align":"wide","mediaPosition":"right","mediaId":28280,"mediaLink":"https://test.xtremelysocial.com/wordpress/lumina/03-2/","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom"} -->
 <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom" style="grid-template-columns:auto 45%"><div class="wp-block-media-text__content"><!-- wp:heading {"placeholder":"Cover Image Title","fontSize":"huge","anchor":"title"} -->
-<h2 id="title" class="wp-block-heading has-huge-font-size"><?php esc_html_e("Lumina", "lumina"); ?></h2>
+<h2 id="title" class="wp-block-heading has-huge-font-size"><?php esc_html_e("Lumina Wellness Studio", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"metadata":{"name":"Subtitle"},"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"x-large","anchor":"subtitle"} -->
-<p class="has-x-large-font-size" id="subtitle" style="line-height:1.2"><?php esc_html_e("Colors, light, depth, and motion", "lumina"); ?></p>
+<p class="has-x-large-font-size" id="subtitle" style="line-height:1.2"><?php esc_html_e("Mindful, healthy, the better YOU!", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"large"} -->
-<p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("Lumina is a refined modern theme inspired by the colors, light, depth and motion of the environment around us", "lumina"); ?></p>
+<p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("Personalized mindful guidance transforms your lifestyle into a polished wellness path that feels organic and effortless.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"placeholder":"Scroll Down","metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-arrow-down-alt2-no-text","style":{"elements":{"link":{"color":{"text":"inherit"}}},"typography":{"textAlign":"center"}},"fontSize":"x-large"} -->
