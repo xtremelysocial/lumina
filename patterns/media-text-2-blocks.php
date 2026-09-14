@@ -7,7 +7,7 @@
  * Block Types: core/media-text
  */
 ?>
-<!-- wp:media-text {"align":"wide","mediaPosition":"right","mediaId":27966,"mediaLink":"https://test.xtremelysocial.com/wordpress/lumina/attachment/04/","linkDestination":"none","mediaType":"image","mediaWidth":60,"imageFill":true,"metadata":{"name":"Media \u0026 Text 2 Blocks"},"className":"is-style-no-padding is-style-pan-zoom","anchor":"media-text-2-blocks"} -->
+<!-- wp:media-text {"align":"wide","mediaPosition":"right","mediaLink":"#content-start","linkDestination":"custom","mediaType":"image","mediaWidth":60,"imageFill":true,"metadata":{"name":"Media \u0026 Text 2 Blocks"},"className":"is-style-no-padding is-style-pan-zoom","anchor":"media-text-2-blocks"} -->
 <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-image-fill-element is-style-no-padding is-style-pan-zoom" style="grid-template-columns:auto 60%" id="media-text-2-blocks"><div class="wp-block-media-text__content"><!-- wp:group {"className":"is-style-default","backgroundColor":"secondary","layout":{"type":"constrained"}} -->
 <div class="wp-block-group  is-style-default has-secondary-background-color has-background"><!-- wp:heading {"level":4,"className":"has-text-align-center","style":{"typography":{"textTransform":"uppercase","textAlign":"center"}}} -->
 <h4 class="wp-block-heading has-text-align-center" style="text-transform:uppercase"><?php esc_html_e("Interactive Cards", "lumina"); ?></h4>

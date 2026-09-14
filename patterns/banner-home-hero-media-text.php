@@ -24,7 +24,7 @@
 			<!-- /wp:paragraph -->
 		</div>
 		<figure class="wp-block-media-text__media">
-			<img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/01.webp" ) ); ?>" alt=""/>
+			<img src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/home-hero.webp" ) ); ?>" alt=""/>
 		</figure>
 	</div>
 	<!-- /wp:media-text -->

@@ -33,7 +33,7 @@
 					"darken": "brightness(0.40) saturate(1.15)"
 				},
 				"highlight-alt": {
-					"lighten": "brightness(2.20) saturate(0.80)"
+					"lighten": "brightness(1.75) saturate(0.80)"
 				},							
 				"image": {
 					"hoverOpacity": "1" 
@@ -548,6 +548,9 @@
 				"color": { 
 					"text": "var:preset|color|highlight-alt" 
 				},
+				"typography": {
+					"textDecoration": "none"
+				},				
 				":hover": { 
 					"color": { 
 						"text": "var:preset|color|highlight-alt" 

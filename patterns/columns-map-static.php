@@ -8,7 +8,7 @@
  */
 ?>
 <!-- wp:media-text {"align":"full","mediaLink":"#content-start","linkDestination":"custom","mediaType":"image","mediaWidth":67,"imageFill":false,"metadata":{"name":"Static Map \u0026 Contact Info"},"className":"is-style-no-gap is-style-default","style":{"spacing":{"margin":{"bottom":"0"}}},"backgroundColor":"secondary-alt","anchor":"static-map-and-contact-info-full"} -->
-<div class="wp-block-media-text alignfull is-stacked-on-mobile is-style-no-gap is-style-default has-secondary-alt-background-color has-background" style="margin-bottom:0;grid-template-columns:67% auto" id="static-map-and-contact-info-full"><figure class="wp-block-media-text__media"><a href="#content-start"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/samples/maps/01.webp" ) ); ?>" alt=""/></a></figure><div class="wp-block-media-text__content"><!-- wp:group {"metadata":{"name":"Contact Info","categories":["lumina","text"]},"layout":{"type":"constrained"}} -->
+<div class="wp-block-media-text alignfull is-stacked-on-mobile is-style-no-gap is-style-default has-secondary-alt-background-color has-background" style="margin-bottom:0;grid-template-columns:67% auto" id="static-map-and-contact-info-full"><figure class="wp-block-media-text__media"><a href="#content-start"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/about/map.webp" ) ); ?>" alt=""/></a></figure><div class="wp-block-media-text__content"><!-- wp:group {"metadata":{"name":"Contact Info","categories":["lumina","text"]},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:paragraph {"className":"is-style-link-no-underline"} -->
 <p class="is-style-link-no-underline"><?php esc_html_e("1234 US Highway 99", "lumina"); ?></p>
 <!-- /wp:paragraph -->

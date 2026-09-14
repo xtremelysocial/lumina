@@ -160,17 +160,25 @@ if ( ! function_exists( 'lumina_load_block_styles' ) ) :
 	function lumina_load_block_styles() {
 
 		$block_path = '/assets/css/blocks/';
-		$main_asset = get_stylesheet_directory() . '/assets/css/theme-styles.asset.php';
+		$child_dir  = get_stylesheet_directory() . $block_path;
 
-		// 1. Get build version
-		if ( file_exists( $main_asset ) ) {
-			$asset_data        = include $main_asset;
-			$block_css_version = $asset_data['version'] ?? wp_get_theme()->get( 'Version' );
-		} else {
-			$block_css_version = wp_get_theme()->get( 'Version' );
+		// 1. Guard clause: Ensure directory exists before scanning
+		if ( ! is_dir( $child_dir ) ) {
+			return;
 		}
 
-		// 2. REGISTER main handle early on 'init' so it exists as a valid dependency
+		$block_styles = glob( $child_dir . '*.css' ); 
+		if ( empty( $block_styles ) ) {
+			return;
+		}
+
+		// 2. Get build version
+		$main_asset        = get_stylesheet_directory() . '/assets/css/theme-styles.asset.php';
+		$block_css_version = file_exists( $main_asset )
+			? ( include $main_asset )['version'] ?? wp_get_theme()->get( 'Version' )
+			: wp_get_theme()->get( 'Version' );
+
+		// 3. REGISTER main handle early on 'init' so it exists as a valid dependency
 		if ( ! wp_style_is( 'theme-styles', 'registered' ) ) {
 			$main_css_path = get_stylesheet_directory() . '/assets/css/theme-styles.css';
 			if ( file_exists( $main_css_path ) ) {
@@ -183,17 +191,9 @@ if ( ! function_exists( 'lumina_load_block_styles' ) ) :
 			}
 		}
 
-		// 3. Discover block CSS files strictly in Lumina child folder
-		$child_dir    = get_stylesheet_directory() . $block_path;
-		$block_styles = glob( $child_dir . '*.css' ); 
-
-		if ( empty( $block_styles ) ) {
-			return;
-		}
-
+		// 4. Register block styles using native PHP basename
 		foreach ( $block_styles as $file_path ) {
-
-			$file_slug = str_replace( array( $child_dir, '.css' ), '', $file_path );
+			$file_slug = basename( $file_path, '.css' );
 
 			if ( strpos( $file_slug, 'block-styles' ) !== false || strpos( $file_slug, '-rtl' ) !== false ) {
 				continue;
@@ -207,8 +207,8 @@ if ( ! function_exists( 'lumina_load_block_styles' ) ) :
 				'handle' => $handle,
 				'src'    => get_stylesheet_directory_uri() . $block_path . "{$file_slug}.css",
 				'path'   => $file_path,
-				'deps'	 => array(),
-				'ver'	 => $block_css_version
+				'deps'   => array(),
+				'ver'    => $block_css_version,
 			) );
 
 			wp_style_add_data( $handle, 'rtl', 'replace' );

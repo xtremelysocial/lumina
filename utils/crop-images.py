@@ -25,7 +25,7 @@ USAGE EXAMPLES (RUN FROM REPO ROOT OR SCRIPT FOLDER):
    $ python3 utils/crop-images.py
    
 2. CUSTOM SOURCE DIRECTORY:
-   $ SOURCE_DIR="./zz_unused/zz_raw-images/raw-blue" python3 utils/crop-images.py
+   $ SOURCE_DIR="./zz_unused/zz_raw-images/raw-lumina/final_manual_crops_1600x900" python3 utils/crop-images.py
 
 3. CUSTOM SOURCE & OUTPUT DIRECTORIES:
    $ SOURCE_DIR="./zz_unused/zz_raw-images/raw-blue" \

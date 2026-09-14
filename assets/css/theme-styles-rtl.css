@@ -1053,7 +1053,7 @@ h1, h2, h3, h4, h5, h6) {
 
 :where(:root) .has-primary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-secondary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-tertiary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {
   /* Lighten link color on dark backgrounds */
-  filter: var(--wp--custom--color--highlight-alt--lighten, brightness(2.2) saturate(0.8));
+  filter: var(--wp--custom--color--highlight-alt--lighten, brightness(1.75) saturate(0.8));
 }
 
 :where(:root) .has-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {

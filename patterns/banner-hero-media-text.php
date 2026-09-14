@@ -6,8 +6,9 @@
  * Categories: lumina, banner, media, featured
  */
 ?>
+
 <!-- wp:group {"metadata":{"name":"Banner Hero Media \u0026 Text"},"align":"full","backgroundColor":"secondary-alt","layout":{"type":"constrained"},"anchor":"banner-hero-media-text"} -->
-<div class="wp-block-group alignfull has-secondary-alt-background-color has-background" id="banner-hero-media-text"><!-- wp:media-text {"align":"wide","mediaPosition":"right","mediaId":28280,"mediaLink":"https://test.xtremelysocial.com/wordpress/lumina/03-2/","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom"} -->
+<div class="wp-block-group alignfull has-secondary-alt-background-color has-background" id="banner-hero-media-text"><!-- wp:media-text {"align":"wide","mediaPosition":"right","mediaLink":"#content-start","linkDestination":"custom","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom"} -->
 <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom" style="grid-template-columns:auto 45%"><div class="wp-block-media-text__content"><!-- wp:heading {"placeholder":"Cover Image Title","fontSize":"huge","anchor":"title"} -->
 <h2 id="title" class="wp-block-heading has-huge-font-size"><?php esc_html_e("Lumina Wellness Studio", "lumina"); ?></h2>
 <!-- /wp:heading -->
@@ -22,7 +23,7 @@
 
 <!-- wp:paragraph {"placeholder":"Scroll Down","metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-arrow-down-alt2-no-text","style":{"elements":{"link":{"color":{"text":"inherit"}}},"typography":{"textAlign":"center"}},"fontSize":"x-large"} -->
 <p class="has-text-align-center is-style-icon-arrow-down-alt2-no-text has-link-color has-x-large-font-size"><a href="#content-start" rel="nofollow"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
-<!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/lumina/03.webp" ) ); ?>" alt="" class="wp-image-28280 size-cropped-large"/></figure></div>
+<!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/portfolio-hero.webp" ) ); ?>" alt="" class="wp-image-28280 size-cropped-large"/></figure></div>
 <!-- /wp:media-text --></div>
 <!-- /wp:group -->
 
