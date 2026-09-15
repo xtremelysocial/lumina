@@ -24,12 +24,12 @@
 
 <!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","right":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60"}}},"backgroundColor":"primary","className":"is-style-default"} -->
 <div class="wp-block-column is-style-default has-primary-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)"><!-- wp:heading {"level":5} -->
-<h5 class="wp-block-heading" id="x">X</h5>
+<h5 class="wp-block-heading" id="Pinterest">Pinterest</h5>
 <!-- /wp:heading -->
 
 <!-- wp:social-links {"iconColor":"white","iconColorValue":"#ffffff","openInNewTab":true,"size":"has-huge-icon-size","align":"center","style":{"spacing":{"margin":{"top":"var:preset|spacing|60","right":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60"}}},"className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"}} -->
 <ul class="wp-block-social-links aligncenter has-huge-icon-size has-icon-color is-style-logos-only" style="margin-top:var(--wp--preset--spacing--60);margin-right:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--60);margin-left:var(--wp--preset--spacing--60)">
-<!-- wp:social-link {"url":"https://x.com/wordpress","service":"x"} /--></ul>
+<!-- wp:social-link {"url":"https://pinterest.com/wordpress","service":"pinterest"} /--></ul>
 <!-- /wp:social-links -->
 
 <!-- wp:paragraph -->

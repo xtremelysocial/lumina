@@ -11,27 +11,27 @@
 <div class="wp-block-group alignfull" id="site-motto-details"><!-- wp:columns {"lock":{"move":false,"remove":false},"metadata":{"name":"Heading \u0026 Content"},"align":"wide","className":"is-style-default","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
 <div class="wp-block-columns alignwide is-style-default"><!-- wp:column {"width":"33.33%","metadata":{"name":"Heading"},"className":"is-style-first-on-mobile"} -->
 <div class="wp-block-column is-style-first-on-mobile" style="flex-basis:33.33%"><!-- wp:heading {"className":"is-style-separator"} -->
-<h2 class="wp-block-heading is-style-separator"><?php esc_html_e("The Paradigm Shift", "lumina"); ?></h2>
+<h2 class="wp-block-heading is-style-separator"><?php esc_html_e("Our Philosophy", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:group {"metadata":{"name":"Site Motto Medium"},"fontSize":"medium"} -->
 <div class="wp-block-group has-medium-font-size"><!-- wp:paragraph -->
-<p><?php esc_html_e("We believe your website should feel balanced and organic—bringing the natural rhythms and structural patterns of the physical world straight onto your digital canvas.", "lumina"); ?></p>
+<p><?php esc_html_e("Stories bring people together. That has been true since the beginning of time and is still true today.", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"66.66%","metadata":{"name":"Content"}} -->
 <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:paragraph {"fontSize":"medium"} -->
-<p class="has-medium-font-size"><?php esc_html_e("Lumina bridges physical aesthetics with modern web architecture to make your website feel balanced, intuitive, and effortlessly premium.", "lumina"); ?></p>
+<p class="has-medium-font-size"><?php esc_html_e("At Lumina Studio, we believe your print and digital media should tell your stories with effective composition, natural light, and quiet emotional depth.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p><?php esc_html_e("Taking cues from modern mobile interfaces, Lumina transforms static block layouts into interactive cards that invite clicks and guide user attention naturally across the page.", "lumina"); ?></p>
+<p><?php esc_html_e("Whether presenting an editorial publication, curated monograph, or immersive gallery showcase, we marry classical photographic craft with modern presentation to create lasting visual resonance.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p><?php esc_html_e("Combined with rich, nature-inspired color palettes and complete WordPress Full-Site Editing freedom, you get a theme that looks exceptional and stays completely out of your way.", "lumina"); ?></p>
+<p><?php esc_html_e("Every frame, palette, and layout is crafted to honor the human connection behind your narrative, ensuring your work speaks with clarity and timeless authority.", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>

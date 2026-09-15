@@ -24,7 +24,7 @@
 
 		<!-- wp:column {"width":"66.66%"} -->
 		<div class="wp-block-column" style="flex-basis:66.66%">
-			<!-- wp:details -->
+			<!-- wp:details {"showContent":true} -->
 			<details class="wp-block-details" open><summary><?php esc_html_e( "What should I expect during an initial consultation?", "lumina" ); ?></summary><!-- wp:paragraph -->
 			<p><?php esc_html_e( "Our initial conversation begins with a review of your vision, goals, and aesthetic preferences. We will collaborate to establish a clear creative direction and outline a session plan tailored specifically to your project.", "lumina" ); ?></p>
 			<!-- /wp:paragraph --></details>

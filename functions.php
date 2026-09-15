@@ -22,7 +22,7 @@ if ( ! function_exists( 'lumina_theme_support' ) ) :
 
 		// Theme widths from CSS and theme.json
 		$full_size = apply_filters( 'xtremelysocial_full_size', 1600 );
-		$wide_size = apply_filters( 'xtremelysocial_content_size', 1138 );
+		$wide_size = apply_filters( 'xtremelysocial_content_size', 1146 );
 		$content_size = apply_filters( 'xtremelysocial_content_size', 760 );
 
 		// Full width images: 16:9 and ultrawide 21:9

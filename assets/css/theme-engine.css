@@ -144,22 +144,22 @@ a > .avatar {
   /* SVG Mask Assignments using asset folder filenames */
 }
 .lumina-card-arrow-overlay.lumina-action-internal::after {
-  -webkit-mask-image: url("../icons/engine/internal-link.svg");
-          mask-image: url("../icons/engine/internal-link.svg");
+  -webkit-mask-image: url("../icons/theme/internal-link.svg");
+          mask-image: url("../icons/theme/internal-link.svg");
   transform: translateX(-1px);
 }
 .lumina-card-arrow-overlay.lumina-action-external::after {
-  -webkit-mask-image: url("../icons/engine/external-link.svg");
-          mask-image: url("../icons/engine/external-link.svg");
+  -webkit-mask-image: url("../icons/theme/external-link.svg");
+          mask-image: url("../icons/theme/external-link.svg");
 }
 .lumina-card-arrow-overlay.lumina-action-scroll-up::after {
-  -webkit-mask-image: url("../icons/engine/scroll-up.svg");
-          mask-image: url("../icons/engine/scroll-up.svg");
+  -webkit-mask-image: url("../icons/theme/curve-up.svg");
+          mask-image: url("../icons/theme/curve-up.svg");
   transform: translate(-1px, 1px);
 }
 .lumina-card-arrow-overlay.lumina-action-scroll-down::after {
-  -webkit-mask-image: url("../icons/engine/scroll-down.svg");
-          mask-image: url("../icons/engine/scroll-down.svg");
+  -webkit-mask-image: url("../icons/theme/curve-down.svg");
+          mask-image: url("../icons/theme/curve-down.svg");
   transform: translate(-1px, -3px);
 }
 

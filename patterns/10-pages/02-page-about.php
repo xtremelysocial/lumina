@@ -1,6 +1,7 @@
 <?php
 /**
- * Title: Sample About Page
+ * Title: Page About
+ * Description: About Page
  * Slug: lumina/page-about
  * Categories: lumina, page
  * Block Types: core/post-content

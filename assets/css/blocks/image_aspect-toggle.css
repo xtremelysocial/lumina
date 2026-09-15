@@ -73,8 +73,8 @@
   content: "Expand View";
 }
 .lumina-card-arrow-overlay.lumina-aspect-toggle.lumina-action-aspect-expand::after {
-  -webkit-mask-image: url("../../icons/engine/aspect-toggle.svg");
-          mask-image: url("../../icons/engine/aspect-toggle.svg");
+  -webkit-mask-image: url("../../icons/theme/expand-collapse.svg");
+          mask-image: url("../../icons/theme/expand-collapse.svg");
   transform: rotate(90deg) !important;
 }
 .lumina-card-arrow-overlay.lumina-aspect-toggle {
@@ -84,8 +84,8 @@
   content: "Collapse View";
 }
 .lumina-card-arrow-overlay.lumina-aspect-toggle.lumina-action-aspect-collapse::after {
-  -webkit-mask-image: url("../../icons/engine/aspect-toggle.svg");
-          mask-image: url("../../icons/engine/aspect-toggle.svg");
+  -webkit-mask-image: url("../../icons/theme/expand-collapse.svg");
+          mask-image: url("../../icons/theme/expand-collapse.svg");
   transform: rotate(0deg) !important;
 }
 

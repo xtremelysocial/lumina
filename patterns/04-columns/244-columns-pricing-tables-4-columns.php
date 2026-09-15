@@ -185,18 +185,6 @@
 
 <!-- wp:list-item -->
 <li><strong><?php esc_html_e("Fine Art", "lumina"); ?></strong> <?php esc_html_e("Print Portfolio", "lumina"); ?></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><?php esc_html_e("On-Site Set Construction", "lumina"); ?></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><?php esc_html_e("Expedited Post-Production", "lumina"); ?></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><?php esc_html_e("Custom Framed Showcase Print", "lumina"); ?></li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list --></div>
 <!-- /wp:group -->

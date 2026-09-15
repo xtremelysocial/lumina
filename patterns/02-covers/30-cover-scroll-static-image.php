@@ -7,8 +7,8 @@
  * Block Types: core/image
  */
 ?>
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( "assets/images/pages/portfolio-banner.webp" ) ); ?>","dimRatio":30,"isUserOverlayColor":true,"minHeight":480,"sizeSlug":"large","metadata":{"name":"Cover Scroll Static Image"},"align":"full","className":"is-dark is-style-pan-zoom","style":{"spacing":{"margin":{"top":"0"}}},"anchor":"cover-scroll-static-image"} -->
-<div class="wp-block-cover alignfull is-dark is-style-pan-zoom" style="margin-top:0;min-height:480px" id="cover-scroll-static-image"><img class="wp-block-cover__image-background size-large" alt="" src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/portfolio-banner.webp" ) ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"placeholder":"Cover Image Title","style":{"typography":{"textAlign":"center"}},"fontSize":"huge","anchor":"title"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( "assets/images/pages/portfolio-hero.webp" ) ); ?>","dimRatio":30,"isUserOverlayColor":true,"minHeight":480,"sizeSlug":"large","metadata":{"name":"Cover Scroll Static Image"},"align":"full","className":"is-dark is-style-pan-zoom","style":{"spacing":{"margin":{"top":"0"}}},"anchor":"cover-scroll-static-image"} -->
+<div class="wp-block-cover alignfull is-dark is-style-pan-zoom" style="margin-top:0;min-height:480px" id="cover-scroll-static-image"><img class="wp-block-cover__image-background size-large" alt="" src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/portfolio-hero.webp" ) ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"placeholder":"Cover Image Title","style":{"typography":{"textAlign":"center"}},"fontSize":"huge","anchor":"title"} -->
 <h2 class="wp-block-heading has-text-align-center has-huge-font-size" id="title"><?php esc_html_e("Cover Scroll to Content", "lumina"); ?></h2>
 <!-- /wp:heading -->
 

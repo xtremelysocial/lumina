@@ -287,8 +287,8 @@ figure > a:active,
   z-index: 3;
   color: var(--wp--preset--color--base, #ffffff);
   background-color: currentColor;
-  -webkit-mask-image: url("../icons/engine/motion.svg");
-          mask-image: url("../icons/engine/motion.svg");
+  -webkit-mask-image: url("../icons/theme/motion.svg");
+          mask-image: url("../icons/theme/motion.svg");
   -webkit-mask-size: 18px;
           mask-size: 18px;
   -webkit-mask-repeat: no-repeat;

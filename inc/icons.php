@@ -16,7 +16,7 @@ if ( ! defined( 'THEME_SLUG' ) ) {
 }
 
 if ( ! defined( 'ICON_REGISTRATION_DIR' ) ) {
-	define( 'ICON_REGISTRATION_DIR', 'assets/icons/sets' );
+	define( 'ICON_REGISTRATION_DIR', 'assets/icons' );
 }
 
 add_action( 'init', __NAMESPACE__ . '\register_theme_svg_icons' );

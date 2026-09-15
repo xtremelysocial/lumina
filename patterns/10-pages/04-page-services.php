@@ -1,6 +1,7 @@
 <?php
 /**
- * Title: Sample Services Page
+ * Title: Page Services
+ * Description: Services Page 
  * Slug: lumina/page-services
  * Categories: lumina, page
  * Block Types: core/post-content

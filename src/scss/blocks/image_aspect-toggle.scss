@@ -2,8 +2,8 @@
    FEATURED IMAGE ASPECT RATIO TOGGLE ENGINE
    ========================================================================== */
 
-$expand-icon:	'../../icons/engine/aspect-toggle.svg';
-$collapse-icon:	'../../icons/engine/aspect-toggle.svg';
+$expand-icon:	'../../icons/theme/expand-collapse.svg';
+$collapse-icon:	'../../icons/theme/expand-collapse.svg';
 
 /* 1. Layout & Positioning Context */
 :is(.wp-block-image.is-style-aspect-toggle, .wp-block-image.is-style-toggle-aspect) {
@@ -77,8 +77,8 @@ $collapse-icon:	'../../icons/engine/aspect-toggle.svg';
 	&.lumina-action-aspect-expand {
 		&::before { content: "Expand View"; }
 		&::after {
-// 			mask-image: url('../../icons/engine/aspect-ratio.svg') !important;
-// 			-webkit-mask-image: url('../icons/engine/aspect-ratio.svg') !important;
+// 			mask-image: url('../../icons/theme/aspect-ratio.svg') !important;
+// 			-webkit-mask-image: url('../icons/theme/aspect-ratio.svg') !important;
 			mask-image: url($expand-icon);
 			transform: rotate(90deg) !important; // Kinetic indicator rotation
 		}
@@ -88,8 +88,8 @@ $collapse-icon:	'../../icons/engine/aspect-toggle.svg';
 	&.lumina-action-aspect-collapse {
 		&::before { content: "Collapse View"; }
 		&::after {
-// 			mask-image: url('../../icons/engine/aspect-ratio.svg') !important;
-// 			-webkit-mask-image: url('../icons/engine/aspect-ratio.svg') !important;
+// 			mask-image: url('../../icons/theme/aspect-ratio.svg') !important;
+// 			-webkit-mask-image: url('../icons/theme/aspect-ratio.svg') !important;
 			mask-image: url($collapse-icon);
 			transform: rotate(0deg) !important; // Kinetic indicator rotation
 		}

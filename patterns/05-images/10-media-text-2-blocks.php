@@ -7,9 +7,9 @@
  * Block Types: core/media-text
  */
 ?>
-<!-- wp:media-text {"align":"wide","mediaPosition":"right","mediaLink":"#content-start","linkDestination":"custom","mediaType":"image","mediaWidth":60,"imageFill":true,"metadata":{"name":"Media \u0026 Text 2 Blocks"},"className":"is-style-no-padding is-style-pan-zoom","anchor":"media-text-2-blocks"} -->
+<!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":60,"imageFill":true,"metadata":{"name":"Media \u0026 Text 2 Blocks"},"className":"is-style-no-padding is-style-pan-zoom","anchor":"media-text-2-blocks"} -->
 <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-image-fill-element is-style-no-padding is-style-pan-zoom" style="grid-template-columns:auto 60%" id="media-text-2-blocks"><div class="wp-block-media-text__content"><!-- wp:group {"className":"is-style-default","backgroundColor":"secondary","layout":{"type":"constrained"}} -->
-<div class="wp-block-group  is-style-default has-secondary-background-color has-background"><!-- wp:heading {"level":4,"className":"has-text-align-center","style":{"typography":{"textTransform":"uppercase","textAlign":"center"}}} -->
+<div class="wp-block-group is-style-default has-secondary-background-color has-background"><!-- wp:heading {"level":4,"className":"has-text-align-center","style":{"typography":{"textTransform":"uppercase","textAlign":"center"}}} -->
 <h4 class="wp-block-heading has-text-align-center" style="text-transform:uppercase"><?php esc_html_e("Curated Portfolios", "lumina"); ?></h4>
 <!-- /wp:heading -->
 
@@ -25,7 +25,7 @@
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"","backgroundColor":"primary","layout":{"type":"constrained"}} -->
-<div class="wp-block-group  has-primary-background-color has-background"><!-- wp:heading {"level":4,"className":"has-text-align-center","style":{"typography":{"textTransform":"uppercase","textAlign":"center"}}} -->
+<div class="wp-block-group has-primary-background-color has-background"><!-- wp:heading {"level":4,"className":"has-text-align-center","style":{"typography":{"textTransform":"uppercase","textAlign":"center"}}} -->
 <h4 class="wp-block-heading has-text-align-center" style="text-transform:uppercase"><?php esc_html_e("Bespoke Commissions", "lumina"); ?></h4>
 <!-- /wp:heading -->
 
@@ -38,5 +38,5 @@
 <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-align-center wp-element-button" href="#features"><?php esc_html_e("OUR PROCESS", "lumina"); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
-<!-- /wp:group --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/gallery-2/01.webp" ) ); ?>" alt="" class="wp-image-27966 size-full" style="object-position:50% 50%"/></figure></div>
+<!-- /wp:group --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/gallery-2/01.webp" ) ); ?>" alt="" style="object-position:50% 50%"/></figure></div>
 <!-- /wp:media-text -->

@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Page Home
- * Description: Page Home
+ * Description: Home Page
  * Slug: lumina/page-home
  * Categories: lumina
  * Block Types: core/page
@@ -16,7 +16,7 @@
 
 	<!-- wp:pattern {"slug":"lumina/columns-features-4-columns"} /-->
 
-	<!-- wp:pattern {"slug":"lumina/columns-feature-dividers-3x3"} /-->
+	<!-- wp:pattern {"slug":"lumina/columns-features-dividers-3x2"} /-->
 
 	<!-- wp:pattern {"slug":"lumina/image-left-and-right-text"} /-->
 	

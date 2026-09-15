@@ -43,11 +43,11 @@
 
 <!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
 <div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"className":"has-primary-alt-color has-text-color","style":{"typography":{"fontSize":"3.5rem","lineHeight":"1","fontWeight":"700","textAlign":"center"}},"textColor":"primary-alt"} -->
-<p class="has-text-align-center has-primary-alt-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">25+</p>
+<p class="has-text-align-center has-primary-alt-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">120+</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
-<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Editorial Awards", "lumina"); ?></p>
+<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Studio Commissions", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
@@ -55,31 +55,31 @@
 <!-- wp:columns {"isStackedOnMobile":false,"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-columns is-not-stacked-on-mobile"><!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
 <div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"className":"has-primary-alt-color has-text-color","style":{"typography":{"fontSize":"3.5rem","lineHeight":"1","fontWeight":"700","textAlign":"center"}},"textColor":"primary-alt"} -->
-<p class="has-text-align-center has-primary-alt-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">100%</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
-<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Natural Light Focus", "lumina"); ?></p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column -->
-
-<!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
-<div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"className":"has-primary-alt-color has-text-color","style":{"typography":{"fontSize":"3.5rem","lineHeight":"1","fontWeight":"700","textAlign":"center"}},"textColor":"primary-alt"} -->
-<p class="has-text-align-center has-primary-alt-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">60+</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
-<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Studio Commissions", "lumina"); ?></p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column -->
-
-<!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
-<div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"className":"has-primary-alt-color has-text-color","style":{"typography":{"fontSize":"3.5rem","lineHeight":"1","fontWeight":"700","textAlign":"center"}},"textColor":"primary-alt"} -->
 <p class="has-text-align-center has-primary-alt-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">150+</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
-<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Curated Stories", "lumina"); ?></p>
+<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Published Articles", "lumina"); ?></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
+<div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"className":"has-primary-alt-color has-text-color","style":{"typography":{"fontSize":"3.5rem","lineHeight":"1","fontWeight":"700","textAlign":"center"}},"textColor":"primary-alt"} -->
+<p class="has-text-align-center has-primary-alt-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">280+</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
+<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Active Clients", "lumina"); ?></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
+<div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"className":"has-primary-alt-color has-text-color","style":{"typography":{"fontSize":"3.5rem","lineHeight":"1","fontWeight":"700","textAlign":"center"}},"textColor":"primary-alt"} -->
+<p class="has-text-align-center has-primary-alt-color has-text-color" style="font-size:3.5rem;font-weight:700;line-height:1">11</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
+<p class="has-text-align-center" style="line-height:1.4"><?php esc_html_e("Editorial Awards", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>

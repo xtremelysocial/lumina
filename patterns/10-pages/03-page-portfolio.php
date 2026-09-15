@@ -1,6 +1,7 @@
 <?php
 /**
- * Title: Sample Portfolio Page
+ * Title: Page Portfolio
+ * Description: Portfolio Page
  * Slug: lumina/page-portfolio
  * Categories: lumina, page
  * Block Types: core/post-content

@@ -4,7 +4,6 @@
    ========================================================================== */
 
 @use '00-config' as config;
-// @use 'physics' as phys;
 
 @mixin apply-global-logic($interactive: false) {
 
@@ -40,7 +39,6 @@
 		}
 			
 		// Remove shadow from logo-only Social Icons or the shadow will be round
-// 		.wp-site-blocks .wp-block-social-links.is-style-logos-only {
 		:is(.wp-site-blocks, .editor-styles-wrapper) .wp-block-social-links.is-style-logos-only {
 			box-shadow: none;
 
@@ -49,9 +47,7 @@
 			}
 		}
 				
-		// Remove shadow from fixed header and apply bottom border
-// 		.wp-site-blocks > header:has(.is-position-sticky),
-// 		.wp-site-blocks > header:has(.is-style-fixed-header) {
+		// Remove shadow from fixed header (Override parent theme)
 		.wp-site-blocks > :has(.is-position-sticky),
 		.wp-site-blocks > :has(.is-style-fixed-header) {
 			box-shadow: none;
@@ -166,34 +162,20 @@
 		
 			/* SVG Mask Assignments using asset folder filenames */
 			&.lumina-action-internal::after {
-				mask-image: url('../icons/engine/internal-link.svg');
+				mask-image: url('../icons/theme/internal-link.svg');
 				transform: translateX(-1px);
-// 				mask-image: url('~@wordpress/icons/build-module/library/arrow-right.svg');
-// 				mask-image: url('../../../node_modules/@wordpress/icons/build-module/library/arrow-right.svg');
 			}
 			&.lumina-action-external::after {
-				mask-image: url('../icons/engine/external-link.svg');
-// 				mask-position: center;
-// 				mask-image: url('../icons/external-link.svg');
-// 				mask-image: url('~@wordpress/icons/build-module/library/external.svg');
-// 				mask-image: url('../../../node_modules/@wordpress/icons/build-module/library/external.svg');
+				mask-image: url('../icons/theme/external-link.svg');
 			}
 			&.lumina-action-scroll-up::after {
-// 				mask-position: calc(50% + 1px) center;
-				mask-image: url('../icons/engine/scroll-up.svg');
+				mask-image: url('../icons/theme/curve-up.svg');
 				transform: translate(-1px, 1px);
 			}
 			&.lumina-action-scroll-down::after {
-				mask-image: url('../icons/engine/scroll-down.svg');
-// 				mask-position: calc(50% + 1px) calc(50% + 1px);
+				mask-image: url('../icons/theme/curve-down.svg');
 				transform: translate(-1px, -3px);
 			}
-// 			&.lumina-action-play::after {
-// 				mask-image: url('../icons/engine/motion.svg');
-// 			}
-// 			&.lumina-action-pause::after {
-// 				mask-image: url('../icons/engine/motion.svg');
-// 			}
 		}
 		
 		// Inverted Badge (Contrast Card BG)
