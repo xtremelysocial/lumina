@@ -36,7 +36,11 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 		$base_path        = 'assets/images/';
 
 		$exclude_dirs     = [
-			'samples',
+			'about',
+			'pages',
+			'screenshots',
+			'team',
+			'testimonials'
 		]; 
 
 		$exclude_prefixes = []; 

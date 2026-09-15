@@ -74,6 +74,7 @@ $includes = array (
 	'/inc/block-patterns.php',
 // 	'/inc/block-variations.php',
 	'/inc/body-classes.php',
+	'/inc/color-scheme-selector.php',
 	'/inc/icons.php',
 	'/inc/images.php',
 	'/inc/parent-theme.php',

@@ -13,7 +13,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p><?php esc_html_e("Streamlined design systems, responsive block architectures, and modern aesthetics engineered for growing brands and creative studios.", "lumina"); ?></p>
+<p><?php esc_html_e("Tailored visual storytelling, natural light compositions, and artisanal studio work crafted for discerning brands and private clients.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->

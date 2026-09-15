@@ -13,7 +13,7 @@
 <!-- wp:site-tagline {"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"x-large"} /-->
 
 <!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"large"} -->
-<p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("Lumina is a refined modern theme inspired by the colors, light, depth and motion of the environment around us", "lumina"); ?></p>
+<p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("A refined visual canvas inspired by natural light, organic contrast, and spatial harmony across creative mediums.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-arrow-down-alt2-no-text","style":{"typography":{"textAlign":"center"}}} -->

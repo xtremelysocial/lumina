@@ -112,7 +112,19 @@
 				updateBadgeState( isLocalExpanded );
 			}
 		
-			// 5. CLICK HANDLER
+			// 5. TOUCHSTART HANDLER (Reveals badge on mobile touch without toggling aspect)
+			$container.on( 'touchstart', function( e ) {
+				if ( $( e.target ).is( 'a, figcaption' ) || $( e.target ).closest( 'figcaption, a' ).length ) {
+					return;
+				}
+
+				if ( ! $container.hasClass( 'is-active' ) ) {
+					$( '.wp-block-image:is(.is-style-aspect-toggle, .is-style-toggle-aspect)' ).removeClass( 'is-active' );
+					$container.addClass( 'is-active' );
+				}
+			} );
+
+			// 6. CLICK HANDLER
 			$container.on( 'click', 'button.lumina-aspect-toggle, img', function( e ) {
 				if ( $( e.target ).is( 'a, figcaption' ) || $( e.target ).closest( 'figcaption, a' ).length ) {
 					return;
@@ -151,7 +163,7 @@
 			} );
 		} );
 
-				/* ==========================================================================
+		/* ==========================================================================
 		 * 03. DYNAMIC CARD ENGINE: Turn single-link cards into unified click targets
 		 * ========================================================================== */
 	
@@ -186,7 +198,7 @@
 			// Find candidate links/buttons (filtering out Lightbox AND Aspect Toggle controls)
 			var $candidates = $card.find('a, button, .wp-element-button').filter(function() {
 				var $el = $(this);
-				if ($el.hasClass('lumina-aspect-toggle') || $el.closest('.is-style-aspect-toggle').length > 0) {
+				if ($el.hasClass('lumina-aspect-toggle') || $el.closest('.is-style-aspect-toggle, .is-style-toggle-aspect').length > 0) {
 					return false;
 				}
 				return !isLightboxElement(this);
@@ -313,7 +325,7 @@
 			var $card = $(this);
 		
 			// Bypass card activation if touch lands directly on an aspect toggle or lightbox image
-			if ($(e.target).closest('.lumina-aspect-toggle, .is-style-aspect-toggle, ' + lightboxSelector).length) {
+			if ($(e.target).closest('.lumina-aspect-toggle, .is-style-aspect-toggle, .is-style-toggle-aspect, ' + lightboxSelector).length) {
 				return;
 			}
 
@@ -334,6 +346,9 @@
 			if (!$(e.target).closest('.is-interactive-card').length) {
 				$('.is-interactive-card').removeClass('is-active');
 			}
+			if (!$(e.target).closest('.wp-block-image:is(.is-style-aspect-toggle, .is-style-toggle-aspect)').length) {
+				$('.wp-block-image:is(.is-style-aspect-toggle, .is-style-toggle-aspect)').removeClass('is-active');
+			}
 		});		
 	
 		/* ==========================================================================
@@ -353,7 +368,7 @@
 			}
 
 			// Exclude clicks on native buttons, links, lightbox elements, AND aspect toggles
-			if ($(e.target).closest('button, a, .wp-element-button, input, select, textarea, .lumina-aspect-toggle, .is-style-aspect-toggle, ' + lightboxSelector).length) {
+			if ($(e.target).closest('button, a, .wp-element-button, input, select, textarea, .lumina-aspect-toggle, .is-style-aspect-toggle, .is-style-toggle-aspect, ' + lightboxSelector).length) {
 				$card.removeClass('is-active');
 				return;
 			}

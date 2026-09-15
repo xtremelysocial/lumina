@@ -10,7 +10,9 @@
 					"mode": 	"is-light-theme",
 					"scheme": 	"lumina",
 					"imageFolders": [
-						"lumina"
+						"gallery-1",
+						"gallery-2",
+						"gallery-3"
 					],
 					"imageDefault": "/assets/images/samples/01.webp"
 				},
@@ -39,7 +41,7 @@
 					"hoverOpacity": "1" 
 				},
 				"link": {
-					"hoverOpacity": "0.6" 
+					"hoverOpacity": "0.7" 
 				},
 				"heading": {
 					"text": 		"var(--wp--preset--color--dark)",

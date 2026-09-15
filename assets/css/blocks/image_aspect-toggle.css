@@ -18,7 +18,7 @@
   display: none !important;
 }
 
-/* 3. Badge Button Overrides (Strips Native Browser Border & Box-Shadow Anomalies) */
+/* 3. Badge Button Overrides */
 :is(.wp-block-image.is-style-aspect-toggle, .wp-block-image.is-style-toggle-aspect) > button.lumina-card-arrow-overlay.lumina-aspect-toggle {
   position: absolute !important;
   bottom: var(--wp--preset--spacing--30, 12px) !important;
@@ -29,7 +29,6 @@
   height: 32px !important;
   margin: 0 !important;
   padding: 0 !important;
-  /* Reset button styles */
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
@@ -38,13 +37,13 @@
   color: var(--wp--preset--color--base, #ffffff) !important;
   cursor: pointer !important;
   z-index: 10 !important;
-  /* Flex centering for ::after icon mask */
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  /* Hidden at rest */
+  /* Hidden at rest & non-interactive until active/hovered */
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transform: scale(0.75);
   transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1), transform 200ms cubic-bezier(0.16, 1, 0.3, 1), visibility 200ms;
 }

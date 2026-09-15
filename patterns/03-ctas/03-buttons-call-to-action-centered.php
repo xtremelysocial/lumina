@@ -1,19 +1,19 @@
 <?php
 /**
- * Title: Call To Action Rounded
- * Description: Call To Action Rounded
- * Slug: lumina/buttons-call-to-action-rounded
+ * Title: Call To Action Centered
+ * Description: Call To Action Centered
+ * Slug: lumina/buttons-call-to-action-centered
  * Categories: lumina, buttons, call-to-action
  * Block Types: core/buttons
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Call-to-Action"},"align":"wide","className":"is-style-rounded-border","backgroundColor":"secondary","layout":{"type":"constrained"},"anchor":"call-to-action-rounded"} -->
+<!-- wp:group {"metadata":{"name":"Call-to-Action Rounded"},"align":"wide","className":"is-style-rounded-border","backgroundColor":"secondary","layout":{"type":"constrained"},"anchor":"call-to-action-rounded"} -->
 <div class="wp-block-group alignwide is-style-rounded-border has-secondary-background-color has-background" id="call-to-action-rounded"><!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
 <h2 class="wp-block-heading has-text-align-center"><?php esc_html_e("Have a Commission in Mind?", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center"><?php esc_html_e("We collaborate with visionary clients, architects, and lifestyle brands to turn ambitious ideas into lasting digital systems.", "lumina"); ?></p>
+<p class="has-text-align-center"><?php esc_html_e("We collaborate with visionary clients, interior designers, and editorial partners to capture timeless imagery with depth and precision.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->

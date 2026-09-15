@@ -7,14 +7,6 @@
 # subfolder like /parts) into production-ready WordPress PHP pattern files in 
 # /patterns/converted with i18n text domain wrapper functions, asset URI helpers, 
 # and clean block comment manifests.
-#
-# USAGE EXAMPLES (Run from Theme Root):
-#   ./utils/patterns2php.sh                 # Process default files in /patterns/html (skips existing)
-#   ./utils/patterns2php.sh hero            # Process files matching "hero" in /patterns/html
-#   ./utils/patterns2php.sh parts           # Process all HTML files in /parts
-#   ./utils/patterns2php.sh parts header    # Process files matching "header" in /parts
-#   ./utils/patterns2php.sh --force         # Overwrite all converted PHP pattern files
-#   ./utils/patterns2php.sh parts header -f # Force overwrite matching files in /parts
 # ==============================================================================
 
 # Enforce script directory anchoring (Script lives in /utils)
@@ -32,12 +24,10 @@ BLOCK_MAP=(
     "buttons"       "core/buttons"
     "columns"       "core/columns"
     "cover"         "core/cover"
-#     "banner"        "core/cover"
     "details"       "core/details"
     "faq"           "core/details"
     "gallery"       "core/gallery"
     "image"         "core/image"
-#     "media"         "core/media-text"
     "media-text"    "core/media-text"
     "page"          "core/page"
     "query"         "core/query"
@@ -56,7 +46,6 @@ for arg in "$@"; do
     if [[ "$arg" == "--force" || "$arg" == "-f" ]]; then
         FORCE_OVERWRITE=true
     elif [[ -d "${THEME_ROOT}/$arg" ]]; then
-        # Dynamically switch source folder if valid theme directory passed (e.g., "parts")
         SOURCE_DIR="${THEME_ROOT}/$arg"
     else
         FILTER="$arg"
@@ -78,20 +67,24 @@ fi
 
 count=0
 
-# Enable Zsh null globbing
-setopt NULL_GLOB 2>/devnull || true
+# Enable Zsh null globbing & globstar for recursive subfolder scanning
+setopt NULL_GLOB GLOB_STAR_SHORT 2>/devnull || true
 
 # Pre-sort block keys by length descending so 'gallery' matches before 'image'
 sorted_block_keys=(${(f)"$(for k in ${(k)BLOCK_MAP}; do echo "${#k} $k"; done | sort -rn | cut -d' ' -f2-)"})
 
-for file in "$SOURCE_DIR"/*.html(N); do
+# Sweep both root folder and numbered subdirectories recursively
+for file in "$SOURCE_DIR"/**/*.html(N); do
     [[ -f "$file" ]] || continue
 
     filename=$(basename "$file")
-    slug_base="${filename%.*}"
+    raw_slug_base="${filename%.*}"
 
-    # 1. Apply filename search filter if provided
-    if [[ -n "$FILTER" && "$slug_base" != *"$FILTER"* ]]; then
+    # 0. STRIP LEADING ORDERING NUMBERS (e.g., "01-banner-hero" -> "banner-hero")
+    slug_base=$(echo "$raw_slug_base" | perl -pe 's/^\d+[-_.\s]*//')
+
+    # 1. Apply filename search filter if provided (matches against raw or clean name)
+    if [[ -n "$FILTER" && "$raw_slug_base" != *"$FILTER"* && "$slug_base" != *"$FILTER"* ]]; then
         continue
     fi
 
@@ -104,8 +97,7 @@ for file in "$SOURCE_DIR"/*.html(N); do
     fi
 
     # 3. Establish Namespace Slug (Sanitize special characters like '+' into '-')
-#     clean_slug_base=$(echo "$slug_base" | tr -c 'a-zA-Z0-9_-' '-')
-	clean_slug_base="${slug_base//[^a-zA-Z0-9_-]/-}"
+    clean_slug_base="${slug_base//[^a-zA-Z0-9_-]/-}"
     slug="lumina/$clean_slug_base"
 
     # 4. Compute Taxonomy Categories Array
@@ -123,7 +115,7 @@ for file in "$SOURCE_DIR"/*.html(N); do
         done
     fi
 
-    # B. Supplemental keyword guessing from filename
+    # B. Supplemental keyword guessing from clean filename
     if [[ "$slug_base" == *button* ]]; then categories+=("buttons" "call-to-action"); fi
     if [[ "$slug_base" == *column* ]]; then categories+=("column"); fi
     if [[ "$slug_base" == *cover* || "$slug_base" == *banner* || "$slug_base" == *bokeh* ]]; then categories+=("banner"); fi
@@ -151,7 +143,7 @@ for file in "$SOURCE_DIR"/*.html(N); do
     clean_spaces="${clean_spaces//_/ }"
     title=$(echo "$clean_spaces" | perl -pe 's/\b(\w)/uc($1)/eg')
 
-    echo "✅ Converting: $filename -> patterns/converted/$slug_base.php (Block Type: ${block_type:-None})"
+    echo "✅ Converting: $filename -> patterns/converted/$slug_base.php (Title: '$title')"
 
     # Write out the fresh PHP pattern header manifest block
     if [[ -n "$block_type" ]]; then
@@ -190,7 +182,7 @@ EOF
             $c;
         }gse;
     
-        # Preserve subfolders (e.g. lumina/06.webp) while anchoring on assets/images/
+        # Preserve subfolders while anchoring on assets/images/
         s{src="([^"]*?assets\/images\/)?([^"]+\.(jpg|jpeg|png|gif|svg|webp))"}{src="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
         s{href="([^"]*?assets\/images\/)?([^"]+\.(jpg|jpeg|png|gif|svg|webp))"}{href="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
         s{"url":"([^"]*?assets\/images\/)?([^"]+\.(jpg|jpeg|png|gif|svg|webp))"}{"url":"<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;

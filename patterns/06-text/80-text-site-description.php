@@ -8,5 +8,5 @@
  */
 ?>
 <!-- wp:paragraph -->
-<p><?php esc_html_e("Lumina is a refined modern theme inspired by the colors, light, depth and motion of the environment around us", "lumina"); ?></p>
+<p><?php esc_html_e("A refined visual studio theme inspired by natural light, organic depth, and spatial harmony.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
