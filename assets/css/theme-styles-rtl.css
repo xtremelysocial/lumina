@@ -895,6 +895,12 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   box-shadow: none;
 }
 
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
 /*-----------------------------------------------------------------------------
 # Style Jetpack Contact Form buttons to match ours
 -----------------------------------------------------------------------------*/

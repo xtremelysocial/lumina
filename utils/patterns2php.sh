@@ -7,6 +7,32 @@
 # subfolder like /parts) into production-ready WordPress PHP pattern files in 
 # /patterns/converted with i18n text domain wrapper functions, asset URI helpers, 
 # and clean block comment manifests.
+#
+# ------------------------------------------------------------------------------
+# USAGE EXAMPLES & ARGUMENT COMBINATIONS:
+# ------------------------------------------------------------------------------
+# 1. Default Run (Converts all HTML files in /patterns/html without overwriting existing PHP files):
+#    ./utils/patterns2php.sh
+#
+# 2. Force Overwrite (-f or --force):
+#    Overwrites existing PHP pattern files in /patterns/converted if HTML sources changed.
+#    ./utils/patterns2php.sh --force
+#    ./utils/patterns2php.sh -f
+#
+# 3. Filter by Filename Keyword:
+#    Only converts HTML files matching a specific string (e.g., "banner", "hero", "pricing").
+#    ./utils/patterns2php.sh hero
+#    ./utils/patterns2php.sh columns
+#
+# 4. Process a Custom Relative Source Directory:
+#    Overrides default /patterns/html directory with another folder relative to theme root.
+#    ./utils/patterns2php.sh parts
+#    ./utils/patterns2php.sh patterns/html/01-heroes
+#
+# 5. Combined Usage (Custom Directory + Keyword Filter + Force Overwrite):
+#    Arguments are evaluated flexibly regardless of order.
+#    ./utils/patterns2php.sh parts header -f
+#    ./utils/patterns2php.sh banner --force
 # ==============================================================================
 
 # Enforce script directory anchoring (Script lives in /utils)

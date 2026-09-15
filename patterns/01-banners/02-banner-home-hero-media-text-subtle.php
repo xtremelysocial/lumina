@@ -4,6 +4,7 @@
  * Description: Banner Home Hero Media & Text Subtle Background
  * Slug: lumina/banner-home-hero-media-text-subtle
  * Categories: lumina, banner, media
+ * Block Types: core/group, core/media-text 
  */
  ?>
 <!-- wp:group {"metadata":{"name":"Home Banner Subtle Media \u0026 Text"},"align":"full","className":"is-style-default","style":{"background":{"gradient":"var:preset|gradient|tertiary-subtle"},"border":{"bottom":{"color":"var:preset|color|neutral-alt","width":"3px"}}},"layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text-subtle"} -->

@@ -4,6 +4,7 @@
  * Description: Media & Text w/2 colored group blocks and featured image
  * Slug: lumina/banner-page-hero-2-blocks-featured
  * Categories: lumina, banner, media
+ * Block Types: core/meda-text
  */
 ?>
 <!-- wp:media-text {"align":"full","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":60,"imageFill":true,"useFeaturedImage":true,"metadata":{"name":"Page Banner 2 Block Media \u0026 Text"},"className":"is-style-no-padding is-style-pan-zoom","anchor":"media-text-2-blocks-featured"} -->

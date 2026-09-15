@@ -4,7 +4,7 @@
  * Description: Cover Scroll Static Image
  * Slug: lumina/cover-scroll-static-image
  * Categories: lumina, banner, media
- * Block Types: core/image
+ * Block Types: core/cover
  */
 ?>
 <!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( "assets/images/pages/portfolio-hero.webp" ) ); ?>","dimRatio":30,"isUserOverlayColor":true,"minHeight":480,"sizeSlug":"large","metadata":{"name":"Cover Scroll Static Image"},"align":"full","className":"is-dark is-style-pan-zoom","style":{"spacing":{"margin":{"top":"0"}}},"anchor":"cover-scroll-static-image"} -->

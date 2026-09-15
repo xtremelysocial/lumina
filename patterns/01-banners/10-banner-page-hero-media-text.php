@@ -4,6 +4,7 @@
  * Description: Banner Hero Media & Text
  * Slug: lumina/banner-hero-media-text
  * Categories: lumina, banner, media, featured
+ * Block Types: core/group, core/media-text
  */
 ?>
 

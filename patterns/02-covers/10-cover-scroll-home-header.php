@@ -4,7 +4,7 @@
  * Description: Cover Scroll Home Header
  * Slug: lumina/cover-scroll-home-header
  * Categories: lumina, banner
- * Block Types: core/template-part/header
+ * Block Types: core/cover
  */
 ?>
 <!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( "assets/images/pages/home-hero.webp" ) ); ?>","dimRatio":30,"isUserOverlayColor":true,"focalPoint":{"x":0.5,"y":0.5},"minHeight":100,"minHeightUnit":"vh","contentPosition":"center center","sizeSlug":"large","metadata":{"name":"Cover Scroll Home Header"},"align":"full","className":"is-dark is-style-pan-zoom","style":{"spacing":{"margin":{"top":"0"}}},"anchor":"cover-scroll-home-header"} -->

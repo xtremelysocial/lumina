@@ -4,11 +4,13 @@
  * Description: Banner Hero Media & Text
  * Slug: lumina/banner-hero-media-text
  * Categories: lumina, banner, media, featured
+ * Block Types: core/group, core/media-text
  */
 ?>
 
 <!-- wp:group {"metadata":{"name":"Banner Hero Media \u0026 Text"},"align":"full","backgroundColor":"secondary-alt","layout":{"type":"constrained"},"anchor":"banner-hero-media-text"} -->
-<div class="wp-block-group alignfull has-secondary-alt-background-color has-background" id="banner-hero-media-text"><!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom"} -->
+<div class="wp-block-group alignfull has-secondary-alt-background-color has-background" id="banner-hero-media-text">
+<!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom"} -->
 <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom" style="grid-template-columns:auto 45%"><div class="wp-block-media-text__content"><!-- wp:heading {"placeholder":"Cover Image Title","fontSize":"huge","anchor":"title"} -->
 <h2 id="title" class="wp-block-heading has-huge-font-size"><?php esc_html_e("Fine Art & Visual Studio", "lumina"); ?></h2>
 <!-- /wp:heading -->

@@ -4,6 +4,7 @@
  * Description: Banner Home Hero Media & Text
  * Slug: lumina/banner-home-hero-media-text
  * Categories: lumina, banner, media
+ * Block Types: core/group, core/media-text
  */
 ?>
 <!-- wp:group {"metadata":{"name":"Home Banner Media \u0026 Text"},"align":"full","gradient":"tertiary","layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text"} -->

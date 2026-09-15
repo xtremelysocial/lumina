@@ -1060,8 +1060,14 @@
 		},
 		{
 			"name": "content-home-top",
-			"title": "Lumina Content Home Top (when blog is front page)",
-			"description": "Content for top of the home page (when blog is front page)",
+			"title": "Lumina Studio Content Home Top (when blog is front page)",
+			"description": "Lumina studio-specfc content for top of the home page (when blog is front page)",
+			"area": "content"
+		},
+		{
+			"name": "content-home-top-lumina",
+			"title": "Lumina Theme Content Home Top (when blog is front page)",
+			"description": "Lumina theme-specific content for top of the home page (when blog is front page)",
 			"area": "content"
 		},
 		{
