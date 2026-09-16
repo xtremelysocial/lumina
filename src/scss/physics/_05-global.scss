@@ -16,7 +16,7 @@
 	// ----------------------------------------------------------------------
 	@if not $interactive {
 	
-		// Slow down and reduce motion when requested by the user
+		/* Slow down and reduce motion when requested by the user*/
 		@media (prefers-reduced-motion: reduce) {
 			:root {
 				// Slow down timing
@@ -24,7 +24,7 @@
 				--wp--custom--animation--duration--medium: 800ms;
 				--wp--custom--animation--duration--normal: 1000ms;
 
-				/* Scaled-back hover effects */
+				// Scaled-back hover effects
 				--wp--custom--animation--default--hover-transform: scale(1.01);
 				--wp--custom--animation--button--hover-transform: scale(1.01);
 				--wp--custom--animation--card--hover-transform: translateY(-1px);

@@ -7,8 +7,8 @@
  * Block Types: core/columns
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Columns Intro + 3 x 2"},"align":"wide","layout":{"type":"constrained"},"anchor":"columns-intro+3x2-neutral"} -->
-<div class="wp-block-group alignwide" id="columns-intro+3x2-neutral"><!-- wp:heading {"align":"wide","className":"is-style-separator"} -->
+<!-- wp:group {"metadata":{"name":"Columns Intro + 3 x 2"},"align":"wide","layout":{"type":"constrained"},"anchor":"columns-intro-3x2-neutral"} -->
+<div class="wp-block-group alignwide" id="columns-intro-3x2-neutral"><!-- wp:heading {"align":"wide","className":"is-style-separator"} -->
 <h2 class="wp-block-heading alignwide is-style-separator"><?php esc_html_e("Studio Milestones", "lumina"); ?></h2>
 <!-- /wp:heading -->
 

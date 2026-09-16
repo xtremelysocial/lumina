@@ -5,6 +5,8 @@
  * Javascript for turning cards with a single link or button into a click target
  * and managing interactive image state toggles.
  *
+ * RESTORED FROM GITHUB theme-physics-8b9d665.js
+ *
  * @package lumina
  * @since   1.0
  */

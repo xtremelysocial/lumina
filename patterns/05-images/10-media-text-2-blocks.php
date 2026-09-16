@@ -35,7 +35,7 @@
 
 <!-- wp:buttons {"fontSize":"extra-small","layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-buttons has-custom-font-size has-extra-small-font-size"><!-- wp:button {"className":"is-style-outline","style":{"typography":{"textAlign":"center"}}} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-align-center wp-element-button" href="#features"><?php esc_html_e("OUR PROCESS", "lumina"); ?></a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-align-center wp-element-button" href="#feature-grid"><?php esc_html_e("OUR PROCESS", "lumina"); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/gallery-2/01.webp" ) ); ?>" alt="" style="object-position:50% 50%"/></figure></div>

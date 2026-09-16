@@ -67,7 +67,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"is-style-default","style":{"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center is-style-default"><?php esc_html_e("Colors drawn from nature rather than harsh monitors. Rich earthy mid-tones, subtle tints, and dark accents give you complete flexibility to direct visitor focus.", "lumina"); ?><a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
+<p class="has-text-align-center is-style-default"><?php esc_html_e("Colors drawn from nature rather than harsh monitors. Rich earthy mid-tones, subtle tints, and dark accents give you complete flexibility to direct visitor focus.", "lumina"); ?> <a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -79,7 +79,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"is-style-default","style":{"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center is-style-default"><?php esc_html_e("Container blocks carrying links or action buttons automatically respond with subtle lift and soft ambient shadows when hovered or tapped on mobile screens.", "lumina"); ?><a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
+<p class="has-text-align-center is-style-default"><?php esc_html_e("Container blocks carrying links or action buttons automatically respond with subtle lift and soft ambient shadows when hovered or tapped on mobile screens.", "lumina"); ?> <a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -91,7 +91,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"is-style-default","style":{"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center is-style-default"><?php esc_html_e("Support for modern image aspect ratios,  Wide 16:9, Ultra-wide 21:9, and our unique \"Slim\" 16:4.5. Add a motion pan &amp; zoom effect with a single click.", "lumina"); ?><a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
+<p class="has-text-align-center is-style-default"><?php esc_html_e("Support for modern image aspect ratios,  Wide 16:9, Ultra-wide 21:9, and our unique \"Slim\" 16:4.5. Add a motion pan &amp; zoom effect with a single click.", "lumina"); ?> <a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -103,7 +103,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"is-style-default","style":{"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center is-style-default"><?php esc_html_e("Swap or customize site headers, footers, post grids, and color schemes directly within the Site Editor. Easily keep your site modern and fresh without writing code.", "lumina"); ?><a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
+<p class="has-text-align-center is-style-default"><?php esc_html_e("Swap or customize site headers, footers, post grids, and color schemes directly within the Site Editor. Easily keep your site modern and fresh without writing code.", "lumina"); ?> <a href="#feature-grid"><?php esc_html_e("Learn more", "lumina"); ?></a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>

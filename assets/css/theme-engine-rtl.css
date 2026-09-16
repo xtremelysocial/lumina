@@ -12,12 +12,12 @@
    LUMINA ENGINE: Registers objects and sets their resting states
    v0.9.9 Build 30 MVP - Finalize Patterns
    ========================================================================== */
+/* Slow down and reduce motion when requested by the user*/
 @media (prefers-reduced-motion: reduce) {
   :root {
     --wp--custom--animation--duration--short: 400ms;
     --wp--custom--animation--duration--medium: 800ms;
     --wp--custom--animation--duration--normal: 1000ms;
-    /* Scaled-back hover effects */
     --wp--custom--animation--default--hover-transform: scale(1.01);
     --wp--custom--animation--button--hover-transform: scale(1.01);
     --wp--custom--animation--card--hover-transform: translateY(-1px);

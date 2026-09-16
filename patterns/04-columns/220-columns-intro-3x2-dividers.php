@@ -7,8 +7,8 @@
  * Block Types: core/columns
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Dividers Intro + 3 x 2 Columns"},"align":"wide","layout":{"type":"constrained"},"anchor":"dividers-intro+3x2"} -->
-<div class="wp-block-group alignwide" id="dividers-intro+3x2"><!-- wp:columns {"metadata":{"name":"Outer Columns"},"align":"wide","className":"is-style-default","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|50"}}},"anchor":"metrics"} -->
+<!-- wp:group {"metadata":{"name":"Dividers Intro + 3 x 2 Columns"},"align":"wide","layout":{"type":"constrained"},"anchor":"dividers-intro-3x2"} -->
+<div class="wp-block-group alignwide" id="dividers-intro-3x2"><!-- wp:columns {"metadata":{"name":"Outer Columns"},"align":"wide","className":"is-style-default","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|50"}}},"anchor":"metrics"} -->
 <div class="wp-block-columns alignwide is-style-default" id="metrics"><!-- wp:column {"width":"33.33%","metadata":{"name":"Intro Column"}} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:heading {"align":"wide","className":"is-style-separator"} -->
 <h2 class="wp-block-heading alignwide is-style-separator"><?php esc_html_e("By the Numbers", "lumina"); ?></h2>

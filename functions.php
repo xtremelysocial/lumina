@@ -137,12 +137,16 @@ if ( ! function_exists( 'lumina_load_styles' ) ) :
 			AND apply_filters( 'lumina_physics_js', true ) 
 			AND file_exists( get_stylesheet_directory() . '/assets/js/theme-physics.js' ) ) {
 
-			$theme_version = wp_get_theme()->get( 'Version' ) ?? false;			
+			$main_asset = get_stylesheet_directory() . '/assets/css/theme-styles.asset.php';
+			$version    = file_exists( $main_asset )
+				? ( include $main_asset )['version'] ?? wp_get_theme()->get( 'Version' )
+				: wp_get_theme()->get( 'Version' );
+					
 			wp_enqueue_script( 
 				'theme-physics', 
 				get_stylesheet_directory_uri() . '/assets/js/theme-physics.js', 
 				array( 'jquery' ), 
-				$theme_version, 
+				$version, 
 				true 
 			);
 		}

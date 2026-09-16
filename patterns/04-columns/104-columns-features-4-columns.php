@@ -7,8 +7,8 @@
  * Block Types: core/columns
  */
 ?>
-<!-- wp:group {"lock":{"move":false,"remove":false},"metadata":{"name":"Features 4 Columns","categories":["lumina","column","featured"]},"align":"full","layout":{"type":"constrained"},"anchor":"features-4"} -->
-<div class="wp-block-group alignfull" id="features-4"><!-- wp:columns {"align":"wide"} -->
+<!-- wp:group {"lock":{"move":false,"remove":false},"metadata":{"name":"Features 4 Columns","categories":["lumina","column","featured"]},"align":"full","layout":{"type":"constrained"},"anchor":"features-4-columns"} -->
+<div class="wp-block-group alignfull" id="features-4-columns"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"className":"is-style-rounded-border"} -->
 <div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"core/shadow","align":"center","className":"is-style-round","backgroundColor":"primary-subtle-alt","ariaLabel":"Light Icon"} /-->
 
