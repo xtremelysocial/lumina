@@ -21,5 +21,15 @@ echo sprintf(
 );
 ?>
 
-<!-- wp:pattern {"slug":"lumina/text-site-title-paragraph"} /--></div>
+<?php
+$site_name = esc_html( get_bloginfo( 'name' ) );
+$home_url  = esc_url( home_url( '/' ) );
+echo sprintf( 
+	'<!-- wp:paragraph --><p><a href="%s" rel="home">%s</a></p><!-- /wp:paragraph -->',
+	$home_url,
+	$site_name
+);
+?>
+
+</div>
 <!-- /wp:group -->

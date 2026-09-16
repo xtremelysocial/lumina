@@ -239,7 +239,7 @@
 <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:columns {"isStackedOnMobile":false,"className":"is-style-gutter-dividers","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-columns is-not-stacked-on-mobile is-style-gutter-dividers"><!-- wp:column {"className":"is-style-default","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
 <div class="wp-block-column is-style-default" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"fontSize":"3.5rem","lineHeight":"1","fontWeight":"700","textAlign":"center"},"elements":{"link":{"color":{"text":"var:preset|color|tertiary-alt"}}}},"textColor":"tertiary-alt"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color" style="font-size:3.5rem;font-weight:700;line-height:1">12</p>
+<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color" style="font-size:3.5rem;font-weight:700;line-height:1">9</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
