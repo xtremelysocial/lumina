@@ -20,8 +20,8 @@
 			<p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("Lumina is a refined modern theme inspired by the colors, light, depth and motion of the environment around us.", "lumina"); ?></p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-arrow-down-alt2-no-text","style":{"typography":{"textAlign":"center"}}} -->
-			<p class="has-text-align-center is-style-icon-arrow-down-alt2-no-text"><a href="#content-start"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
+			<!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-scroll-down-no-text","style":{"typography":{"textAlign":"center"}}} -->
+			<p class="has-text-align-center is-style-icon-scroll-down-no-text"><a href="#content-start"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<figure class="wp-block-media-text__media">

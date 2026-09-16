@@ -17,8 +17,8 @@
 <p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("A refined visual canvas inspired by natural light, organic contrast, and spatial harmony across creative mediums.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-arrow-down-alt2-no-text","style":{"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center is-style-icon-arrow-down-alt2-no-text"><a href="#content-start"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
+<!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-scroll-down-no-text","style":{"typography":{"textAlign":"center"}}} -->
+<p class="has-text-align-center is-style-icon-scroll-down-no-text"><a href="#content-start"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
 <!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/home-hero.webp" ) ); ?>" alt=""/></figure></div>
 <!-- /wp:media-text --></div>
 <!-- /wp:group -->

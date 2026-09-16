@@ -135,8 +135,8 @@
 <!-- /wp:group --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"stretch","className":"is-style-rounded-border","backgroundColor":"primary-subtle-alt","layout":{"type":"default"}} -->
-<div class="wp-block-column is-vertically-aligned-stretch is-style-rounded-border has-primary-subtle-alt-background-color has-background"><!-- wp:group {"align":"wide","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between","justifyContent":"stretch","flexWrap":"nowrap"}} -->
+<!-- wp:column {"verticalAlignment":"stretch","className":"is-style-rounded-border","backgroundColor":"primary-subtle","layout":{"type":"default"}} -->
+<div class="wp-block-column is-vertically-aligned-stretch is-style-rounded-border has-primary-subtle-background-color has-background"><!-- wp:group {"align":"wide","layout":{"type":"flex","orientation":"vertical","verticalAlignment":"space-between","justifyContent":"stretch","flexWrap":"nowrap"}} -->
 <div class="wp-block-group alignwide"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap","verticalAlignment":"space-between"}} -->
 <div class="wp-block-group"><!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading"><strong><?php esc_html_e("Benefactor", "lumina"); ?></strong></h3>

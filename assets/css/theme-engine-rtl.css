@@ -6,11 +6,10 @@
    ========================================================================== */
 /* ==========================================================================
    05 GLOBAL OVERIDES: Styles outside of the core engine loops
-	    v0.9.9 Build 30 MVP - Finalize Patterns
    ========================================================================== */
 /* ==========================================================================
    LUMINA ENGINE: Registers objects and sets their resting states
-   v0.9.9 Build 30 MVP - Finalize Patterns
+   v0.9.9 Build 31 MVP - Final Purge
    ========================================================================== */
 /* Slow down and reduce motion when requested by the user*/
 @media (prefers-reduced-motion: reduce) {

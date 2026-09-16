@@ -1,55 +1,80 @@
 /*--------------------------------------------------------------
-# LUMINA Table: Custom
+# LUMINA Table: Core WordPress Stripes
 --------------------------------------------------------------*/
+/* Striped tables: 60% light wash on odd rows with high-contrast dark text */
+.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+  background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 60%, transparent);
+  color: var(--wp--preset--color--contrast, #1b1b1b);
+}
+
+.wp-block-table.is-style-stripes tbody tr:nth-child(even) {
+  background-color: transparent;
+  color: inherit;
+}
+
+// .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+//   background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 35%, transparent);
+//   color: inherit;
+// }
+// 
+// .wp-block-table.is-style-stripes tbody tr:nth-child(even) {
+//   background-color: transparent;
+//   color: inherit;
+// }
+
+// .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+//   background-color: color-mix(in srgb, currentColor 5%, transparent);
+//   color: inherit;
+// }
+// 
+// .wp-block-table.is-style-stripes tbody tr:nth-child(even) {
+//   background-color: transparent;
+//   color: inherit;
+// }
 
 /*--------------------------------------------------------------
-## Custom: Colored Table
+# LUMINA Table: Custom (Light & Dark Mode Adaptive)
 --------------------------------------------------------------*/
 
-// Colored tables and Colored Alternate tables */
+/* Reset Header & Footer Default Borders */
 .wp-block-table.is-style-table-colored thead,
 .wp-block-table.is-style-table-colored tfoot,
 .wp-block-table.is-style-table-alternate thead,
 .wp-block-table.is-style-table-alternate tfoot {
-	border: none;
+  border: none;
 }
 
-.wp-block-table.is-style-table-colored tr:nth-child(even),
-.wp-block-table.is-style-table-alternate tr:nth-child(even) {
-	color: var(--wp--preset--color--almost-black);
-	background-color: var(--wp--preset--color--off-white);
-}
-.wp-block-table.is-style-table-colored tr:nth-child(odd),
-.wp-block-table.is-style-table-alternate tr:nth-child(odd) {
-	color: var(--wp--preset--color--almost-black);
-	background-color: var(--wp--preset--color--white);
-}
-
+/* Universal Cell Padding & Adaptive Grid Lines */
 .wp-block-table.is-style-table-colored th,
 .wp-block-table.is-style-table-colored td,
 .wp-block-table.is-style-table-alternate th,
 .wp-block-table.is-style-table-alternate td {
-	border: 1px solid #ddd;
-	padding: 8px;
+  border: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  padding: 10px 14px;
 }
 
+/* Adaptive Zebra Striping (Inherits Section Text Ink; No Hardcoded Fills) */
+.wp-block-table.is-style-table-colored tr:nth-child(even),
+.wp-block-table.is-style-table-alternate tr:nth-child(even) {
+  background-color: color-mix(in srgb, currentColor 4%, transparent);
+}
+
+.wp-block-table.is-style-table-colored tr:nth-child(odd),
+.wp-block-table.is-style-table-alternate tr:nth-child(odd) {
+  background-color: transparent;
+}
+
+/* Header & Footer Structural Base */
 .wp-block-table.is-style-table-colored th,
-// .wp-block-table.is-style-table-colored tr:first-child td,*/
 .wp-block-table.is-style-table-colored tfoot td,
 .wp-block-table.is-style-table-alternate th,
-// .wp-block-table.is-style-table-alternate tr:first-child td,*/
 .wp-block-table.is-style-table-alternate tfoot td {
-// 	color: var(--wp--preset--color--foreground-alt);	
-	background-color: var(--wp--preset--color--primary-subtle-alt);
-	font-weight: var(--wp--custom--typography--font-weight--medium);
+  background-color: var(--wp--preset--color--primary-subtle);
+  font-weight: var(--wp--custom--typography--font-weight--medium, 600);
+  border-bottom: 2px solid color-mix(in srgb, currentColor 20%, transparent);
 }
-// .wp-block-table.is-style-table-colored th a,
-// .wp-block-table.is-style-table-colored tfoot td a,
-// .wp-block-table.is-style-table-alternate th a,
-// .wp-block-table.is-style-table-alternate tfoot td a {
-// 	color: var(--wp--preset--color--foreground-alt);
-// }
 
+/* Interactive Header Links */
 .wp-block-table.is-style-table-colored th a:hover,
 .wp-block-table.is-style-table-colored th a:focus,
 .wp-block-table.is-style-table-colored tfoot td a:hover,
@@ -58,36 +83,23 @@
 .wp-block-table.is-style-table-alternate th a:focus,
 .wp-block-table.is-style-table-alternate tfoot td a:hover,
 .wp-block-table.is-style-table-alternate tfoot td a:focus {
-// 	color: var(--wp--preset--color--foreground-alt);*/
-// 	opacity: 0.8;
-	opacity: var(--wp--custom--color--link--hover-opacity, 0.8)
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.8);
 }
 
 /*--------------------------------------------------------------
-## Custom: Alternate Colored Table
+## Custom: Alternate Colored Table (3-Track Accent Cycle)
 --------------------------------------------------------------*/
+.wp-block-table.is-style-table-alternate th:nth-child(3n+1),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(3n+1) {
+  background-color: var(--wp--preset--color--primary-subtle);
+}
 
-.wp-block-table.is-style-table-alternate th:nth-child(6n+1),
-.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+1) {
-	background-color: var(--wp--preset--color--primary-subtle);
+.wp-block-table.is-style-table-alternate th:nth-child(3n+2),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(3n+2) {
+  background-color: var(--wp--preset--color--secondary-subtle);
 }
-.wp-block-table.is-style-table-alternate th:nth-child(6n+2),
-.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+2) {
-	background-color: var(--wp--preset--color--secondary-subtle);
-}
-.wp-block-table.is-style-table-alternate th:nth-child(6n+3),
-.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+3) {
-	background-color: var(--wp--preset--color--tertiary-subtle);
-}
-.wp-block-table.is-style-table-alternate th:nth-child(6n+4),
-.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+4) {
-	background-color: var(--wp--preset--color--primary-subtle-alt);
-}
-.wp-block-table.is-style-table-alternate th:nth-child(6n+5),
-.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+5) {
-	background-color: var(--wp--preset--color--secondary-subtle-alt);
-}
-.wp-block-table.is-style-table-alternate th:nth-child(6n+6),
-.wp-block-table.is-style-table-alternate tfoot td:nth-child(6n+6) {
-	background-color: var(--wp--preset--color--tertiary-subtle-alt);
+
+.wp-block-table.is-style-table-alternate th:nth-child(3n+0),
+.wp-block-table.is-style-table-alternate tfoot td:nth-child(3n+0) {
+  background-color: var(--wp--preset--color--tertiary-subtle);
 }

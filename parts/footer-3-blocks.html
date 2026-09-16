@@ -1,15 +1,30 @@
 <!-- wp:group {"tagName":"footer","metadata":{"name":"Footer 3 Blocks"},"style":{"spacing":{"margin":{"top":"0"}}},"backgroundColor":"dark","className":"alignfull site-footer is-style-default","layout":{"type":"constrained"}} -->
 <footer id="site-footer" class="wp-block-group alignfull site-footer is-style-default has-dark-background-color has-background" style="margin-top:0;"><!-- wp:columns {"align":"wide","className":"footer-widgets is-style-thick-gap"} -->
 <div class="wp-block-columns alignwide footer-widgets is-style-thick-gap"><!-- wp:column {"className":"footer-column"} -->
-<div class="wp-block-column footer-column"><!-- wp:template-part {"slug":"footer-block-1"} /--></div>
+<div class="wp-block-column footer-column"><!-- wp:heading {"level":3,"placeholder":"Recent Posts","className":"widget-title"} -->
+<h3 class="wp-block-heading widget-title">Recent Posts</h3>
+<!-- /wp:heading -->
+
+<!-- wp:latest-posts {"postsToShow":3,"className":"is-style-latest-posts-plain is-style-list-dividers"} /--></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"footer-column"} -->
-<div class="wp-block-column footer-column"><!-- wp:template-part {"slug":"footer-block-2"} /--></div>
+<div class="wp-block-column footer-column"><!-- wp:heading {"level":3,"placeholder":"Recent Comments","className":"widget-title"} -->
+<h3 class="wp-block-heading widget-title">Recent Comments</h3>
+<!-- /wp:heading -->
+
+<!-- wp:latest-comments {"commentsToShow":3,"displayAvatar":false,"displayDate":false,"displayExcerpt":false,"className":"is-style-latest-comments-plain is-style-list-dividers"} /--></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"footer-column"} -->
-<div class="wp-block-column footer-column"><!-- wp:template-part {"slug":"footer-block-3"} /--></div>
+<div class="wp-block-column footer-column"><!-- wp:heading {"level":3,"className":"widget-title"} -->
+<h3 class="wp-block-heading widget-title">About</h3>
+<!-- /wp:heading -->
+
+<!-- wp:site-tagline /-->
+
+<!-- wp:pattern {"slug":"lumina/text-site-description"} /-->
+</div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></footer>
 <!-- /wp:group -->

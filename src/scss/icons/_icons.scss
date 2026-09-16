@@ -1,0 +1,107 @@
+//------------------------------------------------------------------------------
+// SVG Icon Mixins
+//------------------------------------------------------------------------------
+
+// Load string functions
+// @use "sass:string";
+
+// Assign SVG attributes to ::before or ::after
+%icon-pseudo {
+	content: '';
+	background-color: currentColor;
+	display: inline-flex;
+	text-decoration: none;
+	position: relative;
+// 	align-self: center;
+// 	top: -2px;	
+// 	top: -1px;	
+	height: 1em;
+	width: 1em;
+	vertical-align: middle;
+	mask-size: contain;
+	mask-repeat: no-repeat;
+	mask-position: center;
+}
+
+// SVG Icon Mixin: Adds SVG icon to a block and/or its links
+//
+// @class		string	CSS class to add icon. e.g. wp-block-post-date
+// @icon		string	Icon slug. e.g. ('calendar-alt', 'category')
+// @location	string	Either 'before' or 'after'
+// @link		bool	Add icon to link or the element itself
+// @margin		bool	Add margin before or after
+//
+@mixin svg-icon(
+	$class,
+	$icon,
+	$location,
+	$link: false,
+	$margin: true,
+) {
+
+	// Determine the CSS selector to use: The element or the link within the element
+	$selector: '#{$class}::#{$location}';
+	@if $link {
+		$selector: '#{$class} > a::#{$location}';
+	}		
+
+	// Determine the SVG Icon path. Note: include trailing slash.
+// 	$path: '../icons/';
+// 	@if ( string.index($class, 'wp-block-') ) {
+// 		$path: '../../icons/';
+// 	}
+	$path: '../../icons/';
+
+	// Add the ::before or ::after styles, the SVG Icon, and optionally margin
+	.#{$selector} {
+		@extend %icon-pseudo;
+		mask-image: url(#{$path}#{$icon}.svg);
+
+		@if $margin {
+			$defaultMargin: 0.15em;
+			@if $location == 'after' {
+				margin-left: #{$defaultMargin};
+			} @else {
+				margin-right: #{$defaultMargin};
+			}
+		}
+	}
+}
+
+// SVG Icons Mixin: Adds SVG icons to multiple CSS classes
+//
+// @icons		array	Array of icon slugs. e.g. ('calendar-alt', 'category')
+// @location	string	pseudo location: 'before' or 'after'
+// @addl-class	bool	Suffix to add another class. e.g. "-no-text"
+//
+@mixin svg-icons(
+	$icons,
+	$location,
+	$link: false,
+	$addl-class: null,
+) {
+
+	// Loop through the icon list and add the icon CSS
+	$prefix: 'is-style-icon-';
+	
+	@each $icon in $icons {
+		@include svg-icon(
+			#{$prefix}#{$icon},
+			#{$icon},
+			#{$location},
+			$link,
+			$margin: true,
+		);
+		
+		// Add additional class, if desired
+		@if $addl-class {
+			@include svg-icon(
+				#{$prefix}#{$icon}#{$addl-class},
+				#{$icon},
+				#{$location},
+				$link,
+				$margin: false,
+			);		
+		}
+	}
+}

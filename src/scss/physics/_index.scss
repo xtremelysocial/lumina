@@ -3,10 +3,6 @@
 //	 Compiler, Debug, States, Apply Actions, and Registry
 //   ========================================================================== */
 
-//* ==========================================================================
-//	 v0.9.9 Build 30 MVP - Finalize Patterns
-//   ========================================================================== */
-
 // 0. GLOBAL / FOUNDATION LAYER
 @forward '00-config';
 @forward '05-global';
@@ -19,6 +15,7 @@
 @forward '01-compiler' show 
 	compile-selector;
 
+// 1. BUTTON LAYER: Only expose the spacing for legacy html-only buttons
 @forward '02-resting' show 
 	apply-button-spacing;
 

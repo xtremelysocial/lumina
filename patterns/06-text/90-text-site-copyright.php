@@ -13,7 +13,13 @@
 <p>© </p>
 <!-- /wp:paragraph -->
 
-<!-- wp:pattern {"slug":"lumina/text-current-year"} /-->
+<?php
+echo sprintf( 
+	'<!-- wp:paragraph --><p>%s</p>
+<!-- /wp:paragraph -->',
+	date( 'Y' )
+);
+?>
 
 <!-- wp:pattern {"slug":"lumina/text-site-title-paragraph"} /--></div>
 <!-- /wp:group -->

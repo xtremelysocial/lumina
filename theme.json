@@ -771,27 +771,15 @@
 			"area": "header"
 		},
 		{
-			"name": "header-centered",
-			"title": "Lumina Header Centered",
-			"description": "Centered header w/site tagline",
-			"area": "header"
-		},
-		{
 			"name": "header-centered-nav-fixed",
 			"title": "Lumina Header Centered Nav Fixed to Top",
 			"description": "Fixed header with centered navigation",
 			"area": "header"
 		},		
 		{
-			"name": "header-centered-no-tagline",
-			"title": "Lumina Header Centered No Tagline",
-			"description": "Centered header w/out site tagline",
-			"area": "header"
-		},
-		{
-			"name": "header-colored",
-			"title": "Lumina Colored Header (Primary Alt)",
-			"description": "Colored header (Primary Alt color)",
+			"name": "header-colored-fixed",
+			"title": "Lumina Colored Header Fixed to Top",
+			"description": "Colored header fixed to top (very light gray)",
 			"area": "header"
 		},
 		{
@@ -801,27 +789,9 @@
 			"area": "header"
 		},
 		{
-			"name": "header-home",
-			"title": "Lumina Home Page Header",
-			"description": "Header for the Home page",
-			"area": "header"
-		},
-		{
-			"name": "header-logo",
-			"title": "Lumina Header Logo (no Site title)",
-			"description": "Logo only header (no site title or tagline)",
-			"area": "header"
-		},
-		{
 			"name": "header-logo-fixed",
 			"title": "Lumina Header Logo Fixed to Top",
 			"description": "Logo only fixed header",
-			"area": "header"
-		},
-		{
-			"name": "header-dark",
-			"title": "Lumina Header Dark",
-			"description": "Dark header",
 			"area": "header"
 		},
 		{
@@ -831,88 +801,10 @@
 			"area": "header"
 		},
 		{
-			"name": "header-left-align",
-			"title": "Lumina Header Left Align",
-			"description": "Left-aligned header w/site tagline",
-			"area": "header"
-		},
-		{
-			"name": "header-left-align-no-tagline",
-			"title": "Lumina Header Left Align No Tagline",
-			"description": "Left-aligned header w/out site tagline",
-			"area": "header"
-		},
-		{
 			"name": "header-nav-only-fixed",
 			"title": "Lumina Header Mobile Nav Only Fixed to Top",
 			"description": "Fixed mobile nav only header",
 			"area": "header"
-		},
-		{
-			"name": "header-tagline",
-			"title": "Lumina Header with Tagline",
-			"description": "Header with site tagline",
-			"area": "header"
-		},
-		{
-			"name": "menu-header",
-			"title": "Lumina Menu Header",
-			"description": "Default header nav menu (right)",
-			"area": "menu"
-		},
-		{
-			"name": "menu-header-centered",
-			"title": "Lumina Menu Header Centered",
-			"description": "Centered header nav menu",
-			"area": "menu"
-		},
-		{
-			"name": "menu-header-centered-only-nav",
-			"title": "Lumina Menu Header Centered Nav Only",
-			"description": "Centered header navigation menu without logo or title",
-			"area": "menu"
-		},
-		{
-			"name": "menu-header-dark",
-			"title": "Lumina Menu Header Dark",
-			"description": "Dark header nav menu (right)",
-			"area": "menu"
-		},
-		{
-			"name": "menu-header-no-mobile",
-			"title": "Lumina Menu Header Never Mobile",
-			"description": "Never mobile header menu (right)",
-			"area": "menu"
-		},
-		{
-			"name": "menu-header-mobile",
-			"title": "Lumina Menu Header Always Mobile",
-			"description": "Always mobile header menu (right)",
-			"area": "menu"
-		},
-		{
-			"name": "menu-footer",
-			"title": "Lumina Menu Footer",
-			"description": "Default footer menu",
-			"area": "menu"
-		},
-		{
-			"name": "menu-footer-1",
-			"title": "Lumina Menu Footer 1",
-			"description": "Vertical footer menu 1",
-			"area": "menu"
-		},
-		{
-			"name": "menu-footer-2",
-			"title": "Lumina Menu Footer 2",
-			"description": "Vertical footer menu 2",
-			"area": "menu"
-		},
-		{
-			"name": "menu-footer-3",
-			"title": "Lumina Menu Footer 3",
-			"description": "Vertical footer menu 3",
-			"area": "menu"
 		},
 		{
 			"name": "query",
@@ -924,6 +816,12 @@
 			"name": "post-meta",
 			"title": "Lumina Post Meta",
 			"description": "Post meta (author, categories, and tags)",
+			"area": "content"
+		},
+		{
+			"name": "jetpack-sharing",
+			"title": "Lumina Jetpack Sharng",
+			"description": "Jetpack social sharing",
 			"area": "content"
 		},
 		{
@@ -1137,30 +1035,6 @@
 			"area": "content"
 		},
 		{
-			"name": "footer-block-1",
-			"title": "Lumina Footer Block 1",
-			"description": "Footer block 1 (e.g. recent posts)",
-			"area": "content"
-		},
-		{
-			"name": "footer-block-2",
-			"title": "Lumina Footer Block 2",
-			"description": "Footer block 2 (e.g. recent comments)",
-			"area": "content"
-		},
-		{
-			"name": "footer-block-3",
-			"title": "Lumina Footer Block 3",
-			"description": "Footer block 3 (e.g. about)",
-			"area": "content"
-		},
-		{
-			"name": "footer-block-4",
-			"title": "Lumina Footer Block 3 w/link underlines",
-			"description": "Footer block 3 (e.g. about) with underlined links",
-			"area": "content"
-		},
-		{
 			"name": "footer-3-blocks",
 			"title": "Lumina Footer 3 Blocks (recent posts, recent comments, about)",
 			"description": "Footer 3 blocks (e.g. recent posts, recent comments, about)",
@@ -1173,18 +1047,6 @@
 			"area": "footer"
 		},
 		{
-			"name": "footer-default-no-color",
-			"title": "Lumina Footer Standard No Background Color",
-			"description": "Standard footer w/out background color",
-			"area": "footer"
-		},
-		{
-			"name": "footer-default-light",
-			"title": "Lumina Footer Standard Light",
-			"description": "Standard footer w/light background color",
-			"area": "footer"
-		},
-		{
 			"name": "footer-dark",
 			"title": "Lumina Default Dark Footer",
 			"description": "A deep, dark footer with secondary colors",
@@ -1194,12 +1056,6 @@
 			"name": "footer-colored",
 			"title": "Lumina Alternate Dark Footer",
 			"description": "A dark footer alternative with tertiary colors",
-			"area": "footer"
-		},
-		{
-			"name": "footer-colored-underlines",
-			"title": "Lumina Footer Colored w/link underlines",
-			"description": "Colored footer w/link underlines (Primary & Primary Alt color)",
 			"area": "footer"
 		},
 		{
@@ -1293,12 +1149,6 @@
 			"area": "footer"
 		},
 		{
-			"name": "footer-map-jetpack",
-			"title": "Lumina Footer w/Jetpack Map and Contact Info",
-			"description": "Footer w/Jetpack map and contact info",
-			"area": "footer"
-		},
-		{
 			"name": "footer-motto-social-icons",
 			"title": "Lumina Footer w/Motto and Social Icons",
 			"description": "Footer w/motto and huge social icons",
@@ -1314,12 +1164,6 @@
 			"name": "footer-social-map-static",
 			"title": "Lumina Footer w/Colored Social Icons, Static Map, and Contact Info",
 			"description": "Footer w/colored social icons, static map, and contact info",
-			"area": "footer"
-		},
-		{
-			"name": "footer-social-map-jetpack",
-			"title": "Lumina Footer w/Colored Social Icons and Jetpack Map and Contact Info",
-			"description": "Footer w/colored social icons and Jetpack map and contact info",
 			"area": "footer"
 		}
 	],

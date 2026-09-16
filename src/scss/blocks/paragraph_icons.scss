@@ -1,0 +1,53 @@
+/*--------------------------------------------------------------
+# LUMINA Custom: Paragraph (Icons)
+--------------------------------------------------------------*/
+// Mixin for icons
+@use "../icons/icons" as icons;
+
+@include icons.svg-icons(
+	$icons: 'scroll-down',
+	$location: 'before',
+	$link: false,
+// 	$addl-class: 'arrow-down-alt2',
+	$addl-class: '-no-text',
+);
+
+// @include icons.svg-icons(
+// 	$icons: 'scroll-down',
+// 	$location: 'before',
+// 	$link: false,
+// 	$addl-class: 'scroll-down-no-text',
+// );
+
+// /*  Deprecated: Down Arrow for Scroll Headers */
+// @include icons.svg-icon( 
+// 	$class: 'is-style-arrow-icon-no-text', //deprecated
+// 	$icon: 'arrow-down-alt2',
+// 	$location: 'after',
+// 	$link: true,
+// 	$margin: false,
+// );
+
+// Use this one instead of the one above
+// @include icons.svg-icon(
+// 	$class: 'is-style-icon-arrow-down-alt2-no-text',
+// 	$icon: 'arrow-down-alt2',
+// 	$location: 'after',
+// 	$link: true,
+// 	$margin: false,
+// );
+
+.is-style-icon-scroll-down-no-text > a,
+.is-style-icon-arrow-down-alt2-no-text > a, //deprecated 2
+.is-style-arrow-icon-no-text > a { //deprecated 1
+	font-size: 0;
+	line-height: 1;
+	color: inherit;
+	&::after {
+		font-size: var(--wp--preset--font-size--x-large);
+	}
+	&:hover,
+	&:active {
+		text-decoration: none !important;
+	}
+}

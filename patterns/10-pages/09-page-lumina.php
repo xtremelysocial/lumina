@@ -17,8 +17,8 @@
 <p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("Lumina is a refined modern theme inspired by the colors, light, depth and motion of the environment around us.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-arrow-down-alt2-no-text","style":{"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center is-style-icon-arrow-down-alt2-no-text"><a href="#content-start"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
+<!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-scroll-down-no-text","style":{"typography":{"textAlign":"center"}}} -->
+<p class="has-text-align-center is-style-icon-scroll-down-no-text"><a href="#content-start"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
 <!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/home-hero.webp" ) ); ?>" alt=""/></figure></div>
 <!-- /wp:media-text --></div>
 <!-- /wp:group -->
@@ -249,7 +249,7 @@
 
 <!-- wp:column {"className":"is-style-default","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
 <div class="wp-block-column is-style-default" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"fontSize":"3.5rem","lineHeight":"1","fontWeight":"700","textAlign":"center"}},"textColor":"tertiary-alt"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color" style="font-size:3.5rem;font-weight:700;line-height:1">12+</p>
+<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color" style="font-size:3.5rem;font-weight:700;line-height:1">6</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
@@ -259,7 +259,7 @@
 
 <!-- wp:column {"className":"is-style-default","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
 <div class="wp-block-column is-style-default" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"fontSize":"3.5rem","lineHeight":"1","fontWeight":"700","textAlign":"center"}},"textColor":"tertiary-alt"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color" style="font-size:3.5rem;font-weight:700;line-height:1">24+</p>
+<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color" style="font-size:3.5rem;font-weight:700;line-height:1">20</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
