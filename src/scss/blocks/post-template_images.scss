@@ -1,0 +1,6 @@
+/*--------------------------------------------------------------
+# LUMINA Post: Prevent Post Image Shrink
+--------------------------------------------------------------*/
+.wp-block-post-template .is-layout-flex .wp-block-post-featured-image {
+	flex-shrink: 0;
+}

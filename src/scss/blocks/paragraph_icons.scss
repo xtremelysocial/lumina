@@ -6,11 +6,44 @@
 
 @include icons.svg-icons(
 	$icons: 'scroll-down',
-	$location: 'before',
-	$link: false,
+	$location: 'after',
+	$link: true,
 // 	$addl-class: 'arrow-down-alt2',
 	$addl-class: '-no-text',
 );
+
+.is-style-icon-scroll-down-no-text > a {
+
+	font-size: 0;
+	line-height: 1;
+	color: inherit;
+
+	&::after {
+		font-size: var(--wp--preset--font-size--xx-large);
+	}
+	
+	&:hover,
+	&:active {
+		text-decoration: none !important;
+	}
+}
+
+// .is-style-icon-scroll-down-no-text > a,
+// .is-style-icon-arrow-down-alt2-no-text > a, //deprecated 2
+// .is-style-arrow-icon-no-text > a { //deprecated 1
+// 	font-size: 0;
+// 	line-height: 1;
+// 	color: inherit;
+// 
+// 	&::after {
+// 		font-size: var(--wp--preset--font-size--x-large);
+// 	}
+// 
+// 	&:hover,
+// 	&:active {
+// 		text-decoration: none !important;
+// 	}
+// }
 
 // @include icons.svg-icons(
 // 	$icons: 'scroll-down',
@@ -36,18 +69,3 @@
 // 	$link: true,
 // 	$margin: false,
 // );
-
-.is-style-icon-scroll-down-no-text > a,
-.is-style-icon-arrow-down-alt2-no-text > a, //deprecated 2
-.is-style-arrow-icon-no-text > a { //deprecated 1
-	font-size: 0;
-	line-height: 1;
-	color: inherit;
-	&::after {
-		font-size: var(--wp--preset--font-size--x-large);
-	}
-	&:hover,
-	&:active {
-		text-decoration: none !important;
-	}
-}
