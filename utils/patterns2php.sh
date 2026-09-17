@@ -7,6 +7,7 @@
 # subfolder like /parts) into production-ready WordPress PHP pattern files in 
 # /patterns/converted with i18n text domain wrapper functions, asset URI helpers, 
 # and clean block comment manifests.
+# ==============================================================================
 #
 # ------------------------------------------------------------------------------
 # USAGE EXAMPLES & ARGUMENT COMBINATIONS:
@@ -106,7 +107,7 @@ for file in "$SOURCE_DIR"/**/*.html(N); do
     filename=$(basename "$file")
     raw_slug_base="${filename%.*}"
 
-    # 0. STRIP LEADING ORDERING NUMBERS (e.g., "01-banner-hero" -> "banner-hero")
+    # 0. STRIP LEADING ORDERING NUMBERS FOR METADATA (e.g., "01-banner-hero" -> "banner-hero")
     slug_base=$(echo "$raw_slug_base" | perl -pe 's/^\d+[-_.\s]*//')
 
     # 1. Apply filename search filter if provided (matches against raw or clean name)
@@ -114,15 +115,16 @@ for file in "$SOURCE_DIR"/**/*.html(N); do
         continue
     fi
 
-    output_file="$OUTPUT_DIR/$slug_base.php"
+    # Target output filename retaining raw prefix (e.g., "01-banner-hero.php")
+    output_file="$OUTPUT_DIR/$raw_slug_base.php"
 
     # 2. Overwrite Protection Check
     if [[ -e "$output_file" && "$FORCE_OVERWRITE" == false ]]; then
-        echo "⚠️  Skipping: $slug_base.php (Already exists. Use --force or -f to overwrite)"
+        echo "⚠️  Skipping: $raw_slug_base.php (Already exists. Use --force or -f to overwrite)"
         continue
     fi
 
-    # 3. Establish Namespace Slug (Sanitize special characters like '+' into '-')
+    # 3. Establish Clean Namespace Slug WITHOUT numeric prefix (e.g., lumina/banner-hero)
     clean_slug_base="${slug_base//[^a-zA-Z0-9_-]/-}"
     slug="lumina/$clean_slug_base"
 
@@ -155,7 +157,7 @@ for file in "$SOURCE_DIR"/**/*.html(N); do
     unique_categories=(${(u)categories})
     categories_str="${(j:, :)unique_categories}"
 
-    # 5. Search for block keywords anywhere in filename (longest keys first)
+    # 5. Search for block keywords anywhere in clean filename (longest keys first)
     block_type=""
     for key in $sorted_block_keys; do
         if [[ "$slug_base" == *"$key"* ]]; then
@@ -164,12 +166,12 @@ for file in "$SOURCE_DIR"/**/*.html(N); do
         fi
     done
 
-    # 6. Build Title and Case Definitions
+    # 6. Build Title and Case Definitions from clean name
     clean_spaces="${slug_base//-/ }"
     clean_spaces="${clean_spaces//_/ }"
     title=$(echo "$clean_spaces" | perl -pe 's/\b(\w)/uc($1)/eg')
 
-    echo "✅ Converting: $filename -> patterns/converted/$slug_base.php (Title: '$title')"
+    echo "✅ Converting: $filename -> patterns/converted/$raw_slug_base.php (Title: '$title', Slug: '$slug')"
 
     # Write out the fresh PHP pattern header manifest block
     if [[ -n "$block_type" ]]; then
@@ -200,13 +202,15 @@ EOF
     # 7. Execute Perl Translation engine safely in slurping mode (-0777)
     perl -0777 -pe '
     
-        # Safely strip "id":123, "mediaID":123, and "patternName":"..." from block JSON comments
+        # Safely strip "id":123, "mediaID":123, "patternName":"...", and wp-image-12345
         s{<!--\s*wp:.*?-->}{
             my $c = $&;
             $c =~ s/"(?:id|mediaID)":\s*\d+,\s*|,\s*"(?:id|mediaID)":\s*\d+|"(?:id|mediaID)":\s*\d+//g;
             $c =~ s/"patternName":"[^"]+",\s*|,\s*"patternName":"[^"]+"|"patternName":"[^"]+"//g;
             $c;
         }gse;
+
+        s{\bwp-image-\d+\s*}{}g;
     
         # Preserve subfolders while anchoring on assets/images/
         s{src="([^"]*?assets\/images\/)?([^"]+\.(jpg|jpeg|png|gif|svg|webp))"}{src="<?php echo esc_url( get_theme_file_uri( "assets\/images\/$2" ) ); ?>"}g;
