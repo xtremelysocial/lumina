@@ -38,7 +38,7 @@
   color: inherit;
 }
 .is-style-icon-scroll-down-no-text > a::after {
-  font-size: var(--wp--preset--font-size--xx-large);
+  font-size: var(--wp--preset--font-size--huge);
 }
 .is-style-icon-scroll-down-no-text > a:hover, .is-style-icon-scroll-down-no-text > a:active {
   text-decoration: none !important;
