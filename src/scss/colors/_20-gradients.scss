@@ -28,7 +28,7 @@
 	@if logic.$gradient-preserve-colors {	
 		:root :where([style*="--wp--preset--gradient--"]:not(#{logic.build-gradient-selector-list(logic.$gradient-preserve-colors)}), 
 		[class*="-gradient-background"]:not(#{logic.build-gradient-selector-list(logic.$gradient-preserve-colors)})) {
-			color: var(--wp--preset--color--foreground-alt);
+			color: var(--wp--preset--color--off-white);
 		}
 	}
 
@@ -38,7 +38,7 @@
 		// Override contrast color	
 		@each $track, $slugs in logic.$gradient-tracks {
 			:root :where(#{logic.build-gradient-selector-list($slugs)}) {
-				color: var(--wp--custom--color--contrast--#{$track}, var(--wp--preset--color--foreground-alt));
+				color: var(--wp--custom--color--contrast--#{$track}, var(--wp--preset--color--off-white));
 			}
 		}
 		

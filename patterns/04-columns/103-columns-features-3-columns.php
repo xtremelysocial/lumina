@@ -10,7 +10,7 @@
 <!-- wp:group {"lock":{"move":false,"remove":false},"metadata":{"name":"Features 3 Columns","categories":["lumina","column","featured"]},"align":"full","layout":{"type":"constrained"},"anchor":"features-3-columns"} -->
 <div class="wp-block-group alignfull" id="features-3-columns"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"33.33%","className":"is-style-rounded-border is-style-first-on-mobile"} -->
-<div class="wp-block-column is-style-rounded-border is-style-first-on-mobile" style="flex-basis:33.33%"><!-- wp:icon {"icon":"core/shadow","align":"center","className":"is-style-round","backgroundColor":"primary-subtle-alt","ariaLabel":"Lighting Icon"} /-->
+<div class="wp-block-column is-style-rounded-border is-style-first-on-mobile" style="flex-basis:33.33%"><!-- wp:icon {"icon":"core/shadow","align":"center","className":"is-style-round","backgroundColor":"primary-subtle","ariaLabel":"Lighting Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Natural Tone & Light", "lumina"); ?></h3>
@@ -22,7 +22,7 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"33.33%","className":"is-style-rounded-border"} -->
-<div class="wp-block-column is-style-rounded-border" style="flex-basis:33.33%"><!-- wp:icon {"icon":"core/paragraph","align":"center","className":"is-style-round","backgroundColor":"secondary-subtle-alt","ariaLabel":"Narrative Icon"} /-->
+<div class="wp-block-column is-style-rounded-border" style="flex-basis:33.33%"><!-- wp:icon {"icon":"core/paragraph","align":"center","className":"is-style-round","backgroundColor":"secondary-subtle","ariaLabel":"Narrative Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Curated Narrative", "lumina"); ?></h3>
@@ -34,7 +34,7 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"33.33%","className":"is-style-rounded-border"} -->
-<div class="wp-block-column is-style-rounded-border" style="flex-basis:33.33%"><!-- wp:icon {"icon":"core/people","align":"center","className":"is-style-round","backgroundColor":"tertiary-subtle-alt","ariaLabel":"Workflow Icon"} /-->
+<div class="wp-block-column is-style-rounded-border" style="flex-basis:33.33%"><!-- wp:icon {"icon":"core/people","align":"center","className":"is-style-round","backgroundColor":"tertiary-subtle","ariaLabel":"Workflow Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Collaborative Workflow", "lumina"); ?></h3>

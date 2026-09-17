@@ -22,8 +22,8 @@
 }
 
 .is-style-icon-scroll-up::before {
-  -webkit-mask-image: url(../../icons/scroll-up.svg);
-          mask-image: url(../../icons/scroll-up.svg);
+  -webkit-mask-image: url(../../icons/theme/scroll-up.svg);
+          mask-image: url(../../icons/theme/scroll-up.svg);
   margin-right: 0.15em;
 }
 

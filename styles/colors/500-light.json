@@ -13,11 +13,8 @@
 				"field": { 
 					"outline": "color-mix(in srgb, currentColor 12%, transparent)" 
 				},
-				"highlight": {
-					"darken": "brightness(0.75) saturate(0.85)"
-				},
 				"highlight-alt": {
-					"lighten": "brightness(0.85) saturate(1.20)"
+					"lighten": "brightness(1.05) saturate(1.10)"
 				},
 				"contrast": {
 					"primary": "var(--wp--preset--color--contrast)",
@@ -33,7 +30,7 @@
 				},
 				"button": {
 					"background": 	"var(--wp--preset--color--primary-dark)",
-					"text": 		"var(--wp--preset--color--foreground-alt)"
+					"text": 		"var(--wp--preset--color--off-white)"
 				},
 				"image": {
 					"hoverOpacity": "0.8"
@@ -47,6 +44,8 @@
 				{ "slug": "tertiary", "color": "hsl(38, 30%, 91%)", "name": "Tertiary (Soft Linen Amber Fill 91%)" },
 
 				{ "slug": "base", "color": "hsl(0, 0%, 99%)", "name": "Base (Pure Crisp Canvas 99%)" },
+				{ "slug": "neutral", "color": "hsl(40, 20%, 96%)", "name": "Neutral (Warm Linen Well 96%)" },
+				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Warm Sand Seam 88%)" },
 
 				{ "slug": "primary-alt", "color": "hsl(154, 20%, 87%)", "name": "Primary Alt (Sage Linen Fill Alt 87%)" },
 				{ "slug": "secondary-alt", "color": "hsl(206, 20%, 86%)", "name": "Secondary Alt (Ocean Slate Fill Alt 86%)" },
@@ -60,9 +59,9 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 18%, 87%)", "name": "Secondary Subtle Alt (Sky Hairline 87%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(38, 20%, 88%)", "name": "Tertiary Subtle Alt (Linen Hairline 88%)" },
 
-				{ "slug": "highlight", "color": "hsl(154, 55%, 32%)", "name": "Highlight (Deep Pine Link 32%)" },
-				{ "slug": "highlight-secondary", "color": "hsl(206, 50%, 32%)", "name": "Highlight Secondary (Deep Slate Link 32%)" },
-				{ "slug": "highlight-tertiary", "color": "hsl(34, 60%, 34%)", "name": "Highlight Tertiary (Deep Ochre Link 34%)" },
+				{ "slug": "highlight", "color": "hsl(154, 65%, 78%)", "name": "Highlight (Crisp Emerald Glow - Dark BGs 78%)" },
+				{ "slug": "highlight-secondary", "color": "hsl(206, 70%, 76%)", "name": "Highlight Secondary (Ocean Sky Glow - Dark BGs 76%)" },
+				{ "slug": "highlight-tertiary", "color": "hsl(34, 75%, 78%)", "name": "Highlight Tertiary (Gilded Amber Glow - Dark BGs 78%)" },
 				
 				{ "slug": "highlight-alt", "color": "hsl(154, 55%, 32%)", "name": "Highlight Alt (Deep Pine Link - Light BGs 32%)" },
 				{ "slug": "highlight-secondary-alt", "color": "hsl(206, 50%, 32%)", "name": "Highlight Secondary Alt (Deep Slate Link - Light BGs 32%)" },
@@ -75,25 +74,17 @@
 				{ "slug": "primary-dark-alt", "color": "hsl(154, 26%, 38%)", "name": "Primary Dark Alt (Deep Alpine Sage 38%)" },
 				{ "slug": "dark-alt", "color": "hsl(206, 26%, 34%)", "name": "Dark Alt (Storm Navy 34%)" },				
 				{ "slug": "tertiary-dark-alt", "color": "hsl(34, 34%, 38%)", "name": "Dark Tertiary Alt (Burnished Ochre 38%)" },				
-
-				{ "slug": "contrast", "color": "hsl(215, 20%, 13%)", "name": "Contrast (Deep Obsidian Ink 13%)" },
-				{ "slug": "foreground-alt", "color": "hsl(215, 16%, 98%)", "name": "Foreground Alt (Ethereal Slate Crisp 98%)" },
 				
-				{ "slug": "neutral", "color": "hsl(40, 20%, 96%)", "name": "Neutral (Warm Linen Well 96%)" },
-				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Warm Sand Seam 88%)" },
-
+				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Mist Bone 97.5%)" },
 				{ "slug": "very-light-gray", "color": "hsl(40, 18%, 93%)", "name": "Very Light Gray (Warm Sand Footer Floor 93%)" },
 				{ "slug": "light-gray", "color": "hsl(40, 14%, 85%)", "name": "Light Gray (Warm Sand Well 85%)" },
 				{ "slug": "gray", "color": "hsl(40, 8%, 71%)", "name": "Gray (Warm Hairline Seam 71%)" },
 				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Warm Muted Typography 44%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray" },
 
-				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
-				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Mist Bone 97.5%)" },
-
-				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black" },
-				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
-				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black" },
+				{ "slug": "contrast", "color": "hsl(215, 20%, 13%)", "name": "Contrast (Deep Obsidian Ink 13%)" },
+				{ "slug": "almost-black", "color": "hsl(215, 16%, 18%)", "name": "Almost Black (Obsidian Carbon Floor)" },
+				{ "slug": "not-quite-black", "color": "hsl(215, 15%, 11%)", "name": "Not Quite Black (Deep Obsidian Ink)" },
 
 				{ "slug": "very-light-green", "color": "hsl(154, 20%, 91%)", "name": "Very Light Green (Moss Subtle 91%)" },
 				{ "slug": "light-green", "color": "hsl(154, 16%, 83%)", "name": "Light Green (Moss Subtle Alt 83%)" },

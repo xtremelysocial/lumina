@@ -516,18 +516,58 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
 /*--------------------------------------------------------------
 ## Map TwentyTwentyFour, TwentyTwentyFive, and Flat Blocks colors
 --------------------------------------------------------------*/
-.has-accent-background-color,
-.has-accent-1-background-color,
-.has-bright-green-background-color {
-  background-color: var(--wp--preset--color--primary);
-  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--foreground-alt)) !important;
+.has-accent-color {
+  color: var(--wp--preset--color--primary) !important;
 }
-.has-accent-background-color .wp-block-heading, .has-accent-background-color .wp-block-post-title, .has-accent-background-color .wp-block-query-title, .has-accent-background-color .wp-block-site-title, .has-accent-background-color .wp-block-site-tagline,
+
+.has-accent-border-color {
+  border-color: var(--wp--preset--color--primary) !important;
+}
+
+.has-accent-background-color {
+  background-color: var(--wp--preset--color--primary) !important;
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
+}
+.has-accent-background-color .wp-block-heading,
+.has-accent-background-color .wp-block-post-title,
+.has-accent-background-color .wp-block-query-title,
+.has-accent-background-color .wp-block-site-title,
+.has-accent-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-1-color {
+  color: var(--wp--preset--color--primary) !important;
+}
+
+.has-accent-1-border-color {
+  border-color: var(--wp--preset--color--primary) !important;
+}
+
+.has-accent-1-background-color {
+  background-color: var(--wp--preset--color--primary) !important;
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
+}
 .has-accent-1-background-color .wp-block-heading,
 .has-accent-1-background-color .wp-block-post-title,
 .has-accent-1-background-color .wp-block-query-title,
 .has-accent-1-background-color .wp-block-site-title,
-.has-accent-1-background-color .wp-block-site-tagline,
+.has-accent-1-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-bright-green-color {
+  color: var(--wp--preset--color--primary) !important;
+}
+
+.has-bright-green-border-color {
+  border-color: var(--wp--preset--color--primary) !important;
+}
+
+.has-bright-green-background-color {
+  background-color: var(--wp--preset--color--primary) !important;
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
+}
 .has-bright-green-background-color .wp-block-heading,
 .has-bright-green-background-color .wp-block-post-title,
 .has-bright-green-background-color .wp-block-query-title,
@@ -536,20 +576,58 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
   color: inherit;
 }
 
-.has-dark-bright-green-background-color {
-  background-color: var(--wp--preset--color--primary-alt);
-  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--foreground-alt)) !important;
+.has-dark-bright-green-color {
+  color: var(--wp--preset--color--primary-alt) !important;
 }
-.has-dark-bright-green-background-color .wp-block-heading, .has-dark-bright-green-background-color .wp-block-post-title, .has-dark-bright-green-background-color .wp-block-query-title, .has-dark-bright-green-background-color .wp-block-site-title, .has-dark-bright-green-background-color .wp-block-site-tagline {
+
+.has-dark-bright-green-border-color {
+  border-color: var(--wp--preset--color--primary-alt) !important;
+}
+
+.has-dark-bright-green-background-color {
+  background-color: var(--wp--preset--color--primary-alt) !important;
+  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--off-white)) !important;
+}
+.has-dark-bright-green-background-color .wp-block-heading,
+.has-dark-bright-green-background-color .wp-block-post-title,
+.has-dark-bright-green-background-color .wp-block-query-title,
+.has-dark-bright-green-background-color .wp-block-site-title,
+.has-dark-bright-green-background-color .wp-block-site-tagline {
   color: inherit;
 }
 
-.has-base-2-background-color,
-.has-accent-2-background-color {
-  background-color: var(--wp--preset--color--secondary);
-  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--foreground-alt)) !important;
+.has-base-2-color {
+  color: var(--wp--preset--color--secondary) !important;
 }
-.has-base-2-background-color .wp-block-heading, .has-base-2-background-color .wp-block-post-title, .has-base-2-background-color .wp-block-query-title, .has-base-2-background-color .wp-block-site-title, .has-base-2-background-color .wp-block-site-tagline,
+
+.has-base-2-border-color {
+  border-color: var(--wp--preset--color--secondary) !important;
+}
+
+.has-base-2-background-color {
+  background-color: var(--wp--preset--color--secondary) !important;
+  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--off-white)) !important;
+}
+.has-base-2-background-color .wp-block-heading,
+.has-base-2-background-color .wp-block-post-title,
+.has-base-2-background-color .wp-block-query-title,
+.has-base-2-background-color .wp-block-site-title,
+.has-base-2-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-2-color {
+  color: var(--wp--preset--color--secondary) !important;
+}
+
+.has-accent-2-border-color {
+  border-color: var(--wp--preset--color--secondary) !important;
+}
+
+.has-accent-2-background-color {
+  background-color: var(--wp--preset--color--secondary) !important;
+  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--off-white)) !important;
+}
 .has-accent-2-background-color .wp-block-heading,
 .has-accent-2-background-color .wp-block-post-title,
 .has-accent-2-background-color .wp-block-query-title,
@@ -558,35 +636,83 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
   color: inherit;
 }
 
-.has-accent-3-background-color {
-  background-color: var(--wp--preset--color--tertiary);
-  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--foreground-alt)) !important;
+.has-accent-3-color {
+  color: var(--wp--preset--color--tertiary) !important;
 }
-.has-accent-3-background-color .wp-block-heading, .has-accent-3-background-color .wp-block-post-title, .has-accent-3-background-color .wp-block-query-title, .has-accent-3-background-color .wp-block-site-title, .has-accent-3-background-color .wp-block-site-tagline {
+
+.has-accent-3-border-color {
+  border-color: var(--wp--preset--color--tertiary) !important;
+}
+
+.has-accent-3-background-color {
+  background-color: var(--wp--preset--color--tertiary) !important;
+  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--off-white)) !important;
+}
+.has-accent-3-background-color .wp-block-heading,
+.has-accent-3-background-color .wp-block-post-title,
+.has-accent-3-background-color .wp-block-query-title,
+.has-accent-3-background-color .wp-block-site-title,
+.has-accent-3-background-color .wp-block-site-tagline {
   color: inherit;
+}
+
+.has-accent-4-color {
+  color: var(--wp--preset--color--dark-gray) !important;
+}
+
+.has-accent-4-border-color {
+  border-color: var(--wp--preset--color--dark-gray) !important;
 }
 
 .has-accent-4-background-color {
-  background-color: var(--wp--preset--color--dark-gray);
-  color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--foreground-alt)) !important;
+  background-color: var(--wp--preset--color--dark-gray) !important;
+  color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--off-white)) !important;
 }
-.has-accent-4-background-color .wp-block-heading, .has-accent-4-background-color .wp-block-post-title, .has-accent-4-background-color .wp-block-query-title, .has-accent-4-background-color .wp-block-site-title, .has-accent-4-background-color .wp-block-site-tagline {
+.has-accent-4-background-color .wp-block-heading,
+.has-accent-4-background-color .wp-block-post-title,
+.has-accent-4-background-color .wp-block-query-title,
+.has-accent-4-background-color .wp-block-site-title,
+.has-accent-4-background-color .wp-block-site-tagline {
   color: inherit;
+}
+
+.has-accent-5-color {
+  color: var(--wp--preset--color--neutral-alt) !important;
+}
+
+.has-accent-5-border-color {
+  border-color: var(--wp--preset--color--neutral-alt) !important;
 }
 
 .has-accent-5-background-color {
-  background-color: var(--wp--preset--color--neutral-alt);
+  background-color: var(--wp--preset--color--neutral-alt) !important;
   color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--contrast)) !important;
 }
-.has-accent-5-background-color .wp-block-heading, .has-accent-5-background-color .wp-block-post-title, .has-accent-5-background-color .wp-block-query-title, .has-accent-5-background-color .wp-block-site-title, .has-accent-5-background-color .wp-block-site-tagline {
+.has-accent-5-background-color .wp-block-heading,
+.has-accent-5-background-color .wp-block-post-title,
+.has-accent-5-background-color .wp-block-query-title,
+.has-accent-5-background-color .wp-block-site-title,
+.has-accent-5-background-color .wp-block-site-tagline {
   color: inherit;
 }
 
-.has-accent-6-background-color {
-  background-color: var(--wp--preset--color--dark-alt);
-  color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--foreground-alt)) !important;
+.has-accent-6-color {
+  color: var(--wp--preset--color--dark-alt) !important;
 }
-.has-accent-6-background-color .wp-block-heading, .has-accent-6-background-color .wp-block-post-title, .has-accent-6-background-color .wp-block-query-title, .has-accent-6-background-color .wp-block-site-title, .has-accent-6-background-color .wp-block-site-tagline {
+
+.has-accent-6-border-color {
+  border-color: var(--wp--preset--color--dark-alt) !important;
+}
+
+.has-accent-6-background-color {
+  background-color: var(--wp--preset--color--dark-alt) !important;
+  color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--off-white)) !important;
+}
+.has-accent-6-background-color .wp-block-heading,
+.has-accent-6-background-color .wp-block-post-title,
+.has-accent-6-background-color .wp-block-query-title,
+.has-accent-6-background-color .wp-block-site-title,
+.has-accent-6-background-color .wp-block-site-tagline {
   color: inherit;
 }
 
@@ -1064,7 +1190,7 @@ h1, h2, h3, h4, h5, h6) {
 
 :where(:root) .has-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-yellow-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {
   /* Set link color to light text */
-  color: var(--wp--preset--color--foreground-alt);
+  color: var(--wp--preset--color--off-white);
 }
 
 :where(:root) .has-dark-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-dark-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-primary-dark-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-primary-dark-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-tertiary-dark-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-tertiary-dark-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-not-quite-black-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-almost-black-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-black-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {
@@ -1097,27 +1223,27 @@ h1, h2, h3, h4, h5, h6) {
    10 GLOBAL COLORS: Set colors regardless of light or dark mode
 ========================================================================== */
 :where(:root) .has-primary-background-color {
-  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-primary-alt-background-color {
-  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-secondary-background-color {
-  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-secondary-alt-background-color {
-  color: var(--wp--custom--color--contrast--secondary-alt, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--secondary-alt, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-tertiary-background-color {
-  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-tertiary-alt-background-color {
-  color: var(--wp--custom--color--contrast--tertiary-alt, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--tertiary-alt, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-white-background-color {
@@ -1129,27 +1255,27 @@ h1, h2, h3, h4, h5, h6) {
 }
 
 :where(:root) .has-dark-background-color {
-  color: var(--wp--custom--color--contrast--dark, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--dark, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-dark-alt-background-color {
-  color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-primary-dark-background-color {
-  color: var(--wp--custom--color--contrast--primary-dark, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--primary-dark, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-primary-dark-alt-background-color {
-  color: var(--wp--custom--color--contrast--primary-dark-alt, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--primary-dark-alt, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-tertiary-dark-background-color {
-  color: var(--wp--custom--color--contrast--tertiary-dark, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--tertiary-dark, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-tertiary-dark-alt-background-color {
-  color: var(--wp--custom--color--contrast--tertiary-dark-alt, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--tertiary-dark-alt, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-very-light-green-background-color {
@@ -1181,11 +1307,11 @@ h1, h2, h3, h4, h5, h6) {
 }
 
 :where(:root) .has-green-background-color {
-  color: var(--wp--custom--color--contrast--green, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--green, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-dark-green-background-color {
-  color: var(--wp--custom--color--contrast--dark-green, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--dark-green, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-light-yellow-background-color {
@@ -1193,11 +1319,11 @@ h1, h2, h3, h4, h5, h6) {
 }
 
 :where(:root) .has-yellow-background-color {
-  color: var(--wp--custom--color--contrast--yellow, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--yellow, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-dark-yellow-background-color {
-  color: var(--wp--custom--color--contrast--dark-yellow, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--dark-yellow, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-light-orange-background-color {
@@ -1205,11 +1331,11 @@ h1, h2, h3, h4, h5, h6) {
 }
 
 :where(:root) .has-orange-background-color {
-  color: var(--wp--custom--color--contrast--orange, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--orange, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-dark-orange-background-color {
-  color: var(--wp--custom--color--contrast--dark-orange, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--dark-orange, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-light-blue-background-color {
@@ -1217,19 +1343,19 @@ h1, h2, h3, h4, h5, h6) {
 }
 
 :where(:root) .has-blue-background-color {
-  color: var(--wp--custom--color--contrast--blue, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--blue, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-dark-blue-background-color {
-  color: var(--wp--custom--color--contrast--dark-blue, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--dark-blue, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-midnight-blue-background-color {
-  color: var(--wp--custom--color--contrast--midnight-blue, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--midnight-blue, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-dark-midnight-blue-background-color {
-  color: var(--wp--custom--color--contrast--dark-midnight-blue, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--dark-midnight-blue, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-light-purple-background-color {
@@ -1237,11 +1363,11 @@ h1, h2, h3, h4, h5, h6) {
 }
 
 :where(:root) .has-purple-background-color {
-  color: var(--wp--custom--color--contrast--purple, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--purple, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-dark-purple-background-color {
-  color: var(--wp--custom--color--contrast--dark-purple, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--dark-purple, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-light-red-background-color {
@@ -1249,23 +1375,23 @@ h1, h2, h3, h4, h5, h6) {
 }
 
 :where(:root) .has-red-background-color {
-  color: var(--wp--custom--color--contrast--red, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--red, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-dark-red-background-color {
-  color: var(--wp--custom--color--contrast--dark-red, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--dark-red, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-not-quite-black-background-color {
-  color: var(--wp--custom--color--contrast--not-quite-black, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--not-quite-black, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-almost-black-background-color {
-  color: var(--wp--custom--color--contrast--almost-black, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--almost-black, var(--wp--preset--color--off-white));
 }
 
 :where(:root) .has-black-background-color {
-  color: var(--wp--custom--color--contrast--black, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--black, var(--wp--preset--color--off-white));
 }
 
 /* ==========================================================================
@@ -1273,31 +1399,31 @@ h1, h2, h3, h4, h5, h6) {
 ========================================================================== */
 :root :where([style*="--wp--preset--gradient--"]:not([style*="--wp--preset--gradient--gray)"], .has-gray-gradient-background, [style*="--wp--preset--gradient--primary-subtle)"], .has-primary-subtle-gradient-background, [style*="--wp--preset--gradient--secondary-subtle)"], .has-secondary-subtle-gradient-background, [style*="--wp--preset--gradient--tertiary-subtle)"], .has-tertiary-subtle-gradient-background),
 [class*=-gradient-background]:not([style*="--wp--preset--gradient--gray)"], .has-gray-gradient-background, [style*="--wp--preset--gradient--primary-subtle)"], .has-primary-subtle-gradient-background, [style*="--wp--preset--gradient--secondary-subtle)"], .has-secondary-subtle-gradient-background, [style*="--wp--preset--gradient--tertiary-subtle)"], .has-tertiary-subtle-gradient-background)) {
-  color: var(--wp--preset--color--foreground-alt);
+  color: var(--wp--preset--color--off-white);
 }
 
 :root :where([style*="--wp--preset--gradient--primary)"], .has-primary-gradient-background) {
-  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white));
 }
 
 :root :where([style*="--wp--preset--gradient--secondary)"], .has-secondary-gradient-background) {
-  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--off-white));
 }
 
 :root :where([style*="--wp--preset--gradient--tertiary)"], .has-tertiary-gradient-background) {
-  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--off-white));
 }
 
 :root :where([style*="--wp--preset--gradient--highlight-primary)"], .has-highlight-primary-gradient-background) {
-  color: var(--wp--custom--color--contrast--highlight, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--highlight, var(--wp--preset--color--off-white));
 }
 
 :root :where([style*="--wp--preset--gradient--highlight-secondary)"], .has-highlight-secondary-gradient-background) {
-  color: var(--wp--custom--color--contrast--highlight-secondary, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--highlight-secondary, var(--wp--preset--color--off-white));
 }
 
 :root :where([style*="--wp--preset--gradient--highlight-tertiary)"], .has-highlight-tertiary-gradient-background) {
-  color: var(--wp--custom--color--contrast--highlight-tertiary, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--highlight-tertiary, var(--wp--preset--color--off-white));
 }
 
 :root :where([style*="--wp--preset--gradient--"], [class*=-gradient-background]) :where(a:not(.wp-element-button)) {

@@ -43,7 +43,7 @@ h1, h2, h3, h4, h5, h6), :where(:root) :where(body:not(.is-dark-theme)) .has-ver
 .wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6) {
   /* Set heading color to light text */
-  color: var(--wp--preset--color--foreground-alt);
+  color: var(--wp--preset--color--off-white);
 }
 
 :where(:root) :where(body:not(.is-dark-theme)) .has-primary-subtle-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(body:not(.is-dark-theme)) .has-secondary-subtle-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(body:not(.is-dark-theme)) .has-tertiary-subtle-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {
@@ -110,7 +110,7 @@ h1, h2, h3, h4, h5, h6) {
   color: var(--wp--custom--color--contrast--tertiary-subtle-alt, var(--wp--preset--color--almost-black));
 }
 :where(:root) :where(body:not(.is-dark-theme)) .has-contrast-background-color {
-  color: var(--wp--custom--color--contrast--contrast, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--contrast, var(--wp--preset--color--off-white));
 }
 :where(:root) :where(body:not(.is-dark-theme)) .has-neutral-background-color {
   color: var(--wp--custom--color--contrast--neutral, var(--wp--preset--color--almost-black));
@@ -128,8 +128,8 @@ h1, h2, h3, h4, h5, h6) {
   color: var(--wp--custom--color--contrast--gray, var(--wp--preset--color--almost-black));
 }
 :where(:root) :where(body:not(.is-dark-theme)) .has-dark-gray-background-color {
-  color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--off-white));
 }
 :where(:root) :where(body:not(.is-dark-theme)) .has-very-dark-gray-background-color {
-  color: var(--wp--custom--color--contrast--very-dark-gray, var(--wp--preset--color--foreground-alt));
+  color: var(--wp--custom--color--contrast--very-dark-gray, var(--wp--preset--color--off-white));
 }

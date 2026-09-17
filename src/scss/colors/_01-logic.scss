@@ -55,7 +55,7 @@
 
 %engine-heading-light-text {
     /* Set heading color to light text */
-    color: var(--wp--preset--color--foreground-alt);
+    color: var(--wp--preset--color--off-white);
 }
 
 %engine-heading-accent {
@@ -99,7 +99,7 @@
 
 %engine-link-light-text {
     /* Set link color to light text */
-    color: var(--wp--preset--color--foreground-alt);
+    color: var(--wp--preset--color--off-white);
 }
 
 %engine-link-highlight {
@@ -174,7 +174,7 @@
 			$fallback: null;
 
 			@if $text-style == 'light' {
-				$fallback: var(--wp--preset--color--foreground-alt);
+				$fallback: var(--wp--preset--color--off-white);
 
 			} @else if $text-style == 'dark' {
 				$fallback: var(--wp--preset--color--almost-black);

@@ -1,75 +1,38 @@
 /*--------------------------------------------------------------
 ## Map TwentyTwentyFour, TwentyTwentyFive, and Flat Blocks colors
 --------------------------------------------------------------*/
-.has-accent-background-color, // TT4
-.has-accent-1-background-color, // TT5
-.has-bright-green-background-color, // FB
-{ 
-    background-color: var(--wp--preset--color--primary);
-    color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--foreground-alt)) !important;
+$external-pattern-bridge: (
+  'primary':        ('accent', 'accent-1', 'bright-green'),
+  'primary-alt':    ('dark-bright-green'),
+  'secondary':      ('base-2', 'accent-2'),
+  'tertiary':       ('accent-3'),
+  'dark-gray':      ('accent-4'),
+  'neutral-alt':    ('accent-5'),
+  'dark-alt':       ('accent-6')
+);
+
+@each $target, $slugs in $external-pattern-bridge {
+//   	$fallback: if($target == 'neutral-alt', 'contrast', 'off-white');
+	$fallback: 'off-white';
+	@if $target == "neutral-alt" {
+		$fallback: 'contrast';
+	}
+	
+  	@each $slug in $slugs {
+    	.has-#{$slug}-color { color: var(--wp--preset--color--#{$target}) !important; }
+    	.has-#{$slug}-border-color { border-color: var(--wp--preset--color--#{$target}) !important; }
     
-    .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
-        color: inherit; // !important;
-    }
-}
+    	.has-#{$slug}-background-color {
+      		background-color: var(--wp--preset--color--#{$target}) !important;
+      		color: var(--wp--custom--color--contrast--#{$target}, var(--wp--preset--color--#{$fallback})) !important;
 
-.has-dark-bright-green-background-color, // FB
-{
-    background-color: var(--wp--preset--color--primary-alt);
-    color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--foreground-alt)) !important;
-
-    .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
-        color: inherit; // !important;
-    }
-}
-
-.has-base-2-background-color, // TT4
-.has-accent-2-background-color, //TT5
-{
-    background-color: var(--wp--preset--color--secondary);
-    color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--foreground-alt)) !important;
-
-    .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
-        color: inherit; // !important;
-    }
-}
-
-.has-accent-3-background-color, // TT5
-{
-    background-color: var(--wp--preset--color--tertiary);
-    color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--foreground-alt)) !important;
-
-    .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
-        color: inherit; // !important;
-    }
-}
-
-.has-accent-4-background-color, // TT5
-{
-    background-color: var(--wp--preset--color--dark-gray);
-    color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--foreground-alt)) !important;
-
-    .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
-        color: inherit; // !important;
-    }
-}
-
-.has-accent-5-background-color, //TT5
-{
-    background-color: var(--wp--preset--color--neutral-alt);
-    color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--contrast)) !important;
-
-    .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
-        color: inherit; // !important;
-    }
-}
-
-.has-accent-6-background-color, // TT5
-{
-    background-color: var(--wp--preset--color--dark-alt);
-    color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--foreground-alt)) !important;
-
-    .wp-block-heading, .wp-block-post-title, .wp-block-query-title, .wp-block-site-title, .wp-block-site-tagline {
-        color: inherit; // !important;
-    }
+		  .wp-block-heading,
+		  .wp-block-post-title,
+		  .wp-block-query-title,
+		  .wp-block-site-title,
+		  .wp-block-site-tagline {
+			color: inherit;
+		  }
+    	}
+  	}
 }

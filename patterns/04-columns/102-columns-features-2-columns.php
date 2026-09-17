@@ -10,7 +10,7 @@
 <!-- wp:group {"lock":{"move":false,"remove":false},"metadata":{"name":"Features 2 Columns","categories":["lumina","column","featured"]},"align":"full","layout":{"type":"constrained"},"anchor":"features-2-columns"} -->
 <div class="wp-block-group alignfull" id="features-2-columns"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"50%","className":"is-style-rounded-border"} -->
-<div class="wp-block-column is-style-rounded-border" style="flex-basis:50%"><!-- wp:icon {"icon":"core/capture-photo","align":"center","className":"is-style-round","backgroundColor":"secondary-subtle-alt","ariaLabel":"Art Direction Icon"} /-->
+<div class="wp-block-column is-style-rounded-border" style="flex-basis:50%"><!-- wp:icon {"icon":"core/capture-photo","align":"center","className":"is-style-round","backgroundColor":"secondary-subtle","ariaLabel":"Art Direction Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Bespoke Art Direction", "lumina"); ?></h3>
@@ -22,7 +22,7 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"50%","className":"is-style-rounded-border"} -->
-<div class="wp-block-column is-style-rounded-border" style="flex-basis:50%"><!-- wp:icon {"icon":"core/styles","align":"center","className":"is-style-round","backgroundColor":"tertiary-subtle-alt","ariaLabel":"Craftsmanship Icon"} /-->
+<div class="wp-block-column is-style-rounded-border" style="flex-basis:50%"><!-- wp:icon {"icon":"core/styles","align":"center","className":"is-style-round","backgroundColor":"tertiary-subtle","ariaLabel":"Craftsmanship Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Archival Craftsmanship", "lumina"); ?></h3>

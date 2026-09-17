@@ -10,7 +10,7 @@
 <!-- wp:group {"lock":{"move":false,"remove":false},"metadata":{"name":"Features 4 Columns","categories":["lumina","column","featured"]},"align":"full","layout":{"type":"constrained"},"anchor":"features-4-columns"} -->
 <div class="wp-block-group alignfull" id="features-4-columns"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"className":"is-style-rounded-border"} -->
-<div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"core/shadow","align":"center","className":"is-style-round","backgroundColor":"primary-subtle-alt","ariaLabel":"Light Icon"} /-->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"core/shadow","align":"center","className":"is-style-round","backgroundColor":"primary-subtle","ariaLabel":"Light Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Atmospheric Light", "lumina"); ?></h3>
@@ -22,7 +22,7 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"is-style-rounded-border"} -->
-<div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"core/table","align":"center","className":"is-style-round","backgroundColor":"secondary-subtle-alt","ariaLabel":"Precision Icon"} /-->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"core/table","align":"center","className":"is-style-round","backgroundColor":"secondary-subtle","ariaLabel":"Precision Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Editorial Precision", "lumina"); ?></h3>
@@ -34,7 +34,7 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"is-style-rounded-border"} -->
-<div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"core/image","align":"center","className":"is-style-round","backgroundColor":"tertiary-subtle-alt","ariaLabel":"Production Icon"} /-->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"core/image","align":"center","className":"is-style-round","backgroundColor":"tertiary-subtle","ariaLabel":"Production Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Archival Production", "lumina"); ?></h3>
@@ -46,7 +46,7 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"is-style-rounded-border"} -->
-<div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"core/verse","align":"center","className":"is-style-round","backgroundColor":"primary-subtle-alt","ariaLabel":"Commissions Icon"} /-->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"core/verse","align":"center","className":"is-style-round","backgroundColor":"primary-subtle","ariaLabel":"Commissions Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Tailored Commissions", "lumina"); ?></h3>

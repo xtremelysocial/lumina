@@ -10,16 +10,16 @@
 					"scheme": "low-tide"
 				},
 				"contrast": {
-					"primary-subtle": "var(--wp--preset--color--foreground-alt)",
-					"primary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
-					"secondary-subtle": "var(--wp--preset--color--foreground-alt)",
-					"secondary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
-					"tertiary-subtle": "var(--wp--preset--color--foreground-alt)",
-					"tertiary-subtle-alt": "var(--wp--preset--color--foreground-alt)",
-					"neutral": "var(--wp--preset--color--foreground-alt)",
-					"neutral-alt": "var(--wp--preset--color--foreground-alt)",
-					"very-light-gray": "var(--wp--preset--color--foreground-alt)",
-					"light-gray": "var(--wp--preset--color--foreground-alt)",
+					"primary-subtle": "var(--wp--preset--color--off-white)",
+					"primary-subtle-alt": "var(--wp--preset--color--off-white)",
+					"secondary-subtle": "var(--wp--preset--color--off-white)",
+					"secondary-subtle-alt": "var(--wp--preset--color--off-white)",
+					"tertiary-subtle": "var(--wp--preset--color--off-white)",
+					"tertiary-subtle-alt": "var(--wp--preset--color--off-white)",
+					"neutral": "var(--wp--preset--color--off-white)",
+					"neutral-alt": "var(--wp--preset--color--off-white)",
+					"very-light-gray": "var(--wp--preset--color--off-white)",
+					"light-gray": "var(--wp--preset--color--off-white)",
 					"very-dark-gray": "var(--wp--preset--color--almost-black)"
 				},
 				"heading": {
@@ -46,6 +46,8 @@
 				{ "slug": "tertiary", "color": "hsl(37, 14%, 34%)", "name": "Tertiary (Muted Antique Bronze 34%)" },
 
 				{ "slug": "base", "color": "hsl(211, 28%, 18%)", "name": "Base (Deep Sea Slate Canvas)" },
+				{ "slug": "neutral", "color": "hsl(211, 25%, 21%)", "name": "Neutral (Industrial Marine Slate)" },
+				{ "slug": "neutral-alt", "color": "hsl(211, 28%, 27%)", "name": "Neutral Alt (Technical Maritime Blue Border)" },
 
 				{ "slug": "primary-alt", "color": "hsl(12, 32%, 38%)", "name": "Primary Alt (Deep Terracotta Anchor 38%)" },
 				{ "slug": "secondary-alt", "color": "hsl(50, 4%, 32%)", "name": "Secondary Alt (Oiled Gunmetal 32%)" },
@@ -75,24 +77,16 @@
 				{ "slug": "dark-alt", "color": "hsl(211, 25%, 6%)", "name": "Dark Alt (Deep Abyssal Marine Pool 6%)" },							
 				{ "slug": "tertiary-dark-alt", "color": "hsl(37, 14%, 8%)", "name": "Dark Tertiary Alt (Deep Bronze Pool 8%)" },
 
-				{ "slug": "contrast", "color": "hsl(211, 14%, 90%)", "name": "Contrast (Slate-Tinted Bone Typography)" },
-				{ "slug": "foreground-alt", "color": "hsl(211, 14%, 95%)", "name": "Foreground Alt (Off White)" },
-
-				{ "slug": "neutral", "color": "hsl(211, 25%, 21%)", "name": "Neutral (Industrial Marine Slate)" },
-				{ "slug": "neutral-alt", "color": "hsl(211, 28%, 27%)", "name": "Neutral Alt (Technical Maritime Blue Border)" },
-
+				{ "slug": "off-white", "color": "hsl(37, 10%, 93%)", "name": "Off White (Sun-Bleached Sandstone 93%)" },
 				{ "slug": "very-light-gray", "color": "hsl(211, 15%, 12%)", "name": "Very Light Gray (Inverted Deep Footer Floor 12%)" },
 				{ "slug": "light-gray", "color": "hsl(211, 12%, 22%)", "name": "Light Gray (Inverted Structural Card Well 22%)" },
 				{ "slug": "gray", "color": "hsl(211, 10%, 35%)", "name": "Gray (Inverted Technical Border Seam 35%)" },
 				{ "slug": "dark-gray", "color": "hsl(211, 10%, 65%)", "name": "Dark Gray (Inverted Muted Typography 65%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(211, 12%, 85%)", "name": "Very Dark Gray (Inverted Tech Typography 85%)" },
-				
-				{ "slug": "white", "color": "hsl(0, 0%, 100%)", "name": "White" },
-				{ "slug": "off-white", "color": "hsl(37, 10%, 93%)", "name": "Off White (Sun-Bleached Sandstone 93%)" },
-				
-				{ "slug": "almost-black", "color": "hsl(0, 0%, 18%)", "name": "Almost Black" },
-				{ "slug": "not-quite-black", "color": "hsl(0, 0%, 11%)", "name": "Not Quite Black" },
-				{ "slug": "black", "color": "hsl(0, 0%, 0%)", "name": "Black" },
+								
+				{ "slug": "contrast", "color": "hsl(211, 14%, 90%)", "name": "Contrast (Slate-Tinted Bone Typography)" },
+				{ "slug": "almost-black", "color": "hsl(208, 18%, 18%)", "name": "Almost Black (Tinted Carbon Floor)" },
+				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" },
 
 				{ "slug": "very-light-green", "color": "hsl(154, 20%, 91%)", "name": "Very Light Green (Moss Subtle 91%)" },
 				{ "slug": "light-green", "color": "hsl(154, 16%, 83%)", "name": "Light Green (Moss Subtle Alt 83%)" },
