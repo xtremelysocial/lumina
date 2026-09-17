@@ -2,7 +2,7 @@
 /**
  * Title: Blog Index Intro
  * Description: Blog Index Intro
- * Slug: lumina/blog-index-intro
+ * Slug: lumina/text-blog-index-intro
  * Categories: lumina, text
  */
 ?>
