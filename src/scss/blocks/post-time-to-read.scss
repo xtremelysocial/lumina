@@ -1,0 +1,10 @@
+/*-----------------------------------------------------------------------------
+# Post Time to Read
+-----------------------------------------------------------------------------*/
+@use "../icons/icons" as icons;;
+
+@include icons.svg-icon(
+	$class: 'wp-block-post-time-to-read',
+	$icon: 'clock',
+	$location: 'before'
+);

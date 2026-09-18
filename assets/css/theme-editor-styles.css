@@ -17,6 +17,19 @@
    LUMINA THEME: EDITOR CSS styles
    v0.9.9 Build 32 MVP Stand-alone Theme
    ========================================================================== */
+/*-----------------------------------------------------------------------------
+# Base Editor Styles
+-----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+# Group Editor Styles
+-----------------------------------------------------------------------------*/
+/* Padding for top-level non-colored groups */
+.is-root-container > .wp-block-group:not(:first-child):not(.has-background):not(.is-style-no-padding),
+.is-root-container > #wporg-pattern-preview > div > .wp-block-group:not(:first-child):not(.has-background):not(.is-style-no-padding) {
+  padding-top: var(--wp--preset--spacing--40);
+  padding-bottom: var(--wp--preset--spacing--40);
+}
+
 /* ==========================================================================
    BLOCK EDITOR STYLES: Image Aspect Ratios
    Tweaks to image aspect ratios in the Editor
@@ -60,6 +73,22 @@
 .wp-block-media-text) .wp-block-cover__image-background {
   animation: none !important;
   transform: none !important;
+}
+
+/*-----------------------------------------------------------------------------
+# Latest Comments Editor Styles
+-----------------------------------------------------------------------------*/
+/* Editor has nested lists, so push padding down to nested one */
+.wp-block-latest-comments.is-style-bullets.block-editor-block-list__block {
+  padding-left: 0 !important;
+}
+
+.wp-block-latest-comments.is-style-bullets > .wp-block-latest-comments:not(.has-avatars) {
+  padding-left: 2em; /*var(--wp--preset--spacing--60);*/
+}
+
+.wp-block-latest-comments.is-style-bullets > .wp-block-latest-comments.has-avatars .wp-block-latest-comments__comment {
+  list-style-position: inside;
 }
 
 /*-----------------------------------------------------------------------------

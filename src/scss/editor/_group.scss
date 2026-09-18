@@ -1,0 +1,10 @@
+/*-----------------------------------------------------------------------------
+# Group Editor Styles
+-----------------------------------------------------------------------------*/
+
+/* Padding for top-level non-colored groups */
+.is-root-container > .wp-block-group:not(:first-child):not(.has-background):not(.is-style-no-padding),
+.is-root-container > #wporg-pattern-preview > div > .wp-block-group:not(:first-child):not(.has-background):not(.is-style-no-padding) {
+	padding-top: var(--wp--preset--spacing--40);
+	padding-bottom: var(--wp--preset--spacing--40);
+}

@@ -1,0 +1,22 @@
+/*-----------------------------------------------------------------------------
+# Post Terms:
+-----------------------------------------------------------------------------*/
+@use "../icons/icons" as icons;;
+
+@include icons.svg-icon(
+	$class: 'wp-block-post-terms.taxonomy-category',
+	$icon: 'category',
+	$location: 'before'
+);
+
+@include icons.svg-icon(
+	$class: 'wp-block-post-terms.taxonomy-post_tag',
+	$icon: 'tag',
+	$location: 'before'
+);
+
+/* Remove bottom margin on Category and Tag descriptions */
+.wp-block-term-description p {
+	margin-block-start: 0;
+	margin-block-end: 0;
+}

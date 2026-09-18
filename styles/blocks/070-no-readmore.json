@@ -1,0 +1,10 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "no-readmore",
+	"title": "No Read More",
+	"blockTypes": [ "core/post-excerpt", "core/latest-posts" ],
+	"styles": {
+		"css": ""
+	}
+}

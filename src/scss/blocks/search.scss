@@ -1,0 +1,9 @@
+/*-----------------------------------------------------------------------------
+# Search
+-----------------------------------------------------------------------------*/
+
+/* Reduce the padding on Search field when in Navigation block */
+.wp-block-navigation .wp-block-search__button,
+.wp-block-navigation .wp-block-search__input {
+  padding: var(--wp--preset--spacing--20) var(--wp--preset--spacing--30);
+}

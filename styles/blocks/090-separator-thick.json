@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "thick",
+	"title": "Thick",
+	"blockTypes": [ "core/separator" ],
+	"styles": {
+		"border": {
+			"style": "solid",
+			"width": "3px 0 0 0"
+		}
+	}
+}

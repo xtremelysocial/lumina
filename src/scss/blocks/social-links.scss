@@ -1,0 +1,41 @@
+/*-----------------------------------------------------------------------------
+# Social Links (Icons)
+-----------------------------------------------------------------------------*/
+.wp-block-social-links {
+
+	// Explicit icon size overrides mapped to theme font sizes
+	&.has-small-icon-size {
+		font-size: var(--wp--preset--font-size--medium);
+	}
+	
+	&,
+	&.has-normal-icon-size,
+	&.is-style-logos-only.has-small-icon-size {
+		font-size: var(--wp--preset--font-size--large);
+	}
+	
+	&.has-large-icon-size,
+	&.is-style-logos-only,
+	&.is-style-logos-only.has-normal-icon-size {
+		font-size: var(--wp--preset--font-size--x-large);
+	}
+	
+	&.has-huge-icon-size,
+	&.is-style-logos-only.has-large-icon-size {
+		font-size: var(--wp--preset--font-size--huge);
+	}
+	
+	&.is-style-logos-only.has-huge-icon-size {
+		font-size: var(--wp--preset--font-size--gigantic);
+	}
+	
+	// Contextual Logo-Only Color Inheritance
+	.has-background &.is-style-logos-only .wp-block-social-link {
+		color: inherit;
+	}
+}
+	
+// Hover Animation
+.wp-block-social-link {
+	transition: transform var(--wp--custom--animation--duration--medium, 500ms) ease-in-out;
+}

@@ -1,0 +1,47 @@
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/gallery.scss ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*-----------------------------------------------------------------------------
+# Gallery: Custom
+-----------------------------------------------------------------------------*/
+/* Image captions */
+/* Image Border captions*/
+.wp-block-gallery.is-style-image-border .wp-block-image:not(.is-style-image-round-border):not(.is-style-image-computer-screen):not(.is-style-image-tablet-phone-screen) img {
+  padding: var(--wp--preset--spacing--20);
+}
+.wp-block-gallery.is-style-image-border.has-nested-images figure.wp-block-image:not(.is-style-rounded):not(.is-style-image-round-border):not(.is-style-image-computer-screen):not(.is-style-image-tablet-phone-screen):has(figcaption)::before, .wp-block-gallery.is-style-image-border.has-nested-images figure.wp-block-image:not(.is-style-rounded):not(.is-style-image-round-border):not(.is-style-image-computer-screen):not(.is-style-image-tablet-phone-screen) figcaption {
+  bottom: calc(1px + var(--wp--preset--spacing--20));
+  left: calc(1px + var(--wp--preset--spacing--20));
+  padding: calc(1px + var(--wp--preset--spacing--20)) 0;
+  width: calc(100% - 2 * (1px + var(--wp--preset--spacing--20)));
+  border-bottom-left-radius: var(--wp--custom--border--radius);
+  border-bottom-right-radius: var(--wp--custom--border--radius);
+}
+
+/* Image Round Border captions */
+.wp-block-gallery.has-nested-images figure.wp-block-image.is-style-image-round-border::before {
+  content: none;
+}
+
+.wp-block-gallery.has-nested-images figure.wp-block-image.is-style-image-round-border figcaption {
+  background: none;
+  color: inherit;
+  flex: initial;
+  margin: 0;
+  padding: 10px 10px 9px;
+  position: relative;
+  text-shadow: none;
+}
+
+/* Image Computer Screen captions */
+.wp-block-gallery.has-nested-images figure.wp-block-image.is-style-image-computer-screen:has(figcaption)::before, .wp-block-gallery.has-nested-images figure.wp-block-image.is-style-image-computer-screen figcaption {
+  left: var(--wp--preset--spacing--60);
+  width: calc(100% - 2 * var(--wp--preset--spacing--60));
+}
+
+/* Image Tablet/Phone Screen captions */
+.wp-block-gallery.has-nested-images figure.wp-block-image.is-style-image-tablet-phone-screen:has(figcaption)::before, .wp-block-gallery.has-nested-images figure.wp-block-image.is-style-image-tablet-phone-screen figcaption {
+  left: var(--wp--preset--spacing--50);
+  padding: var(--wp--preset--spacing--20) 0;
+  width: calc(100% - 2 * var(--wp--preset--spacing--50));
+}

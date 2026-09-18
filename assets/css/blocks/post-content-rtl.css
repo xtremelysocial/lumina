@@ -1,0 +1,20 @@
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/post-content.scss ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*-----------------------------------------------------------------------------
+# Post Nav Links
+-----------------------------------------------------------------------------*/
+.post-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--wp--preset--spacing--30);
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+  padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
+  background-color: var(--wp--preset--color--neutral);
+  border: 1px solid var(--wp--custom--color--border);
+  border-radius: var(--wp--custom--border--radius);
+}

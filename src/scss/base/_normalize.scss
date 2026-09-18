@@ -1,0 +1,36 @@
+/*-----------------------------------------------------------------------------
+# Normalize
+-----------------------------------------------------------------------------*/
+/* 
+ * Default to contain borders and padding within blocks and prevent iOS from 
+ * adjusting text sizes after orientation change. 
+ */
+html {
+	box-sizing: border-box;
+	-webkit-text-size-adjust: 100%;
+	scroll-behavior: auto !important;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/*
+ * Font smoothing
+ * These are niche settings that will not be available via Global Styles.
+ * https://github.com/WordPress/gutenberg/issues/35934
+ */
+body {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;	
+}
+
+// /* 
+//  * Fix Safari issue with WordPress v7.1 adding transparent outline to the 
+//  * Admin Bar.
+// */
+// // @supports (-webkit-hyphens: none) {
+// 	#wpadminbar {
+// 		outline: none !important;
+// 	}
+// // }

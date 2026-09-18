@@ -19,6 +19,548 @@
    LUMINA THEME: CSS styles
    v0.9.9 Build 32 MVP Stand-alone Theme
    ========================================================================== */
+/*-----------------------------------------------------------------------------
+# Normalize
+-----------------------------------------------------------------------------*/
+/* 
+ * Default to contain borders and padding within blocks and prevent iOS from 
+ * adjusting text sizes after orientation change. 
+ */
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto !important;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/*
+ * Font smoothing
+ * These are niche settings that will not be available via Global Styles.
+ * https://github.com/WordPress/gutenberg/issues/35934
+ */
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*-----------------------------------------------------------------------------
+# Elements
+-----------------------------------------------------------------------------*/
+/* Use bold font-weight from theme.json */
+strong,
+b {
+  font-weight: var(--wp--custom--typography--font-weight--bold, 500);
+}
+
+/* Prevent code from breaking layout and use smaller font */
+code,
+pre {
+  overflow-x: scroll;
+}
+
+/* Style only non-block code */
+code:not(pre > code),
+pre:not(.wp-block-code) {
+  overflow-x: scroll;
+  font-size: var(--wp--preset--font-size--small);
+  padding: 5px;
+  border-radius: var(--wp--custom--border--radius, 5px);
+  border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--border--color, var(--wp--preset--color--neutral-alt));
+}
+
+/* Style lists */
+ol,
+ul {
+  margin-bottom: 0;
+}
+
+ol.has-background:not(.wp-block-navigation__container):not(.wp-block-navigation-submenu):not(.wp-block-page-list),
+ul.has-background:not(.wp-block-navigation__container):not(.wp-block-navigation-submenu):not(.wp-block-page-list) {
+  padding: var(--wp--preset--spacing--40);
+  list-style-position: inside;
+}
+
+/* Center captions and don't underline links in them by default */
+.wp-element-caption {
+  text-align: center;
+}
+
+.wp-element-caption a {
+  text-decoration: none;
+}
+
+/* Style raw HTML quotes like the block quotes */
+/* Target strictly naked, legacy blockquotes—ignore both real quotes and pullquotes */
+:where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
+  border-left: 6px solid var(--wp--preset--color--highlight--alt);
+}
+
+/*-----------------------------------------------------------------------------
+# Forms
+-----------------------------------------------------------------------------*/
+form {
+  margin-block-end: 0;
+}
+
+fieldset {
+  font-size: var(--wp--preset--font-size--normal, 18px);
+  font-weight: var(--wp--custom--typography--font-weight--normal, 300);
+  line-height: 1.5;
+  padding: var(--wp--preset--spacing--20) var(--wp--preset--spacing--40);
+  border: 1px solid var(--wp--preset--color--contrast);
+  border-radius: var(--wp--custom--border--radius);
+  text-shadow: none;
+  -webkit-appearance: none;
+}
+
+select,
+textarea,
+input:not(.file):not(.wp-element-button) {
+  font-family: inherit;
+  background-color: var(--wp--custom--color--field--background);
+  color: var(--wp--custom--color--field--text);
+}
+
+select {
+  font-size: var(--wp--preset--font-size--small, 16px);
+  font-weight: var(--wp--custom--typography--font-weight--normal, 300);
+  line-height: 1.5;
+  border-radius: var(--wp--preset--spacing--20);
+  text-shadow: none;
+  border: 1px solid var(--wp--custom--color--field--border, var(--wp--preset--color--dark-gray));
+}
+
+textarea,
+input {
+  font-size: var(--wp--preset--font-size--normal);
+  font-weight: var(--wp--custom--typography--font-weight--normal, 300);
+  line-height: 1.5;
+  border-radius: var(--wp--preset--spacing--20);
+  text-shadow: none;
+}
+
+textarea,
+input:not([type=radio]):not([type=checkbox]):not([type=file]):not([type=button]):not([type=image]):not([class*=button]):not(.wp-block-button__link) {
+  -webkit-appearance: none;
+  border: 1px solid var(--wp--custom--color--field--border, var(--wp--preset--color--dark-gray));
+}
+
+/* Style focus outline */
+input:focus,
+textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px var(--wp--custom--color--field--outline, var(--wp--custom--outline--color));
+  transition: box-shadow 0.3s ease;
+}
+
+select:focus,
+select:focus-visible {
+  outline: var(--wp--custom--color--field--outline, var(--wp--custom--outline--color)) 5px solid;
+  transition: outline 0.3s ease;
+}
+
+/*-----------------------------------------------------------------------------
+# Buttons and Links
+-----------------------------------------------------------------------------*/
+/*
+ * Link and link hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+/* Base link underline styles */
+a:not(.wp-element-button, .wp-block-button__link, .wp-block-social-link-anchor),
+.wp-block-accordion-heading__toggle {
+  text-decoration-style: var(--wp--custom--link--style, solid);
+  text-decoration-thickness: var(--wp--custom--link--thickness, 1px);
+  text-underline-position: var(--wp--custom--link--position, under);
+  text-underline-offset: var(--wp--custom--link--offset, 0);
+}
+
+/* Link transitions */
+a,
+.wp-block-navigation a,
+.wp-block-navigation-submenu__toggle {
+  cursor: pointer;
+  will-change: opacity, filter;
+  backface-visibility: hidden;
+  transition: opacity var(--wp--custom--animation--duration--short, 250ms) ease-in-out, color var(--wp--custom--animation--duration--short, 250ms) ease-in-out;
+}
+
+/* Link hovers */
+a:where(:not(.wp-element-button,
+.wp-block-button__link,
+.wp-block-social-link-anchor,
+.wp-block-image a,
+figure > a,
+.wp-block-post-featured-image a,
+.wp-block-latest-posts__featured-image a,
+.wp-block-media-text__media a)):hover, a:where(:not(.wp-element-button,
+.wp-block-button__link,
+.wp-block-social-link-anchor,
+.wp-block-image a,
+figure > a,
+.wp-block-post-featured-image a,
+.wp-block-latest-posts__featured-image a,
+.wp-block-media-text__media a)):active {
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+}
+
+/* Use IMAGE hover opacity on images that are links */
+.wp-block-image a:hover, .wp-block-image a:active,
+figure > a:hover,
+figure > a:active,
+.wp-block-post-featured-image a:hover,
+.wp-block-post-featured-image a:active,
+.wp-block-latest-posts__featured-image a:hover,
+.wp-block-latest-posts__featured-image a:active,
+.wp-block-media-text__media a:hover,
+.wp-block-media-text__media a:active {
+  opacity: var(--wp--custom--color--image--hover-opacity, 0.8);
+}
+
+/* 
+ * Style basic buttons to match block buttons. 
+ */
+input[type=button]:not(.wp-element-button),
+input[type=submit][class*=button]:not(.wp-element-button),
+input[type=submit][class*=submit]:not(.wp-element-button),
+input[type=reset][class*=button]:not(.wp-element-button),
+input[type=file]::file-selector-button {
+  background-color: var(--wp--custom--color--button--background, var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--primary)));
+  color: var(--wp--custom--color--button--text, var(--wp--preset--color--off-white));
+  border: none;
+  border-width: 0;
+  border-radius: var(--wp--custom--button--radius, 0);
+  padding: var(--wp--preset--spacing--30, 9px) var(--wp--preset--spacing--40, 18px);
+  font-size: var(--wp--preset--font-size--normal, 18px);
+  font-weight: var(--wp--custom--typography--font-weight--medium, 400);
+  line-height: 1.5;
+  text-shadow: none;
+}
+
+input[type=file] {
+  font-size: var(--wp--preset--font-size--small, 16px);
+  width: 100%;
+}
+
+/* 
+ * But override basic buttons to look like outlines on primary-colored 
+ * backgrounds 
+ */
+.has-primary-background-color input[type=button],
+.has-primary-background-color input[type=submit][class*=button],
+.has-primary-background-color input[type=reset][class*=button],
+.has-primary-background-color input[type=file]::file-selector-button {
+  border: 3px solid var(--wp--custom--color--button--text, var(--wp--preset--color--off-white));
+}
+
+/* Inherit color on outline style buttons */
+.is-style-outline > .wp-element-button, .is-style-outline > .wp-block-button__link, [class*=is-style-button-outline-] > .wp-element-button, [class*=is-style-button-outline-] > .wp-block-button__link {
+  color: inherit;
+}
+
+/* FIX for WordPress v6.7 when older Button not within a Buttons container */
+.wp-site-blocks .wp-block-button__link {
+  width: auto;
+  height: auto;
+}
+
+/*
+ * Block Button hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):hover,
+input[type=submit][class*=button]:hover,
+input[type=submit][class*=submit]:hover,
+input[type=reset][class*=button]:hover,
+input[type=file]::file-selector-button:hover,
+.wp-block-search__button:hover,
+.wp-block-file .wp-block-file__button:hover,
+.wp-block-button__link:hover {
+  opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+}
+
+/* 
+ * Set Basic (non-block) button hover to match block button hover. 
+ */
+input[type=button]:not(.wp-element-button):hover,
+input[type=submit][class*=button]:not(.wp-element-button):hover,
+input[type=reset][class*=button]:not(.wp-element-button):hover,
+input[type=file]::file-selector-button:hover {
+  opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+}
+
+/*-----------------------------------------------------------------------------
+# Links: Custom Underlines
+-----------------------------------------------------------------------------*/
+/* Underline links */
+.is-style-link-underline a:not(.wp-block-navigation-item__content) {
+  text-decoration-line: underline;
+}
+
+.is-style-link-underline a:hover,
+.is-style-link-underline a:active {
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+}
+
+/* No Underline links */
+.is-style-link-no-underline a {
+  text-decoration: none;
+}
+
+/* Underline links on hover */
+.is-style-link-underline-hover a {
+  text-decoration: none !important;
+  opacity: 1;
+}
+.is-style-link-underline-hover a:hover, .is-style-link-underline-hover a:active {
+  text-decoration-line: underline !important;
+  text-decoration-color: currentcolor !important;
+  opacity: 1;
+}
+
+/*-----------------------------------------------------------------------------
+# Alignments
+-----------------------------------------------------------------------------*/
+/*
+ * Don't let anything be wider than our max width. This is so fullwidth images
+ * don't get so wide they lose resolution.
+ */
+.wp-site-blocks {
+  max-width: var(--wp--custom--layout--full-size, 1600px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* FIX align center for WordPress v6.7 */
+.aligncenter {
+  text-align: center;
+}
+
+/* ADD padding and margin to align left and align right to match wide width */
+.wp-site-blocks > .alignleft {
+  margin-right: var(--wp--style--root--padding-right, var(--wp--preset--spacing--50));
+}
+
+body .is-layout-constrained > .alignleft {
+  padding-left: calc(0.5 * (100% - var(--wp--style--global--wide-size)));
+  margin-inline-end: var(--wp--style--root--padding-right, var(--wp--preset--spacing--50));
+}
+
+.wp-site-blocks > .alignright {
+  margin-left: var(--wp--style--root--padding-left, var(--wp--preset--spacing--50));
+}
+
+body .is-layout-constrained > .alignright {
+  padding-right: calc(0.5 * (100% - var(--wp--style--global--wide-size)));
+  margin-inline-start: var(--wp--style--root--padding-left, var(--wp--preset--spacing--50));
+}
+
+/* Automatically clear floats on Groups with align left or right */
+.wp-block-group:not(.is-layout-flex):not(.is-style-fixed-header):has(.alignleft, .alignright)::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*------------------------------------------------------------------------------
+# Margins (Vertical spacing)
+------------------------------------------------------------------------------*/
+/* 
+ * Let content before main handle it's own top margin (e.g. page titles, 
+ * featured images 
+ */
+/* Don't add top margin on column blocks in templates with sidebars */
+/* FLAT-BLOCKS CURRENT MARGIN CSS */
+/* Don't add top margin to top-level blocks (header, title, main, footer) */
+:root :where(.wp-site-blocks) > * {
+  margin-block-start: 0;
+}
+
+/* Add top margin to main unless its the post content or a featured image */
+main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-image):not(.wp-block-cover):not(.wp-block-template-part):not(.wp-block-image):not(.entry-header-wrapper.has-background):not(.content-home-top) {
+  margin-block-start: var(--wp--style--block-gap);
+}
+
+/* Push top margin down on Groups and Columns that have template parts in them */
+:root :where(.is-layout-flow) > .wp-block-template-part > *,
+:root :where(.is-layout-constrained) > .wp-block-template-part > * {
+  margin-block-start: var(--wp--style--block-gap);
+}
+
+:root :where(.is-layout-flow) > .wp-block-template-part > :first-child:not(.wp-block-comments):not(.wp-block-query),
+:root :where(.is-layout-constrained) > .wp-block-template-part > :first-child:not(.wp-block-comments):not(.wp-block-query) {
+  margin-block-start: 0;
+}
+
+/* But don't put any top margin on the individual columns */
+:root :where(.wp-block-columns-is-layout-flow) > .wp-block-column,
+:root :where(.wp-block-columns-is-layout-constrained) > .wp-block-column {
+  margin-block-start: 0;
+}
+
+/* 
+ * Push top margin on Post Content down to the block level so users can control 
+ * it by adjusting margin on the block itself.
+ */
+.wp-site-blocks .wp-block-post-content {
+  margin-block-start: 0;
+}
+
+:root :where(.wp-block-post-content) > :first-child:not(.alignfull) {
+  margin-block-start: var(--wp--style--block-gap);
+}
+
+/* 
+ * But don't add it when the Template has columns (i.e. there is a Sidebar) and 
+ * the Post Content is the first thing in the column (i.e. No Featured Image before 
+ * it)*/
+main > .wp-block-columns > .wp-block-column > :first-child.wp-block-post-content > :first-child {
+  margin-block-start: 0;
+}
+
+/* Add bottom margin to main unless its the post content, then add it to that */
+main > :last-child:not(.wp-block-post-content):not(:empty),
+:root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
+:root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {
+  margin-block-end: var(--wp--style--block-gap);
+}
+
+/**
+ * Breakpoints & Media Queries
+ */
+/*-----------------------------------------------------------------------------
+# Adjust Margins - Macro & Micro Vertical Spacing
+# Larger vertical margin between blocks, less between headings and contents, 
+# etc.
+-----------------------------------------------------------------------------*/
+p, .wp-block-paragraph {
+  margin-block-end: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+.wp-block-heading {
+  margin-block-end: 0;
+}
+
+:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > .wp-block-template-part > * {
+  margin-block-start: var(--wp--preset--spacing--30);
+}
+
+:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > .wp-block-template-part > :first-child {
+  margin-block-start: 0;
+}
+
+:root :where(.wp-block-post-content) > * + * {
+  margin-block-start: var(--wp--preset--spacing--50);
+}
+
+:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > :where(h1, h2, h3, h4, h5, h6,
+.wp-block-heading,
+.wp-block-site-title,
+.wp-block-post-title,
+.wp-block-query-title,
+.wp-block-site-tagline):not(.is-style-separator) + :where(p, .wp-block-paragraph,
+ul, ol, .wp-block-list,
+blockquote, .wp-block-quote,
+.wp-block-template-part,
+.wp-block-group:has(> .wp-block-template-part)) {
+  margin-block-start: var(--wp--preset--spacing--30);
+}
+:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > :where(p, .wp-block-paragraph,
+ul, ol, .wp-block-list,
+blockquote, .wp-block-quote,
+.wp-block-template-part,
+.wp-block-group:has(> .wp-block-template-part)) + :where(p, .wp-block-paragraph,
+ul, ol, .wp-block-list,
+blockquote, .wp-block-quote,
+.wp-block-template-part,
+.wp-block-group:has(> .wp-block-template-part)) {
+  margin-block-start: var(--wp--preset--spacing--30);
+}
+
+:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-navigation__submenu-container, .wp-block-page-list, .wp-block-social-links) > li + li {
+  margin-block-start: calc(0.5 * var(--wp--preset--spacing--30));
+}
+:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-navigation__submenu-container, .wp-block-page-list, .wp-block-social-links) > li > :where(ul, ol) {
+  margin-block-start: var(--wp--preset--spacing--30);
+}
+
+.entry-subtitle {
+  margin-block-start: var(--wp--preset--spacing--30);
+  margin-block-end: 0;
+}
+
+.main-content.wp-block-columns .entry-header.wp-block-group {
+  padding-top: 0 !important;
+}
+
+main > :last-child:not(.wp-block-post-content):not(:empty),
+main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
+  margin-block-end: var(--wp--preset--spacing--50);
+}
+
+/*-----------------------------------------------------------------------------
+# Collapsing Ghost (Empty) Blocks
+-----------------------------------------------------------------------------*/
+.wp-block-template-part:empty {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+/*-----------------------------------------------------------------------------
+# List: Custom
+#
+# Note: Needed for multiple blocks so load in base stylesheet
+-----------------------------------------------------------------------------*/
+/* Checkmarks */
+.is-style-list-checkmarks {
+  list-style-type: "✓ ";
+}
+
+.rtl .is-style-list-checkmarks {
+  list-style-type: " ✓";
+}
+
+/* Plain */
+.is-style-list-plain,
+.is-style-list-plain ul,
+.is-style-list-plain ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+.is-style-list-plain li {
+  margin-bottom: var(--wp--preset--spacing--30);
+}
+
+.is-style-list-plain:not(.has-background),
+.is-style-list-plain:not(.has-background) li {
+  margin-left: 0;
+}
+
+.is-style-list-plain:not(.has-background) li ul li {
+  padding-left: var(--wp--preset--spacing--40);
+}
+
+/* Plain Centered */
+.is-style-list-plain-centered,
+.is-style-list-plain-centered ul,
+.is-style-list-plain-centered ol {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  text-align: center;
+}
+
+.is-style-list-plain-centered li {
+  margin-left: 0;
+}
+
 /* ==========================================================================
    GLOBAL: Base Image Aspect Ratios
    ========================================================================== */
@@ -429,294 +971,6 @@ ol.is-style-list-dividers,
 }
 
 /*--------------------------------------------------------------
-# Base Styles
---------------------------------------------------------------*/
-/**
- * Breakpoints & Media Queries
- */
-/*-----------------------------------------------------------------------------
-# Adjust Margins - Macro & Micro Vertical Spacing
-# Larger vertical margin between blocks, less between headings and contents, 
-# etc.
------------------------------------------------------------------------------*/
-p, .wp-block-paragraph {
-  margin-block-end: 0;
-}
-
-h1, h2, h3, h4, h5, h6,
-.wp-block-heading {
-  margin-block-end: 0;
-}
-
-:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > .wp-block-template-part > * {
-  margin-block-start: var(--wp--preset--spacing--30);
-}
-
-:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > .wp-block-template-part > :first-child {
-  margin-block-start: 0;
-}
-
-:root :where(.wp-block-post-content) > * + * {
-  margin-block-start: var(--wp--preset--spacing--50);
-}
-
-:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > :where(h1, h2, h3, h4, h5, h6,
-.wp-block-heading,
-.wp-block-site-title,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-tagline):not(.is-style-separator) + :where(p, .wp-block-paragraph,
-ul, ol, .wp-block-list,
-blockquote, .wp-block-quote,
-.wp-block-template-part,
-.wp-block-group:has(> .wp-block-template-part)) {
-  margin-block-start: var(--wp--preset--spacing--30);
-}
-:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > :where(p, .wp-block-paragraph,
-ul, ol, .wp-block-list,
-blockquote, .wp-block-quote,
-.wp-block-template-part,
-.wp-block-group:has(> .wp-block-template-part)) + :where(p, .wp-block-paragraph,
-ul, ol, .wp-block-list,
-blockquote, .wp-block-quote,
-.wp-block-template-part,
-.wp-block-group:has(> .wp-block-template-part)) {
-  margin-block-start: var(--wp--preset--spacing--30);
-}
-
-:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-navigation__submenu-container, .wp-block-page-list, .wp-block-social-links) > li + li {
-  margin-block-start: calc(0.5 * var(--wp--preset--spacing--30));
-}
-:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-navigation__submenu-container, .wp-block-page-list, .wp-block-social-links) > li > :where(ul, ol) {
-  margin-block-start: var(--wp--preset--spacing--30);
-}
-
-.entry-subtitle {
-  margin-block-start: var(--wp--preset--spacing--30);
-  margin-block-end: 0;
-}
-
-.main-content.wp-block-columns .entry-header.wp-block-group {
-  padding-top: 0 !important;
-}
-
-main > :last-child:not(.wp-block-post-content):not(:empty),
-main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
-  margin-block-end: var(--wp--preset--spacing--50);
-}
-
-/*-----------------------------------------------------------------------------
-# Collapsing Ghost (Empty) Blocks
------------------------------------------------------------------------------*/
-.wp-block-template-part:empty {
-  margin-block-start: 0;
-  margin-block-end: 0;
-}
-
-/*--------------------------------------------------------------
-## Map TwentyTwentyFour, TwentyTwentyFive, and Flat Blocks colors
---------------------------------------------------------------*/
-.has-accent-color {
-  color: var(--wp--preset--color--primary) !important;
-}
-
-.has-accent-border-color {
-  border-color: var(--wp--preset--color--primary) !important;
-}
-
-.has-accent-background-color {
-  background-color: var(--wp--preset--color--primary) !important;
-  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-background-color .wp-block-heading,
-.has-accent-background-color .wp-block-post-title,
-.has-accent-background-color .wp-block-query-title,
-.has-accent-background-color .wp-block-site-title,
-.has-accent-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-1-color {
-  color: var(--wp--preset--color--primary) !important;
-}
-
-.has-accent-1-border-color {
-  border-color: var(--wp--preset--color--primary) !important;
-}
-
-.has-accent-1-background-color {
-  background-color: var(--wp--preset--color--primary) !important;
-  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-1-background-color .wp-block-heading,
-.has-accent-1-background-color .wp-block-post-title,
-.has-accent-1-background-color .wp-block-query-title,
-.has-accent-1-background-color .wp-block-site-title,
-.has-accent-1-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-bright-green-color {
-  color: var(--wp--preset--color--primary) !important;
-}
-
-.has-bright-green-border-color {
-  border-color: var(--wp--preset--color--primary) !important;
-}
-
-.has-bright-green-background-color {
-  background-color: var(--wp--preset--color--primary) !important;
-  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
-}
-.has-bright-green-background-color .wp-block-heading,
-.has-bright-green-background-color .wp-block-post-title,
-.has-bright-green-background-color .wp-block-query-title,
-.has-bright-green-background-color .wp-block-site-title,
-.has-bright-green-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-dark-bright-green-color {
-  color: var(--wp--preset--color--primary-alt) !important;
-}
-
-.has-dark-bright-green-border-color {
-  border-color: var(--wp--preset--color--primary-alt) !important;
-}
-
-.has-dark-bright-green-background-color {
-  background-color: var(--wp--preset--color--primary-alt) !important;
-  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--off-white)) !important;
-}
-.has-dark-bright-green-background-color .wp-block-heading,
-.has-dark-bright-green-background-color .wp-block-post-title,
-.has-dark-bright-green-background-color .wp-block-query-title,
-.has-dark-bright-green-background-color .wp-block-site-title,
-.has-dark-bright-green-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-base-2-color {
-  color: var(--wp--preset--color--secondary) !important;
-}
-
-.has-base-2-border-color {
-  border-color: var(--wp--preset--color--secondary) !important;
-}
-
-.has-base-2-background-color {
-  background-color: var(--wp--preset--color--secondary) !important;
-  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--off-white)) !important;
-}
-.has-base-2-background-color .wp-block-heading,
-.has-base-2-background-color .wp-block-post-title,
-.has-base-2-background-color .wp-block-query-title,
-.has-base-2-background-color .wp-block-site-title,
-.has-base-2-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-2-color {
-  color: var(--wp--preset--color--secondary) !important;
-}
-
-.has-accent-2-border-color {
-  border-color: var(--wp--preset--color--secondary) !important;
-}
-
-.has-accent-2-background-color {
-  background-color: var(--wp--preset--color--secondary) !important;
-  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-2-background-color .wp-block-heading,
-.has-accent-2-background-color .wp-block-post-title,
-.has-accent-2-background-color .wp-block-query-title,
-.has-accent-2-background-color .wp-block-site-title,
-.has-accent-2-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-3-color {
-  color: var(--wp--preset--color--tertiary) !important;
-}
-
-.has-accent-3-border-color {
-  border-color: var(--wp--preset--color--tertiary) !important;
-}
-
-.has-accent-3-background-color {
-  background-color: var(--wp--preset--color--tertiary) !important;
-  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-3-background-color .wp-block-heading,
-.has-accent-3-background-color .wp-block-post-title,
-.has-accent-3-background-color .wp-block-query-title,
-.has-accent-3-background-color .wp-block-site-title,
-.has-accent-3-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-4-color {
-  color: var(--wp--preset--color--dark-gray) !important;
-}
-
-.has-accent-4-border-color {
-  border-color: var(--wp--preset--color--dark-gray) !important;
-}
-
-.has-accent-4-background-color {
-  background-color: var(--wp--preset--color--dark-gray) !important;
-  color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-4-background-color .wp-block-heading,
-.has-accent-4-background-color .wp-block-post-title,
-.has-accent-4-background-color .wp-block-query-title,
-.has-accent-4-background-color .wp-block-site-title,
-.has-accent-4-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-5-color {
-  color: var(--wp--preset--color--neutral-alt) !important;
-}
-
-.has-accent-5-border-color {
-  border-color: var(--wp--preset--color--neutral-alt) !important;
-}
-
-.has-accent-5-background-color {
-  background-color: var(--wp--preset--color--neutral-alt) !important;
-  color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--contrast)) !important;
-}
-.has-accent-5-background-color .wp-block-heading,
-.has-accent-5-background-color .wp-block-post-title,
-.has-accent-5-background-color .wp-block-query-title,
-.has-accent-5-background-color .wp-block-site-title,
-.has-accent-5-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-6-color {
-  color: var(--wp--preset--color--dark-alt) !important;
-}
-
-.has-accent-6-border-color {
-  border-color: var(--wp--preset--color--dark-alt) !important;
-}
-
-.has-accent-6-background-color {
-  background-color: var(--wp--preset--color--dark-alt) !important;
-  color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-6-background-color .wp-block-heading,
-.has-accent-6-background-color .wp-block-post-title,
-.has-accent-6-background-color .wp-block-query-title,
-.has-accent-6-background-color .wp-block-site-title,
-.has-accent-6-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-/*--------------------------------------------------------------
 # LUMINA Heading & Text Block Styles (Global Space)
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -995,6 +1249,253 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   }
 }
 
+/*------------------------------------------------------------------------------
+# Icons
+#
+# Note: Needed for multiple blocks so always load
+------------------------------------------------------------------------------*/
+/* 1. Standard Icon Links: Keeps theme link color & underline intact */
+[class*=is-style-icon-] a {
+  outline: none;
+  /* Do NOT set color or text-decoration here so normal text links stay styled */
+}
+
+/* 2. Pseudo-Elements (The Icons): Prevents underline bleed into the icon box */
+[class*=is-style-icon-] a::before,
+[class*=is-style-icon-] a::after {
+  text-decoration: none !important;
+  display: inline-flex;
+}
+
+/* 3. Hover State for Standard Icon Links */
+[class*=is-style-icon-] a:hover,
+[class*=is-style-icon-] a:active {
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+}
+
+/* ========================================================================== */
+/* 4. Standalone Icon Buttons (-no-text variants ONLY) */
+/* ========================================================================== */
+[class*=-no-text] a {
+  color: inherit;
+  text-decoration: none !important;
+  /* Keeps standalone UI controls (like scroll-down buttons) unstyled */
+}
+
+/* 5. No icons for post meta */
+.is-style-no-icon::before {
+  content: none !important;
+}
+
+/*--------------------------------------------------------------
+## Map TwentyTwentyFour, TwentyTwentyFive, and Flat Blocks colors
+--------------------------------------------------------------*/
+.has-accent-color {
+  color: var(--wp--preset--color--primary) !important;
+}
+
+.has-accent-border-color {
+  border-color: var(--wp--preset--color--primary) !important;
+}
+
+.has-accent-background-color {
+  background-color: var(--wp--preset--color--primary) !important;
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
+}
+.has-accent-background-color .wp-block-heading,
+.has-accent-background-color .wp-block-post-title,
+.has-accent-background-color .wp-block-query-title,
+.has-accent-background-color .wp-block-site-title,
+.has-accent-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-1-color {
+  color: var(--wp--preset--color--primary) !important;
+}
+
+.has-accent-1-border-color {
+  border-color: var(--wp--preset--color--primary) !important;
+}
+
+.has-accent-1-background-color {
+  background-color: var(--wp--preset--color--primary) !important;
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
+}
+.has-accent-1-background-color .wp-block-heading,
+.has-accent-1-background-color .wp-block-post-title,
+.has-accent-1-background-color .wp-block-query-title,
+.has-accent-1-background-color .wp-block-site-title,
+.has-accent-1-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-bright-green-color {
+  color: var(--wp--preset--color--primary) !important;
+}
+
+.has-bright-green-border-color {
+  border-color: var(--wp--preset--color--primary) !important;
+}
+
+.has-bright-green-background-color {
+  background-color: var(--wp--preset--color--primary) !important;
+  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
+}
+.has-bright-green-background-color .wp-block-heading,
+.has-bright-green-background-color .wp-block-post-title,
+.has-bright-green-background-color .wp-block-query-title,
+.has-bright-green-background-color .wp-block-site-title,
+.has-bright-green-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-dark-bright-green-color {
+  color: var(--wp--preset--color--primary-alt) !important;
+}
+
+.has-dark-bright-green-border-color {
+  border-color: var(--wp--preset--color--primary-alt) !important;
+}
+
+.has-dark-bright-green-background-color {
+  background-color: var(--wp--preset--color--primary-alt) !important;
+  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--off-white)) !important;
+}
+.has-dark-bright-green-background-color .wp-block-heading,
+.has-dark-bright-green-background-color .wp-block-post-title,
+.has-dark-bright-green-background-color .wp-block-query-title,
+.has-dark-bright-green-background-color .wp-block-site-title,
+.has-dark-bright-green-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-base-2-color {
+  color: var(--wp--preset--color--secondary) !important;
+}
+
+.has-base-2-border-color {
+  border-color: var(--wp--preset--color--secondary) !important;
+}
+
+.has-base-2-background-color {
+  background-color: var(--wp--preset--color--secondary) !important;
+  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--off-white)) !important;
+}
+.has-base-2-background-color .wp-block-heading,
+.has-base-2-background-color .wp-block-post-title,
+.has-base-2-background-color .wp-block-query-title,
+.has-base-2-background-color .wp-block-site-title,
+.has-base-2-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-2-color {
+  color: var(--wp--preset--color--secondary) !important;
+}
+
+.has-accent-2-border-color {
+  border-color: var(--wp--preset--color--secondary) !important;
+}
+
+.has-accent-2-background-color {
+  background-color: var(--wp--preset--color--secondary) !important;
+  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--off-white)) !important;
+}
+.has-accent-2-background-color .wp-block-heading,
+.has-accent-2-background-color .wp-block-post-title,
+.has-accent-2-background-color .wp-block-query-title,
+.has-accent-2-background-color .wp-block-site-title,
+.has-accent-2-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-3-color {
+  color: var(--wp--preset--color--tertiary) !important;
+}
+
+.has-accent-3-border-color {
+  border-color: var(--wp--preset--color--tertiary) !important;
+}
+
+.has-accent-3-background-color {
+  background-color: var(--wp--preset--color--tertiary) !important;
+  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--off-white)) !important;
+}
+.has-accent-3-background-color .wp-block-heading,
+.has-accent-3-background-color .wp-block-post-title,
+.has-accent-3-background-color .wp-block-query-title,
+.has-accent-3-background-color .wp-block-site-title,
+.has-accent-3-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-4-color {
+  color: var(--wp--preset--color--dark-gray) !important;
+}
+
+.has-accent-4-border-color {
+  border-color: var(--wp--preset--color--dark-gray) !important;
+}
+
+.has-accent-4-background-color {
+  background-color: var(--wp--preset--color--dark-gray) !important;
+  color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--off-white)) !important;
+}
+.has-accent-4-background-color .wp-block-heading,
+.has-accent-4-background-color .wp-block-post-title,
+.has-accent-4-background-color .wp-block-query-title,
+.has-accent-4-background-color .wp-block-site-title,
+.has-accent-4-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-5-color {
+  color: var(--wp--preset--color--neutral-alt) !important;
+}
+
+.has-accent-5-border-color {
+  border-color: var(--wp--preset--color--neutral-alt) !important;
+}
+
+.has-accent-5-background-color {
+  background-color: var(--wp--preset--color--neutral-alt) !important;
+  color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--contrast)) !important;
+}
+.has-accent-5-background-color .wp-block-heading,
+.has-accent-5-background-color .wp-block-post-title,
+.has-accent-5-background-color .wp-block-query-title,
+.has-accent-5-background-color .wp-block-site-title,
+.has-accent-5-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+.has-accent-6-color {
+  color: var(--wp--preset--color--dark-alt) !important;
+}
+
+.has-accent-6-border-color {
+  border-color: var(--wp--preset--color--dark-alt) !important;
+}
+
+.has-accent-6-background-color {
+  background-color: var(--wp--preset--color--dark-alt) !important;
+  color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--off-white)) !important;
+}
+.has-accent-6-background-color .wp-block-heading,
+.has-accent-6-background-color .wp-block-post-title,
+.has-accent-6-background-color .wp-block-query-title,
+.has-accent-6-background-color .wp-block-site-title,
+.has-accent-6-background-color .wp-block-site-tagline {
+  color: inherit;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
 /*-----------------------------------------------------------------------------
 # Override Parent Theme CSS
 -----------------------------------------------------------------------------*/
@@ -1021,12 +1522,53 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   box-shadow: none;
 }
 
-@media print {
-  * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+/*-----------------------------------------------------------------------------
+# Compatibility with other themes
+-----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+# Compatibility with other themes
+#
+# This is so that user's content created with other themes will look OK before
+# they update it for the Flat Blocks theme.
+-----------------------------------------------------------------------------*/
+:where(.has-background) {
+  background-color: var(--wp--preset--color--neutral);
+  color: var(--wp--preset--color--contrast);
+}
+
+:where(.has-text-color) {
+  color: var(--wp--preset--color--contrast);
+}
+
+:where(.has-border-color) {
+  border-color: var(--wp--preset--color--neutral-alt);
+}
+
+/*-----------------------------------------------------------------------------
+# Utilities: Admin Bar Overflow Fixes
+-----------------------------------------------------------------------------*/
+/* FIX WordPress Admin bar on phones not sticking to the top */
+@media only screen and (max-width: 600px) {
+  body > #wpadminbar {
+    position: fixed;
   }
 }
+/* Prevent Admin Bar Wrapping */
+#wpadminbar .quicklinks {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-between !important;
+}
+#wpadminbar .quicklinks #wp-admin-bar-root-default,
+#wpadminbar .quicklinks #wp-admin-bar-top-secondary {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+
+#wpadminbar * {
+  white-space: nowrap !important;
+}
+
 /*-----------------------------------------------------------------------------
 # Style Jetpack Contact Form buttons to match ours
 -----------------------------------------------------------------------------*/

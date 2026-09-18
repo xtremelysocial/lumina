@@ -1,0 +1,25 @@
+/*-----------------------------------------------------------------------------
+# Post Comments Link (Only w/WordPress v6.9+ or Gutenberg Plugin)
+-----------------------------------------------------------------------------*/
+@use "../icons/icons" as icons;;
+
+@include icons.svg-icon(
+	$class: 'wp-block-post-comments-link',
+	$icon: 'admin-comments',
+	$location: 'before'
+);
+
+/*-----------------------------------------------------------------------------
+# Comments Link: Custom
+-----------------------------------------------------------------------------*/
+
+/* Inactive Link */
+.is-style-link-inactive {
+	cursor: text;
+}
+
+.is-style-link-inactive a {
+	color: inherit;
+	text-decoration: none;
+	pointer-events: none;
+}

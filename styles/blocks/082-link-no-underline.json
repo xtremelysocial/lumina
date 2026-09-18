@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "link-no-underline",
+	"title": "No Underline Link",
+	"blockTypes": [ "core/paragraph", "core/list-item", "core/categories", "core/latest-posts", "core/latest-comments", "core/page-list", "core/post-title", "core/post-terms", "core/post-comments-link" ],
+	"styles": {
+		"elements": {
+			"link": {
+				"typography": {
+					"textDecoration": "none"
+				}
+			}
+		}
+	}
+}

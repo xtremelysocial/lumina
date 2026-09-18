@@ -1,0 +1,52 @@
+/*-----------------------------------------------------------------------------
+# LUMINA Separator — Base Styles Engine (separator.scss)
+-----------------------------------------------------------------------------*/
+
+.wp-block-separator {
+
+	/* 1. BASE RESETS & SPACING */
+	border: none !important;
+	height: 1px;
+	margin-block-end: var(--wp--style--block-gap, 1.5rem);
+
+	/* Thickness variations */
+	&.is-style-thick,
+	&.is-style-thick-wide {
+		height: 2px;
+	}
+
+	/* Dots variation uses font text rendering */
+	&.is-style-dots {
+		height: auto;
+		background-color: transparent !important;
+		border: none !important;
+	}
+
+	/* 2. DYNAMIC COLOR FALLBACKS & INHERITANCE */
+	:where(&) {
+		background-color: currentColor;
+	}
+
+	.has-background &:not(.has-background) {
+		color: inherit;
+	}
+
+	/* 3. INHERENT WIDTH TRACKS */
+	/* Short accent line (Default, Thick) */
+	&:not(.is-style-wide):not(.is-style-dots):not(.is-style-thick-wide) {
+		width: calc(6 * var(--wp--style--block-gap));
+	}
+
+	/* Wide-width container lines (Wide, Dotted, Thick-Wide) */
+	&.is-style-wide:not(.alignfull),
+	&.is-style-dots:not(.alignfull),
+	&.is-style-thick-wide:not(.alignfull) {
+		width: 100%;
+	}
+	
+	/* FIX to center separators when user selects alignfull on them */
+	.wp-block-separator.alignfull {
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+}

@@ -1,0 +1,64 @@
+/*-----------------------------------------------------------------------------
+# Latest Posts
+-----------------------------------------------------------------------------*/
+
+// WordPress breakpoints
+@use "@wordpress/base-styles/breakpoints";
+
+/* Increase post title size */
+.wp-block-latest-posts.is-grid .wp-block-latest-posts__post-title {
+	font-size: var(--wp--preset--font-size--medium);
+	line-height: 1.1;
+}
+
+/* Set post thumbnails to match blog */
+.wp-block-latest-posts__featured-image img {
+	border-radius: var(--wp--custom--border--radius);
+	border: 1px solid var(--wp--custom--color--border);
+	padding: var(--wp--preset--spacing--20);
+	box-shadow: var(--wp--custom--shadow--default);
+}
+
+.wp-block-latest-posts__featured-image.aligncenter {
+	margin-bottom: var(--wp--preset--spacing--30);
+}
+
+/* Add some padding to plain posts list */
+.wp-block-latest-posts:not(.is-grid) li {
+	margin-bottom: var(--wp--preset--spacing--30);
+}
+
+/* Remove extra bottom padding on posts grid */
+.wp-block-latest-posts.is-grid li {
+	margin-bottom: 0;
+}
+
+/* Override horizontal padding on mobile (600px) */
+
+@media only screen and (max-width: #{ (breakpoints.$break-small) }) {
+	.wp-block-latest-posts.is-grid li {
+        margin-right: 0;
+    }
+}
+
+/*-----------------------------------------------------------------------------
+# Latest Posts: Custom
+-----------------------------------------------------------------------------*/
+
+/* Bullets */
+.wp-block-latest-posts.is-style-bullets.wp-block-latest-posts__list:not(.is-grid) {
+	list-style: disc;
+	padding-left: 2em;
+}
+
+.wp-block-latest-posts.is-style-bullets:not(.is-grid) li {
+    list-style: disc;
+	overflow: visible;
+	margin-bottom: 0;
+}
+
+/* No Read More link */
+.is-style-no-readmore .wp-block-latest-posts__post-excerpt > .wp-block-latest-posts__read-more {
+	display: none;
+}
+

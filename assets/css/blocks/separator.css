@@ -1,0 +1,54 @@
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/separator.scss ***!
+  \***************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/*-----------------------------------------------------------------------------
+# LUMINA Separator — Base Styles Engine (separator.scss)
+-----------------------------------------------------------------------------*/
+.wp-block-separator {
+  /* 1. BASE RESETS & SPACING */
+  border: none !important;
+  height: 1px;
+  margin-block-end: var(--wp--style--block-gap, 1.5rem);
+  /* Thickness variations */
+}
+.wp-block-separator.is-style-thick, .wp-block-separator.is-style-thick-wide {
+  height: 2px;
+}
+.wp-block-separator {
+  /* Dots variation uses font text rendering */
+}
+.wp-block-separator.is-style-dots {
+  height: auto;
+  background-color: transparent !important;
+  border: none !important;
+}
+.wp-block-separator {
+  /* 2. DYNAMIC COLOR FALLBACKS & INHERITANCE */
+}
+:where(.wp-block-separator) {
+  background-color: currentColor;
+}
+.has-background .wp-block-separator:not(.has-background) {
+  color: inherit;
+}
+.wp-block-separator {
+  /* 3. INHERENT WIDTH TRACKS */
+  /* Short accent line (Default, Thick) */
+}
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots):not(.is-style-thick-wide) {
+  width: calc(6 * var(--wp--style--block-gap));
+}
+.wp-block-separator {
+  /* Wide-width container lines (Wide, Dotted, Thick-Wide) */
+}
+.wp-block-separator.is-style-wide:not(.alignfull), .wp-block-separator.is-style-dots:not(.alignfull), .wp-block-separator.is-style-thick-wide:not(.alignfull) {
+  width: 100%;
+}
+.wp-block-separator {
+  /* FIX to center separators when user selects alignfull on them */
+}
+.wp-block-separator .wp-block-separator.alignfull {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

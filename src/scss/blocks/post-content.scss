@@ -1,0 +1,16 @@
+/*-----------------------------------------------------------------------------
+# Post Nav Links
+-----------------------------------------------------------------------------*/
+.post-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--wp--preset--spacing--30);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
+  background-color: var(--wp--preset--color--neutral);
+  border: 1px solid var(--wp--custom--color--border);
+  border-radius: var(--wp--custom--border--radius);
+}

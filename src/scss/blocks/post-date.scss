@@ -1,0 +1,10 @@
+/*-----------------------------------------------------------------------------
+# Post Date
+-----------------------------------------------------------------------------*/
+@use "../icons/icons" as icons;;
+
+@include icons.svg-icon(
+	$class: 'wp-block-post-date',
+	$icon: 'calendar-alt',
+	$location: 'before'
+);

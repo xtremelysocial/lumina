@@ -1,0 +1,97 @@
+/*------------------------------------------------------------------------------
+# Margins (Vertical spacing)
+------------------------------------------------------------------------------*/
+
+/* 
+ * Let content before main handle it's own top margin (e.g. page titles, 
+ * featured images 
+ */
+// .wp-site-blocks > .wp-block-template-part,
+// .wp-site-blocks > .wp-block-template-part > .wp-block-template-part,
+// .wp-site-blocks > main#page-content {
+// 	margin-block-start: 0;
+// 	
+// 	> :not(.alignfull):not(.has-background):not(.wp-block-post-content) {
+// 		margin-block-start: var(--wp--style--block-gap);
+// 	}
+// }
+
+/* Don't add top margin on column blocks in templates with sidebars */
+// main#page-content > .wp-block-columns > .wp-block-column,
+// main#page-content > .wp-block-post-content {
+// 	margin-block-start: 0;
+// }
+
+// .wp-block-post-content > :first-child.alignfull {
+// 	margin-block-start: 0; 
+// }
+// :root :where(.is-layout-constrained).wp-block-post-content > :first-child:not(.alignfull.has-background),
+// :root :where(.wp-block-post-content) > :first-child:not(.alignfull.has-background),
+// .wp-block-post-content > :first-child:not(.alignfull.has-background) {
+// 	margin-block-start: var(--wp--style--block-gap); 
+// }
+// 
+// main#page-content > :last-child:not(.alignfull) {
+// 	margin-block-end: var(--wp--style--block-gap);
+// }
+// 
+// .site-footer > .wp-block-columns > .wp-block-column > .wp-block-template-part > :first-child:not(.alignfull):not(.has-background) {
+// 	margin-block-start: 0; 
+// }
+
+/* FLAT-BLOCKS CURRENT MARGIN CSS */
+
+/* Don't add top margin to top-level blocks (header, title, main, footer) */
+:root :where(.wp-site-blocks) > * {
+	margin-block-start: 0;
+}
+
+/* Add top margin to main unless its the post content or a featured image */
+main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-image):not(.wp-block-cover):not(.wp-block-template-part):not(.wp-block-image):not(.entry-header-wrapper.has-background):not(.content-home-top) {
+	margin-block-start: var(--wp--style--block-gap);
+}
+
+
+/* Push top margin down on Groups and Columns that have template parts in them */
+:root :where(.is-layout-flow) > .wp-block-template-part > *,
+:root :where(.is-layout-constrained) > .wp-block-template-part > * {
+ 	margin-block-start: var(--wp--style--block-gap);
+}
+
+:root :where(.is-layout-flow) > .wp-block-template-part > :first-child:not(.wp-block-comments):not(.wp-block-query),
+:root :where(.is-layout-constrained) > .wp-block-template-part > :first-child:not(.wp-block-comments):not(.wp-block-query) {
+	margin-block-start: 0;
+}
+
+/* But don't put any top margin on the individual columns */
+:root :where(.wp-block-columns-is-layout-flow) > .wp-block-column,
+:root :where(.wp-block-columns-is-layout-constrained) > .wp-block-column {
+	margin-block-start: 0;
+}
+
+/* 
+ * Push top margin on Post Content down to the block level so users can control 
+ * it by adjusting margin on the block itself.
+ */
+.wp-site-blocks .wp-block-post-content {
+	margin-block-start: 0;
+}
+
+:root :where(.wp-block-post-content) > :first-child:not(.alignfull) { //,
+	margin-block-start: var(--wp--style--block-gap);
+}
+
+/* 
+ * But don't add it when the Template has columns (i.e. there is a Sidebar) and 
+ * the Post Content is the first thing in the column (i.e. No Featured Image before 
+ * it)*/
+main > .wp-block-columns > .wp-block-column > :first-child.wp-block-post-content > :first-child {
+	margin-block-start: 0;
+}
+
+/* Add bottom margin to main unless its the post content, then add it to that */
+main > :last-child:not(.wp-block-post-content):not(:empty),
+:root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
+:root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {	
+	margin-block-end: var(--wp--style--block-gap);
+}

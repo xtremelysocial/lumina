@@ -1,0 +1,14 @@
+/*-----------------------------------------------------------------------------
+# Table
+-----------------------------------------------------------------------------*/
+
+/* Allow tables to scroll on mobile */
+.wp-block-table {
+	overflow-x: scroll;
+}
+
+/* On striped tables, alternate our neutral and neutral-alt colors */
+.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+    background-color: var(--wp--preset--color--light-gray);
+	color: var(--wp--preset--color--almost-black);
+}

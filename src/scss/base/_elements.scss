@@ -1,0 +1,58 @@
+/*-----------------------------------------------------------------------------
+# Elements
+-----------------------------------------------------------------------------*/
+
+/* Use bold font-weight from theme.json */
+strong, 
+b {
+	font-weight: var(--wp--custom--typography--font-weight--bold, 500);
+}
+
+/* Prevent code from breaking layout and use smaller font */
+code,
+pre {
+	overflow-x: scroll; //auto;
+}
+
+/* Style only non-block code */
+code:not(pre > code),
+pre:not(.wp-block-code) {
+	overflow-x: scroll; //auto;
+	font-size: var(--wp--preset--font-size--small);
+// 	background-color: var(--wp--preset--color--neutral);
+	padding: 5px;
+	border-radius: var(--wp--custom--border--radius, 5px); 
+	border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--border--color, var(--wp--preset--color--neutral-alt));
+}
+
+/* Style lists */
+ol, 
+ul {
+	margin-bottom: 0;
+}
+
+ol.has-background,
+ul.has-background {
+// 	&:not(.wp-block-navigation__container, .wp-block-navigation-submenu, .wp-block-page-list) {
+	&:not(.wp-block-navigation__container):not(.wp-block-navigation-submenu):not(.wp-block-page-list) {
+		padding: var(--wp--preset--spacing--40);
+		list-style-position: inside;
+	}
+}
+
+/* Center captions and don't underline links in them by default */
+.wp-element-caption {
+	text-align: center;
+}
+
+.wp-element-caption a {
+	text-decoration: none;
+}
+
+/* Style raw HTML quotes like the block quotes */
+/* Target strictly naked, legacy blockquotes—ignore both real quotes and pullquotes */
+:where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
+    border-left: 6px solid var(--wp--preset--color--highlight--alt);
+//     font-size: var(--wp--preset--font-size--medium);
+//     padding-left: var(--wp--preset--spacing--40);
+}

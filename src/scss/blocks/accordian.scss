@@ -1,0 +1,13 @@
+/*-----------------------------------------------------------------------------
+# Accordian
+-----------------------------------------------------------------------------*/
+
+// .wp-block-accordion-heading__toggle:hover {
+// 	& .wp-block-accordion-heading__toggle-title {
+// 		text-decoration-line: none; 
+// 	}
+// }
+
+.wp-block-accordion-heading__toggle:hover .wp-block-accordion-heading__toggle-title {
+	text-decoration: none !important;
+}

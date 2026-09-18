@@ -1,0 +1,10 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "icon-arrow-down-alt2-no-text",
+	"title": "Arrow Down No Text",
+	"blockTypes": [ "core/paragraph" ],
+	"styles": {
+		"css": ""
+	}
+}

@@ -1,0 +1,18 @@
+/*-----------------------------------------------------------------------------
+# Post Featured Image
+-----------------------------------------------------------------------------*/
+.wp-block-post-featured-image img {
+	padding: var(--wp--preset--spacing--20);
+	box-shadow: var(--wp--custom--shadow--default);
+}
+
+/*-----------------------------------------------------------------------------
+# Custom: Post Featured Image
+-----------------------------------------------------------------------------*/
+
+/* Featured Image no border */
+.is-style-image-no-border img {
+	border: none;
+	border-radius: 0;
+	padding: 0;
+}

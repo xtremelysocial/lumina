@@ -1,0 +1,65 @@
+/*-----------------------------------------------------------------------------
+# Forms
+-----------------------------------------------------------------------------*/
+form {
+	margin-block-end: 0;
+}
+
+fieldset {
+	font-size: var(--wp--preset--font-size--normal, 18px);
+	font-weight: var(--wp--custom--typography--font-weight--normal, 300);
+	line-height: 1.5;
+	padding: var(--wp--preset--spacing--20) var(--wp--preset--spacing--40);
+	border: 1px solid var(--wp--preset--color--contrast);
+	border-radius: var(--wp--custom--border--radius);
+	text-shadow: none;
+	-webkit-appearance: none;
+}
+
+select,
+textarea,
+input:not(.file):not(.wp-element-button) {
+	font-family: inherit;
+// 	background-color: var(--wp--custom--color--field--background, revert);
+// 	color: var(--wp--custom--color--field--text, revert);
+	background-color: var(--wp--custom--color--field--background);
+	color: var(--wp--custom--color--field--text);
+}
+
+select {
+	font-size: var(--wp--preset--font-size--small, 16px);
+	font-weight: var(--wp--custom--typography--font-weight--normal, 300);
+	line-height: 1.5;
+	border-radius: var(--wp--preset--spacing--20);
+	text-shadow: none;
+	border: 1px solid var(--wp--custom--color--field--border, var(--wp--preset--color--dark-gray));
+}
+  
+textarea,
+input {
+	font-size: var(--wp--preset--font-size--normal);
+	font-weight: var(--wp--custom--typography--font-weight--normal, 300);
+	line-height: 1.5;
+	border-radius: var(--wp--preset--spacing--20);
+	text-shadow: none;
+}
+
+textarea,
+input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="button"]):not([type="image"]):not([class*="button"]):not(.wp-block-button__link) {
+	-webkit-appearance: none;
+// 	border: 1px solid var(--wp--preset--color--contrast);
+	border: 1px solid var(--wp--custom--color--field--border, var(--wp--preset--color--dark-gray));
+}
+
+/* Style focus outline */
+input:focus,
+textarea:focus {
+	outline: none !important;
+	box-shadow: 0 0 0 3px var(--wp--custom--color--field--outline, var(--wp--custom--outline--color));
+	transition: box-shadow 0.3s ease;
+}
+select:focus,
+select:focus-visible {
+	outline: var(--wp--custom--color--field--outline, var(--wp--custom--outline--color)) 5px solid;
+	transition: outline 0.3s ease;
+}

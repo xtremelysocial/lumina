@@ -1,0 +1,6 @@
+/*-----------------------------------------------------------------------------
+# Query Pagination
+-----------------------------------------------------------------------------*/
+.wp-block-query-pagination-numbers .page-numbers:nth-last-child(n+2) {
+	padding-right: var(--wp--preset--spacing--30);
+}

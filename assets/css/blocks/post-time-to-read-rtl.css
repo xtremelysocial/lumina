@@ -1,0 +1,28 @@
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/post-time-to-read.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*-----------------------------------------------------------------------------
+# Post Time to Read
+-----------------------------------------------------------------------------*/
+.wp-block-post-time-to-read::before {
+  content: "";
+  background-color: currentColor;
+  display: inline-flex;
+  text-decoration: none;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+}
+
+.wp-block-post-time-to-read::before {
+  -webkit-mask-image: url(../../icons/theme/clock.svg);
+          mask-image: url(../../icons/theme/clock.svg);
+  margin-left: 0.15em;
+}

@@ -1,0 +1,48 @@
+/*-----------------------------------------------------------------------------
+# Latest Comments
+-----------------------------------------------------------------------------*/
+
+/* Match our font sizes, margins, and padding */
+.wp-block-latest-comments {
+	list-style: none;
+	
+	&:not(.is-style-bullets) {
+		padding-left: 0;
+		padding-inline-start: 0;
+	}
+	
+	li {
+		margin-bottom: var(--wp--preset--spacing--30);
+	}
+
+	.wp-block-latest-comments__comment {
+		margin-bottom: 0;
+	}
+
+	.wp-block-latest-comments__comment-date,
+	.wp-block-latest-comments__comment-excerpt p {
+		font-size: var(--wp--preset--font-size--small);
+	}
+}
+
+/*-----------------------------------------------------------------------------
+# Latest Comments: Custom
+-----------------------------------------------------------------------------*/
+
+/* Bullets style */
+.wp-block-latest-comments.is-style-bullets {
+	list-style: disc;
+
+	&:not(.has-avatars) {
+		padding-left: 2em;
+	}
+	
+	&.has-avatars .wp-block-latest-comments__comment {
+		list-style-position: inside;
+	}
+	
+	li {
+		list-style: disc;
+		margin-bottom: 0;
+	}
+}

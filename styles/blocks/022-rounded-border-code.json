@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "rounded-border",
+	"title": "Border",
+	"blockTypes": [ "core/code" ],
+	"isDefault": true,
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--neutral)"
+		},
+		"border": {
+			"style": "solid",
+			"width": "1px",
+			"color": "var(--wp--custom--color--border)",
+			"radius": "var(--wp--custom--border--radius)"
+		},
+		"spacing": {
+			"padding": "var:preset|spacing|40"
+		}
+	}
+}

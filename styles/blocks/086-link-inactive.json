@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "link-inactive",
+	"title": "Inactive Link",
+	"blockTypes": [ "core/post-comments-link" ],
+	"styles": {
+		"elements": {
+			"link": {
+				"typography": {
+					"color": "inherit",
+					"textDecoration": "none"
+				}
+			}
+		}
+	}
+}

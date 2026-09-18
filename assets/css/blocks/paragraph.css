@@ -1,0 +1,69 @@
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/paragraph.scss ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*-----------------------------------------------------------------------------
+# Paragraph
+-----------------------------------------------------------------------------*/
+.is-style-arrow-icon-no-text > a::after, .is-style-icon-arrow-down-alt2-no-text > a::after {
+  content: "";
+  background-color: currentColor;
+  display: inline-flex;
+  text-decoration: none;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+}
+
+/**
+ * Breakpoints & Media Queries
+ */
+/* Padding for colored backgrounds on paragraphs */
+p.has-background,
+.wp-block-paragraph.has-background {
+  padding: var(--wp--preset--spacing--40);
+}
+
+/* Adjust padding on mobile and tablet (782px) */
+/*-----------------------------------------------------------------------------
+# Paragraph: Custom
+-----------------------------------------------------------------------------*/
+/* Alignwide */
+p.is-style-alignwide {
+  max-width: var(--wp--style--global--wide-size) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/*  Deprecated: Down Arrow for Scroll Headers */
+.is-style-arrow-icon-no-text > a::after {
+  -webkit-mask-image: url(../../icons/theme/arrow-down-alt2.svg);
+          mask-image: url(../../icons/theme/arrow-down-alt2.svg);
+}
+
+.is-style-icon-arrow-down-alt2-no-text > a::after {
+  -webkit-mask-image: url(../../icons/theme/arrow-down-alt2.svg);
+          mask-image: url(../../icons/theme/arrow-down-alt2.svg);
+}
+
+.is-style-icon-arrow-down-alt2-no-text > a,
+.is-style-arrow-icon-no-text > a {
+  font-size: 0;
+  line-height: 1;
+  color: inherit;
+}
+.is-style-icon-arrow-down-alt2-no-text > a::after,
+.is-style-arrow-icon-no-text > a::after {
+  font-size: var(--wp--preset--font-size--x-large);
+}
+.is-style-icon-arrow-down-alt2-no-text > a:hover, .is-style-icon-arrow-down-alt2-no-text > a:active,
+.is-style-arrow-icon-no-text > a:hover,
+.is-style-arrow-icon-no-text > a:active {
+  text-decoration: none !important;
+}

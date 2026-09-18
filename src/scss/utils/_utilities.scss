@@ -1,0 +1,31 @@
+@use "@wordpress/base-styles/breakpoints";
+
+/*-----------------------------------------------------------------------------
+# Utilities: Admin Bar Overflow Fixes
+-----------------------------------------------------------------------------*/
+
+/* FIX WordPress Admin bar on phones not sticking to the top */
+@media only screen and (max-width: #{ (breakpoints.$break-small) }) {
+    body > #wpadminbar {
+        position: fixed;
+    }
+}
+
+/* Prevent Admin Bar Wrapping */
+#wpadminbar .quicklinks {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	justify-content: space-between !important;
+
+	#wp-admin-bar-root-default,
+	#wp-admin-bar-top-secondary {
+		display: flex !important;
+		flex-wrap: nowrap !important;
+	}
+}
+
+#wpadminbar {
+	* {
+		white-space: nowrap !important;
+	}
+}

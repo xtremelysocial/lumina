@@ -1,0 +1,31 @@
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/cover.scss ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*-----------------------------------------------------------------------------
+# Cover
+-----------------------------------------------------------------------------*/
+/* LIMIT cover image inner content to standard unless wide or full */
+.wp-block-cover .wp-block-cover__inner-container > * {
+  margin-right: auto;
+  margin-left: auto;
+}
+.wp-block-cover .wp-block-cover__inner-container > *:not(.alignfull):not(.alignwide) {
+  max-width: var(--wp--style--global--content-size);
+}
+.wp-block-cover .wp-block-cover__inner-container > *.alignwide, .wp-block-cover .wp-block-cover__inner-container > *.alignfull {
+  max-width: var(--wp--style--global--wide-size);
+}
+
+/* If cover used as site header, make sure it is layered above other covers */
+header > .wp-block-cover {
+  overflow: visible;
+  z-index: 3;
+}
+
+/* Default Contrast Color - Use black and white since base and contrast can change */
+:where(.wp-block-cover.is-light:not(.has-text-color)) {
+  color: #000;
+}
+:where(.wp-block-cover.is-light:not(.has-text-color)):has(.has-background-dim-30), :where(.wp-block-cover.is-light:not(.has-text-color)):has(.has-background-dim-40), :where(.wp-block-cover.is-light:not(.has-text-color)):has(.has-background-dim-50), :where(.wp-block-cover.is-light:not(.has-text-color)):has(.has-background-dim-60), :where(.wp-block-cover.is-light:not(.has-text-color)):has(.has-background-dim-70), :where(.wp-block-cover.is-light:not(.has-text-color)):has(.has-background-dim-80), :where(.wp-block-cover.is-light:not(.has-text-color)):has(.has-background-dim-90) {
+  color: #fff;
+}

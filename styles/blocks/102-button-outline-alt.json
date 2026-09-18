@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "button-outline-alt",
+	"title": "Outline Alt",
+	"blockTypes": [ "core/button" ],
+	"styles": {
+		"color": {
+			"text": "currentcolor",
+			"background": "transparent"
+		},
+		"border": {
+			"color": "currentcolor",
+			"width": "3px",
+			"style": "solid",
+			"radius": "9999px"
+		},
+		"spacing": {
+			"padding": {
+				"bottom": "calc(var(--wp--preset--spacing--30) - 3px)",
+				"left": "calc(var(--wp--preset--spacing--40) - 3px)",
+				"right": "calc(var(--wp--preset--spacing--40) - 3px)",
+				"top": "calc(var(--wp--preset--spacing--30) - 3px)"
+			}
+		}
+	}
+}

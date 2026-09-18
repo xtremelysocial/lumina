@@ -1,0 +1,182 @@
+/*-----------------------------------------------------------------------------
+# Buttons and Links
+-----------------------------------------------------------------------------*/
+
+/*
+ * Link and link hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+
+/* Base link underline styles */
+a:not(.wp-element-button, .wp-block-button__link, .wp-block-social-link-anchor),
+.wp-block-accordion-heading__toggle {
+
+	text-decoration-style: var(--wp--custom--link--style, solid);
+	text-decoration-thickness: var(--wp--custom--link--thickness, 1px);
+	text-underline-position: var(--wp--custom--link--position, under);
+	text-underline-offset: var(--wp--custom--link--offset, 0);
+	
+	// Establish the default line color (defaults to text color if not set)
+// 	text-decoration-color: var(--wp--custom--link--decoration-color, currentColor);
+}
+
+/* Link transitions */
+a,
+.wp-block-navigation a,
+.wp-block-navigation-submenu__toggle {
+	cursor: pointer;
+	
+// 	-webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+	will-change: opacity, filter; // Pre-promotes the layer to prevent GPU flash
+	backface-visibility: hidden;  // Enforces stable font rendering
+	
+	transition: 
+		opacity var(--wp--custom--animation--duration--short, 250ms) ease-in-out, 
+		color var(--wp--custom--animation--duration--short, 250ms) ease-in-out,
+// 		filter var(--wp--custom--animation--duration--short, 250ms) ease-in-out
+// 		text-decoration-color var(--wp--custom--animation--duration--short, 250ms) ease-in-out;
+}
+
+/* Link hovers */ 
+a:where(
+    :not(
+        .wp-element-button, 
+        .wp-block-button__link, 
+        .wp-block-social-link-anchor,
+        .wp-block-image a, 
+        figure > a,
+        .wp-block-post-featured-image a,
+        .wp-block-latest-posts__featured-image a,
+        .wp-block-media-text__media a
+    )
+) {
+    &:hover,
+    &:active {
+        opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+    }
+}
+
+/* Use IMAGE hover opacity on images that are links */
+.wp-block-image a,
+figure > a,
+.wp-block-post-featured-image a,
+.wp-block-latest-posts__featured-image a,
+.wp-block-media-text__media a {
+    &:hover,
+    &:active {
+        opacity: var(--wp--custom--color--image--hover-opacity, 0.8);
+    }
+}
+
+/* 
+ * Style basic buttons to match block buttons. 
+ */
+input[type=button]:not(.wp-element-button),
+input[type=submit][class*="button"]:not(.wp-element-button),
+input[type=submit][class*="submit"]:not(.wp-element-button),
+input[type=reset][class*="button"]:not(.wp-element-button),
+input[type=file]::file-selector-button {
+	background-color: var(--wp--custom--color--button--background, var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--primary)));
+	color: var(--wp--custom--color--button--text, var(--wp--preset--color--off-white));
+	border: none;
+	border-width: 0;
+	border-radius: var(--wp--custom--button--radius, 0);
+	padding: var(--wp--preset--spacing--30, 9px) var(--wp--preset--spacing--40, 18px);
+	font-size: var(--wp--preset--font-size--normal, 18px);
+	font-weight: var(--wp--custom--typography--font-weight--medium, 400);
+	line-height: 1.5;
+	text-shadow: none;
+}
+
+input[type=file] {
+	font-size: var(--wp--preset--font-size--small, 16px);
+	width: 100%;
+}
+
+/* 
+ * But override basic buttons to look like outlines on primary-colored 
+ * backgrounds 
+ */
+.has-primary-background-color input[type=button],
+.has-primary-background-color input[type=submit][class*="button"],
+.has-primary-background-color input[type=reset][class*="button"],
+.has-primary-background-color input[type=file]::file-selector-button {
+	border: 3px solid var(--wp--custom--color--button--text, var(--wp--preset--color--off-white));
+}
+
+/* Inherit color on outline style buttons */
+.is-style-outline, [class*="is-style-button-outline-"] {
+	> .wp-element-button, > .wp-block-button__link {
+		color: inherit;
+// 		&:hover, &:active {
+// 			opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+// 		}
+	}
+}
+
+/* FIX for WordPress v6.7 when older Button not within a Buttons container */
+.wp-site-blocks .wp-block-button__link {
+	width: auto;
+	height: auto;
+}
+
+/*
+ * Block Button hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):hover,
+input[type=submit][class*="button"]:hover,
+input[type=submit][class*="submit"]:hover,
+input[type=reset][class*="button"]:hover,
+input[type=file]::file-selector-button:hover,
+.wp-block-search__button:hover,
+.wp-block-file .wp-block-file__button:hover,
+.wp-block-button__link:hover {
+// 	cursor: pointer;
+	opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+}
+
+/* 
+ * Set Basic (non-block) button hover to match block button hover. 
+ */
+input[type=button]:not(.wp-element-button):hover,
+input[type=submit][class*="button"]:not(.wp-element-button):hover,
+input[type=reset][class*="button"]:not(.wp-element-button):hover,
+input[type=file]::file-selector-button:hover {
+	opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+}
+
+/*-----------------------------------------------------------------------------
+# Links: Custom Underlines
+-----------------------------------------------------------------------------*/
+
+/* Underline links */
+.is-style-link-underline a:not(.wp-block-navigation-item__content) {
+	text-decoration-line: underline;
+}
+
+.is-style-link-underline a:hover, 
+.is-style-link-underline a:active {
+	opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+}
+
+/* No Underline links */
+.is-style-link-no-underline a {
+  	text-decoration: none; // !important;
+}
+
+/* Underline links on hover */
+.is-style-link-underline-hover a {
+	text-decoration: none !important;
+	opacity: 1;
+	
+	&:hover,
+	&:active {
+		text-decoration-line: underline !important;
+		text-decoration-color: currentcolor !important;		
+		opacity: 1;
+	}
+}

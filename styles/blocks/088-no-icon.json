@@ -1,0 +1,10 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "no-icon",
+	"title": "No Icon",
+	"blockTypes": [ "core/post-author-name", "core/post-date", "core/post-terms", "core/post-comments-count", "core/post-comments-link", "core/post-time-to-read" ],
+	"styles": {
+		"css": ""
+	}
+}

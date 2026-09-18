@@ -1,0 +1,48 @@
+/*-----------------------------------------------------------------------------
+# List: Custom
+#
+# Note: Needed for multiple blocks so load in base stylesheet
+-----------------------------------------------------------------------------*/
+
+/* Checkmarks */
+.is-style-list-checkmarks {
+	list-style-type: '✓ ';
+}
+.rtl .is-style-list-checkmarks {
+	list-style-type: ' ✓';
+}
+
+/* Plain */
+.is-style-list-plain,
+.is-style-list-plain ul,
+.is-style-list-plain ol {
+	list-style: none;
+	padding-left: 0;
+}
+
+.is-style-list-plain li {
+	margin-bottom: var(--wp--preset--spacing--30);
+}
+
+.is-style-list-plain:not(.has-background),
+.is-style-list-plain:not(.has-background) li {
+	margin-left: 0;
+}
+
+.is-style-list-plain:not(.has-background) li ul li {
+	padding-left: var(--wp--preset--spacing--40);
+}
+
+/* Plain Centered */
+.is-style-list-plain-centered,
+.is-style-list-plain-centered ul,
+.is-style-list-plain-centered ol {
+	list-style: none;
+	padding-left: 0;
+	margin-left: 0;
+	text-align: center;
+}
+
+.is-style-list-plain-centered li {
+	margin-left: 0;
+}

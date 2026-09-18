@@ -1,0 +1,8 @@
+/*-----------------------------------------------------------------------------
+# Comments Pagination
+-----------------------------------------------------------------------------*/
+
+/* Add padding to comment page numbers */
+.wp-block-comments-pagination .page-numbers:nth-last-child(n+2) {
+	padding-right: var(--wp--preset--spacing--30);
+}

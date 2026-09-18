@@ -1,16 +1,14 @@
 //* ==========================================================================
-//   00 LUMINA STYLES: Theme Style CSS
+//   00 LUMINA BASE STYLES: Theme Base Style CSS
 //		Compiles to theme-styles.css
 //   ========================================================================== */
- 
-@forward "images-aspect-ratios";
-@forward "images-hover";
-@forward "images-motion";
-@forward "list-dividers";
+
+@forward "normalize";
+@forward "elements";
+@forward "forms";
+@forward "buttons-links";
+@forward "alignments";
+@forward "margins";
 @forward "margins-macro-micro";
-@forward "other-themes";
-@forward "separator-styles";
-@forward "sidebars";
-@forward "other-themes";
-@forward "theme-overrides";
-@forward "print";
+@forward "lists";
+ 

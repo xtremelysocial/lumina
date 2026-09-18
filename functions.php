@@ -21,8 +21,8 @@ if ( ! function_exists( 'lumina_theme_support' ) ) :
 	function lumina_theme_support() {
 
 		// Theme widths from CSS and theme.json
-		$full_size = apply_filters( 'xtremelysocial_full_size', 1600 );
-		$wide_size = apply_filters( 'xtremelysocial_content_size', 1146 );
+		$full_size    = apply_filters( 'xtremelysocial_full_size', 1600 );
+		$wide_size    = apply_filters( 'xtremelysocial_content_size', 1146 );
 		$content_size = apply_filters( 'xtremelysocial_content_size', 760 );
 
 		// Full width images: 16:9 and ultrawide 21:9
@@ -49,7 +49,6 @@ if ( ! function_exists( 'lumina_theme_support' ) ) :
 			'assets/css/theme-styles.css',
 			$mode_css,
 			'assets/css/theme-engine.css',
-// 			'assets/css/editor-styles.css',
 			'assets/css/theme-editor-styles.css',
 		);
 
@@ -72,19 +71,18 @@ endif;
 $includes = array (
 	'/inc/block-bindings.php',
 	'/inc/block-patterns.php',
-// 	'/inc/block-variations.php',
 	'/inc/body-classes.php',
 	'/inc/color-scheme-selector.php',
 	'/inc/icons.php',
 	'/inc/images.php',
-	'/inc/parent-theme.php',
 );
 
 $includes = apply_filters( 'lumina_load_includes', $includes );
 
 foreach ( $includes as $include ) {
-	if ( file_exists( get_stylesheet_directory() . $include ) ) {
-		include_once get_stylesheet_directory() . $include;
+	$file_path = get_theme_file_path( $include );
+	if ( file_exists( $file_path ) ) {
+		include_once $file_path;
 	}
 }
 
@@ -96,55 +94,50 @@ add_action( 'wp_enqueue_scripts', 'lumina_load_styles', 20 );
 if ( ! function_exists( 'lumina_load_styles' ) ) :
 
 	function lumina_load_styles() {
-
-		// Dynamically get parent theme slug (e.g. 'flat-blocks') only when active as a child theme
-		$deps = array();
-		if ( is_child_theme() ) {
-			$deps[] = get_template(); 
-		}
+	
+		$deps = is_child_theme() ? array( get_template() ) : array();
 
 		// 1. Core Theme CSS
-		lumina_enqueue_style( 
-			get_stylesheet_directory() . '/assets/css/theme-styles.css',
-			$deps
-		);
+		lumina_enqueue_style( 'assets/css/theme-styles.css', $deps );
 
 		// 2. Conditionally Enqueue Light or Dark Mode
 		$active_mode = lumina_get_active_theme_mode();
 		$mode_file   = ( $active_mode === 'dark' ) ? 'theme-dark-mode.css' : 'theme-light-mode.css';
 
-		lumina_enqueue_style( 
-			get_stylesheet_directory() . '/assets/css/' . $mode_file, 
-			array( 'theme-styles' )
-		);
+		lumina_enqueue_style( 'assets/css/' . $mode_file, array( 'theme-styles' ) );
 
 		// 3. Lumina Engine Resting State CSS
-		lumina_enqueue_style( 
-			get_stylesheet_directory() . '/assets/css/theme-engine.css', 
-			array( 'theme-styles' ) 
-		);
+		lumina_enqueue_style( 'assets/css/theme-engine.css', array( 'theme-styles' ) );
 
 		// 4. Lumina Engine Interactive State CSS (Front-end only)
 		if ( ! is_admin() ) {
-			lumina_enqueue_style( 
-				get_stylesheet_directory() . '/assets/css/theme-interactions.css', 
-				array( 'theme-engine' ) 
+			lumina_enqueue_style( 'assets/css/theme-interactions.css', array( 'theme-engine' ) );
+		}
+
+		// 5. Versioning Asset
+		$asset_path = get_theme_file_path( 'assets/css/theme-styles.asset.php' );
+		$version    = file_exists( $asset_path )
+			? ( include $asset_path )['version'] ?? wp_get_theme()->get( 'Version' )
+			: wp_get_theme()->get( 'Version' );
+
+		// 6. Lumina Smooth Scroll JS (Front-end only)
+		$smoothscroll_path = get_theme_file_path( 'assets/js/smoothscroll.js' );
+		if ( ! is_admin() && file_exists( $smoothscroll_path ) ) {
+			wp_enqueue_script( 
+				'theme-smoothscroll', 
+				get_theme_file_uri( 'assets/js/smoothscroll.js' ), 
+				array( 'jquery' ), 
+				$version, 
+				true 
 			);
 		}
 
-		// 5. Lumina Physics / Gravity JS (Front-end only)
-		if ( ! is_admin() 
-			AND apply_filters( 'lumina_physics_js', true ) 
-			AND file_exists( get_stylesheet_directory() . '/assets/js/theme-physics.js' ) ) {
-
-			$main_asset = get_stylesheet_directory() . '/assets/css/theme-styles.asset.php';
-			$version    = file_exists( $main_asset )
-				? ( include $main_asset )['version'] ?? wp_get_theme()->get( 'Version' )
-				: wp_get_theme()->get( 'Version' );
-					
+		// 7. Lumina Physics / Gravity JS (Front-end only)
+		$physics_path = get_theme_file_path( 'assets/js/theme-physics.js' );
+		if ( ! is_admin() && apply_filters( 'lumina_physics_js', true ) && file_exists( $physics_path ) ) {
 			wp_enqueue_script( 
 				'theme-physics', 
-				get_stylesheet_directory_uri() . '/assets/js/theme-physics.js', 
+				get_theme_file_uri( 'assets/js/theme-physics.js' ), 
 				array( 'jquery' ), 
 				$version, 
 				true 
@@ -155,8 +148,6 @@ endif;
 
 /**
  * Load INDIVIDUAL Block CSS styles on 'init' (Applies to Front-End and Editor)
- * Strictly scans local Lumina child directory to prevent duplicate parent enqueues.
- * Set to priority 20 so it runs AFTER the parent theme.
  */
 add_action( 'init', 'lumina_load_block_styles', 20 );
 
@@ -164,39 +155,39 @@ if ( ! function_exists( 'lumina_load_block_styles' ) ) :
 
 	function lumina_load_block_styles() {
 
-		$block_path = '/assets/css/blocks/';
-		$child_dir  = get_stylesheet_directory() . $block_path;
+		$relative_block_path = 'assets/css/blocks/';
+		$block_dir           = get_theme_file_path( $relative_block_path );
 
-		// 1. Guard clause: Ensure directory exists before scanning
-		if ( ! is_dir( $child_dir ) ) {
+		// Guard clause
+		if ( ! is_dir( $block_dir ) ) {
 			return;
 		}
 
-		$block_styles = glob( $child_dir . '*.css' ); 
+		$block_styles = glob( $block_dir . '*.css' ); 
 		if ( empty( $block_styles ) ) {
 			return;
 		}
 
-		// 2. Get build version
-		$main_asset        = get_stylesheet_directory() . '/assets/css/theme-styles.asset.php';
-		$block_css_version = file_exists( $main_asset )
-			? ( include $main_asset )['version'] ?? wp_get_theme()->get( 'Version' )
+		// Get build version
+		$asset_path        = get_theme_file_path( 'assets/css/theme-styles.asset.php' );
+		$block_css_version = file_exists( $asset_path )
+			? ( include $asset_path )['version'] ?? wp_get_theme()->get( 'Version' )
 			: wp_get_theme()->get( 'Version' );
 
-		// 3. REGISTER main handle early on 'init' so it exists as a valid dependency
+		// Register main handle early on 'init' so it exists as a valid dependency
 		if ( ! wp_style_is( 'theme-styles', 'registered' ) ) {
-			$main_css_path = get_stylesheet_directory() . '/assets/css/theme-styles.css';
+			$main_css_path = get_theme_file_path( 'assets/css/theme-styles.css' );
 			if ( file_exists( $main_css_path ) ) {
 				wp_register_style(
 					'theme-styles',
-					get_stylesheet_directory_uri() . '/assets/css/theme-styles.css',
+					get_theme_file_uri( 'assets/css/theme-styles.css' ),
 					array(),
 					$block_css_version
 				);
 			}
 		}
 
-		// 4. Register block styles using native PHP basename
+		// Register block styles
 		foreach ( $block_styles as $file_path ) {
 			$file_slug = basename( $file_path, '.css' );
 
@@ -210,7 +201,7 @@ if ( ! function_exists( 'lumina_load_block_styles' ) ) :
 
 			wp_enqueue_block_style( "core/{$block_name}", array(
 				'handle' => $handle,
-				'src'    => get_stylesheet_directory_uri() . $block_path . "{$file_slug}.css",
+				'src'    => get_theme_file_uri( $relative_block_path . "{$file_slug}.css" ),
 				'path'   => $file_path,
 				'deps'   => array(),
 				'ver'    => $block_css_version,
@@ -218,29 +209,6 @@ if ( ! function_exists( 'lumina_load_block_styles' ) ) :
 
 			wp_style_add_data( $handle, 'rtl', 'replace' );
 		}
-	}
-endif;
-
-/**
- * Register additional block pattern categories
- */
-add_action( 'init', 'lumina_register_pattern_categories' );
-
-if ( ! function_exists( 'lumina_register_pattern_categories' ) ) :
-
-	function lumina_register_pattern_categories() {
-
-		$block_pattern_categories = array(
-			'lumina' => array( 'label' => __( 'All Lumina', 'lumina' ) ),
-		);
-
-		$block_pattern_categories = apply_filters( 'lumina_block_pattern_categories', $block_pattern_categories );
-
-		foreach ( $block_pattern_categories as $name => $properties ) {
-			if ( ! WP_Block_Pattern_Categories_Registry::get_instance()->is_registered( $name ) ) {
-				register_block_pattern_category( $name, $properties );
-			}
-		}	
 	}
 endif;
 
@@ -300,10 +268,7 @@ endif;
 /**
  * Anchor Tags for Scroll-To-Top
  */
-
-// if ( ! function_exists( 'lumina_body_open' ) ) :
-// if ( ! function_exists( 'lumina_body_open' ) AND ! function_exists( 'flatblocks_body_open') ):
-if ( ! function_exists( 'lumina_body_open' ) AND ! is_child_theme() ):
+if ( ! function_exists( 'lumina_body_open' ) && ! is_child_theme() ):
 
 	add_action( 'wp_body_open', 'lumina_body_open' );
 
@@ -326,51 +291,40 @@ endif;
 
 /**
  * Helper utility function to enqueue CSS styles with asset file versions
+ * Accepts a relative theme path (e.g. 'assets/css/theme-styles.css')
  */
 if ( ! function_exists( 'lumina_enqueue_style' ) ) :
 
-	function lumina_enqueue_style( $style, $custom_deps = array() ) {
+	function lumina_enqueue_style( $relative_path, $custom_deps = array() ) {
 
-		$version = wp_get_theme()->get( 'Version' ) ?? false;
-		$asset   = str_replace( '.css', '.asset.php', $style );
+		$file_path = get_theme_file_path( $relative_path );
 
-		if ( file_exists( $asset ) ) {
-			$asset_file = include( $asset );
+		if ( ! file_exists( $file_path ) ) {
+			return;
+		}
+
+		$version    = wp_get_theme()->get( 'Version' ) ?? false;
+		$asset_path = str_replace( '.css', '.asset.php', $file_path );
+
+		if ( file_exists( $asset_path ) ) {
+			$asset_file = include $asset_path;
 			if ( ! empty( $asset_file['version'] ) ) {
 				$version = $asset_file['version'];
 			}
 		}
 
-		$uri = str_replace( 
-			array( get_template_directory(), get_stylesheet_directory() ),
-			array( get_template_directory_uri(), get_stylesheet_directory_uri() ), 
-			$style 
-		);
+		$file_uri = get_theme_file_uri( $relative_path );
+		$handle   = str_replace( array( 'assets/css/', 'blocks/', '.css' ), '', $relative_path );
 		
-		$handle = str_replace( 
-			array( get_template_directory(), get_stylesheet_directory(), '/assets/css/', 'blocks/', '.css' ), 
-			'', 
-			$style 
-		);
-		
-		if ( ! empty( $custom_deps ) ) {
-			$deps = $custom_deps;
-		} else {
-			$deps = $handle === 'theme-styles' ? array() : array( 'theme-styles' );
-		}
-		
-		if ( file_exists( $style ) ) {
-			wp_enqueue_style( 
-				$handle, 
-				$uri, 
-				$deps, 
-				$version
-			);
+		$deps = ! empty( $custom_deps ) 
+			? $custom_deps 
+			: ( $handle === 'theme-styles' ? array() : array( 'theme-styles' ) );
 
-			$rtl = str_replace( '.css', '-rtl.css', $style );
-			if ( file_exists( $rtl ) ) {
-				wp_style_add_data( $handle, 'rtl', 'replace' );
-			}
+		wp_enqueue_style( $handle, $file_uri, $deps, $version );
+
+		$rtl_relative = str_replace( '.css', '-rtl.css', $relative_path );
+		if ( file_exists( get_theme_file_path( $rtl_relative ) ) ) {
+			wp_style_add_data( $handle, 'rtl', 'replace' );
 		}
 	} 
 endif;

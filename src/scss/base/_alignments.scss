@@ -1,0 +1,44 @@
+/*-----------------------------------------------------------------------------
+# Alignments
+-----------------------------------------------------------------------------*/
+
+/*
+ * Don't let anything be wider than our max width. This is so fullwidth images
+ * don't get so wide they lose resolution.
+ */
+.wp-site-blocks {
+	max-width: var(--wp--custom--layout--full-size, 1600px);
+	margin-left: auto;
+    margin-right: auto;
+}
+
+/* FIX align center for WordPress v6.7 */
+.aligncenter {
+	text-align: center;
+}
+
+/* ADD padding and margin to align left and align right to match wide width */
+.wp-site-blocks > .alignleft {
+	margin-right: var(--wp--style--root--padding-right, var(--wp--preset--spacing--50));
+}
+
+body .is-layout-constrained > .alignleft {
+	padding-left: calc(0.5 * (100% - var(--wp--style--global--wide-size)));
+	margin-inline-end: var(--wp--style--root--padding-right, var(--wp--preset--spacing--50));
+}
+
+.wp-site-blocks > .alignright {
+	margin-left: var(--wp--style--root--padding-left, var(--wp--preset--spacing--50));
+}
+
+body .is-layout-constrained > .alignright {
+	padding-right: calc(0.5 * (100% - var(--wp--style--global--wide-size)));
+	margin-inline-start: var(--wp--style--root--padding-left, var(--wp--preset--spacing--50));
+}
+
+/* Automatically clear floats on Groups with align left or right */
+.wp-block-group:not(.is-layout-flex):not(.is-style-fixed-header):has(.alignleft, .alignright)::after {
+	content: "";
+	clear: both;
+	display: table;
+}

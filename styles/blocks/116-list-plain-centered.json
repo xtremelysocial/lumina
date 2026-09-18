@@ -1,0 +1,11 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "list-plain-centered",
+	"title": "Plain Centered",
+	"blockTypes": [ "core/list", "core/page-list", "core/categories" ],
+	"styles": {
+		"css": ""
+	}
+}
+

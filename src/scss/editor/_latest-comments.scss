@@ -1,0 +1,14 @@
+/*-----------------------------------------------------------------------------
+# Latest Comments Editor Styles
+-----------------------------------------------------------------------------*/
+
+/* Editor has nested lists, so push padding down to nested one */
+.wp-block-latest-comments.is-style-bullets.block-editor-block-list__block {
+	padding-left: 0 !important;
+}
+.wp-block-latest-comments.is-style-bullets > .wp-block-latest-comments:not(.has-avatars) {
+	padding-left: 2em; /*var(--wp--preset--spacing--60);*/
+}
+.wp-block-latest-comments.is-style-bullets > .wp-block-latest-comments.has-avatars .wp-block-latest-comments__comment { 
+	list-style-position: inside;
+}

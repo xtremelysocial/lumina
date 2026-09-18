@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "image-no-border",
+	"title": "No Border",
+	"blockTypes": [ "core/post-featured-image" ],
+	"styles": {
+		"border": "none",
+		"spacing": {
+			"padding": "0"
+		}
+	}
+}

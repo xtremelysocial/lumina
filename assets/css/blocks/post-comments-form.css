@@ -1,0 +1,20 @@
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/post-comments-form.scss ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*-----------------------------------------------------------------------------
+# Post Comments Form
+-----------------------------------------------------------------------------*/
+/* Remove top margin on "Leave a Reply" */
+.comment-reply-title {
+  margin-top: 0;
+}
+
+/* Remove bottom margin on "Post Comment" button (it's in a paragraph)*/
+.wp-block-post-comments-form .form-submit.wp-block-button {
+  margin-bottom: 0;
+}
+
+/* Override no-shadow if our custom shadow default is set */
+.wp-block-post-comments-form input[type=submit].wp-element-button {
+  box-shadow: var(--wp--custom--shadow--default);
+}

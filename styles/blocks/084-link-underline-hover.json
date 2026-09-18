@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "link-underline-hover",
+	"title": "Hover Underline",
+	"blockTypes": [ "core/paragraph", "core/list-item", "core/categories", "core/latest-posts", "core/latest-comments", "core/page-list", "core/post-title", "core/post-terms" ],
+	"styles": {
+		"elements": {
+			"link": {
+				"typography": {
+					"textDecoration": "none"
+				},
+				":hover": {
+					"typography": {
+						"textDecoration": "underline"
+					}
+				}
+			}
+		}
+	}
+}

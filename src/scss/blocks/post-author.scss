@@ -1,0 +1,22 @@
+/*-----------------------------------------------------------------------------
+# Post Author
+-----------------------------------------------------------------------------*/
+
+.wp-block-post-author__name { 
+	margin-bottom: 0; 
+}
+
+.wp-block-post-author__avatar {
+    margin-right: var(--wp--style--block-gap);
+}
+
+.wp-block-post-author__avatar img {
+	border-radius: 50%; 
+	margin: 0;
+}
+
+.wp-block-post-author__bio {
+	font-size: var(--wp--preset--font-size--normal);
+	margin-top: var(--wp--style--block-gap);
+	margin-bottom: var(--wp--style--block-gap);
+}

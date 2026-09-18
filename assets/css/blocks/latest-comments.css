@@ -1,0 +1,42 @@
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/latest-comments.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*-----------------------------------------------------------------------------
+# Latest Comments
+-----------------------------------------------------------------------------*/
+/* Match our font sizes, margins, and padding */
+.wp-block-latest-comments {
+  list-style: none;
+}
+.wp-block-latest-comments:not(.is-style-bullets) {
+  padding-left: 0;
+  padding-inline-start: 0;
+}
+.wp-block-latest-comments li {
+  margin-bottom: var(--wp--preset--spacing--30);
+}
+.wp-block-latest-comments .wp-block-latest-comments__comment {
+  margin-bottom: 0;
+}
+.wp-block-latest-comments .wp-block-latest-comments__comment-date,
+.wp-block-latest-comments .wp-block-latest-comments__comment-excerpt p {
+  font-size: var(--wp--preset--font-size--small);
+}
+
+/*-----------------------------------------------------------------------------
+# Latest Comments: Custom
+-----------------------------------------------------------------------------*/
+/* Bullets style */
+.wp-block-latest-comments.is-style-bullets {
+  list-style: disc;
+}
+.wp-block-latest-comments.is-style-bullets:not(.has-avatars) {
+  padding-left: 2em;
+}
+.wp-block-latest-comments.is-style-bullets.has-avatars .wp-block-latest-comments__comment {
+  list-style-position: inside;
+}
+.wp-block-latest-comments.is-style-bullets li {
+  list-style: disc;
+  margin-bottom: 0;
+}

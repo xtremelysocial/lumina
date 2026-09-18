@@ -1,0 +1,50 @@
+/*-----------------------------------------------------------------------------
+# Cover
+-----------------------------------------------------------------------------*/
+
+/* LIMIT cover image inner content to standard unless wide or full */
+.wp-block-cover .wp-block-cover__inner-container {
+
+	& > * {
+		margin-left: auto;
+		margin-right: auto;	
+	}
+	
+	& > *:not(.alignfull):not(.alignwide) {
+		max-width: var(--wp--style--global--content-size); 
+	}
+	
+	& > *.alignwide,
+	& > *.alignfull {
+		max-width: var(--wp--style--global--wide-size); 
+	}
+}
+
+/* If cover used as site header, make sure it is layered above other covers */
+header > .wp-block-cover {
+	overflow: visible; 
+	z-index: 3;
+}
+
+/* Default Contrast Color - Use black and white since base and contrast can change */
+:where(.wp-block-cover.is-light:not(.has-text-color)) {
+//     color: #fff;
+    color: #000;
+//     color: var(--wp--preset--color--off-white);
+
+// 	&:has(.has-background-dim-0),
+// 	&:has(.has-background-dim-10),
+// 	&:has(.has-background-dim-20),
+// 	&:has(.has-background-dim-30) {
+// 		color: #000;
+	&:has(.has-background-dim-30),
+	&:has(.has-background-dim-40),
+	&:has(.has-background-dim-50),
+	&:has(.has-background-dim-60),
+	&:has(.has-background-dim-70),
+	&:has(.has-background-dim-80),
+	&:has(.has-background-dim-90) {
+		color: #fff;
+// 		color: var(--wp--preset--color--foreground);
+	}
+}
