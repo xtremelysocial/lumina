@@ -1,37 +1,6 @@
 /*--------------------------------------------------------------
 # LUMINA Table: Core WordPress Stripes
 --------------------------------------------------------------*/
-/* Striped tables: 60% light wash on odd rows with high-contrast dark text */
-.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
-  background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 60%, transparent);
-  color: var(--wp--preset--color--contrast, #1b1b1b);
-}
-
-.wp-block-table.is-style-stripes tbody tr:nth-child(even) {
-  background-color: transparent;
-  color: inherit;
-}
-
-// .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
-//   background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 35%, transparent);
-//   color: inherit;
-// }
-// 
-// .wp-block-table.is-style-stripes tbody tr:nth-child(even) {
-//   background-color: transparent;
-//   color: inherit;
-// }
-
-// .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
-//   background-color: color-mix(in srgb, currentColor 5%, transparent);
-//   color: inherit;
-// }
-// 
-// .wp-block-table.is-style-stripes tbody tr:nth-child(even) {
-//   background-color: transparent;
-//   color: inherit;
-// }
-
 /*--------------------------------------------------------------
 # LUMINA Table: Custom (Light & Dark Mode Adaptive)
 --------------------------------------------------------------*/

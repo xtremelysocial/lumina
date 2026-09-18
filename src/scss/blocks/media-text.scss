@@ -112,10 +112,10 @@
 			padding-right: 0;
 		}
 
-		/* Full-Bleed / No-Gap Panels: Apply spacing-60 padding directly to content */
-		&.is-style-no-gap > .wp-block-media-text__content {
-			padding: var(--wp--preset--spacing--60);
-		}
+//		/* Full-Bleed / No-Gap Panels: Apply spacing-60 padding directly to content */
+// 		&.is-style-no-gap > .wp-block-media-text__content {
+// 			padding: var(--wp--preset--spacing--60);
+// 		}
 
 		/* Background Cards: Clearance between stacked image and text content */
 		&.has-background:not(.is-style-no-gap) > .wp-block-media-text__content {

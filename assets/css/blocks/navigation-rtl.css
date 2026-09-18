@@ -4,23 +4,6 @@
 /**
  * Breakpoints & Media Queries
  */
-.is-style-icon-arrow-up-alt2 > a::before {
-  content: "";
-  background-color: currentColor;
-  display: inline-flex;
-  text-decoration: none;
-  position: relative;
-  height: 1em;
-  width: 1em;
-  vertical-align: middle;
-  -webkit-mask-size: contain;
-          mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-          mask-position: center;
-}
-
 /*-----------------------------------------------------------------------------
 # Navigation
 -----------------------------------------------------------------------------*/
@@ -61,7 +44,7 @@
 }
 
 /* Set opacity on hover only on the link label */
-.wp-block-navigation .wp-block-navigation-item__content:hover .wp-block-navigation-item__label, .wp-block-navigation .wp-block-navigation-item__content:active .wp-block-navigation-item__label {
+.wp-block-navigation-item__content:hover .wp-block-navigation-item__label, .wp-block-navigation-item__content:focus-visible .wp-block-navigation-item__label, .wp-block-navigation-item__content:active .wp-block-navigation-item__label {
   opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
 }
 
@@ -267,22 +250,4 @@ nav.wp-block-navigation.is-style-fixed-menu .wp-block-navigation__responsive-con
 .site-header.is-content-justification-center > nav.wp-block-navigation.is-style-fixed-menu .wp-block-navigation__responsive-container, .site-header.is-content-justification-center > .wp-block-template-part > nav.wp-block-navigation.is-style-fixed-menu .wp-block-navigation__responsive-container {
   right: calc(50% - 0.5 * var(--wp--custom--navigation--wide-width, 360px));
   left: auto;
-}
-
-/*-----------------------------------------------------------------------------
-# Custom: Up Arrow Icon
------------------------------------------------------------------------------*/
-.is-style-icon-arrow-up-alt2 > a::before {
-  -webkit-mask-image: url(../../icons/theme/arrow-up-alt2.svg);
-          mask-image: url(../../icons/theme/arrow-up-alt2.svg);
-  margin-left: 0.15em;
-}
-
-.is-style-icon-arrow-up-alt2 > a::before {
-  top: 0;
-}
-
-/* Set icons on navigation items to inline flex */
-[class*=is-style-icon-] > a.wp-block-navigation-item__content {
-  display: inline-flex;
 }

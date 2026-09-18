@@ -34,3 +34,51 @@
 .wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open {
   color: var(--wp--preset--color--contrast);
 }
+
+/* Non-clickable placeholder links (Desktop: hand cursor + hover highlight; Mobile: suppressed) */
+.wp-block-navigation {
+  /* 1. Disable click navigation on the link itself */
+}
+.wp-block-navigation a.wp-block-navigation-item__content[href="http://Pages"],
+.wp-block-navigation a.wp-block-navigation-item__content[href="#"],
+.wp-block-navigation a.wp-block-navigation-item__content[href="#0"] {
+  pointer-events: none;
+}
+.wp-block-navigation {
+  /* 2. Desktop: Hand cursor + color highlight when hovering the parent item */
+}
+.wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover {
+  /* Show pointer cursor on the parent LI */
+}
+.wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover:has(> a[href="http://Pages"]), .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover:has(> a[href="#"]), .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover:has(> a[href="#0"]) {
+  cursor: pointer;
+}
+.wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover {
+  /* Highlight text label */
+}
+.wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="http://Pages"],
+.wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="#"],
+.wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="#0"] {
+  color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
+}
+.wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="http://Pages"] .wp-block-navigation-item__label,
+.wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="#"] .wp-block-navigation-item__label,
+.wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="#0"] .wp-block-navigation-item__label {
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+}
+.wp-block-navigation {
+  /* 3. Mobile Overlay Open: Suppress pointer cursor and hover highlights */
+}
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:hover:has(> a[href="http://Pages"]), .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:hover:has(> a[href="#"]), .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:hover:has(> a[href="#0"]) {
+  cursor: default;
+}
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="http://Pages"],
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="#"],
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="#0"] {
+  color: inherit !important;
+}
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="http://Pages"] .wp-block-navigation-item__label,
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="#"] .wp-block-navigation-item__label,
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:hover > a.wp-block-navigation-item__content[href="#0"] .wp-block-navigation-item__label {
+  opacity: 1 !important;
+}

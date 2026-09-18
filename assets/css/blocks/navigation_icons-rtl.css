@@ -4,15 +4,16 @@
 /*-----------------------------------------------------------------------------
 # Custom: Up Arrow Icon
 -----------------------------------------------------------------------------*/
-.is-style-icon-scroll-up::before {
+.is-style-icon-scroll-up::before, .is-style-icon-arrow-up-alt2::before {
   content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
   background-color: currentColor;
-  display: inline-flex;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
   text-decoration: none;
   position: relative;
-  height: 1em;
-  width: 1em;
-  vertical-align: middle;
   -webkit-mask-size: contain;
           mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -25,6 +26,11 @@
   -webkit-mask-image: url(../../icons/theme/scroll-up.svg);
           mask-image: url(../../icons/theme/scroll-up.svg);
   margin-left: 0.15em;
+}
+
+.is-style-icon-arrow-up-alt2::before {
+  -webkit-mask-image: url(../../icons/theme/scroll-up.svg);
+          mask-image: url(../../icons/theme/scroll-up.svg);
 }
 
 /* Set icons on navigation items to inline flex */

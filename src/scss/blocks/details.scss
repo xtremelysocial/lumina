@@ -4,14 +4,9 @@
 
 // Bring details closer to the summary so they look connected
 .wp-block-details > summary + * {
-// 	margin-top: calc(0.5 * var(--wp--style--block-gap));
 	margin-top: var(--wp--preset--spacing--30);
 }
 
-// .wp-block-details,
-// .wp-block-details[open] > summary {
-// .wp-block-post-content .wp-block-details:not(.is-style-plain) > summary {
-// .wp-block-details.is-style-divider > summary {
 .wp-block-details:not(.is-style-plain) > summary {
 	border-bottom: 1px solid var(--wp--custom--color--border);
 	padding-bottom: var(--wp--preset--spacing--20, 6px);
@@ -24,8 +19,6 @@
 	align-items: center;
 	list-style: none; // Modern standard arrow strip
 	cursor: pointer;
-// 	font-weight: var(--wp--custom--typography--font-weight--normal);
-// 	font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 }
 
 // 2. Overkill fallback to ensure Safari behaves
@@ -45,13 +38,11 @@
 	font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 	font-family: monospace, sans-serif; // Keeps plus/minus structurally aligned
 	opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
-// 	margin-left: var(--wp--preset--spacing--30, 1rem);
-// 	flex-shrink: 0;
 	transition: transform var(--wp--custom--animation--duration--short, 250ms) ease;
 }
 
 // 4. Swap to a clean Unicode minus sign when the accordion is open
 .wp-block-details[open] > summary::after {
 	content: "−"; // Unicode minus sign looks much cleaner than a hyphen
-	opacity: 1; //0.9;
+	opacity: 1;
 }

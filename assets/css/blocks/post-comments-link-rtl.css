@@ -6,13 +6,14 @@
 -----------------------------------------------------------------------------*/
 .wp-block-post-comments-link::before {
   content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
   background-color: currentColor;
-  display: inline-flex;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
   text-decoration: none;
   position: relative;
-  height: 1em;
-  width: 1em;
-  vertical-align: middle;
   -webkit-mask-size: contain;
           mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -22,8 +23,8 @@
 }
 
 .wp-block-post-comments-link::before {
-  -webkit-mask-image: url(../../icons/theme/admin-comments.svg);
-          mask-image: url(../../icons/theme/admin-comments.svg);
+  -webkit-mask-image: url(../../icons/theme/comments.svg);
+          mask-image: url(../../icons/theme/comments.svg);
   margin-left: 0.15em;
 }
 

@@ -1500,28 +1500,8 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 # Override Parent Theme CSS
 -----------------------------------------------------------------------------*/
 /* Override parent theme's padding on colored blocks */
-.wp-site-blocks .wp-block-group.has-background:not(.alignfull):not(.is-layout-flex) {
-  padding-right: var(--wp--preset--spacing--60);
-  padding-left: var(--wp--preset--spacing--60);
-}
-
 /* Override parent theme's padding on images with borders */
-.wp-block-image.is-style-image-border img, .wp-block-image.is-style-image-round-border img, .wp-block-image.has-custom-border img,
-.wp-block-post-featured-image.is-style-image-border img,
-.wp-block-post-featured-image.is-style-image-round-border img,
-.wp-block-post-featured-image.has-custom-border img {
-  padding: 0;
-}
-
-.wp-block-gallery.is-style-image-border img, .wp-block-gallery.is-style-image-round-border img {
-  padding: 0 !important;
-}
-
 /* Override parent theme's box shadow on post featured images */
-.wp-block-post-featured-image img {
-  box-shadow: none;
-}
-
 /*-----------------------------------------------------------------------------
 # Compatibility with other themes
 -----------------------------------------------------------------------------*/

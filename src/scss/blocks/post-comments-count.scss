@@ -5,7 +5,8 @@
 
 @include icons.svg-icon(
 	$class: 'wp-block-post-comments-count',
-	$icon: 'admin-comments',
+// 	$icon: 'admin-comments',
+	$icon: 'comments',
 	$location: 'before'
 );
 

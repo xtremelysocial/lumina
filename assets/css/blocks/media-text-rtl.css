@@ -106,12 +106,6 @@
     padding-left: 0;
   }
   .wp-block-media-text.is-stacked-on-mobile {
-    /* Full-Bleed / No-Gap Panels: Apply spacing-60 padding directly to content */
-  }
-  .wp-block-media-text.is-stacked-on-mobile.is-style-no-gap > .wp-block-media-text__content {
-    padding: var(--wp--preset--spacing--60);
-  }
-  .wp-block-media-text.is-stacked-on-mobile {
     /* Background Cards: Clearance between stacked image and text content */
   }
   .wp-block-media-text.is-stacked-on-mobile.has-background:not(.is-style-no-gap) > .wp-block-media-text__content {

@@ -34,7 +34,9 @@ $nav-divider-color: color-mix(in srgb, var(--wp--preset--color--contrast, inheri
 
 /* Reset dropdown menu padding when expanded on mobile overlay nav */
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
-	padding: 0;
+// 	padding: 0;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 .wp-block-navigation.is-vertical.is-style-nav-dividers,

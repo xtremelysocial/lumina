@@ -6,7 +6,7 @@
 @use "../icons/icons" as icons;;
 
 // WordPress breakpoints
-@use "@wordpress/base-styles/breakpoints";
+// @use "@wordpress/base-styles/breakpoints";
 
 /* Padding for colored backgrounds on paragraphs */
 p.has-background,
@@ -40,37 +40,4 @@ p.is-style-alignwide {
 	max-width: var(--wp--style--global--wide-size) !important;
 	margin-left: auto !important;
     margin-right: auto !important;
-}
-
-/*  Deprecated: Down Arrow for Scroll Headers */
-@include icons.svg-icon( 
-	$class: 'is-style-arrow-icon-no-text', //deprecated
-	$icon: 'arrow-down-alt2',
-	$location: 'after',
-	$link: true,
-	$margin: false,
-);
-
-// Use this one instead of the one above
-@include icons.svg-icon(
-	$class: 'is-style-icon-arrow-down-alt2-no-text',
-	$icon: 'arrow-down-alt2',
-	$location: 'after',
-	$link: true,
-	$margin: false,
-);
-
-.is-style-icon-arrow-down-alt2-no-text > a,
-.is-style-arrow-icon-no-text > a { //deprecated
-	font-size: 0;
-	line-height: 1;
-	color: inherit;
-// 	text-decoration: none;
-	&::after {
-		font-size: var(--wp--preset--font-size--x-large);
-	}
-	&:hover,
-	&:active {
-		text-decoration: none !important;
-	}
 }

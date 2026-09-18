@@ -8,19 +8,14 @@
 // Assign SVG attributes to ::before or ::after
 %icon-pseudo {
 	content: '';
+	display: inline-block;
+	width: 1em;
+	height: 1em;
 	background-color: currentColor;
-	display: inline-flex;
+	vertical-align: -0.15em; // Locks icon center to the font cap-height
+	flex-shrink: 0;
 	text-decoration: none;
 	position: relative;
-// 	align-self: center;
-// 	top: -2px;	
-// 	top: -1px;	
-	height: 1em;
-	width: 1em;
-// 	height: 3em;
-// 	width: 3em;
-// 	font-size: var(--wp--preset--font-size--x-large);
-	vertical-align: middle;
 	mask-size: contain;
 	mask-repeat: no-repeat;
 	mask-position: center;
@@ -71,40 +66,52 @@
 	}
 }
 
-// SVG Icons Mixin: Adds SVG icons to multiple CSS classes
+// SVG Icons Mixin: Adds SVG icons to multiple CSS classes and optional aliases
 //
-// @icons		array	Array of icon slugs. e.g. ('calendar-alt', 'category')
-// @location	string	pseudo location: 'before' or 'after'
-// @addl-class	bool	Suffix to add another class. e.g. "-no-text"
+// @param $icons     list|string  Array or single icon slug. e.g. ('calendar-alt', 'category')
+// @param $location  string       Pseudo location: 'before' or 'after'
+// @param $link      bool         Whether icon applies to an <a> tag
+// @param $aliases   list|string  Class suffix(es) or alias slug(s). e.g. '-no-text' or ('-no-text', '-compact', 'custom-icon')
 //
 @mixin svg-icons(
 	$icons,
 	$location,
 	$link: false,
-	$addl-class: null,
+	$aliases: null,
 ) {
 
 	// Loop through the icon list and add the icon CSS
 	$prefix: 'is-style-icon-';
-	
+
 	@each $icon in $icons {
+		// Base class generation: .is-style-icon-{icon}
 		@include svg-icon(
 			#{$prefix}#{$icon},
 			#{$icon},
-			#{$location},
+			$location,
 			$link,
 			$margin: true,
 		);
-		
-		// Add additional class, if desired
-		@if $addl-class {
-			@include svg-icon(
-				#{$prefix}#{$icon}#{$addl-class},
-				#{$icon},
-				#{$location},
-				$link,
-				$margin: false,
-			);		
+
+		// Loop through alias list, if provided
+		@if $aliases {
+			@each $alias in $aliases {
+				// If $alias starts with '-', treat it as a suffix (e.g. 'calendar-alt-no-text')
+				// Otherwise, treat it as a full standalone alias slug (e.g. 'custom-alias')
+				$slug: if(
+					str-slice($alias, 1, 1) == '-',
+					#{$icon}#{$alias},
+					#{$alias}
+				);
+
+				@include svg-icon(
+					#{$prefix}#{$slug},
+					#{$icon},
+					$location,
+					$link,
+					$margin: false,
+				);
+			}
 		}
 	}
 }

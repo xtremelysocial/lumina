@@ -5,6 +5,7 @@
 
 @include icons.svg-icon(
 	$class: 'wp-block-post-date',
-	$icon: 'calendar-alt',
+// 	$icon: 'calendar-alt',
+	$icon: 'date',
 	$location: 'before'
 );

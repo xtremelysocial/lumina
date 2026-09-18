@@ -4,15 +4,16 @@
 /*--------------------------------------------------------------
 # LUMINA Custom: Paragraph (Icons)
 --------------------------------------------------------------*/
-.is-style-icon-scroll-down > a::after, .is-style-icon-scroll-down-no-text > a::after {
+.is-style-icon-scroll-down > a::after, .is-style-icon-scroll-down-no-text > a::after, .is-style-icon-arrow-down-alt2-no-text > a::after {
   content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
   background-color: currentColor;
-  display: inline-flex;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
   text-decoration: none;
   position: relative;
-  height: 1em;
-  width: 1em;
-  vertical-align: middle;
   -webkit-mask-size: contain;
           mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -32,14 +33,23 @@
           mask-image: url(../../icons/theme/scroll-down.svg);
 }
 
+.is-style-icon-arrow-down-alt2-no-text > a::after {
+  -webkit-mask-image: url(../../icons/theme/scroll-down.svg);
+          mask-image: url(../../icons/theme/scroll-down.svg);
+}
+
+.is-style-icon-arrow-down-alt2-no-text > a,
 .is-style-icon-scroll-down-no-text > a {
   font-size: 0;
   line-height: 1;
   color: inherit;
 }
+.is-style-icon-arrow-down-alt2-no-text > a::after,
 .is-style-icon-scroll-down-no-text > a::after {
   font-size: var(--wp--preset--font-size--huge);
 }
-.is-style-icon-scroll-down-no-text > a:hover, .is-style-icon-scroll-down-no-text > a:active {
+.is-style-icon-arrow-down-alt2-no-text > a:hover, .is-style-icon-arrow-down-alt2-no-text > a:active,
+.is-style-icon-scroll-down-no-text > a:hover,
+.is-style-icon-scroll-down-no-text > a:active {
   text-decoration: none !important;
 }

@@ -5,6 +5,7 @@
 
 @include icons.svg-icon(
 	$class: 'wp-block-post-time-to-read',
-	$icon: 'clock',
+// 	$icon: 'clock',
+	$icon: 'time',
 	$location: 'before'
 );

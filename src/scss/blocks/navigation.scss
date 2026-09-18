@@ -41,12 +41,21 @@
 }
 
 /* Set opacity on hover only on the link label */
-.wp-block-navigation .wp-block-navigation-item__content {
-	&:hover .wp-block-navigation-item__label,
-	&:active .wp-block-navigation-item__label {
-		opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+.wp-block-navigation-item__content {
+	&:hover,
+	&:focus-visible,
+	&:active {
+		.wp-block-navigation-item__label {
+			opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+		}
 	}
 }
+// .wp-block-navigation .wp-block-navigation-item__content {
+// 	&:hover .wp-block-navigation-item__label,
+// 	&:active .wp-block-navigation-item__label {
+// 		opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+// 	}
+// }
 
 /*-----------------------------------------------------------------------------
 # Style the Nav on TOP-LEVEL Items within the Site Header only
@@ -327,23 +336,23 @@ nav.wp-block-navigation.is-style-fixed-menu {
 	}
 }
 
-/*-----------------------------------------------------------------------------
-# Custom: Up Arrow Icon
------------------------------------------------------------------------------*/
+///*-----------------------------------------------------------------------------
+// # Custom: Up Arrow Icon
+// -----------------------------------------------------------------------------*/
+// 
+// @include icons.svg-icon(
+// 	$class: 'is-style-icon-arrow-up-alt2',
+// 	$icon: 'arrow-up-alt2',
+// 	$location: 'before',
+// 	$link: true,
+// 	$margin: true,
+// );
+// 
+// .is-style-icon-arrow-up-alt2 > a::before {
+// 	top: 0;
+// }
 
-@include icons.svg-icon(
-	$class: 'is-style-icon-arrow-up-alt2',
-	$icon: 'arrow-up-alt2',
-	$location: 'before',
-	$link: true,
-	$margin: true,
-);
-
-.is-style-icon-arrow-up-alt2 > a::before {
-	top: 0;
-}
-
-/* Set icons on navigation items to inline flex */
-[class*="is-style-icon-"] > a.wp-block-navigation-item__content {
-	display: inline-flex;
-}
+///* Set icons on navigation items to inline flex */
+// [class*="is-style-icon-"] > a.wp-block-navigation-item__content {
+// 	display: inline-flex;
+// }

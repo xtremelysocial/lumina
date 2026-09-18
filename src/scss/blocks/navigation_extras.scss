@@ -47,3 +47,60 @@
 .wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open {
     color: var(--wp--preset--color--contrast);
 }
+
+/* Non-clickable placeholder links (Desktop: hand cursor + hover highlight; Mobile: suppressed) */
+.wp-block-navigation {
+
+	/* 1. Disable click navigation on the link itself */
+	a.wp-block-navigation-item__content[href="http://Pages"],
+	a.wp-block-navigation-item__content[href="#"],
+	a.wp-block-navigation-item__content[href="#0"] {
+		pointer-events: none;
+	}
+
+	/* 2. Desktop: Hand cursor + color highlight when hovering the parent item */
+	.wp-block-navigation__responsive-container:not(.is-menu-open) {
+		.wp-block-navigation-item:hover {
+
+			/* Show pointer cursor on the parent LI */
+			&:has(> a[href="http://Pages"]),
+			&:has(> a[href="#"]),
+			&:has(> a[href="#0"]) {
+				cursor: pointer;
+			}
+
+			/* Highlight text label */
+			> a.wp-block-navigation-item__content[href="http://Pages"],
+			> a.wp-block-navigation-item__content[href="#"],
+			> a.wp-block-navigation-item__content[href="#0"] {
+				color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
+
+				.wp-block-navigation-item__label {
+					opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+				}
+			}
+		}
+	}
+
+	/* 3. Mobile Overlay Open: Suppress pointer cursor and hover highlights */
+	.wp-block-navigation__responsive-container.is-menu-open {
+		.wp-block-navigation-item:hover {
+
+			&:has(> a[href="http://Pages"]),
+			&:has(> a[href="#"]),
+			&:has(> a[href="#0"]) {
+				cursor: default;
+			}
+
+			> a.wp-block-navigation-item__content[href="http://Pages"],
+			> a.wp-block-navigation-item__content[href="#"],
+			> a.wp-block-navigation-item__content[href="#0"] {
+				color: inherit !important;
+
+				.wp-block-navigation-item__label {
+					opacity: 1 !important;
+				}
+			}
+		}
+	}
+}

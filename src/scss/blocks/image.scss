@@ -26,17 +26,17 @@ figure.wp-caption:not(.alignfull):not(.alignwide) img {
 /* Image Border */
 .wp-block-image.is-style-image-border {
 	border-radius: var(--wp--custom--border--radius);
-	
-	& img {
-		padding: var(--wp--preset--spacing--20);
-	}
+// 	
+// 	& img {
+// 		padding: var(--wp--preset--spacing--20);
+// 	}
 }
 
 /* Image Round w/Border */
 .wp-block-image.is-style-image-round-border {
     border-radius: 9999px !important;
-    
-    & img {
-		padding: var(--wp--preset--spacing--20);
-    }
+//     
+//     & img {
+// 		padding: var(--wp--preset--spacing--20);
+//     }
 }
