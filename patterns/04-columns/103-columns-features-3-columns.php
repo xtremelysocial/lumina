@@ -34,7 +34,7 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"33.33%","className":"is-style-rounded-border"} -->
-<div class="wp-block-column is-style-rounded-border" style="flex-basis:33.33%"><!-- wp:icon {"icon":"core/people","align":"center","className":"is-style-round","backgroundColor":"tertiary-subtle","ariaLabel":"Workflow Icon"} /-->
+<div class="wp-block-column is-style-rounded-border" style="flex-basis:33.33%"><!-- wp:icon {"icon":"lumina/users","align":"center","className":"is-style-round","backgroundColor":"tertiary-subtle","ariaLabel":"Workflow Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Collaborative Workflow", "lumina"); ?></h3>
