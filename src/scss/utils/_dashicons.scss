@@ -7,9 +7,9 @@
  * is-root-container is needed for the Editor.
  */
 .wp-site-blocks .dashicons,
-.wp-site-blocks .dashicons-before,
-.is-root-container .dashicons,
-.is-root-container .dashicons-before {
+.wp-site-blocks .dashicons-before { //,
+// .is-root-container .dashicons,
+// .is-root-container .dashicons-before {
 // 	display: block;
 	display: inherit;
 	width: auto;
@@ -24,16 +24,16 @@
 }
 
 .wp-site-blocks .dashicons.has-text-align-center,
-.wp-site-blocks .dashicons-before.has-text-align-center,
-.is-root-container .dashicons.has-text-align-center,
-.is-root-container .dashicons-before.has-text-align-center {
+.wp-site-blocks .dashicons-before.has-text-align-center { //,
+// .is-root-container .dashicons.has-text-align-center,
+// .is-root-container .dashicons-before.has-text-align-center {
 	text-align: center;
 }
 
 .wp-site-blocks .dashicons::before,
-.wp-site-blocks [class*="dashicons-"]::before, // {
-.is-root-container .dashicons::before,
-.is-root-container [class*="dashicons-"]::before {
+.wp-site-blocks [class*="dashicons-"]::before { //,
+// .is-root-container .dashicons::before,
+// .is-root-container [class*="dashicons-"]::before {
 	display: inline-block;
 	width: auto;
 	height: auto;

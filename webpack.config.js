@@ -74,7 +74,7 @@ module.exports = {
 							recursive: true
 						}
 					],
-					exclude: ['./assets/css/blocks/block-styles.asset.php']
+// 					exclude: ['./assets/css/blocks/block-styles.asset.php']
 				}
 			})
 		],

@@ -8,9 +8,10 @@
  */
 ?>
 <!-- wp:group {"metadata":{"name":"Drop Caps 3-Columns"},"align":"wide","className":"is-style-3-columns","layout":{"type":"constrained"},"anchor":"drop-caps-3-columns"} -->
-<div class="wp-block-group alignwide is-style-3-columns" id="drop-caps-3-columns"><!-- wp:columns {"align":"wide","className":"is-style-gutter-dividers"} -->
-<div class="wp-block-columns alignwide is-style-gutter-dividers"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":3} -->
+<div class="wp-block-group alignwide is-style-3-columns" id="drop-caps-3-columns">
+<!-- wp:columns {"align":"wide","className":"is-style-gutter-dividers"} -->
+<div class="wp-block-columns alignwide is-style-gutter-dividers"><!-- wp:column {"className":"is-style-first-on-mobile"} -->
+<div class="wp-block-column is-style-first-on-mobile"><!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading"><?php esc_html_e("The Studio Philosophy", "lumina"); ?></h3>
 <!-- /wp:heading -->
 

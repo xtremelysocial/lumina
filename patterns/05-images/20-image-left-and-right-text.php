@@ -26,8 +26,8 @@
 
 <!-- wp:column {"width":"50%"} -->
 <div class="wp-block-column" style="flex-basis:50%">
-<!-- wp:image {"lightbox":{"enabled":true},"aspectRatio":"16/9","scale":"cover","sizeSlug":"large","linkDestination":"none","align":"center"} -->
-<figure class="wp-block-image aligncenter size-large">
+<!-- wp:image {"lightbox":{"enabled":true},"aspectRatio":"16/9","scale":"cover","sizeSlug":"large","linkDestination":"none","align":"center","className":"is-style-image-border"} -->
+<figure class="wp-block-image is-style-image-border aligncenter size-large">
 <img src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/team-hero.webp" ) ); ?>" alt="Team" style="aspect-ratio:16/9;object-fit:cover"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->

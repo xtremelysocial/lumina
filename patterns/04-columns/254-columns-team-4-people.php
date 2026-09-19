@@ -19,8 +19,8 @@
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-align-center","style":{"typography":{"fontWeight":"400","lineHeight":"1.2"}},"fontSize":"medium"} -->
-<p class="has-text-align-center has-medium-font-size" style="font-weight:600;line-height:1.2"><?php esc_html_e("Julian Vance", "lumina"); ?></p>
+<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-align-center","fontSize":"medium"} -->
+<p class="has-text-align-center has-medium-font-size"><strong><?php esc_html_e("Julian Vance", "lumina"); ?></strong></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
@@ -47,8 +47,8 @@
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-align-center","style":{"typography":{"fontWeight":"400","lineHeight":"1.2"}},"fontSize":"medium"} -->
-<p class="has-text-align-center has-medium-font-size" style="font-weight:600;line-height:1.2"><?php esc_html_e("Elena Rostova", "lumina"); ?></p>
+<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-align-center","fontSize":"medium"} -->
+<p class="has-text-align-center has-medium-font-size"><strong><?php esc_html_e("Elena Rostova", "lumina"); ?></strong></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
@@ -75,8 +75,8 @@
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-align-center","style":{"typography":{"fontWeight":"400","lineHeight":"1.2"}},"fontSize":"medium"} -->
-<p class="has-text-align-center has-medium-font-size" style="font-weight:600;line-height:1.2"><?php esc_html_e("Sienna Hayes", "lumina"); ?></p>
+<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-align-center","fontSize":"medium"} -->
+<p class="has-text-align-center has-medium-font-size"><strong><?php esc_html_e("Sienna Hayes", "lumina"); ?></strong></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
@@ -103,8 +103,8 @@
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-align-center","style":{"typography":{"fontWeight":"400","lineHeight":"1.2"}},"fontSize":"medium"} -->
-<p class="has-text-align-center has-medium-font-size" style="font-weight:600;line-height:1.2"><?php esc_html_e("Lucas Bennett", "lumina"); ?></p>
+<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-align-center","fontSize":"medium"} -->
+<p class="has-text-align-center has-medium-font-size"><strong><?php esc_html_e("Lucas Bennett", "lumina"); ?></strong></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->

@@ -18,18 +18,19 @@
 	font-size: 0;
 	line-height: 1;
 	color: inherit;
-
-	&:hover,
-	&:active {
-		text-decoration: none !important;
-	}
+	-webkit-tap-highlight-color: transparent; /* Eliminates mobile tap highlight line/box */
 
 	&::after {
 		font-size: var(--wp--preset--font-size--huge);
 	}
 	
-// 	&:hover,
-// 	&:active {
+	&:hover,
+	&:active,
+	&:focus,
+	&:focus-visible {
 // 		text-decoration: none !important;
-// 	}
+		outline: none !important;
+// 		box-shadow: none !important;
+// 		border: none !important;
+	}
 }

@@ -1,6 +1,6 @@
 /**
  * File:	smoothscroll.js
- * Theme: 	Flat Blocks / Lumina
+ * Theme: 	XtremelySocial Shared
  * 
  * Javascript for smooth scrolling internal links and updating dynamic 
  * CSS header offset variables.

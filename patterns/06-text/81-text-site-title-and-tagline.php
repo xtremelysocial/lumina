@@ -6,8 +6,8 @@
  * Categories: lumina, text
  */
 ?>
-<!-- wp:group {"align":"full","metadata":{"name":"Site Title and Tagline"},"style":{"spacing":{"margin":{"top":"0"}}},"backgroundColor":"secondary","className":"is-style-default","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull is-style-default has-secondary-background-color has-background" id="site-title-and-tagline" style="margin-top:0;">
+<!-- wp:group {"align":"full","metadata":{"name":"Site Title and Tagline"},"backgroundColor":"secondary","className":"is-style-default","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull is-style-default has-secondary-background-color has-background" id="site-title-and-tagline">
 <!-- wp:site-title {"level":2,"textAlign":"center","isLink":false,"fontSize":"x-large"} /-->
 
 <!-- wp:site-tagline {"textAlign":"center"} /-->

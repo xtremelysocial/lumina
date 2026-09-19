@@ -1509,7 +1509,7 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 # Compatibility with other themes
 #
 # This is so that user's content created with other themes will look OK before
-# they update it for the Flat Blocks theme.
+# they update it for the Lumina theme.
 -----------------------------------------------------------------------------*/
 :where(.has-background) {
   background-color: var(--wp--preset--color--neutral);
@@ -1558,9 +1558,7 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
  * is-root-container is needed for the Editor.
  */
 .wp-site-blocks .dashicons,
-.wp-site-blocks .dashicons-before,
-.is-root-container .dashicons,
-.is-root-container .dashicons-before {
+.wp-site-blocks .dashicons-before {
   display: inherit;
   width: auto;
   height: auto;
@@ -1573,16 +1571,12 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 }
 
 .wp-site-blocks .dashicons.has-text-align-center,
-.wp-site-blocks .dashicons-before.has-text-align-center,
-.is-root-container .dashicons.has-text-align-center,
-.is-root-container .dashicons-before.has-text-align-center {
+.wp-site-blocks .dashicons-before.has-text-align-center {
   text-align: center;
 }
 
 .wp-site-blocks .dashicons::before,
-.wp-site-blocks [class*=dashicons-]::before,
-.is-root-container .dashicons::before,
-.is-root-container [class*=dashicons-]::before {
+.wp-site-blocks [class*=dashicons-]::before {
   display: inline-block;
   width: auto;
   height: auto;

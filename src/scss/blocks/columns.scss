@@ -53,32 +53,27 @@
 
 @media only screen and (max-width: #{ (breakpoints.$break-medium - 1) }) {
 
+	/* Center on mobile */
 	.wp-block-columns.is-style-center-on-mobile {
-		/* Reduce row gap when columns stack vertically */
 		row-gap: var(--wp--preset--spacing--30);
 
-		.wp-block-column:not(.wp-block-navigation__responsive-container-content) {
-			/* 1. Inherited text centering for prose, headings, links, & template parts */
+		// 1. Override all text nodes, blockquotes, cite tags, & WP alignment classes
+		&,
+		*,
+		cite {
 			text-align: center !important;
+		}
 
-			&,
-			> .wp-block-template-part {
-				text-align: center !important;
-				--navigation-layout-justify: center;
+		// 2. Center block-level media & containers (Figures, Images, Blockquotes)
+		:is(figure, img, video, .wp-block-image, blockquote) {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
 
-				/* 2. Handles BOTH Row (justify-content) and Column (align-items) flex groups */
-				:is(.wp-block-buttons, .wp-block-social-links, .wp-block-group.is-layout-flex, .wp-block-navigation) {
-					display: flex;
-					justify-content: center !important; /* Horizontal for Rows / Vertical for Columns */
-					align-items: center !important;     /* Vertical for Rows / Horizontal for Columns */
-				}
-
-				/* 3. Center images & videos */
-				:is(.wp-block-image, .wp-block-video) {
-					margin-left: auto;
-					margin-right: auto;
-				}
-			}
+		// 3. Center flex layout groups (Buttons, Social Links, Flex Rows)
+		:is(.is-layout-flex, .wp-block-buttons, .wp-block-social-links) {
+			justify-content: center !important;
+			--navigation-layout-justify: center;
 		}
 	}
 
@@ -88,27 +83,3 @@
 		gap: var(--wp--style--block-gap);
 	}
 }
-
-// /* Collapse columns on mobile and tablet (782px) */
-// @media only screen and (max-width: #{ (breakpoints.$break-medium - 1) }) {
-// 
-// 	// /* Reduce row (vertical gap) when collapsing centered columns */
-// 	.wp-block-columns.is-style-center-on-mobile {
-// 		row-gap: var(--wp--preset--spacing--30);
-// 	}
-// 
-// 	// /* Center left and right aligned text */
-// 	.wp-block-columns.is-style-center-on-mobile .wp-block-column:not(.wp-block-navigation__responsive-container-content) > *,
-// 	.wp-block-columns.is-style-center-on-mobile .wp-block-column:not(.wp-block-navigation__responsive-container-content) > .wp-block-template-part > * {
-// 		display: flex;
-// 		justify-content: center;
-// 		--navigation-layout-justify: center;
-// 		text-align: center;		
-// 	}
-// 
-// 	// /* OVERRIDE columns thick gap so vertical spacing matches up */	
-// 	.wp-block-columns.is-style-thick-gap,
-// 	.wp-block-columns.is-style-thick-gap.has-background {
-// 		gap: var(--wp--style--block-gap);
-// 	}
-// }

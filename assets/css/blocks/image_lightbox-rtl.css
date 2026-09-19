@@ -21,6 +21,7 @@
   max-height: 90vh !important;
   max-width: 90vw !important;
   aspect-ratio: unset !important;
+  overflow: visible !important;
 }
 .wp-lightbox-overlay {
   /* 3. Override WP's inline 'object-fit: cover' and height lock on the enlarged asset */
