@@ -25,8 +25,8 @@
 	<!-- wp:pattern {"slug":"lumina/image-gallery"} /-->
 
 	<!-- wp:pattern {"slug":"lumina/buttons-call-to-action"} /-->
-	
-	<!-- wp:pattern {"slug":"lumina/columns-recent-posts-3-columns"} /-->
+
+	<!-- wp:pattern {"slug":"lumina/columns-recent-posts-3"} /-->
 	
 </div>
 <!-- /wp:group -->

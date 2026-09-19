@@ -49,7 +49,7 @@
 
 <!-- wp:column {"className":"is-style-default"} -->
 <div class="wp-block-column is-style-default"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:icon {"icon":"core/styles","className":"is-style-align-left","ariaLabel":"Depth"} /-->
+<div class="wp-block-group"><!-- wp:icon {"icon":"lumina/depth","className":"is-style-align-left","ariaLabel":"Depth"} /-->
 
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading"><?php esc_html_e("Timeless Depth", "lumina"); ?></h3>

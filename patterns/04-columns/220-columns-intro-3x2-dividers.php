@@ -15,7 +15,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"fontSize":"medium"} -->
-<p class="has-medium-font-size"><?php esc_html_e("Behind every Lumina Studio project is a commitment to", "lumina"); ?> <strong><?php esc_html_e("effective composition", "lumina"); ?></strong><?php esc_html_e(", natural light, and", "lumina"); ?> <strong><?php esc_html_e("enduring artistic quality", "lumina"); ?></strong> <?php esc_html_e("across both print and digital media.", "lumina"); ?></p>
+<p class="has-medium-font-size"><?php esc_html_e("Behind every Lumina Studio project is a commitment to", "lumina"); ?> <strong><?php esc_html_e("effective composition", "lumina"); ?></strong> <?php esc_html_e(", natural light, and", "lumina"); ?> <strong><?php esc_html_e("enduring artistic quality", "lumina"); ?></strong> <?php esc_html_e("across both print and digital media.", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 

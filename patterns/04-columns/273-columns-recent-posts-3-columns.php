@@ -8,7 +8,7 @@
  */
 ?>
 <!-- wp:group {"metadata":{"name":"Columns 3 Recent Posts"},"align":"wide","layout":{"type":"constrained"},"anchor":"columns-3-recent-posts"} -->
-<div class="wp-block-group alignwide" id="columns-3-recent-posts"><!-- wp:heading {"align":"wide","style":{"typography":{"textAlign":"left"}},"anchor":"our-recent-posts"} -->
+<div class="wp-block-group alignwide" id="columns-3-recent-posts"><!-- wp:heading {"align":"wide","style":{"typography":{"textAlign":"left"}},"anchor":"columns-3-recent-posts"} -->
 <h2 class="wp-block-heading has-text-align-left alignwide" id="our-recent-posts"><?php esc_html_e("Journal & Studio Notes", "lumina"); ?></h2>
 <!-- /wp:heading -->
 

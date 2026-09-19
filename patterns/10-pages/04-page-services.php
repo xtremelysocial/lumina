@@ -9,7 +9,7 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"lumina/cover-scroll-static-image"} /-->
+<!-- wp:pattern {"slug":"lumina/banner-hero-media-text"} /-->
 
 <!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|20"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--20)">

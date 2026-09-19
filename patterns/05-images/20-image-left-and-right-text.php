@@ -8,7 +8,8 @@
  */
 ?>
 <!-- wp:group {"metadata":{"categories":["lumina","image"],"name":"Image with Left and Right Text"},"align":"full","className":"is-style-default","backgroundColor":"secondary-alt","layout":{"type":"constrained"},"anchor":"image-left-and-right-text"} -->
-<div class="wp-block-group alignfull is-style-default has-secondary-alt-background-color has-background" id="image-left-and-right-text"><!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
+<div class="wp-block-group alignfull is-style-default has-secondary-alt-background-color has-background" id="image-left-and-right-text">
+<!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
 <h2 class="wp-block-heading has-text-align-center"><?php esc_html_e("Visual Storytelling", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
@@ -24,8 +25,10 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"50%"} -->
-<div class="wp-block-column" style="flex-basis:50%"><!-- wp:image {"lightbox":{"enabled":false},"aspectRatio":"16/9","scale":"cover","sizeSlug":"large","linkDestination":"none","align":"center","className":"is-style-image-computer-screen"} -->
-<figure class="wp-block-image aligncenter size-large is-style-image-computer-screen"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/screenshots/01.webp" ) ); ?>" alt="screenshot" style="aspect-ratio:16/9;object-fit:cover"/></figure>
+<div class="wp-block-column" style="flex-basis:50%">
+<!-- wp:image {"lightbox":{"enabled":true},"aspectRatio":"16/9","scale":"cover","sizeSlug":"large","linkDestination":"none","align":"center"} -->
+<figure class="wp-block-image aligncenter size-large">
+<img src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/team-hero.webp" ) ); ?>" alt="Team" style="aspect-ratio:16/9;object-fit:cover"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 

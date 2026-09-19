@@ -1550,6 +1550,55 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 }
 
 /*-----------------------------------------------------------------------------
+# Dashicons
+-----------------------------------------------------------------------------*/
+/**
+ * Override core WordPress base Dashicon styles. Don't let it alter height, 
+ * width, font-size or line-height. wp-site-blocks is used for specificity.
+ * is-root-container is needed for the Editor.
+ */
+.wp-site-blocks .dashicons,
+.wp-site-blocks .dashicons-before,
+.is-root-container .dashicons,
+.is-root-container .dashicons-before {
+  display: inherit;
+  width: auto;
+  height: auto;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--wp--custom--typography--font-weight--normal);
+  line-height: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+}
+
+.wp-site-blocks .dashicons.has-text-align-center,
+.wp-site-blocks .dashicons-before.has-text-align-center,
+.is-root-container .dashicons.has-text-align-center,
+.is-root-container .dashicons-before.has-text-align-center {
+  text-align: center;
+}
+
+.wp-site-blocks .dashicons::before,
+.wp-site-blocks [class*=dashicons-]::before,
+.is-root-container .dashicons::before,
+.is-root-container [class*=dashicons-]::before {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  font-family: dashicons;
+  font-size: 1em;
+  line-height: 1;
+  font-weight: inherit;
+  vertical-align: text-bottom;
+}
+
+/* Add some right margin on inline dashicons before the text */
+[class*=dashicons-]:not(.dashicons-after)::before {
+  margin-left: var(--wp--preset--spacing--20);
+}
+
+/*-----------------------------------------------------------------------------
 # Style Jetpack Contact Form buttons to match ours
 -----------------------------------------------------------------------------*/
 .wp-block-jetpack-contact-form :is(.wp-block-button, .wp-block-jetpack-button) .wp-block-button__link {

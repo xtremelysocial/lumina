@@ -2,16 +2,20 @@
    FEATURED IMAGE ASPECT RATIO TOGGLE ENGINE
    ========================================================================== */
 
-$expand-icon:	'../../icons/theme/expand-collapse.svg';
-$collapse-icon:	'../../icons/theme/expand-collapse.svg';
+// $expand-icon:	'../../icons/theme/expand-collapse.svg';
+// $collapse-icon:	'../../icons/theme/expand-collapse.svg';
+$expand-icon:	'../../icons/theme/expand.svg';
+$collapse-icon:	'../../icons/theme/collapse.svg';
 
 /* 1. Layout & Positioning Context */
 :is(.wp-block-image.is-style-aspect-toggle, .wp-block-image.is-style-toggle-aspect) {
 	position: relative !important;
+	cursor: pointer !important;	
 
 	img {
 		transition: aspect-ratio var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.16, 1, 0.3, 1),
 		            object-fit var(--wp--custom--animation--duration--medium, 500ms) ease;
+		cursor: pointer !important;		            
 	}
 }
 
@@ -78,7 +82,7 @@ $collapse-icon:	'../../icons/theme/expand-collapse.svg';
 		&::before { content: "Expand View"; }
 		&::after {
 			mask-image: url($expand-icon);
-			transform: rotate(90deg) !important; // Kinetic indicator rotation
+// 			transform: rotate(90deg) !important; // Kinetic indicator rotation
 		}
 	}
 
@@ -87,7 +91,7 @@ $collapse-icon:	'../../icons/theme/expand-collapse.svg';
 		&::before { content: "Collapse View"; }
 		&::after {
 			mask-image: url($collapse-icon);
-			transform: rotate(0deg) !important; // Kinetic indicator rotation
+// 			transform: rotate(0deg) !important; // Kinetic indicator rotation
 		}
 	}
 }

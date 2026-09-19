@@ -7,10 +7,12 @@
 /* 1. Layout & Positioning Context */
 :is(.wp-block-image.is-style-aspect-toggle, .wp-block-image.is-style-toggle-aspect) {
   position: relative !important;
+  cursor: pointer !important;
 }
 :is(.wp-block-image.is-style-aspect-toggle, .wp-block-image.is-style-toggle-aspect) img {
   transition: aspect-ratio var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.16, 1, 0.3, 1), object-fit var(--wp--custom--animation--duration--medium, 500ms) ease;
   transition: aspect-ratio var(--wp--custom--animation--duration--medium, 500ms) cubic-bezier(0.16, 1, 0.3, 1), object-fit var(--wp--custom--animation--duration--medium, 500ms) ease, -o-object-fit var(--wp--custom--animation--duration--medium, 500ms) ease;
+  cursor: pointer !important;
 }
 
 /* 2. Suppress WP Core Lightbox Toggle Button on Aspect-Toggle Images */
@@ -73,9 +75,8 @@
   content: "Expand View";
 }
 .lumina-card-arrow-overlay.lumina-aspect-toggle.lumina-action-aspect-expand::after {
-  -webkit-mask-image: url("../../icons/theme/expand-collapse.svg");
-          mask-image: url("../../icons/theme/expand-collapse.svg");
-  transform: rotate(-90deg) !important;
+  -webkit-mask-image: url("../../icons/theme/expand.svg");
+          mask-image: url("../../icons/theme/expand.svg");
 }
 .lumina-card-arrow-overlay.lumina-aspect-toggle {
   /* Collapse Action */
@@ -84,9 +85,8 @@
   content: "Collapse View";
 }
 .lumina-card-arrow-overlay.lumina-aspect-toggle.lumina-action-aspect-collapse::after {
-  -webkit-mask-image: url("../../icons/theme/expand-collapse.svg");
-          mask-image: url("../../icons/theme/expand-collapse.svg");
-  transform: rotate(0deg) !important;
+  -webkit-mask-image: url("../../icons/theme/collapse.svg");
+          mask-image: url("../../icons/theme/collapse.svg");
 }
 
 /* 5. Hover Gatekeeper: Reveal badge on container hover / touch active */

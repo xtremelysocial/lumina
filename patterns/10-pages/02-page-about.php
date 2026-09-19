@@ -9,7 +9,7 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"lumina/banner-hero-media-text"} /-->
+<!-- wp:pattern {"slug":"lumina/banner-page-hero-media-text"} /-->
 
 <!-- wp:pattern {"slug":"lumina/columns-site-motto-details"} /-->
 

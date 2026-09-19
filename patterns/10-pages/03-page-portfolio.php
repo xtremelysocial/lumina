@@ -9,11 +9,15 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"lumina/banner-hero-media-text"} /-->
+<!-- wp:pattern {"slug":"lumina/cover-scroll-static-image"} /-->
 
 <!-- wp:pattern {"slug":"lumina/drop-caps-2-columns"} /-->
 
 <!-- wp:pattern {"slug":"lumina/image-left-and-right-text"} /-->
+
+<!-- wp:pattern {"slug":"lumina/image-gallery"} /-->
+
+<!-- wp:pattern {"slug":"lumina/image-gallery-no-gap"} /-->
 
 <!-- wp:pattern {"slug":"lumina/image-gallery-rounded"} /-->
 

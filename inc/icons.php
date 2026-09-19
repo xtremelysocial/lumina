@@ -4,7 +4,7 @@
  * Theme:       Shared Icon Block Functions
  *
  * Auto-register theme SVG icons using WP 7.1 Icon API.
- * Auto-discovers sub-folders as distinct collections (e.g., /sets/general -> "Lumina General").
+ * Auto-discovers sub-folders while enforcing a single permanent 'lumina' collection handle.
  *
  * @package    XtremelySocial
  */
@@ -35,50 +35,45 @@ function register_theme_svg_icons() {
 		return;
 	}
 
-	// 1. Discover all sub-directories (icon sets) inside the base directory
+	// 1. Static collection slug & label for all Lumina theme icons
+	$collection_slug  = THEME_SLUG; // 'lumina'
+	$collection_label = __( 'Lumina Theme', 'lumina' );
+
+	// 2. Register the master collection once
+	wp_register_icon_collection(
+		$collection_slug,
+		array(
+			'label'       => $collection_label,
+			'description' => __( 'Custom Lumina theme icon collection.', 'lumina' ),
+		)
+	);
+
+	// 3. Discover all sub-directories (e.g. /theme, /patterns) inside base directory
 	$set_dirs = glob( trailingslashit( $base_dir ) . '*', GLOB_ONLYDIR );
 
-	// Fallback: If no sub-folders exist, treat the root sets directory as the default set
+	// Fallback: If no sub-folders exist, scan the root icons directory
 	if ( empty( $set_dirs ) ) {
 		$set_dirs = array( $base_dir );
 	}
 
-	$theme_prefix = ucfirst( THEME_SLUG );
+	// Optional: Add folder names here to exclude them from registration (e.g. array( 'temp', 'drafts' ))
+	$excluded_folders = array();
 
 	foreach ( $set_dirs as $dir_path ) {
 		$folder_name = basename( $dir_path );
 
-		// Determine collection slug and human-readable label
-		if ( $dir_path === $base_dir ) {
-			$collection_slug  = THEME_SLUG;
-			$collection_label = sprintf( __( '%s Icons', 'lumina' ), $theme_prefix );
-		} else {
-			$sanitized_folder = sanitize_key( $folder_name );
-			$collection_slug  = THEME_SLUG . '-' . $sanitized_folder;
-			$readable_folder  = ucwords( str_replace( array( '-', '_' ), ' ', $folder_name ) );
-			$collection_label = sprintf( '%s %s', $theme_prefix, $readable_folder );
+		// Skip excluded folders
+		if ( in_array( $folder_name, $excluded_folders, true ) ) {
+			continue;
 		}
 
-		// Discover all SVG files in this specific set folder
+		// Discover all SVG files in this specific sub-folder
 		$files = glob( trailingslashit( $dir_path ) . '*.svg' );
 		if ( empty( $files ) ) {
 			continue;
 		}
 
-		// 2. Register the collection for this sub-folder set
-		wp_register_icon_collection(
-			$collection_slug,
-			array(
-				'label'       => $collection_label,
-				'description' => sprintf(
-					/* translators: %s: Collection label */
-					__( 'Custom %s icon set.', 'lumina' ),
-					$collection_label
-				),
-			)
-		);
-
-		// 3. Register each SVG icon under this collection slug
+		// 4. Register each SVG icon under the static 'lumina/filename' handle
 		foreach ( $files as $file_path ) {
 			$filename  = basename( $file_path, '.svg' );
 			$icon_name = $collection_slug . '/' . sanitize_key( $filename );

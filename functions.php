@@ -72,7 +72,7 @@ $includes = array (
 	'/inc/block-bindings.php',
 	'/inc/block-patterns.php',
 	'/inc/body-classes.php',
-	'/inc/color-scheme-selector.php',
+// 	'/inc/color-scheme-selector.php',
 	'/inc/icons.php',
 	'/inc/images.php',
 );
@@ -235,13 +235,13 @@ if ( ! function_exists( 'lumina_template_part_areas' ) ) :
 				'description' => __( 'Content section such as cover and post meta', 'lumina' ),
 				'icon'        => ''
 			),
-			array(
-				'area'        => 'menu',
-				'area_tag'    => 'section',
-				'label'       => __( 'Menu', 'lumina' ),
-				'description' => __( 'Navigation Menus', 'lumina' ),
-				'icon'        => ''
-			)
+// 			array(
+// 				'area'        => 'menu',
+// 				'area_tag'    => 'section',
+// 				'label'       => __( 'Menu', 'lumina' ),
+// 				'description' => __( 'Navigation Menus', 'lumina' ),
+// 				'icon'        => ''
+// 			)
 		);
 		return array_merge( $areas, $new_areas );
 	}

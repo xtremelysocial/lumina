@@ -72,7 +72,7 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"is-style-rounded-border"} -->
-<div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"core/arrow-right","align":"center","className":"is-style-round","backgroundColor":"secondary-subtle","ariaLabel":"Arrow Icon"} /-->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:icon {"icon":"lumina/depth","align":"center","className":"is-style-round","backgroundColor":"secondary-subtle","ariaLabel":"Arrow Icon"} /-->
 
 <!-- wp:heading {"level":3,"style":{"typography":{"textAlign":"center"}}} -->
 <h3 class="wp-block-heading has-text-align-center"><?php esc_html_e("Interactive Cards", "lumina"); ?></h3>
@@ -151,7 +151,7 @@
 
 <!-- wp:column {"className":"is-style-default"} -->
 <div class="wp-block-column is-style-default"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:icon {"icon":"core/paragraph","className":"is-style-align-left","ariaLabel":"Fonts"} /-->
+<div class="wp-block-group"><!-- wp:icon {"icon":"lumina/fonts","className":"is-style-align-left","ariaLabel":"Fonts"} /-->
 
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading"><?php esc_html_e("Beautiful Fonts", "lumina"); ?></h3>
@@ -167,7 +167,7 @@
 <!-- wp:columns {"align":"wide","className":"is-style-gutter-dividers"} -->
 <div class="wp-block-columns alignwide is-style-gutter-dividers"><!-- wp:column {"className":"is-style-default"} -->
 <div class="wp-block-column is-style-default"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:icon {"icon":"core/table","className":"is-style-align-left is-style-default","ariaLabel":"Dividers"} /-->
+<div class="wp-block-group"><!-- wp:icon {"icon":"lumina/dividers","className":"is-style-align-left is-style-default","ariaLabel":"Dividers"} /-->
 
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading"><?php esc_html_e("Subtle Dividers", "lumina"); ?></h3>
@@ -181,7 +181,7 @@
 
 <!-- wp:column {"className":"is-style-default"} -->
 <div class="wp-block-column is-style-default"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:icon {"icon":"core/create","className":"is-style-align-left is-style-default","ariaLabel":"Collapsible"} /-->
+<div class="wp-block-group"><!-- wp:icon {"icon":"lumina/details","className":"is-style-align-left is-style-default","ariaLabel":"Collapsible"} /-->
 
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading"><?php esc_html_e("Collapsible Panels", "lumina"); ?></h3>
@@ -218,7 +218,7 @@
 <p class="has-text-align-center" style="margin-bottom:var|preset|spacing|40"><?php esc_html_e("With the click of a button you can add a frame to simulate a computer or mobile device screen. No photo editing software required.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:image {"aspectRatio":"16/9","scale":"cover","align":"center","className":"is-resized size-large is-style-image-computer-screen"} -->
+<!-- wp:image {"lightbox":{"enabled":true},"aspectRatio":"16/9","scale":"cover","align":"center","className":"is-resized size-large is-style-image-computer-screen"} -->
 <figure class="wp-block-image aligncenter is-resized size-large is-style-image-computer-screen"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/screenshots/01.webp" ) ); ?>" alt="screenshot" style="aspect-ratio:16/9;object-fit:cover"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:group -->
@@ -231,7 +231,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"fontSize":"medium"} -->
-<p class="has-medium-font-size"><?php esc_html_e("With Full Site Editing and all the templates provided, there are", "lumina"); ?><strong><?php esc_html_e("thousands of unique theme layouts", "lumina"); ?></strong><?php esc_html_e("plus", "lumina"); ?><strong><?php esc_html_e("hundreds of block styles and patterns", "lumina"); ?></strong><?php esc_html_e("to easily make your content stand out.", "lumina"); ?></p>
+<p class="has-medium-font-size"><?php esc_html_e("With Full Site Editing and all the templates provided, there are", "lumina"); ?> <strong><?php esc_html_e("thousands of unique theme layouts", "lumina"); ?></strong> <?php esc_html_e("plus", "lumina"); ?><strong> <?php esc_html_e("hundreds of block styles and patterns", "lumina"); ?></strong> <?php esc_html_e("to easily make your content stand out.", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -307,7 +307,7 @@
 <div class="wp-block-group alignwide is-style-rounded-border has-secondary-background-color has-background" id="call-to-action-2-column"><!-- wp:columns {"verticalAlignment":"center","align":"wide","className":"is-style-center-on-mobile"} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center is-style-center-on-mobile"><!-- wp:column {"verticalAlignment":"center","width":"70%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:70%"><!-- wp:heading -->
-<h2 class="wp-block-heading"><strong><?php esc_html_e("Illuminate", "lumina"); ?></strong><?php esc_html_e("your Website Today", "lumina"); ?></h2>
+<h2 class="wp-block-heading"><strong><?php esc_html_e("Illuminate", "lumina"); ?></strong> <?php esc_html_e("your Website Today", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
