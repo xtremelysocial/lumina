@@ -126,12 +126,15 @@ $color-registry: (
     
     // --- DARK SEMANTIC COLORS ---
     ( color: 'dark',			text: 'light',	link: 'highlight', heading: 'inherit' ),
-    ( color: 'dark-alt',		text: 'light',	link: 'highlight', heading: 'inherit' ),
+    ( color: 'dark-alt',		text: 'light',	link: 'highlight', heading: 'inherit',
+    		footer: 'hover-highlight' ),
 
     ( color: 'primary-dark',        text: 'light', 		link: 'highlight', heading: 'inherit' ),    
-    ( color: 'primary-dark-alt',    text: 'light', 		link: 'highlight', heading: 'inherit' ),
+    ( color: 'primary-dark-alt',    text: 'light', 		link: 'highlight', heading: 'inherit',
+    		footer: 'hover-highlight' ),
     ( color: 'tertiary-dark',       text: 'light', 		link: 'highlight', heading: 'inherit' ),
-    ( color: 'tertiary-dark-alt',   text: 'light', 		link: 'highlight', heading: 'inherit' ),
+    ( color: 'tertiary-dark-alt',   text: 'light', 		link: 'highlight', heading: 'inherit',
+    		footer: 'hover-highlight' ),
         
     // --- VERY DARK NAMED COLORS ---
     ( color: 'not-quite-black',	text: 'light',	link: 'highlight', heading: 'inherit' ),
