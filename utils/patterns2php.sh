@@ -50,17 +50,25 @@ typeset -A BLOCK_MAP
 BLOCK_MAP=(
     "button"        "core/buttons"
     "buttons"       "core/buttons"
+    "banner"        "core/group"
     "columns"       "core/columns"
     "cover"         "core/cover"
     "details"       "core/details"
     "faq"           "core/details"
+    "features"      "core/columns"
     "gallery"       "core/gallery"
+    "heading"       "core/columns"
     "image"         "core/image"
+    "intro"         "core/columns"
     "media-text"    "core/media-text"
     "page"          "core/page"
+    "pricing"       "core/columns"
     "query"         "core/query"
-    "social-icons"  "core/social-icons"
+    "recent-posts"  "core/columns"
+    "social-icons"  "core/social-links"
     "site-title"    "core/site-title"
+    "sub-tables"    "core/columns"
+    "team"          "core/columns"
     "text"          "core/paragraph"
     "header"        "core/template-part/header"
     "footer"        "core/template-part/footer"
@@ -108,6 +116,12 @@ for file in "$SOURCE_DIR"/**/*.html(N); do
     filename=$(basename "$file")
     raw_slug_base="${filename%.*}"
     rel_path="${file#$THEME_ROOT/}"
+
+    # Skip archived, test, and draft source files
+    if [[ "$raw_slug_base" == *-SAVE-* || "$raw_slug_base" == *-not-used* || "$raw_slug_base" == *TEST* ]]; then
+        echo "⏭️  Skipping draft/test file: $filename"
+        continue
+    fi
 
     # 0. STRIP LEADING ORDERING NUMBERS FOR METADATA (e.g., "01-banner-hero" -> "banner-hero")
     slug_base=$(echo "$raw_slug_base" | perl -pe 's/^\d+[-_.\s]*//')
@@ -226,8 +240,8 @@ EOF
         my @comments;
         s{<!--.*?-->}{ push(@comments, $&); "___" . $#comments . "___" }gse;
 
-        # 2. Translate inner tag text containing letters
-        s{>\s*([^<>\n]*?[a-zA-Z][^<>\n]*?)\s*<}{
+        # 2. Translate inner tag text containing letters (handles multiline text blocks)
+        s{>\s*([^<>]*?[a-zA-Z][^<>]*?)\s*<}{
             my $txt = $1;
             if ($txt !~ /^<\?php/) {
                 $txt =~ s/"/\\"/g;
@@ -235,7 +249,7 @@ EOF
             } else {
                 ">$txt<";
             }
-        }ge;
+        }gse;
 
         # 3. Restore stashed HTML block comments back to exact positions
         s{___(\d+)___}{$comments[$1]}ge;

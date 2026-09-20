@@ -4,7 +4,7 @@
  * Description: Social Icons
  * Slug: lumina/text-social-icons
  * Categories: lumina, buttons
- * Block Types: core/social-icons
+ * Block Types: core/social-links
  */
 ?>
 <!-- wp:social-links {"openInNewTab":true,"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"left"}} -->

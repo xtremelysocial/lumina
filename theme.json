@@ -35,7 +35,7 @@
 					"darken": "brightness(0.40) saturate(1.15)"
 				},
 				"highlight-alt": {
-					"lighten": "brightness(1.75) saturate(0.80)"
+					"lighten": "brightness(1.5) saturate(0.80)"
 				},							
 				"image": {
 					"hoverOpacity": "1" 
@@ -296,7 +296,7 @@
 				},
 				{
 					"fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
-					"name": "System Sans-Serif",
+					"name": "System Font (Sans-Serif)",
 					"slug": "system"
 				},
 				{
@@ -1199,12 +1199,6 @@
 			"area": "content"
 		},
 		{
-			"name": "jetpack-sharing",
-			"title": "Lumina Jetpack Sharng",
-			"description": "Jetpack social sharing",
-			"area": "content"
-		},
-		{
 			"name": "post-title",
 			"title": "Lumina Post Title",
 			"description": "Title for posts",
@@ -1256,49 +1250,49 @@
 			"name": "featured-image",
 			"title": "Lumina Featured Image",
 			"description": "Lumina featured image",
-			"area": "content"
+			"area": "image"
 		},
 		{
 			"name": "featured-image-linked",
 			"title": "Lumina Featured Image (linked)",
 			"description": "Lumina linked featured image",
-			"area": "content"
+			"area": "image"
 		},
 		{
 			"name": "featured-image-wide",
 			"title": "Lumina Wide Featured Image",
 			"description": "Lumina wide (16:9) featured image",
-			"area": "content"
+			"area": "image"
 		},
 		{
 			"name": "featured-image-wide-linked",
 			"title": "Lumina Wide Featured Image (linked)",
 			"description": "Lumina linked wide (16:9) featured image",
-			"area": "content"
+			"area": "image"
 		},
 		{
 			"name": "featured-image-slim",
 			"title": "Lumina Slim Featured Image",
 			"description": "Lumina slim (16:4.5) featured image",
-			"area": "content"
+			"area": "image"
 		},
 		{
 			"name": "featured-image-slim-linked",
 			"title": "Lumina Slim Featured Image (linked)",
 			"description": "Lumina linked slim (16:4.5) featured image",
-			"area": "content"
+			"area": "image"
 		},
 		{
 			"name": "featured-image-ultrawide",
 			"title": "Lumina Ultrawide Featured Image",
 			"description": "Lumina ultrawide (21:9) featured image",
-			"area": "content"
+			"area": "image"
 		},
 		{
 			"name": "featured-image-ultrawide-linked",
 			"title": "Lumina Ultrawide Featured Image (linked)",
 			"description": "Lumina linked ultrawide (21:9) featured image",
-			"area": "content"
+			"area": "image"
 		},
 		{
 			"name": "contact-info",
@@ -1307,21 +1301,9 @@
 			"area": "content"
 		},
 		{
-			"name": "footer-about",
+			"name": "about-us",
 			"title": "Lumina About",
 			"description": "About for Footer (tagline, site description)",
-			"area": "content"
-		},
-		{
-			"name": "site-description",
-			"title": "Lumina Site Description",
-			"description": "Site description (e.g. This site is...)",
-			"area": "content"
-		},
-		{
-			"name": "site-motto",
-			"title": "Lumina Site Motto",
-			"description": "Site description (e.g. We believe that...)",
 			"area": "content"
 		},
 		{
@@ -1369,7 +1351,7 @@
 		{
 			"name": "sidebar",
 			"title": "Lumina Sidebar",
-			"description": "Sidebar (search, account, categories, social links)",
+			"description": "Sidebar (e.g. search, account, categories, social links)",
 			"area": "content"
 		},
 		{
@@ -1385,15 +1367,15 @@
 			"area": "content"
 		},
 		{
-			"name": "comments",
-			"title": "Lumina Comments",
-			"description": "Comments list and comment form",
+			"name": "social-icons-huge",
+			"title": "Lumina Huge Social Icons",
+			"description": "Huge social media icons (centered)",
 			"area": "content"
 		},
 		{
-			"name": "current-year",
-			"title": "Lumina Current Year",
-			"description": "Dynamic current year display",
+			"name": "comments",
+			"title": "Lumina Comments",
+			"description": "Comments list and comment form",
 			"area": "content"
 		},
 		{
@@ -1405,13 +1387,13 @@
 		{
 			"name": "theme-tagline",
 			"title": "Lumina Theme Tagline",
-			"description": "Theme tagline (theme by xtremelysocial)",
+			"description": "Theme tagline (e.g. theme by xtremelysocial)",
 			"area": "content"
 		},
 		{
 			"name": "site-copyright",
 			"title": "Lumina Site Copyright",
-			"description": "Site copyright (© by site-name)",
+			"description": "Site copyright (© site-name)",
 			"area": "content"
 		},
 		{
@@ -1428,13 +1410,13 @@
 		},
 		{
 			"name": "footer-default",
-			"title": "Lumina Default Light Footer",
+			"title": "Lumina Light Footer",
 			"description": "Clean, lightly tinted footer",
 			"area": "footer"
 		},
 		{
 			"name": "footer-dark",
-			"title": "Lumina Default Dark Footer",
+			"title": "Lumina Dark Footer",
 			"description": "A deep, dark footer with secondary colors",
 			"area": "footer"
 		},
@@ -1536,14 +1518,14 @@
 		},
 		{
 			"name": "footer-motto-social-icons",
-			"title": "Lumina Footer w/Motto and Social Icons",
-			"description": "Footer w/motto and huge social icons",
+			"title": "Lumina Footer w/Site Motto and Social Icons",
+			"description": "Footer w/site motto and huge social icons",
 			"area": "footer"
 		},
 		{
 			"name": "footer-motto-social-site",
-			"title": "Lumina Footer w/Motto, Social Icons, and Site Info",
-			"description": "Footer w/motto, social icons, and site info",
+			"title": "Lumina Footer w/Site Motto, Social Icons, and Site Info",
+			"description": "Footer w/site motto, social icons, and site info",
 			"area": "footer"
 		},
 		{

@@ -4,7 +4,7 @@
  * Description: Social Icons Huge
  * Slug: lumina/text-social-icons-huge
  * Categories: lumina, buttons
- * Block Types: core/social-icons
+ * Block Types: core/social-links
  */
 ?>
 <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->

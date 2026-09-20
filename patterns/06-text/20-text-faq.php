@@ -16,8 +16,8 @@
 			<h2 class="wp-block-heading is-style-separator"><?php esc_html_e( "Frequently Asked Questions", "lumina" ); ?></h2>
 			<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.5"}}} -->
-			<p style="line-height:1.5"><?php esc_html_e( "Find quick answers to common questions about our creative sessions, consultations, and scheduling. Need further assistance? Feel free to reach out to our studio directly.", "lumina" ); ?></p>
+			<!-- wp:paragraph {"fontSize":"medium"} -->
+			<p><?php esc_html_e( "Find quick answers to common questions about our creative sessions, consultations, and scheduling. Need further assistance? Feel free to reach out to our studio directly.", "lumina" ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->

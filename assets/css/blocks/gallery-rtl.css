@@ -1,14 +1,21 @@
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/gallery.scss ***!
   \*************************************************************************************************************************************************************************************************************************/
+/*--------------------------------------------------------------
+## Gallery
+--------------------------------------------------------------*/
+.wp-block-gallery.is-style-image-border {
+  --wp--style--gallery-gap-default: var(--wp--preset--spacing--30, calc(var(--wp--style--block-gap, 24px) / 2));
+}
+.wp-block-gallery:not(.is-style-image-border) {
+  --wp--style--gallery-gap-default: var(--wp--preset--spacing--20, calc(var(--wp--style--block-gap, 24px) / 3));
+}
+
 /*-----------------------------------------------------------------------------
 # Gallery: Custom
 -----------------------------------------------------------------------------*/
-/* Image captions */
-/* Image Border captions*/
-.wp-block-gallery.is-style-image-border .wp-block-image:not(.is-style-image-round-border):not(.is-style-image-computer-screen):not(.is-style-image-tablet-phone-screen) img {
-  padding: var(--wp--preset--spacing--20);
-}
+/* Image Border: Captions */
+/* Image Border: Captions */
 .wp-block-gallery.is-style-image-border.has-nested-images figure.wp-block-image:not(.is-style-rounded):not(.is-style-image-round-border):not(.is-style-image-computer-screen):not(.is-style-image-tablet-phone-screen):has(figcaption)::before, .wp-block-gallery.is-style-image-border.has-nested-images figure.wp-block-image:not(.is-style-rounded):not(.is-style-image-round-border):not(.is-style-image-computer-screen):not(.is-style-image-tablet-phone-screen) figcaption {
   bottom: calc(1px + var(--wp--preset--spacing--20));
   right: calc(1px + var(--wp--preset--spacing--20));
