@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Text Social Icons Huge
+ * Title: Social Icons Huge
  * Description: Social Icons Huge
  * Slug: lumina/text-social-icons-huge
  * Categories: lumina, buttons

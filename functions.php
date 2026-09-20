@@ -225,23 +225,23 @@ if ( ! function_exists( 'lumina_template_part_areas' ) ) :
 				'area'        => 'title',
 				'area_tag'    => 'section',
 				'label'       => __( 'Title', 'lumina' ),
-				'description' => __( 'Page and post titles plus home page content top', 'lumina' ),
-				'icon'        => ''
+				'description' => __( 'Page and post titles', 'lumina' ),
+				'icon'        => 'heading'
 			),
 			array(
 				'area'        => 'content',
 				'area_tag'    => 'section',
 				'label'       => __( 'Content', 'lumina' ),
-				'description' => __( 'Content section such as cover and post meta', 'lumina' ),
-				'icon'        => ''
+				'description' => __( 'Content such as post format, sidebar, etc.', 'lumina' ),
+				'icon'        => 'layout'
 			),
-// 			array(
-// 				'area'        => 'menu',
-// 				'area_tag'    => 'section',
-// 				'label'       => __( 'Menu', 'lumina' ),
-// 				'description' => __( 'Navigation Menus', 'lumina' ),
-// 				'icon'        => ''
-// 			)
+			array(
+				'area'        => 'image',
+				'area_tag'    => 'section',
+				'label'       => __( 'Image', 'lumina' ),
+				'description' => __( 'Images', 'lumina' ),
+				'icon'        => 'format-image'
+			)
 		);
 		return array_merge( $areas, $new_areas );
 	}

@@ -3,7 +3,7 @@
  * Title: Columns Drop Cap 2
  * Description: Columns Drop Cap 2
  * Slug: lumina/columns-drop-caps-2
- * Categories: lumina, column, featured
+ * Categories: lumina, column
  * Block Types: core/columns
  */
 ?>

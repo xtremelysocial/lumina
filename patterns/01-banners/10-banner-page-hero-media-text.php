@@ -8,12 +8,12 @@
  */
 ?>
 
-<!-- wp:group {"metadata":{"name":"Banner Page Hero Media \u0026 Text"},"align":"full","gradient":"secondary","layout":{"type":"constrained"},"anchor":"banner-hero-media-text"} -->
-<div class="wp-block-group alignfull has-secondary-gradient-background has-background" id="banner-hero-media-text"><!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom"} -->
+<!-- wp:group {"metadata":{"name":"Banner Page Hero Media \u0026 Text"},"align":"full","gradient":"secondary","layout":{"type":"constrained"},"anchor":"banner-page-hero-media-text"} -->
+<div class="wp-block-group alignfull has-secondary-gradient-background has-background" id="banner-page-hero-media-text"><!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom"} -->
 <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom" style="grid-template-columns:auto 45%"><div class="wp-block-media-text__content">
-<!-- wp:post-title {"level":1,"align":"wide","className":"entry-title","style":{"typography":{"textAlign":"center","lineHeight":"1.2"}},"fontSize":"huge"} /-->
+<!-- wp:post-title {"level":1,"align":"wide","className":"entry-title","style":{"typography":{"lineHeight":"1.2"}},"fontSize":"huge"} /-->
 
-<!-- wp:post-excerpt {"excerptLength":20,"className":"is-style-no-readmore","style":{"typography":{"textAlign":"center","lineHeight":"1.2"}},"fontSize":"x-large"} /-->
+<!-- wp:post-excerpt {"excerptLength":20,"className":"is-style-no-readmore","style":{"typography":{"lineHeight":"1.2"}},"fontSize":"x-large"} /-->
 
 <!-- wp:paragraph {"placeholder":"Scroll Down","metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-scroll-down-no-text","style":{"elements":{"link":{"color":{"text":"inherit"}}},"typography":{"textAlign":"center"}},"fontSize":"x-large"} -->
 <p class="has-text-align-center is-style-icon-scroll-down-no-text has-link-color has-x-large-font-size"><a href="#content-start" rel="nofollow"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
