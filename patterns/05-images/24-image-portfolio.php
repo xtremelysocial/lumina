@@ -1,13 +1,13 @@
 <?php
 /**
- * Title: Image Facility
- * Description: Image Static Map
- * Slug: lumina/image-facility
+ * Title: Image Portfolio
+ * Description: Image Portfolio
+ * Slug: lumina/image-portfolio
  * Categories: lumina, media
  * Block Types: core/image
  */
 ?>
 <!-- wp:image {"lightbox":{"enabled":true},"align":"center","sizeSlug":"large","linkDestination":"none"} -->
 <figure class="wp-block-image aligncenter size-large">
-<img src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/about-facility.webp" ) ); ?>" alt="screenshot"/></figure>
+<img src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/portfolio-hero.webp" ) ); ?>" alt="Portfolio Image"/></figure>
 <!-- /wp:image -->

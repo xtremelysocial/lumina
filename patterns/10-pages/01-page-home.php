@@ -3,8 +3,8 @@
  * Title: Page Home
  * Description: Home Page
  * Slug: lumina/page-home
- * Categories: lumina
- * Block Types: core/page
+ * Categories: lumina, page
+ * Block Types: core/post-content
  */
 ?>
 <!-- wp:group {"align":"full","layout":{"type":"constrained"}} -->

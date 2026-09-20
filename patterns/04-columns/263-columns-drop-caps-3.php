@@ -3,7 +3,7 @@
  * Title: Columns Drop Caps 3
  * Description: Columns Drop Caps 3 editorial column pattern.
  * Slug: lumina/columns-drop-caps-3
- * Categories: lumina, column
+ * Categories: lumina, column, featured
  * Block Types: core/columns
  */
 ?>

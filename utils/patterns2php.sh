@@ -25,14 +25,15 @@
 #    ./utils/patterns2php.sh hero
 #    ./utils/patterns2php.sh columns
 #
-# 4. Process a Custom Relative Source Directory:
+# 4. Process a Custom Relative Source Directory (e.g., Template Parts like /parts):
 #    Overrides default /patterns/html directory with another folder relative to theme root.
 #    ./utils/patterns2php.sh parts
 #    ./utils/patterns2php.sh patterns/html/01-heroes
 #
 # 5. Combined Usage (Custom Directory + Keyword Filter + Force Overwrite):
-#    Arguments are evaluated flexibly regardless of order.
+#    Target specific template parts (e.g. headers/footers) and force replace converted PHP output.
 #    ./utils/patterns2php.sh parts header -f
+#    ./utils/patterns2php.sh parts footer --force
 #    ./utils/patterns2php.sh banner --force
 # ==============================================================================
 
@@ -106,6 +107,7 @@ for file in "$SOURCE_DIR"/**/*.html(N); do
 
     filename=$(basename "$file")
     raw_slug_base="${filename%.*}"
+    rel_path="${file#$THEME_ROOT/}"
 
     # 0. STRIP LEADING ORDERING NUMBERS FOR METADATA (e.g., "01-banner-hero" -> "banner-hero")
     slug_base=$(echo "$raw_slug_base" | perl -pe 's/^\d+[-_.\s]*//')
@@ -143,7 +145,7 @@ for file in "$SOURCE_DIR"/**/*.html(N); do
         done
     fi
 
-    # B. Supplemental keyword guessing from clean filename
+    # B. Supplemental keyword guessing from clean filename & relative directory path
     if [[ "$slug_base" == *button* ]]; then categories+=("buttons" "call-to-action"); fi
     if [[ "$slug_base" == *column* ]]; then categories+=("column"); fi
     if [[ "$slug_base" == *cover* || "$slug_base" == *banner* || "$slug_base" == *bokeh* ]]; then categories+=("banner"); fi
@@ -152,15 +154,17 @@ for file in "$SOURCE_DIR"/**/*.html(N); do
     if [[ "$slug_base" == *team* ]]; then categories+=("team"); fi
     if [[ "$slug_base" == *pricing* ]]; then categories+=("pricing"); fi
     if [[ "$slug_base" == *query* ]]; then categories+=("query"); fi
+    if [[ "$slug_base" == *header* || "$rel_path" == *header* ]]; then categories+=("header"); fi
+    if [[ "$slug_base" == *footer* || "$rel_path" == *footer* ]]; then categories+=("footer"); fi
 
     # C. Deduplicate array with Zsh built-in (u) flag
     unique_categories=(${(u)categories})
     categories_str="${(j:, :)unique_categories}"
 
-    # 5. Search for block keywords anywhere in clean filename (longest keys first)
+    # 5. Search for block keywords in filename or folder path (longest keys first)
     block_type=""
     for key in $sorted_block_keys; do
-        if [[ "$slug_base" == *"$key"* ]]; then
+        if [[ "$slug_base" == *"$key"* || "$rel_path" == *"$key"* ]]; then
             block_type="${BLOCK_MAP[$key]}"
             break
         fi
