@@ -21,8 +21,8 @@
 # Group Editor Styles
 -----------------------------------------------------------------------------*/
 /* Keep our footers together in the Editor */
-.site-footer + .site-info {
-  margin-block-start: 0;
+.wp-site-blocks > .block-editor-block-list__block:has(.site-footer, .site-info) + .block-editor-block-list__block:has(.site-footer, .site-info) {
+  margin-block-start: 0 !important;
 }
 
 /* Set our aspect ratios in the Editor */

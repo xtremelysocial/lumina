@@ -48,8 +48,8 @@
 /* ==========================================================================
    COLUMNS: CENTER ON MOBILE OVERRIDE
    ========================================================================== */
-@media only screen and (max-width: 781px) {
-  /* Center on mobile */
+@media only screen and (max-width: 959px) {
+  /* Center on mobile & tablet stack */
   .wp-block-columns.is-style-center-on-mobile {
     row-gap: var(--wp--preset--spacing--30);
   }
@@ -62,9 +62,13 @@
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  .wp-block-columns.is-style-center-on-mobile :is(.is-layout-flex, .wp-block-buttons, .wp-block-social-links) {
+  .wp-block-columns.is-style-center-on-mobile :is(.is-layout-flex, .wp-block-buttons, .wp-block-social-links, .wp-block-navigation, .wp-block-navigation__container) {
     justify-content: center !important;
     --navigation-layout-justify: center;
+  }
+  .wp-block-columns.is-style-center-on-mobile .wp-block-navigation-item {
+    justify-content: center !important;
+    text-align: center !important;
   }
   /* Override columns thick gap so vertical spacing matches up */
   .wp-block-columns.is-style-thick-gap,

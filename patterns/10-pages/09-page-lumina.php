@@ -260,7 +260,7 @@
 
 <!-- wp:column {"className":"is-style-default"} -->
 <div class="wp-block-column is-style-default"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"lineHeight":"1","fontWeight":"600","textAlign":"center","fontStyle":"normal"},"elements":{"link":{"color":{"text":"var:preset|color|tertiary-alt"}}}},"textColor":"tertiary-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color has-huge-font-size" style="font-style:normal;font-weight:600;line-height:1">20</p>
+<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color has-huge-font-size" style="font-style:normal;font-weight:600;line-height:1">25</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
@@ -272,11 +272,11 @@
 <!-- wp:columns {"isStackedOnMobile":false,"className":"is-style-gutter-dividers","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-columns is-not-stacked-on-mobile is-style-gutter-dividers"><!-- wp:column {"className":"is-style-default"} -->
 <div class="wp-block-column is-style-default"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"lineHeight":"1","fontWeight":"600","textAlign":"center","fontStyle":"normal"},"elements":{"link":{"color":{"text":"var:preset|color|tertiary-alt"}}}},"textColor":"tertiary-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color has-huge-font-size" style="font-style:normal;font-weight:600;line-height:1">7</p>
+<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color has-huge-font-size" style="font-style:normal;font-weight:600;line-height:1">5</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
-<p class="has-text-align-center has-contrast-color has-text-color" style="line-height:1.4">Fonts</p>
+<p class="has-text-align-center has-contrast-color has-text-color" style="line-height:1.4">Curated Fonts</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 

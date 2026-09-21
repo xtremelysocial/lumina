@@ -51,9 +51,9 @@
    COLUMNS: CENTER ON MOBILE OVERRIDE
    ========================================================================== */
 
-@media only screen and (max-width: #{ (breakpoints.$break-medium - 1) }) {
+@media only screen and (max-width: #{ (breakpoints.$break-large - 1) }) {
 
-	/* Center on mobile */
+	/* Center on mobile & tablet stack */
 	.wp-block-columns.is-style-center-on-mobile {
 		row-gap: var(--wp--preset--spacing--30);
 
@@ -70,10 +70,15 @@
 			margin-right: auto !important;
 		}
 
-		// 3. Center flex layout groups (Buttons, Social Links, Flex Rows)
-		:is(.is-layout-flex, .wp-block-buttons, .wp-block-social-links) {
+		// 3. Center flex layout groups (Buttons, Social Links, Navigation Rows)
+		:is(.is-layout-flex, .wp-block-buttons, .wp-block-social-links, .wp-block-navigation, .wp-block-navigation__container) {
 			justify-content: center !important;
 			--navigation-layout-justify: center;
+		}
+
+		.wp-block-navigation-item {
+			justify-content: center !important;
+			text-align: center !important;
 		}
 	}
 

@@ -21,9 +21,9 @@ if ( ! function_exists( 'lumina_theme_support' ) ) :
 	function lumina_theme_support() {
 
 		// Theme widths from CSS and theme.json
-		$full_size    = apply_filters( 'xtremelysocial_full_size', 1600 );
-		$wide_size    = apply_filters( 'xtremelysocial_content_size', 1146 );
-		$content_size = apply_filters( 'xtremelysocial_content_size', 760 );
+		$full_size    = apply_filters( 'lumina_full_size', 1600 );
+		$wide_size    = apply_filters( 'lumina_content_size', 1146 );
+		$content_size = apply_filters( 'lumina_content_size', 760 );
 
 		// Full width images: 16:9 and ultrawide 21:9
 		add_image_size( 'cropped-full', $full_size, round( 9 / 16 * $full_size ), true );

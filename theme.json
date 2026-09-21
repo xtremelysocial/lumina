@@ -160,8 +160,8 @@
 			"writingMode": false,
 			"fontFamilies": [
 				{
-					"fontFamily": "Lato, sans-serif",
-					"name": "Lato (Default Body)",
+					"fontFamily": "Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",				
+					"name": "Lato",
 					"slug": "lato",
 					"fontFace": [
 						{
@@ -169,8 +169,7 @@
 							"fontWeight": "200",
 							"fontStyle": "normal",
 							"src": [ 
-								"file:./assets/fonts/Lato/Lato-Hairline.woff2",
-								"file:./assets/fonts/Lato/Lato-Hairline.woff"
+								"file:./assets/fonts/Lato/Lato-Hairline.woff2"
 							]							
 						},
 						{
@@ -178,8 +177,7 @@
 							"fontWeight": "200",
 							"fontStyle": "italic",
 							"src": [ 
-								"file:./assets/fonts/Lato/Lato-HairlineItalic.woff2",
-								"file:./assets/fonts/Lato/Lato-HairlineItalic.woff" 				 				
+								"file:./assets/fonts/Lato/Lato-HairlineItalic.woff2"				 				
 							]
 						},						
 						{
@@ -187,8 +185,7 @@
 							"fontWeight": "300",
 							"fontStyle": "normal",
 							"src": [ 
-								"file:./assets/fonts/Lato/Lato-Light.woff2",
-								"file:./assets/fonts/Lato/Lato-Light.woff"
+								"file:./assets/fonts/Lato/Lato-Light.woff2"
 							]
 						},
 						{
@@ -196,8 +193,7 @@
 							"fontWeight": "300",
 							"fontStyle": "italic",
 							"src": [ 
-								"file:./assets/fonts/Lato/Lato-LightItalic.woff2", 
-								"file:./assets/fonts/Lato/Lato-LightItalic.woff"
+								"file:./assets/fonts/Lato/Lato-LightItalic.woff2"
 							]
 						},						
 						{
@@ -205,8 +201,7 @@
 							"fontWeight": "400",
 							"fontStyle": "normal",
 							"src": [ 
-								"file:./assets/fonts/Lato/Lato-Regular.woff2",
-								"file:./assets/fonts/Lato/Lato-Regular.woff"
+								"file:./assets/fonts/Lato/Lato-Regular.woff2"
 							]
 						},
 						{
@@ -214,8 +209,7 @@
 							"fontWeight": "400",
 							"fontStyle": "italic",
 							"src": [ 
-								"file:./assets/fonts/Lato/Lato-Italic.woff2",
-								"file:./assets/fonts/Lato/Lato-Italic.woff"
+								"file:./assets/fonts/Lato/Lato-Italic.woff2"
 							]
 						},						
 						{
@@ -223,8 +217,7 @@
 							"fontWeight": "500",
 							"fontStyle": "normal",
 							"src": [ 
-								"file:./assets/fonts/Lato/Lato-Medium.woff2",
-								"file:./assets/fonts/Lato/Lato-Medium.woff"
+								"file:./assets/fonts/Lato/Lato-Medium.woff2"
 							]
 						},
 						{
@@ -232,15 +225,14 @@
 							"fontWeight": "500",
 							"fontStyle": "italic",
 							"src": [ 
-								"file:./assets/fonts/Lato/Lato-MediumItalic.woff2",
-								"file:./assets/fonts/Lato/Lato-MediumItalic.woff"
+								"file:./assets/fonts/Lato/Lato-MediumItalic.woff2"
 							]
 						}						
 					]
 				},
 				{
-					"fontFamily": "Raleway, sans-serif",
-					"name": "Raleway (Default Heading)",
+					"fontFamily": "Raleway, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",				
+					"name": "Raleway",
 					"slug": "raleway",
 					"fontFace": [
 						{
@@ -248,20 +240,20 @@
 							"fontWeight": "200 500",
 							"fontStyle": "normal",
 							"fontStretch": "normal",
-							"src": [ "file:./assets/fonts/Raleway/Raleway-VariableFont_wght.ttf" ]
+							"src": [ "file:./assets/fonts/Raleway/Raleway-VariableFont_wght.woff2" ]
 						},
 						{
 							"fontFamily": "Raleway",
 							"fontWeight": "200 500",
 							"fontStyle": "italic",
 							"fontStretch": "normal",
-							"src": [ "file:./assets/fonts/Raleway/Raleway-Italic-VariableFont_wght.ttf" ]
+							"src": [ "file:./assets/fonts/Raleway/Raleway-Italic-VariableFont_wght.woff2" ]
 						}
 					]
 				},
 				{
-					"fontFamily": "Lora, serif",
-					"name": "Lora (Serif Headings)",
+					"fontFamily": "Lora, Georgia, 'Times New Roman', serif",				
+					"name": "Lora",
 					"slug": "lora",
 					"fontFace": [
 						{
@@ -269,20 +261,20 @@
 							"fontWeight": "200 500",
 							"fontStyle": "normal",
 							"fontStretch": "normal",
-							"src": [ "file:./assets/fonts/Lora/Lora-VariableFont_wght.ttf" ]
+							"src": [ "file:./assets/fonts/Lora/Lora-VariableFont_wght.woff2" ]
 						},
 						{
 							"fontFamily": "Lora",
 							"fontWeight": "200 500",
 							"fontStyle": "italic",
 							"fontStretch": "normal",
-							"src": [ "file:./assets/fonts/Lora/Lora-Italic-VariableFont_wght.ttf" ]
+							"src": [ "file:./assets/fonts/Lora/Lora-Italic-VariableFont_wght.woff2" ]
 						}
 					]
 				},	
 				{
-					"fontFamily": "'Style Script', sans-serif",
-					"name": "Style Script (Handwritten Headings)",
+					"fontFamily": "'Style Script', 'Brush Script MT', cursive",
+					"name": "Style Script",
 					"slug": "style-script",
 					"fontFace": [
 						{
@@ -290,18 +282,18 @@
 							"fontWeight": "300 400",
 							"fontStyle": "normal",
 							"fontStretch": "normal",
-							"src": [ "file:./assets/fonts/Style_Script/StyleScript-Regular.ttf" ]
+							"src": [ "file:./assets/fonts/Style_Script/StyleScript-Regular.woff2" ]
 						}
 					]
 				},
 				{
 					"fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
-					"name": "System Font (Sans-Serif)",
+					"name": "System Font",
 					"slug": "system"
 				},
 				{
-					"fontFamily": "'Roboto Mono', 'Courier New', Courier, monospace",
-					"name": "Roboto Mono (Default monospace)",
+					"fontFamily": "'Roboto Mono', ui-monospace, 'Cascadia Code', 'Segoe UI Mono', SFMono-Regular, Consolas, monospace",
+					"name": "Roboto Mono",
 					"slug": "roboto-mono",
 					"fontFace": [
 						{
@@ -309,15 +301,10 @@
 							"fontWeight": "300 400",
 							"fontStyle": "normal",
 							"fontStretch": "normal",
-							"src": [ "file:./assets/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf" ]
+							"src": [ "file:./assets/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.woff2" ]
 						}
 					]
-				},
-				{
-					"fontFamily": "ui-monospace, 'Cascadia Code', 'Segoe UI Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace",
-					"name": "System Monospace",
-					"slug": "monospace"
-				}														
+				}
 			],		
 			"fontSizes": [
 				{
@@ -441,12 +428,12 @@
 				},
 				{
 					"slug": "30",
-					"size": "calc(0.65 * var(--wp--custom--spacing--gap))",
+					"size": "calc(0.55 * var(--wp--custom--spacing--gap))",
 					"name": "X-Small"
 				},
 				{
 					"slug": "40",
-					"size": "clamp(calc(0.65 * var(--wp--custom--spacing--gap)), 2vw, calc(1 * var(--wp--custom--spacing--gap)))",
+					"size": "clamp(calc(0.55 * var(--wp--custom--spacing--gap)), 2vw, calc(1 * var(--wp--custom--spacing--gap)))",
 					"name": "Small (Block Gap)"
 				},
 				{
@@ -1409,24 +1396,6 @@
 			"area": "footer"
 		},
 		{
-			"name": "footer-default",
-			"title": "Lumina Light Footer",
-			"description": "Clean, lightly tinted footer",
-			"area": "footer"
-		},
-		{
-			"name": "footer-dark",
-			"title": "Lumina Dark Footer",
-			"description": "A deep, dark footer with secondary colors",
-			"area": "footer"
-		},
-		{
-			"name": "footer-colored",
-			"title": "Lumina Alternate Dark Footer",
-			"description": "A dark footer alternative with tertiary colors",
-			"area": "footer"
-		},
-		{
 			"name": "footer-3-blocks-nav-site-info",
 			"title": "Lumina Footer 3 Blocks plus Menu and Site Info",
 			"description": "Footer w/3 blocks plus nav menu and site info",
@@ -1442,6 +1411,12 @@
 			"name": "footer-3-blocks-nav-social",
 			"title": "Lumina Footer 3 Blocks plus Menu and Social Icons",
 			"description": "Footer w/3 blocks plus nav menu and social icons",
+			"area": "footer"
+		},
+		{
+			"name": "footer-3-blocks-nav-theme",
+			"title": "Lumina Footer 3 Blocks plus Menu and Theme Info",
+			"description": "Footer w/3 blocks plus nav menu and theme info",
 			"area": "footer"
 		},
 		{
@@ -1463,9 +1438,33 @@
 			"area": "footer"
 		},
 		{
-			"name": "footer-about-2-navs-contact-site-info",
-			"title": "Lumina Footer About, 2 Menus, Contact & Site Info",
-			"description": "Footer w/block 3 (About), 2 nav menus, contact info, site info",
+			"name": "footer-about-2-navs-contact-dark",
+			"title": "Lumina Dark Footer About, 2 Menus, Contact Info",
+			"description": "Dark Footer w/About, 2 nav menus, and contact info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-about-2-navs-contact-colored",
+			"title": "Lumina Colored Footer About, 2 Menus, Contact Info",
+			"description": "Colored Footer w/About, 2 nav menus, and contact info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-default",
+			"title": "Lumina Default Footer w/About, 2 Menus, Contact & Site Info",
+			"description": "Default Footer w/about, 2 nav menus, contact info, site info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-dark",
+			"title": "Lumina Dark Footer w/About, 2 Menus, Contact & Site Info",
+			"description": "Dark Footer w/about, 2 nav menus, contact info, site info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-colored",
+			"title": "Lumina Colored Footer w/About, 2 Menus, Contact & Site Info",
+			"description": "Colored Footer w/about, 2 nav menus, contact info, site info",
 			"area": "footer"
 		},
 		{
@@ -1478,6 +1477,18 @@
 			"name": "footer-compact-site-info",
 			"title": "Lumina Footer Compact Site Info",
 			"description": "Compact footer w/site info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-compact-site-info-dark",
+			"title": "Lumina Dark Footer Compact Site Info",
+			"description": "Dark Compact footer w/site info",
+			"area": "footer"
+		},
+		{
+			"name": "footer-compact-site-info-colored",
+			"title": "Lumina Colored Footer Compact Site Info",
+			"description": "Colored Compact footer w/site info",
 			"area": "footer"
 		},
 		{
@@ -1502,6 +1513,12 @@
 			"name": "footer-compact-nav-site-social",
 			"title": "Lumina Footer Compact w/Nav Menu, Site Info, and Social Icons",
 			"description": "Compact footer w/nav menu, site info, and social icons",
+			"area": "footer"
+		},
+		{
+			"name": "footer-compact-nav-site-social-dark",
+			"title": "Lumina Footer Dark Compact Menu, Social Icons, and Site Info",
+			"description": "Dark compact footer w/nav menu, social icons, and site copyright",
 			"area": "footer"
 		},
 		{
