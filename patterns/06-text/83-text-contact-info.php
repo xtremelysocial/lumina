@@ -12,31 +12,23 @@
 
 <!-- wp:site-title {"level":3,"isLink":false} /-->
 
-<!-- wp:group {"metadata":{"name":"Address"},"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
-	<!-- wp:paragraph {"className":"is-style-link-no-underline"} -->
-	<p class="is-style-link-no-underline"><?php esc_html_e("1234 US Highway 99", "lumina"); ?></p>
-	<!-- /wp:paragraph -->
-	
-	<!-- wp:paragraph {"className":"is-style-link-no-underline"} -->
-	<p class="is-style-link-no-underline"><?php esc_html_e("Anytown, USA 55555", "lumina"); ?></p>
-	<!-- /wp:paragraph -->
-</div>
-<!-- /wp:group -->
+<!-- wp:paragraph {"className":"is-style-link-no-underline"} -->
+<p class="is-style-link-no-underline"><?php esc_html_e("1234 US Highway 99", "lumina"); ?></p>
+<!-- /wp:paragraph -->
 
-<!-- wp:group {"metadata":{"name":"Contact Details"},"style":{"spacing":{"blockGap":"0px","margin":{"top":"var:preset|spacing|20"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--20)">
-	<!-- wp:paragraph {"className":"is-style-link-no-underline"} -->
-	<p class="is-style-link-no-underline"><a href="tel:555-867-5309">(555) 867-5309</a></p>
-	<!-- /wp:paragraph -->
-	
-	<!-- wp:paragraph {"className":"is-style-link-no-underline"} -->
-	<p class="is-style-link-no-underline"><a href="mailto:#"><?php esc_html_e("mail@example.com", "lumina"); ?></a></p>
-	<!-- /wp:paragraph -->
-</div>
-<!-- /wp:group -->
+<!-- wp:paragraph {"className":"is-style-link-no-underline","style":{"spacing":{"margin":{"top":"0px"}}}} -->
+<p class="is-style-link-no-underline" style="margin-top:0px"><?php esc_html_e("Anytown, USA 55555", "lumina"); ?></p>
+<!-- /wp:paragraph -->
 
-<!-- wp:pattern {"slug":"lumina/text-social-icons-neutral"} /-->
+<!-- wp:paragraph {"className":"is-style-link-no-underline","style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}}} -->
+<p class="is-style-link-no-underline" style="margin-top:var(--wp--preset--spacing--30)"><a href="tel:555-867-5309">(555) 867-5309</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"is-style-link-no-underline","style":{"spacing":{"margin":{"top":"0px"}}}} -->
+<p class="is-style-link-no-underline" style="margin-top:0px"><a href="mailto:#"><?php esc_html_e("mail@example.com", "lumina"); ?></a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:pattern {"slug":"lumina/text-social-icons-neutral","style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}}} /-->
 
 </div>
 <!-- /wp:group -->
