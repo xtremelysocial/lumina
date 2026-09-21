@@ -9,10 +9,48 @@ Built on a foundation of earthy notes and ambient lighting, the theme utilizes s
 
 For more information, see [Lumina WordPress Theme](http://xtremelysocial.com/wordpress/lumina/).
 
+== Quick Start Guide ==
+
+= Front (Home) Page = 
+
+This theme is designed to work great whether your front (home) page is your blog or a "static page". This theme has a Template Part called "Home Page Top" that displays either way and you can change it whatever you want. By default, it has several nice Block Patterns in it to get you started.
+
+To check your settings for blog or static page, go to Settings -> Reading in the WordPress Admin Dashboard.
+
+Note that if you have the blog set on the home page, it uses the Template called Index ("index.html"). If you have the home page set to a page, it will use hat page and the blog page uses the Home template ("home.html").
+
+= Menus = 
+
+Right away you'll want to go into the Site Editor and select the navigation menus you want for the default header and the footer. Once you do, those will be saved although if you try out other Header and Footer templates, you will likely have to select menus for those. Some Footers include more than one menu also. 
+
+= Header, Footer, and Blog Layouts = 
+
+One of the cool things about this theme is that we provide numerous Header, Footer, and Blog layouts (Query Loops). While you are in the Site Editor, check them out. Just be sure to replace the "Header Fixed" block not the main Header block. The same thing applies to the "Footer Default". 
+
+For blog layouts, change the "Query Loop" block instead of the Query block.
+
+Note that the theme is setup this way so that you can change the Header, Footer, and Query layout across the entire site. If you change the actual Header Wrapper or Footer Wrapper, those changes will only apply to the specific Template you are editing at the time. e.g. Blog Index, Page, or Post template.
+
+= Page and Block Patterns = 
+
+This theme provides TONS of Block Patterns that you can insert into your pages and posts to quickly build out content. It also includes full Page Patterns that will pull in a whole series of Block Patterns to easily build a Home, About, Services, and/or Portfolio page. 
+
+Note that Block and Page Patterns are copied into your page or post and unlike Block Templates above, edits you make to Block Patterns are stored only on that page or post.
+
+== Creating a Child Theme Using the Create Block Theme Plugin ==
+Use the [Create Block Theme](https://wordpress.org/plugins/create-block-theme/) plugin.
+
+1. Install the main Lumina theme
+2. Use the Full Site Editor to adjust any Global Styles, Templates, Template Parts, etc. to your liking.
+3. Install the Create Block Theme plugin 
+4. Use it to export a new child theme of Lumina. 
+
+This will retain your changes while still allowing to load the main Lumina theme to see any major updates provided from version to version. 
+
 == Changelog ==
 
 = v1.0.0 Alpha = 
-September 19, 2026
+September 20, 2026
 
 * Initial theme version
 

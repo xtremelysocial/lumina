@@ -1,7 +1,9 @@
-/* ==========================================================================
-   BLOCK EDITOR STYLES: Image Aspect Ratios
-   Tweaks to image aspect ratios in the Editor
-   ========================================================================== */
+///* ==========================================================================
+//    BLOCK EDITOR STYLES: Image Aspect Ratios
+//    Tweaks to image aspect ratios in the Editor
+//    ========================================================================== */
+
+/* Set our aspect ratios in the Editor */ 
 
 // Apply overflow clipping ONLY while the block displays an empty Gutenberg placeholder
 .wp-block-post-featured-image:has(.components-placeholder) {
@@ -34,5 +36,24 @@
 	&[style*="1168px"] {
 		aspect-ratio: 16 / 4.5;
 		max-height: none !important;
+	}
+}
+
+///* ==========================================================================
+//    BLOCK EDITOR STYLES: Pan-Zoom Motion Override
+//    Disables live keyframe motion in Gutenberg canvas
+//    ========================================================================== */
+
+/* No motion on images in the Editor */
+:is(
+	.wp-block-image, 
+	.wp-block-post-featured-image, 
+	.wp-block-cover,
+	.wp-block-media-text
+) {
+	img,
+	.wp-block-cover__image-background {
+		animation: none !important;
+		transform: none !important;
 	}
 }

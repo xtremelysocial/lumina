@@ -1505,12 +1505,6 @@
 			"area": "footer"
 		},
 		{
-			"name": "footer-compact-contact-info-social",
-			"title": "Lumina Footer Compact w/Contact Info and Social Icons",
-			"description": "Compact footer w/site info and social icons",
-			"area": "footer"
-		},
-		{
 			"name": "footer-map-static",
 			"title": "Lumina Footer w/Static Map (image) and Contact Info",
 			"description": "Footer w/static map (image) and contact info",

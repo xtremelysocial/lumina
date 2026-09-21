@@ -2,8 +2,6 @@
 //   00 LUMINA EDITOR STYLES: Editor-specific CSS. Compiles to 
 //		theme-editor-styles.css
 //   ========================================================================== */
-@forward "base";
 @forward "group"; 
-@forward "images-aspect-ratios";
-@forward "images-stop-animation";
+@forward "images";
 @forward "latest-comments";

@@ -1,6 +1,13 @@
 /*-----------------------------------------------------------------------------
 # Social Links (Icons)
 -----------------------------------------------------------------------------*/
+
+// Override browser 1em defaults on Social Links with 0 specificity
+:where(ul.wp-block-social-links) {
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
 .wp-block-social-links {
 
 	// Explicit icon size overrides mapped to theme font sizes

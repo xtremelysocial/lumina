@@ -13,7 +13,8 @@
 <!-- /wp:heading -->
 
 <!-- wp:columns {"metadata":{"name":"Outer Columns"},"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|60"}},"anchor":"metrics"} -->
-<div class="wp-block-columns alignwide" id="metrics"><!-- wp:column {"width":"33.33%","metadata":{"name":"Intro Column"}} -->
+<div class="wp-block-columns alignwide" id="metrics">
+<!-- wp:column {"width":"33.33%","metadata":{"name":"Intro Column"}} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:paragraph {"fontSize":"medium"} -->
 <p class="has-medium-font-size"><?php esc_html_e("Through years of refined visual practice and creative direction, our studio delivers", "lumina"); ?> <strong><?php esc_html_e("timeless fine art imagery", "lumina"); ?></strong> <?php esc_html_e("plus", "lumina"); ?> <strong><?php esc_html_e("bespoke editorial direction", "lumina"); ?></strong> <?php esc_html_e("tailored to elevate your brand narrative.", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
@@ -21,8 +22,8 @@
 
 <!-- wp:column {"width":"66.66%","metadata":{"name":"Columns 3 x 2"},"style":{"spacing":{"blockGap":"var:preset|spacing|30"}}} -->
 <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:columns {"isStackedOnMobile":false,"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
-<div class="wp-block-columns is-not-stacked-on-mobile"><!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
-<div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
+<div class="wp-block-columns is-not-stacked-on-mobile"><!-- wp:column {"className":"is-style-rounded-border"} -->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
 <p class="has-text-align-center has-primary-alt-color has-text-color has-huge-font-size">12</p>
 <!-- /wp:paragraph -->
 
@@ -31,8 +32,8 @@
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
-<div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
+<!-- wp:column {"className":"is-style-rounded-border"} -->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
 <p class="has-text-align-center has-primary-alt-color has-text-color has-huge-font-size">15+</p>
 <!-- /wp:paragraph -->
 
@@ -41,8 +42,8 @@
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
-<div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
+<!-- wp:column {"className":"is-style-rounded-border"} -->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
 <p class="has-text-align-center has-primary-alt-color has-text-color has-huge-font-size">120+</p>
 <!-- /wp:paragraph -->
 
@@ -53,8 +54,8 @@
 <!-- /wp:columns -->
 
 <!-- wp:columns {"isStackedOnMobile":false,"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
-<div class="wp-block-columns is-not-stacked-on-mobile"><!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
-<div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
+<div class="wp-block-columns is-not-stacked-on-mobile"><!-- wp:column {"className":"is-style-rounded-border"} -->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
 <p class="has-text-align-center has-primary-alt-color has-text-color has-huge-font-size">150+</p>
 <!-- /wp:paragraph -->
 
@@ -63,8 +64,8 @@
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
-<div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
+<!-- wp:column {"className":"is-style-rounded-border"} -->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
 <p class="has-text-align-center has-primary-alt-color has-text-color has-huge-font-size">280+</p>
 <!-- /wp:paragraph -->
 
@@ -73,16 +74,16 @@
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"className":"is-style-rounded-border","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}}} -->
-<div class="wp-block-column is-style-rounded-border" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
+<!-- wp:column {"className":"is-style-rounded-border"} -->
+<div class="wp-block-column is-style-rounded-border"><!-- wp:paragraph {"align":"center","fontSize":"huge","textColor":"primary-alt"} -->
 <p class="has-text-align-center has-primary-alt-color has-text-color has-huge-font-size">11</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"align":"center"} -->
 <p class="has-text-align-center"><?php esc_html_e("Editorial Awards", "lumina"); ?></p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></div>
-<!-- /wp:group -->
+<!-- /wp:paragraph -->
+</div><!-- /wp:column -->
+</div><!-- /wp:columns -->
+</div><!-- /wp:column -->
+</div><!-- /wp:columns -->
+</div><!-- /wp:group -->
