@@ -21,9 +21,10 @@ if ( ! function_exists( 'register_additional_pattern_categories' ) ) :
 
 		$block_pattern_categories = array(
 			'lumina' => array( 'label' => __( 'All Lumina', 'lumina' ) ),
+			'column' => array( 'label' => __( 'Columns', 'lumina' ) ),
 		);
 
-		$block_pattern_categories = apply_filters( 'block_pattern_additional_categories', $block_pattern_categories );
+		$block_pattern_categories = apply_filters( 'lumina_block_pattern_additional_categories', $block_pattern_categories );
 
 		foreach ( $block_pattern_categories as $name => $properties ) {
 			if ( ! \WP_Block_Pattern_Categories_Registry::get_instance()->is_registered( $name ) ) {

@@ -72,9 +72,9 @@ $includes = array (
 	'/inc/block-bindings.php',
 	'/inc/block-patterns.php',
 	'/inc/body-classes.php',
-// 	'/inc/color-scheme-selector.php',
 	'/inc/icons.php',
 	'/inc/images.php',
+	'/inc/page-tags.php',
 );
 
 $includes = apply_filters( 'lumina_load_includes', $includes );

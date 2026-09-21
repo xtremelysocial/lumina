@@ -9,7 +9,7 @@
 ?>
 <!-- wp:group {"metadata":{"name":"Image Gallery 3"},"align":"wide","layout":{"type":"constrained"},"anchor":"image-gallery-rounded"} -->
 <div class="wp-block-group alignwide" id="image-gallery-rounded"><!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
-<h2 class="wp-block-heading has-text-align-center"><?php esc_html_e("Image Gallery - Rounded", "lumina"); ?></h2>
+<h2 class="wp-block-heading has-text-align-center"><?php esc_html_e("Recent Projects", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:gallery {"columns":4,"randomOrder":true,"linkTo":"none","sizeSlug":"cropped-thumbnail","align":"wide","className":"is-style-image-border","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|20","left":"var:preset|spacing|20"}}}} -->

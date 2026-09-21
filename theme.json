@@ -1560,6 +1560,12 @@
 			"postTypes": ["page"]
 		},
 		{
+			"name": "page-hero-banner",
+			"title": "Page with Media-Text Hero",
+			"description": "Page w/featured image in Media-Text block",
+			"postTypes": ["page"]
+		},
+		{
 			"name": "page-featured-image",
 			"title": "Page Featured Image",
 			"description": "Page w/large featured image",
@@ -1647,6 +1653,12 @@
 			"name": "single-featured-cover",
 			"title": "Post with Featured Cover Image",
 			"description": "Post w/featured cover image",
+			"postTypes": ["post"]
+		},
+		{
+			"name": "single-hero-banner",
+			"title": "Post with Media-Text Hero",
+			"description": "Post w/featured image in Media-Text block",
 			"postTypes": ["post"]
 		},
 		{

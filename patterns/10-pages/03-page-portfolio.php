@@ -37,8 +37,6 @@
 
 <!-- wp:pattern {"slug":"lumina/image-computer-screen"} /-->
 
-<!-- wp:pattern {"slug":"lumina/image-portfolio"} /-->
-
 <!-- wp:columns {"align":"wide","metadata":{"name":"Split w/Content Left"}} -->
 <div class="wp-block-columns alignwide">
 	<!-- wp:column {"width":"66.66%","metadata":{"name":"Content"}} -->
