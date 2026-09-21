@@ -21,11 +21,7 @@
 <p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("Tailored visual storytelling and studio photography that transform moments into timeless imagery with intentional composition.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"placeholder":"Scroll Down","metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-scroll-down-no-text","style":{"elements":{"link":{"color":{"text":"inherit"}}},"typography":{"textAlign":"center"}},"fontSize":"x-large"} -->
-<p class="has-text-align-center is-style-icon-scroll-down-no-text has-link-color has-x-large-font-size"><a href="#content-start" rel="nofollow"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
-<!-- /wp:paragraph --></div></div>
+<!-- wp:pattern {"slug":"lumina/text-scroll-down"} /--></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:group {"lock":{"move":false,"remove":true},"metadata":{"name":"Content Start"},"align":"full","className":"is-style-default","style":{"spacing":{"margin":{"top":"0","bottom":"0"},"padding":{"top":"0","bottom":"0"}}},"anchor":"content-start"} -->
-<div class="wp-block-group alignfull is-style-default" id="content-start" style="margin-top:0;margin-bottom:0;padding-top:0;padding-bottom:0"></div>
-<!-- /wp:group -->
+<!-- wp:pattern {"slug":"lumina/hidden-content-start"} /-->

@@ -14,15 +14,13 @@
 <!-- wp:site-tagline {"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"x-large"} /-->
 
 <!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"large"} -->
-<p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("A refined visual canvas inspired by natural light, organic contrast, and spatial harmony across creative mediums.", "lumina"); ?></p>
+<p class="has-large-font-size" style="line-height:1.2"><?php esc_html_e("Tailored visual storytelling and studio photography that transform moments into timeless imagery with intentional composition.", "lumina"); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-scroll-down-no-text","style":{"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center is-style-icon-scroll-down-no-text"><a href="#content-start"><?php esc_html_e("Scroll Down", "lumina"); ?></a></p>
-<!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/home-hero.webp" ) ); ?>" alt=""/></figure></div>
+<!-- wp:pattern {"slug":"lumina/text-scroll-down"} /-->
+
+</div><figure class="wp-block-media-text__media"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/pages/home-hero.webp" ) ); ?>" alt=""/></figure></div>
 <!-- /wp:media-text --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"name":"Content Start"},"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"},"anchor":"content-start"} -->
-<div id="content-start" class="wp-block-group" style="margin-top:0;margin-bottom:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"></div>
-<!-- /wp:group -->
+<!-- wp:pattern {"slug":"lumina/hidden-content-start"} /-->
