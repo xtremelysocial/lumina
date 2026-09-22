@@ -29,7 +29,7 @@
 
 <!-- wp:social-links {"iconColor":"white","iconColorValue":"#ffffff","openInNewTab":true,"size":"has-huge-icon-size","align":"center","style":{"spacing":{"margin":{"top":"var:preset|spacing|60","right":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60"}}},"className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"}} -->
 <ul class="wp-block-social-links aligncenter has-huge-icon-size has-icon-color is-style-logos-only" style="margin-top:var(--wp--preset--spacing--60);margin-right:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--60);margin-left:var(--wp--preset--spacing--60)">
-<!-- wp:social-link {"url":"https://pinterest.com/wordpress","service":"pinterest"} /--></ul>
+<!-- wp:social-link {"url":"#content-start","service":"pinterest"} /--></ul>
 <!-- /wp:social-links -->
 
 <!-- wp:paragraph -->

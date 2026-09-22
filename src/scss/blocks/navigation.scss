@@ -7,6 +7,11 @@
 // Shared link target selector covering standard links, buttons, and page-list links
 $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link)";
 
+/* Reduce row-gap on Nav menus */
+.wp-block-navigation  {
+	row-gap: var(--wp--preset--spacing--30);
+}
+
 /*-----------------------------------------------------------------------------
 # 01. BASE CONTAINER & MOBILE OVERLAY COLORS
 -----------------------------------------------------------------------------*/
@@ -53,7 +58,6 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 .wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open {
 	color: var(--wp--preset--color--contrast);
 }
-
 
 /*-----------------------------------------------------------------------------
 # 02. CORE METRICS & DROPDOWN STRUCTURE
@@ -162,8 +166,22 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 }
 
 /* 2. COLORED HEADERS OR COLORED NAVIGATIONS */
+.wp-block-navigation.has-background {
+	.wp-block-navigation-item a:not(.wp-element-button), 
+	.wp-block-navigation-submenu a:not(.wp-element-button) {
+	    padding:0
+	}
+}
+
 .site-header.has-background .wp-block-navigation,
 .site-header .wp-block-navigation.has-background {
+
+	/* Reset Core's injected .5em 1em top-level padding on colored navs
+	   so horizontal rhythm is controlled purely by flex gap */
+// 	> .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content,
+// 	.wp-block-navigation__responsive-container:not(.is-menu-open) > .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+// 		padding: 0;
+// 	}
 
 	.wp-block-navigation-item,
 	.wp-block-pages-list__item {
@@ -192,7 +210,6 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 		}
 	}		
 }
-
 
 /*-----------------------------------------------------------------------------
 # 04. NON-CLICKABLE PLACEHOLDER LINKS (http://Pages, #, #0)

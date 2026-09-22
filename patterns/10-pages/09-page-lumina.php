@@ -20,7 +20,7 @@
 
 <!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-scroll-down-no-text","style":{"typography":{"textAlign":"center"}}} -->
 <p class="has-text-align-center is-style-icon-scroll-down-no-text"><a href="#content-start">Scroll Down</a></p>
-<!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="https://test.xtremelysocial.com/wp-content/themes/lumina/assets/images/pages/home-hero.webp" alt=""/></figure></div>
+<!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="/wp-content/themes/lumina/assets/images/pages/home-hero.webp" alt=""/></figure></div>
 <!-- /wp:media-text --></div>
 <!-- /wp:group -->
 
@@ -220,7 +220,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"lightbox":{"enabled":true},"aspectRatio":"16/9","scale":"cover","align":"center","className":"is-resized size-large is-style-image-computer-screen"} -->
-<figure class="wp-block-image aligncenter is-resized size-large is-style-image-computer-screen"><img src="https://test.xtremelysocial.com/wp-content/themes/lumina/assets/images/screenshots/01.webp" alt="screenshot" style="aspect-ratio:16/9;object-fit:cover"/></figure>
+<figure class="wp-block-image aligncenter is-resized size-large is-style-image-computer-screen"><img src="/wp-content/themes/lumina/assets/images/screenshots/01.webp" alt="screenshot" style="aspect-ratio:16/9;object-fit:cover"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:group -->
 
