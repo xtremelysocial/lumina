@@ -16,16 +16,9 @@
 					],
 					"imageDefault": "/assets/images/samples/01.webp"
 				},
-				"opacity": {
-					"faint": 	"color-mix(in srgb, currentColor 5%, transparent)",
-					"subtle": 	"color-mix(in srgb, currentColor 15%, transparent)",
-					"emphasis": "color-mix(in srgb, currentColor 35%, transparent)",
-					"muted": 	"color-mix(in srgb, currentColor 60%, transparent)"
-				},
 				"border": 		"color-mix(in srgb, currentColor 15%, transparent)",
-				"field": { 
-					"outline": 	"color-mix(in srgb, currentColor 20%, transparent)" 
-				},
+				"divider": 		"color-mix(in srgb, currentColor 18%, transparent)",
+				"outline": 		"color-mix(in srgb, currentColor 20%, transparent)",
 				"button": {
 					"background": 	"var(--wp--preset--color--primary)",
 					"text": 		"var(--wp--preset--color--off-white)",

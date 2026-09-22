@@ -155,7 +155,7 @@ input[type=file]::file-selector-button:hover {
 
 /* Underline links */
 .is-style-link-underline a:not(.wp-block-navigation-item__content) {
-	text-decoration-line: underline;
+	text-decoration-line: underline !important;
 }
 
 .is-style-link-underline a:hover, 
@@ -165,7 +165,7 @@ input[type=file]::file-selector-button:hover {
 
 /* No Underline links */
 .is-style-link-no-underline a {
-  	text-decoration: none; // !important;
+  	text-decoration: none !important;
 }
 
 /* Underline links on hover */

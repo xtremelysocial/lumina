@@ -18,7 +18,7 @@
 .wp-block-table.is-style-table-colored td,
 .wp-block-table.is-style-table-alternate th,
 .wp-block-table.is-style-table-alternate td {
-  border: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
   padding: 10px 14px;
 }
 
@@ -40,7 +40,7 @@
 .wp-block-table.is-style-table-alternate tfoot td {
   background-color: var(--wp--preset--color--primary-subtle);
   font-weight: var(--wp--custom--typography--font-weight--medium, 600);
-  border-bottom: 2px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-bottom: 2px solid var(--wp--custom--color--divider, color-mix(in srgb, currentColor 20%, transparent));
 }
 
 /* Interactive Header Links */

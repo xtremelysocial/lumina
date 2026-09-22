@@ -48,18 +48,17 @@ textarea,
 input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="button"]):not([type="image"]):not([class*="button"]):not(.wp-block-button__link) {
 	-webkit-appearance: none;
 // 	border: 1px solid var(--wp--preset--color--contrast);
-	border: 1px solid var(--wp--custom--color--field--border, var(--wp--preset--color--dark-gray));
+	border: 1px solid var(--wp--custom--color--outline, var(--wp--preset--color--dark-gray));
 }
 
-/* Style focus outline */
 input:focus,
 textarea:focus {
 	outline: none !important;
-	box-shadow: 0 0 0 3px var(--wp--custom--color--field--outline, var(--wp--custom--outline--color));
+	box-shadow: 0 0 0 3px var(--wp--custom--color--outline);
 	transition: box-shadow 0.3s ease;
 }
 select:focus,
 select:focus-visible {
-	outline: var(--wp--custom--color--field--outline, var(--wp--custom--outline--color)) 5px solid;
+	outline: var(--wp--custom--color--outline) 5px solid;
 	transition: outline 0.3s ease;
 }

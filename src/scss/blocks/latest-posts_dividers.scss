@@ -10,7 +10,7 @@
 		margin-block-end: var(--wp--style--block-gap, 1.5rem);
 
 		li:not(:last-child) {
-			border-right: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+			border-right: 1px solid var(--wp--custom--color--divider, color-mix(in srgb, currentColor 20%, transparent));
 			padding-right: var(--wp--preset--spacing--40, 1.25em);
 		}
 	}

@@ -16,7 +16,7 @@ ol.is-style-list-dividers,
 	list-style: none;
 	
 	// Blends text color at 20% weight with transparency 
-	border-top: solid 1px color-mix(in srgb, currentColor 20%, transparent);
+	border-top: solid 1px var(--wp--custom--color--divider, color-mix(in srgb, currentColor 20%, transparent));
 	
 	padding-top: var(--wp--preset--spacing--30);
 	margin-top: var(--wp--preset--spacing--30);
