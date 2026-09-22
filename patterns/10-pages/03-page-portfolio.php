@@ -33,6 +33,8 @@
 
 <!-- wp:pattern {"slug":"lumina/media-text-2-blocks"} /-->
 
+<!-- wp:pattern {"slug":"lumina/hidden-feature-grid"} /-->
+
 <!-- wp:pattern {"slug":"lumina/image-left-and-right-text-screenshot"} /-->
 
 <!-- wp:pattern {"slug":"lumina/image-computer-screen"} /-->
