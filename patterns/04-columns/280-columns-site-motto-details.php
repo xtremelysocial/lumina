@@ -8,8 +8,10 @@
  */
 ?>
 <!-- wp:group {"lock":{"move":false,"remove":false},"metadata":{"name":"Site Motto + Details"},"align":"full","layout":{"type":"constrained"},"anchor":"site-motto-details"} -->
-<div class="wp-block-group alignfull" id="site-motto-details"><!-- wp:columns {"lock":{"move":false,"remove":false},"metadata":{"name":"Heading \u0026 Content"},"align":"wide","className":"is-style-default","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
-<div class="wp-block-columns alignwide is-style-default"><!-- wp:column {"width":"33.33%","metadata":{"name":"Heading"},"className":"is-style-first-on-mobile"} -->
+<div class="wp-block-group alignfull" id="site-motto-details">
+<!-- wp:columns {"lock":{"move":false,"remove":false},"metadata":{"name":"Heading \u0026 Content"},"align":"wide","className":"is-style-default","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-columns alignwide is-style-default">
+<!-- wp:column {"width":"33.33%","metadata":{"name":"Heading"},"className":"is-style-first-on-mobile"} -->
 <div class="wp-block-column is-style-first-on-mobile" style="flex-basis:33.33%"><!-- wp:heading {"className":"is-style-separator"} -->
 <h2 class="wp-block-heading is-style-separator"><?php esc_html_e("Our Philosophy", "lumina"); ?></h2>
 <!-- /wp:heading -->

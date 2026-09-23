@@ -29,7 +29,11 @@
 				"button": {
 					"background": "var(--wp--preset--color--primary)"
 				},
-				"highlight": "var(--wp--preset--color--highlight)",
+				"navigation": {
+					"highlight": "var(--wp--preset--color--highlight)"
+				},
+				"border": 		"color-mix(in srgb, currentColor 18%, transparent)",
+				"divider": 		"color-mix(in srgb, currentColor 20%, transparent)",				
 				"shadow": {
 					"natural": "0 2px 4px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.30)",
 					"deep":    "0 3px 6px rgba(0, 0, 0, 0.30), 0 8px 18px rgba(0, 0, 0, 0.40)",
@@ -65,10 +69,10 @@
 				{ "slug": "highlight-secondary", "color": "hsl(37, 80%, 74%)", "name": "Highlight Secondary (Gilded Amber Link)" },
 				{ "slug": "highlight-tertiary", "color": "hsl(172, 75%, 76%)", "name": "Highlight Tertiary (Bioluminescent Tidefoam Link)" },
 		
-				{ "slug": "highlight-alt", "color": "hsl(16, 45%, 42%)", "name": "Highlight Alt (Burnt Copper Accent Button)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(37, 40%, 42%)", "name": "Highlight Secondary Alt (Deep Antique Gold Button)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(172, 60%, 42%)", "name": "Highlight Tertiary Alt (Deep Tidefoam Button)" },
-
+				{ "slug": "highlight-alt", "color": "hsl(16, 50%, 36%)", "name": "Highlight Alt (Deep Burnt Copper Link Ink / Button 36%)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(37, 45%, 36%)", "name": "Highlight Secondary Alt (Deep Antique Gold Button / Ink 36%)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(172, 60%, 34%)", "name": "Highlight Tertiary Alt (Deep Tidefoam Link Ink / Button 34%)" },
+        
 				{ "slug": "primary-dark", "color": "hsl(12, 32%, 12%)", "name": "Primary Dark (Wet Terracotta Pool Band 12%)" },
 				{ "slug": "dark", "color": "hsl(211, 20%, 10%)", "name": "Dark (Abyssal Marine Pool Band 10%)" },
 				{ "slug": "tertiary-dark", "color": "hsl(37, 14%, 12%)", "name": "Dark Tertiary (Wet Bronze Pool Band 12%)" },

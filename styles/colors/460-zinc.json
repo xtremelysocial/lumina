@@ -29,7 +29,11 @@
 				"button": {
 					"background": "var(--wp--preset--color--primary)"
 				},
-				"highlight": "var(--wp--preset--color--highlight)",
+				"navigation": {
+					"highlight": "var(--wp--preset--color--highlight)"
+				},	
+				"border": 		"color-mix(in srgb, currentColor 18%, transparent)",
+				"divider": 		"color-mix(in srgb, currentColor 20%, transparent)",							
 				"shadow": {
 					"natural": "0 2px 4px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.30)",
 					"deep":    "0 3px 6px rgba(0, 0, 0, 0.30), 0 8px 18px rgba(0, 0, 0, 0.40)",
@@ -65,10 +69,10 @@
 				{ "slug": "highlight-secondary", "color": "hsl(204, 50%, 82%)", "name": "Highlight Secondary (Titanium Link)" },
 				{ "slug": "highlight-tertiary", "color": "hsl(36, 88%, 74%)", "name": "Highlight Tertiary (Hazard Gold Link)" },
 
-				{ "slug": "highlight-alt", "color": "hsl(189, 70%, 50%)", "name": "Highlight Alt (Technical Aqua Button/Heading Ink)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(204, 45%, 48%)", "name": "Highlight Secondary Alt (Machined Steel Button/Heading Ink)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(36, 75%, 50%)", "name": "Highlight Tertiary Alt (Anodized Amber Button/Heading Ink)" },
-
+				{ "slug": "highlight-alt", "color": "hsl(189, 70%, 34%)", "name": "Highlight Alt (Deep Technical Aqua Link Ink / Button 34%)" },
+				{ "slug": "highlight-secondary-alt", "color": "hsl(204, 50%, 38%)", "name": "Highlight Secondary Alt (Deep Machined Steel Button / Ink 38%)" },
+				{ "slug": "highlight-tertiary-alt", "color": "hsl(36, 75%, 38%)", "name": "Highlight Tertiary Alt (Deep Anodized Amber Button / Ink 38%)" },
+        
 				{ "slug": "primary-dark", "color": "hsl(50, 4%, 22%)", "name": "Primary Dark (Stone Section Band 22%)" },
 				{ "slug": "dark", "color": "hsl(210, 18%, 18%)", "name": "Dark (Gunmetal Slate Section Band 18%)" },
 				{ "slug": "tertiary-dark", "color": "hsl(0, 0%, 14%)", "name": "Dark Tertiary (Carbon Section Band 14%)" },

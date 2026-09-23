@@ -120,6 +120,7 @@
 					#{$wrapper-focus} {
 						@include phys.apply-active-state(
 							$role: $role,
+							$block: $block, 							
 							$context: 'wrapper'
 						);
 					}
@@ -146,6 +147,7 @@
 				#{$target-focus} {
 					@include phys.apply-active-state(
 						$role: $role,
+						$block: $block,						
 						$context: 'target'
 					);
 				}        

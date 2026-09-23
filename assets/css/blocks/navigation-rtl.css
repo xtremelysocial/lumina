@@ -16,12 +16,12 @@
 # 01. BASE CONTAINER & MOBILE OVERLAY COLORS
 -----------------------------------------------------------------------------*/
 /* Set default background for uncolored header navigations */
-.site-header:not(.has-background) .wp-block-navigation:not(.has-background), .site-header:not(.has-background) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open {
+.site-header:not(.has-background) .wp-block-navigation:not(.has-background), .site-header:not(.has-background) .wp-block-navigation:not(.has-background) .wp-block-navigation__submenu-container, .site-header:not(.has-background) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
   background-color: var(--wp--custom--color--navigation--background, var(--wp--preset--color--base));
 }
 
 /* Ensure submenu flyouts fallback to contrast text color */
-.site-header:not(.has-background) .wp-block-navigation:not(.has-text-color) .wp-block-navigation__submenu-container {
+.site-header:not(.has-background) .wp-block-navigation:not(.has-text-color) .wp-block-navigation__submenu-container, .site-header:not(.has-background) .wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
   color: var(--wp--preset--color--contrast);
 }
 
@@ -134,11 +134,6 @@
   padding: 0;
 }
 
-.site-header.has-background .wp-block-navigation,
-.site-header .wp-block-navigation.has-background {
-  /* Reset Core's injected .5em 1em top-level padding on colored navs
-     so horizontal rhythm is controlled purely by flex gap */
-}
 .site-header.has-background .wp-block-navigation .wp-block-navigation-item.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
 .site-header.has-background .wp-block-navigation .wp-block-pages-list__item.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
 .site-header .wp-block-navigation.has-background .wp-block-navigation-item.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
@@ -225,7 +220,7 @@
 }
 
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
-  padding: 0 var(--wp--preset--spacing--40);
+  padding: 0;
 }
 
 /* Dropdown transition timing */

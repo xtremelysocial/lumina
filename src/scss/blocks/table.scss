@@ -8,18 +8,16 @@
 }
 
 /* Striped tables: 60% light wash on odd rows with high-contrast dark text */
-.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
-  background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 60%, transparent);
-  color: var(--wp--preset--color--contrast, #1b1b1b);
-}
+.wp-block-table.is-style-stripes {
+	border-bottom: none;
 
-.wp-block-table.is-style-stripes tbody tr:nth-child(even) {
-  background-color: transparent;
-  color: inherit;
-}
+	tbody tr:nth-child(odd) {
+		background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 60%, transparent);
+		color: var(--wp--preset--color--contrast, #1b1b1b);
+	}
 
-///* On striped tables, alternate our neutral and neutral-alt colors */
-// .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
-//     background-color: var(--wp--preset--color--light-gray);
-// 	color: var(--wp--preset--color--almost-black);
-// }
+	tbody tr:nth-child(even) {
+		background-color: transparent;
+		color: inherit;
+	}
+}

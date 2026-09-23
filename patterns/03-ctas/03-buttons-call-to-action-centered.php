@@ -18,7 +18,7 @@
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-fill"} -->
-<div class="wp-block-button is-style-fill"><a class="wp-block-button__link wp-element-button" href="#content-start" target="_blank" rel="noreferrer noopener"><?php esc_html_e("Start a Project", "lumina"); ?></a></div>
+<div class="wp-block-button is-style-fill"><a class="wp-block-button__link wp-element-button" href="#content-start" rel="noreferrer noopener"><?php esc_html_e("Start a Project", "lumina"); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->

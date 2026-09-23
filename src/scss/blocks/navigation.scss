@@ -19,14 +19,16 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 /* Set default background for uncolored header navigations */
 .site-header:not(.has-background) .wp-block-navigation:not(.has-background) {
 	&,
-	& .wp-block-navigation__responsive-container.is-menu-open {
+	& .wp-block-navigation__submenu-container,
+	& .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
 		background-color: var(--wp--custom--color--navigation--background, var(--wp--preset--color--base));
 	}
 }
 
 /* Ensure submenu flyouts fallback to contrast text color */
 .site-header:not(.has-background) .wp-block-navigation:not(.has-text-color) {
-	.wp-block-navigation__submenu-container {
+	& .wp-block-navigation__submenu-container,
+	& .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
 		color: var(--wp--preset--color--contrast);
 	}
 }
@@ -105,7 +107,6 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 	}
 }
 
-
 /*-----------------------------------------------------------------------------
 # 03. DESKTOP / NON-MOBILE HEADER NAVIGATION STATES
 -----------------------------------------------------------------------------*/
@@ -175,13 +176,6 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 
 .site-header.has-background .wp-block-navigation,
 .site-header .wp-block-navigation.has-background {
-
-	/* Reset Core's injected .5em 1em top-level padding on colored navs
-	   so horizontal rhythm is controlled purely by flex gap */
-// 	> .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content,
-// 	.wp-block-navigation__responsive-container:not(.is-menu-open) > .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content {
-// 		padding: 0;
-// 	}
 
 	.wp-block-navigation-item,
 	.wp-block-pages-list__item {
@@ -292,7 +286,10 @@ $mobile-nav-padding: calc( 1.25 * var(--wp--preset--spacing--20) );
 
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {	
 	.has-child .wp-block-navigation__submenu-container {
-		padding: 0 var(--wp--preset--spacing--40);
+// 	.wp-block-navigation__submenu-container {
+// 		padding: 0 var(--wp--preset--spacing--40);
+// 		padding: 0 var(--wp--preset--spacing--40) 0 0;
+		padding: 0;
 	}
 }
 

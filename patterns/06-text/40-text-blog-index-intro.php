@@ -7,8 +7,9 @@
  */
 ?>
 <!-- wp:group {"metadata":{"name":"Blog Index Intro","categories":["lumina","text"]},"align":"wide","layout":{"type":"constrained"},"anchor":"columns-3-recent-posts"} -->
-<div class="wp-block-group alignwide" id="columns-3-recent-posts"><!-- wp:heading {"align":"wide","style":{"typography":{"textAlign":"left"}},"anchor":"blog-index-intro"} -->
-<h2 class="wp-block-heading has-text-align-left alignwide" id="blog-index-intro"><?php esc_html_e("Our Blog", "lumina"); ?></h2>
+<div class="wp-block-group alignwide" id="columns-3-recent-posts">
+<!-- wp:heading {"align":"wide","className":"is-style-separator","style":{"typography":{"textAlign":"left"}},"anchor":"blog-index-intro"} -->
+<h2 class="wp-block-heading has-text-align-left alignwide is-style-separator" id="blog-index-intro"><?php esc_html_e("Our Blog", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"wide","className":"is-style-default","style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->

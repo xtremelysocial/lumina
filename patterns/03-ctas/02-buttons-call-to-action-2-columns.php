@@ -24,7 +24,7 @@
 <!-- wp:column {"verticalAlignment":"center","width":"30%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:30%"><!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
 <div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#content-start" target="_blank" rel="noreferrer noopener"><?php esc_html_e("Explore Sessions", "lumina"); ?></a></div>
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#content-start" rel="noreferrer noopener"><?php esc_html_e("Explore Sessions", "lumina"); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column --></div>

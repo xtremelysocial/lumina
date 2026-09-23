@@ -89,6 +89,7 @@
 // ==========================================================================
 @mixin apply-active-state(
 	$role, 
+	$block: null, 
 	$context: 'target'
 ) {
 	
@@ -124,9 +125,13 @@
 			@include actions.apply-object;
 		}
 
-	// TRACK C: CARDS (Layout Containers & Groups)
+	// TRACK C: CARDS (Branch between Standard and Inset/Braked)
 	} @else if $role == 'card' {
-		@include actions.apply-card;
+		@if $block != null and (is-no-rounding($block) or has-layout-brakes($block)) {
+			@include actions.apply-card-inset;
+		} @else {		
+			@include actions.apply-card;
+		}
 	}
 }
 

@@ -21,11 +21,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"is-style-link-no-underline","style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}}} -->
-<p class="is-style-link-no-underline" style="margin-top:var(--wp--preset--spacing--30)"><a href="tel:555-867-5309">(555) 867-5309</a></p>
+<p class="is-style-link-no-underline" style="margin-top:var(--wp--preset--spacing--30)"><a href="#content-start">(555) 867-5309</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"is-style-link-no-underline","style":{"spacing":{"margin":{"top":"0px"}}}} -->
-<p class="is-style-link-no-underline" style="margin-top:0px"><a href="mailto:#"><?php esc_html_e("mail@example.com", "lumina"); ?></a></p>
+<p class="is-style-link-no-underline" style="margin-top:0px"><a href="#content-start"><?php esc_html_e("mail@example.com", "lumina"); ?></a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:pattern {"slug":"lumina/text-social-icons-neutral","style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}}} /-->

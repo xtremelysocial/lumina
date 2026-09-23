@@ -8,6 +8,12 @@
    05 GLOBAL OVERIDES: Styles outside of the core engine loops
    ========================================================================== */
 /* ==========================================================================
+   03.10 APPLY CARD: Apply physics and active shadow
+   ========================================================================== */
+/* ==========================================================================
+   03.11 APPLY CARD INSET: Unrounded / Braked Cards (Track B)
+   ========================================================================== */
+/* ==========================================================================
    LUMINA INTERACTIONS: Handles all :hover and active state physics
    v1.0.0 Alpha
    ========================================================================== */
@@ -81,7 +87,7 @@
 [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):hover,
 [class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):has(:focus-visible) {
   transform: var(--wp--custom--animation--card--hover-transform, translateY(-4px));
-  box-shadow: var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
+  box-shadow: inset 0 0 0 1px var(--wp--custom--color--border-hover, color-mix(in srgb, currentColor 28%, transparent)), var(--wp--custom--color--shadow--hover, var(--wp--preset--shadow--deep, 2px 8px 16px rgba(0, 0, 0, 0.22), 1px 4px 6px rgba(0, 0, 0, 0.12)));
 }
 
 /* ==========================================================================

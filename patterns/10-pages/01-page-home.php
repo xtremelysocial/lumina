@@ -13,6 +13,8 @@
 
 <!-- wp:pattern {"slug":"lumina/columns-features-4-columns"} /-->
 
+<!-- wp:group {"metadata":{"name":"Intro + Text"},"align":"full","layout":{"type":"constrained"},"anchor":"intro-text"} -->
+<div class="wp-block-group alignfull" id="intro-text">
 <!-- wp:columns {"align":"wide","metadata":{"name":"Split w/Heading Left"}} -->
 <div class="wp-block-columns alignwide">
 	<!-- wp:column {"width":"33.33%","metadata":{"name":"Heading"}} -->
@@ -31,12 +33,15 @@
 	</div>
 	<!-- /wp:column -->
 </div>
-<!-- /wp:columns -->
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
 
 <!-- wp:pattern {"slug":"lumina/columns-drop-caps-3"} /-->
 
 <!-- wp:pattern {"slug":"lumina/columns-features-dividers-3x2"} /-->
 
+<!-- wp:group {"metadata":{"name":"Intro + Text"},"align":"full","layout":{"type":"constrained"},"anchor":"intro-text"} -->
+<div class="wp-block-group alignfull" id="intro-text">
 <!-- wp:columns {"align":"wide","metadata":{"name":"Split w/Content Left"},"anchor":"feature-grid"} -->
 <div class="wp-block-columns alignwide" id="feature-grid">
 	<!-- wp:column {"width":"66.66%","metadata":{"name":"Content"}} -->
@@ -55,7 +60,8 @@
 	</div>
 	<!-- /wp:column -->
 </div>
-<!-- /wp:columns -->
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
 
 <!-- wp:pattern {"slug":"lumina/image-left-and-right-text"} /-->
 

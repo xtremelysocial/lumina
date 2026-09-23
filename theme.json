@@ -11,8 +11,7 @@
 					"scheme": 	"lumina",
 					"imageFolders": [
 						"gallery-1",
-						"gallery-2",
-						"gallery-3"
+						"gallery-2"
 					],
 					"imageDefault": "/assets/images/samples/01.webp"
 				},
@@ -1362,12 +1361,6 @@
 			"area": "content"
 		},
 		{
-			"name": "footer",
-			"title": "Lumina Footer Wrapper",
-			"description": "Footer Wrapper",
-			"area": "uncategorized"
-		},
-		{
 			"name": "theme-tagline",
 			"title": "Lumina Theme Tagline",
 			"description": "Theme tagline (e.g. theme by xtremelysocial)",
@@ -1386,99 +1379,65 @@
 			"area": "content"
 		},
 		{
-			"name": "footer-3-blocks",
-			"title": "Lumina Footer 3 Blocks (recent posts, recent comments, about)",
-			"description": "Footer 3 blocks (e.g. recent posts, recent comments, about)",
-			"area": "footer"
-		},
-		{
-			"name": "footer-3-blocks-nav-site-info",
-			"title": "Lumina Footer 3 Blocks plus Menu and Site Info",
-			"description": "Footer w/3 blocks plus nav menu and site info",
-			"area": "footer"
-		},
-		{
-			"name": "footer-3-blocks-nav-site-social",
-			"title": "Lumina Footer 3 Blocks plus Menu, Site Info, and Social Icons",
-			"description": "Footer w/3 blocks plus nav menu, site info, and social icons",
-			"area": "footer"
-		},
-		{
-			"name": "footer-3-blocks-nav-social",
-			"title": "Lumina Footer 3 Blocks plus Menu and Social Icons",
-			"description": "Footer w/3 blocks plus nav menu and social icons",
-			"area": "footer"
-		},
-		{
-			"name": "footer-3-blocks-nav-theme",
-			"title": "Lumina Footer 3 Blocks plus Menu and Theme Info",
-			"description": "Footer w/3 blocks plus nav menu and theme info",
-			"area": "footer"
-		},
-		{
-			"name": "footer-about-3-navs",
-			"title": "Lumina Footer About and 3 Menus",
-			"description": "Footer w/block 3 (About) and 3 nav menus",
-			"area": "footer"
-		},
-		{
-			"name": "footer-about-3-navs-site-info",
-			"title": "Lumina Footer About and 3 Menus plus Site Info",
-			"description": "Footer w/block 3 (About), 3 nav menus, and site info",
-			"area": "footer"
-		},
-		{
-			"name": "footer-about-2-navs-contact",
-			"title": "Lumina Footer About, 2 Menus, Contact Info",
-			"description": "Footer w/block 3 (About), 2 nav menus, and contact info",
-			"area": "footer"
-		},
-		{
-			"name": "footer-about-2-navs-contact-dark",
-			"title": "Lumina Dark Footer About, 2 Menus, Contact Info",
-			"description": "Dark Footer w/About, 2 nav menus, and contact info",
-			"area": "footer"
-		},
-		{
-			"name": "footer-about-2-navs-contact-colored",
-			"title": "Lumina Colored Footer About, 2 Menus, Contact Info",
-			"description": "Colored Footer w/About, 2 nav menus, and contact info",
-			"area": "footer"
+			"name": "footer",
+			"title": "Lumina Footer Wrapper",
+			"description": "Footer Wrapper",
+			"area": "uncategorized"
 		},
 		{
 			"name": "footer-default",
-			"title": "Lumina Default Footer w/About, 2 Menus, Contact & Site Info",
-			"description": "Default Footer w/about, 2 nav menus, contact info, site info",
+			"title": "Lumina Default Footer 4 Blocks + 3 Blocks",
+			"description": "Default Footer w/4 blocks in main footer plus 3 blocks in sub-footer",
+			"area": "footer"
+		},		
+		{
+			"name": "footer-colored",
+			"title": "Lumina Colored Footer 4 Blocks",
+			"description": "Colored Footer w/4 blocks in main footer plus 3 blocks in sub-footer",
 			"area": "footer"
 		},
 		{
 			"name": "footer-dark",
-			"title": "Lumina Dark Footer w/About, 2 Menus, Contact & Site Info",
-			"description": "Dark Footer w/about, 2 nav menus, contact info, site info",
+			"title": "Lumina Dark Footer 4 Blocks",
+			"description": "Dark Footer w/4 blocks in main footer plus 3 blocks in sub-footer",
 			"area": "footer"
 		},
 		{
-			"name": "footer-colored",
-			"title": "Lumina Colored Footer w/About, 2 Menus, Contact & Site Info",
-			"description": "Colored Footer w/about, 2 nav menus, contact info, site info",
+			"name": "footer-4-blocks",
+			"title": "Lumina Footer 4 Blocks",
+			"description": "Footer w/4 blocks (e.g. about, 2 nav menus, and contact info)",
 			"area": "footer"
 		},
 		{
-			"name": "footer-3-blocks-nav-tagline",
-			"title": "Lumina Footer 3 Blocks plus Menu and Tagline",
-			"description": "Footer w/3 blocks plus nav menu and site tagline",
+			"name": "footer-4-blocks-colored",
+			"title": "Lumina Colored Footer 4 Blocks",
+			"description": "Colored Footer w/4 blocks (e.g. about, 2 nav menus, and contact info)",
 			"area": "footer"
 		},
+		{
+			"name": "footer-4-blocks-dark",
+			"title": "Lumina Dark Footer 4 Blocks",
+			"description": "Dark Footer w/4 blocks (e.g. about, 2 nav menus, and contact info)",
+			"area": "footer"
+		},
+		
+		{
+			"name": "footer-3-blocks",
+			"title": "Lumina Footer 3 Blocks",
+			"description": "Footer 3 blocks (e.g. recent posts, recent comments, about)",
+			"area": "footer"
+		},
+		{
+			"name": "footer-3-blocks-nav-site-social",
+			"title": "Lumina Footer 3 Blocks plus 3 Blocks",
+			"description": "Footer w/3 blocks in main footer plus 3 blocks in sub-footer",
+			"area": "footer"
+		},
+
 		{
 			"name": "footer-compact-site-info",
 			"title": "Lumina Footer Compact Site Info",
 			"description": "Compact footer w/site info",
-			"area": "footer"
-		},
-		{
-			"name": "footer-compact-site-info-dark",
-			"title": "Lumina Dark Footer Compact Site Info",
-			"description": "Dark Compact footer w/site info",
 			"area": "footer"
 		},
 		{
@@ -1488,41 +1447,38 @@
 			"area": "footer"
 		},
 		{
-			"name": "footer-compact-nav-site-info",
-			"title": "Lumina Footer Compact Menu and Site Info",
-			"description": "Compact footer w/nav menu and site info",
+			"name": "footer-compact-site-info-dark",
+			"title": "Lumina Dark Footer Compact Site Info",
+			"description": "Dark Compact footer w/site info",
 			"area": "footer"
 		},
-		{
-			"name": "footer-compact-nav-theme",
-			"title": "Lumina Footer Compact Menu and Theme Tagline",
-			"description": "Compact footer w/nav menu and theme info",
-			"area": "footer"
-		},
-		{
-			"name": "footer-compact-nav-social",
-			"title": "Lumina Footer Compact Menu and Social Icons",
-			"description": "Compact footer w/nav menu and social icons",
-			"area": "footer"
-		},
+
 		{
 			"name": "footer-compact-nav-site-social",
-			"title": "Lumina Footer Compact w/Nav Menu, Site Info, and Social Icons",
-			"description": "Compact footer w/nav menu, site info, and social icons",
+			"title": "Lumina Footer Compact 3 Blocks",
+			"description": "Compact footer w/3 blocks (e.g. nav menu, social icons, and site info)",
 			"area": "footer"
 		},
 		{
-			"name": "footer-compact-nav-site-social-dark",
-			"title": "Lumina Footer Dark Compact Menu, Social Icons, and Site Info",
-			"description": "Dark compact footer w/nav menu, social icons, and site copyright",
+			"name": "footer-compact-nav-site-social-colored",
+			"title": "Lumina Colored Footer Compact 3 Blocks",
+			"description": "Compact Colored footer w/3 blocks (e.g. nav menu, social icons, and site info)",
 			"area": "footer"
 		},
+
 		{
 			"name": "footer-map-static",
-			"title": "Lumina Footer w/Static Map (image) and Contact Info",
-			"description": "Footer w/static map (image) and contact info",
+			"title": "Lumina Footer w/Map & Contact Info",
+			"description": "Footer w/map and contact info",
 			"area": "footer"
 		},
+		{
+			"name": "footer-social-map-static",
+			"title": "Lumina Footer w/Colored Social Icons plus Map & Contact Info",
+			"description": "Footer w/colored social icons plus map and contact info",
+			"area": "footer"
+		},
+
 		{
 			"name": "footer-motto-social-icons",
 			"title": "Lumina Footer w/Site Motto and Social Icons",
@@ -1533,12 +1489,6 @@
 			"name": "footer-motto-social-site",
 			"title": "Lumina Footer w/Site Motto, Social Icons, and Site Info",
 			"description": "Footer w/site motto, social icons, and site info",
-			"area": "footer"
-		},
-		{
-			"name": "footer-social-map-static",
-			"title": "Lumina Footer w/Colored Social Icons, Static Map, and Contact Info",
-			"description": "Footer w/colored social icons, static map, and contact info",
 			"area": "footer"
 		}
 	],

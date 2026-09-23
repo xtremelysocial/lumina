@@ -239,8 +239,8 @@
 <!-- wp:column {"width":"66.66%","metadata":{"name":"Columns 3 x 2"}} -->
 <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:columns {"isStackedOnMobile":false,"className":"is-style-gutter-dividers","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-columns is-not-stacked-on-mobile is-style-gutter-dividers"><!-- wp:column {"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"lineHeight":"1","fontWeight":"600","textAlign":"center","fontStyle":"normal"},"elements":{"link":{"color":{"text":"var:preset|color|tertiary-alt"}}}},"textColor":"tertiary-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color has-huge-font-size" style="font-style:normal;font-weight:600;line-height:1">9</p>
+<div class="wp-block-column is-style-default"><!-- wp:paragraph {"style":{"typography":{"lineHeight":"1","fontWeight":"500","textAlign":"center","fontStyle":"normal"},"textColor":"highlight-tertiary-alt","fontSize":"huge"} -->
+<p class="has-text-align-center has-text-color has-highlight-tertiary-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">9</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
@@ -249,8 +249,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"lineHeight":"1","fontWeight":"600","textAlign":"center","fontStyle":"normal"},"elements":{"link":{"color":{"text":"var:preset|color|tertiary-alt"}}}},"textColor":"tertiary-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color has-huge-font-size" style="font-style:normal;font-weight:600;line-height:1">6</p>
+<div class="wp-block-column is-style-default"><!-- wp:paragraph {"style":{"typography":{"lineHeight":"1","fontWeight":"500","textAlign":"center","fontStyle":"normal"},"textColor":"highlight-tertiary-alt","fontSize":"huge"} -->
+<p class="has-text-align-center has-text-color has-highlight-tertiary-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">6</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
@@ -259,8 +259,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"lineHeight":"1","fontWeight":"600","textAlign":"center","fontStyle":"normal"},"elements":{"link":{"color":{"text":"var:preset|color|tertiary-alt"}}}},"textColor":"tertiary-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color has-huge-font-size" style="font-style:normal;font-weight:600;line-height:1">25</p>
+<div class="wp-block-column is-style-default"><!-- wp:paragraph {"style":{"typography":{"lineHeight":"1","fontWeight":"500","textAlign":"center","fontStyle":"normal"},"textColor":"highlight-tertiary-alt","fontSize":"huge"} -->
+<p class="has-text-align-center has-text-color has-highlight-tertiary-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">18</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
@@ -271,8 +271,8 @@
 
 <!-- wp:columns {"isStackedOnMobile":false,"className":"is-style-gutter-dividers","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-columns is-not-stacked-on-mobile is-style-gutter-dividers"><!-- wp:column {"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"lineHeight":"1","fontWeight":"600","textAlign":"center","fontStyle":"normal"},"elements":{"link":{"color":{"text":"var:preset|color|tertiary-alt"}}}},"textColor":"tertiary-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color has-huge-font-size" style="font-style:normal;font-weight:600;line-height:1">5</p>
+<div class="wp-block-column is-style-default"><!-- wp:paragraph {"style":{"typography":{"lineHeight":"1","fontWeight":"500","textAlign":"center","fontStyle":"normal"},"textColor":"highlight-tertiary-alt","fontSize":"huge"} -->
+<p class="has-text-align-center has-text-color has-highlight-tertiary-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">5</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
@@ -281,8 +281,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"lineHeight":"1","fontWeight":"600","textAlign":"center","fontStyle":"normal"},"elements":{"link":{"color":{"text":"var:preset|color|tertiary-alt"}}}},"textColor":"tertiary-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color has-huge-font-size" style="font-style:normal;font-weight:600;line-height:1">60+</p>
+<div class="wp-block-column is-style-default"><!-- wp:paragraph {"style":{"typography":{"lineHeight":"1","fontWeight":"500","textAlign":"center","fontStyle":"normal"},"textColor":"highlight-tertiary-alt","fontSize":"huge"} -->
+<p class="has-text-align-center has-text-color has-highlight-tertiary-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">44</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
@@ -291,8 +291,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"is-style-default"} -->
-<div class="wp-block-column is-style-default"><!-- wp:paragraph {"className":"has-primary-color has-text-color","style":{"typography":{"lineHeight":"1","fontWeight":"600","textAlign":"center","fontStyle":"normal"},"elements":{"link":{"color":{"text":"var:preset|color|tertiary-alt"}}}},"textColor":"tertiary-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-primary-color has-text-color has-tertiary-alt-color has-link-color has-huge-font-size" style="font-style:normal;font-weight:600;line-height:1">64+</p>
+<div class="wp-block-column is-style-default"><!-- wp:paragraph {"style":{"typography":{"lineHeight":"1","fontWeight":"500","textAlign":"center","fontStyle":"normal"},"textColor":"highlight-tertiary-alt","fontSize":"huge"} -->
+<p class="has-text-align-center has-text-color has-highlight-tertiary-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">79</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
@@ -319,7 +319,7 @@
 <!-- wp:column {"verticalAlignment":"center","width":"30%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:30%"><!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-fill"} -->
-<div class="wp-block-button is-style-fill"><a class="wp-block-button__link wp-element-button" href="#content-start" target="_blank" rel="noreferrer noopener">Get Started</a></div>
+<div class="wp-block-button is-style-fill"><a class="wp-block-button__link wp-element-button" href="#content-start" rel="noreferrer noopener">Get Started</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column --></div>

@@ -1,8 +1,8 @@
 <?php
 /**
- * Title: Hidden Content Start
- * Description: Hidden Content Start
- * Slug: lumina/hidden-content-start
+ * Title: Feature Grid Start Anchor
+ * Description: Feature Grid Start Anchor
+ * Slug: lumina/hidden-feature-grid-start
  * Categories: lumina
  */
 ?>

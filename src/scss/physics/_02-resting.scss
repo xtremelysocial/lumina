@@ -55,18 +55,30 @@
 }
 
 // /* ==========================================================================
-//    02.13 BORDER: Border and radius
+//    02.13 BORDER: Outer rounded border or Inset hairline border
 //    ========================================================================== */
 @mixin __blueprint-border {
 	border-radius: var(--wp--preset--border-radius--lg, 16px);
 	border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border); 
 }
 
+@mixin __blueprint-border-inset {
+	box-shadow: inset 0 0 0 1px var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent)),
+	            config.$shadow-default;
+}
+
 %physics-border {
 /* ==========================================================================
-   02.13 BORDER: Border and radius
+   02.13a BORDER: Border and radius
    ========================================================================== */
 	@include __blueprint-border;
+}
+
+%physics-border-inset {
+/* ==========================================================================
+   02.13b BORDER: Inset border
+   ========================================================================== */
+	@include __blueprint-border-inset;
 }
 
 // /* ==========================================================================
@@ -101,18 +113,28 @@
 //    ========================================================================== */
 @mixin apply-wrapper-visuals($block) {
 
-	// Only blocks that get rounding
+	// TRACK A: Blocks that get rounding (Groups, Covers, etc.)
 	@if not is-no-rounding($block) {
 		
-		// Apply rounding but with brakes
+		// Apply standard rounded outer border if not hit by layout brakes
 		 &:not(#{config.$blocks-layout-brakes}) {
 		 	@include __blueprint-border;
 // 			@include __blueprint-wrapper-clipped;		 	
-		 }		
+			@include __blueprint-shadow-natural;
+		 }
+		 
+		 // Fallback for braked containers (e.g., .is-style-no-gap *): Use inset border
+		&:is(#{config.$blocks-layout-brakes}) {
+		 	@include __blueprint-border-inset;
+		}	
+
+	// TRACK B: Unrounded Card Blocks (.wp-block-column, .wp-block-media-text__content)
+	} @else {
+		@include __blueprint-border-inset;
 	}
 
-	// Always include resting shadow
-	@include __blueprint-shadow-natural;
+// 	// Always include resting shadow
+// 	@include __blueprint-shadow-natural;
 }
 
 // /* ==========================================================================

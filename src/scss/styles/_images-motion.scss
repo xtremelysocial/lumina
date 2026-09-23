@@ -3,7 +3,7 @@
    ========================================================================== */
 
 // 1. Desktop Standard Motion Variables
-$pan-duration:              8s !default;
+$pan-duration:              10s !default; //8s !default;
 $pan-easing:                cubic-bezier(0.42, 0, 0.58, 1) !default;
 $pan-scale-start:           1.15 !default;  // Resting camera zoom
 $pan-scale-end:             1.32 !default;  // Max camera push-in depth
@@ -18,7 +18,7 @@ $pan-light-end:             1.10 !default;  // Subtle highlight as camera moves 
 $pan-use-filter-brightness: false !default;
 
 // 3. Mobile Motion Variables (<= 781px)
-$pan-mobile-duration:       5.5s !default; 
+$pan-mobile-duration:       6.6s !default; // 5.5s !default; 
 $pan-mobile-scale-0:        1.25 !default; 
 $pan-mobile-scale-50:       1.42 !default; 
 $pan-mobile-scale-100:      1.28 !default; 

@@ -87,6 +87,7 @@
 				#{$target-focus} {
 					@include phys.apply-active-state(
 						$role: $role,
+						$block: $block,						
 						$context: 'target'
 					);
 				}

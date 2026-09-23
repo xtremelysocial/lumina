@@ -240,14 +240,18 @@ EOF
         my @comments;
         s{<!--.*?-->}{ push(@comments, $&); "___" . $#comments . "___" }gse;
 
-        # 2. Translate inner tag text containing letters (handles multiline text blocks)
-        s{>\s*([^<>]*?[a-zA-Z][^<>]*?)\s*<}{
-            my $txt = $1;
-            if ($txt !~ /^<\?php/) {
+        # 2. Translate inner tag text containing letters while preserving surrounding spaces
+        s{>([^<>]*?[a-zA-Z][^<>]*?)<}{
+            my $raw = $1;
+            if ($raw !~ /^<\?php/) {
+                my ($lead)  = ($raw =~ /^(\s*)/);
+                my ($trail) = ($raw =~ /(\s*)$/);
+                my $txt = $raw;
+                $txt =~ s/^\s+|\s+$//g;
                 $txt =~ s/"/\\"/g;
-                "><" . "?php esc_html_e(\"$txt\", \"lumina\"); ?>" . "<";
+                ">$lead" . "<?php esc_html_e(\"$txt\", \"lumina\"); ?>" . "$trail<";
             } else {
-                ">$txt<";
+                ">$raw<";
             }
         }gse;
 

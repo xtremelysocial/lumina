@@ -9,6 +9,8 @@
 ?>
 <!-- wp:pattern {"slug":"lumina/cover-scroll-static-image"} /-->
 
+<!-- wp:group {"metadata":{"name":"Intro + Text"},"align":"full","layout":{"type":"constrained"},"anchor":"intro-text"} -->
+<div class="wp-block-group alignfull" id="intro-text">
 <!-- wp:columns {"align":"wide","metadata":{"name":"Split w/Heading Left"}} -->
 <div class="wp-block-columns alignwide">
 	<!-- wp:column {"width":"33.33%","metadata":{"name":"Heading"}} -->
@@ -27,18 +29,21 @@
 	</div>
 	<!-- /wp:column -->
 </div>
-<!-- /wp:columns -->
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
 
 <!-- wp:pattern {"slug":"lumina/columns-drop-caps-2"} /-->
 
 <!-- wp:pattern {"slug":"lumina/media-text-2-blocks"} /-->
 
-<!-- wp:pattern {"slug":"lumina/hidden-feature-grid"} /-->
+<!-- wp:pattern {"slug":"lumina/hidden-feature-grid-start"} /-->
 
 <!-- wp:pattern {"slug":"lumina/image-left-and-right-text-screenshot"} /-->
 
 <!-- wp:pattern {"slug":"lumina/image-computer-screen"} /-->
 
+<!-- wp:group {"metadata":{"name":"Intro + Text"},"align":"full","layout":{"type":"constrained"},"anchor":"intro-text"} -->
+<div class="wp-block-group alignfull" id="intro-text">
 <!-- wp:columns {"align":"wide","metadata":{"name":"Split w/Content Left"}} -->
 <div class="wp-block-columns alignwide">
 	<!-- wp:column {"width":"66.66%","metadata":{"name":"Content"}} -->
@@ -57,7 +62,8 @@
 	</div>
 	<!-- /wp:column -->
 </div>
-<!-- /wp:columns -->
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
 
 <!-- wp:pattern {"slug":"lumina/image-gallery"} /-->
 

@@ -9,6 +9,8 @@
 ?>
 <!-- wp:pattern {"slug":"lumina/banner-hero-media-text"} /-->
 
+<!-- wp:group {"metadata":{"name":"Intro + Text"},"align":"full","layout":{"type":"constrained"},"anchor":"intro-text"} -->
+<div class="wp-block-group alignfull" id="intro-text">
 <!-- wp:columns {"align":"wide","metadata":{"name":"Split w/Heading Left"}} -->
 <div class="wp-block-columns alignwide">
 	<!-- wp:column {"width":"33.33%","metadata":{"name":"Heading"}} -->
@@ -27,14 +29,19 @@
 	</div>
 	<!-- /wp:column -->
 </div>
-<!-- /wp:columns -->
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
 
 <!-- wp:pattern {"slug":"lumina/columns-features-3-columns"} /-->
+
+<!-- wp:pattern {"slug":"lumina/hidden-feature-grid-start"} /-->
 
 <!-- wp:pattern {"slug":"lumina/columns-intro-3x2-dividers"} /-->
 
 <!-- wp:pattern {"slug":"lumina/columns-sub-tables-4"} /-->
 
+<!-- wp:group {"metadata":{"name":"Intro + Text"},"align":"full","layout":{"type":"constrained"},"anchor":"intro-text"} -->
+<div class="wp-block-group alignfull" id="intro-text">
 <!-- wp:columns {"align":"wide","metadata":{"name":"Split w/Content Left"}} -->
 <div class="wp-block-columns alignwide">
 	<!-- wp:column {"width":"66.66%","metadata":{"name":"Content"}} -->
@@ -53,7 +60,8 @@
 	</div>
 	<!-- /wp:column -->
 </div>
-<!-- /wp:columns -->
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
 
 <!-- wp:pattern {"slug":"lumina/columns-pricing-table-3-columns"} /-->
 

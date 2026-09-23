@@ -773,7 +773,7 @@ figure > a:active,
   backface-visibility: hidden;
   transform-origin: center center;
   animation-name: luminaPanZoomVideoLoop;
-  animation-duration: calc(8s * var(--wp--custom--animation--motion--duration-factor, 1));
+  animation-duration: calc(10s * var(--wp--custom--animation--motion--duration-factor, 1));
   animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -930,7 +930,7 @@ figure > a:active,
   :has(.size-cropped-slim),
   :has(.size-cropped-ultrawide))) .wp-block-cover__image-background {
     animation-name: luminaPanZoomMobileLoop;
-    animation-duration: calc(5.5s * var(--wp--custom--animation--motion--duration-factor, 1));
+    animation-duration: calc(6.6s * var(--wp--custom--animation--motion--duration-factor, 1));
     transform: translate3d(0%, 0%, 0) scale(calc(1 + (1.25 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   }
 }
@@ -945,6 +945,28 @@ figure > a:active,
     filter: none !important;
   }
 }
+/* ==========================================================================
+   UNIVERSAL INSET BORDER STYLE (.is-style-inset-border)
+   Works on Columns, Column, Groups, Stacks, Rows, and Grid Containers
+   ========================================================================== */
+/* 1. Single Block Target (Applied directly to a Column, Group, Stack, or Card) */
+.is-style-inset-border {
+  box-shadow: inset 0 0 0 1px var(--wp--custom--color--divider, color-mix(in srgb, currentColor 18%, transparent));
+  transition: box-shadow var(--wp--custom--animation--duration--short, 250ms) ease-in-out;
+}
+.is-style-inset-border:hover {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 30%, transparent);
+}
+
+/* 2. Parent Container Target (Applied to a parent Columns or Group Grid to style all direct children) */
+:is(.wp-block-columns, .wp-block-group).is-style-inset-border > :is(.wp-block-column, .wp-block-group) {
+  box-shadow: inset 0 0 0 1px var(--wp--custom--color--divider, color-mix(in srgb, currentColor 18%, transparent));
+  transition: box-shadow var(--wp--custom--animation--duration--short, 250ms) ease-in-out;
+}
+:is(.wp-block-columns, .wp-block-group).is-style-inset-border > :is(.wp-block-column, .wp-block-group):hover {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 30%, transparent);
+}
+
 /*--------------------------------------------------------------
 # Custom: List Dividers (Lists, Latest Posts, Latest Comments)
 --------------------------------------------------------------*/

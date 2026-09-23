@@ -34,7 +34,7 @@
 <!-- /wp:group -->
 
 <!-- wp:social-links {"iconColor":"contrast","iconColorValue":"hsl(214, 12%, 11%)","iconBackgroundColor":"base","iconBackgroundColorValue":"hsl(32, 20%, 97%)","openInNewTab":true,"size":"has-normal-icon-size","align":"center","className":"is-style-default","style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"}} -->
-<ul class="wp-block-social-links aligncenter has-normal-icon-size has-icon-color has-icon-background-color is-style-default" style="margin-top:var(--wp--preset--spacing--30)"><!-- wp:social-link {"url":"mailto:studio@mail.com","service":"mail","label":"studio@mail.com"} /-->
+<ul class="wp-block-social-links aligncenter has-normal-icon-size has-icon-color has-icon-background-color is-style-default" style="margin-top:var(--wp--preset--spacing--30)"><!-- wp:social-link {"url":"#content-start","service":"mail","label":"studio@mail.com"} /-->
 
 <!-- wp:social-link {"url":"#content-start","service":"instagram"} /-->
 
@@ -62,7 +62,7 @@
 <!-- /wp:group -->
 
 <!-- wp:social-links {"iconColor":"contrast","iconColorValue":"hsl(214, 12%, 11%)","iconBackgroundColor":"base","iconBackgroundColorValue":"hsl(32, 20%, 97%)","openInNewTab":true,"size":"has-normal-icon-size","align":"center","className":"is-style-default","style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"}} -->
-<ul class="wp-block-social-links aligncenter has-normal-icon-size has-icon-color has-icon-background-color is-style-default" style="margin-top:var(--wp--preset--spacing--30)"><!-- wp:social-link {"url":"mailto:studio@mail.com","service":"mail","label":"studio@mail.com"} /-->
+<ul class="wp-block-social-links aligncenter has-normal-icon-size has-icon-color has-icon-background-color is-style-default" style="margin-top:var(--wp--preset--spacing--30)"><!-- wp:social-link {"url":"#content-start","service":"mail","label":"studio@mail.com"} /-->
 
 <!-- wp:social-link {"url":"#content-start","service":"instagram"} /-->
 
@@ -90,7 +90,7 @@
 <!-- /wp:group -->
 
 <!-- wp:social-links {"iconColor":"contrast","iconColorValue":"hsl(214, 12%, 11%)","iconBackgroundColor":"base","iconBackgroundColorValue":"hsl(32, 20%, 97%)","openInNewTab":true,"size":"has-normal-icon-size","align":"center","className":"is-style-default","style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"}} -->
-<ul class="wp-block-social-links aligncenter has-normal-icon-size has-icon-color has-icon-background-color is-style-default" style="margin-top:var(--wp--preset--spacing--30)"><!-- wp:social-link {"url":"mailto:studio@mail.com","service":"mail","label":"studio@mail.com"} /-->
+<ul class="wp-block-social-links aligncenter has-normal-icon-size has-icon-color has-icon-background-color is-style-default" style="margin-top:var(--wp--preset--spacing--30)"><!-- wp:social-link {"url":"#content-start","service":"mail","label":"studio@mail.com"} /-->
 
 <!-- wp:social-link {"url":"#content-start","service":"instagram"} /-->
 

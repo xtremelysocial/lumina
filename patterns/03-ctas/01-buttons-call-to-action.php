@@ -14,7 +14,7 @@
 		<!-- wp:column {"verticalAlignment":"center","width":"70%"} -->
 		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:70%">
 			<!-- wp:heading -->
-			<h2 class="wp-block-heading"><strong><?php esc_html_e("Tell Your Story", "lumina"); ?></strong><?php esc_html_e(" With Lumina Studio", "lumina"); ?></h2>
+			<h2 class="wp-block-heading"><strong><?php esc_html_e("Tell Your Story", "lumina"); ?></strong> <?php esc_html_e(" With Lumina Studio", "lumina"); ?></h2>
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph -->
@@ -28,7 +28,7 @@
 			<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
 			<div class="wp-block-buttons">
 				<!-- wp:button {"className":"is-style-fill"} -->
-				<div class="wp-block-button is-style-fill"><a class="wp-block-button__link wp-element-button" href="#content-start" target="_blank" rel="noreferrer noopener"><?php esc_html_e("Start a Project", "lumina"); ?></a></div>
+				<div class="wp-block-button is-style-fill"><a class="wp-block-button__link wp-element-button" href="#content-start" rel="noreferrer noopener"><?php esc_html_e("Start a Project", "lumina"); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
