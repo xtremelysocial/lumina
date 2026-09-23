@@ -1,0 +1,10 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "icon-arrow-up-alt2",
+	"title": "Arrow Up Icon",
+	"blockTypes": [ "core/navigation-link" ],
+	"styles": {
+		"css": ""
+	}
+}

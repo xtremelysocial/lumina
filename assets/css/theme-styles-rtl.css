@@ -1571,33 +1571,24 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 }
 
 /*-----------------------------------------------------------------------------
-# Dashicons
+# Dashicons: Universal Base Overrides (Front-End & Editor Canvas)
 -----------------------------------------------------------------------------*/
-/**
- * Override core WordPress base Dashicon styles. Don't let it alter height, 
- * width, font-size or line-height. wp-site-blocks is used for specificity.
- * is-root-container is needed for the Editor.
- */
-.wp-site-blocks .dashicons,
-.wp-site-blocks .dashicons-before {
+/* Specificity (0,2,0): Outranks Core's 20px defaults everywhere */
+:is(.dashicons, .dashicons-before, [class*=dashicons-])[class] {
   display: inherit;
   width: auto;
   height: auto;
   font-family: inherit;
   font-size: inherit;
-  font-weight: var(--wp--custom--typography--font-weight--normal);
+  font-weight: var(--wp--custom--typography--font-weight--normal, 400);
   line-height: inherit;
   text-align: inherit;
   text-transform: inherit;
 }
-
-.wp-site-blocks .dashicons.has-text-align-center,
-.wp-site-blocks .dashicons-before.has-text-align-center {
+:is(.dashicons, .dashicons-before, [class*=dashicons-])[class].has-text-align-center {
   text-align: center;
 }
-
-.wp-site-blocks .dashicons::before,
-.wp-site-blocks [class*=dashicons-]::before {
+:is(.dashicons, .dashicons-before, [class*=dashicons-])[class]::before {
   display: inline-block;
   width: auto;
   height: auto;
@@ -1608,9 +1599,9 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   vertical-align: text-bottom;
 }
 
-/* Add some right margin on inline dashicons before the text */
+/* Micro-spacing for inline dashicons preceding text */
 [class*=dashicons-]:not(.dashicons-after)::before {
-  margin-left: var(--wp--preset--spacing--20);
+  margin-left: var(--wp--preset--spacing--20, 0.5em);
 }
 
 /*-----------------------------------------------------------------------------
