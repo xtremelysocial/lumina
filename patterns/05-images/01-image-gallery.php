@@ -51,6 +51,6 @@
 
 <!-- wp:image {"lightbox":{"enabled":true},"sizeSlug":"cropped-thumbnail","linkDestination":"none"} -->
 <figure class="wp-block-image size-cropped-thumbnail"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/gallery-1/10.webp" ) ); ?>" alt=""/></figure>
-<!-- /wp:image --><figcaption class="blocks-gallery-caption wp-element-caption">Image Gallery (Rounded)</figcaption></figure>
+<!-- /wp:image --></figure>
 <!-- /wp:gallery --></div>
 <!-- /wp:group -->

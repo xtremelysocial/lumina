@@ -63,15 +63,16 @@
 				{ "slug": "highlight-accent", "color": "hsl(34, 75%, 78%)", "name": "Highlight Accent (Gilded Amber Glow - Dark BGs 78%)" },
 				{ "slug": "highlight-accent-alt", "color": "hsl(34, 60%, 34%)", "name": "Highlight Accent Alt (Deep Ochre Link - Light BGs 34%)" },
 
-				{ "slug": "neutral", "color": "hsl(40, 20%, 96%)", "name": "Neutral (Warm Linen Well 96%)" },
-				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Warm Sand Seam 88%)" },
-				
-				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Mist Bone 97.5%)" },
-				{ "slug": "very-light-gray", "color": "hsl(40, 18%, 93%)", "name": "Very Light Gray (Warm Sand Footer Floor 93%)" },
-				{ "slug": "light-gray", "color": "hsl(40, 14%, 85%)", "name": "Light Gray (Warm Sand Well 85%)" },
-				{ "slug": "gray", "color": "hsl(40, 8%, 71%)", "name": "Gray (Warm Hairline Seam 71%)" },
-				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Warm Muted Typography 44%)" },
-				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray" },
+				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand Well 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand Border Seam 88%)" },
+
+				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Desert Alabaster Surface 97.5%)" },
+				{ "slug": "very-light-gray", "color": "hsl(40, 16%, 91.5%)", "name": "Very Light Gray (Warm Sand Footer Floor 91.5%)" },
+				{ "slug": "light-gray", "color": "hsl(40, 14%, 84%)", "name": "Light Gray (Warm Sand Inner Well 84%)" },
+				{ "slug": "gray", "color": "hsl(40, 8%, 71%)", "name": "Gray (Warm Structural Border 71%)" },
+				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
+
 				{ "slug": "almost-black", "color": "hsl(215, 16%, 18%)", "name": "Almost Black (Obsidian Carbon Floor)" },
 				{ "slug": "not-quite-black", "color": "hsl(215, 15%, 11%)", "name": "Not Quite Black (Deep Obsidian Ink)" },
 

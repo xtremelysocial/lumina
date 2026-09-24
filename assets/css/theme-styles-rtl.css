@@ -162,14 +162,9 @@ select:focus-visible {
 }
 
 /*-----------------------------------------------------------------------------
-# Buttons and Links
+# Links, Images & Basic HTML Form Elements
 -----------------------------------------------------------------------------*/
-/*
- * Link and link hover styles.
- * Necessary until the following issue is resolved in Gutenberg:
- * https://github.com/WordPress/gutenberg/issues/27075
- */
-/* Base link underline styles */
+/* 1. Base Link Underline Styles */
 a:not(.wp-element-button, .wp-block-button__link, .wp-block-social-link-anchor),
 .wp-block-accordion-heading__toggle {
   text-decoration-style: var(--wp--custom--link--style, solid);
@@ -178,7 +173,7 @@ a:not(.wp-element-button, .wp-block-button__link, .wp-block-social-link-anchor),
   text-underline-offset: var(--wp--custom--link--offset, 0);
 }
 
-/* Link transitions */
+/* 2. Link Layer Transitions */
 a,
 .wp-block-navigation a,
 .wp-block-navigation-submenu__toggle {
@@ -188,7 +183,7 @@ a,
   transition: opacity var(--wp--custom--animation--duration--short, 250ms) ease-in-out, color var(--wp--custom--animation--duration--short, 250ms) ease-in-out;
 }
 
-/* Link hovers */
+/* 3. Text Link Hovers */
 a:where(:not(.wp-element-button,
 .wp-block-button__link,
 .wp-block-social-link-anchor,
@@ -207,7 +202,7 @@ figure > a,
   opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
 }
 
-/* Use IMAGE hover opacity on images that are links */
+/* 4. Decoupled Linked Image Hovers */
 .wp-block-image a:hover, .wp-block-image a:active,
 figure > a:hover,
 figure > a:active,
@@ -217,12 +212,10 @@ figure > a:active,
 .wp-block-latest-posts__featured-image a:active,
 .wp-block-media-text__media a:hover,
 .wp-block-media-text__media a:active {
-  opacity: var(--wp--custom--color--image--hover-opacity, 0.8);
+  opacity: var(--wp--custom--color--image--hover-opacity, 1);
 }
 
-/* 
- * Style basic buttons to match block buttons. 
- */
+/* 5. Basic HTML Form Buttons (Style-matched to block buttons) */
 input[type=button]:not(.wp-element-button),
 input[type=submit][class*=button]:not(.wp-element-button),
 input[type=submit][class*=submit]:not(.wp-element-button),
@@ -245,73 +238,26 @@ input[type=file] {
   width: 100%;
 }
 
-/* 
- * But override basic buttons to look like outlines on primary-colored 
- * backgrounds 
- */
-.has-primary-background-color input[type=button],
-.has-primary-background-color input[type=submit][class*=button],
-.has-primary-background-color input[type=reset][class*=button],
-.has-primary-background-color input[type=file]::file-selector-button {
-  border: 3px solid var(--wp--custom--color--button--text, var(--wp--preset--color--off-white));
-}
-
-/* Inherit color on outline style buttons */
+/* 6. Outline Inheritance Rules */
 .is-style-outline > .wp-element-button, .is-style-outline > .wp-block-button__link, [class*=is-style-button-outline-] > .wp-element-button, [class*=is-style-button-outline-] > .wp-block-button__link {
   color: inherit;
 }
 
-/* FIX for WordPress v6.7 when older Button not within a Buttons container */
+/* 7. WordPress Core Helper Fixes */
 .wp-site-blocks .wp-block-button__link {
   width: auto;
   height: auto;
 }
 
-/*
- * Block Button hover styles.
- * Necessary until the following issue is resolved in Gutenberg:
- * https://github.com/WordPress/gutenberg/issues/27075
- */
-button:not(.wp-block-navigation-submenu__toggle, .wp-block-accordion-heading__toggle):hover,
-input[type=submit][class*=button]:hover,
-input[type=submit][class*=submit]:hover,
-input[type=reset][class*=button]:hover,
-input[type=file]::file-selector-button:hover,
-.wp-block-search__button:hover,
-.wp-block-file .wp-block-file__button:hover,
-.wp-block-button__link:hover {
-  opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
-}
-
-/* 
- * Set Basic (non-block) button hover to match block button hover. 
- */
-input[type=button]:not(.wp-element-button):hover,
-input[type=submit][class*=button]:not(.wp-element-button):hover,
-input[type=reset][class*=button]:not(.wp-element-button):hover,
-input[type=file]::file-selector-button:hover {
-  opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
-}
-
-/*-----------------------------------------------------------------------------
-# Links: Custom Underlines
------------------------------------------------------------------------------*/
-/* Underline links */
+/* 8. Custom Underline Utilities */
 .is-style-link-underline a:not(.wp-block-navigation-item__content) {
   text-decoration-line: underline !important;
 }
 
-.is-style-link-underline a:hover,
-.is-style-link-underline a:active {
-  opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
-}
-
-/* No Underline links */
 .is-style-link-no-underline a {
   text-decoration: none !important;
 }
 
-/* Underline links on hover */
 .is-style-link-underline-hover a {
   text-decoration: none !important;
   opacity: 1;

@@ -9,6 +9,8 @@
 ?>
 <!-- wp:pattern {"slug":"lumina/cover-scroll-static-image"} /-->
 
+<!-- wp:pattern {"slug":"lumina/columns-drop-caps-2"} /-->
+
 <!-- wp:group {"metadata":{"name":"Intro + Text"},"align":"full","layout":{"type":"constrained"},"anchor":"intro-text"} -->
 <div class="wp-block-group alignfull" id="intro-text">
 <!-- wp:columns {"align":"wide","metadata":{"name":"Split w/Heading Left"}} -->
@@ -31,8 +33,6 @@
 </div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
-
-<!-- wp:pattern {"slug":"lumina/columns-drop-caps-2"} /-->
 
 <!-- wp:pattern {"slug":"lumina/media-text-2-blocks"} /-->
 

@@ -1,49 +1,51 @@
 /* ==========================================================================
-   LUMINA: Master Button Hovers (Text-Isolated & Form Inputs)
+   LUMINA: Master Button Hovers (Parent-Gated)
    ========================================================================== */
 
-/* Universal Button & Form Submit Selector Group */
-$button-hover-targets: ".wp-block-button__link, .wp-element-button, input[type='submit']";
+// Outline style buttons
+$outline-buttons: ".is-style-outline, [class*='is-style-button-outline']";
 
-// 1. Base Setup & Universal Transitions 
-:where(#{$button-hover-targets}) {
+// Gradient style buttons
+$gradient-classes: "[class*='-gradient-background']";
+
+// Button targets (i.e. the link itself)
+$button-targets: ".wp-block-button__link, .wp-element-button, input[type='submit']";
+
+/* 1. Base Setup & Universal Transitions */
+:where(#{$button-targets}) {
 	transition: background-image 0.15s ease, background-color 0.15s ease, filter 0.2s ease, opacity 0.15s ease;
 }
 
-// 2. Solid / Filled Buttons (Non-Gradient Fallback Tint)
-:where(#{$button-hover-targets}):not(.has-gradient):not([style*="--wp--preset--gradient--"]) {
-	&:hover,
-	&:active {
-		background-image: linear-gradient(
-			rgba(0, 0, 0, var(--wp--custom--color--button--hover-tint, 0.15)),
-			rgba(0, 0, 0, var(--wp--custom--color--button--hover-tint, 0.15))
-		) !important;
+/* 2. Hover on Solid Buttons: Apply linear gradient to background */
+.wp-block-button:not(#{$outline-buttons}) {
+	:is(#{$button-targets}):not(#{$gradient-classes}) {
+		&:hover,
+		&:active {	
+			background-image: linear-gradient(
+				rgba(0, 0, 0, var(--wp--custom--color--button--hover-tint, 0.15)),
+				rgba(0, 0, 0, var(--wp--custom--color--button--hover-tint, 0.15))
+			);		
+		}
 	}
 }
 
-// 3. Gradient Buttons (Light-Sheen Brightness Bump)
-:where(#{$button-hover-targets}):is(.has-gradient, [style*="--wp--preset--gradient--"]) {
+/* 3. Hover on Gradient Buttons (Light-Sheen Brightness Bump) */
+.wp-block-button :is(#{$button-targets}):is(#{$gradient-classes}) {
 	&:hover,
 	&:active {
 		filter: brightness(1.12) saturate(1.05);
+// 		filter: brightness(0.88) contrast(1.05);
 	}
 }
 
-// 4. Transparent & Outline Variations
-:where(
-	.is-style-outline,
-	.is-style-button-outline-alt,
-	.is-style-button-outline-alt-2
-) :where(#{$button-hover-targets}),
-:where(
-	.wp-block-button__link.is-style-outline,
-	.wp-block-button__link.is-style-button-outline-alt,
-	.wp-block-button__link.is-style-button-outline-alt-2
-) {
-	&:hover,
-	&:active {
-		background-image: none !important;
-		filter: none;
-		opacity: var(--wp--custom--color--button--hover-opacity, 1);
+/* 4. Hover on Outline Buttons: Simply opacity */
+.wp-block-button:is(#{$outline-buttons}) {
+	:is(#{$button-targets}) {
+		&:hover,
+		&:active {
+// 			background-image: none;
+// 			filter: none;
+			opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+		}
 	}
 }

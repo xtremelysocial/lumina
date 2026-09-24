@@ -47,15 +47,15 @@
 				{ "slug": "highlight-accent", "color": "hsl(327, 55%, 74%)", "name": "Highlight Accent (Luminescent Orchid Link)" },
 				{ "slug": "highlight-accent-alt", "color": "hsl(327, 60%, 36%)", "name": "Highlight Accent Alt (Royal Orchid Link Ink)" },
 
-				{ "slug": "neutral", "color": "hsl(45, 14%, 94%)", "name": "Neutral (Custom Muted Off-White Component Well 94%)" },
-				{ "slug": "neutral-alt", "color": "hsl(45, 10%, 87%)", "name": "Neutral Alt (Component Border Seam 87%)" },
-								
-				{ "slug": "off-white", "color": "hsl(45, 27%, 97%)", "name": "Off White (Gallery Bone)" },
-				{ "slug": "very-light-gray", "color": "hsl(45, 14%, 91%)", "name": "Very Light Gray (Warm Linen Paper 91%)" },
-				{ "slug": "light-gray", "color": "hsl(45, 12%, 83%)", "name": "Light Gray (Warm Linen Well 83%)" },
-				{ "slug": "gray", "color": "hsl(45, 8%, 71%)", "name": "Gray (Warm Sand Border Seam 71%)" },
-				{ "slug": "dark-gray", "color": "hsl(45, 4%, 44%)", "name": "Dark Gray (Muted Sand Typography 44%)" },
-				{ "slug": "very-dark-gray", "color": "hsl(45, 2%, 25%)", "name": "Very Dark Gray (Warm Obsidian Shadow 25%)" },
+				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand Well 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand Border Seam 88%)" },
+
+				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Desert Alabaster Surface 97.5%)" },
+				{ "slug": "very-light-gray", "color": "hsl(40, 16%, 91.5%)", "name": "Very Light Gray (Warm Sand Footer Floor 91.5%)" },
+				{ "slug": "light-gray", "color": "hsl(40, 14%, 84%)", "name": "Light Gray (Warm Sand Inner Well 84%)" },
+				{ "slug": "gray", "color": "hsl(40, 8%, 71%)", "name": "Gray (Warm Structural Border 71%)" },
+				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
 
 				{ "slug": "almost-black", "color": "hsl(327, 14%, 18%)", "name": "Almost Black (Plum Carbon Floor)" },
 				{ "slug": "not-quite-black", "color": "hsl(330, 8%, 11%)", "name": "Not Quite Black (Plum Infused Carbon Ink)" },
