@@ -11,11 +11,8 @@
 				},
 				"contrast": {
 					"primary-subtle": "var(--wp--preset--color--off-white)",
-					"primary-subtle-alt": "var(--wp--preset--color--off-white)",
 					"secondary-subtle": "var(--wp--preset--color--off-white)",
-					"secondary-subtle-alt": "var(--wp--preset--color--off-white)",
 					"tertiary-subtle": "var(--wp--preset--color--off-white)",
-					"tertiary-subtle-alt": "var(--wp--preset--color--off-white)",
 					"neutral": "var(--wp--preset--color--off-white)",
 					"neutral-alt": "var(--wp--preset--color--off-white)",
 					"very-light-gray": "var(--wp--preset--color--off-white)",
@@ -49,37 +46,28 @@
 				{ "slug": "secondary", "color": "hsl(50, 4%, 44%)", "name": "Secondary (Machine Stone Gray 44%)" },
 				{ "slug": "tertiary", "color": "hsl(37, 14%, 34%)", "name": "Tertiary (Muted Antique Bronze 34%)" },
 
-				{ "slug": "base", "color": "hsl(211, 28%, 18%)", "name": "Base (Deep Sea Slate Canvas)" },
-				{ "slug": "neutral", "color": "hsl(211, 25%, 21%)", "name": "Neutral (Industrial Marine Slate)" },
-				{ "slug": "neutral-alt", "color": "hsl(211, 28%, 27%)", "name": "Neutral Alt (Technical Maritime Blue Border)" },
+				{ "slug": "primary-subtle", "color": "hsl(211, 28%, 14%)", "name": "Primary Subtle (Deep Trench Fill 14%)" },
+				{ "slug": "secondary-subtle", "color": "hsl(211, 18%, 14%)", "name": "Secondary Subtle (Maritime Blue Fill 14%)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(37, 8%, 14%)", "name": "Tertiary Subtle (Muted Bronze Fill 14%)" },
 
 				{ "slug": "primary-alt", "color": "hsl(12, 32%, 38%)", "name": "Primary Alt (Deep Terracotta Anchor 38%)" },
 				{ "slug": "secondary-alt", "color": "hsl(50, 4%, 32%)", "name": "Secondary Alt (Oiled Gunmetal 32%)" },
 				{ "slug": "tertiary-alt", "color": "hsl(37, 14%, 22%)", "name": "Tertiary Alt (Dark Antique Bronze 22%)" },
 
-				{ "slug": "primary-subtle", "color": "hsl(211, 28%, 14%)", "name": "Primary Subtle (Deep Trench Fill 14%)" },
-				{ "slug": "secondary-subtle", "color": "hsl(211, 18%, 14%)", "name": "Secondary Subtle (Maritime Blue Fill 14%)" },
-				{ "slug": "tertiary-subtle", "color": "hsl(37, 8%, 14%)", "name": "Tertiary Subtle (Muted Bronze Fill 14%)" },
+				{ "slug": "dark", "color": "hsl(211, 20%, 10%)", "name": "Dark (Abyssal Marine Pool Band 10%)" },
+				{ "slug": "dark-alt", "color": "hsl(211, 25%, 6%)", "name": "Dark Alt (Deep Abyssal Marine Pool 6%)" },							
 
-				{ "slug": "primary-subtle-alt", "color": "hsl(211, 28%, 10%)", "name": "Primary Subtle Alt (Deep Trench Seam 10%)" },
-				{ "slug": "secondary-subtle-alt", "color": "hsl(211, 18%, 9%)", "name": "Secondary Subtle Alt (Maritime Seam 9%)" },
-				{ "slug": "tertiary-subtle-alt", "color": "hsl(37, 8%, 8%)", "name": "Tertiary Subtle Alt (Muted Bronze Seam 8%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(37, 14%, 12%)", "name": "Dark Tertiary (Wet Bronze Pool Band 12%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(37, 14%, 8%)", "name": "Dark Tertiary Alt (Deep Bronze Pool 8%)" },
 
 				{ "slug": "highlight", "color": "hsl(14, 85%, 76%)", "name": "Highlight (Glow Terracotta Link)" },
-				{ "slug": "highlight-secondary", "color": "hsl(37, 80%, 74%)", "name": "Highlight Secondary (Gilded Amber Link)" },
-				{ "slug": "highlight-tertiary", "color": "hsl(172, 75%, 76%)", "name": "Highlight Tertiary (Bioluminescent Tidefoam Link)" },
-		
 				{ "slug": "highlight-alt", "color": "hsl(16, 50%, 36%)", "name": "Highlight Alt (Deep Burnt Copper Link Ink / Button 36%)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(37, 45%, 36%)", "name": "Highlight Secondary Alt (Deep Antique Gold Button / Ink 36%)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(172, 60%, 34%)", "name": "Highlight Tertiary Alt (Deep Tidefoam Link Ink / Button 34%)" },
-        
-				{ "slug": "primary-dark", "color": "hsl(12, 32%, 12%)", "name": "Primary Dark (Wet Terracotta Pool Band 12%)" },
-				{ "slug": "dark", "color": "hsl(211, 20%, 10%)", "name": "Dark (Abyssal Marine Pool Band 10%)" },
-				{ "slug": "tertiary-dark", "color": "hsl(37, 14%, 12%)", "name": "Dark Tertiary (Wet Bronze Pool Band 12%)" },
 
-				{ "slug": "primary-dark-alt", "color": "hsl(12, 32%, 8%)", "name": "Primary Dark Alt (Deep Terracotta Pool 8%)" },
-				{ "slug": "dark-alt", "color": "hsl(211, 25%, 6%)", "name": "Dark Alt (Deep Abyssal Marine Pool 6%)" },							
-				{ "slug": "tertiary-dark-alt", "color": "hsl(37, 14%, 8%)", "name": "Dark Tertiary Alt (Deep Bronze Pool 8%)" },
+				{ "slug": "highlight-accent", "color": "hsl(172, 75%, 76%)", "name": "Highlight Accent (Bioluminescent Tidefoam Link)" },		
+				{ "slug": "highlight-accent-alt", "color": "hsl(172, 60%, 34%)", "name": "Highlight Accent Alt (Deep Tidefoam Link Ink / Button 34%)" },
+        
+				{ "slug": "neutral", "color": "hsl(211, 25%, 21%)", "name": "Neutral (Industrial Marine Slate)" },
+				{ "slug": "neutral-alt", "color": "hsl(211, 28%, 27%)", "name": "Neutral Alt (Technical Maritime Blue Border)" },
 
 				{ "slug": "off-white", "color": "hsl(37, 10%, 93%)", "name": "Off White (Sun-Bleached Sandstone 93%)" },
 				{ "slug": "very-light-gray", "color": "hsl(211, 15%, 12%)", "name": "Very Light Gray (Inverted Deep Footer Floor 12%)" },
@@ -88,9 +76,12 @@
 				{ "slug": "dark-gray", "color": "hsl(211, 10%, 65%)", "name": "Dark Gray (Inverted Muted Typography 65%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(211, 12%, 85%)", "name": "Very Dark Gray (Inverted Tech Typography 85%)" },
 								
-				{ "slug": "contrast", "color": "hsl(211, 14%, 90%)", "name": "Contrast (Slate-Tinted Bone Typography)" },
 				{ "slug": "almost-black", "color": "hsl(208, 18%, 18%)", "name": "Almost Black (Tinted Carbon Floor)" },
-				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" }
+				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" },
+
+				{ "slug": "base", "color": "hsl(211, 28%, 18%)", "name": "Base (Deep Sea Slate Canvas)" },
+				{ "slug": "contrast", "color": "hsl(211, 14%, 90%)", "name": "Contrast (Slate-Tinted Bone Typography)" }
+
 			],
 			"duotone": [
 				{ "colors": ["hsl(12, 32%, 50%)", "hsl(211, 14%, 95%)"], "slug": "primary", "name": "Primary (Terracotta)" },
@@ -99,23 +90,14 @@
 				{ "colors": ["hsl(50, 4%, 32%)", "hsl(211, 14%, 95%)"], "slug": "secondary-alt", "name": "Secondary Alt (Oiled Gunmetal)" },
 				{ "colors": ["hsl(37, 14%, 34%)", "hsl(211, 14%, 95%)"], "slug": "tertiary", "name": "Tertiary (Muted Bronze)" },
 				{ "colors": ["hsl(37, 14%, 22%)", "hsl(211, 14%, 95%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Dark Bronze)" },
-				{ "colors": ["hsl(0, 0%, 6%)", "hsl(211, 28%, 18%)"], "slug": "midnight", "name": "Abyssal Tide Void" },
+				{ "colors": ["hsl(211, 25%, 6%)", "hsl(12, 32%, 50%)"], "slug": "midnight", "name": "Abyssal Tide Void" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(50, 4%, 44%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			]
 		}
 	},
 	"styles": {
-		"color": {
-			"background": "var:preset|color|base",
-			"text": "var:preset|color|contrast"
-		},
 		"elements": {
-			"heading": {
-				"color": {
-					"text": "var(--wp--custom--color--heading--text)"
-				}
-			},
 			"link": {
 				"color": { 
 					"text": "var:preset|color|highlight" 

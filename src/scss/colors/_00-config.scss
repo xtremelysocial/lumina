@@ -93,10 +93,15 @@ $color-registry: (
     		footer-dark: 'hover-highlight'  
     ),
 
-    // --- SPECIAL HIGHLIGHT SLOTS ---
-//     ( color: 'highlight',     	  text: 'dark',  	link: 'inherit' ),
-//     ( color: 'highlight-alt', 	  text: 'light', 	link: 'inherit' ),
+    // --- HIGHLIGHT COLORS (E.G. LINKS, BUTTONS) ---
+    // 1. Luminous Glow Surfaces (Light Fills -> High-Contrast Dark Text & Dark Links)
+    ( color: 'highlight',            text: 'dark', link: 'dark', heading-dark: 'dark' ),
+    ( color: 'highlight-accent',     text: 'dark', link: 'dark', heading-dark: 'dark' ),
 
+    // 2. Deep Ink Surfaces (Dark Action Fills -> Crisp Light Text & Light Links)
+    ( color: 'highlight-alt',        text: 'light', link: 'light', heading: 'inherit' ),
+    ( color: 'highlight-accent-alt', text: 'light', link: 'light', heading: 'inherit' ),
+        
     // --- WHITE & GRAY NAMED COLORS ---
     ( color: 'white',      			text: 'dark', 		heading-dark: 'inherit',
     		link-dark: 'highlight-alt',	footer: 'hover-highlight-alt' 
@@ -129,9 +134,9 @@ $color-registry: (
     ( color: 'dark-alt',		text: 'light',	link: 'highlight', heading: 'inherit',
     		footer: 'hover-highlight' ),
 
-    ( color: 'primary-dark',        text: 'light', 		link: 'highlight', heading: 'inherit' ),    
-    ( color: 'primary-dark-alt',    text: 'light', 		link: 'highlight', heading: 'inherit',
-    		footer: 'hover-highlight' ),
+//     ( color: 'primary-dark',        text: 'light', 		link: 'highlight', heading: 'inherit' ),    
+//     ( color: 'primary-dark-alt',    text: 'light', 		link: 'highlight', heading: 'inherit',
+//     		footer: 'hover-highlight' ),
     ( color: 'tertiary-dark',       text: 'light', 		link: 'highlight', heading: 'inherit' ),
     ( color: 'tertiary-dark-alt',   text: 'light', 		link: 'highlight', heading: 'inherit',
     		footer: 'hover-highlight' ),

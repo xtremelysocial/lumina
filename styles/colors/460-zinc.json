@@ -49,37 +49,28 @@
 				{ "slug": "secondary", "color": "hsl(210, 18%, 32%)", "name": "Secondary (Midnight Industrial Blue 32%)" },
 				{ "slug": "tertiary", "color": "hsl(50, 4%, 22%)", "name": "Tertiary (Machined Gunmetal 22%)" },
 
-				{ "slug": "base", "color": "hsl(0, 0%, 10%)", "name": "Base (Rich Carbon Dark Canvas)" },
-				{ "slug": "neutral", "color": "hsl(0, 0%, 18%)", "name": "Neutral (Industrial Grid Fill)" },
-				{ "slug": "neutral-alt", "color": "hsl(50, 4%, 14%)", "name": "Neutral Alt (Technical Structural Border)" },
+				{ "slug": "primary-subtle", "color": "hsl(50, 4%, 18%)", "name": "Primary Subtle (Technical Stone Fill 18%)" },
+				{ "slug": "secondary-subtle", "color": "hsl(210, 14%, 16%)", "name": "Secondary Subtle (Gunmetal Blue Fill 16%)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(0, 0%, 13%)", "name": "Tertiary Subtle (Carbon Plate Fill 13%)" },
 
 				{ "slug": "primary-alt", "color": "hsl(50, 4%, 30%)", "name": "Primary Alt (Deep Machine Stone 30%)" },
 				{ "slug": "secondary-alt", "color": "hsl(210, 18%, 22%)", "name": "Secondary Alt (Dark Midnight Steel 22%)" },
 				{ "slug": "tertiary-alt", "color": "hsl(50, 4%, 15%)", "name": "Tertiary Alt (Deep Gunmetal Recess 15%)" },
 
-				{ "slug": "primary-subtle", "color": "hsl(50, 4%, 18%)", "name": "Primary Subtle (Technical Stone Fill 18%)" },
-				{ "slug": "secondary-subtle", "color": "hsl(210, 14%, 16%)", "name": "Secondary Subtle (Gunmetal Blue Fill 16%)" },
-				{ "slug": "tertiary-subtle", "color": "hsl(0, 0%, 13%)", "name": "Tertiary Subtle (Carbon Plate Fill 13%)" },
+				{ "slug": "dark", "color": "hsl(210, 18%, 18%)", "name": "Dark (Gunmetal Slate Section Band 18%)" },
+				{ "slug": "dark-alt", "color": "hsl(210, 18%, 13%)", "name": "Dark Alt (Deep Gunmetal Band 13%)" },							
 
-				{ "slug": "primary-subtle-alt", "color": "hsl(50, 4%, 14%)", "name": "Primary Subtle Alt (Deep Stone Seam 14%)" },
-				{ "slug": "secondary-subtle-alt", "color": "hsl(210, 14%, 12%)", "name": "Secondary Subtle Alt (Deep Gunmetal Seam 12%)" },
-				{ "slug": "tertiary-subtle-alt", "color": "hsl(0, 0%, 9%)", "name": "Tertiary Subtle Alt (Deep Carbon Seam 9%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(0, 0%, 14%)", "name": "Dark Tertiary (Carbon Section Band 14%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(0, 0%, 10%)", "name": "Dark Tertiary Alt (Deep Carbon Band 10%)" },
 
 				{ "slug": "highlight", "color": "hsl(189, 85%, 78%)", "name": "Highlight (Glow Aqua Link)" },
-				{ "slug": "highlight-secondary", "color": "hsl(204, 50%, 82%)", "name": "Highlight Secondary (Titanium Link)" },
-				{ "slug": "highlight-tertiary", "color": "hsl(36, 88%, 74%)", "name": "Highlight Tertiary (Hazard Gold Link)" },
-
 				{ "slug": "highlight-alt", "color": "hsl(189, 70%, 34%)", "name": "Highlight Alt (Deep Technical Aqua Link Ink / Button 34%)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(204, 50%, 38%)", "name": "Highlight Secondary Alt (Deep Machined Steel Button / Ink 38%)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(36, 75%, 38%)", "name": "Highlight Tertiary Alt (Deep Anodized Amber Button / Ink 38%)" },
-        
-				{ "slug": "primary-dark", "color": "hsl(50, 4%, 22%)", "name": "Primary Dark (Stone Section Band 22%)" },
-				{ "slug": "dark", "color": "hsl(210, 18%, 18%)", "name": "Dark (Gunmetal Slate Section Band 18%)" },
-				{ "slug": "tertiary-dark", "color": "hsl(0, 0%, 14%)", "name": "Dark Tertiary (Carbon Section Band 14%)" },
 
-				{ "slug": "primary-dark-alt", "color": "hsl(50, 4%, 16%)", "name": "Primary Dark Alt (Deep Stone Band 16%)" },
-				{ "slug": "dark-alt", "color": "hsl(210, 18%, 13%)", "name": "Dark Alt (Deep Gunmetal Band 13%)" },							
-				{ "slug": "tertiary-dark-alt", "color": "hsl(0, 0%, 10%)", "name": "Dark Tertiary Alt (Deep Carbon Band 10%)" },
+				{ "slug": "highlight-accent", "color": "hsl(36, 88%, 74%)", "name": "Highlight Accent (Hazard Gold Link)" },
+				{ "slug": "highlight-accent-alt", "color": "hsl(36, 75%, 38%)", "name": "Highlight Accent Alt (Deep Anodized Amber Button / Ink 38%)" },
+        
+				{ "slug": "neutral", "color": "hsl(0, 0%, 18%)", "name": "Neutral (Industrial Grid Fill)" },
+				{ "slug": "neutral-alt", "color": "hsl(50, 4%, 14%)", "name": "Neutral Alt (Technical Structural Border)" },
 
 				{ "slug": "off-white", "color": "hsl(45, 29%, 97%)", "name": "Off White" },
 				{ "slug": "very-light-gray", "color": "hsl(50, 4%, 12%)", "name": "Very Light Gray (Inverted Deep Zinc Floor 12%)" },
@@ -88,9 +79,11 @@
 				{ "slug": "dark-gray", "color": "hsl(50, 4%, 65%)", "name": "Dark Gray (Inverted Muted Zinc Typography 65%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(50, 4%, 85%)", "name": "Very Dark Gray (Inverted Specular Typography 85%)" },
 
-				{ "slug": "contrast", "color": "hsl(45, 29%, 97%)", "name": "Contrast (Off White Paper Typography)" },
 				{ "slug": "almost-black", "color": "hsl(208, 18%, 18%)", "name": "Almost Black (Tinted Carbon Floor)" },
-				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" }
+				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" },
+
+				{ "slug": "base", "color": "hsl(0, 0%, 10%)", "name": "Base (Rich Carbon Dark Canvas)" },
+				{ "slug": "contrast", "color": "hsl(45, 29%, 97%)", "name": "Contrast (Off White Paper Typography)" }				
 			],
 			"duotone": [
 				{ "colors": ["hsl(50, 4%, 42%)", "hsl(45, 29%, 97%)"], "slug": "primary", "name": "Primary (Machine Gray)" },
@@ -99,28 +92,14 @@
 				{ "colors": ["hsl(210, 18%, 22%)", "hsl(45, 29%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Dark Midnight)" },
 				{ "colors": ["hsl(50, 4%, 22%)", "hsl(45, 29%, 97%)"], "slug": "tertiary", "name": "Tertiary (Machined Gunmetal)" },
 				{ "colors": ["hsl(50, 4%, 15%)", "hsl(45, 29%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Deep Gunmetal Recess)" },
-				{ "colors": ["hsl(327, 5%, 31%)", "hsl(33, 30%, 51%)"], "slug": "purple-yellow", "name": "Purple and Yellow" },
-				{ "colors": ["hsl(210, 22%, 19%)", "hsl(0, 18%, 27%)"], "slug": "blue-red", "name": "Blue and Red" },
-				{ "colors": ["hsl(210, 18%, 13%)", "hsl(50, 4%, 42%)"], "slug": "midnight", "name": "Midnight Blue" },
-				{ "colors": ["hsl(0, 18%, 27%)", "hsl(33, 30%, 51%)"], "slug": "magenta-yellow", "name": "Red and Yellow" },
-				{ "colors": ["hsl(327, 5%, 31%)", "hsl(155, 16%, 46%)"], "slug": "purple-green", "name": "Purple and Green" },
-				{ "colors": ["hsl(210, 22%, 19%)", "hsl(12, 31%, 49%)"], "slug": "blue-orange", "name": "Blue and Orange" },
+				{ "colors": ["hsl(210, 18%, 13%)", "hsl(50, 4%, 42%)"], "slug": "midnight", "name": "Midnight Gunmetal" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(50, 4%, 42%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			]
 		}
 	},
 	"styles": {
-		"color": {
-			"background": "var:preset|color|base",
-			"text": "var:preset|color|contrast"
-		},
 		"elements": {
-			"heading": {
-				"color": {
-					"text": "var(--wp--custom--color--heading--text)"
-				}
-			},
 			"link": {
 				"color": { 
 					"text": "var:preset|color|highlight" 

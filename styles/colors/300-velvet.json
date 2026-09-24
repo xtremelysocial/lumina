@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Lumina Velvet - High Contrast: Plum, sapphire, and crimson jewel tones",
+	"title": "Lumina Velvet High Contrast: Plum, sapphire, and crimson jewel tones",
 	"settings": {
 		"custom": {
 			"color": {
@@ -10,52 +10,46 @@
 					"scheme": "velvet"
 				},
 				"heading": {
-					"text": "hsl(327, 26%, 15%)",
+					"text": "var(--wp--preset--color--almost-black)",
 					"separator": "var(--wp--preset--color--tertiary)"
 				},
 				"link": {
 					"hoverOpacity": "0.7" 
-				}			
+				},
+				"highlight-alt": {
+					"lighten": "brightness(1.75) saturate(0.7)"
+				}						
 			}
 		},
 		"color": {
 			"palette": [
-				{ "slug": "primary", "color": "hsl(327, 18%, 48%)", "name": "Primary (Royal Velvet Plum 48%)" },
+				{ "slug": "primary", "color": "hsl(327, 12%, 48%)", "name": "Primary (Smoky Heather Velvet 48%)" },
 				{ "slug": "secondary", "color": "hsl(207, 22%, 44%)", "name": "Secondary (Midnight Sapphire Slate 44%)" },
 				{ "slug": "tertiary", "color": "hsl(0, 28%, 48%)", "name": "Tertiary (Deep Ruby Crimson 48%)" },
 
-				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White Canvas)" },
-				{ "slug": "neutral", "color": "hsl(45, 14%, 94%)", "name": "Neutral (Custom Muted Off-White Component Well 94%)" },
-				{ "slug": "neutral-alt", "color": "hsl(45, 10%, 87%)", "name": "Neutral Alt (Component Border Seam 87%)" },
-				
-				{ "slug": "primary-alt", "color": "hsl(327, 18%, 38%)", "name": "Primary Alt (Deep Abyssal Plum 38%)" },
-				{ "slug": "secondary-alt", "color": "hsl(207, 24%, 34%)", "name": "Secondary Alt (Sapphire Hero Base 34%)" },
-				{ "slug": "tertiary-alt", "color": "hsl(0, 28%, 38%)", "name": "Tertiary Alt (Garnet Action Anchor 38%)" },
-				
-				{ "slug": "primary-subtle", "color": "hsl(327, 16%, 91%)", "name": "Primary Subtle (Whisper Lavender Fill 91%)" },
+				{ "slug": "primary-subtle", "color": "hsl(327, 14%, 92%)", "name": "Primary Subtle (Whisper Lavender Wash 92%)" },
 				{ "slug": "secondary-subtle", "color": "hsl(207, 20%, 91%)", "name": "Secondary Subtle (Whisper Sapphire Fill 91%)" },
 				{ "slug": "tertiary-subtle", "color": "hsl(0, 18%, 91%)", "name": "Tertiary Subtle (Whisper Rose Fill 91%)" },
 
-				{ "slug": "primary-subtle-alt", "color": "hsl(327, 12%, 83%)", "name": "Primary Subtle Alt (Plum Border 83%)" },
-				{ "slug": "secondary-subtle-alt", "color": "hsl(207, 16%, 83%)", "name": "Secondary Subtle Alt (Sapphire Border 83%)" },
-				{ "slug": "tertiary-subtle-alt", "color": "hsl(0, 14%, 83%)", "name": "Tertiary Subtle Alt (Rose Border 83%)" },
+				{ "slug": "primary-alt", "color": "hsl(327, 12%, 38%)", "name": "Primary Alt (Deep Dusky Plum 38%)" },
+				{ "slug": "secondary-alt", "color": "hsl(207, 24%, 34%)", "name": "Secondary Alt (Sapphire Hero Base 34%)" },
+				{ "slug": "tertiary-alt", "color": "hsl(0, 28%, 38%)", "name": "Tertiary Alt (Garnet Action Anchor 38%)" },
+				
+				{ "slug": "dark", "color": "hsl(207, 28%, 22%)", "name": "Dark (Midnight Sapphire Footer 22%)" },
+				{ "slug": "dark-alt", "color": "hsl(207, 30%, 15%)", "name": "Dark Alt (Midnight Sapphire Floor 15%)" },				
+
+				{ "slug": "tertiary-dark", "color": "hsl(0, 30%, 22%)", "name": "Dark Tertiary (Deep Crimson Well 22%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(0, 30%, 15%)", "name": "Dark Tertiary Alt (Deep Crimson Floor 15%)" },
 
 				{ "slug": "highlight", "color": "hsl(207, 65%, 72%)", "name": "Highlight (Luminescent Sapphire Link)" },
-				{ "slug": "highlight-secondary", "color": "hsl(327, 55%, 74%)", "name": "Highlight Secondary (Luminescent Orchid Link)" },
-				{ "slug": "highlight-tertiary", "color": "hsl(0, 60%, 72%)", "name": "Highlight Tertiary (Luminescent Ruby Link)" },
-				
 				{ "slug": "highlight-alt", "color": "hsl(207, 65%, 36%)", "name": "Highlight Alt (Electric Sapphire Link Ink 36%)" },
-				{ "slug": "highlight-secondary-alt", "color": "hsl(327, 60%, 36%)", "name": "Highlight Secondary Alt (Royal Orchid Link Ink 36%)" },
-				{ "slug": "highlight-tertiary-alt", "color": "hsl(348, 62%, 36%)", "name": "Highlight Tertiary Alt (Glowing Ruby Link Ink 36%)" },
-				
-				{ "slug": "primary-dark", "color": "hsl(327, 24%, 22%)", "name": "Primary Dark (Royal Plum Card 22%)" },
-				{ "slug": "dark", "color": "hsl(207, 28%, 22%)", "name": "Dark (Midnight Sapphire Footer 22%)" },
-				{ "slug": "tertiary-dark", "color": "hsl(0, 30%, 22%)", "name": "Dark Tertiary (Deep Crimson Well 22%)" },
 
-				{ "slug": "primary-dark-alt", "color": "hsl(327, 26%, 15%)", "name": "Primary Dark Alt (Royal Plum Abyssal 15%)" },
-				{ "slug": "dark-alt", "color": "hsl(207, 30%, 15%)", "name": "Dark Alt (Midnight Sapphire Floor 15%)" },				
-				{ "slug": "tertiary-dark-alt", "color": "hsl(0, 30%, 15%)", "name": "Dark Tertiary Alt (Deep Crimson Floor 15%)" },
-				
+				{ "slug": "highlight-accent", "color": "hsl(327, 55%, 74%)", "name": "Highlight Accent (Luminescent Orchid Link)" },
+				{ "slug": "highlight-accent-alt", "color": "hsl(327, 60%, 36%)", "name": "Highlight Accent Alt (Royal Orchid Link Ink)" },
+
+				{ "slug": "neutral", "color": "hsl(45, 14%, 94%)", "name": "Neutral (Custom Muted Off-White Component Well 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(45, 10%, 87%)", "name": "Neutral Alt (Component Border Seam 87%)" },
+								
 				{ "slug": "off-white", "color": "hsl(45, 27%, 97%)", "name": "Off White (Gallery Bone)" },
 				{ "slug": "very-light-gray", "color": "hsl(45, 14%, 91%)", "name": "Very Light Gray (Warm Linen Paper 91%)" },
 				{ "slug": "light-gray", "color": "hsl(45, 12%, 83%)", "name": "Light Gray (Warm Linen Well 83%)" },
@@ -63,34 +57,23 @@
 				{ "slug": "dark-gray", "color": "hsl(45, 4%, 44%)", "name": "Dark Gray (Muted Sand Typography 44%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(45, 2%, 25%)", "name": "Very Dark Gray (Warm Obsidian Shadow 25%)" },
 
-				{ "slug": "contrast", "color": "hsl(330, 8%, 11%)", "name": "Contrast (Plum Infused Velvet Ink)" },
 				{ "slug": "almost-black", "color": "hsl(327, 14%, 18%)", "name": "Almost Black (Plum Carbon Floor)" },
-				{ "slug": "not-quite-black", "color": "hsl(330, 8%, 11%)", "name": "Not Quite Black (Plum Infused Carbon Ink)" }
+				{ "slug": "not-quite-black", "color": "hsl(330, 8%, 11%)", "name": "Not Quite Black (Plum Infused Carbon Ink)" },
+
+				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White Canvas)" },
+				{ "slug": "contrast", "color": "hsl(330, 8%, 11%)", "name": "Contrast (Plum Infused Velvet Ink)" }
 			],
 			"duotone": [
-				{ "colors": ["hsl(327, 18%, 48%)", "hsl(45, 27%, 97%)"], "slug": "primary", "name": "Primary (Royal Velvet Plum)" },
-				{ "colors": ["hsl(327, 18%, 38%)", "hsl(45, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Deep Shadow Plum)" },
+				{ "colors": ["hsl(327, 12%, 48%)", "hsl(45, 27%, 97%)"], "slug": "primary", "name": "Primary (Smoky Heather Velvet)" },
+				{ "colors": ["hsl(327, 12%, 38%)", "hsl(45, 27%, 97%)"], "slug": "primary-alt", "name": "Primary Alt (Deep Dusky Plum)" },
 				{ "colors": ["hsl(207, 22%, 44%)", "hsl(45, 27%, 97%)"], "slug": "secondary", "name": "Secondary (Midnight Sapphire)" },
 				{ "colors": ["hsl(207, 24%, 34%)", "hsl(45, 27%, 97%)"], "slug": "secondary-alt", "name": "Secondary Alt (Sapphire Hero Base)" },
 				{ "colors": ["hsl(0, 28%, 48%)", "hsl(45, 27%, 97%)"], "slug": "tertiary", "name": "Tertiary (Deep Ruby Crimson)" },
 				{ "colors": ["hsl(0, 28%, 38%)", "hsl(45, 27%, 97%)"], "slug": "tertiary-alt", "name": "Tertiary Alt (Garnet Action Anchor)" },
-				{ "colors": ["hsl(330, 8%, 10%)", "hsl(327, 18%, 48%)"], "slug": "midnight", "name": "Midnight Velvet" },
+				{ "colors": ["hsl(330, 8%, 10%)", "hsl(327, 12%, 48%)"], "slug": "midnight", "name": "Midnight Velvet" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(0, 0%, 100%)"], "slug": "grayscale", "name": "Grayscale" },
 				{ "colors": ["hsl(0, 0%, 0%)", "hsl(45, 8%, 71%)"], "slug": "dark-grayscale", "name": "Dark Grayscale" }
 			]
-		}	
-	},
-	"styles": {
-		"color": {
-			"background": "var:preset|color|base",
-			"text": "var:preset|color|contrast"
-		},
-		"elements": {
-			"heading": {
-				"color": {
-					"text": "var(--wp--custom--color--heading--text)"
-				}
-			}
 		}
 	}
 }
