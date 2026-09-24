@@ -113,29 +113,55 @@
 //    ========================================================================== */
 @mixin apply-wrapper-visuals($block) {
 
-	// TRACK A: Blocks that get rounding (Groups, Covers, etc.)
-	@if not is-no-rounding($block) {
-		
-		// Apply standard rounded outer border if not hit by layout brakes
-		 &:not(#{config.$blocks-layout-brakes}) {
-		 	@include __blueprint-border;
-// 			@include __blueprint-wrapper-clipped;		 	
-			@include __blueprint-shadow-natural;
-		 }
-		 
-		 // Fallback for braked containers (e.g., .is-style-no-gap *): Use inset border
+	// 1. TRULY PLAIN: No outer border, no inset border, no shadow
+// 	&:is(#{config.$blocks-plain}) {
+// 		border: none !important;
+// 		box-shadow: none !important;
+// 	}
+
+	// 2. LAYOUT BRAKES: Track B inset hairline cards
+	&:not(#{config.$blocks-plain}) {
 		&:is(#{config.$blocks-layout-brakes}) {
-		 	@include __blueprint-border-inset;
-		}	
+			@include __blueprint-border-inset;
+		}
 
-	// TRACK B: Unrounded Card Blocks (.wp-block-column, .wp-block-media-text__content)
-	} @else {
-		@include __blueprint-border-inset;
+		// 3. STANDARD CARDS: Track A outer rounded borders
+		&:not(#{config.$blocks-layout-brakes}) {
+// 			@if not is-no-rounding($block) {
+				@include __blueprint-border;
+				@include __blueprint-shadow-natural;
+// 			} @else {
+// 				@include __blueprint-border-inset;
+// 			}
+		}
 	}
-
-// 	// Always include resting shadow
-// 	@include __blueprint-shadow-natural;
 }
+
+// @mixin apply-wrapper-visuals($block) {
+// 
+// 	// TRACK A: Blocks that get rounding (Groups, Covers, etc.)
+// 	@if not is-no-rounding($block) {
+// 		
+// 		// Apply standard rounded outer border if not hit by layout brakes
+// 		 &:not(#{config.$blocks-layout-brakes}) {
+// 		 	@include __blueprint-border;
+// // 			@include __blueprint-wrapper-clipped;		 	
+// 			@include __blueprint-shadow-natural;
+// 		 }
+// 		 
+// 		 // Fallback for braked containers (e.g., .is-style-no-gap *): Use inset border
+// // 		&:is(#{config.$blocks-layout-brakes}) {
+// // 		 	@include __blueprint-border-inset;
+// // 		}	
+// 
+// 	// TRACK B: Unrounded Card Blocks (.wp-block-column, .wp-block-media-text__content)
+// 	} @else {
+// 		@include __blueprint-border-inset;
+// 	}
+// 
+// // 	// Always include resting shadow
+// // 	@include __blueprint-shadow-natural;
+// }
 
 // /* ==========================================================================
 //    02.21 APPLY RESTING STATE: Apply physics

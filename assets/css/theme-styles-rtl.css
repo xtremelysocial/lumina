@@ -1900,16 +1900,12 @@ h1, h2, h3, h4, h5, h6) {
   color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--off-white));
 }
 
-:root :where([style*="--wp--preset--gradient--highlight-primary)"], .has-highlight-primary-gradient-background) {
+:root :where([style*="--wp--preset--gradient--highlight)"], .has-highlight-gradient-background) {
   color: var(--wp--custom--color--contrast--highlight, var(--wp--preset--color--off-white));
 }
 
-:root :where([style*="--wp--preset--gradient--highlight-secondary)"], .has-highlight-secondary-gradient-background) {
-  color: var(--wp--custom--color--contrast--highlight-secondary, var(--wp--preset--color--off-white));
-}
-
-:root :where([style*="--wp--preset--gradient--highlight-tertiary)"], .has-highlight-tertiary-gradient-background) {
-  color: var(--wp--custom--color--contrast--highlight-tertiary, var(--wp--preset--color--off-white));
+:root :where([style*="--wp--preset--gradient--highlight-accent)"], .has-highlight-accent-gradient-background) {
+  color: var(--wp--custom--color--contrast--highlight-accent, var(--wp--preset--color--off-white));
 }
 
 :root :where([style*="--wp--preset--gradient--"], [class*=-gradient-background]) :where(a:not(.wp-element-button)) {

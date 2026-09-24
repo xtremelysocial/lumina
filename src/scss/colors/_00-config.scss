@@ -154,12 +154,11 @@ $color-registry: (
 
 // 1. List of dark gradient tracks that require light contrast text
 $gradient-tracks: (
-	'primary':            ('primary'),
-	'secondary':          ('secondary'),
-	'tertiary':           ('tertiary'),
-	'highlight':          ('highlight-primary'),
-	'highlight-secondary':('highlight-secondary'),
-	'highlight-tertiary': ('highlight-tertiary')
+	'primary':            	('primary'),
+	'secondary':          	('secondary'),
+	'tertiary':           	('tertiary'),
+	'highlight':          	('highlight'),
+	'highlight-accent':		('highlight-accent')
 ) !default;
 
 // 2. List of light/subtle gradients that preserve default dark body & heading text

@@ -54,7 +54,7 @@
 		}
 
 		// Allow user to turn off shadow and animation for particular blocks
-		[class*=wp-block-].is-style-object-plain {
+		[class*=wp-block-].is-style-object-static {
 			box-shadow: none !important;
 		}
 		
@@ -194,7 +194,7 @@
 	} @else {
 	
 		// Remove shadow on hover for is-style-object plain custom block style
-		[class*=wp-block-].is-style-object-plain {
+		[class*=wp-block-].is-style-object-static {
 			&:hover,
 			&:has(:focus-visible) {
 				box-shadow: none !important;

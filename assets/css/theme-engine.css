@@ -46,7 +46,7 @@
   box-shadow: none;
 }
 
-[class*=wp-block-].is-style-object-plain {
+[class*=wp-block-].is-style-object-static {
   box-shadow: none !important;
 }
 
@@ -184,22 +184,22 @@ a > .avatar {
   transition: transform var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), box-shadow var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1)), outline var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
   transform: translateY(0) scale(1);
 }
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):not(.is-style-object-static, .is-style-image-no-border):is(.wp-block-media-text *, .is-style-no-gap *) {
+  box-shadow: inset 0 0 0 1px var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent)), var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
+}
+[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):not(.is-style-object-static, .is-style-image-no-border):not(.wp-block-media-text *, .is-style-no-gap *) {
   border-radius: var(--wp--preset--border-radius--lg, 16px);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border);
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
-}
-[class*=wp-block-]:not(.alignfull, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):is(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
-  box-shadow: inset 0 0 0 1px var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent)), var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
 }
 
 /* ==========================================================================
    20 OBJECTS: Container Contents (e.g. Images, Columns)
    ========================================================================== */
-.wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *) img {
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
 }
-.wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
   border-radius: var(--wp--preset--border-radius--lg, 16px);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border);
   padding: var(--wp--preset--spacing--20);
@@ -209,58 +209,58 @@ a > .avatar {
   transform: translateY(0) scale(1);
   vertical-align: middle;
 }
-.wp-block-image:not(.alignfull):has(a:not(figcaption a)) img:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)) img:not(.wp-block-media-text *, .is-style-no-gap *) img {
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
 }
-.wp-block-image:not(.alignfull):has(a:not(figcaption a)) img:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
+.wp-block-image:not(.alignfull):has(a:not(figcaption a)) img:not(.wp-block-media-text *, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
   border-radius: var(--wp--preset--border-radius--lg, 16px);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border);
   padding: var(--wp--preset--spacing--20);
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *) {
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
   border-radius: var(--wp--preset--border-radius--lg, 16px);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border);
   padding: var(--wp--preset--spacing--20);
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) > a {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *) > a {
   border-radius: clamp(var(--wp--custom--border--radius) * 0.5, var(--wp--custom--border--radius) - var(--wp--preset--spacing--20), var(--wp--custom--border--radius));
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *) img {
   border: none;
   padding: 0;
   border-radius: inherit;
   box-shadow: none;
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-border:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-border:not(.wp-block-media-text *, .is-style-no-gap *) {
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(255, 255, 255, 0.15));
   padding: var(--wp--preset--spacing--20, 4px);
   border-radius: var(--wp--preset--border-radius--lg, 16px);
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-border:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) > a {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-border:not(.wp-block-media-text *, .is-style-no-gap *) > a {
   overflow: hidden;
   /* Concentric Inner Radius = Outer (16px) - Padding (4px) - Border (1px) */
   border-radius: max(0px, var(--wp--preset--border-radius--lg, 16px) - var(--wp--preset--spacing--20, 4px) - var(--wp--custom--border--width, 1px));
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-border:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-border:not(.wp-block-media-text *, .is-style-no-gap *) {
   /* Slim Aspect Ratio Clamp (16:4.5) */
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-border:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *):is([style*="16/4.5"], [style*="16 / 4.5"], :has([style*="16/4.5"]), :has([style*="16 / 4.5"]), :has(.size-cropped-slim)) {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-border:not(.wp-block-media-text *, .is-style-no-gap *):is([style*="16/4.5"], [style*="16 / 4.5"], :has([style*="16/4.5"]), :has([style*="16 / 4.5"]), :has(.size-cropped-slim)) {
   border-radius: var(--wp--preset--border-radius--sm, 6px) !important;
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-border:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *):is([style*="16/4.5"], [style*="16 / 4.5"], :has([style*="16/4.5"]), :has([style*="16 / 4.5"]), :has(.size-cropped-slim)) > a {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-border:not(.wp-block-media-text *, .is-style-no-gap *):is([style*="16/4.5"], [style*="16 / 4.5"], :has([style*="16/4.5"]), :has([style*="16 / 4.5"]), :has(.size-cropped-slim)) > a {
   border-radius: max(0px, var(--wp--preset--border-radius--sm, 6px) - var(--wp--preset--spacing--20, 4px) - var(--wp--custom--border--width, 1px)) !important;
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-rounded:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *), .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-round-border:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-rounded:not(.wp-block-media-text *, .is-style-no-gap *), .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-round-border:not(.wp-block-media-text *, .is-style-no-gap *) {
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, rgba(255, 255, 255, 0.15));
   padding: var(--wp--preset--spacing--20, 4px);
   border-radius: 9999px;
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-rounded:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) > a, .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-round-border:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) > a {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-rounded:not(.wp-block-media-text *, .is-style-no-gap *) > a, .wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-round-border:not(.wp-block-media-text *, .is-style-no-gap *) > a {
   overflow: hidden;
   border-radius: 9999px;
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-computer-screen:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-computer-screen:not(.wp-block-media-text *, .is-style-no-gap *) {
   border-style: solid;
   border-color: var(--wp--preset--color--almost-black, #111);
   border-width: var(--wp--preset--spacing--40) var(--wp--preset--spacing--40) var(--wp--preset--spacing--20) var(--wp--preset--spacing--40);
@@ -270,28 +270,28 @@ a > .avatar {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-computer-screen:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) > a {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-computer-screen:not(.wp-block-media-text *, .is-style-no-gap *) > a {
   overflow: hidden;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-tablet-phone-screen:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-tablet-phone-screen:not(.wp-block-media-text *, .is-style-no-gap *) {
   border: var(--wp--preset--spacing--30, 12px) solid var(--wp--preset--color--almost-black, #111);
   padding: 0;
   border-radius: 18px;
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-tablet-phone-screen:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) > a {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-tablet-phone-screen:not(.wp-block-media-text *, .is-style-no-gap *) > a {
   overflow: hidden;
   border-radius: 0px;
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-no-border:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-no-border:not(.wp-block-media-text *, .is-style-no-gap *) {
   border: none;
   padding: 0;
   border-radius: 0;
 }
-.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *).is-style-image-no-border:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) > a {
+.wp-block-column .wp-block-image:not(.alignfull):has(a:not(figcaption a)):not(.wp-block-media-text *, .is-style-no-gap *).is-style-image-no-border:not(.wp-block-media-text *, .is-style-no-gap *) > a {
   overflow: hidden;
   border-radius: 0;
 }
@@ -310,10 +310,10 @@ a > .avatar {
   vertical-align: middle;
 }
 
-.wp-block-post-featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
+.wp-block-post-featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .is-style-no-gap *) img {
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
 }
-.wp-block-post-featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
+.wp-block-post-featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
   border-radius: var(--wp--preset--border-radius--lg, 16px);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border);
   padding: var(--wp--preset--spacing--20);
@@ -323,18 +323,18 @@ a > .avatar {
   transform: translateY(0) scale(1);
   vertical-align: middle;
 }
-.wp-block-post-featured-image:not(.alignfull):has(a) img:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
+.wp-block-post-featured-image:not(.alignfull):has(a) img:not(.wp-block-media-text *, .is-style-no-gap *) img {
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
 }
-.wp-block-post-featured-image:not(.alignfull):has(a) img:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
+.wp-block-post-featured-image:not(.alignfull):has(a) img:not(.wp-block-media-text *, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
   border-radius: var(--wp--preset--border-radius--lg, 16px);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border);
   padding: var(--wp--preset--spacing--20);
 }
-.wp-block-latest-posts__featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .is-style-no-gap *) img {
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
 }
-.wp-block-latest-posts__featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a):not(.wp-block-media-text *, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
   border-radius: var(--wp--preset--border-radius--lg, 16px);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border);
   padding: var(--wp--preset--spacing--20);
@@ -344,10 +344,10 @@ a > .avatar {
   transform: translateY(0) scale(1);
   vertical-align: middle;
 }
-.wp-block-latest-posts__featured-image:not(.alignfull):has(a) img:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) img {
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a) img:not(.wp-block-media-text *, .is-style-no-gap *) img {
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
 }
-.wp-block-latest-posts__featured-image:not(.alignfull):has(a) img:not(.wp-block-media-text *, .is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
+.wp-block-latest-posts__featured-image:not(.alignfull):has(a) img:not(.wp-block-media-text *, .is-style-no-gap *):not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) img {
   border-radius: var(--wp--preset--border-radius--lg, 16px);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border);
   padding: var(--wp--preset--spacing--20);

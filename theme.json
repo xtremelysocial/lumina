@@ -545,18 +545,13 @@
 					"name": "Tertiary Subtle Sheen" 
 				},
 				{ 
-					"slug": "highlight-primary", 
+					"slug": "highlight", 
 					"gradient": "linear-gradient(160deg, var(--wp--preset--color--highlight), var(--wp--preset--color--highlight-alt))", 
 					"name": "Highlight Primary Accent" 
 				},
 				{ 
-					"slug": "highlight-secondary", 
-					"gradient": "linear-gradient(160deg, var(--wp--preset--color--highlight-secondary), var(--wp--preset--color--highlight-secondary-alt))", 
-					"name": "Highlight Secondary Accent" 
-				},
-				{ 
-					"slug": "highlight-tertiary", 
-					"gradient": "linear-gradient(160deg, var(--wp--preset--color--highlight-tertiary), var(--wp--preset--color--highlight-tertiary-alt))", 
+					"slug": "highlight-accent", 
+					"gradient": "linear-gradient(160deg, var(--wp--preset--color--highlight-accent), var(--wp--preset--color--highlight-accent-alt))", 
 					"name": "Highlight Tertiary Accent" 
 				},
 				{ 

@@ -127,11 +127,40 @@
 
 	// TRACK C: CARDS (Branch between Standard and Inset/Braked)
 	} @else if $role == 'card' {
-		@if $block != null and (is-no-rounding($block) or has-layout-brakes($block)) {
-			@include actions.apply-card-inset;
-		} @else {		
+
+		// Plain cards elevate without adding borders
+		&:is(#{config.$blocks-plain}) {
 			@include actions.apply-card;
+			border: none !important;
 		}
+
+		// Handle non-plain cards
+		&:not(#{config.$blocks-plain}) {
+
+			// Braked cards get inset border
+			&:is(#{config.$blocks-layout-brakes}) {
+				@include actions.apply-card-inset;
+			}
+			
+			// Non-braked cards get border
+			&:not(#{config.$blocks-layout-brakes}) {
+				@include actions.apply-card;
+			}
+		}
+		
+// 		&:not(#{config.$blocks-layout-brakes}) {
+// 			@include actions.apply-card;
+// 		}
+// 		
+// 		&:is(#{config.$blocks-layout-brakes}) {
+// 			@include actions.apply-card-inset;
+// 		}
+				
+// 		@if $block != null and (is-no-rounding($block) or has-layout-brakes($block)) {
+// 			@include actions.apply-card-inset;
+// 		} @else {		
+// 			@include actions.apply-card;
+// 		}
 	}
 }
 

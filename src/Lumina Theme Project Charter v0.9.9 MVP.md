@@ -474,7 +474,7 @@ SCSS
 ## 3.6 Layout Brakes, Column Stacking & Global Overrides  
 **Layout Brakes & Rounding Stops (_00-config.scss)**  
 * **Hard Stop ($blocks-no-rounding):** Hard-coded exclusion list (.wp-block-column, .wp-block-media-text__media, .wp-block-media-text__content) where the engine does not generate border-radius CSS.    
-* **Conditional Stop ($blocks-layout-brakes):** Specific style utility classes (.is-style-object-plain, .is-style-image-no-border, .is-style-no-gap *) that suppress active transforms and default shadows.    
+* **Conditional Stop ($blocks-layout-brakes):** Specific style utility classes (.is-style-object-static, .is-style-image-no-border, .is-style-no-gap *) that suppress active transforms and default shadows.    
 **Motion Kill-Switch (500-static.json / Lumina Static)**  
 * **Zero-Kinetic Style Variation:** A dedicated global style variation designed for complete motion accessibility and pure typographic focus.  
 * **Transform Neutralization:** Sets hoverTransform: "none" site-wide, suppressing physical scale growth and vertical displacement while falling back smoothly to clean, static opacity shifts (0.7 link hover / 0.85 image hover).  
