@@ -10,27 +10,34 @@
 					"scheme": "low-tide"
 				},
 				"contrast": {
-					"primary-subtle": "var(--wp--preset--color--off-white)",
+					"primary-subtle": 	"var(--wp--preset--color--off-white)",
 					"secondary-subtle": "var(--wp--preset--color--off-white)",
-					"tertiary-subtle": "var(--wp--preset--color--off-white)",
-					"neutral": "var(--wp--preset--color--off-white)",
-					"neutral-alt": "var(--wp--preset--color--off-white)",
-					"very-light-gray": "var(--wp--preset--color--off-white)",
-					"light-gray": "var(--wp--preset--color--off-white)",
-					"very-dark-gray": "var(--wp--preset--color--almost-black)"
+					"tertiary-subtle": 	"var(--wp--preset--color--off-white)",
+					"neutral": 			"var(--wp--preset--color--off-white)",
+					"neutral-alt": 		"var(--wp--preset--color--off-white)",
+					"very-light-gray": 	"var(--wp--preset--color--off-white)",
+					"light-gray": 		"var(--wp--preset--color--off-white)",
+					"very-dark-gray": 	"var(--wp--preset--color--almost-black)"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--off-white)",
-					"separator": "var(--wp--preset--color--primary)"
+					"text": 			"var(--wp--preset--color--off-white)",
+					"separator": 		"var(--wp--preset--color--primary)"
 				},
 				"button": {
-					"background": "var(--wp--preset--color--primary)"
+					"background": 		"var(--wp--preset--color--primary)"
 				},
 				"navigation": {
-					"highlight": "var(--wp--preset--color--highlight)"
+					"highlight": 		"var(--wp--preset--color--highlight)"
 				},
-				"border": 		"color-mix(in srgb, currentColor 18%, transparent)",
-				"divider": 		"color-mix(in srgb, currentColor 20%, transparent)",				
+				"border": 				"color-mix(in srgb, currentColor 18%, transparent)",
+				"divider": 				"color-mix(in srgb, currentColor 20%, transparent)",
+				"outline": 				"color-mix(in srgb, currentColor 20%, transparent)",				
+				"opacity": {
+					"tint": 			"color-mix(in srgb, currentColor 8%, transparent)",
+					"tint-dense": 		"color-mix(in srgb, currentColor 18%, transparent)",
+					"blur": 			"16px",
+					"blur-dense":		"28px"
+				},
 				"shadow": {
 					"natural": "0 2px 4px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.30)",
 					"deep":    "0 3px 6px rgba(0, 0, 0, 0.30), 0 8px 18px rgba(0, 0, 0, 0.40)",

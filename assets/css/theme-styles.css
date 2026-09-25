@@ -794,7 +794,7 @@ figure > a:active,
   animation-play-state: running !important;
 }
 .is-style-pan-zoom-hover:hover::before {
-  opacity: var(--motion-active);
+  opacity: calc(0.25 * var(--motion-active));
   transform: scale(calc(1 * var(--motion-active)));
 }
 .is-style-pan-zoom-hover:hover::after {
@@ -1254,206 +1254,61 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
   content: none !important;
 }
 
-/*--------------------------------------------------------------
-## Map TwentyTwentyFour, TwentyTwentyFive, and Flat Blocks colors
---------------------------------------------------------------*/
-.has-accent-color {
-  color: var(--wp--preset--color--primary) !important;
+/*-----------------------------------------------------------------------------
+# Color Compatibility with other themes
+#
+# This is so that user's content created with other themes will look OK before
+# they update it for the Lumina theme.
+-----------------------------------------------------------------------------*/
+/* Any theme */
+:where(.has-background) {
+  background-color: var(--wp--preset--color--neutral);
+  color: var(--wp--preset--color--contrast);
 }
-
-.has-accent-border-color {
-  border-color: var(--wp--preset--color--primary) !important;
-}
-
-.has-accent-background-color {
-  background-color: var(--wp--preset--color--primary) !important;
-  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-background-color .wp-block-heading,
-.has-accent-background-color .wp-block-post-title,
-.has-accent-background-color .wp-block-query-title,
-.has-accent-background-color .wp-block-site-title,
-.has-accent-background-color .wp-block-site-tagline {
+:where(.has-background) .wp-block-heading,
+:where(.has-background) h1, :where(.has-background) h2, :where(.has-background) h3, :where(.has-background) h4, :where(.has-background) h5, :where(.has-background) h6 {
   color: inherit;
 }
 
-.has-accent-1-color {
-  color: var(--wp--preset--color--primary) !important;
+/* Twenty Twenty-Four (TT4) */
+:where(.has-accent-background-color) {
+  background-color: var(--wp--preset--color--very-light-gray);
 }
 
-.has-accent-1-border-color {
-  border-color: var(--wp--preset--color--primary) !important;
+:where(.has-accent-2-background-color) {
+  background-color: var(--wp--preset--color--light-gray);
 }
 
-.has-accent-1-background-color {
-  background-color: var(--wp--preset--color--primary) !important;
-  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-1-background-color .wp-block-heading,
-.has-accent-1-background-color .wp-block-post-title,
-.has-accent-1-background-color .wp-block-query-title,
-.has-accent-1-background-color .wp-block-site-title,
-.has-accent-1-background-color .wp-block-site-tagline {
-  color: inherit;
+:where(.has-accent-3-background-color) {
+  background-color: var(--wp--preset--color--secondary);
+  color: var(--wp--preset--color--off-white);
 }
 
-.has-bright-green-color {
-  color: var(--wp--preset--color--primary) !important;
+:where(.has-accent-4-background-color, .has-base-2-background-color) {
+  background-color: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--off-white);
+}
+:where(.has-accent-4-background-color, .has-base-2-background-color) .wp-element-button {
+  background-color: var(--wp--preset--color--secondary);
 }
 
-.has-bright-green-border-color {
-  border-color: var(--wp--preset--color--primary) !important;
+/* Twenty Twenty-Five (TT5) */
+:where(.is-style-section-1, .is-style-section-2) {
+  background-color: var(--wp--preset--color--neutral);
 }
 
-.has-bright-green-background-color {
-  background-color: var(--wp--preset--color--primary) !important;
-  color: var(--wp--custom--color--contrast--primary, var(--wp--preset--color--off-white)) !important;
-}
-.has-bright-green-background-color .wp-block-heading,
-.has-bright-green-background-color .wp-block-post-title,
-.has-bright-green-background-color .wp-block-query-title,
-.has-bright-green-background-color .wp-block-site-title,
-.has-bright-green-background-color .wp-block-site-tagline {
-  color: inherit;
+:where(.is-style-section-3, .is-style-section-5) {
+  background-color: var(--wp--preset--color--dark);
+  color: var(--wp--preset--color--off-white);
 }
 
-.has-dark-bright-green-color {
-  color: var(--wp--preset--color--primary-alt) !important;
-}
-
-.has-dark-bright-green-border-color {
-  border-color: var(--wp--preset--color--primary-alt) !important;
-}
-
-.has-dark-bright-green-background-color {
-  background-color: var(--wp--preset--color--primary-alt) !important;
-  color: var(--wp--custom--color--contrast--primary-alt, var(--wp--preset--color--off-white)) !important;
-}
-.has-dark-bright-green-background-color .wp-block-heading,
-.has-dark-bright-green-background-color .wp-block-post-title,
-.has-dark-bright-green-background-color .wp-block-query-title,
-.has-dark-bright-green-background-color .wp-block-site-title,
-.has-dark-bright-green-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-base-2-color {
-  color: var(--wp--preset--color--secondary) !important;
-}
-
-.has-base-2-border-color {
-  border-color: var(--wp--preset--color--secondary) !important;
-}
-
-.has-base-2-background-color {
-  background-color: var(--wp--preset--color--secondary) !important;
-  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--off-white)) !important;
-}
-.has-base-2-background-color .wp-block-heading,
-.has-base-2-background-color .wp-block-post-title,
-.has-base-2-background-color .wp-block-query-title,
-.has-base-2-background-color .wp-block-site-title,
-.has-base-2-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-2-color {
-  color: var(--wp--preset--color--secondary) !important;
-}
-
-.has-accent-2-border-color {
-  border-color: var(--wp--preset--color--secondary) !important;
-}
-
-.has-accent-2-background-color {
-  background-color: var(--wp--preset--color--secondary) !important;
-  color: var(--wp--custom--color--contrast--secondary, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-2-background-color .wp-block-heading,
-.has-accent-2-background-color .wp-block-post-title,
-.has-accent-2-background-color .wp-block-query-title,
-.has-accent-2-background-color .wp-block-site-title,
-.has-accent-2-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-3-color {
-  color: var(--wp--preset--color--tertiary) !important;
-}
-
-.has-accent-3-border-color {
-  border-color: var(--wp--preset--color--tertiary) !important;
-}
-
-.has-accent-3-background-color {
-  background-color: var(--wp--preset--color--tertiary) !important;
-  color: var(--wp--custom--color--contrast--tertiary, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-3-background-color .wp-block-heading,
-.has-accent-3-background-color .wp-block-post-title,
-.has-accent-3-background-color .wp-block-query-title,
-.has-accent-3-background-color .wp-block-site-title,
-.has-accent-3-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-4-color {
-  color: var(--wp--preset--color--dark-gray) !important;
-}
-
-.has-accent-4-border-color {
-  border-color: var(--wp--preset--color--dark-gray) !important;
-}
-
-.has-accent-4-background-color {
-  background-color: var(--wp--preset--color--dark-gray) !important;
-  color: var(--wp--custom--color--contrast--dark-gray, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-4-background-color .wp-block-heading,
-.has-accent-4-background-color .wp-block-post-title,
-.has-accent-4-background-color .wp-block-query-title,
-.has-accent-4-background-color .wp-block-site-title,
-.has-accent-4-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-5-color {
-  color: var(--wp--preset--color--neutral-alt) !important;
-}
-
-.has-accent-5-border-color {
-  border-color: var(--wp--preset--color--neutral-alt) !important;
-}
-
-.has-accent-5-background-color {
-  background-color: var(--wp--preset--color--neutral-alt) !important;
-  color: var(--wp--custom--color--contrast--neutral-alt, var(--wp--preset--color--contrast)) !important;
-}
-.has-accent-5-background-color .wp-block-heading,
-.has-accent-5-background-color .wp-block-post-title,
-.has-accent-5-background-color .wp-block-query-title,
-.has-accent-5-background-color .wp-block-site-title,
-.has-accent-5-background-color .wp-block-site-tagline {
-  color: inherit;
-}
-
-.has-accent-6-color {
-  color: var(--wp--preset--color--dark-alt) !important;
-}
-
-.has-accent-6-border-color {
-  border-color: var(--wp--preset--color--dark-alt) !important;
-}
-
-.has-accent-6-background-color {
-  background-color: var(--wp--preset--color--dark-alt) !important;
-  color: var(--wp--custom--color--contrast--dark-alt, var(--wp--preset--color--off-white)) !important;
-}
-.has-accent-6-background-color .wp-block-heading,
-.has-accent-6-background-color .wp-block-post-title,
-.has-accent-6-background-color .wp-block-query-title,
-.has-accent-6-background-color .wp-block-site-title,
-.has-accent-6-background-color .wp-block-site-tagline {
+:where(.has-accent-background-color,
+.has-accent-3-background-color,
+.has-accent-4-background-color,
+.has-base-2-background-color,
+.is-style-section-3,
+.is-style-section-5) :is(.wp-block-heading,
+h1, h2, h3, h4, h5, h6) {
   color: inherit;
 }
 
@@ -1463,34 +1318,6 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
     print-color-adjust: exact !important;
   }
 }
-/*-----------------------------------------------------------------------------
-# Override Parent Theme CSS
------------------------------------------------------------------------------*/
-/* Override parent theme's padding on colored blocks */
-/* Override parent theme's padding on images with borders */
-/* Override parent theme's box shadow on post featured images */
-/*-----------------------------------------------------------------------------
-# Compatibility with other themes
------------------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------------
-# Compatibility with other themes
-#
-# This is so that user's content created with other themes will look OK before
-# they update it for the Lumina theme.
------------------------------------------------------------------------------*/
-:where(.has-background) {
-  background-color: var(--wp--preset--color--neutral);
-  color: var(--wp--preset--color--contrast);
-}
-
-:where(.has-text-color) {
-  color: var(--wp--preset--color--contrast);
-}
-
-:where(.has-border-color) {
-  border-color: var(--wp--preset--color--neutral-alt);
-}
-
 /*-----------------------------------------------------------------------------
 # Utilities: Admin Bar Overflow Fixes
 -----------------------------------------------------------------------------*/

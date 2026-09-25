@@ -15,19 +15,25 @@
 					],
 					"imageDefault": "/assets/images/samples/01.webp"
 				},
-				"border": 		"color-mix(in srgb, currentColor 15%, transparent)",
-				"divider": 		"color-mix(in srgb, currentColor 18%, transparent)",
-				"outline": 		"color-mix(in srgb, currentColor 20%, transparent)",
+				"border": 			"color-mix(in srgb, currentColor 15%, transparent)",
+				"divider": 			"color-mix(in srgb, currentColor 18%, transparent)",
+				"outline": 			"color-mix(in srgb, currentColor 20%, transparent)",
+				"opacity": {
+					"blur": 		"12px",
+					"blurDense": 	"24px",
+					"tint": 		"color-mix(in srgb, currentColor 12%, transparent)",
+					"tintDense": 	"color-mix(in srgb, currentColor 25%, transparent)"
+				},
 				"button": {
 					"background": 	"var(--wp--preset--color--primary)",
 					"text": 		"var(--wp--preset--color--off-white)",
 					"hoverOpacity": "1" 
 				},
 				"highlight": {
-					"darken": "brightness(0.40) saturate(1.15)"
+					"darken": 		"brightness(0.40) saturate(1.15)"
 				},
 				"highlight-alt": {
-					"lighten": "brightness(1.5) saturate(0.80)"
+					"lighten": 		"brightness(1.5) saturate(0.80)"
 				},							
 				"image": {
 					"hoverOpacity": "1" 
@@ -40,10 +46,10 @@
 					"separator": 	"var(--wp--preset--color--tertiary)"
 				},
 				"navigation": {
-					"background": "var(--wp--preset--color--base)",
-					"text": "var(--wp--preset--color--contrast)",
-					"highlight": "var(--wp--preset--color--highlight-alt)"
-				},				
+					"background": 	"var(--wp--preset--color--base)",
+					"text": 		"var(--wp--preset--color--contrast)",
+					"highlight": 	"var(--wp--preset--color--highlight-alt)"
+				},
 				"shadow": {
 					"natural": "1px 4px 8px rgba(42, 50, 61, 0.14), 1px 2px 3px rgba(42, 50, 61, 0.08)",
 					"deep":    "3px 8px 16px rgba(42, 50, 61, 0.20), 1px 4px 6px rgba(42, 50, 61, 0.12)",
@@ -489,7 +495,6 @@
 
 				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand Well 94%)" },
 				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand Border Seam 88%)" },
-
 				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Desert Alabaster Surface 97.5%)" },
 				{ "slug": "very-light-gray", "color": "hsl(40, 16%, 91.5%)", "name": "Very Light Gray (Warm Sand Footer Floor 91.5%)" },
 				{ "slug": "light-gray", "color": "hsl(40, 14%, 84%)", "name": "Light Gray (Warm Sand Inner Well 84%)" },
@@ -1115,8 +1120,14 @@
 			"area": "uncategorized"
 		},
 		{
-			"name": "header-default",
+			"name": "header-fixed",
 			"title": "Lumina Header Fixed to Top",
+			"description": "Fixed header",
+			"area": "header"
+		},
+		{
+			"name": "header-floating",
+			"title": "Lumina Header Floating Glass",
 			"description": "Fixed header",
 			"area": "header"
 		},
@@ -1175,9 +1186,21 @@
 			"area": "title"
 		},
 		{
+			"name": "post-title-nometa",
+			"title": "Lumina Post Title No Meta",
+			"description": "Title for posts without post meta",
+			"area": "title"
+		},
+		{
 			"name": "page-title",
 			"title": "Lumina Page Title",
 			"description": "Title for pages",
+			"area": "title"
+		},
+		{
+			"name": "page-title-noexcerpt",
+			"title": "Lumina Page Title No Excerpt",
+			"description": "Title for pages without excerpt",
 			"area": "title"
 		},
 		{
@@ -1536,6 +1559,12 @@
 			"postTypes": ["page"]
 		},
 		{
+			"name": "page-noimage-noexcerpt",
+			"title": "Page No Featured Image or Excerpt",
+			"description": "Page w/out featured image or post excerpt",
+			"postTypes": ["page"]
+		},
+		{
 			"name": "page-nocomments",
 			"title": "Page No Comments",
 			"description": "Page w/out comments",
@@ -1629,6 +1658,12 @@
 			"name": "single-notitle",
 			"title": "Post No Title",
 			"description": "Post w/out title",
+			"postTypes": ["post"]
+		},
+		{
+			"name": "single-noimage-notopmeta",
+			"title": "Post No Featured Image or Top Post Meta",
+			"description": "Post w/out featured image or top post meta",
 			"postTypes": ["post"]
 		},
 		{
