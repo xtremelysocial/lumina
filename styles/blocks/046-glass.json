@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"slug": "glass",
+	"title": "Glass",
+	"blockTypes": [
+		"core/group",
+		"core/column",
+		"core/cover"
+	],
+	"styles": {
+		"border": {
+			"radius": "var:preset|border-radius|lg"
+		},
+		"spacing": {
+			"padding": "var(--wp--preset--spacing--40)"
+		}
+	}
+}

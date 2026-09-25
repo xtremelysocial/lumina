@@ -70,9 +70,4 @@
     justify-content: center !important;
     text-align: center !important;
   }
-  /* Override columns thick gap so vertical spacing matches up */
-  .wp-block-columns.is-style-thick-gap,
-  .wp-block-columns.is-style-thick-gap.has-background {
-    gap: var(--wp--style--block-gap);
-  }
 }

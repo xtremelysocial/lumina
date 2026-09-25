@@ -1,38 +1,69 @@
-/*--------------------------------------------------------------
-## Map TwentyTwentyFour, TwentyTwentyFive, and Flat Blocks colors
---------------------------------------------------------------*/
-$external-pattern-bridge: (
-  'primary':        ('accent', 'accent-1', 'bright-green'),
-  'primary-alt':    ('dark-bright-green'),
-  'secondary':      ('base-2', 'accent-2'),
-  'tertiary':       ('accent-3'),
-  'dark-gray':      ('accent-4'),
-  'neutral-alt':    ('accent-5'),
-  'dark-alt':       ('accent-6')
-);
-
-@each $target, $slugs in $external-pattern-bridge {
-//   	$fallback: if($target == 'neutral-alt', 'contrast', 'off-white');
-	$fallback: 'off-white';
-	@if $target == "neutral-alt" {
-		$fallback: 'contrast';
+/*-----------------------------------------------------------------------------
+# Color Compatibility with other themes
+#
+# This is so that user's content created with other themes will look OK before
+# they update it for the Lumina theme.
+-----------------------------------------------------------------------------*/
+/* Any theme */
+:where(.has-background) {
+    background-color: var(--wp--preset--color--neutral);
+   	color: var(--wp--preset--color--contrast);
+   	
+	.wp-block-heading,
+	h1, h2, h3, h4, h5, h6 {
+		color: inherit;
 	}
-	
-  	@each $slug in $slugs {
-    	.has-#{$slug}-color { color: var(--wp--preset--color--#{$target}) !important; }
-    	.has-#{$slug}-border-color { border-color: var(--wp--preset--color--#{$target}) !important; }
-    
-    	.has-#{$slug}-background-color {
-      		background-color: var(--wp--preset--color--#{$target}) !important;
-      		color: var(--wp--custom--color--contrast--#{$target}, var(--wp--preset--color--#{$fallback})) !important;
+}
 
-		  .wp-block-heading,
-		  .wp-block-post-title,
-		  .wp-block-query-title,
-		  .wp-block-site-title,
-		  .wp-block-site-tagline {
-			color: inherit;
-		  }
-    	}
-  	}
+// NOTE: Twenty Twenty-Three (TT3) already uses primary, secondary, tertiary
+
+/* Twenty Twenty-Four (TT4) */
+:where(.has-accent-background-color) {
+	background-color: var(--wp--preset--color--very-light-gray);
+}
+
+:where(.has-accent-2-background-color) {
+	background-color: var(--wp--preset--color--light-gray);
+}
+
+:where(.has-accent-3-background-color) {
+	background-color: var(--wp--preset--color--secondary);
+	color: var(--wp--preset--color--off-white); 
+}
+
+:where(.has-accent-4-background-color, .has-base-2-background-color) {
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--off-white); 
+	
+	.wp-element-button {
+		background-color: var(--wp--preset--color--secondary);	
+	}
+}
+
+/* Twenty Twenty-Five (TT5) */
+// section1:accent-5, section2:accent-2, section3:accent-1, section-4:accent-3,section-5:contast
+:where(.is-style-section-1, .is-style-section-2) {
+	background-color: var(--wp--preset--color--neutral);
+}
+
+:where(.is-style-section-3, .is-style-section-5) {
+	background-color: var(--wp--preset--color--dark);
+	color: var(--wp--preset--color--off-white); 
+}
+
+:where(
+	.has-accent-background-color,
+	.has-accent-3-background-color,
+	.has-accent-4-background-color, 
+	.has-base-2-background-color,
+// 	.is-style-section-1,
+// 	.is-style-section-2,
+	.is-style-section-3,
+	.is-style-section-5
+)	
+	:is(
+	.wp-block-heading,
+	h1, h2, h3, h4, h5, h6
+) {
+	color: inherit;
 }

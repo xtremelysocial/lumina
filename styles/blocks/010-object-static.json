@@ -1,9 +1,8 @@
 {
     "$schema": "https://schemas.wp.org/trunk/theme.json",
     "version": 3,
-    "name": "object-static",
-    "title": "No Shadow/Motion",
-    "isDefault": false,    
+    "title": "Static Object",
+    "slug": "object-static",
     "blockTypes": [
         "core/group",
         "core/columns",
@@ -16,5 +15,8 @@
         "core/media-text",
         "core/list",
         "core/query-pagination"
-    ]
+    ],
+	"styles": {
+		"css": ""
+	}    
 }

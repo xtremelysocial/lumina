@@ -2,6 +2,8 @@
 
 # Usage:
 # ./utils/dir-tree.sh assets/images
+# ./utils/dir-tree.sh patterns
+# ./utils/dir-tree.sh parts
 
 import os
 import sys

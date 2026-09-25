@@ -188,7 +188,8 @@
 		}
 
 		// 1. INITIALIZATION: Target selector for candidate interactive cards (Excludes media text blocks and multi-column grid layouts)
-		const $interactiveCards = $('[class*="wp-block-"]:not(.alignfull, .wp-block-media-text, .wp-block-columns, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover)');
+// 		const $interactiveCards = $('[class*="wp-block-"]:not(.alignfull, .is-style-object-static .wp-block-media-text, .wp-block-columns, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover)');
+		const $interactiveCards = $('[class*="wp-block-"]:not(.alignfull, .is-style-object-static, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-glass, .is-style-glass-frosted, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover)');
 
 		// 2. GET TARGET: Returns the target link/button if the card is "valid"
 		function getValidTarget($card) {

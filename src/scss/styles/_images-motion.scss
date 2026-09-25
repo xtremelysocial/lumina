@@ -278,13 +278,14 @@ $var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 		}
 
 		&::before {
-			opacity: var(--motion-active);
+			opacity: calc(0.25 * var(--motion-active));
 // 			transform: scale(calc(1.1 * var(--motion-active)));
 			transform: scale(calc(1 * var(--motion-active)));
 		}
 
 		&::after {
 			opacity: var(--motion-active);
+// 			opacity: calc(0.8 * var(--motion-active));
 // 			transform: scale(calc(1.2 * var(--motion-active))) rotate(45deg);
 			transform: scale(calc(1 * var(--motion-active))) rotate(45deg);
 		}

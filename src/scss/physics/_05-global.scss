@@ -45,18 +45,11 @@
 				box-shadow: none;
 			}
 		}
-				
-		// Remove shadow from fixed header (Override parent theme)
-		.wp-site-blocks > :has(.is-position-sticky),
-		.wp-site-blocks > :has(.is-style-fixed-header) {
-			box-shadow: none;
-// 			border-bottom: var(--wp--custom--color--border--width, 1px) var(--wp--custom--color--border--style, solid) var(--wp--custom--color--border);
-		}
 
 		// Allow user to turn off shadow and animation for particular blocks
-		[class*=wp-block-].is-style-object-static {
-			box-shadow: none !important;
-		}
+// 		[class*=wp-block-].is-style-object-static {
+// 			box-shadow: none !important;
+// 		}
 		
 		// Set avatars to look like images with border
 		a > .avatar {
