@@ -1,0 +1,39 @@
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/group_headers.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/* ==========================================================================
+   STICKY & FLOATING HEADER ENGINE
+   ========================================================================== */
+.wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
+  position: sticky;
+  z-index: 101;
+  background-color: transparent;
+  --header-top-offset: var(--wp--preset--spacing--40, 24px);
+  top: var(--header-top-offset);
+}
+.wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) .site-header, .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) .is-position-sticky {
+  position: static !important;
+  top: auto !important;
+}
+.wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.site-header.alignfull), .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header).site-header.alignfull {
+  --header-top-offset: 0px;
+}
+.wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.site-header.alignfull):not(:has(.is-style-glass)):not(:has(.is-style-glass-frosted)):not(.is-style-glass):not(.is-style-glass-frosted), .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header).site-header.alignfull:not(:has(.is-style-glass)):not(:has(.is-style-glass-frosted)):not(.is-style-glass):not(.is-style-glass-frosted) {
+  background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--background-opacity, 100%), transparent);
+}
+
+.admin-bar .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
+  top: calc(var(--wp-admin--admin-bar--height, 32px) + var(--header-top-offset));
+}
+
+.site-header.alignwide {
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  min-width: min(100% - 2 * var(--wp--style--root--padding-left, 24px), var(--wp--style--global--content-size, 760px)) !important;
+  max-width: min(100% - 2 * var(--wp--style--root--padding-left, 24px), var(--wp--style--global--wide-size, 1168px)) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+.site-header.alignwide > * {
+  gap: var(--wp--preset--spacing--50, 32px) !important;
+}

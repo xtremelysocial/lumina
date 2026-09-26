@@ -1,6 +1,6 @@
 /**
  * File:	smoothscroll.js
- * Theme: 	XtremelySocial Shared
+ * Theme: 	XtremelySocial Shared / Lumina Engine
  * 
  * Javascript for smooth scrolling internal links and updating dynamic 
  * CSS header offset variables.
@@ -28,28 +28,46 @@
 		};
 
 		/*
-		 * Calculate fixed header height & update CSS variable
+		 * Calculate fixed & floating header heights & update CSS variables
 		 */
 		var topOffset = 0;
 
 		function updateHeaderHeight() {
-			const fixedHeader = $('.wp-site-blocks > :first-child').filter('.is-style-fixed-header, :has(.is-style-fixed-header)');
-			const stickyHeader = $('.wp-site-blocks > :first-child').filter('.is-position-sticky, :has(.is-position-sticky)');
+			const wrapper = $('.wp-site-blocks > :first-child');
+			const headerEl = wrapper.find('.site-header').length ? wrapper.find('.site-header') : wrapper.filter('.site-header');
 			const adminBar = $('#wpadminbar');
 
-			var headerHeight = 0;
-			if (fixedHeader.length > 0) { 
-				headerHeight = fixedHeader.outerHeight();
-			} else if (stickyHeader.length > 0) {
-				headerHeight = stickyHeader.outerHeight();
+			var physicalHeight = 0;
+			var headerOffsetForCover = 0;
+			var adminBarHeight = adminBar.length > 0 ? adminBar.outerHeight() : 0;
+
+			if (headerEl.length > 0) { 
+				physicalHeight = headerEl.outerHeight();
+
+				// STRICT CHECK: Only check if the actual INNER header card is full-width (.alignfull)
+				const isFlushHeader = headerEl.hasClass('alignfull');
+
+				if (isFlushHeader) {
+					// Flush header sits above hero: Subtract height from Cover block
+					headerOffsetForCover = physicalHeight;
+					topOffset = physicalHeight + adminBarHeight;
+				} else {
+					// Floating header overlays hero: Cover starts at Y=0 and needs FULL 100vh
+					headerOffsetForCover = 0;
+
+					var computedTop = getComputedStyle(wrapper[0]).getPropertyValue('--header-top-offset').trim();
+					var floatingOffset = parseFloat(computedTop) || 24;
+					topOffset = physicalHeight + floatingOffset + adminBarHeight;
+				}
+			} else {
+				topOffset = adminBarHeight;
 			}
 
-			// Write --header-height to root (CSS handles scroll-padding and cover math)
-// 			document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
-			document.body.style.setProperty('--header-height', headerHeight + 'px');
+			// 1. Used by group.scss negative margin to pull <main> up to Y=0
+			document.documentElement.style.setProperty('--header-rendered-height', physicalHeight + 'px');
 
-			// Combined offset used strictly for jQuery scroll animation destination
-			topOffset = headerHeight + (adminBar.length > 0 ? adminBar.outerHeight() : 0);
+			// 2. Used by Cover block math: 0px for floating (full 100vh bleed), actual px for flush headers
+			document.documentElement.style.setProperty('--header-height', headerOffsetForCover + 'px');
 		}
 
 		// Run once on load and update on window resize / orientation change
@@ -59,7 +77,6 @@
 		const links = $('a[href*="#"]')
 			.not('[href="#"]')
 			.not('[href="#0"]')
-// 			.not('[target="_blank"]')
 			.not('[data-toggle="tab"]')
 			.not('[data-toggle="collapse"]');
 
@@ -75,7 +92,7 @@
 				if (target.length) {
 					event.preventDefault();
 
-					var destination = target.offset().top - topOffset;
+					var destination = Math.max(0, target.offset().top - topOffset);
 
 					// Respect OS-level reduced motion preference (instant jump)
 					if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -85,7 +102,7 @@
 
 					// Floor starts at duration--medium (~500ms), ceiling allowed up to 1800ms
 					var minDuration = getCssDuration('--wp--custom--animation--duration--medium', 500);
-					var maxDuration = 1800; // Gives long scrolls time to travel smoothly
+					var maxDuration = 1800;
 
 					var distance = Math.abs($(window).scrollTop() - destination);
 					var calculated = minDuration + (distance * 0.45);

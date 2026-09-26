@@ -46,9 +46,13 @@
 					"separator": 	"var(--wp--preset--color--tertiary)"
 				},
 				"navigation": {
-					"background": 	"var(--wp--preset--color--base)",
-					"text": 		"var(--wp--preset--color--contrast)",
-					"highlight": 	"var(--wp--preset--color--highlight-alt)"
+					"background":          "var(--wp--preset--color--base)",
+					"backgroundOpacity":   "96%",
+					"text":                "var(--wp--preset--color--contrast)",
+					"dropdownOpacity":     "96%",
+					"dropdownBlur":        "blur(16px)",
+					"highlight":           "var(--wp--preset--color--highlight-alt)",
+					"hoverOverlayOpacity": "10%"
 				},
 				"shadow": {
 					"natural": "1px 4px 8px rgba(42, 50, 61, 0.14), 1px 2px 3px rgba(42, 50, 61, 0.08)",
@@ -1115,390 +1119,390 @@
 	"templateParts": [
 		{
 			"name": "header",
-			"title": "Lumina Header Wrapper",
+			"title": "Header Wrapper",
 			"description": "Site Header Wrapper",
 			"area": "uncategorized"
 		},
 		{
 			"name": "header-fixed",
-			"title": "Lumina Header Fixed to Top",
+			"title": "Header Fixed",
 			"description": "Fixed header",
 			"area": "header"
 		},
 		{
 			"name": "header-floating",
-			"title": "Lumina Header Floating Glass",
-			"description": "Fixed header",
+			"title": "Header Floating Glass",
+			"description": "Fixed floating glass header",
 			"area": "header"
 		},
 		{
 			"name": "header-centered-nav-fixed",
-			"title": "Lumina Header Centered Nav Fixed to Top",
+			"title": "Header Centered Nav Fixed",
 			"description": "Fixed header with centered navigation",
 			"area": "header"
 		},		
 		{
 			"name": "header-colored-fixed",
-			"title": "Lumina Colored Header Fixed to Top",
+			"title": "Colored Header Fixed",
 			"description": "Colored header fixed to top (very light gray)",
 			"area": "header"
 		},
 		{
 			"name": "header-logo-fixed",
-			"title": "Lumina Header Logo Fixed to Top",
+			"title": "Header Logo Fixed",
 			"description": "Logo only fixed header",
 			"area": "header"
 		},
 		{
 			"name": "header-dark-fixed",
-			"title": "Lumina Header Dark Fixed to Top",
+			"title": "Header Dark Fixed",
 			"description": "Fixed dark header",
 			"area": "header"
 		},
 		{
 			"name": "header-nav-only-fixed",
-			"title": "Lumina Header Mobile Nav Only Fixed to Top",
+			"title": "Header Mobile Nav Only Fixed",
 			"description": "Fixed mobile nav only header",
 			"area": "header"
 		},
 		{
 			"name": "header-fluid",
-			"title": "Lumina Fluid Header",
+			"title": "Fluid Header",
 			"description": "Standard header that scrolls away",
 			"area": "header"
 		},
 		{
 			"name": "query",
-			"title": "Lumina Query Template",
+			"title": "Query Template",
 			"description": "Query Template Part",
 			"area": "content"
 		},
 		{
 			"name": "post-meta",
-			"title": "Lumina Post Meta",
+			"title": "Post Meta",
 			"description": "Post meta (author, categories, and tags)",
 			"area": "content"
 		},
 		{
 			"name": "post-title",
-			"title": "Lumina Post Title",
+			"title": "Post Title",
 			"description": "Title for posts",
 			"area": "title"
 		},
 		{
 			"name": "post-title-nometa",
-			"title": "Lumina Post Title No Meta",
+			"title": "Post Title No Meta",
 			"description": "Title for posts without post meta",
 			"area": "title"
 		},
 		{
 			"name": "page-title",
-			"title": "Lumina Page Title",
+			"title": "Page Title",
 			"description": "Title for pages",
 			"area": "title"
 		},
 		{
 			"name": "page-title-noexcerpt",
-			"title": "Lumina Page Title No Excerpt",
+			"title": "Page Title No Excerpt",
 			"description": "Title for pages without excerpt",
 			"area": "title"
 		},
 		{
 			"name": "archive-title",
-			"title": "Lumina Archive Title",
+			"title": "Archive Title",
 			"description": "Title for archives (categories, tags, etc.)",
 			"area": "title"
 		},
 		{
 			"name": "404-title",
-			"title": "Lumina Error (404) Title",
+			"title": "Error (404) Title",
 			"description": "Title for the error page (404)",
 			"area": "title"
 		},
 		{
 			"name": "search-title",
-			"title": "Lumina Search Title",
+			"title": "Search Title",
 			"description": "Title for the search page",
 			"area": "title"
 		},
 		{
 			"name": "sitemap-title",
-			"title": "Lumina Sitemap Title",
+			"title": "Sitemap Title",
 			"description": "Title for the sitemap page",
 			"area": "title"
 		},
 		{
 			"name": "home-title",
-			"title": "Lumina Home Title",
+			"title": "Home Title",
 			"description": "Title for the home page",
 			"area": "title"
 		},		
 		{
 			"name": "post-navigation",
-			"title": "Lumina Post Navigation",
+			"title": "Post Navigation",
 			"description": "Next and previous post links",
 			"area": "content"
 		},
 		{
 			"name": "featured-image",
-			"title": "Lumina Featured Image",
+			"title": "Featured Image",
 			"description": "Lumina featured image",
 			"area": "image"
 		},
 		{
 			"name": "featured-image-linked",
-			"title": "Lumina Featured Image (linked)",
-			"description": "Lumina linked featured image",
+			"title": "Featured Image (linked)",
+			"description": "Linked featured image",
 			"area": "image"
 		},
 		{
 			"name": "featured-image-wide",
-			"title": "Lumina Wide Featured Image",
-			"description": "Lumina wide (16:9) featured image",
+			"title": "Wide Featured Image",
+			"description": "Wide (16:9) featured image",
 			"area": "image"
 		},
 		{
 			"name": "featured-image-wide-linked",
-			"title": "Lumina Wide Featured Image (linked)",
-			"description": "Lumina linked wide (16:9) featured image",
+			"title": "Wide Featured Image (linked)",
+			"description": "Linked wide (16:9) featured image",
 			"area": "image"
 		},
 		{
 			"name": "featured-image-slim",
-			"title": "Lumina Slim Featured Image",
-			"description": "Lumina slim (16:4.5) featured image",
+			"title": "Slim Featured Image",
+			"description": "Slim (16:4.5) featured image",
 			"area": "image"
 		},
 		{
 			"name": "featured-image-slim-linked",
-			"title": "Lumina Slim Featured Image (linked)",
-			"description": "Lumina linked slim (16:4.5) featured image",
+			"title": "Slim Featured Image (linked)",
+			"description": "Linked slim (16:4.5) featured image",
 			"area": "image"
 		},
 		{
 			"name": "featured-image-ultrawide",
-			"title": "Lumina Ultrawide Featured Image",
-			"description": "Lumina ultrawide (21:9) featured image",
+			"title": "Ultrawide Featured Image",
+			"description": "Ultrawide (21:9) featured image",
 			"area": "image"
 		},
 		{
 			"name": "featured-image-ultrawide-linked",
-			"title": "Lumina Ultrawide Featured Image (linked)",
-			"description": "Lumina linked ultrawide (21:9) featured image",
+			"title": "Ultrawide Featured Image (linked)",
+			"description": "Linked ultrawide (21:9) featured image",
 			"area": "image"
 		},
 		{
 			"name": "contact-info",
-			"title": "Lumina Contact Info",
+			"title": "Contact Info",
 			"description": "Contact Info (e.g. address, phone, email)",
 			"area": "content"
 		},
 		{
 			"name": "about-us",
-			"title": "Lumina About",
+			"title": "About",
 			"description": "About for Footer (tagline, site description)",
 			"area": "content"
 		},
 		{
 			"name": "content-article",
-			"title": "Lumina Article Content",
-			"description": "Lumina article content with image",
+			"title": "Article Content",
+			"description": "Article content with image",
 			"area": "content"
 		},
 		{
 			"name": "content-article-wide",
-			"title": "Lumina Article Content w/16:9 Image",
-			"description": "Lumina article content with 16:9 featured image",
+			"title": "Article Content w/16:9 Image",
+			"description": "Article content with 16:9 featured image",
 			"area": "content"
 		},
 		{
 			"name": "content-article-img-left",
-			"title": "Lumina Article Content w/Image Left",
+			"title": "Article Content w/Image Left",
 			"description": "Blog list article (featured image on left, title, date, and excerpt)",
 			"area": "content"
 		},
 		{
 			"name": "content-home-top",
-			"title": "Lumina Studio Content Home Top (when blog is front page)",
-			"description": "Lumina studio-specfc content for top of the home page (when blog is front page)",
+			"title": "Standard Content Home Top (when blog is front page)",
+			"description": "Standard content for top of the home page (when blog is front page)",
 			"area": "content"
 		},
 		{
 			"name": "content-home-top-lumina",
-			"title": "Lumina Theme Content Home Top (when blog is front page)",
-			"description": "Lumina theme-specific content for top of the home page (when blog is front page)",
+			"title": "Theme Content Home Top (when blog is front page)",
+			"description": "Theme-specific content for top of the home page (when blog is front page)",
 			"area": "content"
 		},
 		{
 			"name": "content-sitemap",
-			"title": "Lumina Content Sitemap",
+			"title": "Content Sitemap",
 			"description": "Sitemap content (pages, categories, recent posts)",
 			"area": "content"
 		},
 		{
 			"name": "author-bio",
-			"title": "Lumina Author Bio",
+			"title": "Author Bio",
 			"description": "Author avatar, name, and bio",
 			"area": "content"
 		},
 		{
 			"name": "sidebar",
-			"title": "Lumina Sidebar",
+			"title": "Sidebar",
 			"description": "Sidebar (e.g. search, account, categories, social links)",
 			"area": "content"
 		},
 		{
 			"name": "social-icons",
-			"title": "Lumina Social Icons",
+			"title": "Social Icons",
 			"description": "Social media icons with links",
 			"area": "content"
 		},
 		{
 			"name": "social-icons-neutral",
-			"title": "Lumina Social Icons Monochrome",
+			"title": "Social Icons Monochrome",
 			"description": "Huge social media icons in neutral color",
 			"area": "content"
 		},
 		{
 			"name": "social-icons-huge",
-			"title": "Lumina Huge Social Icons",
+			"title": "Huge Social Icons",
 			"description": "Huge social media icons (centered)",
 			"area": "content"
 		},
 		{
 			"name": "comments",
-			"title": "Lumina Comments",
+			"title": "Comments",
 			"description": "Comments list and comment form",
 			"area": "content"
 		},
 		{
 			"name": "theme-tagline",
-			"title": "Lumina Theme Tagline",
+			"title": "Theme Tagline",
 			"description": "Theme tagline (e.g. theme by xtremelysocial)",
 			"area": "content"
 		},
 		{
 			"name": "site-copyright",
-			"title": "Lumina Site Copyright",
+			"title": "Site Copyright",
 			"description": "Site copyright (© site-name)",
 			"area": "content"
 		},
 		{
 			"name": "jetpack-sharing",
-			"title": "Lumina Jetpack Sharing Buttons",
+			"title": "Jetpack Sharing Buttons",
 			"description": "Jetpack social sharing integration",
 			"area": "content"
 		},
 		{
 			"name": "footer",
-			"title": "Lumina Footer Wrapper",
+			"title": "Footer Wrapper",
 			"description": "Footer Wrapper",
 			"area": "uncategorized"
 		},
 		{
 			"name": "footer-default",
-			"title": "Lumina Default Footer 4 Blocks + 3 Blocks",
+			"title": "Default Footer 4 Blocks + 3 Blocks",
 			"description": "Default Footer w/4 blocks in main footer plus 3 blocks in sub-footer",
 			"area": "footer"
 		},		
 		{
 			"name": "footer-colored",
-			"title": "Lumina Colored Footer 4 Blocks",
+			"title": "Colored Footer 4 Blocks",
 			"description": "Colored Footer w/4 blocks in main footer plus 3 blocks in sub-footer",
 			"area": "footer"
 		},
 		{
 			"name": "footer-dark",
-			"title": "Lumina Dark Footer 4 Blocks",
+			"title": "Dark Footer 4 Blocks",
 			"description": "Dark Footer w/4 blocks in main footer plus 3 blocks in sub-footer",
 			"area": "footer"
 		},
 		{
 			"name": "footer-4-blocks",
-			"title": "Lumina Footer 4 Blocks",
+			"title": "Footer 4 Blocks",
 			"description": "Footer w/4 blocks (e.g. about, 2 nav menus, and contact info)",
 			"area": "footer"
 		},
 		{
 			"name": "footer-4-blocks-colored",
-			"title": "Lumina Colored Footer 4 Blocks",
+			"title": "Colored Footer 4 Blocks",
 			"description": "Colored Footer w/4 blocks (e.g. about, 2 nav menus, and contact info)",
 			"area": "footer"
 		},
 		{
 			"name": "footer-4-blocks-dark",
-			"title": "Lumina Dark Footer 4 Blocks",
+			"title": "Dark Footer 4 Blocks",
 			"description": "Dark Footer w/4 blocks (e.g. about, 2 nav menus, and contact info)",
 			"area": "footer"
 		},
 		
 		{
 			"name": "footer-3-blocks",
-			"title": "Lumina Footer 3 Blocks",
+			"title": "Footer 3 Blocks",
 			"description": "Footer 3 blocks (e.g. recent posts, recent comments, about)",
 			"area": "footer"
 		},
 		{
 			"name": "footer-3-blocks-nav-site-social",
-			"title": "Lumina Footer 3 Blocks plus 3 Blocks",
+			"title": "Footer 3 Blocks plus 3 Blocks",
 			"description": "Footer w/3 blocks in main footer plus 3 blocks in sub-footer",
 			"area": "footer"
 		},
 
 		{
 			"name": "footer-compact-site-info",
-			"title": "Lumina Footer Compact Site Info",
+			"title": "Footer Compact Site Info",
 			"description": "Compact footer w/site info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-compact-site-info-colored",
-			"title": "Lumina Colored Footer Compact Site Info",
+			"title": "Colored Footer Compact Site Info",
 			"description": "Colored Compact footer w/site info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-compact-site-info-dark",
-			"title": "Lumina Dark Footer Compact Site Info",
+			"title": "Dark Footer Compact Site Info",
 			"description": "Dark Compact footer w/site info",
 			"area": "footer"
 		},
 
 		{
 			"name": "footer-compact-nav-site-social",
-			"title": "Lumina Footer Compact 3 Blocks",
+			"title": "Footer Compact 3 Blocks",
 			"description": "Compact footer w/3 blocks (e.g. nav menu, social icons, and site info)",
 			"area": "footer"
 		},
 		{
 			"name": "footer-compact-nav-site-social-colored",
-			"title": "Lumina Colored Footer Compact 3 Blocks",
+			"title": "Colored Footer Compact 3 Blocks",
 			"description": "Compact Colored footer w/3 blocks (e.g. nav menu, social icons, and site info)",
 			"area": "footer"
 		},
 
 		{
 			"name": "footer-map-static",
-			"title": "Lumina Footer w/Map & Contact Info",
+			"title": "Footer w/Map & Contact Info",
 			"description": "Footer w/map and contact info",
 			"area": "footer"
 		},
 		{
 			"name": "footer-social-map-static",
-			"title": "Lumina Footer w/Colored Social Icons plus Map & Contact Info",
+			"title": "Footer w/Colored Social Icons plus Map & Contact Info",
 			"description": "Footer w/colored social icons plus map and contact info",
 			"area": "footer"
 		},
 
 		{
 			"name": "footer-motto-social-icons",
-			"title": "Lumina Footer w/Site Motto and Social Icons",
+			"title": "Footer w/Site Motto and Social Icons",
 			"description": "Footer w/site motto and huge social icons",
 			"area": "footer"
 		},
 		{
 			"name": "footer-motto-social-site",
-			"title": "Lumina Footer w/Site Motto, Social Icons, and Site Info",
+			"title": "Footer w/Site Motto, Social Icons, and Site Info",
 			"description": "Footer w/site motto, social icons, and site info",
 			"area": "footer"
 		}
