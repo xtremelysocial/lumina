@@ -13,7 +13,7 @@
 	
 	$(document).ready(function() {
 
-		// 1. Helper to read CSS duration tokens from :root into milliseconds
+		// 1. Helper to read CSS duration tokens from :root into milliseconds[span_0](start_span)[span_0](end_span)
 		function getCssDuration(varName, fallbackMs) {
 			var val = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
 			if (!val) return fallbackMs;
@@ -22,13 +22,13 @@
 			return fallbackMs;
 		}
 
-		// 2. Sine ease-in-out: Immediate motion response on frame 1 + soft landing
+		// 2. Sine ease-in-out: Immediate motion response on frame 1 + soft landing[span_1](start_span)[span_1](end_span)
 		$.easing.luminaSmooth = function(p) {
 			return 0.5 - Math.cos(p * Math.PI) / 2;
 		};
 
 		/*
-		 * Calculate fixed & floating header heights & update CSS variables
+		 * Calculate fixed & floating header heights & update CSS variables[span_2](start_span)[span_2](end_span)
 		 */
 		var topOffset = 0;
 
@@ -44,15 +44,15 @@
 			if (headerEl.length > 0) { 
 				physicalHeight = headerEl.outerHeight();
 
-				// STRICT CHECK: Only check if the actual INNER header card is full-width (.alignfull)
+				// STRICT CHECK: Only check if the actual INNER header card is full-width (.alignfull)[span_3](start_span)[span_3](end_span)
 				const isFlushHeader = headerEl.hasClass('alignfull');
 
 				if (isFlushHeader) {
-					// Flush header sits above hero: Subtract height from Cover block
+					// Flush header sits above hero: Subtract height from Cover block[span_4](start_span)[span_4](end_span)
 					headerOffsetForCover = physicalHeight;
 					topOffset = physicalHeight + adminBarHeight;
 				} else {
-					// Floating header overlays hero: Cover starts at Y=0 and needs FULL 100vh
+					// Floating header overlays hero: Cover starts at Y=0 and needs FULL 100vh[span_5](start_span)[span_5](end_span)
 					headerOffsetForCover = 0;
 
 					var computedTop = getComputedStyle(wrapper[0]).getPropertyValue('--header-top-offset').trim();
@@ -63,14 +63,14 @@
 				topOffset = adminBarHeight;
 			}
 
-			// 1. Used by group.scss negative margin to pull <main> up to Y=0
-			document.documentElement.style.setProperty('--header-rendered-height', physicalHeight + 'px');
+			// 1. Actual physical height of the header element itself
+			document.body.style.setProperty('--wp--custom--header--height', physicalHeight + 'px');
 
-			// 2. Used by Cover block math: 0px for floating (full 100vh bleed), actual px for flush headers
-			document.documentElement.style.setProperty('--header-height', headerOffsetForCover + 'px');
+			// 2. Space offset claimed in document flow (0px for floating overlays, actual px for flush headers)
+			document.body.style.setProperty('--wp--custom--header--offset', headerOffsetForCover + 'px');
 		}
 
-		// Run once on load and update on window resize / orientation change
+		// Run once on load and update on window resize / orientation change[span_6](start_span)[span_6](end_span)
 		updateHeaderHeight();
 		$(window).on('resize orientationchange', updateHeaderHeight);
 		
@@ -80,7 +80,7 @@
 			.not('[data-toggle="tab"]')
 			.not('[data-toggle="collapse"]');
 
-		// When clicked, smoothly scroll to the element
+		// When clicked, smoothly scroll to the element[span_7](start_span)[span_7](end_span)
 		links.click(function(event) {
 			if (
 				location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
@@ -94,13 +94,13 @@
 
 					var destination = Math.max(0, target.offset().top - topOffset);
 
-					// Respect OS-level reduced motion preference (instant jump)
+					// Respect OS-level reduced motion preference (instant jump)[span_8](start_span)[span_8](end_span)
 					if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 						window.scrollTo(0, destination);
 						return;
 					}
 
-					// Floor starts at duration--medium (~500ms), ceiling allowed up to 1800ms
+					// Floor starts at duration--medium (~500ms), ceiling allowed up to 1800ms[span_9](start_span)[span_9](end_span)
 					var minDuration = getCssDuration('--wp--custom--animation--duration--medium', 500);
 					var maxDuration = 1800;
 

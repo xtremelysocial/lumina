@@ -30,15 +30,15 @@ header > .wp-block-cover {
   color: #fff;
 }
 
-/* 4. Adjust 100vh cover blocks based on fixed header height */
+/* 4. Adjust 100vh cover blocks based on fixed header space offset */
 .wp-block-cover:is([style*="100vh"]) {
-  min-height: calc(100vh - var(--header-height, 77px) - var(--wp-admin--admin-bar--height, 0px)) !important;
+  min-height: calc(100vh - var(--wp--custom--header--offset, 77px) - var(--wp-admin--admin-bar--height, 0px)) !important;
 }
 
 /* 5. Floating Header Overlay Padding Offset */
 .wp-site-blocks:has(main .wp-block-cover.alignfull:first-child) > :is(:has(.is-position-sticky), :has(.is-style-fixed-header)):not(:has(.site-header.alignfull)):not(.site-header.alignfull) {
-  margin-bottom: calc(-1 * var(--header-rendered-height, 77px));
+  margin-bottom: calc(-1 * var(--wp--custom--header--height, 77px));
 }
 .wp-site-blocks:has(main .wp-block-cover.alignfull:first-child) > :is(:has(.is-position-sticky), :has(.is-style-fixed-header)):not(:has(.site-header.alignfull)):not(.site-header.alignfull) ~ main .wp-block-cover.alignfull:first-child {
-  padding-top: calc(var(--header-rendered-height, 77px) + var(--header-top-offset, 24px)) !important;
+  padding-top: calc(var(--wp--custom--header--height, 77px) + var(--header-top-offset, 24px)) !important;
 }
