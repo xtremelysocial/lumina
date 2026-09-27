@@ -41,18 +41,27 @@ header > .wp-block-cover {
 	}
 }
 
-/* 4. Adjust 100vh cover blocks based on fixed header space offset */
-.wp-block-cover:is([style*="100vh"]) {
+/* 4. Full-Viewport Cover Blocks (Dynamic Header Height Nudge) */
+.wp-block-cover:is([style*="100vh"], [style*="100svh"], [style*="100dvh"]) {
 	min-height: calc(
-		100vh - var(--wp--custom--header--offset, 77px) - var(--wp-admin--admin-bar--height, 0px)
+		100vh - var(--wp--custom--header--offset, 0px) - var(--wp-admin--admin-bar--height, 0px)
 	) !important;
+
+	// DYNAMIC OPTICAL NUDGE: Only apply when vertically centered (or default unpositioned)
+	&:is(.is-position-center-center, :not([class*="is-position-"])) {
+		.wp-block-cover__inner-container {
+			transform: translateY(
+				calc(-0.5 * (100vh - 100svh))
+			);
+		}
+	}
 }
 
 /* 5. Floating Header Overlay Padding Offset */
 .wp-site-blocks:has(main .wp-block-cover.alignfull:first-child) {
 	> :is(:has(.is-position-sticky), :has(.is-style-fixed-header)) {
 		
-		// Only pull and pad the cover when using a Floating/Boxed header[span_15](start_span)[span_15](end_span)
+		// Only pull and pad the cover when using a Floating/Boxed header
 		&:not(:has(.site-header.alignfull)):not(.site-header.alignfull) {
 			margin-bottom: calc(-1 * var(--wp--custom--header--height, 77px));
 
