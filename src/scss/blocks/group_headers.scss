@@ -2,7 +2,7 @@
    STICKY & FLOATING HEADER ENGINE
    ========================================================================== */
 
-// 1. Root Sticky Mechanics
+// 1. Direct Child Sticky Mechanics (Targeting the template part wrapper)
 .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
 	position: sticky;
 	z-index: 101;
@@ -11,39 +11,32 @@
 	--header-top-offset: var(--wp--preset--spacing--40, 24px);
 	top: var(--header-top-offset);
 
-	.site-header, .is-position-sticky {
-		position: static !important;
-		top: auto !important;
+	// Relative container for glass ::before bounds; sets top: 0 so WP block-library styles don't double the offset
+	.site-header {
+		position: relative;
+		top: 0;
 	}
 
 	// Full-Width Header (.site-header.alignfull): Lock flush to top edge
 	&:has(.site-header.alignfull), &.site-header.alignfull {
 		--header-top-offset: 0px;
-
-		&:not(:has(.is-style-glass)):not(:has(.is-style-glass-frosted)):not(.is-style-glass):not(.is-style-glass-frosted) {
-			background-color: color-mix(
-				in srgb,
-				var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--background-opacity, 100%),
-				transparent
-			);
-		}
 	}
 }
 
-// 2. Admin Bar Adjustment
+// 2. Admin Bar Adjustment (Calculated once at the root sticky level)
 .admin-bar .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
 	top: calc(var(--wp-admin--admin-bar--height, 32px) + var(--header-top-offset));
 }
 
 // 3. Floating Header Width Constraint (Elastic Capsule)
 .site-header.alignwide {
-	width: fit-content !important;
-	min-width: min(100% - (2 * var(--wp--style--root--padding-left, 24px)), var(--wp--style--global--content-size, 760px)) !important;
-	max-width: min(100% - (2 * var(--wp--style--root--padding-left, 24px)), var(--wp--style--global--wide-size, 1168px)) !important;
-	margin-left: auto !important;
-	margin-right: auto !important;
+	width: fit-content;
+	min-width: min(100% - (2 * var(--wp--style--root--padding-left, 24px)), var(--wp--style--global--content-size, 760px));
+	max-width: min(100% - (2 * var(--wp--style--root--padding-left, 24px)), var(--wp--style--global--wide-size, 1168px));
+	margin-left: auto;
+	margin-right: auto;
 
 	> * {
-		gap: var(--wp--preset--spacing--50, 32px) !important;
+		gap: var(--wp--preset--spacing--50, 32px);
 	}
 }
