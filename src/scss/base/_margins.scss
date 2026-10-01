@@ -44,7 +44,8 @@
 /* Don't add top margin to full-width blocks before main */
 :root :where(.wp-site-blocks) > * {
 	&.alignfull,
-	&.wp-block-template-part {
+	&.wp-block-template-part,
+	&#page-content {
 		margin-block-start: 0;
 	}
 }

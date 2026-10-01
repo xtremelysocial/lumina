@@ -28,7 +28,7 @@ header > .wp-block-cover {
 
 /* 3. Default Contrast Color - Use black and white since base and contrast can change */
 :where(.wp-block-cover.is-light:not(.has-text-color)) {
-	color: #000;
+	color: var(--wp--preset--color--contrast); //#000;
 
 	&:has(.has-background-dim-30),
 	&:has(.has-background-dim-40),
@@ -37,7 +37,7 @@ header > .wp-block-cover {
 	&:has(.has-background-dim-70),
 	&:has(.has-background-dim-80),
 	&:has(.has-background-dim-90) {
-		color: #fff;
+		color: var(--wp--preset--color--off-white); //#fff;
 	}
 }
 

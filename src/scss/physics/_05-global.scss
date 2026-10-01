@@ -52,24 +52,29 @@
 			border-radius: var(--wp--custom--button--radius);
 		}
 		
+		// ==========================================================================
+		// LUMINA OVERLAY BADGE CONFIGURATION
+		// ==========================================================================
+		$overlay-badge-size: 28px !default; // Set to any size (e.g. 24px, 28px, 32px)
+		
 		/* -----------------------------------------------------------------------------
 		   Lumina Card & Motion Overlay Badge (Resting State Definitions)
 		   ----------------------------------------------------------------------------- */
 		
-		// Ensure card & motion containers form absolute positioning context
+		// Ensure card & motion containers form absolute positioning context[span_0](start_span)[span_0](end_span)
 		:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image) {
 			position: relative !important;
 		}
 		
-		// Floating Badge Overlay - Base Definition (32px)
+		// Floating Badge Overlay - Proportional Scalable Definition
 		.lumina-card-arrow-overlay {
 			position: absolute !important;
 			
-			// 1. Neutralize WP layout engine block-gap margins
+			// 1. Neutralize WP layout engine block-gap margins[span_1](start_span)[span_1](end_span)
 			margin: 0 !important;
 			margin-block-start: 0 !important;
 			
-			// 2. Precise placement from bottom-right corner
+			// 2. Precise placement from bottom-right corner[span_2](start_span)[span_2](end_span)
 			bottom: var(--wp--preset--spacing--30) !important;
 			right: var(--wp--preset--spacing--30) !important;
 			
@@ -78,22 +83,22 @@
 			align-items: center;
 			justify-content: center;
 			
-			// 32px Badge Circle
-			width: 32px;
-			height: 32px;
-			padding: 0 !important;
+			// Dynamic Circle Sizing
+			width: $overlay-badge-size;
+			height: $overlay-badge-size;
+			padding: 0 !important; // Zero padding relies on flexbox centering to eliminate sub-pixel collisions[span_3](start_span)[span_3](end_span)
 			border-radius: 50%;
 			
-			// Default Contrast Badge
+			// Default Contrast Badge[span_4](start_span)[span_4](end_span)
 			background: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 88%, transparent);
 			color: var(--wp--preset--color--base, #ffffff);
 			
-			// Hidden & Non-blocking at rest
+			// Hidden & Non-blocking at rest[span_5](start_span)[span_5](end_span)
 			opacity: 0;
 			visibility: hidden;
 			pointer-events: none;
 			
-			// Smooth scale transition
+			// Smooth scale transition[span_6](start_span)[span_6](end_span)
 			transform: scale(0.65);
 			transition: opacity var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), 
 						transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), 
@@ -104,7 +109,8 @@
 			/* --- TOOLTIP TEXT BUBBLE (::before) --- */
 			&::before {
 				position: absolute;
-				right: 40px; /* 32px badge + 8px gap */
+				// Dynamic offset: Badge diameter + 8px breathing gap[span_7](start_span)[span_7](end_span)
+				right: calc(#{$overlay-badge-size} + 8px);
 				top: 50%;
 				transform: translateY(-50%) translateX(6px);
 				
@@ -126,7 +132,7 @@
 				box-shadow: config.$shadow-default;
 			}
 		
-			/* Dynamic Action Labels */
+			/* Dynamic Action Labels[span_8](start_span)[span_8](end_span) */
 			&.lumina-action-internal::before { content: "View Page"; }
 			&.lumina-action-external::before { content: "External Link"; }
 			&.lumina-action-scroll-up::before { content: "Scroll Up"; }
@@ -138,8 +144,9 @@
 			&::after {
 				content: "";
 				display: block;
-				width: 20px;
-				height: 20px;
+				// Golden Optical Ratio: Locks icon footprint to 60% of circle diameter[span_9](start_span)[span_9](end_span)
+				width: calc(#{$overlay-badge-size} * 0.6);
+				height: calc(#{$overlay-badge-size} * 0.6);
 				background-color: currentColor;
 				mask-size: contain;
 				mask-repeat: no-repeat;
@@ -147,7 +154,7 @@
 				transition: transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1);
 			}
 		
-			/* SVG Mask Assignments using asset folder filenames */
+			/* SVG Mask Assignments using asset folder filenames[span_10](start_span)[span_10](end_span) */
 			&.lumina-action-internal::after {
 				mask-image: url('../icons/theme/internal-link.svg');
 				transform: translateX(-1px);
@@ -165,7 +172,7 @@
 			}
 		}
 		
-		// Inverted Badge (Contrast Card BG)
+		// Inverted Badge (Contrast Card BG)[span_11](start_span)[span_11](end_span)
 		.is-interactive-card.has-contrast-background-color > .lumina-card-arrow-overlay {
 			background: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 88%, transparent);
 			color: var(--wp--preset--color--contrast, #000000);
@@ -176,7 +183,7 @@
 			}
 		}
 
-		// ----------------------------------------------------------------------
+	// ----------------------------------------------------------------------
 	// PHASE 2: INTERACTION STATE (lumina-interactions.css)
 	// ----------------------------------------------------------------------
 	} @else {
@@ -209,7 +216,7 @@
 		:is(.is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image):hover > .lumina-card-arrow-overlay,
 		:is(.is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image).is-active > .lumina-card-arrow-overlay,
 		:is(.is-style-pan-zoom, .is-style-pan-zoom-hover, [class*="is-style-pan-zoom"], .is-interactive-image):has(:focus-visible) > .lumina-card-arrow-overlay {
-			opacity: 1;
+			opacity: 0.75; //1;
 			visibility: visible;
 			transform: scale(1);
 			pointer-events: auto !important;

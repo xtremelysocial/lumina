@@ -280,14 +280,14 @@ endif;
 /**
  * Clean up legacy admin pages in Block Theme mode
  */
-add_action( 'admin_menu', 'lumina_adjust_admin_menu', 999 );
-
-if ( ! function_exists( 'lumina_adjust_admin_menu' ) ) :
-	function lumina_adjust_admin_menu() {
-		remove_submenu_page( 'themes.php', 'nav-menus.php' );
-		remove_submenu_page( 'themes.php', 'widgets.php' );
-	}
-endif;
+// add_action( 'admin_menu', 'lumina_adjust_admin_menu', 999 );
+// 
+// if ( ! function_exists( 'lumina_adjust_admin_menu' ) ) :
+// 	function lumina_adjust_admin_menu() {
+// 		remove_submenu_page( 'themes.php', 'nav-menus.php' );
+// 		remove_submenu_page( 'themes.php', 'widgets.php' );
+// 	}
+// endif;
 
 /**
  * Helper utility function to enqueue CSS styles with asset file versions
