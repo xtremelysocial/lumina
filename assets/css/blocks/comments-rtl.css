@@ -12,6 +12,10 @@
   margin-block-start: 0;
 }
 
+.wp-block-comment-content {
+  margin-block-start: var(--wp--preset--spacing--30);
+}
+
 /* Adjust padding on mobile and tablet (782px) */
 @media only screen and (max-width: 781px) {
   .post-comments:not(.has-global-padding) {

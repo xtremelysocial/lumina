@@ -244,9 +244,11 @@ input[type=file] {
 }
 
 /* 7. WordPress Core Helper Fixes */
-.wp-site-blocks .wp-block-button__link {
+.wp-block-button__link,
+.wp-element-button {
   width: auto;
   height: auto;
+  vertical-align: middle;
 }
 
 /* 8. Custom Underline Utilities */
@@ -428,10 +430,20 @@ blockquote, .wp-block-quote,
   margin-block-start: var(--wp--preset--spacing--30);
 }
 
-:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-navigation__submenu-container, .wp-block-page-list, .wp-block-social-links) > li + li {
+:where(ul, ol):not(.wp-block-navigation,
+.wp-block-navigation-submenu,
+.wp-block-navigation__submenu-container,
+.wp-block-page-list,
+.wp-block-social-links,
+.wp-block-post-template) > li + li {
   margin-block-start: calc(0.5 * var(--wp--preset--spacing--30));
 }
-:where(ul, ol):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-navigation__submenu-container, .wp-block-page-list, .wp-block-social-links) > li > :where(ul, ol) {
+:where(ul, ol):not(.wp-block-navigation,
+.wp-block-navigation-submenu,
+.wp-block-navigation__submenu-container,
+.wp-block-page-list,
+.wp-block-social-links,
+.wp-block-post-template) > li > :where(ul, ol) {
   margin-block-start: var(--wp--preset--spacing--30);
 }
 
