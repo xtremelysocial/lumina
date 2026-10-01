@@ -5,7 +5,7 @@
    LUMINA ENGINE: Registers objects and sets their resting states
    ========================================================================== */
 /* ==========================================================================
-   05 GLOBAL OVERIDES: Styles outside of the core engine loops
+   05 GLOBAL OVERRIDES: Styles outside of the core engine loops
    ========================================================================== */
 /* ==========================================================================
    03.10 APPLY CARD: Apply physics and active shadow
@@ -38,14 +38,15 @@
 }
 
 a > .avatar {
-  border: var(--wp--custom--color--border--width, 1px) var(--wp--custom--color--border--style, solid) var(--wp--custom--color--border);
+  border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border);
   border-radius: var(--wp--custom--button--radius);
+  padding: var(--wp--preset--spacing--20);
 }
 
 /* -----------------------------------------------------------------------------
-   Lumina Card & Motion Overlay Badge (Resting State Definitions)
+   Lumina Card Overlay Badge (Resting State Definitions)
    ----------------------------------------------------------------------------- */
-:is(.is-interactive-card, .is-style-pan-zoom, .is-style-pan-zoom-hover, [class*=is-style-pan-zoom], .is-interactive-image) {
+:is(.is-interactive-card, .is-interactive-image) {
   position: relative !important;
 }
 
@@ -95,7 +96,7 @@ a > .avatar {
   box-shadow: var(--wp--custom--color--shadow--default, var(--wp--preset--shadow--natural, 1px 4px 8px rgba(0, 0, 0, 0.15), 1px 2px 3px rgba(0, 0, 0, 0.08)));
 }
 .lumina-card-arrow-overlay {
-  /* Dynamic Action Labels[span_8](start_span)[span_8](end_span) */
+  /* Dynamic Action Labels */
 }
 .lumina-card-arrow-overlay.lumina-action-internal::before {
   content: "View Page";
@@ -108,12 +109,6 @@ a > .avatar {
 }
 .lumina-card-arrow-overlay.lumina-action-scroll-down::before {
   content: "Scroll Down";
-}
-.lumina-card-arrow-overlay.lumina-action-play::before {
-  content: "Start Motion";
-}
-.lumina-card-arrow-overlay.lumina-action-pause::before {
-  content: "Pause Motion";
 }
 .lumina-card-arrow-overlay {
   /* --- SVG ICON MASK ENGINE (::after) --- */
@@ -133,7 +128,7 @@ a > .avatar {
   transition: transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1);
 }
 .lumina-card-arrow-overlay {
-  /* SVG Mask Assignments using asset folder filenames[span_10](start_span)[span_10](end_span) */
+  /* SVG Mask Assignments */
 }
 .lumina-card-arrow-overlay.lumina-action-internal::after {
   -webkit-mask-image: url("../icons/theme/internal-link.svg");
@@ -162,6 +157,15 @@ a > .avatar {
 .is-interactive-card.has-contrast-background-color > .lumina-card-arrow-overlay::before {
   background: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 90%, transparent);
   color: var(--wp--preset--color--contrast, #000000);
+}
+
+:is(.is-interactive-card, .is-interactive-image).is-light .lumina-card-arrow-overlay {
+  background: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 80%, transparent) !important;
+  color: var(--wp--preset--color--contrast, #000000) !important;
+}
+:is(.is-interactive-card, .is-interactive-image).is-light .lumina-card-arrow-overlay::before {
+  background: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 90%, transparent) !important;
+  color: var(--wp--preset--color--contrast, #000000) !important;
 }
 
 /* ==========================================================================

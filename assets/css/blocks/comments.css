@@ -12,8 +12,14 @@
   margin-block-start: 0;
 }
 
+/* Set micro-spacing top margin on comment content */
 .wp-block-comment-content {
   margin-block-start: var(--wp--preset--spacing--30);
+}
+
+/* Hide empty comments block */
+.wp-block-template-part:has(#comments-wrapper:not(:has(*))) {
+  display: none !important;
 }
 
 /* Adjust padding on mobile and tablet (782px) */

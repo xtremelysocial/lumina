@@ -72,6 +72,7 @@ $includes = array (
 	'/inc/block-bindings.php',
 	'/inc/block-patterns.php',
 	'/inc/body-classes.php',
+	'/inc/comments.php',
 	'/inc/icons.php',
 	'/inc/images.php',
 	'/inc/page-tags.php',

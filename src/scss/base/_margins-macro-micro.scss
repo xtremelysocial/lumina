@@ -116,11 +116,11 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
 	margin-block-end: $macro-spacing;
 }
 
-/*-----------------------------------------------------------------------------
-# Collapsing Ghost (Empty) Blocks
------------------------------------------------------------------------------*/
-// 8. Target the template part if the comments container has no visible HTML child elements
-.wp-block-template-part:empty {
-	margin-block-start: 0; 
-	margin-block-end: 0; 
-}
+//*-----------------------------------------------------------------------------
+// # Collapsing Ghost (Empty) Blocks
+// -----------------------------------------------------------------------------*/
+// // 8. Target the template part if the comments container has no visible HTML child elements
+// .wp-block-template-part:empty {
+// 	margin-block-start: 0; 
+// 	margin-block-end: 0; 
+// }

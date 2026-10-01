@@ -462,14 +462,6 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
 }
 
 /*-----------------------------------------------------------------------------
-# Collapsing Ghost (Empty) Blocks
------------------------------------------------------------------------------*/
-.wp-block-template-part:empty {
-  margin-block-start: 0;
-  margin-block-end: 0;
-}
-
-/*-----------------------------------------------------------------------------
 # List: Custom
 #
 # Note: Needed for multiple blocks so load in base stylesheet
@@ -764,13 +756,13 @@ figure > a:active,
   border-radius: 50%;
   opacity: calc(0.7 * var(--motion-active));
   transform: scale(var(--motion-active));
-  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
+  transition: opacity var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
   pointer-events: none;
   z-index: 2;
   background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 80%, transparent);
 }
 .is-style-pan-zoom-hover {
-  /* 2B. Chevron Expand Mask Icon Layer (::after - Static at Rest) */
+  /* 2B. Chevron Expand Mask Icon Layer (::after) */
 }
 .is-style-pan-zoom-hover::after {
   content: "";
@@ -781,19 +773,22 @@ figure > a:active,
   height: 28px;
   opacity: calc(0.7 * var(--motion-active));
   transform: scale(var(--motion-active)) rotate(0deg);
-  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms ease;
+  transition: opacity var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), color 200ms ease;
   pointer-events: none;
   z-index: 3;
   color: var(--wp--preset--color--base, #ffffff);
   background-color: currentColor;
   -webkit-mask-image: url("../icons/theme/motion.svg");
-          mask-image: url("../icons/theme/motion.svg");
-  -webkit-mask-size: 18px;
-          mask-size: 18px;
+  mask-image: url("../icons/theme/motion.svg");
+  -webkit-mask-size: calc(28px * 0.6);
+  mask-size: calc(28px * 0.6);
   -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   -webkit-mask-position: center;
-          mask-position: center;
+  mask-position: center;
+}
+.is-style-pan-zoom-hover {
+  /* Inverted Badge for High-Key / Bright Media */
 }
 .is-style-pan-zoom-hover.is-light::before {
   background-color: color-mix(in srgb, var(--wp--preset--color--base, #ffffff) 75%, transparent);
@@ -802,16 +797,17 @@ figure > a:active,
   color: var(--wp--preset--color--contrast, #000000);
 }
 .is-style-pan-zoom-hover:hover img,
-.is-style-pan-zoom-hover:hover .wp-block-cover__image-background {
+.is-style-pan-zoom-hover:hover .wp-block-cover__image-background, .is-style-pan-zoom-hover:focus-within img,
+.is-style-pan-zoom-hover:focus-within .wp-block-cover__image-background {
   animation-play-state: running !important;
 }
-.is-style-pan-zoom-hover:hover::before {
-  opacity: calc(0.25 * var(--motion-active));
-  transform: scale(calc(1 * var(--motion-active)));
-}
-.is-style-pan-zoom-hover:hover::after {
+.is-style-pan-zoom-hover:hover::before, .is-style-pan-zoom-hover:focus-within::before {
   opacity: var(--motion-active);
-  transform: scale(calc(1 * var(--motion-active))) rotate(45deg);
+  transform: scale(var(--motion-active));
+}
+.is-style-pan-zoom-hover:hover::after, .is-style-pan-zoom-hover:focus-within::after {
+  opacity: var(--motion-active);
+  transform: scale(var(--motion-active)) rotate(45deg);
 }
 
 /* ==========================================================================
