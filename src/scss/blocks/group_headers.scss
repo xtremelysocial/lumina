@@ -1,3 +1,6 @@
+// SCSS Configuration Variable
+$header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
+
 /* ==========================================================================
    STICKY & FLOATING HEADER ENGINE
    ========================================================================== */
@@ -8,20 +11,19 @@
 	z-index: 101;
 	background-color: transparent;
 
-	--header-top-offset: var(--wp--preset--spacing--40, 24px);
-	top: var(--header-top-offset);
-	margin-top: var(--header-top-offset); // Aligns resting flow position with sticky top threshold
+	top: $header-top-offset;
+	margin-top: $header-top-offset; // Aligns resting flow position with sticky top threshold
 
 	// Relative container for glass bounds & bottom clearance
 	.site-header {
 		position: relative;
 		top: 0;
-		margin-bottom: var(--header-top-offset); // Creates equal spacing-40 gap below floating capsule
+		margin-bottom: $header-top-offset; // Creates equal spacing gap below floating capsule
 	}
 
 	// Full-Width Header (.site-header.alignfull): Lock flush to top & bottom edges
 	&:has(.site-header.alignfull), &.site-header.alignfull {
-		--header-top-offset: 0px;
+		top: 0;
 		margin-top: 0;
 
 		.site-header {
@@ -30,9 +32,14 @@
 	}
 }
 
-// 2. Admin Bar Adjustment (Calculated once at the root sticky level)
+// 2. Admin Bar Adjustment (Calculated directly at the root sticky level)
 .admin-bar .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
-	top: calc(var(--wp-admin--admin-bar--height, 32px) + var(--header-top-offset));
+	top: calc(var(--wp-admin--admin-bar--height, 32px) + #{$header-top-offset});
+
+	// Full-Width Header (.site-header.alignfull) under Admin Bar
+	&:has(.site-header.alignfull), &.site-header.alignfull {
+		top: var(--wp-admin--admin-bar--height, 32px);
+	}
 }
 
 // 3. Floating Header Width Constraint (Elastic Capsule)

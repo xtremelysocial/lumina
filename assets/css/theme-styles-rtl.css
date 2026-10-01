@@ -323,8 +323,8 @@ body .is-layout-constrained > .alignright {
  */
 /* Don't add top margin on column blocks in templates with sidebars */
 /* FLAT-BLOCKS CURRENT MARGIN CSS */
-/* Don't add top margin to top-level blocks (header, title, main, footer) */
-:root :where(.wp-site-blocks) > * {
+/* Don't add top margin to full-width blocks before main */
+:root :where(.wp-site-blocks) > *.alignfull, :root :where(.wp-site-blocks) > *.wp-block-template-part {
   margin-block-start: 0;
 }
 

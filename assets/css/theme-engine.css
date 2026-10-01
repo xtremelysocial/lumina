@@ -30,10 +30,6 @@
     --wp--custom--animation--media-text--hover-transform: scale(1.02);
   }
 }
-.wp-block-media-text {
-  overflow: hidden;
-}
-
 :is(.wp-site-blocks, .editor-styles-wrapper) .wp-block-social-links.is-style-logos-only {
   box-shadow: none;
 }

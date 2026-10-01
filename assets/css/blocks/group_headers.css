@@ -8,19 +8,27 @@
   position: sticky;
   z-index: 101;
   background-color: transparent;
-  --header-top-offset: var(--wp--preset--spacing--40, 24px);
-  top: var(--header-top-offset);
+  top: var(--wp--preset--spacing--40, 24px);
+  margin-top: var(--wp--preset--spacing--40, 24px);
 }
 .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) .site-header {
   position: relative;
   top: 0;
+  margin-bottom: var(--wp--preset--spacing--40, 24px);
 }
 .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.site-header.alignfull), .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header).site-header.alignfull {
-  --header-top-offset: 0px;
+  top: 0;
+  margin-top: 0;
+}
+.wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.site-header.alignfull) .site-header, .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header).site-header.alignfull .site-header {
+  margin-bottom: 0;
 }
 
 .admin-bar .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
-  top: calc(var(--wp-admin--admin-bar--height, 32px) + var(--header-top-offset));
+  top: calc(var(--wp-admin--admin-bar--height, 32px) + var(--wp--preset--spacing--40, 24px));
+}
+.admin-bar .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.site-header.alignfull), .admin-bar .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header).site-header.alignfull {
+  top: var(--wp-admin--admin-bar--height, 32px);
 }
 
 .site-header.alignwide {

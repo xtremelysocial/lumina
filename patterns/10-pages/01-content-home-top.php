@@ -10,7 +10,7 @@
 <!-- wp:group {"align":"full","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull">
 
-	<!-- wp:pattern {"slug":"lumina/banner-home-hero-media-text"} /-->
+	<!-- wp:pattern {"slug":"lumina/cover-scroll-home-header"} /-->
 
 	<!-- wp:pattern {"slug":"lumina/columns-site-motto-details"} /-->
 
@@ -25,8 +25,6 @@
 	<!-- wp:pattern {"slug":"lumina/image-gallery"} /-->
 
 	<!-- wp:pattern {"slug":"lumina/buttons-call-to-action"} /-->
-	
-	<!-- wp:pattern {"slug":"lumina/text-blog-index-intro"} /-->
 	
 </div>
 <!-- /wp:group -->

@@ -8,23 +8,23 @@
  */
 ?>
 
-<!-- wp:group {"metadata":{"name":"Home Banner Media \u0026 Text Lumina"},"align":"full","className":"is-style-default","style":{"background":{"gradient":"var:preset|gradient|tertiary"},"border":{"bottom":{"color":"var:preset|color|neutral-alt","width":"3px"}}},"layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text-lumina"} -->
-<div class="wp-block-group alignfull is-style-default" id="banner-home-hero-media-text-lumina" style="border-bottom-color:var(--wp--preset--color--neutral-alt);border-bottom-width:3px"><!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom"} -->
-<div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom" style="grid-template-columns:auto 45%"><div class="wp-block-media-text__content"><!-- wp:site-title {"isLink":false,"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"huge"} /-->
+<!-- wp:cover {"url":"https://test.xtremelysocial.com/wp-content/themes/lumina/assets/images/pages/home-hero.webp","dimRatio":30,"isUserOverlayColor":true,"focalPoint":{"x":0.5,"y":0.5},"minHeight":100,"minHeightUnit":"vh","contentPosition":"center center","sizeSlug":"large","metadata":{"name":"Cover Scroll Home Header"},"align":"full","className":"is-dark is-style-pan-zoom","style":{"spacing":{"margin":{"top":"0"}}},"anchor":"cover-scroll-home-header"} -->
+<div class="wp-block-cover alignfull is-dark is-style-pan-zoom" style="margin-top:0;min-height:100vh" id="cover-scroll-home-header"><img class="wp-block-cover__image-background size-large" alt="" src="https://test.xtremelysocial.com/wp-content/themes/lumina/assets/images/pages/home-hero.webp" style="object-position:50% 50%" data-object-fit="cover" data-object-position="50% 50%"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"className":"is-style-glass is-style-object-static","style":{"spacing":{"padding":{"right":"var:preset|spacing|50","left":"var:preset|spacing|50","top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-group is-style-glass is-style-object-static" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:site-title {"isLink":false,"style":{"typography":{"textAlign":"center","lineHeight":"1.2"}},"fontSize":"huge"} /-->
 
-<!-- wp:site-tagline {"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"x-large"} /-->
+<!-- wp:site-tagline {"style":{"typography":{"textAlign":"center","lineHeight":"1.2"}},"fontSize":"x-large"} /-->
 
-<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"large"} -->
-<p class="has-large-font-size" style="line-height:1.2">Lumina is a refined modern theme inspired by the colors, light, depth and motion of the environment around us.</p>
+<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.2","textAlign":"center"}},"fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size" style="line-height:1.2">Lumina is a refined modern theme inspired by the colors, light, depth and motion of the environment around us.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"metadata":{"name":"Scroll to Content Start"},"className":"is-style-icon-scroll-down-no-text","style":{"typography":{"textAlign":"center"}}} -->
+<!-- wp:paragraph {"metadata":{"name":"Scroll Down","patternName":"lumina/text-scroll-down","description":"Scroll Down Chevron","categories":["lumina","text"]},"className":"is-style-icon-scroll-down-no-text","style":{"typography":{"textAlign":"center"}}} -->
 <p class="has-text-align-center is-style-icon-scroll-down-no-text"><a href="#content-start">Scroll Down</a></p>
-<!-- /wp:paragraph --></div><figure class="wp-block-media-text__media"><img src="/wp-content/themes/lumina/assets/images/pages/home-hero.webp" alt=""/></figure></div>
-<!-- /wp:media-text --></div>
-<!-- /wp:group -->
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div></div>
+<!-- /wp:cover -->
 
-<!-- wp:group {"lock":{"move":false,"remove":false},"metadata":{"name":"Content Start"},"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"},"anchor":"content-start"} -->
+<!-- wp:group {"metadata":{"name":"Hidden Content Start","patternName":"lumina/hidden-content-start","description":"Hidden Content Start","categories":["lumina"]},"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"},"margin":{"top":"0","bottom":"0"}}},"anchor":"content-start"} -->
 <div id="content-start" class="wp-block-group" style="margin-top:0;margin-bottom:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"></div>
 <!-- /wp:group -->
 

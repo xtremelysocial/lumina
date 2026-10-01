@@ -41,16 +41,18 @@
 
 /* FLAT-BLOCKS CURRENT MARGIN CSS */
 
-/* Don't add top margin to top-level blocks (header, title, main, footer) */
+/* Don't add top margin to full-width blocks before main */
 :root :where(.wp-site-blocks) > * {
-	margin-block-start: 0;
+	&.alignfull,
+	&.wp-block-template-part {
+		margin-block-start: 0;
+	}
 }
 
 /* Add top margin to main unless its the post content or a featured image */
 main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-image):not(.wp-block-cover):not(.wp-block-template-part):not(.wp-block-image):not(.entry-header-wrapper.has-background):not(.content-home-top) {
 	margin-block-start: var(--wp--style--block-gap);
 }
-
 
 /* Push top margin down on Groups and Columns that have template parts in them */
 :root :where(.is-layout-flow) > .wp-block-template-part > *,

@@ -3,6 +3,7 @@
  * Title: Feature Grid Start Anchor
  * Description: Feature Grid Start Anchor
  * Slug: lumina/hidden-feature-grid-start
+ * Inserter: false 
  * Categories: lumina
  */
 ?>

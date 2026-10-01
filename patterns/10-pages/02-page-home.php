@@ -7,7 +7,7 @@
  * Block Types: core/post-content
  */
 ?>
-<!-- wp:pattern {"slug":"lumina/banner-home-hero-media-text"} /-->
+<!-- wp:pattern {"slug":"lumina/cover-scroll-home-header"} /-->
 
 <!-- wp:pattern {"slug":"lumina/columns-site-motto-details"} /-->
 

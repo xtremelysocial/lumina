@@ -13,38 +13,59 @@
 }
 
 /*-----------------------------------------------------------------------------
-# 01. BASE CONTAINER & MOBILE OVERLAY COLORS
+# 01. BASE CONTAINER & SUBMENU DROPDOWN CARDS
 -----------------------------------------------------------------------------*/
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) {
-  /* 1. Desktop Nav Block: Keep 100% transparent so header bar shows through */
+/* Un-trap GPU rendering & overflow boundaries for desktop submenus */
+.site-header .wp-block-navigation,
+.site-header .wp-block-navigation__responsive-container:not(.is-menu-open) {
+  overflow: visible !important;
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) {
+
+/* 1. Standard Outer Header Bar (Delegates blur to ::before to un-trap child submenus) */
+.site-header:not(.has-background):not([class*=is-style-glass]) {
+  position: relative;
+  color: var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast));
+}
+.site-header:not(.has-background):not([class*=is-style-glass])::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--background-opacity, 96%), transparent);
+  backdrop-filter: var(--wp--custom--color--opacity--blur, blur(8px));
+  pointer-events: none;
+}
+
+/* 2. Desktop Navigation Wrapper (Transparent so header shows through) */
+.site-header:not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) {
   background: transparent;
   background-color: transparent;
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) {
-  /* 2. Desktop Submenu Cards ONLY (Excluded from open mobile drawer) */
+.site-header:not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) {
+  /* 3. Submenu Cards (Can now sample root DOM pixels for true backdrop blur) */
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
+.site-header:not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container:not(.is-menu-open) :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) {
   background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--dropdown-opacity, 85%), transparent);
-  backdrop-filter: var(--wp--custom--color--navigation--dropdown-blur, blur(16px));
-  -webkit-backdrop-filter: var(--wp--custom--color--navigation--dropdown-blur, blur(16px));
+  backdrop-filter: var(--wp--custom--color--opacity--blur, blur(8px));
+  border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
+  box-shadow: var(--wp--custom--shadow--dropdown, 0 12px 32px rgba(0, 0, 0, 0.12));
+  padding: var(--wp--preset--spacing--20, 0.5rem);
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) {
-  /* 3. Open Mobile Overlay Drawer Container */
+.site-header:not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) {
+  /* 4. Open Mobile Overlay Drawer */
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
-  background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--dropdown-opacity, 85%), transparent);
-  backdrop-filter: var(--wp--custom--color--navigation--dropdown-blur, blur(16px));
-  -webkit-backdrop-filter: var(--wp--custom--color--navigation--dropdown-blur, blur(16px));
+.site-header:not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
+  background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--background-opacity, 96%), transparent);
+  backdrop-filter: var(--wp--custom--color--opacity--blur, blur(8px));
 }
 
-/* Ensure flyouts & mobile drawer fallback to contrast text color */
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-text-color) .wp-block-navigation__submenu-container, .site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
-  color: var(--wp--preset--color--contrast);
+/* 5. Fallback text color for uncolored flyouts & mobile drawer */
+.site-header:not([class*=is-style-glass]) .wp-block-navigation:not(.has-text-color) :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container), .site-header:not([class*=is-style-glass]) .wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
+  color: var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast));
 }
 
-/* Drop-down card rounded corner clipping (desktop/tablet only) */
+/* 6. Drop-down card rounded corner clipping (desktop/tablet only) */
 .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
   border-radius: var(--wp--preset--border-radius--lg, 16px);
 }
@@ -57,103 +78,6 @@
 .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container > :last-child > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) {
   border-bottom-left-radius: var(--wp--preset--border-radius--lg, 16px);
   border-bottom-right-radius: var(--wp--preset--border-radius--lg, 16px);
-}
-
-/* ==========================================================================
-   FLOATING GLASS HEADER: Protected Outer Glass & Clean Nav Overrides
-   ========================================================================== */
-/* Explicitly protect & define the outer Header Glass Card surface */
-.site-header:is(.is-style-glass, .is-style-glass-frosted) {
-  background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base, #ffffff)) var(--wp--custom--color--navigation--background-opacity, 20%), transparent) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  border: 1px solid var(--wp--custom--color--border, rgba(255, 255, 255, 0.2)) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12) !important;
-  border-radius: var(--wp--preset--border-radius--lg, 16px) !important;
-  color: var(--wp--preset--color--off-white, #ffffff);
-  /* Strip backgrounds ONLY from the inner navigation block & top-level items */
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.wp-block-navigation__submenu-container *) {
-  background: transparent !important;
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.wp-block-navigation__submenu-container *) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.wp-block-navigation__submenu-container *) > .wp-block-navigation-submenu__toggle {
-  color: var(--wp--preset--color--off-white, #ffffff) !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.wp-block-navigation__submenu-container *) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover, .site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.wp-block-navigation__submenu-container *) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):focus,
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.wp-block-navigation__submenu-container *) > .wp-block-navigation-submenu__toggle:hover,
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.wp-block-navigation__submenu-container *) > .wp-block-navigation-submenu__toggle:focus {
-  color: var(--wp--preset--color--white, #ffffff) !important;
-  background-color: color-mix(in srgb, white 12%, transparent) !important;
-  border-radius: var(--wp--preset--border-radius--sm, 8px) !important;
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.wp-block-navigation__submenu-container *) .wp-block-navigation__submenu-icon {
-  color: var(--wp--preset--color--off-white, #ffffff) !important;
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) {
-  /* Dropdown Submenu Cards (Frosted Glass Container) */
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container {
-  background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #111111) var(--wp--custom--color--navigation--dropdown-opacity, 85%), transparent) !important;
-  backdrop-filter: blur(var(--wp--custom--color--navigation--dropdown-blur, 24px)) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(var(--wp--custom--color--navigation--dropdown-blur, 24px)) saturate(180%) !important;
-  border: 1px solid var(--wp--custom--color--border, rgba(255, 255, 255, 0.18)) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35) !important;
-  border-radius: var(--wp--preset--border-radius--lg, 16px) !important;
-  padding: var(--wp--preset--spacing--20, 0.5rem) !important;
-  /* Submenu List Items */
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) {
-  position: relative !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  width: 100% !important;
-  margin: 0 !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  border-radius: 0 !important;
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) > .wp-block-navigation-submenu__toggle {
-  color: var(--wp--preset--color--off-white, #ffffff) !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) .wp-block-navigation__submenu-icon {
-  color: var(--wp--preset--color--off-white, #ffffff) !important;
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) {
-  /* Full-row glass hover overlay */
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item):hover, .site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item):focus-within {
-  background-color: color-mix(in srgb, white var(--wp--custom--color--navigation--hover-overlay-opacity, 8%), transparent) !important;
-  border-radius: var(--wp--preset--border-radius--sm, 8px) !important;
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item):hover > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item):hover > .wp-block-navigation-submenu__toggle,
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item):hover .wp-block-navigation__submenu-icon, .site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item):focus-within > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item):focus-within > .wp-block-navigation-submenu__toggle,
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item):focus-within .wp-block-navigation__submenu-icon {
-  color: var(--wp--preset--color--white, #ffffff) !important;
-  background: transparent !important;
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container {
-  /* Level 2 Nested Flyout Offset */
-}
-.site-header:is(.is-style-glass, .is-style-glass-frosted) .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
-  top: -0.5rem !important;
-  right: calc(100% + 0.5rem) !important;
-  left: auto !important;
-  margin: 0 !important;
 }
 
 /*-----------------------------------------------------------------------------
@@ -187,7 +111,7 @@
 }
 @media (min-width: 600px) and (max-width: 781px) {
   .wp-block-navigation .wp-block-navigation__submenu-icon {
-    margin: 14px;
+    padding: 14px;
   }
 }
 
@@ -209,34 +133,34 @@
 # 03. DESKTOP / NON-MOBILE HEADER NAVIGATION STATES
 -----------------------------------------------------------------------------*/
 /* 1. UNCOLORED HEADERS & UNCOLORED NAVIGATIONS */
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation-item.has-background.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item.has-background.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation-item.has-background.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-pages-list__item.has-background.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) {
   font-weight: var(--wp--custom--typography--font-weight--medium);
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation-item.has-background > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover, .site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation-item.has-background:hover > .wp-block-navigation__submenu-icon,
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item.has-background > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover,
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item.has-background:hover > .wp-block-navigation__submenu-icon {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation-item.has-background > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover, .site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation-item.has-background:hover > .wp-block-navigation__submenu-icon,
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-pages-list__item.has-background > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover,
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-pages-list__item.has-background:hover > .wp-block-navigation__submenu-icon {
   font-weight: var(--wp--custom--typography--font-weight--medium);
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation-item:not(.has-background).current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link), .site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation-item:not(.has-background).current-menu-ancestor > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item:not(.has-background).current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item:not(.has-background).current-menu-ancestor > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation-item:not(.has-background).current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link), .site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation-item:not(.has-background).current-menu-ancestor > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-pages-list__item:not(.has-background).current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-pages-list__item:not(.has-background).current-menu-ancestor > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) {
   color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation-item:not(.has-background) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover,
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item:not(.has-background) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation-item:not(.has-background) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover,
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-pages-list__item:not(.has-background) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover {
   color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation-item:not(.has-background) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover .wp-block-navigation-item__label,
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item:not(.has-background) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover .wp-block-navigation-item__label {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation-item:not(.has-background) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover .wp-block-navigation-item__label,
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-pages-list__item:not(.has-background) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover .wp-block-navigation-item__label {
   opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation-item:not(.has-background):hover > .wp-block-navigation__submenu-icon,
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item:not(.has-background):hover > .wp-block-navigation__submenu-icon {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation-item:not(.has-background):hover > .wp-block-navigation__submenu-icon,
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-pages-list__item:not(.has-background):hover > .wp-block-navigation__submenu-icon {
   color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
   opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) {
   position: relative;
   display: flex;
   align-items: center;
@@ -246,15 +170,15 @@
   background: transparent;
   border-radius: 0;
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) > .wp-block-navigation-submenu__toggle {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) > .wp-block-navigation-submenu__toggle {
   background: transparent;
   box-shadow: none;
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container {
   /* Level 2 Nested Flyout Offset */
 }
-.site-header:not(.has-background):not(.is-style-glass):not(.is-style-glass-frosted) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
   top: -0.5rem;
   left: 100%;
   margin: 0;
@@ -331,7 +255,7 @@
   transition: background-color var(--wp--custom--animation--duration--short, 0.2s) ease;
 }
 .wp-block-navigation .wp-block-navigation__responsive-container-open:hover, .wp-block-navigation .wp-block-navigation__responsive-container-open:focus-visible, .wp-block-navigation .wp-block-navigation__responsive-container-close:hover, .wp-block-navigation .wp-block-navigation__responsive-container-close:focus-visible {
-  background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) var(--wp--custom--color--navigation--hover-overlay-opacity, 6%), transparent);
+  background-color: color-mix(in srgb, var(--wp--preset--color--contrast) var(--wp--custom--color--opacity--faint, 6%), transparent);
 }
 
 /* Match container radius on colored navigations */
@@ -341,8 +265,8 @@
 
 /* Mobile menu padding and Admin Bar offsets */
 .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open {
-  padding-top: calc(var(--wp--preset--spacing--40) + 14px);
-  padding-bottom: calc(var(--wp--preset--spacing--40) + 14px);
+  padding-top: calc(var(--wp--preset--spacing--30) + 5px);
+  padding-bottom: calc(var(--wp--preset--spacing--30) + 5px);
   padding-right: var(--wp--style--root--padding-right, var(--wp--preset--spacing--50));
   padding-left: var(--wp--style--root--padding-left, var(--wp--preset--spacing--50));
 }

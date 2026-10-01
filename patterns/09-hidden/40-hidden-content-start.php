@@ -3,6 +3,7 @@
  * Title: Hidden Content Start
  * Description: Hidden Content Start
  * Slug: lumina/hidden-content-start
+ * Inserter: false 
  * Categories: lumina
  */
 ?>
