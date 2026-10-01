@@ -85,9 +85,13 @@ input[type=file] {
 }
 
 /* 7. WordPress Core Helper Fixes */
-.wp-site-blocks .wp-block-button__link {
+// .wp-site-blocks .wp-block-button__link,
+// .wp-site-blocks .wp-element-button, {
+.wp-block-button__link,
+.wp-element-button {
 	width: auto;
 	height: auto;
+	vertical-align: middle;
 }
 
 /* 8. Custom Underline Utilities */

@@ -10,16 +10,23 @@
 
 	--header-top-offset: var(--wp--preset--spacing--40, 24px);
 	top: var(--header-top-offset);
+	margin-top: var(--header-top-offset); // Aligns resting flow position with sticky top threshold
 
-	// Relative container for glass ::before bounds; sets top: 0 so WP block-library styles don't double the offset
+	// Relative container for glass bounds & bottom clearance
 	.site-header {
 		position: relative;
 		top: 0;
+		margin-bottom: var(--header-top-offset); // Creates equal spacing-40 gap below floating capsule
 	}
 
-	// Full-Width Header (.site-header.alignfull): Lock flush to top edge
+	// Full-Width Header (.site-header.alignfull): Lock flush to top & bottom edges
 	&:has(.site-header.alignfull), &.site-header.alignfull {
 		--header-top-offset: 0px;
+		margin-top: 0;
+
+		.site-header {
+			margin-bottom: 0;
+		}
 	}
 }
 
