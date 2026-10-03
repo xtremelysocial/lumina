@@ -367,27 +367,27 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 /*-----------------------------------------------------------------------------
 # 05. NON-CLICKABLE PLACEHOLDER LINKS (http://Pages, #, #0)
 -----------------------------------------------------------------------------*/
-.wp-block-navigation {
-
-	// Disable click navigation on dummy targets
-	a.wp-block-navigation-item__content:is([href="http://Pages"], [href="#"], [href="#0"]) {
-		pointer-events: none;
-	}
-
-	// Desktop: Show pointer cursor on hover
-	.wp-block-navigation__responsive-container:not(.is-menu-open) {
-		.wp-block-navigation-item:hover:has(> a:is([href="http://Pages"], [href="#"], [href="#0"])) {
-			cursor: pointer;
-		}
-	}
-
-	// Mobile Overlay: Suppress pointer cursor
-	.wp-block-navigation__responsive-container.is-menu-open {
-		.wp-block-navigation-item:hover:has(> a:is([href="http://Pages"], [href="#"], [href="#0"])) {
-			cursor: default;
-		}
-	}
-}
+// .wp-block-navigation {
+// 
+// 	// Disable click navigation on dummy targets
+// 	a.wp-block-navigation-item__content:is([href="http://Pages"], [href="#"], [href="#0"]) {
+// 		pointer-events: none;
+// 	}
+// 
+// 	// Desktop: Show pointer cursor on hover
+// 	.wp-block-navigation__responsive-container:not(.is-menu-open) {
+// 		.wp-block-navigation-item:hover:has(> a:is([href="http://Pages"], [href="#"], [href="#0"])) {
+// 			cursor: pointer;
+// 		}
+// 	}
+// 
+// 	// Mobile Overlay: Suppress pointer cursor
+// 	.wp-block-navigation__responsive-container.is-menu-open {
+// 		.wp-block-navigation-item:hover:has(> a:is([href="http://Pages"], [href="#"], [href="#0"])) {
+// 			cursor: default;
+// 		}
+// 	}
+// }
 
 /*-----------------------------------------------------------------------------
 # 06. MOBILE NAVIGATION OVERLAY & BUTTONS

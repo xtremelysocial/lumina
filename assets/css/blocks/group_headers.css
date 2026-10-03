@@ -53,3 +53,14 @@ main > :first-child .wp-block-cover.alignfull:first-child,
 main > :first-child > :first-child .wp-block-cover.alignfull:first-child) > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):not(:has(.site-header.alignfull)):not(.site-header.alignfull) {
   margin-bottom: calc(-1 * (var(--wp--custom--header--height, 77px) + var(--wp--preset--spacing--40, 24px)));
 }
+.wp-site-blocks:has(main > .wp-block-cover.alignfull:first-child,
+main > :first-child .wp-block-cover.alignfull:first-child,
+main > :first-child > :first-child .wp-block-cover.alignfull:first-child) > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):not(:has(.site-header.alignfull)):not(.site-header.alignfull) ~ main > .wp-block-cover.alignfull:first-child,
+.wp-site-blocks:has(main > .wp-block-cover.alignfull:first-child,
+main > :first-child .wp-block-cover.alignfull:first-child,
+main > :first-child > :first-child .wp-block-cover.alignfull:first-child) > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):not(:has(.site-header.alignfull)):not(.site-header.alignfull) ~ main > :first-child .wp-block-cover.alignfull:first-child,
+.wp-site-blocks:has(main > .wp-block-cover.alignfull:first-child,
+main > :first-child .wp-block-cover.alignfull:first-child,
+main > :first-child > :first-child .wp-block-cover.alignfull:first-child) > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):not(:has(.site-header.alignfull)):not(.site-header.alignfull) ~ main > :first-child > :first-child .wp-block-cover.alignfull:first-child {
+  padding-top: calc(var(--wp--custom--header--height, 77px) + var(--wp--preset--spacing--40, 24px)) !important;
+}

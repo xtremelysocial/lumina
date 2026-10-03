@@ -288,16 +288,6 @@
 /*-----------------------------------------------------------------------------
 # 05. NON-CLICKABLE PLACEHOLDER LINKS (http://Pages, #, #0)
 -----------------------------------------------------------------------------*/
-.wp-block-navigation a.wp-block-navigation-item__content:is([href="http://Pages"], [href="#"], [href="#0"]) {
-  pointer-events: none;
-}
-.wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item:hover:has(> a:is([href="http://Pages"], [href="#"], [href="#0"])) {
-  cursor: pointer;
-}
-.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item:hover:has(> a:is([href="http://Pages"], [href="#"], [href="#0"])) {
-  cursor: default;
-}
-
 /*-----------------------------------------------------------------------------
 # 06. MOBILE NAVIGATION OVERLAY & BUTTONS
 -----------------------------------------------------------------------------*/

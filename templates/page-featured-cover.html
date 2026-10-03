@@ -1,9 +1,13 @@
 <!-- wp:template-part {"slug":"header","theme":"lumina","lock":{"move":true,"remove":true}} /-->
 
-<!-- wp:group {"tagName":"main","anchor":"page-content","metadata":{"name":"Main"},"className":"page-content is-style-default","lock":{"move":true,"remove":true}} -->
+<!-- wp:group {"tagName":"main","anchor":"page-content","metadata":{"name":"Main"},"className":"page-content is-style-default","layout":{"type":"constrained"},"lock":{"move":true,"remove":true}} -->
 <main class="wp-block-group page-content is-style-default" id="page-content">
 
-<!-- wp:template-part {"slug":"cover-scroll-page-header","theme":"lumina","align":"full"} /-->
+<!-- wp:group {"tagName":"section","align":"full","className":"entry-cover","layout":{"type":"constrained"}} -->
+	<section class="wp-block-group alignfull entry-cover">
+		<!-- wp:template-part {"slug":"cover-scroll-page-header","theme":"lumina","align":"full"} /-->
+	</section>
+<!-- /wp:group -->
 
 <!-- wp:post-content {"align":"full","layout":{"type":"constrained"},"lock":{"move":true,"remove":true}} /-->
 

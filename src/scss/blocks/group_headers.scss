@@ -1,9 +1,9 @@
-// SCSS Configuration Variable
-$header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
-
 /* ==========================================================================
    STICKY & FLOATING HEADER ENGINE
    ========================================================================== */
+
+// SCSS Configuration Variable
+$header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
 
 // 1. Direct Child Sticky Mechanics (Targeting the header template part wrapper)
 .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
@@ -78,12 +78,12 @@ $header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
 			margin-bottom: calc(-1 * (var(--wp--custom--header--height, 77px) + #{$header-top-offset}));
 
 			// 4. Applies top padding to the hero Cover block for clearance
-			~ main :is(
+			~ main {
 				> .wp-block-cover.alignfull:first-child,
 				> :first-child .wp-block-cover.alignfull:first-child,
-				> :first-child > :first-child .wp-block-cover.alignfull:first-child
-			) {
-				padding-top: calc(var(--wp--custom--header--height, 77px) + #{$header-top-offset}) !important;
+				> :first-child > :first-child .wp-block-cover.alignfull:first-child {
+					padding-top: calc(var(--wp--custom--header--height, 77px) + #{$header-top-offset}) !important;
+				}
 			}
 		}
 	}
