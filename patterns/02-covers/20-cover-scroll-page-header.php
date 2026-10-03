@@ -7,8 +7,8 @@
  * Block Types: core/cover
  */
 ?>
-<!-- wp:cover {"useFeaturedImage":true,"dimRatio":30,"isUserOverlayColor":true,"contentPosition":"center center","sizeSlug":"large","metadata":{"name":"Cover Scroll Page Header"},"align":"full","className":"is-style-pan-zoom","style":{"spacing":{"margin":{"top":"0"}}},"anchor":"cover-scroll-page-header"} -->
-<div class="wp-block-cover alignfull is-style-pan-zoom" style="margin-top:0" id="cover-scroll-page-header"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container">
+<!-- wp:cover {"useFeaturedImage":true,"dimRatio":30,"isUserOverlayColor":true,"minHeight":480,"contentPosition":"center center","sizeSlug":"large","metadata":{"name":"Cover Scroll Page Header"},"align":"full","className":"is-style-pan-zoom","anchor":"cover-scroll-page-header"} -->
+<div class="wp-block-cover alignfull is-style-pan-zoom" style="min-height:480px" id="cover-scroll-page-header"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-30 has-background-dim"></span><div class="wp-block-cover__inner-container">
 
 	<!-- wp:group {"className":"is-style-glass is-style-object-static"} -->
 	<div class="wp-block-group is-style-glass is-style-object-static">

@@ -13,21 +13,37 @@
 						"gallery-1",
 						"gallery-2"
 					],
-					"imageDefault": "/assets/images/samples/01.webp"
+					"imageDefault": "/assets/images/pages/home-hero.webp"
 				},
 				"border": 			"color-mix(in srgb, currentColor 15%, transparent)",
 				"divider": 			"color-mix(in srgb, currentColor 18%, transparent)",
 				"outline": 			"color-mix(in srgb, currentColor 20%, transparent)",
 				"opacity": {
-					"blur": 		"12px",
-					"blurDense": 	"24px",
-					"tint": 		"color-mix(in srgb, currentColor 12%, transparent)",
-					"tintDense": 	"color-mix(in srgb, currentColor 25%, transparent)"
+					"faint":    	"6%",
+					"subtle":   	"12%",
+					"emphasis": 	"20%",
+					"muted":    	"60%",
+
+					"tint":       "currentColor",
+					
+					"blur": 		"blur(6px)",
+					"blur-dense": 	"blur(10px)"
 				},
 				"button": {
 					"background": 	"var(--wp--preset--color--primary)",
 					"text": 		"var(--wp--preset--color--off-white)",
-					"hoverOpacity": "1" 
+					"hoverOpacity": "1",
+					"hoverTint": 	"0.15"
+				},
+				"navigation": {
+					"background":          	"var(--wp--preset--color--base)",
+					"backgroundOpacity":   	"100%",
+					"text":                	"var(--wp--preset--color--contrast)",
+					"highlight":           	"var(--wp--preset--color--highlight-alt)",
+					"dropdownOpacity":     	"100%",
+
+					"dropdownGlassOpacity": "95%",
+					"hoverOverlayOpacity": 	"10%"
 				},
 				"highlight": {
 					"darken": 		"brightness(0.40) saturate(1.15)"
@@ -45,53 +61,44 @@
 					"text": 		"var(--wp--preset--color--dark)",
 					"separator": 	"var(--wp--preset--color--tertiary)"
 				},
-				"navigation": {
-					"background":          "var(--wp--preset--color--base)",
-					"backgroundOpacity":   "96%",
-					"text":                "var(--wp--preset--color--contrast)",
-					"dropdownOpacity":     "96%",
-					"dropdownBlur":        "blur(16px)",
-					"highlight":           "var(--wp--preset--color--highlight-alt)",
-					"hoverOverlayOpacity": "10%"
-				},
 				"shadow": {
-					"natural": "1px 4px 8px rgba(42, 50, 61, 0.14), 1px 2px 3px rgba(42, 50, 61, 0.08)",
-					"deep":    "3px 8px 16px rgba(42, 50, 61, 0.20), 1px 4px 6px rgba(42, 50, 61, 0.12)",
-					"sharp":   "4px 12px 22px rgba(42, 50, 61, 0.24), 2px 8px 10px rgba(42, 50, 61, 0.14)",
-					"crisp":   "6px 16px 28px rgba(42, 50, 61, 0.22), 3px 12px 14px rgba(42, 50, 61, 0.12)",
-					"outline": "0 0 0 2px var(--wp--preset--color--neutral-alt), 1px 4px 8px rgba(42, 50, 61, 0.14)",
-					"default": 	"var:preset|shadow|natural",
-					"hover": 	"var:preset|shadow|deep",
-					"hoverHigh":"var:preset|shadow|sharp"
+					"natural": 		"1px 4px 8px rgba(42, 50, 61, 0.14), 1px 2px 3px rgba(42, 50, 61, 0.08)",
+					"deep":    		"3px 8px 16px rgba(42, 50, 61, 0.20), 1px 4px 6px rgba(42, 50, 61, 0.12)",
+					"sharp":   		"4px 12px 22px rgba(42, 50, 61, 0.24), 2px 8px 10px rgba(42, 50, 61, 0.14)",
+					"crisp":   		"6px 16px 28px rgba(42, 50, 61, 0.22), 3px 12px 14px rgba(42, 50, 61, 0.12)",
+					"outline": 		"0 0 0 2px var(--wp--preset--color--neutral-alt), 1px 4px 8px rgba(42, 50, 61, 0.14)",
+					"default": 		"var:preset|shadow|natural",
+					"hover": 		"var:preset|shadow|deep",
+					"hoverHigh":	"var:preset|shadow|sharp"
 				}				
 			},
 			"link": {
-				"style": 			"solid",
-				"thickness": 		"1px",
-				"position": 		"under",
-				"offset": 			"0.05em",
-				"decorationColor": 	"currentColor",
-				"specialStyle": 	"dotted",
+				"style": 				"solid",
+				"thickness": 			"1px",
+				"position": 			"under",
+				"offset": 				"0.05em",
+				"decorationColor": 		"currentColor",
+				"specialStyle": 		"dotted",
 				"decorationSpecialColor": "rgba(27, 27, 27, 0.4)"
 			},			
 			"border": {
 				"radius": 			"16px"
 			},
 			"button": {
-				"radius": 			"9999px"
+				"radius": 			"var(--wp--preset--border-radius--3-xl)"
 			},
 			"spacing": {
 				"gap": 				"24px"
 			},
 			"layout": {
-				"fullSize": "1600px"
+				"fullSize": 		"1600px"
 			},
 			"sidebar": {
 				"width": 			"350px"
 			},		
 			"navigation": {
-				"width": "260px",
-				"wideWidth": "360px"
+				"width": 			"260px",
+				"wideWidth": 		"360px"
 			},
 			"animation": {
 				"duration": {
@@ -106,25 +113,25 @@
 					"hoverTransform": 	"scale(1.05)"
 				},
 				"button": {
-					"transform": "none",
-					"hoverTransform": "scale(1.05)"
+					"transform": 		"none",
+					"hoverTransform": 	"scale(1.05)"
 				},
 				"card": {
-					"transform": "none",
-					"hoverTransform": "translateY(-3px)"
+					"transform": 		"none",
+					"hoverTransform": 	"translateY(-3px)"
 				},
 				"image": {
-					"transform": "none",
-					"hoverTransform": "translateY(-4px)"
+					"transform": 		"none",
+					"hoverTransform": 	"translateY(-4px)"
 				},
 				"mediaText": {
-					"transform": "scale(1.00)",
-					"hoverTransform": "scale(1.08)"
+					"transform": 		"scale(1.00)",
+					"hoverTransform": 	"scale(1.08)"
 				},
 				"motion": {
-					"panIntensity": 1,
-					"zoomIntensity": 1,
-					"durationFactor": 1
+					"panIntensity": 	1,
+					"zoomIntensity": 	1,
+					"durationFactor": 	1
 				}
 			},
 			"typography": {
@@ -137,8 +144,8 @@
 			}
 		},
 		"layout": {
-			"contentSize": 	"760px",
-			"wideSize": 	"1146px",
+			"contentSize": 		"760px",
+			"wideSize": 		"1146px",
 			"allowCustomContentAndWideSize": false
 		},
 		"useRootPaddingAwareAlignments": true,
@@ -630,7 +637,7 @@
 				{ "name": "Large", "slug": "lg", "size": "var(--wp--custom--border--radius)" },
 				{ "name": "Extra Large", "slug": "xl", "size": "calc(1.25 * var(--wp--custom--border--radius))" },
 				{ "name": "2X-Large", "slug": "2-xl", "size": "calc(1.5 * var(--wp--custom--border--radius))" },
-				{ "name": "3X-Large", "slug": "3-xl", "size": "calc(2 * var(--wp--custom--border--radius))" }
+				{ "name": "3X-Large", "slug": "3-xl", "size": "999px" }
 			]
 		},
 		"lightbox": {
@@ -809,6 +816,11 @@
                     "width": "42px"
                 }
             },
+			"core/avatar": {
+				"border": {
+					"radius": "50%"
+				}
+			},
 			"core/site-title": {
 				"typography": {
 					"fontWeight": "var(--wp--custom--typography--font-weight--normal)",
@@ -1523,14 +1535,26 @@
 		},
 		{
 			"name": "page-hero-banner",
-			"title": "Page with Media-Text Hero",
-			"description": "Page w/featured image in Media-Text block",
+			"title": "Page Media & Text Hero",
+			"description": "Page w/featured image in Media & Text block",
 			"postTypes": ["page"]
 		},
 		{
 			"name": "page-featured-image",
 			"title": "Page Featured Image",
 			"description": "Page w/large featured image",
+			"postTypes": ["page"]
+		},
+		{
+			"name": "page-featured-cover-sidebar-right",
+			"title": "Page Cover Image Sidebar Right",
+			"description": "Page w/large cover image and right sidebar",
+			"postTypes": ["page"]
+		},
+		{
+			"name": "page-hero-banner-sidebar-right",
+			"title": "Page Media & Text Hero with Sidebar Right",
+			"description": "Page w/Media & Text block and right sidebar",
 			"postTypes": ["page"]
 		},
 		{
@@ -1577,8 +1601,8 @@
 		},
 		{
 			"name": "single-hero-banner",
-			"title": "Post with Media-Text Hero",
-			"description": "Post w/featured image in Media-Text block",
+			"title": "Post with Media & Text Hero",
+			"description": "Post w/featured image in Media & Text block",
 			"postTypes": ["post"]
 		},
 		{
@@ -1588,8 +1612,20 @@
 			"postTypes": ["post"]
 		},
 		{
+			"name": "single-featured-cover-sidebar-right",
+			"title": "Post with Cover Image and Sidebar Right",
+			"description": "Post w/cover image and right sidebar",
+			"postTypes": ["post"]
+		},
+		{
+			"name": "single-hero-banner-sidebar-right",
+			"title": "Post with Media & Text Hero and Sidebar Right",
+			"description": "Post w/Media & Text hero banner and right sidebar",
+			"postTypes": ["post"]
+		},
+		{
 			"name": "single-featured-image-sidebar-right",
-			"title": "Post with Featured Image and Right Sidebar",
+			"title": "Post with Featured Image and Sidebar Right",
 			"description": "Post w/large featured image and right sidebar",
 			"postTypes": ["post"]
 		},
@@ -1613,7 +1649,7 @@
 		},
 		{
 			"name": "single-sidebar-right",
-			"title": "Post Right Sidebar",
+			"title": "Post Sidebar Right",
 			"description": "Post w/right sidebar",
 			"postTypes": ["post"]
 		}

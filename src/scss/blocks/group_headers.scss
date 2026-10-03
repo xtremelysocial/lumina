@@ -5,31 +5,31 @@ $header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
    STICKY & FLOATING HEADER ENGINE
    ========================================================================== */
 
-// 1. Direct Child Sticky Mechanics (Targeting the template part wrapper)
+// 1. Direct Child Sticky Mechanics (Targeting the header template part wrapper)
 .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
 	position: sticky;
 	z-index: 101;
 	background-color: transparent;
 
 	top: $header-top-offset;
-	margin-top: $header-top-offset; // Aligns resting flow position with sticky top threshold
+	margin-top: $header-top-offset; // Top gap above floating capsule in flow
 
-	// Relative container for glass bounds & bottom clearance
+	// Relative container for glass bounds & bottom clearance on standard pages
 	.site-header {
 		position: relative;
 		top: 0;
-		margin-bottom: $header-top-offset; // Creates equal spacing gap below floating capsule
+		margin-bottom: $header-top-offset; // Equal bottom gap below floating capsule on normal pages
 	}
 
 	// Full-Width Header (.site-header.alignfull): Lock flush to top & bottom edges
 	&:has(.site-header.alignfull), 
-	&.site-header.alignfull,
-	&:has(.block-editor-block-list__block > .site-header) {
+	&.site-header.alignfull {
 		top: 0;
 		margin-top: 0;
 
 		.site-header {
 			margin-bottom: 0;
+			border-radius: 0; 
 		}
 	}
 }
@@ -39,7 +39,8 @@ $header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
 	top: calc(var(--wp-admin--admin-bar--height, 32px) + #{$header-top-offset});
 
 	// Full-Width Header (.site-header.alignfull) under Admin Bar
-	&:has(.site-header.alignfull), &.site-header.alignfull {
+	&:has(.site-header.alignfull), 
+	&.site-header.alignfull {
 		top: var(--wp-admin--admin-bar--height, 32px);
 	}
 }
@@ -54,5 +55,36 @@ $header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
 
 	> * {
 		gap: var(--wp--preset--spacing--50, 32px);
+	}
+}
+
+/* ==========================================================================
+   FLOATING HEADER COVER OVERLAY ENGINE
+   Pulls hero Cover blocks up under floating headers while leaving standard pages in flow
+   ========================================================================== */
+
+// 1. Matches strictly when a Cover block is the FIRST element in <main>
+.wp-site-blocks:has(
+	main > .wp-block-cover.alignfull:first-child,
+	main > :first-child .wp-block-cover.alignfull:first-child,
+	main > :first-child > :first-child .wp-block-cover.alignfull:first-child
+) {
+
+	// 2. Targets the direct header Template Part wrapper inside .wp-site-blocks
+	> :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
+
+		// 3. Executes ONLY on floating/boxed headers (bypasses flush .site-header.alignfull)
+		&:not(:has(.site-header.alignfull)):not(.site-header.alignfull) {
+			margin-bottom: calc(-1 * (var(--wp--custom--header--height, 77px) + #{$header-top-offset}));
+
+			// 4. Applies top padding to the hero Cover block for clearance
+			~ main :is(
+				> .wp-block-cover.alignfull:first-child,
+				> :first-child .wp-block-cover.alignfull:first-child,
+				> :first-child > :first-child .wp-block-cover.alignfull:first-child
+			) {
+				padding-top: calc(var(--wp--custom--header--height, 77px) + #{$header-top-offset}) !important;
+			}
+		}
 	}
 }

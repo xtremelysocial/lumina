@@ -13,7 +13,7 @@
 	
 	$(document).ready(function() {
 
-		// 1. Helper to read CSS duration tokens from :root into milliseconds[span_0](start_span)[span_0](end_span)
+		// 1. Helper to read CSS duration tokens from :root into milliseconds
 		function getCssDuration(varName, fallbackMs) {
 			var val = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
 			if (!val) return fallbackMs;
@@ -22,13 +22,13 @@
 			return fallbackMs;
 		}
 
-		// 2. Sine ease-in-out: Immediate motion response on frame 1 + soft landing[span_1](start_span)[span_1](end_span)
+		// 2. Sine ease-in-out: Immediate motion response on frame 1 + soft landing
 		$.easing.luminaSmooth = function(p) {
 			return 0.5 - Math.cos(p * Math.PI) / 2;
 		};
 
 		/*
-		 * Calculate fixed & floating header heights & update CSS variables[span_2](start_span)[span_2](end_span)
+		 * Calculate fixed & floating header heights & update CSS variables
 		 */
 		var topOffset = 0;
 
@@ -44,15 +44,15 @@
 			if (headerEl.length > 0) { 
 				physicalHeight = headerEl.outerHeight();
 
-				// STRICT CHECK: Only check if the actual INNER header card is full-width (.alignfull)[span_3](start_span)[span_3](end_span)
+				// STRICT CHECK: Only check if the actual INNER header card is full-width (.alignfull)
 				const isFlushHeader = headerEl.hasClass('alignfull');
 
 				if (isFlushHeader) {
-					// Flush header sits above hero: Subtract height from Cover block[span_4](start_span)[span_4](end_span)
+					// Flush header sits above hero: Subtract height from Cover block
 					headerOffsetForCover = physicalHeight;
 					topOffset = physicalHeight + adminBarHeight;
 				} else {
-					// Floating header overlays hero: Cover starts at Y=0 and needs FULL 100vh[span_5](start_span)[span_5](end_span)
+					// Floating header overlays hero: Cover starts at Y=0 and needs FULL 100vh
 					headerOffsetForCover = 0;
 
 					var computedTop = getComputedStyle(wrapper[0]).getPropertyValue('--header-top-offset').trim();
@@ -70,7 +70,7 @@
 			document.body.style.setProperty('--wp--custom--header--offset', headerOffsetForCover + 'px');
 		}
 
-		// Run once on load and update on window resize / orientation change[span_6](start_span)[span_6](end_span)
+		// Run once on load and update on window resize / orientation change
 		updateHeaderHeight();
 		$(window).on('resize orientationchange', updateHeaderHeight);
 		
@@ -80,7 +80,7 @@
 			.not('[data-toggle="tab"]')
 			.not('[data-toggle="collapse"]');
 
-		// When clicked, smoothly scroll to the element[span_7](start_span)[span_7](end_span)
+		// When clicked, smoothly scroll to the element
 		links.click(function(event) {
 			if (
 				location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
@@ -94,13 +94,13 @@
 
 					var destination = Math.max(0, target.offset().top - topOffset);
 
-					// Respect OS-level reduced motion preference (instant jump)[span_8](start_span)[span_8](end_span)
+					// Respect OS-level reduced motion preference (instant jump)
 					if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 						window.scrollTo(0, destination);
 						return;
 					}
 
-					// Floor starts at duration--medium (~500ms), ceiling allowed up to 1800ms[span_9](start_span)[span_9](end_span)
+					// Floor starts at duration--medium (~500ms), ceiling allowed up to 1800ms
 					var minDuration = getCssDuration('--wp--custom--animation--duration--medium', 500);
 					var maxDuration = 1800;
 

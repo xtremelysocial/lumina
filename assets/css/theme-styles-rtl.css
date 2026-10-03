@@ -511,6 +511,101 @@ main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
 }
 
 /* ==========================================================================
+   LUMINA ENGINE: Token-Driven Glass & Specular Overlay Engine
+   ========================================================================== */
+/* --------------------------------------------------------------------------
+   01. GLASS CONTAINERS (Groups, Columns, Covers, Headers)
+   -------------------------------------------------------------------------- */
+[class*=is-style-glass]:not(.wp-block-button) {
+  position: relative;
+  isolation: isolate;
+}
+[class*=is-style-glass]:not(.wp-block-button) > * {
+  position: relative;
+  z-index: 2;
+}
+[class*=is-style-glass]:not(.wp-block-button) {
+  border: none !important;
+  box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--wp--preset--color--base) var(--wp--custom--color--opacity--subtle, 12%), transparent);
+  background: transparent;
+}
+[class*=is-style-glass]:not(.wp-block-button)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--wp--custom--color--opacity--tint, currentColor) var(--wp--custom--color--opacity--faint, 6%), transparent);
+  backdrop-filter: var(--wp--custom--color--opacity--blur, blur(6px));
+  pointer-events: none;
+}
+[class*=is-style-glass]:not(.wp-block-button)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset -1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent), inset 1px -1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--faint, 6%), transparent);
+}
+
+.is-style-glass-frosted:not(.wp-block-button)::before {
+  background: color-mix(in srgb, currentColor var(--wp--custom--color--opacity--subtle, 12%), transparent);
+  backdrop-filter: var(--wp--custom--color--opacity--blur-dense, blur(10px));
+}
+
+.is-style-glass-dark:not(.wp-block-button)::before {
+  background: color-mix(in srgb, black var(--wp--custom--color--opacity--faint, 6%), transparent);
+}
+
+/* --------------------------------------------------------------------------
+   02. GLASS BUTTONS (.wp-block-button) - STATIC OPTICAL OVERLAY ONLY
+   -------------------------------------------------------------------------- */
+[class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: none !important;
+}
+[class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
+  background-color: color-mix(in srgb, var(--wp--preset--color--base) var(--wp--custom--color--opacity--faint, 6%), transparent);
+}
+[class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link):not(.has-background):not(.has-text-color) {
+  color: inherit;
+}
+[class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link).has-background {
+  background-image: linear-gradient(color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent), color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent));
+}
+[class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link).has-background:not(.has-text-color) {
+  color: var(--wp--preset--color--off-white);
+}
+[class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(-180deg, color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent) 0%, transparent 100%);
+  box-shadow: inset -1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--emphasis, 20%), transparent), inset 1px -1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent);
+}
+[class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link) {
+  /* Zero CSS :hover or :focus scaling here!
+     All hover motion is handled strictly by theme-physics.js */
+}
+
+.wp-block-button.is-style-glass-frosted > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
+  background-color: color-mix(in srgb, var(--wp--preset--color--base) var(--wp--custom--color--opacity--emphasis, 20%), transparent);
+}
+
+.wp-block-button.is-style-glass-dark > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
+  background-color: color-mix(in srgb, black var(--wp--custom--color--opacity--subtle, 12%), transparent);
+}
+.wp-block-button.is-style-glass-dark > :is(.wp-element-button, .wp-block-button__link).has-background {
+  background-image: linear-gradient(color-mix(in srgb, black var(--wp--custom--color--opacity--emphasis, 20%), transparent), color-mix(in srgb, black var(--wp--custom--color--opacity--emphasis, 20%), transparent));
+}
+
+/* ==========================================================================
    GLOBAL: Base Image Aspect Ratios
    ========================================================================== */
 img {

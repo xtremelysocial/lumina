@@ -1,4 +1,4 @@
-<!-- wp:template-part {"tagName":"header","slug":"header","lock":{"move":true,"remove":true}} /-->
+<!-- wp:template-part {"slug":"header","lock":{"move":true,"remove":true}} /-->
 
 <!-- wp:group {"metadata":{"name":"Author Title \u0026 Profile"},"align":"full","className":"entry-header alignfull is-style-no-padding","layout":{"type":"default"},"lock":{"move":true,"remove":true}} -->
 <div class="wp-block-group alignfull entry-header is-style-no-padding">
@@ -9,11 +9,17 @@
   </div>
 <!-- /wp:group -->
 
-<!-- wp:template-part {"slug":"author-bio","lock":{"move":true,"remove":true}} /--></div>
+<!-- wp:template-part {"slug":"author-bio","lock":{"move":true,"remove":true}} /-->
+
+</div>
 <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"main","lock":{"move":true,"remove":true},"metadata":{"name":"Main"},"className":"page-content"} -->
-<main id="page-content" class="wp-block-group page-content"><!-- wp:template-part {"slug":"query","lock":{"move":true,"remove":true}} /--></main>
+<!-- wp:group {"tagName":"main","anchor":"page-content","metadata":{"name":"Main"},"className":"page-content is-style-default","lock":{"move":true,"remove":true}} -->
+<main class="wp-block-group page-content is-style-default" id="page-content">
+
+<!-- wp:template-part {"slug":"query","lock":{"move":true,"remove":true}} /-->
+
+</main>
 <!-- /wp:group -->
 
-<!-- wp:template-part {"tagName":"footer","slug":"footer","lock":{"move":true,"remove":true}} /-->
+<!-- wp:template-part {"slug":"footer","lock":{"move":true,"remove":true}} /-->

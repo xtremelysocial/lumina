@@ -1,0 +1,180 @@
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/scss/blocks/navigation_mega-menu.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*-----------------------------------------------------------------------------
+# GLASS MEGA MENU (.is-style-mega-menu) - Full Header Anchor
+-----------------------------------------------------------------------------*/
+/* 1. Global Positioning Anchor (Must be .site-header) */
+.site-header {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* 2. Desktop Navigation Scope */
+.site-header .wp-block-navigation.is-style-mega-menu {
+  position: static !important;
+  /* UN-TRAP: Neutralize ALL intermediate wrappers so the panel anchors strictly to .site-header */
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__responsive-container,
+.wp-block-navigation__responsive-close,
+.wp-block-navigation__responsive-dialog,
+.wp-block-navigation__responsive-container-content,
+.wp-block-navigation__container,
+.wp-block-page-list,
+.wp-block-navigation-item,
+.wp-block-pages-list__item,
+.has-child) {
+  position: static !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu {
+  /* Stretch list items to fill header height */
+}
+.site-header .wp-block-navigation.is-style-mega-menu .wp-block-navigation__container,
+.site-header .wp-block-navigation.is-style-mega-menu .wp-block-page-list {
+  display: flex !important;
+  align-items: stretch !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu .wp-block-navigation__container > :is(.wp-block-navigation-item, .wp-block-pages-list__item),
+.site-header .wp-block-navigation.is-style-mega-menu .wp-block-page-list > :is(.wp-block-navigation-item, .wp-block-pages-list__item) {
+  display: flex !important;
+  align-items: stretch !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu .wp-block-navigation__container > :is(.wp-block-navigation-item, .wp-block-pages-list__item) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
+.site-header .wp-block-navigation.is-style-mega-menu .wp-block-page-list > :is(.wp-block-navigation-item, .wp-block-pages-list__item) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) {
+  display: flex !important;
+  align-items: center !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu {
+  /* -------------------------------------------------------------------------
+     LEVEL 1 MEGA MENU PANEL (Anchors cleanly to .site-header)
+     ------------------------------------------------------------------------- */
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) {
+  position: absolute !important;
+  top: 100% !important; /* Anchors directly to bottom edge of .site-header */
+  right: 0 !important;
+  left: 0 !important;
+  width: calc(100% - 2rem) !important;
+  max-width: var(--wp--style--global--wide-size, 1200px) !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+  z-index: 1000 !important;
+  /* Multi-Column Grid Layout */
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: var(--wp--preset--spacing--40, 1.5rem) !important;
+  align-items: start !important;
+  /* Glass Surface Styling */
+  background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base, #ffffff)) 85%, transparent) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent)) !important;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16) !important;
+  border-radius: var(--wp--preset--border-radius--lg, 16px) !important;
+  padding: var(--wp--preset--spacing--40, 1.5rem) !important;
+  /* Clean transitions */
+  transition: opacity 0.15s ease, visibility 0.15s ease !important;
+  /* ---------------------------------------------------------------------
+     A. COLUMN HEADERS (Items WITH children: e.g. "Simple Test Page", "Demos")
+     --------------------------------------------------------------------- */
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) > .wp-block-navigation-submenu__toggle,
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) > .wp-block-navigation__submenu-icon {
+  display: none !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) {
+  /* Column Header Title Link */
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) {
+  font-weight: var(--wp--custom--typography--font-weight--semibold, 600) !important;
+  font-size: 0.95rem !important;
+  padding: 0 0 0.5rem 0 !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  border-bottom: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent)) !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) {
+  /* LEVEL 2 SUBMENUS (Vertical child lists) */
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) {
+  position: static !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) :is(.wp-block-navigation-item, .wp-block-pages-list__item) {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) :is(.wp-block-navigation-item, .wp-block-pages-list__item)::after {
+  display: none !important;
+  content: none !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) :is(.wp-block-navigation-item, .wp-block-pages-list__item) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) {
+  font-weight: 400 !important;
+  font-size: 0.875rem !important;
+  padding: 0.35rem 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  opacity: 0.85;
+  transition: color 0.15s ease, opacity 0.15s ease !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) :is(.wp-block-navigation-item, .wp-block-pages-list__item) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover, .site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) :is(.wp-block-navigation-item, .wp-block-pages-list__item) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):focus, .site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.has-child, .wp-block-navigation-submenu) > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) :is(.wp-block-navigation-item, .wp-block-pages-list__item) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):active {
+  opacity: 1 !important;
+  color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt)) !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) {
+  /* ---------------------------------------------------------------------
+     B. STANDALONE ITEMS WITHOUT CHILDREN
+     --------------------------------------------------------------------- */
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.has-child):not(.wp-block-navigation-submenu) {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.has-child):not(.wp-block-navigation-submenu)::after {
+  display: none !important;
+  content: none !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.has-child):not(.wp-block-navigation-submenu) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) {
+  font-weight: 400 !important;
+  font-size: 0.875rem !important;
+  padding: 0.35rem 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  opacity: 0.85;
+  border-bottom: none !important;
+  transition: color 0.15s ease, opacity 0.15s ease !important;
+}
+.site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.has-child):not(.wp-block-navigation-submenu) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover, .site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.has-child):not(.wp-block-navigation-submenu) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):focus, .site-header .wp-block-navigation.is-style-mega-menu :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) > :is(.wp-block-navigation-item, .wp-block-pages-list__item):not(.has-child):not(.wp-block-navigation-submenu) > :is(a, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):active {
+  opacity: 1 !important;
+  color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt)) !important;
+}

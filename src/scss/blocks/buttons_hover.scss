@@ -2,8 +2,14 @@
    LUMINA: Master Button Hovers (Parent-Gated)
    ========================================================================== */
 
+// Glass style buttons (Completely handled by static glass styles + JS physics)
+$glass-buttons: ".is-style-glass, .is-style-glass-frosted, .is-style-glass-dark";
+
 // Outline style buttons
 $outline-buttons: ".is-style-outline, [class*='is-style-button-outline']";
+
+// Combined exclusion group for solid hover tints
+$non-solid-buttons: "#{$outline-buttons}, #{$glass-buttons}";
 
 // Gradient style buttons
 $gradient-classes: "[class*='-gradient-background']";
@@ -17,7 +23,7 @@ $button-targets: ".wp-block-button__link, .wp-element-button, input[type='submit
 }
 
 /* 2. Hover on Solid Buttons: Apply linear gradient to background */
-.wp-block-button:not(#{$outline-buttons}) {
+.wp-block-button:not(#{$non-solid-buttons}) {
 	:is(#{$button-targets}):not(#{$gradient-classes}) {
 		&:hover,
 		&:active {	
@@ -34,17 +40,14 @@ $button-targets: ".wp-block-button__link, .wp-element-button, input[type='submit
 	&:hover,
 	&:active {
 		filter: brightness(1.12) saturate(1.05);
-// 		filter: brightness(0.88) contrast(1.05);
 	}
 }
 
-/* 4. Hover on Outline Buttons: Simply opacity */
+/* 4. Hover on Outline Buttons: Simple opacity (EXCLUDES GLASS) */
 .wp-block-button:is(#{$outline-buttons}) {
 	:is(#{$button-targets}) {
 		&:hover,
 		&:active {
-// 			background-image: none;
-// 			filter: none;
 			opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
 		}
 	}

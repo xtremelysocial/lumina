@@ -5,6 +5,12 @@
 // WordPress breakpoints
 @use "@wordpress/base-styles/breakpoints";
 
+// Set default sidebar width
+// .wp-block-column.sidebar-column:not([style*="flex-basis"]) {
+// 	flex-basis: var(--wp--custom--sidebar--width, 350px);
+// 	flex-grow: 0;
+// }
+
 /* Padding for colored backgrounds on columns and individual column */
 .wp-block-columns.has-background { 
 	padding: var(--wp--preset--spacing--60);

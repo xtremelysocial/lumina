@@ -1,13 +1,15 @@
-<!-- wp:template-part {"tagName":"header","slug":"header","lock":{"move":true,"remove":true}} /-->
+<!-- wp:template-part {"slug":"header","lock":{"move":true,"remove":true}} /-->
+
+<!-- wp:group {"tagName":"main","anchor":"page-content","metadata":{"name":"Main"},"className":"page-content is-style-default","lock":{"move":true,"remove":true}} -->
+<main class="wp-block-group page-content is-style-default" id="page-content">
 
 <!-- wp:template-part {"slug":"content-home-top","lock":{"move":true,"remove":true}} /-->
 
 <!-- wp:pattern {"slug":"lumina/columns-recent-posts-3-columns"} /-->
 
-<!-- wp:group {"tagName":"main","metadata":{"name":"Main"},"className":"page-content is-style-default","layout":{"type":"constrained"},"lock":{"move":true,"remove":true}} -->
-<main id="page-content" class="wp-block-group page-content is-style-default">
+<!-- wp:post-content {"align":"full","layout":{"type":"constrained"},"lock":{"move":true,"remove":true}} /-->
 
-<!-- wp:post-content {"align":"full","layout":{"type":"constrained"},"lock":{"move":true,"remove":true}} /--></main>
+</main>
 <!-- /wp:group -->
 
-<!-- wp:template-part {"tagName":"footer","slug":"footer","lock":{"move":true,"remove":true}} /-->
+<!-- wp:template-part {"slug":"footer","lock":{"move":true,"remove":true}} /-->

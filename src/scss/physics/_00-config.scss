@@ -27,11 +27,11 @@ $lumina-block-registry: (
 	// --------------------------------------------------------------------------
 	(
 		block:   '*', 
-		is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover',
-// 		is:      '.has-background, .is-style-rounded-border, .is-style-glass, .is-style-glass-frosted, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover',
+// 		is:      '.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover',
+		is:      '.has-background, .is-style-rounded-border, .is-style-glass, .is-style-glass-frosted, .is-style-thick-rounded-border, .is-style-rounded-corners, .wp-block-cover',
 		has:     'a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button',
-		exclude: '.alignfull, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *',
-// 		exclude: '.alignfull, .wp-block-button, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *',
+// 		exclude: '.alignfull, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *',
+		exclude: '.alignfull, .wp-block-button, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *',
 		trigger: 'self', 
 		target:  'self', 
 		role:    'card'
@@ -118,7 +118,7 @@ $lumina-block-registry: (
 	// BUTTONS
 	// --------------------------------------------------------------------------
 
-	// Buttons
+	// Button links
 	(
 		block:   '*', 
 		is:      'none',
@@ -133,6 +133,16 @@ $lumina-block-registry: (
 		is:      'none',
 		has:     'none', 
 		trigger: '.wp-block-button__link',
+		target:  'self',
+		role:    'button'
+	),
+	
+	// Glass buttons
+	(
+		block:   '*', 
+		is:      '.is-style-glass, .is-style-glass-frosted',
+		has:     'none', 
+		trigger: '.wp-element-button',
 		target:  'self',
 		role:    'button'
 	),

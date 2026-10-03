@@ -16,12 +16,13 @@
   top: 0;
   margin-bottom: var(--wp--preset--spacing--40, 24px);
 }
-.wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.site-header.alignfull), .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header).site-header.alignfull, .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.block-editor-block-list__block > .site-header) {
+.wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.site-header.alignfull), .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header).site-header.alignfull {
   top: 0;
   margin-top: 0;
 }
-.wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.site-header.alignfull) .site-header, .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header).site-header.alignfull .site-header, .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.block-editor-block-list__block > .site-header) .site-header {
+.wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):has(.site-header.alignfull) .site-header, .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header).site-header.alignfull .site-header {
   margin-bottom: 0;
+  border-radius: 0;
 }
 
 .admin-bar .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
@@ -41,4 +42,14 @@
 }
 .site-header.alignwide > * {
   gap: var(--wp--preset--spacing--50, 32px);
+}
+
+/* ==========================================================================
+   FLOATING HEADER COVER OVERLAY ENGINE
+   Pulls hero Cover blocks up under floating headers while leaving standard pages in flow
+   ========================================================================== */
+.wp-site-blocks:has(main > .wp-block-cover.alignfull:first-child,
+main > :first-child .wp-block-cover.alignfull:first-child,
+main > :first-child > :first-child .wp-block-cover.alignfull:first-child) > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header):not(:has(.site-header.alignfull)):not(.site-header.alignfull) {
+  margin-bottom: calc(-1 * (var(--wp--custom--header--height, 77px) + var(--wp--preset--spacing--40, 24px)));
 }

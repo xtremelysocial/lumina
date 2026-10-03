@@ -29,15 +29,6 @@
 				"navigation": {
 					"highlight": 		"var(--wp--preset--color--highlight)"
 				},
-				"border": 				"color-mix(in srgb, currentColor 18%, transparent)",
-				"divider": 				"color-mix(in srgb, currentColor 20%, transparent)",
-				"outline": 				"color-mix(in srgb, currentColor 20%, transparent)",				
-				"opacity": {
-					"tint": 			"color-mix(in srgb, currentColor 8%, transparent)",
-					"tint-dense": 		"color-mix(in srgb, currentColor 18%, transparent)",
-					"blur": 			"16px",
-					"blur-dense":		"28px"
-				},
 				"shadow": {
 					"natural": "0 2px 4px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.30)",
 					"deep":    "0 3px 6px rgba(0, 0, 0, 0.30), 0 8px 18px rgba(0, 0, 0, 0.40)",
