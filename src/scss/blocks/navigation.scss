@@ -7,10 +7,10 @@
 // Shared link target selector covering standard links, buttons, and page-list links
 $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link)";
 
-/* Reduce row-gap on Nav menus */
-.wp-block-navigation  {
-	row-gap: var(--wp--preset--spacing--30);
-}
+///* Reduce row-gap on Nav menus */
+// .wp-block-navigation  {
+// 	row-gap: var(--wp--preset--spacing--30);
+// }
 
 /*-----------------------------------------------------------------------------
 # 01. BASE CONTAINER & SUBMENU DROPDOWN CARDS
