@@ -87,15 +87,18 @@ ul.has-background:not(.wp-block-navigation__container):not(.wp-block-navigation-
 .wp-element-caption {
   text-align: center;
 }
-
 .wp-element-caption a {
   text-decoration: none;
+}
+
+figure {
+  margin-bottom: 0;
 }
 
 /* Style raw HTML quotes like the block quotes */
 /* Target strictly naked, legacy blockquotes—ignore both real quotes and pullquotes */
 :where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
-  border-right: 6px solid var(--wp--preset--color--highlight--alt);
+  border-right: 6px solid var(--wp--preset--color--primary);
 }
 
 /*-----------------------------------------------------------------------------
@@ -317,148 +320,69 @@ body .is-layout-constrained > .alignright {
 /*------------------------------------------------------------------------------
 # Margins (Vertical spacing)
 ------------------------------------------------------------------------------*/
-/* 
- * Let content before main handle it's own top margin (e.g. page titles, 
- * featured images 
- */
-/* Don't add top margin on column blocks in templates with sidebars */
-/* FLAT-BLOCKS CURRENT MARGIN CSS */
-/* Don't add top margin to full-width blocks before main */
-:root :where(.wp-site-blocks) > *.alignfull, :root :where(.wp-site-blocks) > *.wp-block-template-part, :root :where(.wp-site-blocks) > *#page-content {
-  margin-block-start: 0;
-}
-
-/* Add top margin to main unless its the post content or a featured image */
-main > :first-child:not(.wp-block-post-content):not(.wp-block-post-featured-image):not(.wp-block-cover):not(.wp-block-template-part):not(.wp-block-image):not(.entry-header-wrapper.has-background):not(.content-home-top) {
-  margin-block-start: var(--wp--style--block-gap);
-}
-
-/* Push top margin down on Groups and Columns that have template parts in them */
-:root :where(.is-layout-flow) > .wp-block-template-part > *,
-:root :where(.is-layout-constrained) > .wp-block-template-part > * {
-  margin-block-start: var(--wp--style--block-gap);
-}
-
-:root :where(.is-layout-flow) > .wp-block-template-part > :first-child:not(.wp-block-comments):not(.wp-block-query),
-:root :where(.is-layout-constrained) > .wp-block-template-part > :first-child:not(.wp-block-comments):not(.wp-block-query) {
-  margin-block-start: 0;
-}
-
-/* But don't put any top margin on the individual columns */
-:root :where(.wp-block-columns-is-layout-flow) > .wp-block-column,
-:root :where(.wp-block-columns-is-layout-constrained) > .wp-block-column {
+/* Don't allow top-margin on main or footers */
+:where(.wp-site-blocks) > *,
+.wp-block-post-content {
   margin-block-start: 0;
 }
 
 /* 
- * Push top margin on Post Content down to the block level so users can control 
- * it by adjusting margin on the block itself.
+ * Instead, push top margin down to first-child of main, if needed.
+ * .e.g Page / post title, non-full width images
  */
-.wp-site-blocks .wp-block-post-content {
-  margin-block-start: 0;
-}
-
-:root :where(.wp-block-post-content) > :first-child:not(.alignfull) {
-  margin-block-start: var(--wp--style--block-gap);
-}
-
-/* 
- * But don't add it when the Template has columns (i.e. there is a Sidebar) and 
- * the Post Content is the first thing in the column (i.e. No Featured Image before 
- * it)*/
-main > .wp-block-columns > .wp-block-column > :first-child.wp-block-post-content > :first-child {
-  margin-block-start: 0;
-}
-
-/* Add bottom margin to main unless its the post content, then add it to that */
-main > :last-child:not(.wp-block-post-content):not(:empty),
-:root :where(.is-layout-flow).wp-block-post-content > :last-child:not(.alignfull),
-:root :where(.is-layout-constrained).wp-block-post-content > :last-child:not(.alignfull) {
-  margin-block-end: var(--wp--style--block-gap);
-}
-
-/**
- * Breakpoints & Media Queries
- */
-/*-----------------------------------------------------------------------------
-# Adjust Margins - Macro & Micro Vertical Spacing
-# Larger vertical margin between blocks, less between headings and contents, 
-# etc.
------------------------------------------------------------------------------*/
-p, .wp-block-paragraph {
-  margin-block-end: 0;
-}
-
-h1, h2, h3, h4, h5, h6,
-.wp-block-heading {
-  margin-block-end: 0;
-}
-
-:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > .wp-block-template-part > * {
-  margin-block-start: var(--wp--preset--spacing--30);
-}
-
-:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > .wp-block-template-part > :first-child {
-  margin-block-start: 0;
-}
-
-:root :where(.wp-block-post-content) > * + * {
+:root main > :first-child:not(.alignfull.wp-block-cover,
+.alignfull.wp-block-image,
+.alignfull.wp-block-post-featured-image,
+.alignfull.has-background,
+.wp-block-post-content,
+.wp-block-template-part),
+:root main > :first-child.wp-block-template-part > :first-child:not(.alignfull.wp-block-cover,
+.alignfull.wp-block-image,
+.alignfull.wp-block-post-featured-image,
+.alignfull.has-background,
+.wp-block-post-content,
+.wp-block-template-part),
+.wp-block-post-content > :first-child:not(.alignfull.wp-block-cover,
+.alignfull.wp-block-image,
+.alignfull.wp-block-post-featured-image,
+.alignfull.has-background,
+.wp-block-post-content,
+.wp-block-template-part) {
   margin-block-start: var(--wp--preset--spacing--50);
 }
 
-:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > :where(h1, h2, h3, h4, h5, h6,
-.wp-block-heading,
-.wp-block-site-title,
-.wp-block-post-title,
-.wp-block-query-title,
-.wp-block-site-tagline):not(.is-style-separator) + :where(p, .wp-block-paragraph,
-ul, ol, .wp-block-list,
-blockquote, .wp-block-quote,
-.wp-block-template-part,
-.wp-block-group:has(> .wp-block-template-part)) {
-  margin-block-start: var(--wp--preset--spacing--30);
-}
-:root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) > :where(p, .wp-block-paragraph,
-ul, ol, .wp-block-list,
-blockquote, .wp-block-quote,
-.wp-block-template-part,
-.wp-block-group:has(> .wp-block-template-part)) + :where(p, .wp-block-paragraph,
-ul, ol, .wp-block-list,
-blockquote, .wp-block-quote,
-.wp-block-template-part,
-.wp-block-group:has(> .wp-block-template-part)) {
-  margin-block-start: var(--wp--preset--spacing--30);
-}
-
-:where(ul, ol):not(.wp-block-navigation,
-.wp-block-navigation-submenu,
-.wp-block-navigation__submenu-container,
-.wp-block-page-list,
-.wp-block-social-links,
-.wp-block-post-template) > li + li {
-  margin-block-start: calc(0.5 * var(--wp--preset--spacing--30));
-}
-:where(ul, ol):not(.wp-block-navigation,
-.wp-block-navigation-submenu,
-.wp-block-navigation__submenu-container,
-.wp-block-page-list,
-.wp-block-social-links,
-.wp-block-post-template) > li > :where(ul, ol) {
-  margin-block-start: var(--wp--preset--spacing--30);
-}
-
-.entry-subtitle {
-  margin-block-start: var(--wp--preset--spacing--30);
-  margin-block-end: 0;
-}
-
-.main-content.wp-block-columns .entry-header.wp-block-group {
-  padding-top: 0 !important;
-}
-
-main > :last-child:not(.wp-block-post-content):not(:empty),
-main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
+/* 
+ * Also add bottom margin to last-child of main, if needed.
+ * e.g. Post meta, sharing, comments, etc.
+ */
+:root main > :last-child:not(.alignfull.wp-block-cover,
+.alignfull.wp-block-image,
+.alignfull.wp-block-post-featured-image,
+.alignfull.has-background,
+.wp-block-post-content,
+.wp-block-template-part),
+:root main > :last-child.wp-block-template-part > :last-child:not(.alignfull.wp-block-cover,
+.alignfull.wp-block-image,
+.alignfull.wp-block-post-featured-image,
+.alignfull.has-background,
+.wp-block-post-content,
+.wp-block-template-part),
+.wp-block-post-content > :last-child:not(.alignfull.wp-block-cover,
+.alignfull.wp-block-image,
+.alignfull.wp-block-post-featured-image,
+.alignfull.has-background,
+.wp-block-post-content,
+.wp-block-template-part) {
   margin-block-end: var(--wp--preset--spacing--50);
+}
+
+/* 
+ * Push down WordPress top-margin suppression on template part contents.
+ * e.g. Headings within template parts in footer template parts
+ */
+:root :where(.is-layout-flow) > .wp-block-template-part > :first-child,
+:root :where(.is-layout-constrained) > .wp-block-template-part > :first-child {
+  margin-block-start: 0;
 }
 
 /*-----------------------------------------------------------------------------
@@ -743,7 +667,7 @@ figure > a:active,
 }
 @keyframes luminaPanZoomSlimLoop {
   0% {
-    transform: translate3d(calc(-1*(-1 * 4.5% * var(--wp--custom--animation--motion--pan-intensity, 1))), calc(-1 * 7.2% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.12 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
+    transform: translate3d(calc(-1*(-1 * 4.5% * var(--wp--custom--animation--motion--pan-intensity, 1))), calc(-1 * 7.2% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.18 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
   }
   100% {
     transform: translate3d(calc(-1*(4.5% * var(--wp--custom--animation--motion--pan-intensity, 1))), calc(7.2% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.26 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
@@ -769,9 +693,11 @@ figure > a:active,
   overflow: hidden;
   border-radius: var(--wp--preset--border-radius--lg, 16px);
 }
-.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull,
+.wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull, .alignfull > .wp-block-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
 .wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull,
-.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull {
+.alignfull > .wp-block-post-featured-image:is(.is-style-pan-zoom, .is-style-pan-zoom-hover),
+.wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover).alignfull,
+.alignfull > .wp-block-cover:is(.is-style-pan-zoom, .is-style-pan-zoom-hover) {
   border: none !important;
   border-radius: 0 !important;
 }
@@ -835,7 +761,6 @@ figure > a:active,
 .is-style-pan-zoom-hover img,
 .is-style-pan-zoom-hover .wp-block-cover__image-background {
   animation-play-state: paused !important;
-  transform-style: preserve-3d;
   backface-visibility: hidden;
 }
 .is-style-pan-zoom-hover {
@@ -906,7 +831,7 @@ figure > a:active,
 }
 
 /* ==========================================================================
-   SHALLOW VIEWPORT MOTION OVERRIDE (16:4.5 Slim & 21:9 Ultra-Wide)
+   SHALLOW VIEWPORT DYNAMIC SCALE FLOOR ENGINE
    ========================================================================== */
 :is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is([style*="16/4.5"],
 [style*="16 / 4.5"],
@@ -917,7 +842,7 @@ figure > a:active,
 :has([style*="21/9"]),
 :has([style*="21 / 9"]),
 :has(.size-cropped-slim),
-:has(.size-cropped-ultrawide)) {
+:has(.size-cropped-ultrawide)):not(.alignfull):not(.alignfull > *) {
   border-radius: var(--wp--preset--border-radius--sm, 8px);
 }
 :is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is([style*="16/4.5"],
@@ -929,8 +854,7 @@ figure > a:active,
 :has([style*="21/9"]),
 :has([style*="21 / 9"]),
 :has(.size-cropped-slim),
-:has(.size-cropped-ultrawide)) img,
-:is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is([style*="16/4.5"],
+:has(.size-cropped-ultrawide)) img, :is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is([style*="16/4.5"],
 [style*="16 / 4.5"],
 :has([style*="16/4.5"]),
 :has([style*="16 / 4.5"]),
@@ -942,7 +866,7 @@ figure > a:active,
 :has(.size-cropped-ultrawide)) .wp-block-cover__image-background {
   animation-name: luminaPanZoomSlimLoop;
   animation-duration: calc(6.2s * var(--wp--custom--animation--motion--duration-factor, 1));
-  transform: translate3d(calc(-1*(-1 * 4.5% * var(--wp--custom--animation--motion--pan-intensity, 1))), calc(-1 * 7.2% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + (1.12 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1)));
+  transform: translate3d(calc(-1*(-1 * 4.5% * var(--wp--custom--animation--motion--pan-intensity, 1))), calc(-1 * 7.2% * var(--wp--custom--animation--motion--pan-intensity, 1)), 0) scale(calc(1 + max(2 * 7.2% * var(--wp--custom--animation--motion--pan-intensity, 1) + 0.02, (1.18 - 1) * var(--wp--custom--animation--motion--zoom-intensity, 1))));
 }
 
 /* ==========================================================================
@@ -1286,6 +1210,9 @@ ol.is-style-list-dividers,
   }
 }
 
+/**
+ * Breakpoints & Media Queries
+ */
 /* =========================================================================
 	Content Layout Structural Stabilization
    ========================================================================= */

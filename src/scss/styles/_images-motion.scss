@@ -9,13 +9,13 @@ $pan-scale-start:           1.15 !default;  // Resting camera zoom
 $pan-scale-end:             1.32 !default;  // Max camera push-in depth
 $pan-shift-x:               3.5% !default;  // Horizontal dolly travel
 $pan-shift-y:               2.5% !default;  // Vertical jib travel
-$pan-light-start:           1.00 !default;  // Base light
-$pan-light-end:             1.10 !default;  // Subtle highlight as camera moves in
 
 // 2. Experimental Light Engine Toggle
 // Set to true to test CSS brightness filter (may cause WebKit paint leaks/jerks over time)
 // Set to false for 0-paint pure GPU transform engine
 $pan-use-filter-brightness: false !default;
+$pan-light-start:           1.00 !default;  // Base light
+$pan-light-end:             1.10 !default;  // Subtle highlight as camera moves in
 
 // 3. Mobile Motion Variables (<= 781px)
 $pan-mobile-duration:       6.6s !default; // 5.5s !default; 
@@ -25,7 +25,7 @@ $pan-mobile-scale-100:      1.28 !default;
 
 // 4. Slim & Ultra-Wide Motion Variables (Shallow Viewports)
 $pan-slim-duration:         6.2s !default; 
-$pan-slim-scale-start:      1.12 !default; 
+$pan-slim-scale-start:      1.18 !default; //1.12 !default; 
 $pan-slim-scale-end:        1.26 !default; 
 $pan-slim-shift-x:          4.5% !default; 
 $pan-slim-shift-y:          7.2% !default; 
@@ -130,7 +130,9 @@ $var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 	overflow: hidden;
 	border-radius: var(--wp--preset--border-radius--lg, 16px);
 
-	&.alignfull {
+	// Strip border-radius if the block itself OR any parent container (group / template-part) is alignfull
+	&.alignfull,
+	.alignfull > & {
 		border: none !important;
 		border-radius: 0 !important;
 	}
@@ -214,7 +216,7 @@ $overlay-badge-size: 28px !default;
 	img,
 	.wp-block-cover__image-background {
 		animation-play-state: paused !important;
-		transform-style: preserve-3d;
+// 		transform-style: preserve-3d;
 		backface-visibility: hidden;
 	}
 
@@ -299,8 +301,11 @@ $overlay-badge-size: 28px !default;
 }
 
 /* ==========================================================================
-   SHALLOW VIEWPORT MOTION OVERRIDE (16:4.5 Slim & 21:9 Ultra-Wide)
+   SHALLOW VIEWPORT DYNAMIC SCALE FLOOR ENGINE
    ========================================================================== */
+
+// Calculates the exact minimum scale required to cover the requested Y-shift + 2% buffer
+$slim-scale-floor: calc(1 + max(2 * #{$pan-slim-shift-y} * #{$var-pan} + 0.02, (#{$pan-slim-scale-start} - 1) * #{$var-zoom}));
 
 :is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is(
 	[style*="16/4.5"],
@@ -314,19 +319,53 @@ $overlay-badge-size: 28px !default;
 	:has(.size-cropped-slim),
 	:has(.size-cropped-ultrawide)
 ) {
-	border-radius: var(--wp--preset--border-radius--sm, 8px);
+	&:not(.alignfull):not(.alignfull > *) {
+		border-radius: var(--wp--preset--border-radius--sm, 8px);
+	}
 
-	img,
-	.wp-block-cover__image-background {
+	& img,
+	& .wp-block-cover__image-background {
 		animation-name: luminaPanZoomSlimLoop;
 		animation-duration: calc(#{$pan-slim-duration} * #{$var-duration});
+		
+		// Dynamically scales the image UP if --pan-intensity increases in theme.json
 		transform: translate3d(
 			calc(-1 * #{$pan-slim-shift-x} * #{$var-pan}), 
 			calc(-1 * #{$pan-slim-shift-y} * #{$var-pan}), 
 			0
-		) scale(calc(1 + (#{$pan-slim-scale-start} - 1) * #{$var-zoom}));
+		) scale(#{$slim-scale-floor});
 	}
 }
+
+// /* ==========================================================================
+//    SHALLOW VIEWPORT MOTION OVERRIDE (16:4.5 Slim & 21:9 Ultra-Wide)
+//    ========================================================================== */
+// 
+// :is(.is-style-pan-zoom, .is-style-pan-zoom-hover):is(
+// 	[style*="16/4.5"],
+// 	[style*="16 / 4.5"],
+// 	:has([style*="16/4.5"]),
+// 	:has([style*="16 / 4.5"]),
+// 	[style*="21/9"],
+// 	[style*="21 / 9"],
+// 	:has([style*="21/9"]),
+// 	:has([style*="21 / 9"]),
+// 	:has(.size-cropped-slim),
+// 	:has(.size-cropped-ultrawide)
+// ) {
+// 	border-radius: var(--wp--preset--border-radius--sm, 8px);
+// 
+// 	img,
+// 	.wp-block-cover__image-background {
+// 		animation-name: luminaPanZoomSlimLoop;
+// 		animation-duration: calc(#{$pan-slim-duration} * #{$var-duration});
+// 		transform: translate3d(
+// 			calc(-1 * #{$pan-slim-shift-x} * #{$var-pan}), 
+// 			calc(-1 * #{$pan-slim-shift-y} * #{$var-pan}), 
+// 			0
+// 		) scale(calc(1 + (#{$pan-slim-scale-start} - 1) * #{$var-zoom}));
+// 	}
+// }
 
 /* ==========================================================================
    LIGHTBOX & ACCESSIBILITY OVERRIDES

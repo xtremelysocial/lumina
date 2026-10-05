@@ -7,9 +7,6 @@
  * Block Types: core/post-content
  */
 ?>
-<!-- wp:group {"align":"full","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull">
-
 	<!-- wp:pattern {"slug":"lumina/cover-scroll-home-header"} /-->
 
 	<!-- wp:pattern {"slug":"lumina/columns-site-motto-details"} /-->
@@ -26,5 +23,3 @@
 
 	<!-- wp:pattern {"slug":"lumina/buttons-call-to-action"} /-->
 	
-</div>
-<!-- /wp:group -->

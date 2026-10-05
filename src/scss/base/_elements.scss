@@ -34,7 +34,7 @@ ul {
 ol.has-background,
 ul.has-background {
 // 	&:not(.wp-block-navigation__container, .wp-block-navigation-submenu, .wp-block-page-list) {
-	&:not(.wp-block-navigation__container):not(.wp-block-navigation-submenu):not(.wp-block-page-list) {
+						&:not(.wp-block-navigation__container):not(.wp-block-navigation-submenu):not(.wp-block-page-list) {
 		padding: var(--wp--preset--spacing--40);
 		list-style-position: inside;
 	}
@@ -43,16 +43,21 @@ ul.has-background {
 /* Center captions and don't underline links in them by default */
 .wp-element-caption {
 	text-align: center;
+	
+	& a {
+		text-decoration: none;
+	}
 }
 
-.wp-element-caption a {
-	text-decoration: none;
+figure {
+	margin-bottom: 0; 
 }
 
 /* Style raw HTML quotes like the block quotes */
 /* Target strictly naked, legacy blockquotes—ignore both real quotes and pullquotes */
 :where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
-    border-left: 6px solid var(--wp--preset--color--highlight--alt);
+//     border-left: 6px solid var(--wp--preset--color--highlight--alt);
+    border-left: 6px solid var(--wp--preset--color--primary);
 //     font-size: var(--wp--preset--font-size--medium);
 //     padding-left: var(--wp--preset--spacing--40);
 }

@@ -364,9 +364,9 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 	}		
 }
 
-/*-----------------------------------------------------------------------------
-# 05. NON-CLICKABLE PLACEHOLDER LINKS (http://Pages, #, #0)
------------------------------------------------------------------------------*/
+// /*-----------------------------------------------------------------------------
+// # 05. NON-CLICKABLE PLACEHOLDER LINKS (http://Pages, #, #0)
+// -----------------------------------------------------------------------------*/
 // .wp-block-navigation {
 // 
 // 	// Disable click navigation on dummy targets
@@ -393,18 +393,34 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 # 06. MOBILE NAVIGATION OVERLAY & BUTTONS
 -----------------------------------------------------------------------------*/
 
-/* Suppress hover effects on non-clickable links inside open mobile drawer */
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.has-child.open-on-click {
-	&:hover > .wp-block-navigation-item,
-	&:hover > .wp-block-navigation-item__content,
-	& > .wp-block-navigation-item:hover,
-	& > .wp-block-navigation-item__content:hover {
-		color: inherit;
-		cursor: unset;
-		font-weight: inherit;
-		opacity: 1;
+/* Suppress hover effects on non-clickable items & dummy links inside open mobile drawer */
+.wp-block-navigation__responsive-container.is-menu-open {
+	:is(
+		.wp-block-navigation-item.has-child.open-on-click,
+		.wp-block-navigation-item:has(> a:is([href="http://Pages"], [href="#"], [href="#0"]))
+	) {
+		&:hover > #{$nav-link-targets},
+		> #{$nav-link-targets}:hover {
+			color: inherit !important;
+			cursor: default !important;
+			font-weight: inherit !important;
+			opacity: 1 !important;
+		}
 	}
 }
+
+///* Suppress hover effects on non-clickable links inside open mobile drawer */
+// .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.has-child.open-on-click {
+// 	&:hover > .wp-block-navigation-item,
+// 	&:hover > .wp-block-navigation-item__content,
+// 	& > .wp-block-navigation-item:hover,
+// 	& > .wp-block-navigation-item__content:hover {
+// 		color: inherit;
+// 		cursor: unset;
+// 		font-weight: inherit;
+// 		opacity: 1;
+// 	}
+// }
 
 /* Mobile nav open & close buttons */
 $mobile-nav-size: 24px;

@@ -38,7 +38,6 @@
 					"hoverTransform": "translateY(-4px)"
 				},
 				"mediaText": {
-					"transform": "scale(1.00)",
 					"hoverTransform": "scale(1.10)"
 				},
 				"motion": {

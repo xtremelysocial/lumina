@@ -27,23 +27,18 @@
 					"durationFactor": 1.25
 				},
 				"default": {
-					"transform": 		"none",
 					"hoverTransform": 	"scale(1.02)"
 				},
 				"button": {
-					"transform": "none",
 					"hoverTransform": "scale(1.05)"
 				},
 				"card": {
-					"transform": "none",
 					"hoverTransform": "translateY(-3px)"
 				},
 				"image": {
-					"transform": "none",
 					"hoverTransform": "translateY(-4px)"
 				},
 				"mediaText": {
-					"transform": "scale(1.00)",
 					"hoverTransform": "scale(1.05)"
 				}
 			},

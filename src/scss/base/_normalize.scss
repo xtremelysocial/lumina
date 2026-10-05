@@ -24,13 +24,3 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;	
 }
-
-// /* 
-//  * Fix Safari issue with WordPress v7.1 adding transparent outline to the 
-//  * Admin Bar.
-// */
-// // @supports (-webkit-hyphens: none) {
-// 	#wpadminbar {
-// 		outline: none !important;
-// 	}
-// // }

@@ -27,6 +27,11 @@
 			return 0.5 - Math.cos(p * Math.PI) / 2;
 		};
 
+		// 3. Intercept dummy/placeholder links to prevent jumps & 404 navigation
+		$(document).on('click', 'a[href="http://Pages"], a[href="#"], a[href="#0"]', function(event) {
+			event.preventDefault();
+		});
+
 		/*
 		 * Calculate fixed & floating header heights & update CSS variables
 		 */
