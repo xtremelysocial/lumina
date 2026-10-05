@@ -4,10 +4,11 @@
 
 // Setup spacing smaller and large than standard block gap
 $micro-spacing: var(--wp--preset--spacing--30);
+$spacing: 		var(--wp--style--block-gap);
 $macro-spacing: var(--wp--preset--spacing--50);
 
 // ============================================================================
-// 1. TOP-LEVEL STRUCTURAL RESETS
+// 1. STRUCTURAL VERTICAL SPACING: Main & Post Content Top and Bottom
 // ============================================================================
 
 /* Don't allow top-margin on main or footers */
@@ -17,12 +18,22 @@ $macro-spacing: var(--wp--preset--spacing--50);
 }
 
 /* 
- * Instead, push top margin down to first-child of main, if needed.
+ * Push down WordPress top-margin suppression on template part contents.
+ * e.g. Headings within template parts in footer template parts
+ */
+:root :where(.is-layout-flow) > .wp-block-template-part > :first-child,
+:root :where(.is-layout-constrained) > .wp-block-template-part > :first-child {
+	margin-block-start: 0;
+}
+
+/* 
+ * Push top margin down to first-child of main or post content, if needed.
  * .e.g Page / post title, non-full width images
  */
 :root main,
 :root main > :first-child.wp-block-template-part,
-.wp-block-post-content {
+.wp-block-post-content,
+.content-home-top {
 	& > :first-child:not(
 	// 	.alignfull,
 		.alignfull.wp-block-cover,
@@ -30,14 +41,15 @@ $macro-spacing: var(--wp--preset--spacing--50);
 		.alignfull.wp-block-post-featured-image,
 		.alignfull.has-background,
 		.wp-block-post-content,
-		.wp-block-template-part
+		.wp-block-template-part,
+		.content-home-top
 	) {
 		margin-block-start: $macro-spacing;
 	}
 }
 
 /* 
- * Also add bottom margin to last-child of main, if needed.
+ * Also push bottom margin to last-child of main or post content, if needed.
  * e.g. Post meta, sharing, comments, etc.
  */
 :root main,
@@ -56,23 +68,44 @@ $macro-spacing: var(--wp--preset--spacing--50);
 	}
 }
 
+// ============================================================================
+// 2. MACRO SECTION RHYTHM (Adjacent Sibling * + * Overrides)
+// ============================================================================
+
 /* 
- * Push down WordPress top-margin suppression on template part contents.
- * e.g. Headings within template parts in footer template parts
+ * Apply macro spacing between top-level section blocks inside main, post-content, 
+ * or the content-home-top layout wrapper.
  */
-:root :where(.is-layout-flow) > .wp-block-template-part > :first-child,
-:root :where(.is-layout-constrained) > .wp-block-template-part > :first-child {
-	margin-block-start: 0;
+:root :where(
+	main.is-layout-flow,
+	main.is-layout-constrained,
+	.wp-block-post-content.is-layout-flow,
+	.wp-block-post-content.is-layout-constrained,
+	.content-home-top.is-layout-flow,
+	.content-home-top.is-layout-constrained,
+	.content-home-top > .wp-block-group.is-layout-constrained
+) > * + * {
+	margin-block-start: $macro-spacing;
+	margin-block-end: 0;
 }
 
 // ============================================================================
-// 2. MACRO SPACING ENGINE (Primary Page Section Rhythm)
+// 2. MACRO VERTICAL SPACING: Top-level Blocks within Main & Post Content
 // ============================================================================
 
-// 2. Macro Section Spacing
-// Sets macro spacing between top-level post blocks and Media & Text content elements.
-// :root :where(.wp-block-post-content, .wp-block-media-text__content) > * + * {
-// :root :where(.wp-block-post-content) > * + * {
+/* Set macro spacing between top-level post blocks */
+// :root main,
+// :root main > .wp-block-template-part,
+// .wp-block-post-content {
+// 	& > * + * {
+// 		margin-block-start: $spacing;
+// 	}
+// }
+
+// :root :where(main, .wp-block-post-content) > * + *,
+// :root :where(main, .wp-block-post-content) > .wp-block-template-part > * + * {
+// :root :where(.is-layout-flow) > .wp-block-template-part > * + *,
+// :root :where(.is-layout-constrained) > .wp-block-template-part > * + * {
 // 	margin-block-start: $macro-spacing;
 // }
 

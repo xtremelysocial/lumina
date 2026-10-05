@@ -429,12 +429,12 @@
 				{
 					"slug": "30",
 					"size": "calc(0.6 * var(--wp--custom--spacing--gap))",
-					"name": "X-Small"
+					"name": "X-Small (Block Gap)"
 				},
 				{
 					"slug": "40",
 					"size": "clamp(calc(0.6 * var(--wp--custom--spacing--gap)), 2vw, var(--wp--custom--spacing--gap))",
-					"name": "Small (Block Gap)"
+					"name": "Small"
 				},
 				{
 					"slug": "50",
@@ -638,7 +638,7 @@
 	},
 	"styles": {
 		"spacing": {
-			"blockGap": 	"var:preset|spacing|40",
+			"blockGap": 	"var:preset|spacing|30",
 			"padding": {
 				"top": 		"0",
 				"right": 	"var:preset|spacing|50",
@@ -757,6 +757,40 @@
 			}			
 		},
 		"blocks": {
+			"core/columns": {
+                "spacing": {
+                    "blockGap": {
+                        "top": "var(--wp--preset--spacing--40)",
+                        "left": "var(--wp--preset--spacing--40)"
+                    }
+                }
+            },
+			"core/gallery": {
+				"spacing": {
+					"blockGap": "var:preset|spacing|30"
+				}
+			},
+			"core/post-template": {
+                "spacing": {
+                    "blockGap": "var:preset|spacing|40"
+                }
+            },
+			"core/navigation": {
+				"typography": {
+					"fontSize": "var:preset|font-size|normal"
+				},
+				"spacing": {
+					"blockGap": {
+						"top": "var:preset|spacing|30",
+						"left": "var:preset|spacing|40"
+					}
+				}
+			},
+			"core/navigation-submenu": {
+                "typography": {
+                    "fontSize": "var:preset|font-size|small"
+                }
+            },			
 			"core/button" : {
 				"variations": {
 					"outline": {
@@ -853,22 +887,6 @@
 					"color": "none",
 					"width": 0,
 					"radius": "var:preset|border-radius|sm"
-				}
-			},
-			"core/gallery": {
-				"spacing": {
-					"blockGap": "var:preset|spacing|30"
-				}
-			},
-			"core/navigation": {
-				"typography": {
-					"fontSize": "var:preset|font-size|normal"
-				},
-				"spacing": {
-					"blockGap": {
-						"top": "var:preset|spacing|30",
-						"left": "var:preset|spacing|40"
-					}
 				}
 			},
 			"core/search": {

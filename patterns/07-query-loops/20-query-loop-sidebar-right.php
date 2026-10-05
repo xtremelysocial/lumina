@@ -10,7 +10,8 @@
 <!-- wp:query {"query":{"perPage":12,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true,"excludeCurrent":null},"lock":{"move":true,"remove":true},"layout":{"type":"constrained"}} -->
 <div class="wp-block-query"><!-- wp:columns {"lock":{"move":true,"remove":true},"align":"wide","className":"main-content is-style-thick-gap","layout":{"type":"constrained"}} -->
 <div class="wp-block-columns alignwide main-content is-style-thick-gap"><!-- wp:column {"lock":{"move":true,"remove":true},"className":"content-column","style":{"spacing":{"margin":{"top":"0"}}}} -->
-<div class="wp-block-column content-column" style="margin-top:0"><!-- wp:post-template {"lock":{"move":true,"remove":true}} -->
+<div class="wp-block-column content-column" style="margin-top:0">
+<!-- wp:post-template {"lock":{"move":true,"remove":true}} -->
 <!-- wp:template-part {"slug":"content-article-wide","theme":"lumina"} /-->
 <!-- /wp:post-template -->
 

@@ -49,41 +49,50 @@ body {
 /*-----------------------------------------------------------------------------
 # Elements
 -----------------------------------------------------------------------------*/
+/* Base Typography Reset */
+p,
+ul, ol, dl,
+blockquote, figure {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+.wp-block-heading {
+  margin-block-start: var(--wp--style--block-gap);
+  margin-block-end: 0;
+}
+
 /* Use bold font-weight from theme.json */
 strong,
 b {
   font-weight: var(--wp--custom--typography--font-weight--bold, 500);
 }
 
-/* Prevent code from breaking layout and use smaller font */
-code,
-pre {
-  overflow-x: scroll;
+/* Prevent multi-line preformatted code blocks from breaking page layouts */
+pre,
+.wp-block-code {
+  overflow-x: auto;
 }
 
-/* Style only non-block code */
+/* Style inline code chips and raw pre blocks */
 code:not(pre > code),
 pre:not(.wp-block-code) {
-  overflow-x: scroll;
   font-size: var(--wp--preset--font-size--small);
-  padding: 5px;
+  padding: 0.15em 0.35em;
   border-radius: var(--wp--custom--border--radius, 5px);
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--border--color, var(--wp--preset--color--neutral-alt));
+  word-break: break-word;
 }
 
-/* Style lists */
-ol,
-ul {
-  margin-bottom: 0;
-}
-
+/* Background list container padding reset */
 ol.has-background:not(.wp-block-navigation__container):not(.wp-block-navigation-submenu):not(.wp-block-page-list),
 ul.has-background:not(.wp-block-navigation__container):not(.wp-block-navigation-submenu):not(.wp-block-page-list) {
   padding: var(--wp--preset--spacing--40);
   list-style-position: inside;
 }
 
-/* Center captions and don't underline links in them by default */
+/* Center captions and remove default link underlines */
 .wp-element-caption {
   text-align: center;
 }
@@ -91,14 +100,10 @@ ul.has-background:not(.wp-block-navigation__container):not(.wp-block-navigation-
   text-decoration: none;
 }
 
-figure {
-  margin-bottom: 0;
-}
-
-/* Style raw HTML quotes like the block quotes */
-/* Target strictly naked, legacy blockquotes—ignore both real quotes and pullquotes */
+/* Style raw HTML/legacy quotes like block quotes without specificity leaks */
 :where(blockquote:not(.wp-block-quote):not(.wp-block-pullquote blockquote)) {
   border-right: 6px solid var(--wp--preset--color--primary);
+  padding-right: var(--wp--preset--spacing--40);
 }
 
 /*-----------------------------------------------------------------------------
@@ -327,7 +332,16 @@ body .is-layout-constrained > .alignright {
 }
 
 /* 
- * Instead, push top margin down to first-child of main, if needed.
+ * Push down WordPress top-margin suppression on template part contents.
+ * e.g. Headings within template parts in footer template parts
+ */
+:root :where(.is-layout-flow) > .wp-block-template-part > :first-child,
+:root :where(.is-layout-constrained) > .wp-block-template-part > :first-child {
+  margin-block-start: 0;
+}
+
+/* 
+ * Push top margin down to first-child of main or post content, if needed.
  * .e.g Page / post title, non-full width images
  */
 :root main > :first-child:not(.alignfull.wp-block-cover,
@@ -335,24 +349,34 @@ body .is-layout-constrained > .alignright {
 .alignfull.wp-block-post-featured-image,
 .alignfull.has-background,
 .wp-block-post-content,
-.wp-block-template-part),
+.wp-block-template-part,
+.content-home-top),
 :root main > :first-child.wp-block-template-part > :first-child:not(.alignfull.wp-block-cover,
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
 .alignfull.has-background,
 .wp-block-post-content,
-.wp-block-template-part),
+.wp-block-template-part,
+.content-home-top),
 .wp-block-post-content > :first-child:not(.alignfull.wp-block-cover,
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
 .alignfull.has-background,
 .wp-block-post-content,
-.wp-block-template-part) {
+.wp-block-template-part,
+.content-home-top),
+.content-home-top > :first-child:not(.alignfull.wp-block-cover,
+.alignfull.wp-block-image,
+.alignfull.wp-block-post-featured-image,
+.alignfull.has-background,
+.wp-block-post-content,
+.wp-block-template-part,
+.content-home-top) {
   margin-block-start: var(--wp--preset--spacing--50);
 }
 
 /* 
- * Also add bottom margin to last-child of main, if needed.
+ * Also push bottom margin to last-child of main or post content, if needed.
  * e.g. Post meta, sharing, comments, etc.
  */
 :root main > :last-child:not(.alignfull.wp-block-cover,
@@ -377,14 +401,21 @@ body .is-layout-constrained > .alignright {
 }
 
 /* 
- * Push down WordPress top-margin suppression on template part contents.
- * e.g. Headings within template parts in footer template parts
+ * Apply macro spacing between top-level section blocks inside main, post-content, 
+ * or the content-home-top layout wrapper.
  */
-:root :where(.is-layout-flow) > .wp-block-template-part > :first-child,
-:root :where(.is-layout-constrained) > .wp-block-template-part > :first-child {
-  margin-block-start: 0;
+:root :where(main.is-layout-flow,
+main.is-layout-constrained,
+.wp-block-post-content.is-layout-flow,
+.wp-block-post-content.is-layout-constrained,
+.content-home-top.is-layout-flow,
+.content-home-top.is-layout-constrained,
+.content-home-top > .wp-block-group.is-layout-constrained) > * + * {
+  margin-block-start: var(--wp--preset--spacing--50);
+  margin-block-end: 0;
 }
 
+/* Set macro spacing between top-level post blocks */
 /*-----------------------------------------------------------------------------
 # List: Custom
 #

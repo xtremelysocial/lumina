@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Lumina Query Loop 1 Column
+ * Title: Query Loop 1 Column
  * Description: Query Loop 1 Column
  * Slug: lumina/query-loop-1-column
  * Categories: lumina, query

@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Lumina Query Loop 2 Columns
+ * Title: Query Loop 2 Columns
  * Description: Query Loop 2 Columns
  * Slug: lumina/query-loop-2-columns
  * Categories: lumina, query
@@ -8,11 +8,11 @@
  */
 ?>
 <!-- wp:query {"query":{"perPage":"10","pages":0,"offset":0,"postType":"post","categoryIds":[],"tagIds":[],"order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"displayLayout":{"type":"flex","columns":2},"layout":{"type":"constrained"},"lock":{"move":true,"remove":true}} -->
-<div class="wp-block-query alignwide">
+<div class="wp-block-query">
 
-	<!-- wp:post-template {"align":"wide","lock":{"move":true,"remove":true}} -->
-		<!-- wp:template-part {"slug":"content-article","theme":"lumina"} /-->
-	<!-- /wp:post-template -->
+<!-- wp:post-template {"lock":{"move":true,"remove":true},"align":"wide","layout":{"type":"grid","columnCount":2}} -->
+	<!-- wp:template-part {"slug":"content-article","theme":"lumina"} /-->
+<!-- /wp:post-template -->
 
 <!-- wp:group {"lock":{"move":true,"remove":true},"metadata":{"name":"Query Pagination"},"className":"is-style-no-padding","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->
 <div class="wp-block-group is-style-no-padding">
