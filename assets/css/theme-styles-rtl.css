@@ -50,15 +50,16 @@ body {
 # Elements
 -----------------------------------------------------------------------------*/
 /* Base Typography Reset */
-p,
-ul, ol, dl,
-blockquote, figure {
+:where(ul, ol, dl,
+blockquote,
+figure) {
   margin-block-start: 0;
   margin-block-end: 0;
 }
 
+:where(p, .wp-block-paragraph,
 h1, h2, h3, h4, h5, h6,
-.wp-block-heading {
+.wp-block-heading) {
   margin-block-start: var(--wp--style--block-gap);
   margin-block-end: 0;
 }
@@ -383,20 +384,17 @@ body .is-layout-constrained > .alignright {
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
 .alignfull.has-background,
-.wp-block-post-content,
-.wp-block-template-part),
+.wp-block-post-content .wp-block-template-part),
 :root main > :last-child.wp-block-template-part > :last-child:not(.alignfull.wp-block-cover,
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
 .alignfull.has-background,
-.wp-block-post-content,
-.wp-block-template-part),
+.wp-block-post-content .wp-block-template-part),
 .wp-block-post-content > :last-child:not(.alignfull.wp-block-cover,
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
 .alignfull.has-background,
-.wp-block-post-content,
-.wp-block-template-part) {
+.wp-block-post-content .wp-block-template-part) {
   margin-block-end: var(--wp--preset--spacing--50);
 }
 
@@ -404,18 +402,23 @@ body .is-layout-constrained > .alignright {
  * Apply macro spacing between top-level section blocks inside main, post-content, 
  * or the content-home-top layout wrapper.
  */
-:root :where(main.is-layout-flow,
-main.is-layout-constrained,
-.wp-block-post-content.is-layout-flow,
-.wp-block-post-content.is-layout-constrained,
-.content-home-top.is-layout-flow,
-.content-home-top.is-layout-constrained,
-.content-home-top > .wp-block-group.is-layout-constrained) > * + * {
+.wp-block-post-content > *:not(h1, h2, h3, h4, h5, h6,
+.wp-block-heading,
+p, .wp-block-paragraph,
+ul, ol, .wp-block-list) + *:not(.wp-block-post-content,
+.wp-block-post-excerpt,
+p, .wp-block-paragraph,
+ul, ol, .wp-block-list),
+.content-home-top > *:not(h1, h2, h3, h4, h5, h6,
+.wp-block-heading,
+p, .wp-block-paragraph,
+ul, ol, .wp-block-list) + *:not(.wp-block-post-content,
+.wp-block-post-excerpt,
+p, .wp-block-paragraph,
+ul, ol, .wp-block-list) {
   margin-block-start: var(--wp--preset--spacing--50);
-  margin-block-end: 0;
 }
 
-/* Set macro spacing between top-level post blocks */
 /*-----------------------------------------------------------------------------
 # List: Custom
 #
@@ -469,6 +472,9 @@ main.is-layout-constrained,
    LUMINA ENGINE: Token-Driven Glass & Specular Overlay Engine
    ========================================================================== */
 /* --------------------------------------------------------------------------
+   00. CONFIG & TOKENS (SCSS and theme.json Driven)
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
    01. GLASS CONTAINERS (Groups, Columns, Covers, Headers)
    -------------------------------------------------------------------------- */
 [class*=is-style-glass]:not(.wp-block-button) {
@@ -490,7 +496,7 @@ main.is-layout-constrained,
   inset: 0;
   z-index: 0;
   border-radius: inherit;
-  background: color-mix(in srgb, var(--wp--custom--color--opacity--tint, currentColor) var(--wp--custom--color--opacity--faint, 6%), transparent);
+  background: color-mix(in srgb, var(--wp--custom--color--opacity--tint, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--faint, 6%), transparent);
   backdrop-filter: var(--wp--custom--color--opacity--blur, blur(6px));
   pointer-events: none;
 }
@@ -505,25 +511,24 @@ main.is-layout-constrained,
 }
 
 .is-style-glass-frosted:not(.wp-block-button)::before {
-  background: color-mix(in srgb, currentColor var(--wp--custom--color--opacity--subtle, 12%), transparent);
+  background: color-mix(in srgb, var(--wp--custom--color--opacity--tint-frosted, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--subtle, 12%), transparent);
   backdrop-filter: var(--wp--custom--color--opacity--blur-dense, blur(10px));
 }
 
 .is-style-glass-dark:not(.wp-block-button)::before {
-  background: color-mix(in srgb, black var(--wp--custom--color--opacity--faint, 6%), transparent);
+  background: color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, black) var(--wp--custom--color--opacity--faint, 6%), transparent);
 }
 
 /* --------------------------------------------------------------------------
-   02. GLASS BUTTONS (.wp-block-button) - STATIC OPTICAL OVERLAY ONLY
+   02. GLASS BUTTONS (.wp-block-button) - FULLY PARAMETERIZED OPTICAL LENS
    -------------------------------------------------------------------------- */
 [class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link) {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  border: none !important;
 }
 [class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
-  background-color: color-mix(in srgb, var(--wp--preset--color--base) var(--wp--custom--color--opacity--faint, 6%), transparent);
+  background-color: color-mix(in srgb, var(--wp--preset--color--primary) var(--wp--custom--color--opacity--subtle, 12%), transparent);
 }
 [class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link):not(.has-background):not(.has-text-color) {
   color: inherit;
@@ -542,22 +547,18 @@ main.is-layout-constrained,
   border-radius: inherit;
   pointer-events: none;
   background: linear-gradient(-180deg, color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent) 0%, transparent 100%);
-  box-shadow: inset -1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--emphasis, 20%), transparent), inset 1px -1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent);
-}
-[class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link) {
-  /* Zero CSS :hover or :focus scaling here!
-     All hover motion is handled strictly by theme-physics.js */
+  box-shadow: inset -1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent), inset 1px -1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--faint, 6%), transparent);
 }
 
 .wp-block-button.is-style-glass-frosted > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
-  background-color: color-mix(in srgb, var(--wp--preset--color--base) var(--wp--custom--color--opacity--emphasis, 20%), transparent);
+  background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint-frosted, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--emphasis, 20%), transparent);
 }
 
 .wp-block-button.is-style-glass-dark > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
-  background-color: color-mix(in srgb, black var(--wp--custom--color--opacity--subtle, 12%), transparent);
+  background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, black) var(--wp--custom--color--opacity--subtle, 12%), transparent);
 }
 .wp-block-button.is-style-glass-dark > :is(.wp-element-button, .wp-block-button__link).has-background {
-  background-image: linear-gradient(color-mix(in srgb, black var(--wp--custom--color--opacity--emphasis, 20%), transparent), color-mix(in srgb, black var(--wp--custom--color--opacity--emphasis, 20%), transparent));
+  background-image: linear-gradient(color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, black) var(--wp--custom--color--opacity--emphasis, 20%), transparent), color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, black) var(--wp--custom--color--opacity--emphasis, 20%), transparent));
 }
 
 /* ==========================================================================

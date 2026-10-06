@@ -3,6 +3,33 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
+   00. CONFIG & TOKENS (SCSS and theme.json Driven)
+   -------------------------------------------------------------------------- */
+
+// 1. Theme.json Tint & Color Primitive Tokens
+$glass-tint-standard: var(--wp--custom--color--opacity--tint, var(--wp--preset--color--base)) !default;
+$glass-tint-frosted:  var(--wp--custom--color--opacity--tint-frosted, var(--wp--preset--color--base)) !default;
+$glass-tint-dark:     var(--wp--custom--color--opacity--tint-dark, black) !default;
+
+$glass-tint-button-default: var(--wp--preset--color--primary) !default;
+
+$glass-color-base:    var(--wp--preset--color--base) !default;
+$glass-color-wash:    white !default;
+
+// 2. Theme.json Blur Tokens
+$glass-blur-standard: var(--wp--custom--color--opacity--blur, blur(6px)) !default;
+$glass-blur-dense:    var(--wp--custom--color--opacity--blur-dense, blur(10px)) !default;
+
+// 3. Optical Wash & Rim Tokens (Derived from Config Variables)
+$glass-border-inset:  inset 0 1px 0 0 color-mix(in srgb, #{$glass-color-base} var(--wp--custom--color--opacity--subtle, 12%), transparent) !default;
+
+$glass-wash-overlay:  color-mix(in srgb, #{$glass-color-wash} var(--wp--custom--color--opacity--subtle, 12%), transparent) !default;
+
+$glass-wash-dark-overlay: color-mix(in srgb, #{$glass-tint-dark} var(--wp--custom--color--opacity--emphasis, 20%), transparent) !default;
+
+$glass-rim-overlay:   inset 1px 1px 1px 0 #{$glass-wash-overlay}, inset -1px -1px 1px 0 color-mix(in srgb, #{$glass-color-wash} var(--wp--custom--color--opacity--faint, 6%), transparent) !default;
+
+/* --------------------------------------------------------------------------
    01. GLASS CONTAINERS (Groups, Columns, Covers, Headers)
    -------------------------------------------------------------------------- */
 [class*='is-style-glass']:not(.wp-block-button) {
@@ -15,35 +42,28 @@
 		z-index: 2;
 	}
 
-	// Structural Hairline Frame
-// 	border: 1px solid var(
-// 		--wp--custom--color--border, 
-// 		color-mix(in srgb, currentColor var(--wp--custom--color--opacity--subtle, 15%), transparent)
-// 	) !important;
+	// Replace outside border with inset shadow border
 	border: none !important; 
-box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--wp--preset--color--base)  var(--wp--custom--color--opacity--subtle, 12%), transparent);
+	box-shadow: #{$glass-border-inset};
+	background: transparent;
 
-	// Uncolored Containers (Backdrop Blur & Sheer Lens Veil)
-// 	&:not(.has-background) {
-		background: transparent;
+	// Faint background color mix
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		border-radius: inherit;
+		background: color-mix(
+			in srgb, 
+			#{$glass-tint-standard} var(--wp--custom--color--opacity--faint, 6%), 
+			transparent
+		);
+		backdrop-filter: #{$glass-blur-standard};
+		pointer-events: none;
+	}
 
-		&::before {
-			content: "";
-			position: absolute;
-			inset: 0;
-			z-index: 0;
-			border-radius: inherit;
-			background: color-mix(
-				in srgb, 
-				var(--wp--custom--color--opacity--tint, currentColor) var(--wp--custom--color--opacity--faint, 6%), 
-				transparent
-			);
-			backdrop-filter: var(--wp--custom--color--opacity--blur, blur(6px));
-			pointer-events: none;
-		}
-// 	}
-
-	// Universal Specular Rim & Edge Refraction Overlay (Light Canvases Default)
+	// Specular Rim & Edge Refraction Overlay
 	&::after {
 		content: "";
 		position: absolute;
@@ -51,100 +71,70 @@ box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--wp--preset--color--base)  v
 		z-index: 1;
 		border-radius: inherit;
 		pointer-events: none;
-		box-shadow: 
-			inset 1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent),
-			inset -1px -1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--faint, 6%), transparent);
+		box-shadow: #{$glass-rim-overlay};
 	}
 }
 
 // Frosted Container Variant (Denser Lens Fill & Blur)
 .is-style-glass-frosted:not(.wp-block-button) {
-// 	&:not(.has-background)::before {
 	&::before {
 		background: color-mix(
 			in srgb, 
-			currentColor var(--wp--custom--color--opacity--subtle, 12%), 
+			#{$glass-tint-frosted} var(--wp--custom--color--opacity--subtle, 12%), 
 			transparent
 		);
-		backdrop-filter: var(--wp--custom--color--opacity--blur-dense, blur(10px));
+		backdrop-filter: #{$glass-blur-dense};
 	}
 }
 
-// Dark Glass Container Variant & Dark Canvas Adaptive Specular Glint
-// .site-header.is-style-glass-dark,
+// Dark Glass Container Variant (Darker Lens Fill)
 .is-style-glass-dark:not(.wp-block-button) {
-// .has-dark-background :is(.is-style-glass, .is-style-glass-frosted):not(.wp-block-button) {
-// 	&:not(.has-background)::before {
 	&::before {
 		background: color-mix(
 			in srgb, 
-			black var(--wp--custom--color--opacity--faint, 6%), 
+			#{$glass-tint-dark} var(--wp--custom--color--opacity--faint, 6%), 
 			transparent
 		);
 	}
-
-	// Softens top-left glint to 'faint' (10%) on dark backgrounds to eliminate wireframe outlines
-// 	&::after {
-// 		box-shadow: 
-// 			inset 1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent),
-// 			inset -1px -1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--faint, 6%), transparent);
-// 	}
 }
 
 /* --------------------------------------------------------------------------
-   02. GLASS BUTTONS (.wp-block-button) - STATIC OPTICAL OVERLAY ONLY
+   02. GLASS BUTTONS (.wp-block-button) - FULLY PARAMETERIZED OPTICAL LENS
    -------------------------------------------------------------------------- */
 
-// Outer Wrapper Neutralizer
-// [class*='is-style-glass'].wp-block-button {
-// 	background: transparent !important;
-// 	border: none !important;
-// 	box-shadow: none !important;
-// }
-
 // Inner Button Link Surface
-// .wp-block-button:is(.is-style-glass, .is-style-glass-frosted, .is-style-glass-dark) > :is(.wp-element-button, .wp-block-button__link) {
 [class*='is-style-glass'].wp-block-button > :is(.wp-element-button, .wp-block-button__link) {
 	position: relative;
 	isolation: isolate;
 	overflow: hidden;
 
-	// Structural Hairline Frame
-// 	border: 1px solid var(
-// 		--wp--custom--color--border, 
-// 		color-mix(in srgb, currentColor var(--wp--custom--color--opacity--subtle, 15%), transparent)
-// 	) !important;
-	border: none !important; 
+// 	border: none !important; 
 
 	// CONDITION A: UNCOLORED GLASS BUTTON (:not(.has-background))
 	&:not(.has-background) {
+// 		background-color: color-mix(
+// 			in srgb, 
+// // 			#{$glass-tint-standard} var(--wp--custom--color--opacity--faint, 6%), 
+// 			var(--wp--preset--color--prmary) var(--wp--custom--color--opacity--faint, 6%), 
+// 			transparent
+// 		);
 		background-color: color-mix(
 			in srgb, 
-			var(--wp--preset--color--base) var(--wp--custom--color--opacity--faint, 6%), 
+			#{$glass-tint-button-default} var(--wp--custom--color--opacity--subtle, 12%), 
 			transparent
 		);
-
+		
 		&:not(.has-text-color) {
 			color: inherit;
 		}
-
-// 		&::before {
-// 			content: "";
-// 			position: absolute;
-// 			inset: 0;
-// 			z-index: -2;
-// 			border-radius: inherit;
-// 			backdrop-filter: var(--wp--custom--color--opacity--blur, blur(8px));
-// 			pointer-events: none;
-// 		}
 	}
 
 	// CONDITION B: USER-COLORED GLASS BUTTON (.has-background)
 	&.has-background {
-		// White-Wash overlay sitting OVER background-color, UNDER text
+		// Translucent glaze overlay sitting OVER background-color, UNDER text
 		background-image: linear-gradient(
-			color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent),
-			color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent)
+			#{$glass-wash-overlay},
+			#{$glass-wash-overlay}
 		);
 
 		&:not(.has-text-color) {
@@ -152,7 +142,7 @@ box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--wp--preset--color--base)  v
 		}
 	}	
 
-	// SPECULAR LIGHT SHEEN & 3D EDGE (Light Mode Default)
+	// SPECULAR LIGHT SHEEN & 3D EDGE
 	&::after {
 		content: "";
 		position: absolute;
@@ -162,16 +152,11 @@ box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--wp--preset--color--base)  v
 		pointer-events: none;
 		background: linear-gradient(
 			180deg, 
-			color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent) 0%, 
+			#{$glass-wash-overlay} 0%, 
 			transparent 100%
 		);
-		box-shadow: 
-			inset 1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--emphasis, 20%), transparent),
-			inset -1px -1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent);
+		box-shadow: #{$glass-rim-overlay};
 	}
-
-	/* Zero CSS :hover or :focus scaling here!
-	   All hover motion is handled strictly by theme-physics.js */
 }
 
 // FROSTED GLASS BUTTON VARIANT
@@ -179,14 +164,9 @@ box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--wp--preset--color--base)  v
 	&:not(.has-background) {
 		background-color: color-mix(
 			in srgb, 
-			var(--wp--preset--color--base) var(--wp--custom--color--opacity--emphasis, 20%), 
+			#{$glass-tint-frosted} var(--wp--custom--color--opacity--emphasis, 20%), 
 			transparent
 		);
-
-// 		&::before {
-// 			backdrop-filter: var(--wp--custom--color--opacity--blur-dense, blur(12px));
-// 			-webkit-backdrop-filter: var(--wp--custom--color--opacity--blur-dense, blur(12px));
-// 		}
 	}
 }
 
@@ -195,22 +175,15 @@ box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--wp--preset--color--base)  v
 	&:not(.has-background) {
 		background-color: color-mix(
 			in srgb, 
-			black var(--wp--custom--color--opacity--subtle, 12%), 
+			#{$glass-tint-dark} var(--wp--custom--color--opacity--subtle, 12%), 
 			transparent
 		);
 	}
 
 	&.has-background {
-		// Dark-Wash overlay sitting OVER custom background-color, UNDER text
 		background-image: linear-gradient(
-			color-mix(in srgb, black var(--wp--custom--color--opacity--emphasis, 20%), transparent),
-			color-mix(in srgb, black var(--wp--custom--color--opacity--emphasis, 20%), transparent)
+			#{$glass-wash-dark-overlay},
+			#{$glass-wash-dark-overlay}
 		);
 	}		
-
-// 	&::after {
-// 		box-shadow: 
-// 			inset 1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--faint, 10%), transparent),
-// 			inset -1px -1px 1px 0 color-mix(in srgb, black var(--wp--custom--color--opacity--emphasis, 30%), transparent);
-// 	}
 }

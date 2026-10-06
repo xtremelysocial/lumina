@@ -8,20 +8,27 @@ $heading-margin-start: var(--wp--style--block-gap) !default;
 $base-element-margin-end: 0 !default;
 
 /* Base Typography Reset */
-// h1, h2, h3, h4, h5, h6,
-// .wp-block-heading,
-p, //.wp-block-paragraph,
-ul, ol, dl,
-blockquote, figure {
+:where(
+	ul, ol, dl,
+	blockquote, 
+	figure
+) {
 	margin-block-start: $base-element-margin-start;
 	margin-block-end: $base-element-margin-end;
 }
 
-h1, h2, h3, h4, h5, h6,
-.wp-block-heading {
+:where(
+	p, .wp-block-paragraph,
+	h1, h2, h3, h4, h5, h6,
+	.wp-block-heading 
+) {
 	margin-block-start: $heading-margin-start;
 	margin-block-end: $base-element-margin-end;
 }
+
+// figcaption {
+// 	margin-bottom: $base-element-margin-end;
+// }
 
 /* Use bold font-weight from theme.json */
 strong, 

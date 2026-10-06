@@ -5,9 +5,6 @@
 # Cover
 -----------------------------------------------------------------------------*/
 /* 1. LIMIT cover image inner content to standard width unless wide or full */
-.wp-block-cover .wp-block-cover__inner-container {
-  margin: var(--wp--preset--spacing--40);
-}
 .wp-block-cover .wp-block-cover__inner-container > * {
   margin-right: auto;
   margin-left: auto;

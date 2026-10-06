@@ -216,7 +216,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var|preset|spacing|40"}},"typography":{"textAlign":"center"}}} -->
-<p class="has-text-align-center" style="margin-bottom:var|preset|spacing|40">With the click of a button you can add a frame to simulate a computer or mobile device screen. No photo editing software required.</p>
+<p class="has-text-align-center" style="margin-bottom:var|preset|spacing|40">With the click of a button you can add pan-zoom motion or a frame to simulate a computer or mobile device screen. No photo or video editing software required.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"lightbox":{"enabled":true},"aspectRatio":"16/9","scale":"cover","align":"center","className":"is-resized size-large is-style-image-computer-screen"} -->

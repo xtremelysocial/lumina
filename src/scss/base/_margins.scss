@@ -3,8 +3,8 @@
 ------------------------------------------------------------------------------*/
 
 // Setup spacing smaller and large than standard block gap
-// $micro-spacing: var(--wp--preset--spacing--30);
-// $spacing: 		var(--wp--style--block-gap);
+$micro-spacing: var(--wp--style--block-gap); //var(--wp--preset--spacing--30);
+$spacing: 		var(--wp--preset--spacing--40);
 $macro-spacing: var(--wp--preset--spacing--50);
 
 // ============================================================================
@@ -54,6 +54,7 @@ $macro-spacing: var(--wp--preset--spacing--50);
  */
 :root main,
 :root main > :last-child.wp-block-template-part,
+// :root main > .wp-block-template-part,
 .wp-block-post-content {
 	& > :last-child:not(
 	// 	.alignfull,
@@ -61,7 +62,7 @@ $macro-spacing: var(--wp--preset--spacing--50);
 		.alignfull.wp-block-image,
 		.alignfull.wp-block-post-featured-image,
 		.alignfull.has-background,
-		.wp-block-post-content,
+		.wp-block-post-content //,
 		.wp-block-template-part
 	) {
 		margin-block-end: $macro-spacing;
@@ -76,59 +77,87 @@ $macro-spacing: var(--wp--preset--spacing--50);
  * Apply macro spacing between top-level section blocks inside main, post-content, 
  * or the content-home-top layout wrapper.
  */
-:root :where(
-	main.is-layout-flow,
-	main.is-layout-constrained,
-	.wp-block-post-content.is-layout-flow,
-	.wp-block-post-content.is-layout-constrained,
-	.content-home-top.is-layout-flow,
-	.content-home-top.is-layout-constrained,
-	.content-home-top > .wp-block-group.is-layout-constrained
-) > * + * {
-	margin-block-start: $macro-spacing;
-	margin-block-end: 0;
-}
-
-// ============================================================================
-// 2. MACRO VERTICAL SPACING: Top-level Blocks within Main & Post Content
-// ============================================================================
-
-/* Set macro spacing between top-level post blocks */
 // :root main,
-// :root main > .wp-block-template-part,
-// .wp-block-post-content {
+// :where(.is-layout-flow),
+// :where(.is-layout-constrained),
+.wp-block-post-content,
+.content-home-top { //,
+// .content-home-top > .wp-block-group.is-layout-constrained {
+
+	& > *:not(
+		h1, h2, h3, h4, h5, h6,
+		.wp-block-heading,
+		p, .wp-block-paragraph,
+		ul, ol, .wp-block-list	
+	) + *:not( 
+// 		h1, h2, h3, h4, h5, h6,
+// 		.wp-block-heading
+		.wp-block-post-content,
+		.wp-block-post-excerpt,
+		p, .wp-block-paragraph,
+		ul, ol, .wp-block-list	
+	) {
+		margin-block-start: $macro-spacing;
+// 		margin-block-end: 0;
+	}
+}
+ 
+// // :root main,
+// .wp-block-post-content,
+// .content-home-top,
+// .content-home-top > .wp-block-group.is-layout-constrained {
+// 
+// // 	& > * + *:not(.wp-block-post-content) {
 // 	& > * + * {
-// 		margin-block-start: $spacing;
+// 		margin-block-start: $macro-spacing;
+// // 		margin-block-end: 0;
 // 	}
 // }
 
-// :root :where(main, .wp-block-post-content) > * + *,
-// :root :where(main, .wp-block-post-content) > .wp-block-template-part > * + * {
-// :root :where(.is-layout-flow) > .wp-block-template-part > * + *,
-// :root :where(.is-layout-constrained) > .wp-block-template-part > * + * {
-// 	margin-block-start: $macro-spacing;
-// }
-
 // ============================================================================
-// 3. MICRO-TETHER ENGINE (Typograpy Rhythm)
+// 3. MICRO-TETHER RHYTHM (Typograpy Rhythm)
 // ============================================================================
-// 1. Base HTML & Browser Overrides
-// A. Zero margin-block-end on paragraphs so browser bottom margins don't stack with micro-tether
-// p, .wp-block-paragraph {
-// 	margin-block-end: 0;
-// }
 
-// B. Zero margin-block-end on headings to stop margin collapse
-// h1, h2, h3, h4, h5, h6,
-// .wp-block-heading {
-// 	margin-block-end: 0;
-// }
-
-// 3. Editorial Micro-Tether Engine
 // Overrides macro spacing for text-to-text flow, template parts, and template-part group wrappers.
 // :root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) {
 // 
-// 	// Headings -> Body Text Blocks & Template Parts
+// 	// Headings -> Text Blocks
+// 	& > :where(
+// 		h1, h2, h3, h4, h5, h6,
+// 		.wp-block-heading
+// 	):not(.is-style-separator) + :where(
+// // 		p, .wp-block-paragraph,
+// // 		ul, ol, .wp-block-list,
+// // 		blockquote, .wp-block-quote,
+// // 		figure
+// 		*
+// 	) {
+// 		margin-block-start: $micro-spacing;
+// 	}
+// 
+// 	// Separator style headings
+// // 	& > .is-style-separator + * {
+// // 		margin-block-start: $spacing;
+// // 	}
+// 
+// 	// Text Blocks -> Text Blocks
+// 	& > :where(
+// 		p, .wp-block-paragraph,
+// 		ul, ol, .wp-block-list
+// // 		blockquote, .wp-block-quote,
+// 	) + :where(
+// 		p, .wp-block-paragraph,
+// 		ul, ol, .wp-block-list
+// // 		blockquote, .wp-block-quote,
+// 	) {
+// 		margin-block-start: $micro-spacing;
+// 	}
+// 
+// }
+	
+// :root :where(.is-layout-flow, .is-layout-constrained, .wp-block-media-text__content) {
+
+	// Headings -> Body Text Blocks & Template Parts
 // 	> :where(
 // 		h1, h2, h3, h4, h5, h6,
 // 		.wp-block-heading,
@@ -145,8 +174,8 @@ $macro-spacing: var(--wp--preset--spacing--50);
 // 	) {
 // 		margin-block-start: $micro-spacing;
 // 	}
-// 
-// 	// Body Text / Template Parts -> Body Text / Template Parts Flow
+
+	// Body Text / Template Parts -> Body Text / Template Parts Flow
 // 	> :where(
 // 		p, .wp-block-paragraph,
 // 		ul, ol, .wp-block-list,
@@ -162,46 +191,4 @@ $macro-spacing: var(--wp--preset--spacing--50);
 // 	) {
 // 		margin-block-start: $micro-spacing;
 // 	}
-// }
-
-// ============================================================================
-// 4. LIST ITEM MICRO-TETHER ENGINE
-// ============================================================================
-// 4. List Item Micro-Tether Engine (Item-to-Item & Nested List Flow)
-// :where(ul, ol, .wp-block-list):not(.wp-block-navigation, .wp-block-navigation-submenu, .wp-block-page-list, .wp-block-social-links) {
-// :where(ul, ol):not(
-// 	.wp-block-navigation, 
-// 	.wp-block-navigation-submenu, 
-// 	.wp-block-navigation__submenu-container, 
-// 	.wp-block-page-list, 
-// 	.wp-block-social-links,
-// 	.wp-block-post-template
-// ) {
-// 
-// 	// Consecutive List Items
-// 	> li + li {
-// 		margin-block-start: calc(0.5 * $micro-spacing);
-// 	}
-// 
-// 	// Nested Lists within List Items
-// 	> li > :where(ul, ol) {
-// 		margin-block-start: $micro-spacing;
-// 	}
-// }
-
-// 5. Page / Post Subtitle
-// .entry-subtitle {
-// 	margin-block-start: $micro-spacing;
-// 	margin-block-end: 0;
-// }
-
-// 6. Sidebar Template Header Top Padding Reset
-// .main-content.wp-block-columns .entry-header.wp-block-group {
-// 	padding-top: 0 !important;
-// } 
-
-// 7. Post & Page Bottom Buffer (Matches Macro Section Spacing)
-// main > :last-child:not(.wp-block-post-content):not(:empty),
-// main > .wp-block-post-content:last-child > :last-child:not(.alignfull) {
-// 	margin-block-end: $macro-spacing;
 // }
