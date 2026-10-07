@@ -5,20 +5,25 @@
 // SCSS Configuration Variable
 $header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
 
-// 1. Direct Child Sticky Mechanics (Targeting the header template part wrapper)
+// 1. Direct Child Sticky Mechanics (Targeting the header template part wrapper)[span_8](start_span)[span_8](end_span)
 .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
 	position: sticky;
 	z-index: 101;
 	background-color: transparent;
-
+	
+	// Bottom border on full-width header
+	border: none;
+	border-bottom: 1px solid var(--wp--custom--color--border);
+	
 	top: $header-top-offset;
 	margin-top: $header-top-offset; // Top gap above floating capsule in flow
 
 	// Relative container for glass bounds & bottom clearance on standard pages
+	// Equal bottom gap below floating capsule on normal pages
 	.site-header {
 		position: relative;
 		top: 0;
-		margin-bottom: $header-top-offset; // Equal bottom gap below floating capsule on normal pages
+		margin-bottom: $header-top-offset;
 	}
 
 	// Full-Width Header (.site-header.alignfull): Lock flush to top & bottom edges
@@ -59,30 +64,49 @@ $header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
 }
 
 /* ==========================================================================
-   FLOATING HEADER COVER OVERLAY ENGINE
-   Pulls hero Cover blocks up under floating headers while leaving standard pages in flow
+   FLOATING & FULL-WIDTH HEADER COVER OVERLAY ENGINE
+   Pulls hero Cover blocks up under headers while leaving standard pages in flow
    ========================================================================== */
 
-// 1. Matches strictly when a Cover block is the FIRST element in <main>
+// Matches strictly when a Cover block is the FIRST element in <main> across DOM depths
 .wp-site-blocks:has(
-	main > .wp-block-cover.alignfull:first-child,
-	main > :first-child .wp-block-cover.alignfull:first-child,
-	main > :first-child > :first-child .wp-block-cover.alignfull:first-child
+	main > :first-child.wp-block-cover.alignfull,
+	main > :first-child > :first-child.wp-block-cover.alignfull,
+	main > :first-child > :first-child > :first-child.wp-block-cover.alignfull
 ) {
 
-	// 2. Targets the direct header Template Part wrapper inside .wp-site-blocks
+	// Targets the direct header Template Part wrapper inside .wp-site-blocks
 	> :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
 
-		// 3. Executes ONLY on floating/boxed headers (bypasses flush .site-header.alignfull)
+		// SCENARIO A: Floating / Boxed Headers (bypasses flush .site-header.alignfull)
 		&:not(:has(.site-header.alignfull)):not(.site-header.alignfull) {
-			margin-bottom: calc(-1 * (var(--wp--custom--header--height, 77px) + #{$header-top-offset}));
+			// Negate total flow footprint: top margin (24px) + height (77px) + bottom margin (24px) = 125px
+			margin-bottom: calc(-1 * (var(--wp--custom--header--height, 77px) + (2 * #{$header-top-offset})));
 
-			// 4. Applies top padding to the hero Cover block for clearance
 			~ main {
-				> .wp-block-cover.alignfull:first-child,
-				> :first-child .wp-block-cover.alignfull:first-child,
-				> :first-child > :first-child .wp-block-cover.alignfull:first-child {
-					padding-top: calc(var(--wp--custom--header--height, 77px) + #{$header-top-offset}) !important;
+				> :first-child.wp-block-cover.alignfull,
+				> :first-child > :first-child.wp-block-cover.alignfull,
+				> :first-child > :first-child > :first-child .wp-block-cover.alignfull {
+					--wp--custom--header--offset: 0px !important;
+					padding-top: calc(var(--wp--custom--header--height, 77px) + (2 * #{$header-top-offset})) !important;
+				}
+			}
+		}
+
+		// SCENARIO B: Full-Width Glass or Transparent Headers (.site-header.alignfull)
+		&:is(
+			:has(.site-header.alignfull[class*="is-style-glass"]),
+			&.site-header.alignfull[class*="is-style-glass"]
+		) {
+			// Negate exact header height only (77px)
+			margin-bottom: calc(-1 * var(--wp--custom--header--height, 77px));
+
+			~ main {
+				> :first-child.wp-block-cover.alignfull,
+				> :first-child :first-child.wp-block-cover.alignfull,
+				> :first-child > :first-child :first-child.wp-block-cover.alignfull {
+					--wp--custom--header--offset: 0px !important;
+					padding-top: var(--wp--custom--header--height, 77px) !important;
 				}
 			}
 		}

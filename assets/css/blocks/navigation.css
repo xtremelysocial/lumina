@@ -76,12 +76,13 @@
 }
 
 /* ==========================================================================
-   02. FLOATING GLASS HEADER: Clean Outer Glass & Standard Submenu Flyouts
+   02. GLASS HEADER: Clean Outer Glass & Standard Submenu Flyouts
    ========================================================================== */
 /* Outer Header Container (Clean Stacking Root) */
 .site-header:is([class*=is-style-glass]) {
   position: relative;
   isolation: isolate;
+  border: none;
   /* 1. Outer Header Glass Surface */
 }
 .site-header:is([class*=is-style-glass])::before {

@@ -110,13 +110,15 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 }
 
 /* ==========================================================================
-   02. FLOATING GLASS HEADER: Clean Outer Glass & Standard Submenu Flyouts
+   02. GLASS HEADER: Clean Outer Glass & Standard Submenu Flyouts
    ========================================================================== */
 
 /* Outer Header Container (Clean Stacking Root) */
 .site-header:is([class*='is-style-glass']) {
 	position: relative;
 	isolation: isolate;
+
+	border: none;
 
 	/* 1. Outer Header Glass Surface */
 	&::before {
@@ -367,31 +369,6 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 	}		
 }
 
-// /*-----------------------------------------------------------------------------
-// # 05. NON-CLICKABLE PLACEHOLDER LINKS (http://Pages, #, #0)
-// -----------------------------------------------------------------------------*/
-// .wp-block-navigation {
-// 
-// 	// Disable click navigation on dummy targets
-// 	a.wp-block-navigation-item__content:is([href="http://Pages"], [href="#"], [href="#0"]) {
-// 		pointer-events: none;
-// 	}
-// 
-// 	// Desktop: Show pointer cursor on hover
-// 	.wp-block-navigation__responsive-container:not(.is-menu-open) {
-// 		.wp-block-navigation-item:hover:has(> a:is([href="http://Pages"], [href="#"], [href="#0"])) {
-// 			cursor: pointer;
-// 		}
-// 	}
-// 
-// 	// Mobile Overlay: Suppress pointer cursor
-// 	.wp-block-navigation__responsive-container.is-menu-open {
-// 		.wp-block-navigation-item:hover:has(> a:is([href="http://Pages"], [href="#"], [href="#0"])) {
-// 			cursor: default;
-// 		}
-// 	}
-// }
-
 /*-----------------------------------------------------------------------------
 # 06. MOBILE NAVIGATION OVERLAY & BUTTONS
 -----------------------------------------------------------------------------*/
@@ -411,19 +388,6 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 		}
 	}
 }
-
-///* Suppress hover effects on non-clickable links inside open mobile drawer */
-// .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.has-child.open-on-click {
-// 	&:hover > .wp-block-navigation-item,
-// 	&:hover > .wp-block-navigation-item__content,
-// 	& > .wp-block-navigation-item:hover,
-// 	& > .wp-block-navigation-item__content:hover {
-// 		color: inherit;
-// 		cursor: unset;
-// 		font-weight: inherit;
-// 		opacity: 1;
-// 	}
-// }
 
 /* Mobile nav open & close buttons */
 $mobile-nav-size: 24px;
