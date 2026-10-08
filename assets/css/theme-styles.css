@@ -553,15 +553,20 @@ ul, ol, .wp-block-list) {
   box-shadow: inset 1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent), inset -1px -1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--faint, 6%), transparent);
 }
 
-.wp-block-button.is-style-glass-frosted > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
+/* --------------------------------------------------------------------------
+   CONTEXTUAL OVERRIDES: Shift Button Glass Tints on Colored/Glass Canvases
+   Triggers when sitting inside a Cover block, colored section, or glass container
+   -------------------------------------------------------------------------- */
+:is(.has-background, .wp-block-cover, [class*=is-style-glass]) .wp-block-button.is-style-glass > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
+  background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--subtle, 12%), transparent);
+}
+
+:is(.has-background, .wp-block-cover, [class*=is-style-glass]) .wp-block-button.is-style-glass-frosted > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
   background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint-frosted, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--emphasis, 20%), transparent);
 }
 
-.wp-block-button.is-style-glass-dark > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
+:is(.has-background, .wp-block-cover, [class*=is-style-glass]) .wp-block-button.is-style-glass-dark > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
   background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, black) var(--wp--custom--color--opacity--subtle, 12%), transparent);
-}
-.wp-block-button.is-style-glass-dark > :is(.wp-element-button, .wp-block-button__link).has-background {
-  background-image: linear-gradient(color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, black) var(--wp--custom--color--opacity--emphasis, 20%), transparent), color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, black) var(--wp--custom--color--opacity--emphasis, 20%), transparent));
 }
 
 /* ==========================================================================

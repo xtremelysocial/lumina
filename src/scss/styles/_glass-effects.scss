@@ -236,33 +236,36 @@ $glass-rim-overlay:   inset 1px 1px 1px 0 #{$glass-wash-overlay}, inset -1px -1p
 	}
 }
 
-// FROSTED GLASS BUTTON VARIANT
-// .is-style-glass-frosted:not(.wp-block-button),
-.wp-block-button.is-style-glass-frosted > :is(.wp-element-button, .wp-block-button__link) {
-	&:not(.has-background) {
-		background-color: color-mix(
-			in srgb, 
-			#{$glass-tint-frosted} var(--wp--custom--color--opacity--emphasis, 20%), 
-			transparent
-		);
-	}
+/* --------------------------------------------------------------------------
+   CONTEXTUAL OVERRIDES: Shift Button Glass Tints on Colored/Glass Canvases
+   Triggers when sitting inside a Cover block, colored section, or glass container
+   -------------------------------------------------------------------------- */
+
+$glass-context-parents: ":is(.has-background, .wp-block-cover, [class*='is-style-glass'])";
+
+// 1. STANDARD GLASS BUTTON -> Clear Standard Glass Tint
+#{$glass-context-parents} .wp-block-button.is-style-glass > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
+	background-color: color-mix(
+		in srgb, 
+		#{$glass-tint-standard} var(--wp--custom--color--opacity--subtle, 12%), 
+		transparent
+	);
 }
 
-// DARK GLASS BUTTON VARIANT
-// .is-style-glass-dark:not(.wp-block-button),
-.wp-block-button.is-style-glass-dark > :is(.wp-element-button, .wp-block-button__link) {
-	&:not(.has-background) {
-		background-color: color-mix(
-			in srgb, 
-			#{$glass-tint-dark} var(--wp--custom--color--opacity--subtle, 12%), 
-			transparent
-		);
-	}
+// 2. FROSTED GLASS BUTTON -> Clear Frosted Glass Tint
+#{$glass-context-parents} .wp-block-button.is-style-glass-frosted > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
+	background-color: color-mix(
+		in srgb, 
+		#{$glass-tint-frosted} var(--wp--custom--color--opacity--emphasis, 20%), 
+		transparent
+	);
+}
 
-	&.has-background {
-		background-image: linear-gradient(
-			#{$glass-wash-dark-overlay},
-			#{$glass-wash-dark-overlay}
-		);
-	}		
+// 3. DARK GLASS BUTTON -> Clear Dark Glass Tint
+#{$glass-context-parents} .wp-block-button.is-style-glass-dark > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
+	background-color: color-mix(
+		in srgb, 
+		#{$glass-tint-dark} var(--wp--custom--color--opacity--subtle, 12%), 
+		transparent
+	);
 }
