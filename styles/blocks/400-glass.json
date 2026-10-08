@@ -2,11 +2,10 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"slug": "glass",
-	"title": "Glass",
+	"title": "Glass Card",
 	"blockTypes": [
 		"core/group",
-		"core/column",
-		"core/cover"
+		"core/column"
 	],
 	"styles": {
 		"border": {

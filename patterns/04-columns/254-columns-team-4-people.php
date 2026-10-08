@@ -7,15 +7,15 @@
  * Block Types: core/columns
  */
 ?>
-<!-- wp:group {"metadata":{"categories":["lumina","column","team"],"name":"Team 4 People"},"align":"wide","className":"is-style-gutter-dividers","layout":{"type":"constrained"},"anchor":"team-4-people"} -->
+<!-- wp:group {"metadata":{"categories":["lumina","column","team","featured"],"name":"Team 4 People"},"align":"wide","className":"is-style-gutter-dividers","layout":{"type":"constrained"},"anchor":"team-4-people"} -->
 <div class="wp-block-group alignwide is-style-gutter-dividers" id="team-4-people"><!-- wp:heading {"className":"is-style-separator","style":{"typography":{"textAlign":"center"}},"anchor":"team-4-heading"} -->
 <h2 class="wp-block-heading has-text-align-center is-style-separator" id="team-4-heading"><?php esc_html_e("The Studio Collective", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:columns {"align":"wide","className":"is-style-gutter-dividers"} -->
 <div class="wp-block-columns alignwide is-style-gutter-dividers"><!-- wp:column {"width":""} -->
-<div class="wp-block-column"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/male-01.webp" ) ); ?>" alt="Julian Vance" style="aspect-ratio:1;object-fit:cover"/></figure>
+<div class="wp-block-column"><!-- wp:image {"width":"auto","height":"300px","aspectRatio":"3/4","scale":"cover","sizeSlug":"medium","linkDestination":"none","align":"center","className":"is-style-rounded-corners","style":{"border":{"radius":{"topLeft":"var:preset|border-radius|lg","topRight":"var:preset|border-radius|lg","bottomLeft":"var:preset|border-radius|lg","bottomRight":"var:preset|border-radius|lg"}}}} -->
+<figure class="wp-block-image aligncenter size-medium is-resized has-custom-border is-style-rounded-corners"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/male-01.webp" ) ); ?>" alt="" class="" style="border-top-left-radius:var(--wp--preset--border-radius--lg);border-top-right-radius:var(--wp--preset--border-radius--lg);border-bottom-left-radius:var(--wp--preset--border-radius--lg);border-bottom-right-radius:var(--wp--preset--border-radius--lg);aspect-ratio:3/4;object-fit:cover;width:auto;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
@@ -42,8 +42,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":""} -->
-<div class="wp-block-column"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/female-01.webp" ) ); ?>" alt="Elena Rostova" style="aspect-ratio:1;object-fit:cover"/></figure>
+<div class="wp-block-column"><!-- wp:image {"width":"auto","height":"300px","aspectRatio":"3/4","scale":"cover","sizeSlug":"medium","linkDestination":"none","align":"center","className":"is-style-rounded-corners","style":{"border":{"radius":{"topLeft":"var:preset|border-radius|lg","topRight":"var:preset|border-radius|lg","bottomLeft":"var:preset|border-radius|lg","bottomRight":"var:preset|border-radius|lg"}}}} -->
+<figure class="wp-block-image aligncenter size-medium is-resized has-custom-border is-style-rounded-corners"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/female-01.webp" ) ); ?>" alt="" class="" style="border-top-left-radius:var(--wp--preset--border-radius--lg);border-top-right-radius:var(--wp--preset--border-radius--lg);border-bottom-left-radius:var(--wp--preset--border-radius--lg);border-bottom-right-radius:var(--wp--preset--border-radius--lg);aspect-ratio:3/4;object-fit:cover;width:auto;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
@@ -70,8 +70,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":""} -->
-<div class="wp-block-column"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/female-02.webp" ) ); ?>" alt="Sienna Hayes" style="aspect-ratio:1;object-fit:cover"/></figure>
+<div class="wp-block-column"><!-- wp:image {"width":"auto","height":"300px","aspectRatio":"3/4","scale":"cover","sizeSlug":"medium","linkDestination":"none","align":"center","className":"is-style-rounded-corners","style":{"border":{"radius":{"topLeft":"var:preset|border-radius|lg","topRight":"var:preset|border-radius|lg","bottomLeft":"var:preset|border-radius|lg","bottomRight":"var:preset|border-radius|lg"}}}} -->
+<figure class="wp-block-image aligncenter size-medium is-resized has-custom-border is-style-rounded-corners"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/female-02.webp" ) ); ?>" alt="" class="" style="border-top-left-radius:var(--wp--preset--border-radius--lg);border-top-right-radius:var(--wp--preset--border-radius--lg);border-bottom-left-radius:var(--wp--preset--border-radius--lg);border-bottom-right-radius:var(--wp--preset--border-radius--lg);aspect-ratio:3/4;object-fit:cover;width:auto;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
@@ -80,7 +80,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
-<p class="has-text-align-center has-small-font-size"><strong><?php esc_html_e("Gallery & Studio Manager", "lumina"); ?></strong></p>
+<p class="has-text-align-center has-small-font-size"><strong><?php esc_html_e("Gallery &amp; Studio Manager", "lumina"); ?></strong></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center","lineHeight":"1.4"}},"fontSize":"small"} -->
@@ -98,8 +98,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":""} -->
-<div class="wp-block-column"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"large","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-large is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/male-02.webp" ) ); ?>" alt="Lucas Bennett" style="aspect-ratio:1;object-fit:cover"/></figure>
+<div class="wp-block-column"><!-- wp:image {"width":"auto","height":"300px","aspectRatio":"3/4","scale":"cover","sizeSlug":"medium","linkDestination":"none","align":"center","className":"is-style-rounded-corners","style":{"border":{"radius":{"topLeft":"var:preset|border-radius|lg","topRight":"var:preset|border-radius|lg","bottomLeft":"var:preset|border-radius|lg","bottomRight":"var:preset|border-radius|lg"}}}} -->
+<figure class="wp-block-image aligncenter size-medium is-resized has-custom-border is-style-rounded-corners"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/male-02.webp" ) ); ?>" alt="" class="" style="border-top-left-radius:var(--wp--preset--border-radius--lg);border-top-right-radius:var(--wp--preset--border-radius--lg);border-bottom-left-radius:var(--wp--preset--border-radius--lg);border-bottom-right-radius:var(--wp--preset--border-radius--lg);aspect-ratio:3/4;object-fit:cover;width:auto;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
@@ -108,7 +108,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
-<p class="has-text-align-center has-small-font-size"><strong><?php esc_html_e("Lighting & Technical Lead", "lumina"); ?></strong></p>
+<p class="has-text-align-center has-small-font-size"><strong><?php esc_html_e("Lighting &amp; Technical Lead", "lumina"); ?></strong></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center","lineHeight":"1.4"}},"fontSize":"small"} -->

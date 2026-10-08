@@ -12,15 +12,14 @@
 <h2 class="wp-block-heading has-text-align-center is-style-separator" id="team-3-heading"><?php esc_html_e("Our Creative Directors", "lumina"); ?></h2>
 <!-- /wp:heading -->
 
-<!-- wp:columns {"className":"is-style-gutter-dividers"} -->
-<div class="wp-block-columns is-style-gutter-dividers"><!-- wp:column {"width":"33.33%"} -->
-<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/male-01.webp" ) ); ?>" alt="Julian Vance" style="aspect-ratio:1;object-fit:cover"/></figure>
+<!-- wp:columns {"className":"is-style-gutter-dividers","align":"wide"} -->
+<div class="wp-block-columns alignwide is-style-gutter-dividers"><!-- wp:column {"width":"33.33%"} -->
+<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:image {"width":"auto","height":"300px","aspectRatio":"3/4","scale":"cover","sizeSlug":"medium","linkDestination":"none","align":"center","className":"is-style-rounded-corners","style":{"border":{"radius":{"topLeft":"var:preset|border-radius|lg","topRight":"var:preset|border-radius|lg","bottomLeft":"var:preset|border-radius|lg","bottomRight":"var:preset|border-radius|lg"}}}} -->
+<figure class="wp-block-image aligncenter size-medium is-resized has-custom-border is-style-rounded-corners"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/male-01.webp" ) ); ?>" alt="" class="" style="border-top-left-radius:var(--wp--preset--border-radius--lg);border-top-right-radius:var(--wp--preset--border-radius--lg);border-bottom-left-radius:var(--wp--preset--border-radius--lg);border-bottom-right-radius:var(--wp--preset--border-radius--lg);aspect-ratio:3/4;object-fit:cover;width:auto;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
-<div class="wp-block-group">
-<!-- wp:paragraph {"className":"has-text-align-center","fontSize":"medium"} -->
+<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-align-center","fontSize":"medium"} -->
 <p class="has-text-align-center has-medium-font-size"><strong><?php esc_html_e("Julian Vance", "lumina"); ?></strong></p>
 <!-- /wp:paragraph -->
 
@@ -43,8 +42,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"33.33%"} -->
-<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/female-01.webp" ) ); ?>" alt="Elena Rostova" style="aspect-ratio:1;object-fit:cover"/></figure>
+<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:image {"width":"auto","height":"300px","aspectRatio":"3/4","scale":"cover","sizeSlug":"medium","linkDestination":"none","align":"center","className":"is-style-rounded-corners","style":{"border":{"radius":{"topLeft":"var:preset|border-radius|lg","topRight":"var:preset|border-radius|lg","bottomLeft":"var:preset|border-radius|lg","bottomRight":"var:preset|border-radius|lg"}}}} -->
+<figure class="wp-block-image aligncenter size-medium is-resized has-custom-border is-style-rounded-corners"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/female-01.webp" ) ); ?>" alt="" class="" style="border-top-left-radius:var(--wp--preset--border-radius--lg);border-top-right-radius:var(--wp--preset--border-radius--lg);border-bottom-left-radius:var(--wp--preset--border-radius--lg);border-bottom-right-radius:var(--wp--preset--border-radius--lg);aspect-ratio:3/4;object-fit:cover;width:auto;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
@@ -71,8 +70,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"33.33%"} -->
-<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-style-rounded"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/female-02.webp" ) ); ?>" alt="Sienna Hayes" style="aspect-ratio:1;object-fit:cover"/></figure>
+<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:image {"width":"auto","height":"300px","aspectRatio":"3/4","scale":"cover","sizeSlug":"medium","linkDestination":"none","align":"center","className":"is-style-rounded-corners","style":{"border":{"radius":{"topLeft":"var:preset|border-radius|lg","topRight":"var:preset|border-radius|lg","bottomLeft":"var:preset|border-radius|lg","bottomRight":"var:preset|border-radius|lg"}}}} -->
+<figure class="wp-block-image aligncenter size-medium is-resized has-custom-border is-style-rounded-corners"><img src="<?php echo esc_url( get_theme_file_uri( "assets/images/team/female-02.webp" ) ); ?>" alt="" class="" style="border-top-left-radius:var(--wp--preset--border-radius--lg);border-top-right-radius:var(--wp--preset--border-radius--lg);border-bottom-left-radius:var(--wp--preset--border-radius--lg);border-bottom-right-radius:var(--wp--preset--border-radius--lg);aspect-ratio:3/4;object-fit:cover;width:auto;height:300px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
@@ -81,7 +80,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"fontSize":"small"} -->
-<p class="has-text-align-center has-small-font-size"><strong><?php esc_html_e("Gallery & Studio Manager", "lumina"); ?></strong></p>
+<p class="has-text-align-center has-small-font-size"><strong><?php esc_html_e("Gallery &amp; Studio Manager", "lumina"); ?></strong></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"textAlign":"center","lineHeight":"1.4"}},"fontSize":"small"} -->

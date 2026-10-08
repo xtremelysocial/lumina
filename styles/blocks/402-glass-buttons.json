@@ -4,7 +4,6 @@
 	"slug": "glass",
 	"title": "Glass",
 	"blockTypes": [
-		"core/buttons",
 		"core/button"
 	],
 	"styles": {

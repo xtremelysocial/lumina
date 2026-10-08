@@ -62,7 +62,7 @@ $macro-spacing: var(--wp--preset--spacing--50);
 		.alignfull.wp-block-image,
 		.alignfull.wp-block-post-featured-image,
 		.alignfull.has-background,
-		.wp-block-post-content //,
+		.wp-block-post-content,
 		.wp-block-template-part
 	) {
 		margin-block-end: $macro-spacing;

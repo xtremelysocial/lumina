@@ -384,17 +384,20 @@ body .is-layout-constrained > .alignright {
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
 .alignfull.has-background,
-.wp-block-post-content .wp-block-template-part),
+.wp-block-post-content,
+.wp-block-template-part),
 :root main > :last-child.wp-block-template-part > :last-child:not(.alignfull.wp-block-cover,
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
 .alignfull.has-background,
-.wp-block-post-content .wp-block-template-part),
+.wp-block-post-content,
+.wp-block-template-part),
 .wp-block-post-content > :last-child:not(.alignfull.wp-block-cover,
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
 .alignfull.has-background,
-.wp-block-post-content .wp-block-template-part) {
+.wp-block-post-content,
+.wp-block-template-part) {
   margin-block-end: var(--wp--preset--spacing--50);
 }
 
@@ -488,7 +491,6 @@ ul, ol, .wp-block-list) {
 [class*=is-style-glass]:not(.wp-block-button) {
   border: none !important;
   box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--wp--preset--color--base) var(--wp--custom--color--opacity--subtle, 12%), transparent);
-  background: transparent;
 }
 [class*=is-style-glass]:not(.wp-block-button)::before {
   content: "";
@@ -496,7 +498,7 @@ ul, ol, .wp-block-list) {
   inset: 0;
   z-index: 0;
   border-radius: inherit;
-  background: color-mix(in srgb, var(--wp--custom--color--opacity--tint, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--faint, 6%), transparent);
+  background-color: color-mix(in srgb, var(--wp--preset--color--secondary) var(--wp--custom--color--opacity--subtle, 12%), transparent);
   backdrop-filter: var(--wp--custom--color--opacity--blur, blur(6px));
   pointer-events: none;
 }
@@ -509,13 +511,14 @@ ul, ol, .wp-block-list) {
   pointer-events: none;
   box-shadow: inset -1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent), inset 1px -1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--faint, 6%), transparent);
 }
-
-.is-style-glass-frosted:not(.wp-block-button)::before {
+:is(.has-background, .wp-block-cover) [class*=is-style-glass]:not(.wp-block-button).is-style-glass::before, [class*=is-style-glass]:not(.wp-block-button).is-style-glass:is(.has-background, .wp-block-cover)::before {
+  background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--faint, 6%), transparent);
+}
+:is(.has-background, .wp-block-cover) [class*=is-style-glass]:not(.wp-block-button).is-style-glass-frosted::before, [class*=is-style-glass]:not(.wp-block-button).is-style-glass-frosted:is(.has-background, .wp-block-cover)::before {
   background: color-mix(in srgb, var(--wp--custom--color--opacity--tint-frosted, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--subtle, 12%), transparent);
   backdrop-filter: var(--wp--custom--color--opacity--blur-dense, blur(10px));
 }
-
-.is-style-glass-dark:not(.wp-block-button)::before {
+:is(.has-background, .wp-block-cover) [class*=is-style-glass]:not(.wp-block-button).is-style-glass-dark::before, [class*=is-style-glass]:not(.wp-block-button).is-style-glass-dark:is(.has-background, .wp-block-cover)::before {
   background: color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, black) var(--wp--custom--color--opacity--faint, 6%), transparent);
 }
 

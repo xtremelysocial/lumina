@@ -22,7 +22,7 @@
   left: var(--wp--preset--spacing--30, 0.75rem);
   right: var(--wp--preset--spacing--30, 0.75rem);
   height: 1px;
-  background-color: var(--wp--custom--color--divider, color-mix(in srgb, currentColor 20%, transparent));
+  background-color: color-mix(in srgb, var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast)) 20%, transparent);
   pointer-events: none;
 }
 
@@ -51,7 +51,7 @@
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item:not(:last-child),
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item:not(:last-child) {
-  border-bottom: 1px solid var(--wp--custom--color--divider, color-mix(in srgb, currentColor 20%, transparent));
+  border-bottom: 1px solid color-mix(in srgb, var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast)) 20%, transparent);
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
@@ -68,12 +68,7 @@
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
   width: 100%;
-  border-bottom: 1px solid var(--wp--custom--color--divider, color-mix(in srgb, currentColor 20%, transparent));
-  /* Lock border color so link hover state doesn't turn line teal */
-}
-.wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content:hover,
-.wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container .wp-block-navigation-item.has-child > .wp-block-navigation-item__content:hover {
-  border-bottom-color: var(--wp--custom--color--divider, color-mix(in srgb, currentColor 20%, transparent));
+  border-bottom: 1px solid color-mix(in srgb, var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast)) 20%, transparent);
 }
 .wp-block-navigation.is-vertical.is-style-nav-dividers .wp-block-navigation__container,
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {

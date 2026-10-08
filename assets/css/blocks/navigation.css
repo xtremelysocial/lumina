@@ -282,17 +282,25 @@
 }
 
 /*-----------------------------------------------------------------------------
-# 06. MOBILE NAVIGATION OVERLAY & BUTTONS
+# 05. MOBILE NAVIGATION OVERLAY & BUTTONS
 -----------------------------------------------------------------------------*/
-/* Suppress hover effects on non-clickable items & dummy links inside open mobile drawer */
-.wp-block-navigation__responsive-container.is-menu-open :is(.wp-block-navigation-item.has-child.open-on-click,
-.wp-block-navigation-item:has(> a:is([href="http://Pages"], [href="#"], [href="#0"]))):hover > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.wp-block-navigation__responsive-container.is-menu-open :is(.wp-block-navigation-item.has-child.open-on-click,
-.wp-block-navigation-item:has(> a:is([href="http://Pages"], [href="#"], [href="#0"]))) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover {
-  color: inherit !important;
+/* Mute non-clickable placeholder links & suppress tap feedback inside open mobile drawer */
+.wp-block-navigation__responsive-container.is-menu-open {
+  /* 1. Mute dummy links visually at rest & strip touch events */
+}
+.wp-block-navigation__responsive-container.is-menu-open a.wp-block-navigation-item__content:is([href="http://Pages"], [href="#"], [href="#0"]) {
+  opacity: 0.65 !important;
+  pointer-events: none !important;
+  cursor: default !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open {
+  /* 2. Suppress hover/active color flashes & font weight shifts on dummy/accordion items */
+}
+.wp-block-navigation__responsive-container.is-menu-open :is(.wp-block-navigation-item:has(> a:is([href="http://Pages"], [href="#"], [href="#0"]))):hover > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
+.wp-block-navigation__responsive-container.is-menu-open :is(.wp-block-navigation-item:has(> a:is([href="http://Pages"], [href="#"], [href="#0"]))) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover,
+.wp-block-navigation__responsive-container.is-menu-open :is(.wp-block-navigation-item:has(> a:is([href="http://Pages"], [href="#"], [href="#0"]))) > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):active {
   cursor: default !important;
   font-weight: inherit !important;
-  opacity: 1 !important;
 }
 
 /* Mobile nav open & close buttons */
@@ -334,7 +342,7 @@
 }
 
 /*-----------------------------------------------------------------------------
-# 07. SUBMENU FLYOUTS & LEVEL 3+ INLINE ACCORDION
+# 06. SUBMENU FLYOUTS & LEVEL 3+ INLINE ACCORDION
 -----------------------------------------------------------------------------*/
 /* 1. Default & Left-Aligned Level 2 Flyouts ONLY (Fly Right) */
 .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) :is(.wp-block-navigation__container, .wp-block-page-list) > .has-child > .wp-block-navigation__submenu-container > .has-child > .wp-block-navigation__submenu-container {
@@ -406,7 +414,7 @@
   }
 }
 /*-----------------------------------------------------------------------------
-# 08. CUSTOM BLOCK STYLE: FIXED NAVIGATION MENU
+# 07. CUSTOM BLOCK STYLE: FIXED NAVIGATION MENU
 -----------------------------------------------------------------------------*/
 nav.wp-block-navigation.is-style-fixed-menu .wp-block-navigation__responsive-container-open, nav.wp-block-navigation.is-style-fixed-menu .wp-block-navigation__responsive-container-close {
   background: rgba(0, 0, 0, 0.25);

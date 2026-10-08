@@ -4,7 +4,8 @@
 
 /* Declare divider color variable locked to contrast token (prevents link hover currentColor bleed) */
 // $nav-divider-color: color-mix(in srgb, var(--wp--preset--color--contrast, inherit) 15%, transparent);
-$nav-divider-color: var(--wp--custom--color--divider, color-mix(in srgb, currentColor 20%, transparent));
+// $nav-divider-color: var(--wp--custom--color--divider, color-mix(in srgb, currentColor 20%, transparent));
+$nav-divider-color: color-mix(in srgb, var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast)) 20%, transparent);
 
 /* Desktop Submenu Dividers */
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) {
@@ -70,10 +71,10 @@ $nav-divider-color: var(--wp--custom--color--divider, color-mix(in srgb, current
 			width: 100%;
 			border-bottom: 1px solid $nav-divider-color;
 
-			/* Lock border color so link hover state doesn't turn line teal */
-			&:hover {
-				border-bottom-color: $nav-divider-color;
-			}
+//			/* Lock border color so link hover state doesn't turn line teal */
+// 			&:hover {
+// 				border-bottom-color: inherit; //$nav-divider-color;
+// 			}
 		}
 
 		/* Text Alignment & Flex Justification */

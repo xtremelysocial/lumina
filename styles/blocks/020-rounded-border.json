@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"slug": "rounded-border",
-	"title": "Card w/Border",
+	"title": "Card",
 	"blockTypes": [ "core/group", "core/columns", "core/column", "core/cover", "core/media-text", "core/comments" ],
 	"styles": {
 		"color": {

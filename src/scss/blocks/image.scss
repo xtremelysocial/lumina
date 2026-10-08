@@ -23,20 +23,13 @@ figure.wp-caption:not(.alignfull):not(.alignwide) img {
 # Image: Custom
 -----------------------------------------------------------------------------*/
 
-/* Image Border */
-.wp-block-image.is-style-image-border {
-	border-radius: var(--wp--custom--border--radius);
-// 	
-// 	& img {
-// 		padding: var(--wp--preset--spacing--20);
-// 	}
-}
+// /* Image Border */
+// .wp-block-image.is-style-image-border {
+// 	border-radius: var(--wp--custom--border--radius);
+// }
 
 /* Image Round w/Border */
 .wp-block-image.is-style-image-round-border {
     border-radius: 9999px !important;
-//     
-//     & img {
-// 		padding: var(--wp--preset--spacing--20);
-//     }
 }
+
