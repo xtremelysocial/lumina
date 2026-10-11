@@ -807,7 +807,15 @@
 					"button": {
 						"border": {
 							"radius": "var(--wp--custom--button--radius)"
-						}
+						},
+						"spacing": {
+							"padding": {
+								"top": "var:preset|spacing|20",
+								"bottom": "var:preset|spacing|20",
+								"left": "var:preset|spacing|30",
+								"right": "var:preset|spacing|30"
+							}
+						}						
 					}
 				}
     		},
