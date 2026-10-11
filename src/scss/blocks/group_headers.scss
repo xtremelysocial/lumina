@@ -1,65 +1,65 @@
 /* ==========================================================================
-   STICKY & FLOATING HEADER ENGINE
+   LUMINA ENGINE: Sticky & Floating Header Engine
    ========================================================================== */
 
-// SCSS Configuration Variable
 $header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
 
-// 1. Direct Child Sticky Mechanics (Targeting the header template part wrapper)[span_8](start_span)[span_8](end_span)
+// --------------------------------------------------------------------------
+// DOM ELEMENT 1: Direct Child of .wp-site-blocks (Outer Template Part Wrapper)
+// Responsibilities: Viewport sticky physics, admin bar offsets, & outer flow gaps
+// --------------------------------------------------------------------------
 .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
 	position: sticky;
 	z-index: 101;
 	background-color: transparent;
-	
-	// Bottom border on full-width header
-	border: none;
-	border-bottom: 1px solid var(--wp--custom--color--border);
-	
-	top: $header-top-offset;
-	margin-top: $header-top-offset; // Top gap above floating capsule in flow
 
-	// Relative container for glass bounds & bottom clearance on standard pages
-	// Equal bottom gap below floating capsule on normal pages
+	// Default Flush Full-Width Header State
+	top: 0;
+// 	margin-top: 0;
+// 	margin-bottom: 0;
+
+	// Don't add extra top positioning to the site header
 	.site-header {
 		position: relative;
 		top: 0;
+	}
+
+	// Floating Capsule Variant (Engages ONLY when .site-header itself is .alignwide)
+	&:has(.site-header.alignwide) {
+		top: $header-top-offset;
+		margin-top: $header-top-offset;
 		margin-bottom: $header-top-offset;
 	}
-
-	// Full-Width Header (.site-header.alignfull): Lock flush to top & bottom edges
-	&:has(.site-header.alignfull), 
-	&.site-header.alignfull {
-		top: 0;
-		margin-top: 0;
-
-		.site-header {
-			margin-bottom: 0;
-			border-radius: 0; 
-		}
-	}
 }
 
-// 2. Admin Bar Adjustment (Calculated directly at the root sticky level)
+// Admin Bar Viewport Offset (Applied strictly to Element 1)
 .admin-bar .wp-site-blocks > :is(:has(.is-position-sticky), :has(.is-style-fixed-header), .is-position-sticky, .is-style-fixed-header) {
-	top: calc(var(--wp-admin--admin-bar--height, 32px) + #{$header-top-offset});
+	top: var(--wp-admin--admin-bar--height, 32px);
 
-	// Full-Width Header (.site-header.alignfull) under Admin Bar
-	&:has(.site-header.alignfull), 
-	&.site-header.alignfull {
-		top: var(--wp-admin--admin-bar--height, 32px);
+	&:has(.site-header.alignwide) {
+		top: calc(var(--wp-admin--admin-bar--height, 32px) + #{$header-top-offset});
 	}
 }
 
-// 3. Floating Header Width Constraint (Elastic Capsule)
-.site-header.alignwide {
-	width: fit-content;
-	min-width: min(100% - (2 * var(--wp--style--root--padding-left, 24px)), var(--wp--style--global--content-size, 760px));
-	max-width: min(100% - (2 * var(--wp--style--root--padding-left, 24px)), var(--wp--style--global--wide-size, 1168px));
-	margin-left: auto;
-	margin-right: auto;
+// --------------------------------------------------------------------------
+// DOM ELEMENT 2: .site-header (The Actual Inner Header Container)
+// Responsibilities: Capsule geometry & width limits ONLY when WordPress doesn't
+// --------------------------------------------------------------------------
+.site-header {
+// 	position: relative;
+// 	top: 0; 
 
-	> * {
-		gap: var(--wp--preset--spacing--50, 32px);
+	// Default header has bottom border (user can override)
+	border: none;
+	border-bottom: var(--wp--preset--border-width, 1px) var(--wp--preset--border-style, solid) var(--wp--custom--color--border);
+
+	// Capsule Width Limits (Applies ONLY when user selects Wide Width / .alignwide)
+	&.alignwide {
+		width: fit-content;
+		min-width: min(100% - (2 * var(--wp--style--root--padding-left, 24px)), var(--wp--style--global--content-size, 760px));
+		max-width: min(100% - (2 * var(--wp--style--root--padding-left, 24px)), var(--wp--style--global--wide-size, 1168px));
+		margin-inline: auto;
+		border-radius: var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg, 16px));
 	}
 }
 
