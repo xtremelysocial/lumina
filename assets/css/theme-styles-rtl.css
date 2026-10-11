@@ -67,7 +67,7 @@ h1, h2, h3, h4, h5, h6,
 /* Use bold font-weight from theme.json */
 strong,
 b {
-  font-weight: var(--wp--custom--typography--font-weight--bold, 500);
+  font-weight: var(--wp--custom--typography--font-weight--bold, 400);
 }
 
 /* Prevent multi-line preformatted code blocks from breaking page layouts */
@@ -81,7 +81,7 @@ code:not(pre > code),
 pre:not(.wp-block-code) {
   font-size: var(--wp--preset--font-size--small);
   padding: 0.15em 0.35em;
-  border-radius: var(--wp--custom--border--radius, 5px);
+  border-radius: var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg));
   border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--border--color, var(--wp--preset--color--neutral-alt));
   word-break: break-word;
 }
@@ -119,55 +119,48 @@ fieldset {
   font-weight: var(--wp--custom--typography--font-weight--normal, 300);
   line-height: 1.5;
   padding: var(--wp--preset--spacing--20) var(--wp--preset--spacing--40);
-  border: 1px solid var(--wp--preset--color--contrast);
-  border-radius: var(--wp--custom--border--radius);
+  border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
+  border-radius: var(--wp--preset--border-radius--sm, var(--wp--preset--spacing--20, 6px));
   text-shadow: none;
   -webkit-appearance: none;
 }
 
 select,
 textarea,
-input:not(.file):not(.wp-element-button) {
+input:not([type=button]):not([type=submit]):not([type=reset]):not(.wp-element-button) {
   font-family: inherit;
-  background-color: var(--wp--custom--color--field--background);
-  color: var(--wp--custom--color--field--text);
+  color: inherit;
+  background-color: color-mix(in srgb, currentColor 4%, transparent);
+  border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 12%, transparent));
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 select {
   font-size: var(--wp--preset--font-size--small, 16px);
   font-weight: var(--wp--custom--typography--font-weight--normal, 300);
   line-height: 1.5;
-  border-radius: var(--wp--preset--spacing--20);
+  border-radius: var(--wp--preset--border-radius--sm, var(--wp--preset--spacing--20, 8px));
   text-shadow: none;
-  border: 1px solid var(--wp--custom--color--field--border, var(--wp--preset--color--dark-gray));
 }
 
 textarea,
-input {
+input:not([type=radio]):not([type=checkbox]):not([type=file]):not([type=image]) {
   font-size: var(--wp--preset--font-size--normal);
   font-weight: var(--wp--custom--typography--font-weight--normal, 300);
   line-height: 1.5;
-  border-radius: var(--wp--preset--spacing--20);
+  border-radius: var(--wp--preset--border-radius--sm, var(--wp--preset--spacing--20, 8px));
   text-shadow: none;
-}
-
-textarea,
-input:not([type=radio]):not([type=checkbox]):not([type=file]):not([type=button]):not([type=image]):not([class*=button]):not(.wp-block-button__link) {
   -webkit-appearance: none;
-  border: 1px solid var(--wp--custom--color--outline, var(--wp--preset--color--dark-gray));
+  -moz-appearance: none;
+       appearance: none;
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   outline: none !important;
-  box-shadow: 0 0 0 3px var(--wp--custom--color--outline);
-  transition: box-shadow 0.3s ease;
-}
-
-select:focus,
-select:focus-visible {
-  outline: var(--wp--custom--color--outline) 5px solid;
-  transition: outline 0.3s ease;
+  border-color: color-mix(in srgb, currentColor 40%, transparent);
+  box-shadow: 0 0 0 3px var(--wp--custom--color--field--outline, color-mix(in srgb, currentColor 20%, transparent));
 }
 
 /*-----------------------------------------------------------------------------
@@ -478,6 +471,9 @@ ul, ol, .wp-block-list) {
    00. CONFIG & TOKENS (SCSS and theme.json Driven)
    -------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------
+   00. CONFIG & TOKENS (SCSS and theme.json Driven)
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
    01. GLASS CONTAINERS (Groups, Columns, Covers, Headers)
    -------------------------------------------------------------------------- */
 [class*=is-style-glass]:not(.wp-block-button) {
@@ -498,7 +494,7 @@ ul, ol, .wp-block-list) {
   inset: 0;
   z-index: 0;
   border-radius: inherit;
-  background-color: color-mix(in srgb, var(--wp--preset--color--secondary) var(--wp--custom--color--opacity--subtle, 12%), transparent);
+  background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint-color, var(--wp--preset--color--secondary)) var(--wp--custom--color--opacity--subtle, 12%), transparent);
   backdrop-filter: var(--wp--custom--color--opacity--blur, blur(6px));
   pointer-events: none;
 }
@@ -515,11 +511,11 @@ ul, ol, .wp-block-list) {
   background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--faint, 6%), transparent);
 }
 :is(.has-background, .wp-block-cover) [class*=is-style-glass]:not(.wp-block-button).is-style-glass-frosted::before, [class*=is-style-glass]:not(.wp-block-button).is-style-glass-frosted:is(.has-background, .wp-block-cover)::before {
-  background: color-mix(in srgb, var(--wp--custom--color--opacity--tint-frosted, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--subtle, 12%), transparent);
+  background: color-mix(in srgb, var(--wp--custom--color--opacity--tint-frosted, white) var(--wp--custom--color--opacity--subtle, 12%), transparent);
   backdrop-filter: var(--wp--custom--color--opacity--blur-dense, blur(10px));
 }
 :is(.has-background, .wp-block-cover) [class*=is-style-glass]:not(.wp-block-button).is-style-glass-dark::before, [class*=is-style-glass]:not(.wp-block-button).is-style-glass-dark:is(.has-background, .wp-block-cover)::before {
-  background: color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, black) var(--wp--custom--color--opacity--faint, 6%), transparent);
+  background: color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, var(--wp--preset--color--contrast)) var(--wp--custom--color--opacity--faint, 6%), transparent);
 }
 
 /* --------------------------------------------------------------------------
@@ -531,7 +527,7 @@ ul, ol, .wp-block-list) {
   overflow: hidden;
 }
 [class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
-  background-color: color-mix(in srgb, var(--wp--preset--color--primary) var(--wp--custom--color--opacity--subtle, 12%), transparent);
+  background-color: color-mix(in srgb, var(--wp--custom--color--button--background, var(--wp--preset--color--primary)) var(--wp--custom--color--opacity--subtle, 12%), transparent);
 }
 [class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link):not(.has-background):not(.has-text-color) {
   color: inherit;
@@ -562,11 +558,11 @@ ul, ol, .wp-block-list) {
 }
 
 :is(.has-background, .wp-block-cover, [class*=is-style-glass]) .wp-block-button.is-style-glass-frosted > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
-  background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint-frosted, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--emphasis, 20%), transparent);
+  background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint-frosted, white) var(--wp--custom--color--opacity--emphasis, 20%), transparent);
 }
 
 :is(.has-background, .wp-block-cover, [class*=is-style-glass]) .wp-block-button.is-style-glass-dark > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
-  background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, black) var(--wp--custom--color--opacity--subtle, 12%), transparent);
+  background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint-dark, var(--wp--preset--color--contrast)) var(--wp--custom--color--opacity--subtle, 12%), transparent);
 }
 
 /* ==========================================================================
@@ -816,7 +812,7 @@ figure > a:active,
   border-radius: 50%;
   opacity: calc(0.7 * var(--motion-active));
   transform: scale(var(--motion-active));
-  transition: opacity var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
+  transition: opacity var(--wp--custom--animation--duration--short, 250ms) cubic-bezier(0.16, 1, 0.3, 1), transform var(--wp--custom--animation--duration--short, 250ms) cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
   pointer-events: none;
   z-index: 2;
   background-color: color-mix(in srgb, var(--wp--preset--color--contrast, #000000) 80%, transparent);
@@ -833,7 +829,7 @@ figure > a:active,
   height: 28px;
   opacity: calc(0.7 * var(--motion-active));
   transform: scale(var(--motion-active)) rotate(0deg);
-  transition: opacity var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), transform var(--wp--custom--animation--duration--short, 200ms) cubic-bezier(0.16, 1, 0.3, 1), color 200ms ease;
+  transition: opacity var(--wp--custom--animation--duration--short, 250ms) cubic-bezier(0.16, 1, 0.3, 1), transform var(--wp--custom--animation--duration--short, 250ms) cubic-bezier(0.16, 1, 0.3, 1), color 200ms ease;
   pointer-events: none;
   z-index: 3;
   color: var(--wp--preset--color--base, #ffffff);
@@ -1423,7 +1419,7 @@ h1, h2, h3, h4, h5, h6) {
   height: auto;
   font-family: inherit;
   font-size: inherit;
-  font-weight: var(--wp--custom--typography--font-weight--normal, 400);
+  font-weight: var(--wp--custom--typography--font-weight--normal, 300);
   line-height: inherit;
   text-align: inherit;
   text-transform: inherit;
@@ -1595,7 +1591,7 @@ h1, h2, h3, h4, h5, h6), :where(:root) .has-light-gray-background-color :is(.wp-
 .wp-block-site-tagline,
 h1, h2, h3, h4, h5, h6) {
   /* Set heading to custom color heading text */
-  color: var(--wp--custom--color--heading--text, var(--wp--preset--color--secondary-alt));
+  color: var(--wp--custom--color--heading--text, var(--wp--preset--color--dark));
 }
 
 :where(:root) .has-primary-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-secondary-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-tertiary-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {
@@ -1605,7 +1601,7 @@ h1, h2, h3, h4, h5, h6) {
 
 :where(:root) .has-primary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-secondary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-tertiary-alt-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {
   /* Lighten link color on dark backgrounds */
-  filter: var(--wp--custom--color--highlight-alt--lighten, brightness(1.75) saturate(0.8));
+  filter: var(--wp--custom--color--highlight-alt--lighten, brightness(1.5) saturate(0.8));
 }
 
 :where(:root) .has-highlight-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) .has-highlight-accent-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))) {

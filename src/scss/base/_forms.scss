@@ -10,55 +10,48 @@ fieldset {
 	font-weight: var(--wp--custom--typography--font-weight--normal, 300);
 	line-height: 1.5;
 	padding: var(--wp--preset--spacing--20) var(--wp--preset--spacing--40);
-	border: 1px solid var(--wp--preset--color--contrast);
-	border-radius: var(--wp--custom--border--radius);
+	border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
+	border-radius: var(--wp--preset--border-radius--sm, var(--wp--preset--spacing--20, 6px));
 	text-shadow: none;
 	-webkit-appearance: none;
 }
 
 select,
 textarea,
-input:not(.file):not(.wp-element-button) {
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not(.wp-element-button) {
 	font-family: inherit;
-// 	background-color: var(--wp--custom--color--field--background, revert);
-// 	color: var(--wp--custom--color--field--text, revert);
-	background-color: var(--wp--custom--color--field--background);
-	color: var(--wp--custom--color--field--text);
+	color: inherit;
+	
+	// Faint 4% alpha tint adapts seamlessly to white, dark, or colored containers
+	background-color: color-mix(in srgb, currentColor 4%, transparent);
+	border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 12%, transparent));
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 select {
 	font-size: var(--wp--preset--font-size--small, 16px);
 	font-weight: var(--wp--custom--typography--font-weight--normal, 300);
 	line-height: 1.5;
-	border-radius: var(--wp--preset--spacing--20);
+	border-radius: var(--wp--preset--border-radius--sm, var(--wp--preset--spacing--20, 8px));
 	text-shadow: none;
-	border: 1px solid var(--wp--custom--color--field--border, var(--wp--preset--color--dark-gray));
 }
-  
+
 textarea,
-input {
+input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="image"]) {
 	font-size: var(--wp--preset--font-size--normal);
 	font-weight: var(--wp--custom--typography--font-weight--normal, 300);
 	line-height: 1.5;
-	border-radius: var(--wp--preset--spacing--20);
+	border-radius: var(--wp--preset--border-radius--sm, var(--wp--preset--spacing--20, 8px));
 	text-shadow: none;
-}
-
-textarea,
-input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="button"]):not([type="image"]):not([class*="button"]):not(.wp-block-button__link) {
 	-webkit-appearance: none;
-// 	border: 1px solid var(--wp--preset--color--contrast);
-	border: 1px solid var(--wp--custom--color--outline, var(--wp--preset--color--dark-gray));
+	appearance: none;
 }
 
+// Focus State: Leverages field.outline from theme.json (20% currentColor)
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
 	outline: none !important;
-	box-shadow: 0 0 0 3px var(--wp--custom--color--outline);
-	transition: box-shadow 0.3s ease;
-}
-select:focus,
-select:focus-visible {
-	outline: var(--wp--custom--color--outline) 5px solid;
-	transition: outline 0.3s ease;
+	border-color: color-mix(in srgb, currentColor 40%, transparent);
+	box-shadow: 0 0 0 3px var(--wp--custom--color--field--outline, color-mix(in srgb, currentColor 20%, transparent));
 }

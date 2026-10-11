@@ -12,18 +12,35 @@
 // }
 
 /* Padding for colored backgrounds on columns and individual column */
-.wp-block-columns.has-background { 
+.wp-block-columns:is(
+	.has-background, 
+	[class*='is-style-glass'], 
+	[class*='is-style-section']
+) { 
 	padding: var(--wp--preset--spacing--60);
 }
 
-.wp-block-column.has-background { 
+.wp-block-column:is(
+	.has-background, 
+	[class*='is-style-glass'], 
+	[class*='is-style-section']
+) { 
 	padding: var(--wp--preset--spacing--40);
 }
 
 /* OVERRIDE horizontal padding on mobile and tablet (782px) */
 @media only screen and (max-width: #{ (breakpoints.$break-medium - 1) }) {
-	.wp-block-columns.has-background,
-	.wp-block-columns > .wp-block-column.has-background {
+
+	.wp-block-columns:is(
+		.has-background, 
+		[class*='is-style-glass'], 
+		[class*='is-style-section']
+	),
+	.wp-block-columns > .wp-block-column:is(
+		.has-background, 
+		[class*='is-style-glass'], 
+		[class*='is-style-section']
+	) {
 		padding-left: var(--wp--style--root--padding-left) !important;
 		padding-right: var(--wp--style--root--padding-right) !important;
 	}

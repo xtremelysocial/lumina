@@ -96,54 +96,6 @@
 	@include __blueprint-shadow-deep;
 }
 
-// ==========================================================================
-// 03.07 HIGH SHADOW: Apply high (sharp) shadow
-// ==========================================================================
-// @mixin __blueprint-shadow-high {
-// // 	box-shadow: var(--wp--custom--color--shadow--hover-high, 
-// // 				var(--wp--preset--shadow--sharp, 
-// // 				0 12px 25px rgba(0, 0, 0, 0.15)));
-// 	box-shadow: config.$shadow-high;
-// }
-
-// %physics-shadow-high {
-// 	/* ==========================================================================
-// 	   03.07 HIGH SHADOW: Apply high (sharp) shadow
-// 	========================================================================== */
-// 	@include __blueprint-shadow-high;
-// }
-
-// /* ==========================================================================
-//    03.10 APPLY CARD: Kinetic lift and hover elevation
-//    ========================================================================== */
-// @mixin apply-card($block: null) {
-// 
-// 	// 1. Kinetic Lift (-3px)
-// 	@if config.$lumina-dev-mode {
-// 		@include __blueprint-lift-subtle;
-// 	} @else {
-// 		@extend %physics-lift-subtle;
-// 	}
-// 
-// 	// 2. Active Box Shadow
-// 	// Track B & Braked Cards: Re-declare inset hairline alongside hover shadow
-// 	@if $block != null and (is-no-rounding($block) or has-layout-brakes($block)) {
-// 		box-shadow: inset 0 0 0 1px var(--wp--custom--color--divider, color-mix(in srgb, currentColor 28%, transparent)),
-// 		            config.$shadow-hover;
-// 
-// 	// Track A: Standard Rounded Cards (uses native CSS border + deep hover shadow)
-// 	} @else {
-// 		@if config.$lumina-dev-mode {
-// 			@include __blueprint-shadow-deep;
-// 		} @else {
-// 			@extend %physics-shadow-deep;
-// 		}
-// 	}
-// 
-// 	// Handle debug
-// 	@include lumina-debug('card');
-// }
-
 /* ==========================================================================
    03.10 APPLY CARD: Apply physics and active shadow
    ========================================================================== */
@@ -493,7 +445,7 @@
 	@include lumina-debug('silence-shadow');
 }
 
-%physics-silence {
+%physics-silence-shadow {
 	/* ==========================================================================
 	   03.41 SILENCE ACTIVE SHADOW: Silence shadows embedded in Cards
 	========================================================================== */

@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Set to false for normal production operation.
  */
 if ( ! defined( 'FORCE_DEFAULT_IMAGE' ) ) {
-	define( 'FORCE_DEFAULT_IMAGE', true ); // Set to false for production
+	define( 'FORCE_DEFAULT_IMAGE', false ); // Set to false for production
 }
 
 /**
@@ -47,7 +47,7 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 		
 		$allowed_extensions = [ 'jpg', 'jpeg', 'png', 'gif', 'webp' ];
 
-		$true_default       = 'assets/images/samples/01.webp';
+		$true_default       = 'assets/images/pages/home-hero.webp';
 
 		$global_settings = function_exists( 'wp_get_global_settings' ) ? wp_get_global_settings() : [];
 		$custom_settings = $global_settings['custom'] ?? [];
@@ -55,7 +55,7 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 
 		$target_folders = [];
 
-		foreach ( [ 'image-folders', 'image-folder', 'images', 'imageFolders', 'imageFolder' ] as $key ) {
+		foreach ( ['imageFolders', 'imageFolder' ] as $key ) {
 			if ( ! empty( $theme_custom[ $key ] ) ) {
 				$val = $theme_custom[ $key ];
 				if ( is_array( $val ) ) {

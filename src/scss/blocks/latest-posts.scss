@@ -12,12 +12,12 @@
 }
 
 /* Set post thumbnails to match blog */
-.wp-block-latest-posts__featured-image img {
-	border-radius: var(--wp--custom--border--radius);
-	border: 1px solid var(--wp--custom--color--border);
-	padding: var(--wp--preset--spacing--20);
-	box-shadow: var(--wp--custom--shadow--default);
-}
+// .wp-block-latest-posts__featured-image img {
+// 	border-radius: var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg));
+// 	border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
+// 	padding: var(--wp--preset--spacing--20);
+// 	box-shadow: var(--wp--custom--shadow--default);
+// }
 
 .wp-block-latest-posts__featured-image.aligncenter {
 	margin-bottom: var(--wp--preset--spacing--30);
@@ -34,7 +34,6 @@
 }
 
 /* Override horizontal padding on mobile (600px) */
-
 @media only screen and (max-width: #{ (breakpoints.$break-small) }) {
 	.wp-block-latest-posts.is-grid li {
         margin-right: 0;
@@ -54,6 +53,7 @@
 .wp-block-latest-posts.is-style-bullets:not(.is-grid) li {
     list-style: disc;
 	overflow: visible;
+	margin-top: 0;
 	margin-bottom: 0;
 }
 

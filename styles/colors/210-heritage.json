@@ -1,20 +1,23 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Lumina Heritage - The Professor’s Library: Patina crimson, burnished brass, and ocean blue",
+	"title": "Heritage - The Professor’s Library: Patina crimson, burnished brass, and ocean blue",
 	"settings": {
 		"custom": {
 			"color": {
 				"theme": {
-					"mode": "is-light-theme",
-					"scheme": "heritage"
+					"mode": 	"is-light-theme",
+					"scheme": 	"heritage"
 				},
 				"heading": {
-					"text": "var(--wp--preset--color--contrast)",
-					"separator": "var(--wp--preset--color--secondary)"
+					"text": 		"var(--wp--preset--color--contrast)",
+					"separator": 	"var(--wp--preset--color--secondary)"
 				},
 				"highlight-alt": {
-					"lighten": "brightness(1.8) saturate(0.8)"
+					"lighten": 		"brightness(1.8) saturate(0.8)"
+				},
+				"opacity": {
+					"tintColor": 	"var(--wp--preset--color--secondary)"
 				}
 			}
 		},	

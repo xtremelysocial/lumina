@@ -18,31 +18,21 @@
 # Gallery: Custom
 -----------------------------------------------------------------------------*/
 
-/* Image Border: Captions */
-// .wp-block-gallery.has-nested-images figure.wp-block-image {
-// 	&:has(figcaption)::before,
-// 	& figcaption {
-// 		border-bottom-left-radius: var(--wp--custom--border--radius);
-//     	border-bottom-right-radius: var(--wp--custom--border--radius);
-//     }
-// }
+$image-border-padding: 0px;
 
 /* Image Border: Captions */
 .wp-block-gallery.is-style-image-border {
-// 	& .wp-block-image:not(.is-style-image-round-border):not(.is-style-image-computer-screen):not(.is-style-image-tablet-phone-screen) img {
-// 		padding: var(--wp--preset--spacing--20);
-// 	}
 
 	&.has-nested-images figure.wp-block-image {
 		&:not(.is-style-rounded):not(.is-style-image-round-border):not(.is-style-image-computer-screen):not(.is-style-image-tablet-phone-screen) {
 			&:has(figcaption)::before,
 			& figcaption {
-				bottom: calc(1px + var(--wp--preset--spacing--20)); 
-				left: calc(1px + var(--wp--preset--spacing--20));
-				padding: calc(1px + var(--wp--preset--spacing--20)) 0;
-				width: calc(100% - 2 * (1px + var(--wp--preset--spacing--20)));
-				border-bottom-left-radius: var(--wp--custom--border--radius);
-				border-bottom-right-radius: var(--wp--custom--border--radius);
+				bottom: calc(1px + $image-border-padding); 
+				left: calc(1px + $image-border-padding);
+				padding: calc(1px + $image-border-padding) 0;
+				width: calc(100% - 2 * (1px + $image-border-padding));
+				border-bottom-left-radius: var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg));
+				border-bottom-right-radius: var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg));
 			}
 		}
 	}

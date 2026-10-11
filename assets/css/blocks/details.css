@@ -37,7 +37,7 @@
   line-height: 1;
   font-weight: var(--wp--custom--typography--font-weight--medium, 400);
   font-family: monospace, sans-serif;
-  opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
   transition: transform var(--wp--custom--animation--duration--short, 250ms) ease;
 }
 

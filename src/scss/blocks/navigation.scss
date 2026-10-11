@@ -124,7 +124,7 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 			var(--wp--custom--color--header--background, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--muted, 60%), 
 			transparent
 		) !important;
-		backdrop-filter: var(--wp--custom--color--opacity--blur, blur(8px));
+		backdrop-filter: var(--wp--custom--color--opacity--blur, blur(6px));
 		pointer-events: none;
 	}
 
@@ -157,7 +157,7 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 			var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--dropdown-glass-opacity, 95%), 
 			transparent
 		);
-		backdrop-filter: var(--wp--custom--color--opacity--blur-dense, blur(12px)) saturate(160%);
+		backdrop-filter: var(--wp--custom--color--opacity--blur-dense, blur(10px)) saturate(160%);
 
 		> :is(.wp-block-navigation-item, .wp-block-pages-list__item) {
 			position: relative;
@@ -203,7 +203,7 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 			var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--dropdown-glass-opacity, 95%), 
 			transparent
 		);
-		backdrop-filter: var(--wp--custom--color--opacity--blur, blur(8px));
+		backdrop-filter: var(--wp--custom--color--opacity--blur, blur(6px));
 	}
 }
 
@@ -215,16 +215,16 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 .wp-block-navigation .has-child .wp-block-navigation-submenu__toggle[aria-expanded=true] ~ .wp-block-navigation__submenu-container, 
 .wp-block-navigation .has-child:not(.open-on-click):hover > .wp-block-navigation__submenu-container, 
 .wp-block-navigation .has-child:not(.open-on-click):not(.open-on-hover-click):focus-within > .wp-block-navigation__submenu-container {
-	min-width: var(--wp--custom--navigation--width, 260px);
+	min-width: var(--wp--custom--navigation--width, 280px);
 }
 
 /* Dropdown flyout transition duration & hover intentionality delay */
 .wp-block-navigation .has-child .wp-block-navigation__submenu-container {
-	transition-duration: var(--wp--custom--animation--duration--short, 0.2s);
+	transition-duration: var(--wp--custom--animation--duration--short, 250ms);
 }
 
 .wp-block-navigation .has-child:not(.open-on-click):hover > .wp-block-navigation__submenu-container {
-	transition-delay: var(--wp--custom--animation--duration--short, 0.2s);
+	transition-delay: var(--wp--custom--animation--duration--short, 250ms);
 }
 
 /* Fix padding on level 2+ nav menu and page list drop-downs */
@@ -257,7 +257,7 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 	&:focus-visible,
 	&:active {
 		.wp-block-navigation-item__label {
-			opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+			opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
 		}
 	}
 }
@@ -275,12 +275,12 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 		// A. Item Has Background -> Bold on Current & Hover
 		&.has-background {
 			&.current-menu-item > #{$nav-link-targets} {
-				font-weight: var(--wp--custom--typography--font-weight--medium);
+				font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 			}
 			
 			& > #{$nav-link-targets}:hover,
 			&:hover > .wp-block-navigation__submenu-icon {
-				font-weight: var(--wp--custom--typography--font-weight--medium);
+				font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 			}		
 		}
 		
@@ -295,13 +295,13 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 				color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
 
 				.wp-block-navigation-item__label {
-					opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+					opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
 				}
 			}
 
 			&:hover > .wp-block-navigation__submenu-icon {
 				color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
-				opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+				opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
 			}
 		}
 	}
@@ -337,11 +337,11 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 	.wp-block-pages-list__item {
 
 		&.current-menu-item > #{$nav-link-targets} {
-			font-weight: var(--wp--custom--typography--font-weight--medium);
+			font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 			
 			&:hover,
 			&:active {
-				font-weight: var(--wp--custom--typography--font-weight--medium);
+				font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 			} 
 		}
 	}
@@ -350,11 +350,11 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 		.wp-block-navigation-item,
 		.wp-block-pages-list__item {
 			&.current-menu-ancestor.has-child > #{$nav-link-targets} {
-				font-weight: var(--wp--custom--typography--font-weight--medium);
+				font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 				
 				&:hover,
 				&:active {
-					font-weight: var(--wp--custom--typography--font-weight--medium);
+					font-weight: var(--wp--custom--typography--font-weight--medium, 400);
 				} 
 			}
 		}
@@ -399,11 +399,11 @@ $mobile-nav-padding: calc( 1.25 * var(--wp--preset--spacing--20) );
 	& .wp-block-navigation__responsive-container-open,
 	& .wp-block-navigation__responsive-container-close {
 		background-color: rgba(0, 0, 0, 0.04);
-		border: 1px solid var(--wp--custom--color--border, var(--wp--preset--color--neutral-alt));
+		border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
 		border-radius: var(--wp--custom--button--radius, var(--wp--preset--border-radius--sm, 8px));
 		padding: $mobile-nav-padding;
 		box-shadow: var(--wp--custom--shadow--default, none);
-		transition: background-color var(--wp--custom--animation--duration--short, 0.2s) ease;
+		transition: background-color var(--wp--custom--animation--duration--short, 250ms) ease;
 
 		&:hover,
 		&:focus-visible {
@@ -545,7 +545,8 @@ nav.wp-block-navigation.is-style-fixed-menu {
 .wp-site-blocks:not(.is-root-container) {
 	& nav.wp-block-navigation.is-style-fixed-menu {
 		position: fixed;
-		top: var(--wp--preset--spacing--60);
+// 		top: var(--wp--preset--spacing--60);
+		top: calc( var(--wp--preset--spacing--30) + 5px );
 		
 		& .wp-block-navigation__responsive-container-close {
 			top: 4px;
@@ -555,7 +556,8 @@ nav.wp-block-navigation.is-style-fixed-menu {
 
 .admin-bar .wp-site-blocks:not(.is-root-container) {
 	& nav.wp-block-navigation.is-style-fixed-menu { 	
-		top: calc( var(--wp--preset--spacing--60) + var(--wp-admin--admin-bar--height, 0) );
+// 		top: calc( var(--wp--preset--spacing--60) + var(--wp-admin--admin-bar--height, 0) );
+		top: calc( var(--wp--preset--spacing--30) + 5px + var(--wp-admin--admin-bar--height, 0) );
 	}
 }
 

@@ -6,23 +6,33 @@
 @use "@wordpress/base-styles/breakpoints";
 
 /* Colored background group padding */
-.wp-block-group:is(.has-background, [class*='is-style-glass']):not(.is-layout-flex) {
+.wp-block-group:is(
+	.has-background, 
+	[class*='is-style-glass'], 
+	[class*='is-style-section']
+):not(.is-layout-flex) {
 	padding-top: var(--wp--preset--spacing--60);
 	padding-bottom: var(--wp--preset--spacing--60);
 }
 
-.wp-block-group:is(.has-background, [class*='is-style-glass']).is-layout-flex {
+.wp-block-group:is(
+	.has-background, 
+	[class*='is-style-glass'], 
+	[class*='is-style-section']
+).is-layout-flex {
 	padding-top: var(--wp--preset--spacing--40);
 	padding-bottom: var(--wp--preset--spacing--40);
 }
 
-.wp-block-group:is(.has-background, [class*='is-style-glass']):not(.alignfull):not(.is-layout-flex) {
+.wp-block-group:is(
+	.has-background, 
+	[class*='is-style-glass'], [class*='is-style-section']
+):not(.alignfull):not(.is-layout-flex) {
 	padding-left: var(--wp--preset--spacing--60);
 	padding-right: var(--wp--preset--spacing--60);
 }
 
 /* Full-width groups, override horizontal padding on mobile and tablet (<782px) */
-
 @media only screen and (max-width: #{ (breakpoints.$break-medium - 1) }) {
 	.wp-block-group.alignfull {
 		padding-left: var(--wp--style--root--padding-left) !important;

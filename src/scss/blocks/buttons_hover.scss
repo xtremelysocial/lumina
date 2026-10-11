@@ -48,7 +48,7 @@ $button-targets: ".wp-block-button__link, .wp-element-button, input[type='submit
 	:is(#{$button-targets}) {
 		&:hover,
 		&:active {
-			opacity: var(--wp--custom--color--button--hover-opacity, 0.8);
+			opacity: var(--wp--custom--color--button--hover-opacity, 1);
 		}
 	}
 }

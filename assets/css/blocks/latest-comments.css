@@ -12,9 +12,6 @@
   padding-left: 0;
   padding-inline-start: 0;
 }
-.wp-block-latest-comments li {
-  margin-bottom: var(--wp--preset--spacing--30);
-}
 .wp-block-latest-comments .wp-block-latest-comments__comment {
   margin-bottom: 0;
 }

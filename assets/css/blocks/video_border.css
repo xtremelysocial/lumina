@@ -5,7 +5,7 @@
    VIDEO BLOCK: CLEAN BORDER (.is-style-image-border)
    ========================================================================== */
 .wp-block-video.is-style-image-border {
-  border: var(--wp--custom--border--style, solid) var(--wp--custom--border--width, 1px) var(--wp--custom--color--border, currentColor);
+  border: var(--wp--custom--border--style, solid) var(--wp--custom--border--width, 1px) var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
   border-radius: var(--wp--preset--border-radius--lg, 16px);
   overflow: hidden;
 }

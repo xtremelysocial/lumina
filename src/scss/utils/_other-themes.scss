@@ -4,6 +4,7 @@
 # This is so that user's content created with other themes will look OK before
 # they update it for the Lumina theme.
 -----------------------------------------------------------------------------*/
+
 /* Any theme */
 :where(.has-background) {
     background-color: var(--wp--preset--color--neutral);

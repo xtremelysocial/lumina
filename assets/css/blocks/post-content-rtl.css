@@ -15,6 +15,6 @@
   margin-left: auto;
   padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
   background-color: var(--wp--preset--color--neutral);
-  border: 1px solid var(--wp--custom--color--border);
-  border-radius: var(--wp--custom--border--radius);
+  border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
+  border-radius: var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg));
 }
