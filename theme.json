@@ -898,7 +898,15 @@
 					"button": {
 						"border": {
 							"radius": "var(--wp--custom--button--radius)"
-						}
+						},
+						"spacing": {
+							"padding": {
+								"top": "var:preset|spacing|20",
+								"bottom": "var:preset|spacing|20",
+								"left": "var:preset|spacing|30",
+								"right": "var:preset|spacing|30"
+							}
+						}					
 					}
 				}
     		},
@@ -1174,12 +1182,6 @@
 			"name": "header-dark-fixed",
 			"title": "Header Dark Fixed",
 			"description": "Fixed dark header",
-			"area": "header"
-		},
-		{
-			"name": "header-nav-only-fixed",
-			"title": "Header Mobile Nav Only Fixed",
-			"description": "Fixed mobile nav only header",
 			"area": "header"
 		},
 		{

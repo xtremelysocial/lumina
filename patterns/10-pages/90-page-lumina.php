@@ -260,7 +260,7 @@
 
 <!-- wp:column {"className":"is-style-default"} -->
 <div class="wp-block-column is-style-default"><!-- wp:paragraph {"style":{"typography":{"lineHeight":"1","fontWeight":"500","textAlign":"center","fontStyle":"normal"},"textColor":"highlight-accent-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-text-color has-highlight-accent-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">18</p>
+<p class="has-text-align-center has-text-color has-highlight-accent-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">12+</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
@@ -282,7 +282,7 @@
 
 <!-- wp:column {"className":"is-style-default"} -->
 <div class="wp-block-column is-style-default"><!-- wp:paragraph {"style":{"typography":{"lineHeight":"1","fontWeight":"500","textAlign":"center","fontStyle":"normal"},"textColor":"highlight-accent-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-text-color has-highlight-accent-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">46</p>
+<p class="has-text-align-center has-text-color has-highlight-accent-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">40+</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
@@ -292,7 +292,7 @@
 
 <!-- wp:column {"className":"is-style-default"} -->
 <div class="wp-block-column is-style-default"><!-- wp:paragraph {"style":{"typography":{"lineHeight":"1","fontWeight":"500","textAlign":"center","fontStyle":"normal"},"textColor":"highlight-accent-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-text-color has-highlight-accent-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">79</p>
+<p class="has-text-align-center has-text-color has-highlight-accent-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">80+</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->
