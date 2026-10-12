@@ -34,7 +34,7 @@
 	/* 3. INHERENT WIDTH TRACKS */
 	/* Short accent line (Default, Thick) */
 	&:not(.is-style-wide):not(.is-style-dots):not(.is-style-thick-wide) {
-		width: calc(6 * var(--wp--style--block-gap));
+		width: calc(10 * var(--wp--style--block-gap));
 	}
 
 	/* Wide-width container lines (Wide, Dotted, Thick-Wide) */

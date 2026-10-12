@@ -568,9 +568,15 @@ ul, ol, .wp-block-list) {
 /* ==========================================================================
    GLOBAL: Base Image Aspect Ratios
    ========================================================================== */
+/* Limit images to 100% so they don't break the layout */
 img {
   max-width: 100%;
   height: auto;
+}
+
+.avatar,
+.wp-block-avatar {
+  flex-shrink: 0;
 }
 
 /* Core Latest Posts Featured Image Reset */
@@ -1009,7 +1015,7 @@ ol.is-style-list-dividers,
 .is-style-separator::after {
   content: "";
   display: block;
-  width: calc(6 * var(--wp--style--block-gap));
+  width: calc(10 * var(--wp--style--block-gap));
   height: 3px;
   margin-top: var(--wp--preset--spacing--20);
   margin-bottom: var(--wp--preset--spacing--30);
@@ -1023,36 +1029,37 @@ ol.is-style-list-dividers,
   margin-right: auto;
   margin-left: 0;
 }
-.is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]) {
-  flex-wrap: wrap !important;
-  row-gap: var(--wp--preset--spacing--30) !important;
+.is-style-separator:is(.is-layout-flex, [class*=is-layout-flex]) {
+  position: relative;
+  padding-bottom: calc(3px + var(--wp--preset--spacing--30));
 }
-.is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex])::after {
-  width: 100% !important;
-  flex-basis: 100% !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  background-color: transparent !important;
-  background-image: linear-gradient(var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)), var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)));
-  background-repeat: no-repeat;
-  background-size: calc(6 * var(--wp--style--block-gap)) 3px;
-  background-position: right center;
+.is-style-separator:is(.is-layout-flex, [class*=is-layout-flex])::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: calc(10 * var(--wp--style--block-gap)) !important;
+  height: 3px !important;
+  margin: 0 !important;
+  background-color: var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)) !important;
+  background-image: none !important;
 }
-.is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-center::after {
-  background-position: center center;
+.is-style-separator:is(.is-layout-flex, [class*=is-layout-flex]).has-text-align-center::after {
+  right: 50%;
+  transform: translateX(50%);
 }
-.is-style-separator:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-right::after {
-  background-position: left center;
+.is-style-separator:is(.is-layout-flex, [class*=is-layout-flex]).has-text-align-right::after {
+  right: auto;
+  left: 0;
 }
 .has-background .is-style-separator::after, .is-style-separator.has-background::after {
-  background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)) 85%, currentColor);
-  background-image: linear-gradient(color-mix(in srgb, var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)) 85%, currentColor), color-mix(in srgb, var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)) 85%, currentColor));
+  background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator, var(--wp--preset--color--tertiary)) 85%, currentColor) !important;
+  background-image: none !important;
 }
 
 .is-style-separator-2::after {
   content: "";
   display: block;
-  width: calc(6 * var(--wp--style--block-gap));
+  width: calc(10 * var(--wp--style--block-gap));
   height: 3px;
   margin-top: var(--wp--preset--spacing--20);
   margin-bottom: var(--wp--preset--spacing--30);
@@ -1066,36 +1073,37 @@ ol.is-style-list-dividers,
   margin-right: auto;
   margin-left: 0;
 }
-.is-style-separator-2:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]) {
-  flex-wrap: wrap !important;
-  row-gap: var(--wp--preset--spacing--30) !important;
+.is-style-separator-2:is(.is-layout-flex, [class*=is-layout-flex]) {
+  position: relative;
+  padding-bottom: calc(3px + var(--wp--preset--spacing--30));
 }
-.is-style-separator-2:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex])::after {
-  width: 100% !important;
-  flex-basis: 100% !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  background-color: transparent !important;
-  background-image: linear-gradient(var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)), var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)));
-  background-repeat: no-repeat;
-  background-size: calc(6 * var(--wp--style--block-gap)) 3px;
-  background-position: right center;
+.is-style-separator-2:is(.is-layout-flex, [class*=is-layout-flex])::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: calc(10 * var(--wp--style--block-gap)) !important;
+  height: 3px !important;
+  margin: 0 !important;
+  background-color: var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)) !important;
+  background-image: none !important;
 }
-.is-style-separator-2:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-center::after {
-  background-position: center center;
+.is-style-separator-2:is(.is-layout-flex, [class*=is-layout-flex]).has-text-align-center::after {
+  right: 50%;
+  transform: translateX(50%);
 }
-.is-style-separator-2:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-right::after {
-  background-position: left center;
+.is-style-separator-2:is(.is-layout-flex, [class*=is-layout-flex]).has-text-align-right::after {
+  right: auto;
+  left: 0;
 }
 .has-background .is-style-separator-2::after, .is-style-separator-2.has-background::after {
-  background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)) 85%, currentColor);
-  background-image: linear-gradient(color-mix(in srgb, var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)) 85%, currentColor), color-mix(in srgb, var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)) 85%, currentColor));
+  background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator2, var(--wp--preset--color--secondary)) 85%, currentColor) !important;
+  background-image: none !important;
 }
 
 .is-style-separator-3::after {
   content: "";
   display: block;
-  width: calc(6 * var(--wp--style--block-gap));
+  width: calc(10 * var(--wp--style--block-gap));
   height: 3px;
   margin-top: var(--wp--preset--spacing--20);
   margin-bottom: var(--wp--preset--spacing--30);
@@ -1109,30 +1117,31 @@ ol.is-style-list-dividers,
   margin-right: auto;
   margin-left: 0;
 }
-.is-style-separator-3:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]) {
-  flex-wrap: wrap !important;
-  row-gap: var(--wp--preset--spacing--30) !important;
+.is-style-separator-3:is(.is-layout-flex, [class*=is-layout-flex]) {
+  position: relative;
+  padding-bottom: calc(3px + var(--wp--preset--spacing--30));
 }
-.is-style-separator-3:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex])::after {
-  width: 100% !important;
-  flex-basis: 100% !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  background-color: transparent !important;
-  background-image: linear-gradient(var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)), var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)));
-  background-repeat: no-repeat;
-  background-size: calc(6 * var(--wp--style--block-gap)) 3px;
-  background-position: right center;
+.is-style-separator-3:is(.is-layout-flex, [class*=is-layout-flex])::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: calc(10 * var(--wp--style--block-gap)) !important;
+  height: 3px !important;
+  margin: 0 !important;
+  background-color: var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)) !important;
+  background-image: none !important;
 }
-.is-style-separator-3:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-center::after {
-  background-position: center center;
+.is-style-separator-3:is(.is-layout-flex, [class*=is-layout-flex]).has-text-align-center::after {
+  right: 50%;
+  transform: translateX(50%);
 }
-.is-style-separator-3:is(.is-layout-flex, .is-nowrap, [class*=is-layout-flex]).has-text-align-right::after {
-  background-position: left center;
+.is-style-separator-3:is(.is-layout-flex, [class*=is-layout-flex]).has-text-align-right::after {
+  right: auto;
+  left: 0;
 }
 .has-background .is-style-separator-3::after, .is-style-separator-3.has-background::after {
-  background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)) 85%, currentColor);
-  background-image: linear-gradient(color-mix(in srgb, var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)) 85%, currentColor), color-mix(in srgb, var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)) 85%, currentColor));
+  background-color: color-mix(in srgb, var(--wp--custom--color--heading--separator3, var(--wp--preset--color--neutral)) 85%, currentColor) !important;
+  background-image: none !important;
 }
 
 /*--------------------------------------------------------------

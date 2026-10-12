@@ -37,7 +37,7 @@
   /* Short accent line (Default, Thick) */
 }
 .wp-block-separator:not(.is-style-wide):not(.is-style-dots):not(.is-style-thick-wide) {
-  width: calc(6 * var(--wp--style--block-gap));
+  width: calc(10 * var(--wp--style--block-gap));
 }
 .wp-block-separator {
   /* Wide-width container lines (Wide, Dotted, Thick-Wide) */

@@ -2,9 +2,15 @@
    GLOBAL: Base Image Aspect Ratios
    ========================================================================== */
 
+/* Limit images to 100% so they don't break the layout */
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+.avatar,
+.wp-block-avatar {
+	flex-shrink: 0; 
 }
 
 /* Core Latest Posts Featured Image Reset */
