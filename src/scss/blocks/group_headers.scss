@@ -46,8 +46,6 @@ $header-top-offset: var(--wp--preset--spacing--40, 24px) !default;
 // Responsibilities: Capsule geometry & width limits ONLY when WordPress doesn't
 // --------------------------------------------------------------------------
 .site-header {
-// 	position: relative;
-// 	top: 0; 
 
 	// Default header has bottom border (user can override)
 	border: none;

@@ -61,7 +61,7 @@ BLOCK_MAP=(
     "image"         "core/image"
     "intro"         "core/columns"
     "media-text"    "core/media-text"
-    "page"          "core/page"
+    "page"          "core/post-content"
     "pricing"       "core/columns"
     "query"         "core/query"
     "recent-posts"  "core/columns"

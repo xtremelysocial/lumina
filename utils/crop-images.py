@@ -28,17 +28,17 @@ USAGE EXAMPLES (RUN FROM REPO ROOT OR SCRIPT FOLDER):
 
 2. PORTRAIT HEADSHOT RUN (3:4 Ratio / 1200x1600 / Center Crop):
    $ TARGET_W=1200 TARGET_H=1600 \
-     SOURCE_DIR="./assets/images/samples/profiles" \
+     SOURCE_DIR="./zz_unused/zz_raw-images/raw-lumina-headshots/final-manual-crops" \
      python3 utils/crop-images.py
 
 3. TIGHT HEADROOM HEADSHOT RUN (3:4 Ratio / 1200x1600 / Top-Anchored Crop):
    $ CROP=top TARGET_W=1200 TARGET_H=1600 \
-     SOURCE_DIR="./zz_unused/zz_raw-images/raw-lumina-headshots" \
+     SOURCE_DIR="./zz_unused/zz_raw-images/raw-lumina-headshots/final-manual-crops" \
      python3 utils/crop-images.py
 
 4. NO-CROP PASS-THROUGH (Preserve manual crops, embed EXIF & convert to WebP):
    $ CROP=none \
-     SOURCE_DIR="./zz_unused/zz_raw-images/raw-lumina-headshots" \
+     SOURCE_DIR="./zz_unused/zz_raw-images/raw-lumina-headshots/final-manual-crops" \
      python3 utils/crop-images.py
 
 5. CUSTOM SOURCE & OUTPUT DIRECTORIES WITH QUALITY CONTROL:
