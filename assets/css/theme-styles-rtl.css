@@ -370,6 +370,14 @@ body .is-layout-constrained > .alignright {
 }
 
 /* 
+ * If an alignwide template part (e.g. Featured Image) immediately precedes the 
+ * post-content, add macro top-spacing on its first child.
+ */
+:root main > :not(.alignfull) + .wp-block-post-content > :first-child {
+  margin-block-start: var(--wp--preset--spacing--50);
+}
+
+/* 
  * Also push bottom margin to last-child of main or post content, if needed.
  * e.g. Post meta, sharing, comments, etc.
  */
@@ -398,6 +406,13 @@ body .is-layout-constrained > .alignright {
  * Apply macro spacing between top-level section blocks inside main, post-content, 
  * or the content-home-top layout wrapper.
  */
+:root main > *:not(h1, h2, h3, h4, h5, h6,
+.wp-block-heading,
+p, .wp-block-paragraph,
+ul, ol, .wp-block-list) + *:not(.wp-block-post-content,
+.wp-block-post-excerpt,
+p, .wp-block-paragraph,
+ul, ol, .wp-block-list),
 .wp-block-post-content > *:not(h1, h2, h3, h4, h5, h6,
 .wp-block-heading,
 p, .wp-block-paragraph,

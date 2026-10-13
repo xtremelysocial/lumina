@@ -35,7 +35,6 @@ $macro-spacing: var(--wp--preset--spacing--50);
 .wp-block-post-content,
 .content-home-top {
 	& > :first-child:not(
-	// 	.alignfull,
 		.alignfull.wp-block-cover,
 		.alignfull.wp-block-image,
 		.alignfull.wp-block-post-featured-image,
@@ -49,6 +48,14 @@ $macro-spacing: var(--wp--preset--spacing--50);
 }
 
 /* 
+ * If an alignwide template part (e.g. Featured Image) immediately precedes the 
+ * post-content, add macro top-spacing on its first child.
+ */
+:root main > :not(.alignfull) + .wp-block-post-content > :first-child {
+	margin-block-start: $macro-spacing;
+}
+
+/* 
  * Also push bottom margin to last-child of main or post content, if needed.
  * e.g. Post meta, sharing, comments, etc.
  */
@@ -57,7 +64,6 @@ $macro-spacing: var(--wp--preset--spacing--50);
 // :root main > .wp-block-template-part,
 .wp-block-post-content {
 	& > :last-child:not(
-	// 	.alignfull,
 		.alignfull.wp-block-cover,
 		.alignfull.wp-block-image,
 		.alignfull.wp-block-post-featured-image,
@@ -77,12 +83,9 @@ $macro-spacing: var(--wp--preset--spacing--50);
  * Apply macro spacing between top-level section blocks inside main, post-content, 
  * or the content-home-top layout wrapper.
  */
-// :root main,
-// :where(.is-layout-flow),
-// :where(.is-layout-constrained),
+:root main,
 .wp-block-post-content,
-.content-home-top { //,
-// .content-home-top > .wp-block-group.is-layout-constrained {
+.content-home-top { 
 
 	& > *:not(
 		h1, h2, h3, h4, h5, h6,
@@ -90,15 +93,12 @@ $macro-spacing: var(--wp--preset--spacing--50);
 		p, .wp-block-paragraph,
 		ul, ol, .wp-block-list	
 	) + *:not( 
-// 		h1, h2, h3, h4, h5, h6,
-// 		.wp-block-heading
 		.wp-block-post-content,
 		.wp-block-post-excerpt,
 		p, .wp-block-paragraph,
 		ul, ol, .wp-block-list	
 	) {
 		margin-block-start: $macro-spacing;
-// 		margin-block-end: 0;
 	}
 }
  

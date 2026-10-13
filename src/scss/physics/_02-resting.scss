@@ -437,7 +437,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	&:not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) {
 		img {	
 			@include __blueprint-border;
-			padding: var(--wp--preset--spacing--20);
+			padding: config.$img-frame-padding; //var(--wp--preset--spacing--20);
 		}
 	}	
 }
@@ -531,7 +531,7 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	// Add border, radius, and padding for a framed portait look
 	@include __blueprint-border;
 
-	padding: var(--wp--preset--spacing--20);
+	padding: config.$img-frame-padding; //var(--wp--preset--spacing--20);
 
 	// Set border radius on the <a> tag adjusted for border and padding
 	> a {

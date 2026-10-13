@@ -43,7 +43,7 @@
 		a > .avatar {
 			border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
 			border-radius: var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg));
-			padding: var(--wp--preset--spacing--20);
+			padding: config.$img-frame-padding; //var(--wp--preset--spacing--20);
 		}
 		
 		// ==========================================================================

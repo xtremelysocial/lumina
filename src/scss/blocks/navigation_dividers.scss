@@ -4,8 +4,8 @@
 
 /* Declare divider color variable locked to contrast token (prevents link hover currentColor bleed) */
 // $nav-divider-color: color-mix(in srgb, var(--wp--preset--color--contrast, inherit) 15%, transparent);
-// $nav-divider-color: var(--wp--custom--color--divider, color-mix(in srgb, currentColor 20%, transparent));
-$nav-divider-color: color-mix(in srgb, var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast)) 18%, transparent);
+$nav-divider-color: var(--wp--custom--color--divider, color-mix(in srgb, currentColor 18%, transparent));
+// $nav-divider-color: color-mix(in srgb, var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast)) 18%, transparent);
 
 /* Desktop Submenu Dividers */
 .wp-block-navigation.is-style-nav-dividers .wp-block-navigation__responsive-container:not(.is-menu-open) {
@@ -13,7 +13,7 @@ $nav-divider-color: color-mix(in srgb, var(--wp--custom--color--navigation--text
 	.wp-block-navigation__submenu-container {
 		width: 100%;
 
-		/* Add divider using an ::after pseudo-element to every list item except the last */
+		// Add divider using an ::after pseudo-element to every list item except the last
 		> .wp-block-navigation-item:not(:last-child),
 		> .wp-block-pages-list__item:not(:last-child) {
 			position: relative;
