@@ -17,7 +17,16 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 	overflow: visible !important;
 }
 
-/* 1. Desktop Navigation Wrapper (Transparent so header shows through) */
+/* 1. Add border and shadow to drop-down menus */
+.site-header {
+	& .wp-block-navigation__responsive-container:not(.is-menu-open) :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) {
+		border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
+// 		border: 1px solid color-mix(in srgb, var(--wp--custom--color--navigation--text, var(--wp--preset--color--almost-black)) 15%, transparent);
+		box-shadow: var(--wp--custom--shadow--dropdown, 0 12px 32px rgba(0, 0, 0, 0.12));
+	}
+}
+
+/* 2. Non-colored Desktop Navigation Wrapper */
 .site-header:not(.has-background):not([class*='is-style-glass']) {
 // .site-header:not([class*='is-style-glass']) .wp-block-navigation {
 // 	background: transparent;
@@ -38,7 +47,7 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 // 		overflow: hidden;
 	}
 
-	/* 2. Open Mobile Overlay Drawer */
+	// Open Mobile Overlay Drawer
 	& .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
 		background-color: color-mix(
 			in srgb, 
@@ -296,7 +305,7 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 	}
 }
 
-/* 2. COLORED HEADERS OR COLORED NAVIGATIONS */
+/* 2. COLORED HEADERS AND COLORED NAVIGATIONS */
 .wp-block-navigation.has-background {
 	.wp-block-navigation-item a:not(.wp-element-button), 
 	.wp-block-navigation-submenu a:not(.wp-element-button) {

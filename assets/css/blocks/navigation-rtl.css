@@ -16,15 +16,18 @@
   overflow: visible !important;
 }
 
-/* 1. Desktop Navigation Wrapper (Transparent so header shows through) */
+/* 1. Add border and shadow to drop-down menus */
+.site-header .wp-block-navigation__responsive-container:not(.is-menu-open) :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) {
+  border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
+  box-shadow: var(--wp--custom--shadow--dropdown, 0 12px 32px rgba(0, 0, 0, 0.12));
+}
+
+/* 2. Non-colored Desktop Navigation Wrapper */
 .site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation__responsive-container:not(.is-menu-open) :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) {
   background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--dropdown-opacity, 100%), transparent);
   border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
   box-shadow: var(--wp--custom--shadow--dropdown, 0 12px 32px rgba(0, 0, 0, 0.12));
   backdrop-filter: var(--wp--custom--color--navigation--blur, none);
-}
-.site-header:not(.has-background):not([class*=is-style-glass]) {
-  /* 2. Open Mobile Overlay Drawer */
 }
 .site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
   background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--background-opacity, 100%), transparent);
@@ -205,7 +208,7 @@
   width: 100%;
 }
 
-/* 2. COLORED HEADERS OR COLORED NAVIGATIONS */
+/* 2. COLORED HEADERS AND COLORED NAVIGATIONS */
 .wp-block-navigation.has-background .wp-block-navigation-item a:not(.wp-element-button),
 .wp-block-navigation.has-background .wp-block-navigation-submenu a:not(.wp-element-button) {
   padding: 0;
