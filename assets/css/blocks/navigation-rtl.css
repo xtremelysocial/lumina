@@ -23,8 +23,23 @@
 }
 
 /* 2. Non-colored Desktop Navigation Wrapper */
+.site-header:not(.has-background):not([class*=is-style-glass]) {
+  position: relative;
+  color: var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast));
+}
+.site-header:not(.has-background):not([class*=is-style-glass])::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--background-opacity, 100%), transparent);
+  backdrop-filter: var(--wp--custom--color--navigation--blur, none);
+  pointer-events: none;
+}
 .site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation__responsive-container:not(.is-menu-open) :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) {
   background-color: color-mix(in srgb, var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--dropdown-opacity, 100%), transparent);
+  color: var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast));
   border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
   box-shadow: var(--wp--custom--shadow--dropdown, 0 12px 32px rgba(0, 0, 0, 0.12));
   backdrop-filter: var(--wp--custom--color--navigation--blur, none);
@@ -173,20 +188,20 @@
 
 /* Subtle opacity transition on link label text */
 .wp-block-navigation-item__content:hover .wp-block-navigation-item__label, .wp-block-navigation-item__content:focus-visible .wp-block-navigation-item__label, .wp-block-navigation-item__content:active .wp-block-navigation-item__label {
-  opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 }
 
 /*-----------------------------------------------------------------------------
 # 04. DESKTOP / NON-MOBILE HEADER NAVIGATION STATES
 -----------------------------------------------------------------------------*/
 /* 1. UNCOLORED HEADERS & UNCOLORED NAVIGATIONS (Standard & Glass Headers) */
-.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-navigation-item.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link), .site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-navigation-item.current-menu-ancestor > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
-.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item.current-menu-ancestor > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-navigation-item.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) .wp-block-navigation-item__label, .site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-navigation-item.current-menu-ancestor > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) .wp-block-navigation-item__label,
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item.current-menu-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) .wp-block-navigation-item__label,
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item.current-menu-ancestor > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link) .wp-block-navigation-item__label {
   color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
 }
-.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-navigation-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover,
-.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover {
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-navigation-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover .wp-block-navigation-item__label,
+.site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-pages-list__item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover .wp-block-navigation-item__label {
   color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
 }
 .site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-navigation-item:hover > .wp-block-navigation__submenu-icon,
@@ -203,9 +218,7 @@
 .site-header:not(.has-background):not([class*=is-style-glass]) .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__submenu-container :is(.wp-block-navigation-item, .wp-block-pages-list__item) > .wp-block-navigation-submenu__toggle {
   background: transparent;
   box-shadow: none;
-  padding: 0.7em 1.25em; /* Edge-to-edge target padding */
   display: block;
-  width: 100%;
 }
 
 /* 2. COLORED HEADERS AND COLORED NAVIGATIONS */
@@ -228,13 +241,13 @@
 .site-header.has-background .wp-block-navigation .wp-block-pages-list__item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover .wp-block-navigation-item__label,
 .site-header .wp-block-navigation.has-background .wp-block-navigation-item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover .wp-block-navigation-item__label,
 .site-header .wp-block-navigation.has-background .wp-block-pages-list__item > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link):hover .wp-block-navigation-item__label {
-  opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 }
 .site-header.has-background .wp-block-navigation .wp-block-navigation-item:hover > .wp-block-navigation__submenu-icon,
 .site-header.has-background .wp-block-navigation .wp-block-pages-list__item:hover > .wp-block-navigation__submenu-icon,
 .site-header .wp-block-navigation.has-background .wp-block-navigation-item:hover > .wp-block-navigation__submenu-icon,
 .site-header .wp-block-navigation.has-background .wp-block-pages-list__item:hover > .wp-block-navigation__submenu-icon {
-  opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 }
 .site-header.has-background .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation-item.current-menu-ancestor.has-child > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),
 .site-header.has-background .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-pages-list__item.current-menu-ancestor.has-child > :is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link),

@@ -57,13 +57,6 @@ figure) {
   margin-block-end: 0;
 }
 
-:where(p, .wp-block-paragraph,
-h1, h2, h3, h4, h5, h6,
-.wp-block-heading) {
-  margin-block-start: var(--wp--style--block-gap);
-  margin-block-end: 0;
-}
-
 /* Use bold font-weight from theme.json */
 strong,
 b {
@@ -201,7 +194,7 @@ figure > a,
 .wp-block-post-featured-image a,
 .wp-block-latest-posts__featured-image a,
 .wp-block-media-text__media a)):active {
-  opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 }
 
 /* 4. Decoupled Linked Image Hovers */
@@ -341,6 +334,7 @@ body .is-layout-constrained > .alignright {
 :root main > :first-child:not(.alignfull.wp-block-cover,
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
+.alignfull.wp-block-media-text,
 .alignfull.has-background,
 .wp-block-post-content,
 .wp-block-template-part,
@@ -348,6 +342,7 @@ body .is-layout-constrained > .alignright {
 :root main > :first-child.wp-block-template-part > :first-child:not(.alignfull.wp-block-cover,
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
+.alignfull.wp-block-media-text,
 .alignfull.has-background,
 .wp-block-post-content,
 .wp-block-template-part,
@@ -355,6 +350,7 @@ body .is-layout-constrained > .alignright {
 .wp-block-post-content > :first-child:not(.alignfull.wp-block-cover,
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
+.alignfull.wp-block-media-text,
 .alignfull.has-background,
 .wp-block-post-content,
 .wp-block-template-part,
@@ -362,6 +358,7 @@ body .is-layout-constrained > .alignright {
 .content-home-top > :first-child:not(.alignfull.wp-block-cover,
 .alignfull.wp-block-image,
 .alignfull.wp-block-post-featured-image,
+.alignfull.wp-block-media-text,
 .alignfull.has-background,
 .wp-block-post-content,
 .wp-block-template-part,
@@ -480,14 +477,8 @@ ul, ol, .wp-block-list) {
 }
 
 /* ==========================================================================
-   LUMINA ENGINE: Token-Driven Glass & Specular Overlay Engine
+   LUMINA GLASS ENGINE: Glass & Specular Overlay Engine
    ========================================================================== */
-/* --------------------------------------------------------------------------
-   00. CONFIG & TOKENS (SCSS and theme.json Driven)
-   -------------------------------------------------------------------------- */
-/* --------------------------------------------------------------------------
-   00. CONFIG & TOKENS (SCSS and theme.json Driven)
-   -------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------
    01. GLASS CONTAINERS (Groups, Columns, Covers, Headers)
    -------------------------------------------------------------------------- */
@@ -534,7 +525,7 @@ ul, ol, .wp-block-list) {
 }
 
 /* --------------------------------------------------------------------------
-   02. GLASS BUTTONS (.wp-block-button) - FULLY PARAMETERIZED OPTICAL LENS
+   02. GLASS BUTTONS
    -------------------------------------------------------------------------- */
 [class*=is-style-glass].wp-block-button > :is(.wp-element-button, .wp-block-button__link) {
   position: relative;
@@ -564,10 +555,6 @@ ul, ol, .wp-block-list) {
   box-shadow: inset 1px 1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--subtle, 12%), transparent), inset -1px -1px 1px 0 color-mix(in srgb, white var(--wp--custom--color--opacity--faint, 6%), transparent);
 }
 
-/* --------------------------------------------------------------------------
-   CONTEXTUAL OVERRIDES: Shift Button Glass Tints on Colored/Glass Canvases
-   Triggers when sitting inside a Cover block, colored section, or glass container
-   -------------------------------------------------------------------------- */
 :is(.has-background, .wp-block-cover, [class*=is-style-glass]) .wp-block-button.is-style-glass > :is(.wp-element-button, .wp-block-button__link):not(.has-background) {
   background-color: color-mix(in srgb, var(--wp--custom--color--opacity--tint, var(--wp--preset--color--base)) var(--wp--custom--color--opacity--subtle, 12%), transparent);
 }
@@ -1327,7 +1314,7 @@ body[class*=-sidebar-right] .wp-block-columns.main-content > .wp-block-column:no
 /* 3. Hover State for Standard Icon Links */
 [class*=is-style-icon-] a:hover,
 [class*=is-style-icon-] a:active {
-  opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+  opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 }
 
 /* ========================================================================== */
@@ -1472,6 +1459,14 @@ h1, h2, h3, h4, h5, h6) {
 -----------------------------------------------------------------------------*/
 .wp-block-jetpack-contact-form :is(.wp-block-button, .wp-block-jetpack-button) .wp-block-button__link {
   padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
+}
+
+.wp-block-jetpack-subscriptions.wp-block-jetpack-subscriptions__supports-newline .wp-block-jetpack-subscriptions__form input[type=email]::-moz-placeholder, .wp-block-jetpack-subscriptions.wp-block-jetpack-subscriptions__supports-newline form input[type=email]::-moz-placeholder {
+  opacity: 0.75;
+}
+
+.wp-block-jetpack-subscriptions.wp-block-jetpack-subscriptions__supports-newline .wp-block-jetpack-subscriptions__form input[type=email]::placeholder, .wp-block-jetpack-subscriptions.wp-block-jetpack-subscriptions__supports-newline .wp-block-jetpack-subscriptions__form input[type=email]:disabled, .wp-block-jetpack-subscriptions.wp-block-jetpack-subscriptions__supports-newline form input[type=email]::placeholder, .wp-block-jetpack-subscriptions.wp-block-jetpack-subscriptions__supports-newline form input[type=email]:disabled {
+  opacity: 0.75;
 }
 
 /*-----------------------------------------------------------------------------
