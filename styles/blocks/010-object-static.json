@@ -7,13 +7,11 @@
         "core/group",
         "core/columns",
         "core/column",
-        "core/paragraph",
         "core/code",
         "core/image",
         "core/post-featured-image",
         "core/latest-posts",
         "core/media-text",
-        "core/list",
         "core/query-pagination"
     ],
 	"styles": {

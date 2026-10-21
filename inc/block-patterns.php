@@ -3,10 +3,10 @@
  * File:        block-patterns.php
  * Theme:       Shared Block Pattern Functions
  *
- * @package     XtremelySocial
+ * @package     NicheWP
  */
 
-namespace XtremelySocial;
+namespace NicheWP;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

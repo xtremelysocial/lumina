@@ -8,7 +8,7 @@
  */
 ?>
 <!-- wp:media-text {"align":"full","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":60,"imageFill":true,"useFeaturedImage":true,"metadata":{"name":"Page Banner 2 Block Media \u0026 Text"},"className":"is-style-no-padding is-style-pan-zoom","anchor":"media-text-2-blocks-featured"} -->
-<div class="wp-block-media-text alignfull has-media-on-the-right is-stacked-on-mobile is-image-fill-element is-style-no-padding is-style-pan-zoom" style="grid-template-columns:auto 60%" id="media-text-2-blocks-featured"><div class="wp-block-media-text__content"><!-- wp:group {"className":"is-style-default","backgroundColor":"secondary","layout":{"type":"constrained"}} -->
+<div class="wp-block-media-text alignfull has-media-on-the-right is-stacked-on-mobile is-image-fill-element is-style-no-padding is-style-pan-zoom" style="grid-template-columns:auto 55%" id="media-text-2-blocks-featured"><div class="wp-block-media-text__content"><!-- wp:group {"className":"is-style-default","backgroundColor":"secondary","layout":{"type":"constrained"}} -->
 <div class="wp-block-group  is-style-default has-secondary-background-color has-background"><!-- wp:heading {"level":4,"className":"has-text-align-center","style":{"typography":{"textTransform":"uppercase","textAlign":"center"}}} -->
 <h4 class="wp-block-heading has-text-align-center" style="text-transform:uppercase"><?php esc_html_e("Curated Portfolios", "lumina"); ?></h4>
 <!-- /wp:heading -->

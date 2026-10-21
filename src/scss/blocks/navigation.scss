@@ -31,6 +31,24 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 // .site-header:not([class*='is-style-glass']) .wp-block-navigation {
 // 	background: transparent;
 
+	position: relative;
+	color: var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast));
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		border-radius: inherit;
+		background-color: color-mix(
+			in srgb, 
+			var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--background-opacity, 100%), 
+			transparent
+		);
+		backdrop-filter: var(--wp--custom--color--navigation--blur, none);
+		pointer-events: none;
+	}
+
 	// Submenu Cards (Reads color-engine background & contextual currentColor naturally)
 	& .wp-block-navigation__responsive-container:not(.is-menu-open) :is(.wp-block-navigation__submenu-container, .wp-block-pages-list__submenu-container) {
 		background-color: color-mix(
@@ -38,6 +56,8 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 			var(--wp--custom--color--navigation--background, var(--wp--preset--color--base)) var(--wp--custom--color--navigation--dropdown-opacity, 100%), 
 			transparent
 		);
+		color: var(--wp--custom--color--navigation--text, var(--wp--preset--color--contrast));
+		
 		border: 1px solid var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
 // 		border: 1px solid color-mix(in srgb, var(--wp--custom--color--navigation--text, var(--wp--preset--color--almost-black)) 15%, transparent);
 		box-shadow: var(--wp--custom--shadow--dropdown, 0 12px 32px rgba(0, 0, 0, 0.12));
@@ -236,7 +256,7 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 	&:focus-visible,
 	&:active {
 		.wp-block-navigation-item__label {
-			opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+			opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 		}
 	}
 }
@@ -267,20 +287,23 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 // 		&:not(.has-background) {
 			&.current-menu-item > #{$nav-link-targets},
 			&.current-menu-ancestor > #{$nav-link-targets} {
-				color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
+				& .wp-block-navigation-item__label {
+					color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
+				}
 			}
 			
 			& > #{$nav-link-targets}:hover {
-				color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
+// 				color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
 
-// 				.wp-block-navigation-item__label {
-// 					opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
-// 				}
+				.wp-block-navigation-item__label {
+					color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
+// 					opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
+				}
 			}
 
 			&:hover > .wp-block-navigation__submenu-icon {
 				color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
-// 				opacity: var(--wp--custom--color--link--hover-opacity, 0.6);
+// 				opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 			}
 // 		}
 	}
@@ -297,9 +320,9 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 			> .wp-block-navigation-submenu__toggle {
 				background: transparent;
 				box-shadow: none;
-				padding: 0.7em 1.25em; /* Edge-to-edge target padding */
+// 				padding: 0.7em 1.25em; /* Edge-to-edge target padding */
 				display: block;
-				width: 100%;
+// 				width: 100%;
 			}
 		}
 	}
@@ -332,12 +355,12 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 // 			font-weight: inherit;
 
 			.wp-block-navigation-item__label {
-				opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+				opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 			}
 		}
 
 		&:hover > .wp-block-navigation__submenu-icon {
-			opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+			opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 		}
 	}
 

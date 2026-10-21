@@ -8,5 +8,5 @@
  */
 ?>
 <!-- wp:paragraph -->
-<p><?php esc_html_e("A refined visual studio theme inspired by natural light, organic depth, and spatial harmony.", "lumina"); ?></p>
+<p><?php esc_html_e("A refined visual studio inspired by natural light, organic depth, and spatial harmony.", "lumina"); ?></p>
 <!-- /wp:paragraph -->

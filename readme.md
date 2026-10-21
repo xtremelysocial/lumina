@@ -7,7 +7,7 @@ Lumina is a high-end evolution of the flat design aesthetic to a modern "Post Fl
 
 Built on a foundation of earthy notes and ambient lighting, the theme utilizes sophisticated color-scheme variations to provide a rich set of color palettes to create a focused, high-contrast environment. With a signature 'card-like' layout, Lumina containerizes content within high-radius surfaces—evoking the premium feel of modern tech—while maintaining sharp, immersive horizon lines for cinematic hero sections.
 
-For more information, see [Lumina WordPress Theme](http://xtremelysocial.com/wordpress/lumina/).
+For more information, see [Lumina WordPress Theme](http://nichewp.com/wordpress/lumina/).
 
 == Quick Start Guide ==
 
@@ -56,7 +56,7 @@ September 20, 2026
 
 == Copyright ==
 
-Lumina WordPress Theme, (C) 2026 Tim Nicholson / XtremelySocial
+Lumina WordPress Theme, (C) 2026 Tim Nicholson / NicheWP
 Lumina is distributed under the terms of the GNU GPL.
 
 This program is free software: you can redistribute it and/or modify
