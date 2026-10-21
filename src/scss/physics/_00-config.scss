@@ -50,7 +50,7 @@ $lumina-block-registry: (
 		has:     'a:not(figcaption a)', 	
 		trigger: 'self',                
 		target:  'img',
-		role:    'object'
+		role:    'object-grow'
 	),
 
 	// Column Image: Image as direct descendent of a column should zoom
