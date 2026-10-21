@@ -3,10 +3,10 @@
  * File:	block-bindings.php
  * Theme:	Shared Block Binding Functions
  * 
- * @package XtremelySocial
+ * @package NicheWP
  */
 
-namespace XtremelySocial;
+namespace NicheWP;
 
 add_action( 'init', __NAMESPACE__ . '\register_block_bindings' );
 
@@ -74,8 +74,8 @@ function featured_image_binding( $source_args, $block_instance, $attribute_name 
 	}
 
 	// 3. Fallback Engine: Triggered if no real image exists OR if FORCE_DEFAULT_IMAGE is true
-	if ( function_exists( '\XtremelySocial\get_featured_image_fallback_data' ) ) {
-		$fallback = \XtremelySocial\get_featured_image_fallback_data( $post_id );
+	if ( function_exists( '\NicheWP\get_featured_image_fallback_data' ) ) {
+		$fallback = \NicheWP\get_featured_image_fallback_data( $post_id );
 		
 		if ( 'url' === $target_attr ) {
 			return $fallback['url'] ?? null;

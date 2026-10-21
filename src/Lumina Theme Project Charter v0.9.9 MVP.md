@@ -645,7 +645,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ```
-* **Global Namespace Prefixing:** All functions, classes, constants, and global hooks must carry the strict lumina_ or LUMINA_ prefix (or namespace XtremelySocial\Lumina).    
+* **Global Namespace Prefixing:** All functions, classes, constants, and global hooks must carry the strict lumina_ or LUMINA_ prefix (or namespace NicheWP\Lumina).    
 **Rule 2: FSE-Native Philosophy & Block Style Performance**  
 * **No Custom Metaboxes:** Layout settings, color configurations, and spatial adjustments must rely exclusively on native Block Editor controls and theme.json capabilities.   
 * **Inline Block Style Enqueuing (lumina_load_block_styles):** Custom block styles residing in /assets/css/blocks/*.css are registered via wp_enqueue_block_style() passing the direct file path. This allows WordPress to inline CSS directly into the document <head> when the block is rendered rather than firing external HTTP stylesheet requests.  

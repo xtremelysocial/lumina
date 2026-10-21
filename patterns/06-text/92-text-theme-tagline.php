@@ -19,7 +19,7 @@ echo sprintf(
 	'<!-- wp:paragraph --><p>
 <a href="%s" target="_blank">%s</a></p>
 <!-- /wp:paragraph -->',
-	$theme->get( 'ThemeURI' ) ?? 'https://xtremelysocial.com/wordpress/lumina',
+	$theme->get( 'ThemeURI' ) ?? 'https://nichewp.com/wordpress/lumina',
 	$theme->get( 'Name' ) ?? 'Lumina'
 );
 ?>
@@ -32,8 +32,8 @@ echo sprintf(
 	'<!-- wp:paragraph --><p>
 <a href="%s" target="_blank">%s</a></p>
 <!-- /wp:paragraph -->',
-	$theme->get( 'AuthorURI' ) ?? 'https://xtremelysocial.com/',
-	$theme->get( 'Author' ) ?? 'XtremelySocial'
+	$theme->get( 'AuthorURI' ) ?? 'https://nichewp.com/',
+	$theme->get( 'Author' ) ?? 'NicheWP'
 );
 ?>
 

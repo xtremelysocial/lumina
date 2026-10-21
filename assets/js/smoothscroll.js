@@ -1,6 +1,6 @@
 /**
  * File:	smoothscroll.js
- * Theme: 	XtremelySocial Shared / Lumina Engine
+ * Theme: 	NicheWP Shared / Lumina Engine
  * 
  * Javascript for smooth scrolling internal links and updating dynamic 
  * CSS header offset variables.

@@ -22,6 +22,8 @@
 					"light-gray": 			"var(--wp--preset--color--off-white)",
 					"very-dark-gray": 		"var(--wp--preset--color--almost-black)"
 				},
+				"border": 			"color-mix(in srgb, currentColor 10%, transparent)",
+				"divider": 			"color-mix(in srgb, currentColor 12%, transparent)",				
 				"heading": {
 					"text": 		"var(--wp--preset--color--contrast)",
 					"separator": 	"var(--wp--preset--color--primary)"

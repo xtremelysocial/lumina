@@ -38,7 +38,7 @@ a:where(
 ) {
 	&:hover,
 	&:active {
-		opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+		opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 	}
 }
 

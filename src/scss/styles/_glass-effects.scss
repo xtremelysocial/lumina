@@ -1,14 +1,10 @@
 /* ==========================================================================
-   LUMINA ENGINE: Token-Driven Glass & Specular Overlay Engine
+   LUMINA GLASS ENGINE: Glass & Specular Overlay Engine
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   00. CONFIG & TOKENS (SCSS and theme.json Driven)
-   -------------------------------------------------------------------------- */
-
-/* --------------------------------------------------------------------------
-   00. CONFIG & TOKENS (SCSS and theme.json Driven)
-   -------------------------------------------------------------------------- */
+// /* --------------------------------------------------------------------------
+//    00. CONFIG & TOKENS (SCSS and theme.json Driven)
+//    -------------------------------------------------------------------------- */
 
 // 1. Theme.json Tint Tokens
 // Default accent tint for uncolored glass blocks
@@ -127,7 +123,7 @@ $glass-rim-overlay:         inset 1px 1px 1px 0 #{$glass-wash-overlay}, inset -1
 }
 
 /* --------------------------------------------------------------------------
-   02. GLASS BUTTONS (.wp-block-button) - FULLY PARAMETERIZED OPTICAL LENS
+   02. GLASS BUTTONS
    -------------------------------------------------------------------------- */
 
 // Inner Button Link Surface
@@ -180,10 +176,10 @@ $glass-rim-overlay:         inset 1px 1px 1px 0 #{$glass-wash-overlay}, inset -1
 	}
 }
 
-/* --------------------------------------------------------------------------
-   CONTEXTUAL OVERRIDES: Shift Button Glass Tints on Colored/Glass Canvases
-   Triggers when sitting inside a Cover block, colored section, or glass container
-   -------------------------------------------------------------------------- */
+//* --------------------------------------------------------------------------
+//    CONTEXTUAL OVERRIDES: Shift Button Glass Tints on Colored/Glass Canvases
+//    Triggers when sitting inside a Cover block, colored section, or glass container
+//    -------------------------------------------------------------------------- */
 
 $glass-context-parents: ":is(.has-background, .wp-block-cover, [class*='is-style-glass'])";
 

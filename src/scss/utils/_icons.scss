@@ -20,7 +20,7 @@
 /* 3. Hover State for Standard Icon Links */
 [class*="is-style-icon-"] a:hover,
 [class*="is-style-icon-"] a:active {
-    opacity: var(--wp--custom--color--link--hover-opacity, 0.7);
+    opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
 }
 
 /* ========================================================================== */

@@ -4,12 +4,12 @@
  * Theme:       Shared Media Functions
  *
  * Unified Media Architecture. Handles native image blocks,
- * cover toggles, media-text toggles, lightboxes, and legacy post loops.
+ * cover toggles, media-text toggles, site logo fallbacks, lightboxes, and legacy post loops.
  *
- * @package     XtremelySocial
+ * @package     NicheWP
  */
 
-namespace XtremelySocial;
+namespace NicheWP;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,16 +17,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * TEST & OVERRIDE CONFIGURATION
- * Set to true to force default fallback images across ALL posts for testing.
+ * Set to true to force default fallback images across posts or site logos for testing.
  * Set to false for normal production operation.
  */
 if ( ! defined( 'FORCE_DEFAULT_IMAGE' ) ) {
 	define( 'FORCE_DEFAULT_IMAGE', false ); // Set to false for production
 }
 
+if ( ! defined( 'FORCE_DEFAULT_SITE_LOGO' ) ) {
+	define( 'FORCE_DEFAULT_SITE_LOGO', false ); // Set to false for production
+}
+
 /**
- * 1. THE ENGINE CORE
- * Dynamically scans Lumina's asset directory for fallback images.
+ * DEFAULT MEDIA ASSETS CONFIGURATION
+ * Fallback relative paths for default site logo and featured images.
+ */
+if ( ! defined( 'DEFAULT_SITE_LOGO' ) ) {
+	define( 'DEFAULT_SITE_LOGO', 'assets/images/logo/site-logo.webp' );
+}
+
+if ( ! defined( 'DEFAULT_FEATURED_IMAGE' ) ) {
+	define( 'DEFAULT_FEATURED_IMAGE', 'assets/images/pages/home-hero.webp' );
+}
+
+/**
+ * 1A. THE FEATURED IMAGE ENGINE CORE
+ * Dynamically scans Lumina's asset directory for fallback featured images.
  */
 if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) {
 	function get_featured_image_fallback_data( $post_id = null ) {
@@ -40,14 +56,15 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 			'pages',
 			'screenshots',
 			'team',
-			'testimonials'
+			'testimonials',
+			'logo'
 		]; 
 
 		$exclude_prefixes = []; 
 		
 		$allowed_extensions = [ 'jpg', 'jpeg', 'png', 'gif', 'webp' ];
 
-		$true_default       = 'assets/images/pages/home-hero.webp';
+		$true_default       = defined( 'DEFAULT_FEATURED_IMAGE' ) ? DEFAULT_FEATURED_IMAGE : 'assets/images/pages/home-hero.webp';
 
 		$global_settings = function_exists( 'wp_get_global_settings' ) ? wp_get_global_settings() : [];
 		$custom_settings = $global_settings['custom'] ?? [];
@@ -207,7 +224,52 @@ if ( ! function_exists( __NAMESPACE__ . '\get_featured_image_fallback_data' ) ) 
 }
 
 /**
+ * 1B. THE SITE LOGO ENGINE CORE
+ * Resolves default site logo from theme.json (custom.color.theme.logoDefault)
+ * with a fallback to DEFAULT_SITE_LOGO, verifying physical file existence on disk.
+ */
+if ( ! function_exists( __NAMESPACE__ . '\get_default_site_logo_url' ) ) {
+	function get_default_site_logo_url() {
+		$true_default = defined( 'DEFAULT_SITE_LOGO' ) ? DEFAULT_SITE_LOGO : 'assets/images/logo/site-logo.webp';
+
+		$global_settings = function_exists( 'wp_get_global_settings' ) ? wp_get_global_settings() : [];
+		$custom_settings = $global_settings['custom'] ?? [];
+		$theme_custom    = $custom_settings['color']['theme'] ?? [];
+
+		$logo_setting = $theme_custom['logoDefault'] ?? $theme_custom['logo_default'] ?? $theme_custom['logo'] ?? '';
+
+		$resolved_path = '';
+
+		// 1. Check custom theme.json setting path first
+		if ( ! empty( $logo_setting ) && is_string( $logo_setting ) ) {
+			$check_relative = ltrim( $logo_setting, '/' );
+			if ( file_exists( get_theme_file_path( $check_relative ) ) ) {
+				$resolved_path = $check_relative;
+			}
+		}
+
+		// 2. Fall back to DEFAULT_SITE_LOGO constant if theme.json path is empty or invalid
+		if ( empty( $resolved_path ) ) {
+			$check_relative = ltrim( $true_default, '/' );
+			if ( file_exists( get_theme_file_path( $check_relative ) ) ) {
+				$resolved_path = $check_relative;
+			}
+		}
+
+		// 3. If no physical file exists on disk, return empty string
+		if ( empty( $resolved_path ) ) {
+			return apply_filters( 'lumina_default_site_logo_url', '' );
+		}
+
+		$logo_url = get_theme_file_uri( $resolved_path );
+
+		return apply_filters( 'lumina_default_site_logo_url', $logo_url );
+	}
+}
+
+/**
  * 2A. THE COVER TOGGLE INTERCEPT
+ * Swaps image src or inline background URL while stripping responsive srcset attributes.
  */
 if ( ! function_exists( __NAMESPACE__ . '\filter_cover_block_fallback' ) ) {
 	function filter_cover_block_fallback( $block_content, $block ) {
@@ -217,9 +279,13 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_cover_block_fallback' ) ) {
 			$fallback = get_featured_image_fallback_data( get_the_ID() );
 			
 			if ( preg_match( '/src=["\']([^"\']*)["\']/i', $block_content ) ) {
-				$block_content = preg_replace( '/src=["\']([^"\']*)["\']/', 'src="' . esc_url( $fallback['url'] ) . '"', $block_content );
+				$block_content = preg_replace( '/src=["\']([^"\']*)["\']/i', 'src="' . esc_url( $fallback['url'] ) . '"', $block_content );
+				$block_content = preg_replace( '/\s+srcset=["\']([^"\']*)["\']/i', '', $block_content );
+				$block_content = preg_replace( '/\s+sizes=["\']([^"\']*)["\']/i', '', $block_content );
 			}
-			$block_content = preg_replace( '/url\([^)]*\)/', 'url(' . esc_url( $fallback['url'] ) . ')', $block_content );
+			if ( preg_match( '/url\([^)]*\)/i', $block_content ) ) {
+				$block_content = preg_replace( '/url\([^)]*\)/', 'url(' . esc_url( $fallback['url'] ) . ')', $block_content );
+			}
 		}
 		return $block_content;
 	}
@@ -228,6 +294,7 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_cover_block_fallback' ) ) {
 
 /**
  * 2B. THE MEDIA & TEXT TOGGLE INTERCEPT
+ * Swaps src or background URL on existing markup while preserving block dimensions.
  */
 if ( ! function_exists( __NAMESPACE__ . '\filter_media_text_block_fallback' ) ) {
 	function filter_media_text_block_fallback( $block_content, $block ) {
@@ -241,9 +308,11 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_media_text_block_fallback' ) ) 
 				$block_content = preg_replace( '/url\([^)]*\)/', 'url(' . esc_url( $fallback['url'] ) . ')', $block_content );
 			}
 
-			// 2. If an <img> tag already exists inside the block, swap its src
+			// 2. If an <img> tag already exists inside the block, swap its src & strip srcset/sizes
 			if ( preg_match( '/<img[^>]+>/i', $block_content ) ) {
 				$block_content = preg_replace( '/src=["\']([^"\']*)["\']/i', 'src="' . esc_url( $fallback['url'] ) . '"', $block_content );
+				$block_content = preg_replace( '/\s+srcset=["\']([^"\']*)["\']/i', '', $block_content );
+				$block_content = preg_replace( '/\s+sizes=["\']([^"\']*)["\']/i', '', $block_content );
 			} else {
 				// 3. If core rendered an empty <figure> wrapper, inject the fallback <img> tag directly
 				$img_tag = sprintf(
@@ -265,35 +334,191 @@ if ( ! function_exists( __NAMESPACE__ . '\filter_media_text_block_fallback' ) ) 
 }
 
 /**
- * 3. THE LEGACY INTERCEPT
+ * 2C. THE SITE LOGO BLOCK INTERCEPT
+ * Governed strictly by FORCE_DEFAULT_SITE_LOGO. Swaps src on existing markup to 
+ * preserve template part sizing & inspector styles.
+ */
+if ( ! function_exists( __NAMESPACE__ . '\filter_site_logo_block_fallback' ) ) {
+	function filter_site_logo_block_fallback( $block_content, $block ) {
+		$force_override = defined( 'FORCE_DEFAULT_SITE_LOGO' ) && FORCE_DEFAULT_SITE_LOGO;
+
+		if ( $force_override || ! has_custom_logo() ) {
+			$logo_url = get_default_site_logo_url();
+
+			if ( empty( $logo_url ) ) {
+				return $block_content;
+			}
+
+			if ( preg_match( '/<img[^>]+>/i', $block_content ) ) {
+				$block_content = preg_replace( '/src=["\']([^"\']*)["\']/i', 'src="' . esc_url( $logo_url ) . '"', $block_content );
+				$block_content = preg_replace( '/\s+srcset=["\']([^"\']*)["\']/i', '', $block_content );
+				$block_content = preg_replace( '/\s+sizes=["\']([^"\']*)["\']/i', '', $block_content );
+			} else {
+				$site_name = esc_attr( get_bloginfo( 'name' ) );
+				$home_url  = esc_url( home_url( '/' ) );
+
+				$width      = ! empty( $block['attrs']['width'] ) ? (int) $block['attrs']['width'] : 0;
+				$width_attr = $width ? sprintf( 'width="%d"', $width ) : '';
+				$style_attr = $width ? sprintf( 'style="width:%dpx;"', $width ) : '';
+
+				$img_html = sprintf(
+					'<a href="%s" class="custom-logo-link" rel="home"><img src="%s" class="custom-logo" alt="%s" decoding="async" %s %s /></a>',
+					$home_url,
+					esc_url( $logo_url ),
+					$site_name,
+					$width_attr,
+					$style_attr
+				);
+
+				if ( preg_match( '/(<(?:div|figure)[^>]*>)([\s\S]*?)(<\/(?:div|figure)>)/i', $block_content ) ) {
+					$block_content = preg_replace(
+						'/(<(?:div|figure)[^>]*>)([\s\S]*?)(<\/(?:div|figure)>)/i',
+						'$1' . $img_html . '$3',
+						$block_content
+					);
+				} else {
+					$block_content = sprintf( '<div class="wp-block-site-logo">%s</div>', $img_html );
+				}
+			}
+		}
+
+		return $block_content;
+	}
+	add_filter( 'render_block_core/site-logo', __NAMESPACE__ . '\filter_site_logo_block_fallback', 10, 2 );
+}
+
+/**
+ * 2D. THE LEGACY CUSTOM LOGO INTERCEPT
+ * Governed strictly by FORCE_DEFAULT_SITE_LOGO.
+ */
+if ( ! function_exists( __NAMESPACE__ . '\filter_get_custom_logo_fallback' ) ) {
+	function filter_get_custom_logo_fallback( $html, $blog_id = null ) {
+		$force_override = defined( 'FORCE_DEFAULT_SITE_LOGO' ) && FORCE_DEFAULT_SITE_LOGO;
+
+		if ( $force_override || ! has_custom_logo() ) {
+			$logo_url = get_default_site_logo_url();
+
+			if ( empty( $logo_url ) ) {
+				return $html;
+			}
+
+			if ( ! empty( $html ) && preg_match( '/<img[^>]+>/i', $html ) ) {
+				$html = preg_replace( '/src=["\']([^"\']*)["\']/i', 'src="' . esc_url( $logo_url ) . '"', $html );
+				$html = preg_replace( '/\s+srcset=["\']([^"\']*)["\']/i', '', $html );
+				$html = preg_replace( '/\s+sizes=["\']([^"\']*)["\']/i', '', $html );
+			} else {
+				$site_name = esc_attr( get_bloginfo( 'name' ) );
+				$home_url  = esc_url( home_url( '/' ) );
+
+				$html = sprintf(
+					'<a href="%s" class="custom-logo-link" rel="home" itemprop="url"><img src="%s" class="custom-logo" alt="%s" itemprop="logo" decoding="async" /></a>',
+					$home_url,
+					esc_url( $logo_url ),
+					$site_name
+				);
+			}
+		}
+
+		return $html;
+	}
+	add_filter( 'get_custom_logo', __NAMESPACE__ . '\filter_get_custom_logo_fallback', 10, 2 );
+}
+
+/**
+ * Helper: Dynamically resolves width and height for standard or custom registered image sizes.
+ */
+if ( ! function_exists( __NAMESPACE__ . '\get_registered_image_size_dimensions' ) ) {
+	function get_registered_image_size_dimensions( $size ) {
+		if ( is_array( $size ) ) {
+			return [
+				'width'  => isset( $size[0] ) ? (int) $size[0] : 0,
+				'height' => isset( $size[1] ) ? (int) $size[1] : 0,
+			];
+		}
+
+		// 1. Core default sizes stored in options
+		if ( in_array( $size, [ 'thumbnail', 'medium', 'medium_large', 'large' ], true ) ) {
+			return [
+				'width'  => (int) get_option( "{$size}_size_w" ),
+				'height' => (int) get_option( "{$size}_size_h" ),
+			];
+		}
+
+		// 2. Custom registered theme sizes (add_image_size / set_post_thumbnail_size)
+		$additional_sizes = function_exists( 'wp_get_additional_image_sizes' ) ? wp_get_additional_image_sizes() : [];
+		if ( isset( $additional_sizes[ $size ] ) ) {
+			return [
+				'width'  => (int) $additional_sizes[ $size ]['width'],
+				'height' => (int) $additional_sizes[ $size ]['height'],
+			];
+		}
+
+		return [ 'width' => 0, 'height' => 0 ];
+	}
+}
+
+/**
+ * 3. THE POST THUMBNAIL / FEATURED IMAGE INTERCEPT
  */
 if ( ! function_exists( __NAMESPACE__ . '\filter_legacy_post_thumbnail_html' ) ) {
 	function filter_legacy_post_thumbnail_html( $html, $pid, $post_thumbnail_id, $size, $attr ) {
 		$force_override = defined( 'FORCE_DEFAULT_IMAGE' ) && FORCE_DEFAULT_IMAGE;
 
-		// Only force fallback if constant is true OR post missing a real thumbnail
 		if ( $force_override || ! $post_thumbnail_id ) {
-			$fallback    = get_featured_image_fallback_data( $pid );
+			$fallback = get_featured_image_fallback_data( $pid );
+
+			// 1. If Core already generated an <img> tag, perform a surgical src/alt swap, preserving existing attributes
+			if ( ! empty( $html ) && preg_match( '/<img[^>]+>/i', $html ) ) {
+				$html = preg_replace( '/src=["\']([^"\']*)["\']/i', 'src="' . esc_url( $fallback['url'] ) . '"', $html );
+
+				if ( preg_match( '/alt=["\']([^"\']*)["\']/i', $html ) ) {
+					$html = preg_replace( '/alt=["\']([^"\']*)["\']/i', 'alt="' . esc_attr( $fallback['alt'] ) . '"', $html );
+				}
+
+				$html = preg_replace( '/\s+srcset=["\']([^"\']*)["\']/i', '', $html );
+				$html = preg_replace( '/\s+sizes=["\']([^"\']*)["\']/i', '', $html );
+
+				return $html;
+			}
+
+			// 2. Generate markup from scratch ONLY if no <img> exists (post missing featured image)
+			$dims   = get_registered_image_size_dimensions( $size );
+			$width  = $dims['width'];
+			$height = $dims['height'];
+
+			// Physical File Fallback: If size is unconstrained, read intrinsic dimensions of the fallback asset file on disk
+			if ( ! $width || ! $height ) {
+				$relative_path = str_replace( get_stylesheet_directory_uri() . '/', '', $fallback['url'] );
+				$file_path     = get_theme_file_path( $relative_path );
+
+				if ( file_exists( $file_path ) && function_exists( 'wp_getimagesize' ) ) {
+					$image_info = wp_getimagesize( $file_path );
+					if ( $image_info ) {
+						$width  = $image_info[0];
+						$height = $image_info[1];
+					}
+				}
+			}
+
+			// Format width/height attributes if resolved
+			$dim_attrs = ( $width && $height ) ? sprintf( 'width="%d" height="%d"', $width, $height ) : '';
+
+			// Assemble CSS classes
 			$image_class = $size ? "attachment-{$size} size-{$size} wp-post-image" : 'wp-post-image';
-			
 			if ( is_array( $attr ) && ! empty( $attr['class'] ) ) {
 				$image_class .= ' ' . $attr['class'];
 			}
 
-			$image_style = ( is_array( $attr ) && ! empty( $attr['style'] ) ) ? $attr['style'] : '';
-			
-			preg_match( "/max-width:(\\d+).*max-height:(\\d+)/", $image_style, $dimensions );
-			
-			$image_dimensions = $dimensions ? sprintf( 'width="%d" height="%d"', $dimensions[1], $dimensions[2] ) : '';
-			$image_style     .= $dimensions ? sprintf( 'width:%dpx;height:%dpx;', $dimensions[1], $dimensions[2] ) : '';
-			
+			// Assemble inline styles
+			$image_style = ( is_array( $attr ) && ! empty( $attr['style'] ) ) ? sprintf( ' style="%s"', esc_attr( $attr['style'] ) ) : '';
+
 			return sprintf(
-				'<img loading="lazy" decoding="async" src="%s" alt="%s" class="%s" style="%s" %s />',
+				'<img loading="lazy" decoding="async" src="%s" alt="%s" class="%s" %s%s />',
 				esc_url( $fallback['url'] ),
 				esc_attr( $fallback['alt'] ),
 				esc_attr( trim( $image_class ) ),
-				esc_attr( $image_style ),
-				$image_dimensions
+				$dim_attrs,
+				$image_style
 			);
 		}
 

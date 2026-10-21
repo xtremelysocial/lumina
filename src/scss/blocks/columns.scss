@@ -78,7 +78,7 @@
 
 	/* Center on mobile & tablet stack */
 	.wp-block-columns.is-style-center-on-mobile {
-		row-gap: var(--wp--preset--spacing--30);
+		row-gap: var(--wp--preset--spacing--20); //var(--wp--preset--spacing--30);
 
 		// 1. Override all text nodes, blockquotes, cite tags, & WP alignment classes
 		&,

@@ -11,10 +11,10 @@
  *
  * Transient keys are dynamically scoped per active theme/child-theme slug.
  *
- * @package    XtremelySocial
+ * @package    NicheWP
  */
 
-namespace XtremelySocial;
+namespace NicheWP;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

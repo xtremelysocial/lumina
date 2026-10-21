@@ -26,7 +26,7 @@
 	<!-- wp:column {"width":"66.66%","metadata":{"name":"Content"}} -->
 	<div class="wp-block-column" style="flex-basis:66.66%">
 		<!-- wp:paragraph {"fontSize":"medium"} -->
-		<p class="has-medium-font-size"><?php esc_html_e( 'Lumina combines modular Gutenberg block architecture with fluid typography, responsive layout dynamics, and precise visual hierarchy to deliver flexible editorial experiences.', 'lumina' ); ?></p>
+		<p class="has-medium-font-size"><?php esc_html_e( 'Lumina Studio combines modular design systems with fluid typography, responsive layout dynamics, and precise visual hierarchy to capture light, depth, and human emotion through modern editorial photography.', 'lumina' ); ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:column -->

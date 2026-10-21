@@ -2,12 +2,12 @@
 /**
  * Purge empty Comments Template Part from DOM when comments are closed and empty.
  *
- * @package XtremelySocial
+ * @package NicheWP
  */
 
 declare(strict_types=1);
 
-namespace XtremelySocial;
+namespace NicheWP;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly[span_0](start_span)[span_0](end_span)[span_1](start_span)[span_1](end_span).

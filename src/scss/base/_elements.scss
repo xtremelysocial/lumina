@@ -17,14 +17,14 @@ $base-element-margin-end: 0 !default;
 	margin-block-end: $base-element-margin-end;
 }
 
-:where(
-	p, .wp-block-paragraph,
-	h1, h2, h3, h4, h5, h6,
-	.wp-block-heading 
-) {
-	margin-block-start: $heading-margin-start;
-	margin-block-end: $base-element-margin-end;
-}
+// :where(
+// 	p, .wp-block-paragraph,
+// 	h1, h2, h3, h4, h5, h6,
+// 	.wp-block-heading 
+// ) {
+// 	margin-block-start: $heading-margin-start;
+// 	margin-block-end: $base-element-margin-end;
+// }
 
 // figcaption {
 // 	margin-bottom: $base-element-margin-end;

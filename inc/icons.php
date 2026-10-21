@@ -6,10 +6,10 @@
  * Auto-register theme SVG icons using WP 7.1 Icon API.
  * Auto-discovers sub-folders while enforcing a single permanent 'lumina' collection handle.
  *
- * @package    XtremelySocial
+ * @package    NicheWP
  */
 
-namespace XtremelySocial;
+namespace NicheWP;
 
 if ( ! defined( 'THEME_SLUG' ) ) {
 	define( 'THEME_SLUG', 'lumina' );

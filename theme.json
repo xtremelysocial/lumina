@@ -13,7 +13,8 @@
 						"gallery-1",
 						"gallery-2"
 					],
-					"imageDefault": "/assets/images/pages/home-hero.webp"
+					"imageDefault": "/assets/images/pages/home-hero.webp",
+					"logoDefault": "/assets/images/logo/site-logo.webp"
 				},
 				"border": 			"color-mix(in srgb, currentColor 15%, transparent)",
 				"divider": 			"color-mix(in srgb, currentColor 18%, transparent)",
@@ -26,7 +27,10 @@
 				},
 				"highlight-alt": {
 					"lighten": 		"brightness(1.5) saturate(0.80)"
-				},							
+				},
+				"link": {
+					"hoverOpacity": "0.75"
+				},
 				"heading": {
 					"text": 		"var(--wp--preset--color--dark)",
 					"separator": 	"var(--wp--preset--color--tertiary)"
@@ -696,7 +700,7 @@
 				},
 				"spacing": {
 					"blockGap": {
-						"top": "var:preset|spacing|30",
+						"top": "var:preset|spacing|20",
 						"left": "var:preset|spacing|40"
 					}
 				}
@@ -758,7 +762,7 @@
 			},
 			"core/site-title": {
 				"typography": {
-					"fontWeight": "300",
+					"fontWeight": "400",
 					"fontSize": "var:preset|font-size|large"
 				},
 				"elements": {
@@ -794,7 +798,6 @@
 			"core/post-featured-image": {
 				"border": {
 					"style": "none",
-					"color": "none",
 					"width": 0,
 					"radius": "var:preset|border-radius|sm"
 				}
@@ -1335,20 +1338,20 @@
 		},
 		{
 			"name": "footer-default",
-			"title": "Default Footer 4 Blocks + 3 Blocks",
-			"description": "Default Footer w/4 blocks in main footer plus 3 blocks in sub-footer",
+			"title": "Default Footer 4 Blocks + Site Copyright",
+			"description": "Default Footer w/4 blocks in main footer plus site copyright in sub-footer",
 			"area": "footer"
 		},		
 		{
 			"name": "footer-colored",
-			"title": "Colored Footer 4 Blocks",
-			"description": "Colored Footer w/4 blocks in main footer plus 3 blocks in sub-footer",
+			"title": "Colored Footer 4 Blocks + Site Copyright",
+			"description": "Colored Footer w/4 blocks in main footer plus site copyright in sub-footer",
 			"area": "footer"
 		},
 		{
 			"name": "footer-dark",
-			"title": "Dark Footer 4 Blocks",
-			"description": "Dark Footer w/4 blocks in main footer plus 3 blocks in sub-footer",
+			"title": "Dark Footer 4 Blocks + Site Copyright",
+			"description": "Dark Footer w/4 blocks in main footer plus site copyright in sub-footer",
 			"area": "footer"
 		},
 		{
@@ -1378,7 +1381,7 @@
 		},
 		{
 			"name": "footer-3-blocks-nav-site-social",
-			"title": "Footer 3 Blocks plus 3 Blocks",
+			"title": "Footer 3 Blocks + 3 Blocks",
 			"description": "Footer w/3 blocks in main footer plus 3 blocks in sub-footer",
 			"area": "footer"
 		},
@@ -1403,6 +1406,13 @@
 		},
 
 		{
+			"name": "footer-compact-nav-site-info",
+			"title": "Footer Compact Nav Menu & Site Info",
+			"description": "Compact footer w/nav menu, site copyright and theme info",
+			"area": "footer"
+		},
+
+		{
 			"name": "footer-compact-nav-site-social",
 			"title": "Footer Compact 3 Blocks",
 			"description": "Compact footer w/3 blocks (e.g. nav menu, social icons, and site info)",
@@ -1423,20 +1433,20 @@
 		},
 		{
 			"name": "footer-social-map-static",
-			"title": "Footer w/Colored Social Icons plus Map & Contact Info",
+			"title": "Footer w/Colored Social Icons + Map & Contact Info",
 			"description": "Footer w/colored social icons plus map and contact info",
 			"area": "footer"
 		},
 
 		{
 			"name": "footer-motto-social-icons",
-			"title": "Footer w/Site Motto and Social Icons",
+			"title": "Footer w/Site Motto + Social Icons",
 			"description": "Footer w/site motto and huge social icons",
 			"area": "footer"
 		},
 		{
 			"name": "footer-motto-social-site",
-			"title": "Footer w/Site Motto, Social Icons, and Site Info",
+			"title": "Footer w/Site Motto + Social Icons + Site Info",
 			"description": "Footer w/site motto, social icons, and site info",
 			"area": "footer"
 		}
