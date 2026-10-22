@@ -79,7 +79,7 @@
 				{ "slug": "dark-gray", "color": "hsl(211, 10%, 65%)", "name": "Dark Gray (Inverted Muted Typography 65%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(211, 12%, 85%)", "name": "Very Dark Gray (Inverted Tech Typography 85%)" },
 								
-				{ "slug": "almost-black", "color": "hsl(208, 18%, 18%)", "name": "Almost Black (Tinted Carbon Floor)" },
+				{ "slug": "almost-black", "color": "hsl(208, 10%, 14%)", "name": "Almost Black (Tinted Carbon Floor 14%)" },
 				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" },
 
 				{ "slug": "base", "color": "hsl(211, 28%, 18%)", "name": "Base (Deep Sea Slate Canvas)" },

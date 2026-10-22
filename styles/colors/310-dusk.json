@@ -54,7 +54,7 @@
 				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
 
-				{ "slug": "almost-black", "color": "hsl(208, 18%, 18%)", "name": "Almost Black (Tinted Carbon Floor)" },
+				{ "slug": "almost-black", "color": "hsl(208, 10%, 14%)", "name": "Almost Black (Tinted Carbon Floor 14%)" },
 				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" },
 
 				{ "slug": "base", "color": "hsl(43, 27%, 97%)", "name": "Base (Light Evening Haze Canvas)" },

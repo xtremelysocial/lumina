@@ -50,7 +50,7 @@ $lumina-block-registry: (
 		has:     'a:not(figcaption a)', 	
 		trigger: 'self',                
 		target:  'img',
-		role:    'object-grow'
+		role:    'object'
 	),
 
 	// Column Image: Image as direct descendent of a column should zoom
@@ -253,6 +253,8 @@ $img-frame-padding: none;
 $img-border-width: var(--wp--custom--border--width, 1px);
 
 // Theme Fluid Radius Tokens
+$shallow-aspect-selector: ':is([style*="16/4.5"], [style*="16 / 4.5"], [style*="21/9"], [style*="21 / 9"], .size-cropped-slim, .size-cropped-ultrawide, :has([style*="16/4.5"]), :has([style*="16 / 4.5"]), :has([style*="21/9"]), :has([style*="21 / 9"]), :has(.size-cropped-slim), :has(.size-cropped-ultrawide))';
+
 $img-radius-lg: var(--wp--preset--border-radius--lg, 16px);
 $img-radius-sm: var(--wp--preset--border-radius--sm, 6px);
 

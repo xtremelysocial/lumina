@@ -57,6 +57,12 @@
 @mixin __blueprint-border {
 	border-radius: var(--wp--preset--border-radius--lg, 16px);
 	border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent)); 
+	
+	// Shallow Viewport Clamp: Automatically clamps to 8px on 16:4.5 & 21:9 
+	&:is(#{config.$shallow-aspect-selector}),
+	&:has(#{config.$shallow-aspect-selector}) {
+		border-radius: var(--wp--preset--border-radius--sm, 8px) !important;
+	}
 }
 
 @mixin __blueprint-border-inset {
@@ -528,18 +534,27 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 	// Resting shadow (e.g. natural)
 	@include __blueprint-shadow-natural;
 
-	// Add border, radius, and padding for a framed portait look
-	@include __blueprint-border;
+	// Apply border, radius, and padding to plain images only
+	&:not(.is-style-image-computer-screen, .is-style-image-tablet-phone-screen, .is-style-image-no-border) {
 
-	padding: config.$img-frame-padding; //var(--wp--preset--spacing--20);
+		// Add border, radius, and padding for a framed portait look
+		@include __blueprint-border;
+	
+		padding: config.$img-frame-padding; //var(--wp--preset--spacing--20);
 
-	// Set border radius on the <a> tag adjusted for border and padding
-	> a {
-		border-radius: clamp(
-			calc(var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg)) * 0.5),
-			calc(var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg)) - var(--wp--preset--spacing--20)),
-			var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg))
-		);
+		// Set border radius on the <a> tag adjusted for border and padding
+		> a {
+			border-radius: clamp(
+				calc(var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg)) * 0.5),
+				calc(var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg)) - var(--wp--preset--spacing--20)),
+				var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg))
+			);
+	
+			&:is(#{config.$shallow-aspect-selector}),
+			:is(#{config.$shallow-aspect-selector}) & {
+				border-radius: var(--wp--preset--border-radius--sm, 8px) !important;
+			}
+		}
 	}
 
 	// Since we put borders on the wrapper, remove them from the img itself
@@ -676,14 +691,24 @@ $svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%
 				border-radius: max(0px, calc(#{config.$img-radius-lg} - #{config.$img-frame-padding} - #{config.$img-border-width}));
 			}
 
-			/* Slim Aspect Ratio Clamp (16:4.5) */
-			&:is([style*="16/4.5"], [style*="16 / 4.5"], :has([style*="16/4.5"]), :has([style*="16 / 4.5"]), :has(.size-cropped-slim)) {
-				border-radius: config.$img-radius-sm !important;
-
+			// Shallow Viewport Clamp: Automatically clamps to 8px on 16:4.5 & 21:9 
+			&:is(#{config.$shallow-aspect-selector}),
+			&:has(#{config.$shallow-aspect-selector}) {
+				border-radius: var(--wp--preset--border-radius--sm, 8px) !important;
+				
 				> a {
 					border-radius: max(0px, calc(#{config.$img-radius-sm} - #{config.$img-frame-padding} - #{config.$img-border-width})) !important;
 				}
 			}
+
+			/* Slim Aspect Ratio Clamp (16:4.5) */
+// 			&:is([style*="16/4.5"], [style*="16 / 4.5"], :has([style*="16/4.5"]), :has([style*="16 / 4.5"]), :has(.size-cropped-slim)) {
+// 				border-radius: config.$img-radius-sm !important;
+// 
+// 				> a {
+// 					border-radius: max(0px, calc(#{config.$img-radius-sm} - #{config.$img-frame-padding} - #{config.$img-border-width})) !important;
+// 				}
+// 			}
 		}
 	}
 
