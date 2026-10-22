@@ -57,7 +57,7 @@
 				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
 
-				{ "slug": "almost-black", "color": "hsl(327, 14%, 18%)", "name": "Almost Black (Plum Carbon Floor)" },
+				{ "slug": "almost-black", "color": "hsl(327, 10%, 14%)", "name": "Almost Black (Plum Carbon Floor)" },
 				{ "slug": "not-quite-black", "color": "hsl(330, 8%, 11%)", "name": "Not Quite Black (Plum Infused Carbon Ink)" },
 
 				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White Canvas)" },

@@ -73,7 +73,7 @@
 				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
 
-				{ "slug": "almost-black", "color": "hsl(215, 16%, 18%)", "name": "Almost Black (Obsidian Carbon Floor)" },
+				{ "slug": "almost-black", "color": "hsl(215, 10%, 14%)", "name": "Almost Black (Obsidian Carbon Floor)" },
 				{ "slug": "not-quite-black", "color": "hsl(215, 15%, 11%)", "name": "Not Quite Black (Deep Obsidian Ink)" },
 
 				{ "slug": "base", "color": "hsl(0, 0%, 99%)", "name": "Base (Pure Crisp Canvas 99%)" },
