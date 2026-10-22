@@ -144,7 +144,43 @@ $color-registry: (
     // --- VERY DARK NAMED COLORS ---
     ( color: 'not-quite-black',	text: 'light',	link: 'highlight', heading: 'inherit' ),
     ( color: 'almost-black',	text: 'light',	link: 'highlight', heading: 'inherit' ),
-    ( color: 'black',			text: 'light',	link: 'highlight', heading: 'inherit' ),    
+    ( color: 'black',			text: 'light',	link: 'highlight', heading: 'inherit' ), 
+    
+	//*-----------------------------------------------------------------------------
+	// FLAT BLOCKS NAMED COLORS
+	// -----------------------------------------------------------------------------*/
+
+    // --- GREEN NAMED COLORS ---
+    ( color: 'light-green',       text: 'dark',  	link: 'inherit' ),
+    ( color: 'green',             text: 'light',  	link: 'inherit' ),
+    ( color: 'bright-green',      text: 'dark', 	link: 'inherit' ),
+    ( color: 'dark-bright-green', text: 'light',  	link: 'inherit' ),
+
+    // --- YELLOW & ORANGE NAMED COLORS ---
+    ( color: 'light-yellow',      text: 'dark', 	link: 'inherit' ),
+    ( color: 'yellow',            text: 'dark', 	link: 'inherit' ),
+    ( color: 'light-orange',      text: 'dark',  	link: 'inherit' ),
+    ( color: 'orange',            text: 'light',  	link: 'inherit' ),
+    ( color: 'dark-orange',       text: 'light',  	link: 'inherit' ),
+
+    // --- BLUE NAMED COLORS ---
+    ( color: 'light-blue',        text: 'dark',  	link: 'inherit' ),
+    ( color: 'blue',              text: 'light',  	link: 'inherit' ),
+    ( color: 'dark-blue',         text: 'light',  	link: 'inherit' ),
+    ( color: 'midnight-blue',     text: 'light',  	link: 'inherit' ),
+
+    ( color: 'dark-midnight-blue',text: 'light',  	link: 'highlight' ),
+//     ( color: 'dark-midnight-blue',text: 'light',  	link: 'lighten' ),
+
+    // --- PURPLE NAMED COLORS ---
+    ( color: 'light-purple',      text: 'dark',  	link: 'inherit' ),
+    ( color: 'purple',            text: 'light',  	link: 'inherit' ),
+    ( color: 'dark-purple',       text: 'light',  	link: 'inherit' ),
+
+    // --- RED NAMED COLORS ---
+    ( color: 'light-red',         text: 'dark',  	link: 'inherit' ),
+    ( color: 'red',               text: 'light',  	link: 'inherit' ),
+    ( color: 'dark-red',          text: 'light',  	link: 'inherit' ),
 
 );
 

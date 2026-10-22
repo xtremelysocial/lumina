@@ -4,9 +4,6 @@
 /* ==========================================================================
    LUMINA INTERACTIONS: Handles all :hover and active state physics
    ========================================================================== */
-/* ==========================================================================
-   05 GLOBAL OVERRIDES: Styles outside of the core engine loops
-   ========================================================================== */
 [class*=wp-block-]:not(.alignfull, .wp-block-button, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, [class*=is-style-glass], .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):hover:is(.is-style-object-static, .is-style-image-no-border),
 [class*=wp-block-]:not(.alignfull, .wp-block-button, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, [class*=is-style-glass], .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):has(:focus-visible):is(.is-style-object-static, .is-style-image-no-border), [class*=wp-block-]:not(.alignfull, .wp-block-button, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, [class*=is-style-glass], .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):hover:not(.is-style-object-static, .is-style-image-no-border):is(.wp-block-media-text *, .is-style-no-gap *),
 [class*=wp-block-]:not(.alignfull, .wp-block-button, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, [class*=is-style-glass], .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):has(:focus-visible):not(.is-style-object-static, .is-style-image-no-border):is(.wp-block-media-text *, .is-style-no-gap *), [class*=wp-block-]:not(.alignfull, .wp-block-button, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, [class*=is-style-glass], .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):hover:not(.is-style-object-static, .is-style-image-no-border):not(.wp-block-media-text *, .is-style-no-gap *),
@@ -104,6 +101,9 @@
   box-shadow: none;
 }
 
+/* ==========================================================================
+   05 GLOBAL PHYSICS ENGINE: Styles outside of the core engine loops
+   ========================================================================== */
 [class*=wp-block-].is-style-object-static:hover, [class*=wp-block-].is-style-object-static:has(:focus-visible) {
   box-shadow: none !important;
   transform: none !important;
@@ -115,7 +115,7 @@
 
 /* -----------------------------------------------------------------------------
    Lumina Card Overlay Badge (Hover & Active Triggers)
-   ----------------------------------------------------------------------------- */
+   --------------------------------------------------------------------------- */
 /* Reveal Badge on Scoped Container Hover */
 :is(.is-interactive-card, .is-interactive-image):hover .lumina-card-arrow-overlay,
 :is(.is-interactive-card, .is-interactive-image).is-active .lumina-card-arrow-overlay,
@@ -153,6 +153,9 @@
   transform: translateY(-50%) translateX(0);
 }
 
+/* ==========================================================================
+   10 CARDS: Containers (e.g. Groups, Columns)
+   ========================================================================== */
 [class*=wp-block-]:not(.alignfull, .wp-block-button, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, [class*=is-style-glass], .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):hover:is(.is-style-object-static, .is-style-image-no-border),
 [class*=wp-block-]:not(.alignfull, .wp-block-button, .is-style-object-static, .site-header, .site-footer, .footer-info, .wp-block-navigation, .wp-block-navigation *):is(.has-background, .is-style-rounded-border, .is-style-thick-rounded-border, .is-style-rounded-corners, [class*=is-style-glass], .wp-block-cover):has(a:not(figcaption a), button:not(.lightbox-trigger), .wp-element-button):has(:focus-visible):is(.is-style-object-static, .is-style-image-no-border) {
   border: none !important;

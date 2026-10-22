@@ -1,14 +1,14 @@
-/* ==========================================================================
-   05 GLOBAL OVERRIDES: Styles outside of the core engine loops
-   ========================================================================== */
+// /* ==========================================================================
+//    05 GLOBAL PHYSICS ENGINE: Styles outside of the core engine loops
+//    ========================================================================== */
 
 @use '00-config' as config;
 
 @mixin apply-global-logic($interactive: false) {
 
-	// ==========================================================================
-	// 02 THEME CSS: Reduce motion, adjust menus and icons, etc. 
-	// ==========================================================================
+/* ==========================================================================
+   05 GLOBAL PHYSICS ENGINE: Styles outside of the core engine loops
+   ========================================================================== */
 
 	// ----------------------------------------------------------------------
 	// PHASE 1: RESTING STATE (lumina-engine.css)
@@ -30,7 +30,7 @@
 			}
 		}
 
-		// Remove shadow from logo-only Social Icons
+		/* Remove shadow from logo-only Social Icons */
 		:is(.wp-site-blocks, .editor-styles-wrapper) .wp-block-social-links.is-style-logos-only {
 			box-shadow: none;
 
@@ -39,7 +39,7 @@
 			}
 		}
 
-		// Set avatars to look like images with border
+		/* Set avatars to look like images with border */
 		a > .avatar {
 			border: var(--wp--custom--border--width, 1px) var(--wp--custom--border--style, solid) var(--wp--custom--color--border, color-mix(in srgb, currentColor 15%, transparent));
 			border-radius: var(--wp--custom--border--radius, var(--wp--preset--border-radius--lg));
@@ -53,7 +53,7 @@
 		
 		/* -----------------------------------------------------------------------------
 		   Lumina Card Overlay Badge (Resting State Definitions)
-		   ----------------------------------------------------------------------------- */
+		   -------------------------------------------------------------------------- */
 		
 		// Ensure interactive containers form positioning context
 		:is(.is-interactive-card, .is-interactive-image) {
@@ -202,7 +202,7 @@
 
 		/* -----------------------------------------------------------------------------
 		   Lumina Card Overlay Badge (Hover & Active Triggers)
-		   ----------------------------------------------------------------------------- */
+		   --------------------------------------------------------------------------- */
 		
 		/* Reveal Badge on Scoped Container Hover */
 		:is(.is-interactive-card, .is-interactive-image):hover .lumina-card-arrow-overlay,

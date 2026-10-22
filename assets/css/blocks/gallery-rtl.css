@@ -4,13 +4,6 @@
 /*--------------------------------------------------------------
 ## Gallery
 --------------------------------------------------------------*/
-.wp-block-gallery.is-style-image-border {
-  --wp--style--gallery-gap-default: var(--wp--preset--spacing--30, calc(var(--wp--style--block-gap, 24px) / 2));
-}
-.wp-block-gallery:not(.is-style-image-border) {
-  --wp--style--gallery-gap-default: var(--wp--preset--spacing--20, calc(var(--wp--style--block-gap, 24px) / 3));
-}
-
 /*-----------------------------------------------------------------------------
 # Gallery: Custom
 -----------------------------------------------------------------------------*/

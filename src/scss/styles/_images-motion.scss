@@ -150,10 +150,10 @@ $var-duration: var(--wp--custom--animation--motion--duration-factor, 1);
 		overflow: hidden;
 	}
 
-	&.is-image-fill-element > .wp-block-media-text__content {
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-	}
+// 	&.is-image-fill-element > .wp-block-media-text__content {
+// 		padding-left: 0 !important;
+// 		padding-right: 0 !important;
+// 	}
 }
 
 .wp-block-media-text:not(.is-image-fill-element):is(.is-style-pan-zoom, .is-style-pan-zoom-hover) .wp-block-media-text__media {
@@ -259,15 +259,15 @@ $overlay-badge-size: 28px !default;
 		color: var(--wp--preset--color--base, #ffffff);
 		background-color: currentColor;
 
-		-webkit-mask-image: url($pan-motion-icon);
+// 		-webkit-mask-image: url($pan-motion-icon);
 		mask-image: url($pan-motion-icon);
 		
 		// 60% Optical Fill Calculation relative to badge diameter
-		-webkit-mask-size: calc(#{$overlay-badge-size} * 0.6);
+// 		-webkit-mask-size: calc(#{$overlay-badge-size} * 0.6);
 		mask-size: calc(#{$overlay-badge-size} * 0.6);
-		-webkit-mask-repeat: no-repeat;
+// 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
-		-webkit-mask-position: center;
+// 		-webkit-mask-position: center;
 		mask-position: center;
 	}
 

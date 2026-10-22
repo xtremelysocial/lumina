@@ -45,7 +45,8 @@ $lumina-block-registry: (
 
 	// Core Image: Requires link
 	(
-		block:   '.wp-block-image',        
+		block:   '.wp-block-image',
+// 		block:   '.wp-block-image:not(.wp-block-gallery *, .wp-block-column *)', 
 		is:      'none', 		
 		has:     'a:not(figcaption a)', 	
 		trigger: 'self',                
@@ -70,8 +71,8 @@ $lumina-block-registry: (
 // 		has:     'a:not(figcaption a)', 	
 // 		trigger: 'self',
 // 		target:  'img',
-// // 		role:    'object-grow'
-// 		role:    'object-zoom'
+// 		role:    'object-grow'
+// // 		role:    'object-zoom'
 // 	),
 
 	// Post Featured Image: Requires link
@@ -200,7 +201,7 @@ $blocks-plain: (
 );
 
 // Blocks that have custom block styles to add to the compiled CSS
-$blocks-custom-borders: ('.wp-block-image');
+$blocks-custom-borders: ('.wp-block-image', '.wp-block-post-featured-image');
 
 // HTML-only Buttons
 $html-button-spacing: var(--wp--preset--spacing--30);
@@ -249,7 +250,7 @@ $grow-small: 			var(--wp--custom--animation--object--hover-transform,
 						 
 // Image Frame Config
 // $img-frame-padding: var(--wp--preset--spacing--20, 4px);
-$img-frame-padding: none;
+$img-frame-padding: 0;
 $img-border-width: var(--wp--custom--border--width, 1px);
 
 // Theme Fluid Radius Tokens

@@ -7,14 +7,6 @@
 /* Prevent figures (images, tables) with hard-coded dimensions from breaking the 
  * layout.
  */
-figure.wp-caption:not(.alignfull):not(.alignwide),
-figure.wp-caption:not(.alignfull):not(.alignwide) img {
-  max-width: min(100%, var(--wp--style--global--content-size)) !important;
-  height: auto;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 /* FIX rounded images when global image style has a border radius */
 .wp-block-image .is-style-rounded img,
 .wp-block-image.is-style-rounded img {

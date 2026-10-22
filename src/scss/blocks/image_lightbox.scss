@@ -4,7 +4,7 @@
 
 .wp-lightbox-overlay {
 
-	/* 1. Hide thumbnail image directly (no :has required) to eliminate double-image bleed */
+	/* 1. Hide thumbnail image directly to eliminate double-image bleed */
 	img[data-wp-bind--src="state.selectedImage.currentSrc"] {
 		display: none !important;
 	}
@@ -21,7 +21,7 @@
 		overflow: visible !important;
 	}
 
-	/* 3. Override WP's inline 'object-fit: cover' and height lock on the enlarged asset */
+	/* 3. Override WP's 'object-fit: cover' and height lock on the enlarged asset */
 	img[data-wp-bind--src="state.enlargedSrc"] {
 		height: auto !important;
 		width: auto !important;
