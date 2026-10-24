@@ -4,6 +4,24 @@
 /**
  * Breakpoints & Media Queries
  */
+.is-style-icon-scroll-up::before, .is-style-icon-arrow-up-alt2::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+  text-decoration: none;
+  position: relative;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+}
+
 /*==============================================================================
 # LUMINA NAVIGATION
 ==============================================================================*/
@@ -388,4 +406,23 @@
     font-size: var(--wp--preset--font-size--small);
     opacity: 0.82;
   }
+}
+/*-----------------------------------------------------------------------------
+# 07. NAVIGATION ICONS
+-----------------------------------------------------------------------------*/
+/* Scroll up icon */
+.is-style-icon-scroll-up::before {
+  -webkit-mask-image: url(../../icons/theme/scroll-up.svg);
+          mask-image: url(../../icons/theme/scroll-up.svg);
+  margin-left: 0.15em;
+}
+
+.is-style-icon-arrow-up-alt2::before {
+  -webkit-mask-image: url(../../icons/theme/scroll-up.svg);
+          mask-image: url(../../icons/theme/scroll-up.svg);
+}
+
+/* Set icons on navigation items to inline flex */
+[class*=is-style-icon-] > a.wp-block-navigation-item__content {
+  display: inline-flex;
 }

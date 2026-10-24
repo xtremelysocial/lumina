@@ -8,7 +8,6 @@
 /* Remove vertical margins if no comments */
 .wp-block-template-part:has(.post-comments):not(:has(.wp-block-comments)) {
 	margin-block-start: 0;
-// 	margin-block-end: 0;
 }
 
 /* Set micro-spacing top margin on comment content */
@@ -17,20 +16,19 @@
 }
 
 /* Hide empty comments block */
-// .wp-block-template-part:has(#post-comments:not(:has(*))),
 .wp-block-template-part:has(#comments-wrapper:not(:has(*))) {
 	display: none !important;
 }
 
-// .wp-block-template-part:has(#comments-wrapper, #post-comments):not(:has(
-// 	.comment-list, 
-// 	.comment-respond, 
-// 	.wp-block-comments-title, 
-// 	.wp-block-post-comments-form, 
-// 	form
-// )) {
-// 	display: none !important;
-// }
+/* Increase font-size of Details block around comments */
+#comments-details > summary {
+	font-size: var(--wp--preset--font-size--medium);
+}
+
+/* Add padding to comment page numbers */
+.wp-block-comments-pagination .page-numbers:nth-last-child(n+2) {
+	padding-right: var(--wp--preset--spacing--30);
+}
 
 /* Adjust padding on mobile and tablet (782px) */
 @media only screen and (max-width: #{ (breakpoints.$break-medium - 1) }) {

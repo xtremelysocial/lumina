@@ -30,7 +30,7 @@
 				},
 				"heading": {
 					"text": 		"var(--wp--preset--color--dark)",
-					"separator": 	"var(--wp--preset--color--tertiary)"
+					"separator": 	"var(--wp--preset--color--primary)"
 				},
 				"shadow": {
 					"natural": 		"1px 4px 8px rgba(42, 50, 61, 0.14), 1px 2px 3px rgba(42, 50, 61, 0.08)",

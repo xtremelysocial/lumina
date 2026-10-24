@@ -31,6 +31,65 @@ p.has-background,
 // 		
 // }
 
+/*--------------------------------------------------------------
+# LUMINA Paragraph (Drop Cap)
+--------------------------------------------------------------*/
+// Provide top clearance below headings for the oversized initial letter
+.has-drop-cap {
+	margin-top: var(--wp--preset--spacing--30); // !important;
+}
+
+.has-drop-cap:not(:focus)::first-letter {
+	// Typography & Color
+	font-family: var(--wp--preset--font-family--heading);
+	font-weight: 600;
+// 	color: var(--wp--preset--color--primary-alt);
+	color: var(--wp--preset--color--highlight-accent-alt);
+
+	// Sizing & Spacing
+	font-size: 3.4em;
+	line-height: 0.8;
+	margin-top: 0.05em;
+	margin-right: 0.5rem;
+	margin-bottom: -0.1em;
+}
+
+/*--------------------------------------------------------------
+# LUMINA Custom: Paragraph (Icons)
+--------------------------------------------------------------*/
+
+/* Scroll down icon */
+@include icons.svg-icons(
+	$icons: 'scroll-down',
+	$location: 'after',
+	$link: true,
+// 	$addl-class: 'arrow-down-alt2',
+	$aliases: ( 'scroll-down-no-text', 'arrow-down-alt2-no-text' )
+);
+
+.is-style-icon-arrow-down-alt2-no-text > a, // deprecated
+.is-style-icon-scroll-down-no-text > a {
+
+	font-size: 0;
+	line-height: 1;
+	color: inherit;
+	-webkit-tap-highlight-color: transparent; /* Eliminates mobile tap highlight line/box */
+
+	&::after {
+		font-size: var(--wp--preset--font-size--huge);
+	}
+	
+	&:hover,
+	&:active,
+	&:focus,
+	&:focus-visible {
+// 		text-decoration: none !important;
+		outline: none !important;
+// 		box-shadow: none !important;
+// 		border: none !important;
+	}
+}
+
 /*-----------------------------------------------------------------------------
 # Paragraph: Custom
 -----------------------------------------------------------------------------*/

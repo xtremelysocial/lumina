@@ -1,4 +1,8 @@
+// WordPress breakpoints
 @use "@wordpress/base-styles/breakpoints";
+
+// Mixin for icons
+@use "../icons/icons" as icons;
 
 /*==============================================================================
 # LUMINA NAVIGATION
@@ -540,4 +544,21 @@ $mobile-nav-padding: calc( 1.25 * var(--wp--preset--spacing--20) );
 			}
 		}
 	}
+}
+
+/*-----------------------------------------------------------------------------
+# 07. NAVIGATION ICONS
+-----------------------------------------------------------------------------*/
+
+/* Scroll up icon */
+@include icons.svg-icons(
+	$icons: 'scroll-up',
+	$location: 'before',
+	$link: false,
+	$aliases: 'arrow-up-alt2'
+);
+
+/* Set icons on navigation items to inline flex */
+[class*="is-style-icon-"] > a.wp-block-navigation-item__content {
+	display: inline-flex;
 }

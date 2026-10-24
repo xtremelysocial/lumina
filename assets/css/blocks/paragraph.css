@@ -4,6 +4,24 @@
 /*-----------------------------------------------------------------------------
 # Paragraph
 -----------------------------------------------------------------------------*/
+.is-style-icon-scroll-down > a::after, .is-style-icon-scroll-down-no-text > a::after, .is-style-icon-arrow-down-alt2-no-text > a::after {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+  text-decoration: none;
+  position: relative;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+}
+
 /* Padding for colored backgrounds on paragraphs */
 p.has-background,
 .wp-block-paragraph.has-background {
@@ -11,6 +29,63 @@ p.has-background,
 }
 
 /* Adjust padding on mobile and tablet (782px) */
+/*--------------------------------------------------------------
+# LUMINA Paragraph (Drop Cap)
+--------------------------------------------------------------*/
+.has-drop-cap {
+  margin-top: var(--wp--preset--spacing--30);
+}
+
+.has-drop-cap:not(:focus)::first-letter {
+  font-family: var(--wp--preset--font-family--heading);
+  font-weight: 600;
+  color: var(--wp--preset--color--highlight-accent-alt);
+  font-size: 3.4em;
+  line-height: 0.8;
+  margin-top: 0.05em;
+  margin-right: 0.5rem;
+  margin-bottom: -0.1em;
+}
+
+/*--------------------------------------------------------------
+# LUMINA Custom: Paragraph (Icons)
+--------------------------------------------------------------*/
+/* Scroll down icon */
+.is-style-icon-scroll-down > a::after {
+  -webkit-mask-image: url(../../icons/theme/scroll-down.svg);
+          mask-image: url(../../icons/theme/scroll-down.svg);
+  margin-left: 0.15em;
+}
+
+.is-style-icon-scroll-down-no-text > a::after {
+  -webkit-mask-image: url(../../icons/theme/scroll-down.svg);
+          mask-image: url(../../icons/theme/scroll-down.svg);
+}
+
+.is-style-icon-arrow-down-alt2-no-text > a::after {
+  -webkit-mask-image: url(../../icons/theme/scroll-down.svg);
+          mask-image: url(../../icons/theme/scroll-down.svg);
+}
+
+.is-style-icon-arrow-down-alt2-no-text > a,
+.is-style-icon-scroll-down-no-text > a {
+  font-size: 0;
+  line-height: 1;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent; /* Eliminates mobile tap highlight line/box */
+}
+.is-style-icon-arrow-down-alt2-no-text > a::after,
+.is-style-icon-scroll-down-no-text > a::after {
+  font-size: var(--wp--preset--font-size--huge);
+}
+.is-style-icon-arrow-down-alt2-no-text > a:hover, .is-style-icon-arrow-down-alt2-no-text > a:active, .is-style-icon-arrow-down-alt2-no-text > a:focus, .is-style-icon-arrow-down-alt2-no-text > a:focus-visible,
+.is-style-icon-scroll-down-no-text > a:hover,
+.is-style-icon-scroll-down-no-text > a:active,
+.is-style-icon-scroll-down-no-text > a:focus,
+.is-style-icon-scroll-down-no-text > a:focus-visible {
+  outline: none !important;
+}
+
 /*-----------------------------------------------------------------------------
 # Paragraph: Custom
 -----------------------------------------------------------------------------*/

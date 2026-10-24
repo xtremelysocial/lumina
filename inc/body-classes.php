@@ -170,12 +170,12 @@ endif;
 // -------------------------------------------------------------------------
 // 2. AUTOMATED TRANSIENT CACHE FLUSHING REGISTRY
 // -------------------------------------------------------------------------
-add_action( 'after_switch_theme', __NAMESPACE__ . '\clear_luminance_transient' );
-add_action( 'clean_theme_cache', __NAMESPACE__ . '\clear_luminance_transient' );
-add_action( 'save_post_wp_global_styles', __NAMESPACE__ . '\clear_luminance_transient' );
+add_action( 'after_switch_theme', __NAMESPACE__ . '\clear_lightness_transient' );
+add_action( 'clean_theme_cache', __NAMESPACE__ . '\clear_lightness_transient' );
+add_action( 'save_post_wp_global_styles', __NAMESPACE__ . '\clear_lightness_transient' );
 
-if ( ! function_exists( __NAMESPACE__ . '\clear_luminance_transient' ) ) :
-	function clear_luminance_transient() {
+if ( ! function_exists( __NAMESPACE__ . '\clear_lightness_transient' ) ) :
+	function clear_lightness_transient() {
 		delete_transient( get_transient_key() );
 	}
 endif;

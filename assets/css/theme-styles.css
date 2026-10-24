@@ -588,6 +588,10 @@ img {
   flex-shrink: 0;
 }
 
+.wp-block-image {
+  overflow: hidden;
+}
+
 /* Core Latest Posts Featured Image Reset */
 .wp-block-latest-posts__featured-image img {
   width: 100% !important;

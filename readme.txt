@@ -98,6 +98,11 @@ Copyright 2011 [The Lora Project Authors](https://github.com/cyrealtype/Lora-Cyr
 Source: [Cyreal](http://cyreal.org)
 License: This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: (http://scripts.sil.org/OFL)
 
+== Open Sans ==
+Copyright 2020 The Open Sans Project Authors (https://github.com/googlefonts/opensans)
+Source: http://www.google.com/get/noto/
+License: This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+
 == Style Script ==
 Copyright 2013 [The Style Script Project Authors](https://github.com/googlefonts/style-script)
 Source: [Typesetit](http://www.typesetit.com)
