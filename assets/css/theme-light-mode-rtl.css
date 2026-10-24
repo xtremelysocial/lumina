@@ -52,8 +52,8 @@ h1, h2, h3, h4, h5, h6) {
 }
 
 :where(:root) :where(body:not(.is-dark-theme)) .has-contrast-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(body:not(.is-dark-theme)) .has-dark-gray-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(body:not(.is-dark-theme)) .has-very-dark-gray-background-color :where(a:not(.wp-element-button, .wp-block-social-link-anchor, .wp-block-navigation-item__content, :has(img), :has(svg))), :where(:root) :where(body:not(.is-dark-theme)) .has-dark-alt-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
-:where(:root) :where(body:not(.is-dark-theme)) .has-dark-alt-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :where(:root) :where(body:not(.is-dark-theme)) .has-tertiary-dark-alt-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
-:where(:root) :where(body:not(.is-dark-theme)) .has-tertiary-dark-alt-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover {
+:where(:root) :where(body:not(.is-dark-theme)) .has-dark-alt-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover, :where(:root) :where(body:not(.is-dark-theme)) .has-dark-accent-alt-background-color:is(.site-footer, .footer-info) a:not(.wp-element-button, .wp-block-social-link-anchor):hover,
+:where(:root) :where(body:not(.is-dark-theme)) .has-dark-accent-alt-background-color:is(.site-footer, .footer-info) .wp-block-navigation-item__content:hover {
   /* Set link color to highlight for dark backgrounds */
   color: var(--wp--preset--color--highlight);
 }

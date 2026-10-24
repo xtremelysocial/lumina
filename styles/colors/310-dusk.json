@@ -35,8 +35,8 @@
 				{ "slug": "dark", "color": "hsl(206, 20%, 20%)", "name": "Dark (Secondary Maritime Footer Pair 20%)" },
 				{ "slug": "dark-alt", "color": "hsl(206, 24%, 15%)", "name": "Dark Alt (Secondary Maritime Footer Deep 15%)" },
 
-				{ "slug": "tertiary-dark", "color": "hsl(12, 32%, 22%)", "name": "Dark Tertiary (Twilight Terracotta Deep 22%)" },
-				{ "slug": "tertiary-dark-alt", "color": "hsl(12, 32%, 14%)", "name": "Dark Tertiary Alt (Twilight Terracotta Abyssal 14%)" },
+				{ "slug": "dark-accent", "color": "hsl(12, 32%, 22%)", "name": "Dark Accent (Twilight Terracotta Deep 22%)" },
+				{ "slug": "dark-accent-alt", "color": "hsl(12, 32%, 14%)", "name": "Dark Accent Alt (Twilight Terracotta Abyssal 14%)" },
 
 				{ "slug": "highlight", "color": "hsl(206, 70%, 72%)", "name": "Highlight (Bioluminescent Sky Link)" },
 				{ "slug": "highlight-alt", "color": "hsl(206, 55%, 34%)", "name": "Highlight Alt (Deep Maritime Accent)" },

@@ -60,8 +60,8 @@
 				{ "slug": "dark", "color": "hsl(211, 20%, 10%)", "name": "Dark (Abyssal Marine Pool Band 10%)" },
 				{ "slug": "dark-alt", "color": "hsl(211, 25%, 6%)", "name": "Dark Alt (Deep Abyssal Marine Pool 6%)" },							
 
-				{ "slug": "tertiary-dark", "color": "hsl(37, 14%, 12%)", "name": "Dark Tertiary (Wet Bronze Pool Band 12%)" },
-				{ "slug": "tertiary-dark-alt", "color": "hsl(37, 14%, 8%)", "name": "Dark Tertiary Alt (Deep Bronze Pool 8%)" },
+				{ "slug": "dark-accent", "color": "hsl(37, 14%, 12%)", "name": "Dark Accent (Wet Bronze Pool Band 12%)" },
+				{ "slug": "dark-accent-alt", "color": "hsl(37, 14%, 8%)", "name": "Dark Accent Alt (Deep Bronze Pool 8%)" },
 
 				{ "slug": "highlight", "color": "hsl(14, 85%, 76%)", "name": "Highlight (Glow Terracotta Link)" },
 				{ "slug": "highlight-alt", "color": "hsl(16, 50%, 36%)", "name": "Highlight Alt (Deep Burnt Copper Link Ink / Button 36%)" },

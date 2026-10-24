@@ -7,7 +7,7 @@
  * Block Types: core/group, core/media-text 
  */
  ?>
-<!-- wp:group {"metadata":{"name":"Home Banner Subtle Media \u0026 Text"},"align":"full","className":"is-style-default","style":{"background":{"gradient":"var:preset|gradient|tertiary-subtle"},"border":{"bottom":{"color":"var:preset|color|neutral-alt","width":"3px"}}},"layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text-subtle"} -->
+<!-- wp:group {"metadata":{"name":"Home Banner Subtle Media \u0026 Text"},"align":"full","className":"is-style-default","style":{"background":{"gradient":"var:preset|gradient|primary-subtle"},"border":{"bottom":{"color":"var:preset|color|neutral-alt","width":"3px"}}},"layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text-subtle"} -->
 <div class="wp-block-group alignfull is-style-default" id="banner-home-hero-media-text-subtle" style="border-bottom-color:var(--wp--preset--color--neutral-alt);border-bottom-width:3px"><!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom is-style-default"} -->
 <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom is-style-default" style="grid-template-columns:auto 45%"><div class="wp-block-media-text__content"><!-- wp:site-title {"isLink":false,"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"huge"} /-->
 

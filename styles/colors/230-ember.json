@@ -42,8 +42,8 @@
 				{ "slug": "dark", "color": "hsl(34, 34%, 22%)", "name": "Dark (Bronze Clay Heading 22%)" },
 				{ "slug": "dark-alt", "color": "hsl(34, 34%, 14%)", "name": "Dark Alt (Bronze Clay Footer Deep 14%)" },							
 
-				{ "slug": "tertiary-dark", "color": "hsl(18, 28%, 28%)", "name": "Dark Tertiary (Warm Volcanic Clay Band 28%)" },
-				{ "slug": "tertiary-dark-alt", "color": "hsl(18, 30%, 20%)", "name": "Dark Tertiary Alt (Deep Volcanic Floor 20%)" },
+				{ "slug": "dark-accent", "color": "hsl(18, 28%, 28%)", "name": "Dark Accent (Warm Volcanic Clay Band 28%)" },
+				{ "slug": "dark-accent-alt", "color": "hsl(18, 30%, 20%)", "name": "Dark Accent Alt (Deep Volcanic Floor 20%)" },
 
 				{ "slug": "highlight", "color": "hsl(12, 75%, 68%)", "name": "Highlight Alt (Warm Coral Glow for Dark Cards)" },
 				{ "slug": "highlight-alt", "color": "hsl(12, 75%, 36%)", "name": "Highlight (Deep Volcanic Primary Link Ink)" },

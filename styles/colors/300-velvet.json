@@ -38,8 +38,8 @@
 				{ "slug": "dark", "color": "hsl(207, 28%, 22%)", "name": "Dark (Midnight Sapphire Footer 22%)" },
 				{ "slug": "dark-alt", "color": "hsl(207, 30%, 15%)", "name": "Dark Alt (Midnight Sapphire Floor 15%)" },				
 
-				{ "slug": "tertiary-dark", "color": "hsl(0, 30%, 22%)", "name": "Dark Tertiary (Deep Crimson Well 22%)" },
-				{ "slug": "tertiary-dark-alt", "color": "hsl(0, 30%, 15%)", "name": "Dark Tertiary Alt (Deep Crimson Floor 15%)" },
+				{ "slug": "dark-accent", "color": "hsl(0, 30%, 22%)", "name": "Dark Accent (Deep Crimson Well 22%)" },
+				{ "slug": "dark-accent-alt", "color": "hsl(0, 30%, 15%)", "name": "Dark Accent Alt (Deep Crimson Floor 15%)" },
 
 				{ "slug": "highlight", "color": "hsl(207, 65%, 72%)", "name": "Highlight (Luminescent Sapphire Link)" },
 				{ "slug": "highlight-alt", "color": "hsl(207, 65%, 36%)", "name": "Highlight Alt (Electric Sapphire Link Ink 36%)" },

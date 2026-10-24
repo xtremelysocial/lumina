@@ -38,8 +38,8 @@
 				{ "slug": "dark", "color": "hsl(38, 30%, 22%)", "name": "Dark (Secondary Aged Brass Footer Pair 22%)" },
 				{ "slug": "dark-alt", "color": "hsl(38, 32%, 14%)", "name": "Dark Alt (Abyssal Brass Footer Deep 14%)" },
 
-				{ "slug": "tertiary-dark", "color": "hsl(208, 21%, 22%)", "name": "Dark Tertiary (Lumina Midnight Floor 22%)" },
-				{ "slug": "tertiary-dark-alt", "color": "hsl(209, 24%, 16%)", "name": "Dark Tertiary Alt (Abyssal Midnight Deep 16%)" },			
+				{ "slug": "dark-accent", "color": "hsl(208, 21%, 22%)", "name": "Dark Accent (Lumina Midnight Floor 22%)" },
+				{ "slug": "dark-accent-alt", "color": "hsl(209, 24%, 16%)", "name": "Dark Accent Alt (Abyssal Midnight Deep 16%)" },			
 
 				{ "slug": "highlight", "color": "hsl(0, 32%, 78%)", "name": "Highlight (Patina Rose Glow)" },
 				{ "slug": "highlight-alt", "color": "hsl(0, 26%, 36%)", "name": "Highlight Alt (Muted Patina Crimson Link)" },

@@ -7,8 +7,8 @@
  * Block Types: core/post-content
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Home Banner Media \u0026 Text"},"align":"full","gradient":"tertiary","layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text"} -->
-<div class="wp-block-group alignfull has-tertiary-gradient-background has-background" id="banner-home-hero-media-text">
+<!-- wp:group {"metadata":{"name":"Home Banner Media \u0026 Text"},"align":"full","gradient":"primary","layout":{"type":"constrained"},"anchor":"banner-home-hero-media-text"} -->
+<div class="wp-block-group alignfull has-primary-gradient-background has-background" id="banner-home-hero-media-text">
 	<!-- wp:media-text {"align":"wide","mediaPosition":"right","linkDestination":"none","mediaType":"image","mediaWidth":45,"mediaSizeSlug":"cropped-large","imageFill":false,"className":"is-style-pan-zoom is-style-default"} -->
 	<div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-style-pan-zoom is-style-default" style="grid-template-columns:auto 45%">
 		<div class="wp-block-media-text__content">
@@ -164,7 +164,7 @@
 <!-- /wp:group -->
 
 <!-- wp:paragraph -->
-<p><?php esc_html_e("Modern fonts that are soft in weight, but crisp and legible, giving your site a premium vibe. A dozen fonts are available that load locally for fast performance.", "lumina"); ?></p>
+<p><?php esc_html_e("Modern fonts that are soft in weight, but crisp and legible, giving your site a premium vibe. Six (6) fonts are available that load locally for fast performance.", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->

@@ -5,7 +5,8 @@
 ==============================================================================*/
 
 // Shared link target selector covering standard links, buttons, and page-list links
-$nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link)";
+// $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block-pages-list__item__link)";
+$nav-link-targets: ":is(.wp-block-navigation-item__content, .wp-block-pages-list__item__link)";
 
 /*-----------------------------------------------------------------------------
 # 01. BASE CONTAINER & SUBMENU DROPDOWN CARDS
@@ -236,7 +237,8 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 	width: 16px;
 	height: 16px;
 
-	@media (min-width: #{breakpoints.$break-small}) and (max-width: #{breakpoints.$break-medium - 1px}) {
+// 	@media (min-width: #{breakpoints.$break-small}) and (max-width: #{breakpoints.$break-medium - 1px}) {
+	@media (min-width: #{breakpoints.$break-small}) and (max-width: #{breakpoints.$break-large - 1px}) {
 		margin: 14px;
 	}
 }
@@ -293,12 +295,12 @@ $nav-link-targets: ":is(a, button, .wp-block-navigation-item__content, .wp-block
 			}
 			
 			& > #{$nav-link-targets}:hover {
-// 				color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
+				color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
 
-				.wp-block-navigation-item__label {
-					color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
-// 					opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
-				}
+// 				.wp-block-navigation-item__label {
+// 					color: var(--wp--custom--color--navigation--highlight, var(--wp--preset--color--highlight-alt));
+// // 					opacity: var(--wp--custom--color--link--hover-opacity, 0.75);
+// 				}
 			}
 
 			&:hover > .wp-block-navigation__submenu-icon {

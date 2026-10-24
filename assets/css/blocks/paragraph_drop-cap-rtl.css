@@ -11,7 +11,7 @@
 .has-drop-cap:not(:focus)::first-letter {
   font-family: var(--wp--preset--font-family--heading);
   font-weight: 600;
-  color: var(--wp--preset--color--primary-alt);
+  color: var(--wp--preset--color--highlight-accent-alt);
   font-size: 3.4em;
   line-height: 0.8;
   margin-top: 0.05em;
