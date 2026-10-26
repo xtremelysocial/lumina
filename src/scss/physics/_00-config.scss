@@ -172,7 +172,8 @@ $lumina-block-registry: (
 	( trigger: 'input[type="submit"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'button' ),
 	( trigger: 'input[type="button"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'button' ),
 	( trigger: 'input[type="reset"]:not(.wp-element-button)', has: 'none', spacing: true, role: 'button' ),
-	( trigger: 'input[type=file]::file-selector-button', has: 'none', spacing: true, role: 'button' ),    
+// 	( trigger: 'input[type=file]::file-selector-button', has: 'none', spacing: true, role: 'button' ),    
+	( trigger: 'input[type=file]', target: '::file-selector-button', has: 'none', spacing: true, role: 'button' ),
 );
 
 //**
@@ -223,29 +224,29 @@ $shadow-hover:   var(--wp--custom--color--shadow--hover,
 ));
 
 // Base Timing Tokens (Short = 250ms for Cards/Buttons | Medium = 500ms for Images/Assets)
-$lumina-timing: 		var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+$lumina-timing: 		 var(--wp--custom--animation--duration--short, 250ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 
-$lumina-timing-medium: 	var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
+$lumina-timing-medium: 	 var(--wp--custom--animation--duration--medium, 500ms) var(--wp--custom--animation--timing-function, cubic-bezier(0.4, 0, 0.2, 1));
 
 // 1. Role: Cards (Engine applies $shift-subtle to interactive card containers)
-$shift-subtle:  		var(--wp--custom--animation--card--hover-transform, 
+$shift-subtle:  		 var(--wp--custom--animation--card--hover-transform, 
 						 translateY(-3px));
 
 // 2. Role: Standard Images (Engine applies $shift-standard to core image blocks)
-$shift-standard: 		var(--wp--custom--animation--image--hover-transform, 
+$shift-standard: 		 var(--wp--custom--animation--image--hover-transform, 
 						 translateY(-3px));
 
 // 3. Role: Buttons (Engine applies $grow-large to button elements)
-$grow-large:    		var(--wp--custom--animation--button--hover-transform, 
+$grow-large:    		 var(--wp--custom--animation--button--hover-transform, 
 						 var(--wp--custom--animation--default--hover-transform, 
 						 scale(1.05)));
 
 // 4. Role: Media & Text (Engine applies $grow-standard to constrained image zooms)
-$grow-standard: 		var(--wp--custom--animation--media-text--hover-transform, 
+$grow-standard: 		 var(--wp--custom--animation--media-text--hover-transform, 
 						 scale(1.08));
 
 // Reserved Growth Legacy Token
-$grow-small: 			var(--wp--custom--animation--object--hover-transform, 
+$grow-small: 			 var(--wp--custom--animation--object--hover-transform, 
 						 scale(1.03));
 						 
 // Image Frame Config

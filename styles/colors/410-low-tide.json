@@ -49,41 +49,41 @@
 				{ "slug": "secondary", "color": "hsl(50, 4%, 44%)", "name": "Secondary (Machine Stone Gray 44%)" },
 				{ "slug": "tertiary", "color": "hsl(37, 14%, 34%)", "name": "Tertiary (Muted Antique Bronze 34%)" },
 
-				{ "slug": "primary-subtle", "color": "hsl(211, 28%, 14%)", "name": "Primary Subtle (Deep Trench Fill 14%)" },
-				{ "slug": "secondary-subtle", "color": "hsl(211, 18%, 14%)", "name": "Secondary Subtle (Maritime Blue Fill 14%)" },
-				{ "slug": "tertiary-subtle", "color": "hsl(37, 8%, 14%)", "name": "Tertiary Subtle (Muted Bronze Fill 14%)" },
+				{ "slug": "primary-subtle", "color": "hsl(211, 28%, 14%)", "name": "Primary Subtle (Deep Trench 14%)" },
+				{ "slug": "secondary-subtle", "color": "hsl(211, 18%, 14%)", "name": "Secondary Subtle (Maritime Blue 14%)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(37, 8%, 14%)", "name": "Tertiary Subtle (Muted Bronze 14%)" },
 
-				{ "slug": "primary-alt", "color": "hsl(12, 32%, 38%)", "name": "Primary Alt (Deep Terracotta Anchor 38%)" },
+				{ "slug": "primary-alt", "color": "hsl(12, 32%, 38%)", "name": "Primary Alt (Deep Terracotta 38%)" },
 				{ "slug": "secondary-alt", "color": "hsl(50, 4%, 32%)", "name": "Secondary Alt (Oiled Gunmetal 32%)" },
 				{ "slug": "tertiary-alt", "color": "hsl(37, 14%, 22%)", "name": "Tertiary Alt (Dark Antique Bronze 22%)" },
 
-				{ "slug": "dark", "color": "hsl(211, 20%, 10%)", "name": "Dark (Abyssal Marine Pool Band 10%)" },
+				{ "slug": "dark", "color": "hsl(211, 20%, 10%)", "name": "Dark (Abyssal Marine Pool 10%)" },
 				{ "slug": "dark-alt", "color": "hsl(211, 25%, 6%)", "name": "Dark Alt (Deep Abyssal Marine Pool 6%)" },							
 
-				{ "slug": "dark-accent", "color": "hsl(37, 14%, 12%)", "name": "Dark Accent (Wet Bronze Pool Band 12%)" },
-				{ "slug": "dark-accent-alt", "color": "hsl(37, 14%, 8%)", "name": "Dark Accent Alt (Deep Bronze Pool 8%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(37, 14%, 12%)", "name": "Dark Accent (Wet Bronze Pool 12%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(37, 14%, 8%)", "name": "Dark Accent Alt (Deep Bronze Pool 8%)" },
 
-				{ "slug": "highlight", "color": "hsl(14, 85%, 76%)", "name": "Highlight (Glow Terracotta Link)" },
-				{ "slug": "highlight-alt", "color": "hsl(16, 50%, 36%)", "name": "Highlight Alt (Deep Burnt Copper Link Ink / Button 36%)" },
+				{ "slug": "highlight", "color": "hsl(14, 85%, 76%)", "name": "Highlight (Glow Terracotta Links)" },
+				{ "slug": "highlight-alt", "color": "hsl(16, 50%, 36%)", "name": "Highlight Alt (Deep Burnt Copper Links / Buttons 36%)" },
 
-				{ "slug": "highlight-accent", "color": "hsl(172, 75%, 76%)", "name": "Highlight Accent (Bioluminescent Tidefoam Link)" },		
-				{ "slug": "highlight-accent-alt", "color": "hsl(172, 60%, 34%)", "name": "Highlight Accent Alt (Deep Tidefoam Link Ink / Button 34%)" },
+				{ "slug": "highlight-accent", "color": "hsl(172, 75%, 76%)", "name": "Highlight Accent (Bioluminescent Tidefoam Links)" },		
+				{ "slug": "highlight-accent-alt", "color": "hsl(172, 60%, 34%)", "name": "Highlight Accent Alt (Deep Tidefoam Links / Buttons 34%)" },
         
 				{ "slug": "neutral", "color": "hsl(211, 25%, 21%)", "name": "Neutral (Industrial Marine Slate)" },
-				{ "slug": "neutral-alt", "color": "hsl(211, 28%, 27%)", "name": "Neutral Alt (Technical Maritime Blue Border)" },
+				{ "slug": "neutral-alt", "color": "hsl(211, 28%, 27%)", "name": "Neutral Alt (Technical Maritime Blue)" },
 
 				{ "slug": "off-white", "color": "hsl(37, 10%, 93%)", "name": "Off White (Sun-Bleached Sandstone 93%)" },
-				{ "slug": "very-light-gray", "color": "hsl(211, 15%, 12%)", "name": "Very Light Gray (Inverted Deep Footer Floor 12%)" },
-				{ "slug": "light-gray", "color": "hsl(211, 12%, 22%)", "name": "Light Gray (Inverted Structural Card Well 22%)" },
-				{ "slug": "gray", "color": "hsl(211, 10%, 35%)", "name": "Gray (Inverted Technical Border Seam 35%)" },
-				{ "slug": "dark-gray", "color": "hsl(211, 10%, 65%)", "name": "Dark Gray (Inverted Muted Typography 65%)" },
-				{ "slug": "very-dark-gray", "color": "hsl(211, 12%, 85%)", "name": "Very Dark Gray (Inverted Tech Typography 85%)" },
+				{ "slug": "very-light-gray", "color": "hsl(211, 15%, 12%)", "name": "Very Light Gray (Inverted Deep Sand 12%)" },
+				{ "slug": "light-gray", "color": "hsl(211, 12%, 22%)", "name": "Light Gray (Inverted Warm Sand 22%)" },
+				{ "slug": "gray", "color": "hsl(211, 10%, 35%)", "name": "Gray (Inverted Sand 35%)" },
+				{ "slug": "dark-gray", "color": "hsl(211, 10%, 65%)", "name": "Dark Gray (Inverted Muted Sand 65%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(211, 12%, 85%)", "name": "Very Dark Gray (Inverted Dark Espresso 85%)" },
 								
-				{ "slug": "almost-black", "color": "hsl(208, 10%, 14%)", "name": "Almost Black (Tinted Carbon Floor 14%)" },
-				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" },
+				{ "slug": "almost-black", "color": "hsl(208, 10%, 14%)", "name": "Almost Black (Tinted Carbon 14%)" },
+				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Carbon)" },
 
-				{ "slug": "base", "color": "hsl(211, 28%, 18%)", "name": "Base (Deep Sea Slate Canvas)" },
-				{ "slug": "contrast", "color": "hsl(211, 14%, 90%)", "name": "Contrast (Slate-Tinted Bone Typography)" }
+				{ "slug": "base", "color": "hsl(211, 28%, 18%)", "name": "Base (Deep Sea Slate)" },
+				{ "slug": "contrast", "color": "hsl(211, 14%, 90%)", "name": "Contrast (Slate-Tinted Bone)" }
 
 			],
 			"duotone": [

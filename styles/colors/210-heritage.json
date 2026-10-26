@@ -23,45 +23,45 @@
 		},	
 		"color": {
 			"palette": [			
-				{ "slug": "primary", "color": "hsl(0, 18%, 34%)", "name": "Primary (Patina Crimson Core 34%)" },
-				{ "slug": "secondary", "color": "hsl(38, 38%, 40%)", "name": "Secondary (Aged Brass Core 40%)" },
-				{ "slug": "tertiary", "color": "hsl(208, 22%, 30%)", "name": "Tertiary (Midnight Blue Core 30%)" },
+				{ "slug": "primary", "color": "hsl(0, 18%, 34%)", "name": "Primary (Patina Crimson 34%)" },
+				{ "slug": "secondary", "color": "hsl(38, 38%, 40%)", "name": "Secondary (Aged Brass 40%)" },
+				{ "slug": "tertiary", "color": "hsl(208, 22%, 30%)", "name": "Tertiary (Midnight Blue 30%)" },
 
 				{ "slug": "primary-subtle", "color": "hsl(14, 22%, 92%)", "name": "Primary Subtle (Warm Terracotta Linen 92%)" },
-				{ "slug": "secondary-subtle", "color": "hsl(38, 20%, 91%)", "name": "Secondary Subtle (Whisper Brass Fill 91%)" },
+				{ "slug": "secondary-subtle", "color": "hsl(38, 20%, 91%)", "name": "Secondary Subtle (Whisper Brass 91%)" },
 				{ "slug": "tertiary-subtle", "color": "hsl(208, 20%, 91%)", "name": "Tertiary Subtle (Whisper Midnight Slate 91%)" },
 
-				{ "slug": "primary-alt", "color": "hsl(0, 18%, 24%)", "name": "Primary Alt (Shadow Crimson Action 24%)" },
-				{ "slug": "secondary-alt", "color": "hsl(38, 40%, 30%)", "name": "Secondary Alt (Burnished Brass Action 30%)" },
-				{ "slug": "tertiary-alt", "color": "hsl(208, 24%, 20%)", "name": "Tertiary Alt (Abyssal Midnight Action 20%)" },
+				{ "slug": "primary-alt", "color": "hsl(0, 18%, 24%)", "name": "Primary Alt (Shadow Crimson 24%)" },
+				{ "slug": "secondary-alt", "color": "hsl(38, 40%, 30%)", "name": "Secondary Alt (Burnished Brass 30%)" },
+				{ "slug": "tertiary-alt", "color": "hsl(208, 24%, 20%)", "name": "Tertiary Alt (Abyssal Midnight 20%)" },
 
-				{ "slug": "dark", "color": "hsl(38, 30%, 22%)", "name": "Dark (Secondary Aged Brass Footer Pair 22%)" },
-				{ "slug": "dark-alt", "color": "hsl(38, 32%, 14%)", "name": "Dark Alt (Abyssal Brass Footer Deep 14%)" },
+				{ "slug": "dark", "color": "hsl(38, 30%, 22%)", "name": "Dark (Secondary Aged Brass 22%)" },
+				{ "slug": "dark-alt", "color": "hsl(38, 32%, 14%)", "name": "Dark Alt (Abyssal Brass Deep 14%)" },
 
-				{ "slug": "dark-accent", "color": "hsl(208, 21%, 22%)", "name": "Dark Accent (Lumina Midnight Floor 22%)" },
-				{ "slug": "dark-accent-alt", "color": "hsl(209, 24%, 16%)", "name": "Dark Accent Alt (Abyssal Midnight Deep 16%)" },			
+				{ "slug": "tertiary-dark", "color": "hsl(208, 21%, 22%)", "name": "Dark Accent (Midnight 22%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(209, 24%, 16%)", "name": "Dark Accent Alt (Abyssal Midnight Deep 16%)" },			
 
-				{ "slug": "highlight", "color": "hsl(0, 32%, 78%)", "name": "Highlight (Patina Rose Glow)" },
-				{ "slug": "highlight-alt", "color": "hsl(0, 26%, 36%)", "name": "Highlight Alt (Muted Patina Crimson Link)" },
+				{ "slug": "highlight", "color": "hsl(0, 32%, 78%)", "name": "Highlight (Patina Rose Links)" },
+				{ "slug": "highlight-alt", "color": "hsl(0, 26%, 36%)", "name": "Highlight Alt (Muted Patina Crimson Links)" },
 
-				{ "slug": "highlight-accent", "color": "hsl(206, 80%, 72%)", "name": "Highlight Accent (Luminescent Sky Glow)" },
-				{ "slug": "highlight-accent-alt", "color": "hsl(206, 65%, 36%)", "name": "Highlight Accent Alt (Deep Sky Link Ink)" },
+				{ "slug": "highlight-accent", "color": "hsl(206, 80%, 72%)", "name": "Highlight Accent (Luminescent Sky Glow Links)" },
+				{ "slug": "highlight-accent-alt", "color": "hsl(206, 65%, 36%)", "name": "Highlight Accent Alt (Deep Sky Links)" },
 
-				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand Well 94%)" },
-				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand Border Seam 88%)" },
+				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand 88%)" },
 
-				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Desert Alabaster Surface 97.5%)" },
-				{ "slug": "very-light-gray", "color": "hsl(40, 16%, 91.5%)", "name": "Very Light Gray (Warm Sand Footer Floor 91.5%)" },
-				{ "slug": "light-gray", "color": "hsl(40, 14%, 84%)", "name": "Light Gray (Warm Sand Inner Well 84%)" },
-				{ "slug": "gray", "color": "hsl(40, 8%, 71%)", "name": "Gray (Warm Structural Border 71%)" },
-				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
-				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
+				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Desert Alabaster 97.5%)" },
+				{ "slug": "very-light-gray", "color": "hsl(40, 16%, 91.5%)", "name": "Very Light Gray (Warm Sand 91.5%)" },
+				{ "slug": "light-gray", "color": "hsl(40, 14%, 84%)", "name": "Light Gray (Warm Sand 84%)" },
+				{ "slug": "gray", "color": "hsl(40, 8%, 71%)", "name": "Gray (Warm Sand 71%)" },
+				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso 44%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand 25%)" },
 
-				{ "slug": "almost-black", "color": "hsl(208, 10%, 14%)", "name": "Almost Black (Tinted Carbon Floor 14%)" },
-				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" },
+				{ "slug": "almost-black", "color": "hsl(208, 10%, 14%)", "name": "Almost Black (Tinted Carbon 14%)" },
+				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Carbon)" },
 
-				{ "slug": "base", "color": "hsl(40, 25%, 96%)", "name": "Base (Warm Parchment Canvas)" },
-				{ "slug": "contrast", "color": "hsl(15, 18%, 11%)", "name": "Contrast (Mahogany Infused Ink)" }
+				{ "slug": "base", "color": "hsl(40, 25%, 96%)", "name": "Base (Warm Parchment)" },
+				{ "slug": "contrast", "color": "hsl(15, 18%, 11%)", "name": "Contrast (Mahogany Infused Carbon)" }
 			],
 			"duotone": [
 				{ "colors": ["hsl(0, 18%, 34%)", "hsl(40, 25%, 96%)"], "slug": "primary", "name": "Primary (Patina Crimson)" },

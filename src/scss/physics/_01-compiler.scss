@@ -64,24 +64,45 @@
     }
         
 	// 7. RETURN LITERAL SCOPE PATHS (Wrapper vs Target)
-    @if string.index($scope, 'wrapper') != null {
-        @return '#{$selector}#{$state-suffix}';
-
-    } @else {
-        // Build base path with state suffix attached directly to the active 
-        // action boundary element
+	@if string.index($scope, 'wrapper') != null {
+		@return '#{$selector}#{$state-suffix}';
+	
+	} @else {
+		// Build base path with state suffix attached directly to the active 
+		// action boundary element
 		$action-path: '#{$selector} #{$trigger}#{$state-suffix}';
 		@if $trigger == 'self' {
 			$action-path: '#{$selector}#{$state-suffix}';
 		}
-        
-        // Append the final graphic asset target layer if it isn't self-contained        
+		
+		// Append the final graphic asset target layer if it isn't self-contained        
 		@if $target == 'self' {
 			@return $action-path;
+		} @else if string.slice($target, 1, 2) == '::' {
+			@return '#{$action-path}#{$target}';
 		} @else {
 			@return '#{$action-path} #{$target}';
 		}        
-    }
+	}
+
+//     @if string.index($scope, 'wrapper') != null {
+//         @return '#{$selector}#{$state-suffix}';
+// 
+//     } @else {
+//         // Build base path with state suffix attached directly to the active 
+//         // action boundary element
+// 		$action-path: '#{$selector} #{$trigger}#{$state-suffix}';
+// 		@if $trigger == 'self' {
+// 			$action-path: '#{$selector}#{$state-suffix}';
+// 		}
+//         
+//         // Append the final graphic asset target layer if it isn't self-contained        
+// 		@if $target == 'self' {
+// 			@return $action-path;
+// 		} @else {
+// 			@return '#{$action-path} #{$target}';
+// 		}        
+//     }
 }
 
 // ==========================================================================

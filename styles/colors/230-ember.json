@@ -28,44 +28,44 @@
 		"color": {
 			"palette": [
 				{ "slug": "primary", "color": "hsl(12, 32%, 48%)", "name": "Primary (Terra Cotta Core 48%)" },
-				{ "slug": "secondary", "color": "hsl(34, 32%, 48%)", "name": "Secondary (Muted Antique Gold Core 48%)" },
-				{ "slug": "tertiary", "color": "hsl(18, 28%, 42%)", "name": "Tertiary (Volcanic Umber Core 42%)" },
+				{ "slug": "secondary", "color": "hsl(34, 32%, 48%)", "name": "Secondary (Muted Antique Gold 48%)" },
+				{ "slug": "tertiary", "color": "hsl(18, 28%, 42%)", "name": "Tertiary (Volcanic Umber 42%)" },
 
-				{ "slug": "primary-subtle", "color": "hsl(26, 22%, 91%)", "name": "Primary Subtle (Whisper Terracotta Fill 91%)" },
-				{ "slug": "secondary-subtle", "color": "hsl(44, 20%, 91%)", "name": "Secondary Subtle (Whisper Gold Fill 91%)" },
+				{ "slug": "primary-subtle", "color": "hsl(26, 22%, 91%)", "name": "Primary Subtle (Whisper Terracotta 91%)" },
+				{ "slug": "secondary-subtle", "color": "hsl(44, 20%, 91%)", "name": "Secondary Subtle (Whisper Gold 91%)" },
 				{ "slug": "tertiary-subtle", "color": "hsl(18, 18%, 91%)", "name": "Tertiary Subtle (Whisper Volcanic Wash 91%)" },
 
-				{ "slug": "primary-alt", "color": "hsl(12, 32%, 38%)", "name": "Primary Alt (Burnt Sienna Action 38%)" },
-				{ "slug": "secondary-alt", "color": "hsl(34, 34%, 38%)", "name": "Secondary Alt (Burnished Ochre Action 38%)" },
-				{ "slug": "tertiary-alt", "color": "hsl(18, 30%, 32%)", "name": "Tertiary Alt (Volcanic Charcoal Action 32%)" },
+				{ "slug": "primary-alt", "color": "hsl(12, 32%, 38%)", "name": "Primary Alt (Burnt Sienna 38%)" },
+				{ "slug": "secondary-alt", "color": "hsl(34, 34%, 38%)", "name": "Secondary Alt (Burnished Ochre 38%)" },
+				{ "slug": "tertiary-alt", "color": "hsl(18, 30%, 32%)", "name": "Tertiary Alt (Volcanic Charcoal 32%)" },
 				
-				{ "slug": "dark", "color": "hsl(34, 34%, 22%)", "name": "Dark (Bronze Clay Heading 22%)" },
-				{ "slug": "dark-alt", "color": "hsl(34, 34%, 14%)", "name": "Dark Alt (Bronze Clay Footer Deep 14%)" },							
+				{ "slug": "dark", "color": "hsl(34, 34%, 22%)", "name": "Dark (Bronze Clay 22%)" },
+				{ "slug": "dark-alt", "color": "hsl(34, 34%, 14%)", "name": "Dark Alt (Bronze Clay Deep 14%)" },							
 
-				{ "slug": "dark-accent", "color": "hsl(18, 28%, 28%)", "name": "Dark Accent (Warm Volcanic Clay Band 28%)" },
-				{ "slug": "dark-accent-alt", "color": "hsl(18, 30%, 20%)", "name": "Dark Accent Alt (Deep Volcanic Floor 20%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(18, 28%, 28%)", "name": "Dark Accent (Warm Volcanic Clay 28%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(18, 30%, 20%)", "name": "Dark Accent Alt (Deep Volcanic 20%)" },
 
-				{ "slug": "highlight", "color": "hsl(12, 75%, 68%)", "name": "Highlight Alt (Warm Coral Glow for Dark Cards)" },
-				{ "slug": "highlight-alt", "color": "hsl(12, 75%, 36%)", "name": "Highlight (Deep Volcanic Primary Link Ink)" },
+				{ "slug": "highlight", "color": "hsl(12, 75%, 68%)", "name": "Highlight Alt (Warm Coral Glow)" },
+				{ "slug": "highlight-alt", "color": "hsl(12, 75%, 36%)", "name": "Highlight (Deep Volcanic Links)" },
 
-				{ "slug": "highlight-accent", "color": "hsl(34, 80%, 72%)", "name": "Highlight Accent (Luminescent Ochre for Dark Cards)" },
-				{ "slug": "highlight-accent-alt", "color": "hsl(34, 65%, 36%)", "name": "Highlight Accent Alt (Deep Ochre Alternate Link Ink)" },
+				{ "slug": "highlight-accent", "color": "hsl(34, 80%, 72%)", "name": "Highlight Accent (Luminescent Ochre Links)" },
+				{ "slug": "highlight-accent-alt", "color": "hsl(34, 65%, 36%)", "name": "Highlight Accent Alt (Deep Ochre Alternate Links)" },
 				
-				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand Well 94%)" },
-				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand Border Seam 88%)" },
+				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand 88%)" },
 
-				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Desert Alabaster Surface 97.5%)" },
-				{ "slug": "very-light-gray", "color": "hsl(40, 16%, 91.5%)", "name": "Very Light Gray (Warm Sand Footer Floor 91.5%)" },
-				{ "slug": "light-gray", "color": "hsl(40, 14%, 84%)", "name": "Light Gray (Warm Sand Inner Well 84%)" },
-				{ "slug": "gray", "color": "hsl(40, 8%, 71%)", "name": "Gray (Warm Structural Border 71%)" },
-				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
+				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Desert Alabaster 97.5%)" },
+				{ "slug": "very-light-gray", "color": "hsl(40, 16%, 91.5%)", "name": "Very Light Gray (Warm Sand 91.5%)" },
+				{ "slug": "light-gray", "color": "hsl(40, 14%, 84%)", "name": "Light Gray (Warm Sand Inner 84%)" },
+				{ "slug": "gray", "color": "hsl(40, 8%, 71%)", "name": "Gray (Warm Sand 71%)" },
+				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso 44%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
 
-				{ "slug": "almost-black", "color": "hsl(34, 10%, 14%)", "name": "Almost Black (Tinted Carbon Floor)" },
-				{ "slug": "not-quite-black", "color": "hsl(34, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" },
+				{ "slug": "almost-black", "color": "hsl(34, 10%, 14%)", "name": "Almost Black (Tinted Carbon)" },
+				{ "slug": "not-quite-black", "color": "hsl(34, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Carbon)" },
 
-				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White Canvas)" },
-				{ "slug": "contrast", "color": "hsl(34, 15%, 11%)", "name": "Contrast (Rich Tinted Ink)" }
+				{ "slug": "base", "color": "hsl(45, 27%, 97%)", "name": "Base (Off White)" },
+				{ "slug": "contrast", "color": "hsl(34, 15%, 11%)", "name": "Contrast (Rich Tinted Carbon)" }
 			],
 			"duotone": [
 				{ "colors": ["hsl(12, 32%, 48%)", "hsl(45, 27%, 97%)"], "slug": "primary", "name": "Primary (Terra Cotta)" },

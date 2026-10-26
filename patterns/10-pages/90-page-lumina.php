@@ -164,7 +164,7 @@
 <!-- /wp:group -->
 
 <!-- wp:paragraph -->
-<p><?php esc_html_e("Modern fonts that are soft in weight, but crisp and legible, giving your site a premium vibe. Six (6) fonts are available that load locally for fast performance.", "lumina"); ?></p>
+<p><?php esc_html_e("Modern fonts that are soft in weight, but crisp and legible, giving your site a premium vibe. Six (6) curated fonts are available that load locally for fast performance.", "lumina"); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
@@ -244,7 +244,7 @@
 <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:columns {"isStackedOnMobile":false,"className":"is-style-gutter-dividers","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-columns is-not-stacked-on-mobile is-style-gutter-dividers"><!-- wp:column {"className":"is-style-default"} -->
 <div class="wp-block-column is-style-default"><!-- wp:paragraph {"style":{"typography":{"lineHeight":"1","fontWeight":"500","textAlign":"center","fontStyle":"normal"},"textColor":"highlight-accent-alt","fontSize":"huge"} -->
-<p class="has-text-align-center has-text-color has-highlight-accent-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">9</p>
+<p class="has-text-align-center has-text-color has-highlight-accent-alt-color has-huge-font-size" style="font-style:normal;font-weight:500;line-height:1">10</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"has-contrast-color has-text-color","style":{"typography":{"lineHeight":"1.4","textAlign":"center"}}} -->

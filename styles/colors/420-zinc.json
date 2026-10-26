@@ -49,44 +49,44 @@
 		"color": {
 			"palette": [
 				{ "slug": "primary", "color": "hsl(50, 4%, 42%)", "name": "Primary (Machine Stone Gray 42%)" },
-				{ "slug": "secondary", "color": "hsl(210, 18%, 32%)", "name": "Secondary (Midnight Industrial Blue 32%)" },
+				{ "slug": "secondary", "color": "hsl(210, 18%, 32%)", "name": "Secondary (Midnight Blue 32%)" },
 				{ "slug": "tertiary", "color": "hsl(50, 4%, 22%)", "name": "Tertiary (Machined Gunmetal 22%)" },
 
-				{ "slug": "primary-subtle", "color": "hsl(50, 4%, 18%)", "name": "Primary Subtle (Technical Stone Fill 18%)" },
-				{ "slug": "secondary-subtle", "color": "hsl(210, 14%, 16%)", "name": "Secondary Subtle (Gunmetal Blue Fill 16%)" },
-				{ "slug": "tertiary-subtle", "color": "hsl(0, 0%, 13%)", "name": "Tertiary Subtle (Carbon Plate Fill 13%)" },
+				{ "slug": "primary-subtle", "color": "hsl(50, 4%, 18%)", "name": "Primary Subtle (Stone 18%)" },
+				{ "slug": "secondary-subtle", "color": "hsl(210, 14%, 16%)", "name": "Secondary Subtle (Gunmetal Blue 16%)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(0, 0%, 13%)", "name": "Tertiary Subtle (Carbon 13%)" },
 
 				{ "slug": "primary-alt", "color": "hsl(50, 4%, 30%)", "name": "Primary Alt (Deep Machine Stone 30%)" },
 				{ "slug": "secondary-alt", "color": "hsl(210, 18%, 22%)", "name": "Secondary Alt (Dark Midnight Steel 22%)" },
-				{ "slug": "tertiary-alt", "color": "hsl(50, 4%, 15%)", "name": "Tertiary Alt (Deep Gunmetal Recess 15%)" },
+				{ "slug": "tertiary-alt", "color": "hsl(50, 4%, 15%)", "name": "Tertiary Alt (Deep Gunmetal 15%)" },
 
-				{ "slug": "dark", "color": "hsl(210, 18%, 18%)", "name": "Dark (Gunmetal Slate Section Band 18%)" },
-				{ "slug": "dark-alt", "color": "hsl(210, 18%, 13%)", "name": "Dark Alt (Deep Gunmetal Band 13%)" },							
+				{ "slug": "dark", "color": "hsl(210, 18%, 18%)", "name": "Dark (Gunmetal Slated 18%)" },
+				{ "slug": "dark-alt", "color": "hsl(210, 18%, 13%)", "name": "Dark Alt (Deep Gunmetal 13%)" },							
 
-				{ "slug": "dark-accent", "color": "hsl(0, 0%, 14%)", "name": "Dark Accent (Carbon Section Band 14%)" },
-				{ "slug": "dark-accent-alt", "color": "hsl(0, 0%, 10%)", "name": "Dark Accent Alt (Deep Carbon Band 10%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(0, 0%, 14%)", "name": "Dark Accent (Carbon 14%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(0, 0%, 10%)", "name": "Dark Accent Alt (Deep Carbon 10%)" },
 
-				{ "slug": "highlight", "color": "hsl(189, 85%, 78%)", "name": "Highlight (Glow Aqua Link)" },
-				{ "slug": "highlight-alt", "color": "hsl(189, 70%, 34%)", "name": "Highlight Alt (Deep Technical Aqua Link Ink / Button 34%)" },
+				{ "slug": "highlight", "color": "hsl(189, 85%, 78%)", "name": "Highlight (Glow Aqua Links)" },
+				{ "slug": "highlight-alt", "color": "hsl(189, 70%, 34%)", "name": "Highlight Alt (Deep Aqua Links / Buttons 34%)" },
 
-				{ "slug": "highlight-accent", "color": "hsl(36, 88%, 74%)", "name": "Highlight Accent (Hazard Gold Link)" },
-				{ "slug": "highlight-accent-alt", "color": "hsl(36, 75%, 38%)", "name": "Highlight Accent Alt (Deep Anodized Amber Button / Ink 38%)" },
+				{ "slug": "highlight-accent", "color": "hsl(36, 88%, 74%)", "name": "Highlight Accent (Hazard Gold Links)" },
+				{ "slug": "highlight-accent-alt", "color": "hsl(36, 75%, 38%)", "name": "Highlight Accent Alt (Deep Anodized Amber Links 38%)" },
         
-				{ "slug": "neutral", "color": "hsl(0, 0%, 18%)", "name": "Neutral (Industrial Grid Fill)" },
-				{ "slug": "neutral-alt", "color": "hsl(50, 4%, 14%)", "name": "Neutral Alt (Technical Structural Border)" },
+				{ "slug": "neutral", "color": "hsl(0, 0%, 18%)", "name": "Neutral (Industrial Carbon)" },
+				{ "slug": "neutral-alt", "color": "hsl(50, 4%, 14%)", "name": "Neutral Alt (Technical Carbon)" },
 
 				{ "slug": "off-white", "color": "hsl(45, 29%, 97%)", "name": "Off White" },
-				{ "slug": "very-light-gray", "color": "hsl(50, 4%, 12%)", "name": "Very Light Gray (Inverted Deep Zinc Floor 12%)" },
-				{ "slug": "light-gray", "color": "hsl(50, 4%, 20%)", "name": "Light Gray (Inverted Zinc Plate Well 20%)" },
-				{ "slug": "gray", "color": "hsl(50, 4%, 35%)", "name": "Gray (Inverted Machined Border Seam 35%)" },
-				{ "slug": "dark-gray", "color": "hsl(50, 4%, 65%)", "name": "Dark Gray (Inverted Muted Zinc Typography 65%)" },
-				{ "slug": "very-dark-gray", "color": "hsl(50, 4%, 85%)", "name": "Very Dark Gray (Inverted Specular Typography 85%)" },
+				{ "slug": "very-light-gray", "color": "hsl(50, 4%, 12%)", "name": "Very Light Gray (Inverted Deep Zinc 12%)" },
+				{ "slug": "light-gray", "color": "hsl(50, 4%, 20%)", "name": "Light Gray (Inverted Zinc Plate 20%)" },
+				{ "slug": "gray", "color": "hsl(50, 4%, 35%)", "name": "Gray (Inverted Machined 35%)" },
+				{ "slug": "dark-gray", "color": "hsl(50, 4%, 65%)", "name": "Dark Gray (Inverted Muted Zinc 65%)" },
+				{ "slug": "very-dark-gray", "color": "hsl(50, 4%, 85%)", "name": "Very Dark Gray (Inverted Carbon 85%)" },
 
-				{ "slug": "almost-black", "color": "hsl(208, 18%, 18%)", "name": "Almost Black (Tinted Carbon Floor)" },
-				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" },
+				{ "slug": "almost-black", "color": "hsl(208, 18%, 18%)", "name": "Almost Black (Tinted Carbon)" },
+				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Carbon)" },
 
-				{ "slug": "base", "color": "hsl(0, 0%, 10%)", "name": "Base (Rich Carbon Dark Canvas)" },
-				{ "slug": "contrast", "color": "hsl(45, 29%, 97%)", "name": "Contrast (Off White Paper Typography)" }				
+				{ "slug": "base", "color": "hsl(0, 0%, 10%)", "name": "Base (Rich Carbon Dark)" },
+				{ "slug": "contrast", "color": "hsl(45, 29%, 97%)", "name": "Contrast (Off White Paper)" }				
 			],
 			"duotone": [
 				{ "colors": ["hsl(50, 4%, 42%)", "hsl(45, 29%, 97%)"], "slug": "primary", "name": "Primary (Machine Gray)" },

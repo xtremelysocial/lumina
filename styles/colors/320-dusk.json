@@ -20,45 +20,45 @@
 		},
 		"color": {
 			"palette": [
-				{ "slug": "primary", "color": "hsl(214, 18%, 28%)", "name": "Primary (Midnight Slate Core 28%)" },
+				{ "slug": "primary", "color": "hsl(214, 18%, 28%)", "name": "Primary (Midnight Slate 28%)" },
 				{ "slug": "secondary", "color": "hsl(206, 20%, 34%)", "name": "Secondary (Maritime Evening Slate 34%)" },
 				{ "slug": "tertiary", "color": "hsl(12, 32%, 48%)", "name": "Tertiary (Twilight Terracotta 48%)" },
 
-				{ "slug": "primary-subtle", "color": "hsl(204, 20%, 91%)", "name": "Primary Subtle (Whisper Sky Slate Fill 91%)" },
-				{ "slug": "secondary-subtle", "color": "hsl(146, 20%, 91%)", "name": "Secondary Subtle (Whisper Sage Green Fill 91%)" },
-				{ "slug": "tertiary-subtle", "color": "hsl(24, 22%, 91%)", "name": "Tertiary Subtle (Evening Glow Orange Fill 91%)" },
+				{ "slug": "primary-subtle", "color": "hsl(204, 20%, 91%)", "name": "Primary Subtle (Whisper Sky Slate 91%)" },
+				{ "slug": "secondary-subtle", "color": "hsl(146, 20%, 91%)", "name": "Secondary Subtle (Whisper Sage Green 91%)" },
+				{ "slug": "tertiary-subtle", "color": "hsl(24, 22%, 91%)", "name": "Tertiary Subtle (Evening Glow Orange 91%)" },
 
-				{ "slug": "primary-alt", "color": "hsl(214, 18%, 18%)", "name": "Primary Alt (Deep Abyssal Action 18%)" },
-				{ "slug": "secondary-alt", "color": "hsl(206, 24%, 24%)", "name": "Secondary Alt (Maritime Panel Base 24%)" },
+				{ "slug": "primary-alt", "color": "hsl(214, 18%, 18%)", "name": "Primary Alt (Deep Abyssal Blue 18%)" },
+				{ "slug": "secondary-alt", "color": "hsl(206, 24%, 24%)", "name": "Secondary Alt (Maritime Slate 24%)" },
 				{ "slug": "tertiary-alt", "color": "hsl(12, 32%, 38%)", "name": "Tertiary Alt (Burnt Sienna 38%)" },
 
-				{ "slug": "dark", "color": "hsl(206, 20%, 20%)", "name": "Dark (Secondary Maritime Footer Pair 20%)" },
-				{ "slug": "dark-alt", "color": "hsl(206, 24%, 15%)", "name": "Dark Alt (Secondary Maritime Footer Deep 15%)" },
+				{ "slug": "dark", "color": "hsl(206, 20%, 20%)", "name": "Dark (Secondary Maritime Pair 20%)" },
+				{ "slug": "dark-alt", "color": "hsl(206, 24%, 15%)", "name": "Dark Alt (Secondary Maritime Deep 15%)" },
 
-				{ "slug": "dark-accent", "color": "hsl(12, 32%, 22%)", "name": "Dark Accent (Twilight Terracotta Deep 22%)" },
-				{ "slug": "dark-accent-alt", "color": "hsl(12, 32%, 14%)", "name": "Dark Accent Alt (Twilight Terracotta Abyssal 14%)" },
+				{ "slug": "tertiary-dark", "color": "hsl(12, 32%, 22%)", "name": "Dark Accent (Twilight Terracotta Deep 22%)" },
+				{ "slug": "tertiary-dark-alt", "color": "hsl(12, 32%, 14%)", "name": "Dark Accent Alt (Twilight Terracotta Abyssal 14%)" },
 
-				{ "slug": "highlight", "color": "hsl(206, 70%, 72%)", "name": "Highlight (Bioluminescent Sky Link)" },
+				{ "slug": "highlight", "color": "hsl(206, 70%, 72%)", "name": "Highlight (Bioluminescent Sky Links)" },
 				{ "slug": "highlight-alt", "color": "hsl(206, 55%, 34%)", "name": "Highlight Alt (Deep Maritime Accent)" },
 
-				{ "slug": "highlight-accent", "color": "hsl(12, 65%, 70%)", "name": "Highlight Accent (Twilight Flame Link)" },				
+				{ "slug": "highlight-accent", "color": "hsl(12, 65%, 70%)", "name": "Highlight Accent (Twilight Flame Links)" },				
 				{ "slug": "highlight-accent-alt", "color": "hsl(12, 58%, 36%)", "name": "Highlight Accent Alt (Burnt Terracotta Accent)" },
 
-				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand Well 94%)" },
-				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand Border Seam 88%)" },
+				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand 94%)" },
+				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand 88%)" },
 
-				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Desert Alabaster Surface 97.5%)" },
-				{ "slug": "very-light-gray", "color": "hsl(40, 16%, 91.5%)", "name": "Very Light Gray (Warm Sand Footer Floor 91.5%)" },
-				{ "slug": "light-gray", "color": "hsl(40, 14%, 84%)", "name": "Light Gray (Warm Sand Inner Well 84%)" },
-				{ "slug": "gray", "color": "hsl(40, 8%, 71%)", "name": "Gray (Warm Structural Border 71%)" },
-				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso Typography 44%)" },
+				{ "slug": "off-white", "color": "hsl(40, 20%, 97.5%)", "name": "Off White (Desert Alabaster 97.5%)" },
+				{ "slug": "very-light-gray", "color": "hsl(40, 16%, 91.5%)", "name": "Very Light Gray (Warm Sand 91.5%)" },
+				{ "slug": "light-gray", "color": "hsl(40, 14%, 84%)", "name": "Light Gray (Warm Sand Inner 84%)" },
+				{ "slug": "gray", "color": "hsl(40, 8%, 71%)", "name": "Gray (Warm Sand 71%)" },
+				{ "slug": "dark-gray", "color": "hsl(40, 4%, 44%)", "name": "Dark Gray (Muted Espresso 44%)" },
 				{ "slug": "very-dark-gray", "color": "hsl(40, 2%, 25%)", "name": "Very Dark Gray (Smoky Sand Shadow 25%)" },
 
-				{ "slug": "almost-black", "color": "hsl(208, 10%, 14%)", "name": "Almost Black (Tinted Carbon Floor 14%)" },
-				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Ink)" },
+				{ "slug": "almost-black", "color": "hsl(208, 10%, 14%)", "name": "Almost Black (Tinted Carbon 14%)" },
+				{ "slug": "not-quite-black", "color": "hsl(209, 15%, 11%)", "name": "Not Quite Black (Rich Tinted Carbon)" },
 
-				{ "slug": "base", "color": "hsl(43, 27%, 97%)", "name": "Base (Light Evening Haze Canvas)" },
-				{ "slug": "contrast", "color": "hsl(214, 12%, 11%)", "name": "Contrast (Midnight Indigo Typographic Ink)" }				
+				{ "slug": "base", "color": "hsl(43, 27%, 97%)", "name": "Base (Light Evening Haze)" },
+				{ "slug": "contrast", "color": "hsl(214, 12%, 11%)", "name": "Contrast (Midnight Indigo)" }				
 			],		
 			"duotone": [
 				{ "colors": ["hsl(214, 18%, 28%)", "hsl(43, 27%, 97%)"], "slug": "primary", "name": "Primary (Dark Midnight Blue)" },
