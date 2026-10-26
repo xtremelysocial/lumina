@@ -60,11 +60,11 @@
 				{ "slug": "tertiary-dark", "color": "hsl(154, 24%, 48%)", "name": "Tertiary Dark (Crisp Pine Green 48%)" },
 				{ "slug": "tertiary-dark-alt", "color": "hsl(154, 26%, 38%)", "name": "Tertiary Dark Alt (Deep Alpine Sage 38%)" },
 
-				{ "slug": "highlight", "color": "hsl(154, 65%, 78%)", "name": "Highlight (Crisp Emerald Glow - Dark BGs 78%)" },
-				{ "slug": "highlight-alt", "color": "hsl(154, 55%, 32%)", "name": "Highlight Alt (Deep Pine Link - Light BGs 32%)" },
+				{ "slug": "highlight", "color": "hsl(154, 65%, 78%)", "name": "Highlight (Crisp Emerald Glow 78%)" },
+				{ "slug": "highlight-alt", "color": "hsl(154, 55%, 32%)", "name": "Highlight Alt (Deep Pine Link 32%)" },
 
-				{ "slug": "highlight-accent", "color": "hsl(206, 75%, 68%)", "name": "Highlight Links (Luminescent Sky)" },
-				{ "slug": "highlight-accent-alt", "color": "hsl(206, 65%, 34%)", "name": "Highlight Links Alt (Deep Sky Links)" },
+				{ "slug": "highlight-accent", "color": "hsl(206, 75%, 68%)", "name": "Highlight (Luminescent Sky Links)" },
+				{ "slug": "highlight-accent-alt", "color": "hsl(206, 65%, 34%)", "name": "Highlight Alt (Deep Sky Links Links)" },
 
 				{ "slug": "neutral", "color": "hsl(40, 18%, 95.5%)", "name": "Neutral (Warm Sand 95.5%)" },
 				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 90%)", "name": "Neutral Alt (Sand 90%)" },

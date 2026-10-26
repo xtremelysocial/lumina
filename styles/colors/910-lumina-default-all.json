@@ -101,8 +101,8 @@
 				{ "slug": "highlight", "color": "hsl(154, 65%, 68%)", "name": "Highlight (Electric Sage for Dark BG)" },
 				{ "slug": "highlight-alt", "color": "hsl(154, 75%, 28%)", "name": "Highlight Alt (Vivid Pine Links)" },
 
-				{ "slug": "highlight-accent", "color": "hsl(206, 75%, 68%)", "name": "Highlight Links (Luminescent Sky)" },
-				{ "slug": "highlight-accent-alt", "color": "hsl(206, 65%, 34%)", "name": "Highlight Links Alt (Deep Sky Links)" },
+				{ "slug": "highlight-accent", "color": "hsl(206, 75%, 68%)", "name": "Highlight (Luminescent Sky Links)" },
+				{ "slug": "highlight-accent-alt", "color": "hsl(206, 65%, 34%)", "name": "Highlight Alt (Deep Sky Links)" },
 
 				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand 94%)" },
 				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand 88%)" },
@@ -124,7 +124,7 @@
 				{ "slug": "secondary-subtle-alt", "color": "hsl(206, 18%, 83%)", "name": "Secondary Subtle Alt (Sky 83%)" },
 				{ "slug": "tertiary-subtle-alt", "color": "hsl(34, 16%, 83%)", "name": "Tertiary Subtle Alt (Parchment 83%)" },
 
-				{ "slug": "highlight-accent-2", "color": "hsl(206, 80%, 72%)", "name": "Highlight Secondary (Luminescent Sky)" },
+				{ "slug": "highlight-accent-2", "color": "hsl(206, 80%, 72%)", "name": "Highlight Secondary (Luminescent Sky Links)" },
 				{ "slug": "highlight-accent-2-alt", "color": "hsl(206, 65%, 36%)", "name": "Highlight Secondary Alt (Deep Sky Links)" },
 
 				{ "slug": "primary-dark", "color": "hsl(170, 45%, 20%)", "name": "Primary Dark (Deep Forest Sage)"},

@@ -44,8 +44,8 @@
 				{ "slug": "highlight", "color": "hsl(207, 65%, 72%)", "name": "Highlight (Luminescent Sapphire)" },
 				{ "slug": "highlight-alt", "color": "hsl(207, 65%, 36%)", "name": "Highlight Alt (Electric Sapphire 36%)" },
 
-				{ "slug": "highlight-accent", "color": "hsl(327, 55%, 74%)", "name": "Highlight Accent (Luminescent Orchid)" },
-				{ "slug": "highlight-accent-alt", "color": "hsl(327, 60%, 36%)", "name": "Highlight Accent Alt (Royal Orchid)" },
+				{ "slug": "highlight-accent", "color": "hsl(327, 55%, 74%)", "name": "Highlight Accent (Luminescent Orchid Links)" },
+				{ "slug": "highlight-accent-alt", "color": "hsl(327, 60%, 36%)", "name": "Highlight Accent Alt (Royal Orchid Links)" },
 
 				{ "slug": "neutral", "color": "hsl(40, 18%, 94%)", "name": "Neutral (Warm Sand 94%)" },
 				{ "slug": "neutral-alt", "color": "hsl(40, 15%, 88%)", "name": "Neutral Alt (Sand 88%)" },
