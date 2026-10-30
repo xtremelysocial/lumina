@@ -18,7 +18,7 @@ fieldset {
 
 select,
 textarea,
-input:not([type="button"]):not([type="submit"]):not([type="reset"]):not(.wp-element-button) {
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not(.wp-element-button):not(.wp-block-button__link) {
 	font-family: inherit;
 	color: inherit;
 	
@@ -37,7 +37,7 @@ select {
 }
 
 textarea,
-input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="image"]) {
+input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="image"]):not(.wp-element-button):not(.wp-block-button__link) {
 	font-size: var(--wp--preset--font-size--normal);
 	font-weight: var(--wp--custom--typography--font-weight--normal, 300);
 	line-height: 1.5;

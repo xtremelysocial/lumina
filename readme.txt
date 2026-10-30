@@ -7,7 +7,10 @@ Lumina is a high-end evolution of the flat design aesthetic to a modern "Post Fl
 
 Built on a foundation of earthy notes and ambient lighting, the theme utilizes sophisticated color-scheme variations to provide a rich set of color palettes to create a focused, high-contrast environment. With a signature 'card-like' layout, Lumina containerizes content within high-radius surfaces—evoking the premium feel of modern tech—while maintaining sharp, immersive horizon lines for cinematic hero sections.
 
-For more information, see [Lumina WordPress Theme](http://nichewp.com/wordpress/lumina/).
+For more information, see
+* [Lumina WordPress Theme](https://nichewp.com/wordpress/lumina/)
+* [Lumina Theme Demo](https://lumina.nichewp.com)
+* [![Try Lumina in Browser](https://img.shields.io/badge/Live_Demo-WordPress_Playground-blue?style=for-the-badge&logo=wordpress)](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/nichewp/lumina/main/blueprint.json)
 
 == Quick Start Guide ==
 

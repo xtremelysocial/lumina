@@ -682,7 +682,6 @@
 					"radius": "var(--wp--custom--button--radius)"
 				},
 				"typography": {
-					"fontSize": "var:preset|font-size|medium",
 					"fontWeight": "400"
 				}						
 			},
