@@ -23,7 +23,7 @@
     },
     {
       "step": "activateTheme",
-      "themeFolder": "lumina-main"
+      "themeFolderName": "lumina-main"
     },
     {
       "step": "setSiteOptions",
